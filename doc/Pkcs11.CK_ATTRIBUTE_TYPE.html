@@ -1,0 +1,927 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Pkcs11.CK_SESSION_INFO.html">
+<link rel="next" href="Pkcs11.CK_ATTRIBUTE.html">
+<link rel="Up" href="Pkcs11.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Index of module types" rel=Appendix href="index_module_types.html">
+<link title="P11" rel="Chapter" href="P11.html">
+<link title="P11_mechanisms" rel="Chapter" href="P11_mechanisms.html">
+<link title="P11_keys_attributes" rel="Chapter" href="P11_keys_attributes.html">
+<link title="Pkcs11" rel="Chapter" href="Pkcs11.html">
+<link title="Pkcs11_CBC_ENCRYPT_DATA_PARAMS" rel="Chapter" href="Pkcs11_CBC_ENCRYPT_DATA_PARAMS.html">
+<link title="Pkcs11_CK_ATTRIBUTE" rel="Chapter" href="Pkcs11_CK_ATTRIBUTE.html">
+<link title="Pkcs11_CK_ATTRIBUTE_SET" rel="Chapter" href="Pkcs11_CK_ATTRIBUTE_SET.html">
+<link title="Pkcs11_CK_ATTRIBUTE_TYPE" rel="Chapter" href="Pkcs11_CK_ATTRIBUTE_TYPE.html">
+<link title="Pkcs11_CK_BBOOL" rel="Chapter" href="Pkcs11_CK_BBOOL.html">
+<link title="Pkcs11_CK_BIGINT" rel="Chapter" href="Pkcs11_CK_BIGINT.html">
+<link title="Pkcs11_CK_BYTE" rel="Chapter" href="Pkcs11_CK_BYTE.html">
+<link title="Pkcs11_CK_ECDH1_DERIVE_PARAMS" rel="Chapter" href="Pkcs11_CK_ECDH1_DERIVE_PARAMS.html">
+<link title="Pkcs11_CK_ECMQV_DERIVE_PARAMS" rel="Chapter" href="Pkcs11_CK_ECMQV_DERIVE_PARAMS.html">
+<link title="Pkcs11_CK_EC_KDF_TYPE" rel="Chapter" href="Pkcs11_CK_EC_KDF_TYPE.html">
+<link title="Pkcs11_CK_FLAGS" rel="Chapter" href="Pkcs11_CK_FLAGS.html">
+<link title="Pkcs11_CK_HW_FEATURE_TYPE" rel="Chapter" href="Pkcs11_CK_HW_FEATURE_TYPE.html">
+<link title="Pkcs11_CK_INFO" rel="Chapter" href="Pkcs11_CK_INFO.html">
+<link title="Pkcs11_CK_KEY_DERIVATION_STRING_DATA" rel="Chapter" href="Pkcs11_CK_KEY_DERIVATION_STRING_DATA.html">
+<link title="Pkcs11_CK_KEY_TYPE" rel="Chapter" href="Pkcs11_CK_KEY_TYPE.html">
+<link title="Pkcs11_CK_MECHANISM" rel="Chapter" href="Pkcs11_CK_MECHANISM.html">
+<link title="Pkcs11_CK_MECHANISM_INFO" rel="Chapter" href="Pkcs11_CK_MECHANISM_INFO.html">
+<link title="Pkcs11_CK_MECHANISM_TYPE" rel="Chapter" href="Pkcs11_CK_MECHANISM_TYPE.html">
+<link title="Pkcs11_CK_OBJECT_CLASS" rel="Chapter" href="Pkcs11_CK_OBJECT_CLASS.html">
+<link title="Pkcs11_CK_OBJECT_HANDLE" rel="Chapter" href="Pkcs11_CK_OBJECT_HANDLE.html">
+<link title="Pkcs11_CK_PKCS5_PBKD2_DATA_PARAMS" rel="Chapter" href="Pkcs11_CK_PKCS5_PBKD2_DATA_PARAMS.html">
+<link title="Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE" rel="Chapter" href="Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE.html">
+<link title="Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE" rel="Chapter" href="Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.html">
+<link title="Pkcs11_CK_RAW_PAYLOAD" rel="Chapter" href="Pkcs11_CK_RAW_PAYLOAD.html">
+<link title="Pkcs11_CK_RSA_PKCS_MGF_TYPE" rel="Chapter" href="Pkcs11_CK_RSA_PKCS_MGF_TYPE.html">
+<link title="Pkcs11_CK_RSA_PKCS_OAEP_PARAMS" rel="Chapter" href="Pkcs11_CK_RSA_PKCS_OAEP_PARAMS.html">
+<link title="Pkcs11_CK_RSA_PKCS_PSS_PARAMS" rel="Chapter" href="Pkcs11_CK_RSA_PKCS_PSS_PARAMS.html">
+<link title="Pkcs11_CK_RV" rel="Chapter" href="Pkcs11_CK_RV.html">
+<link title="Pkcs11_CK_SESSION_HANDLE" rel="Chapter" href="Pkcs11_CK_SESSION_HANDLE.html">
+<link title="Pkcs11_CK_SESSION_INFO" rel="Chapter" href="Pkcs11_CK_SESSION_INFO.html">
+<link title="Pkcs11_CK_SLOT_ID" rel="Chapter" href="Pkcs11_CK_SLOT_ID.html">
+<link title="Pkcs11_CK_SLOT_INFO" rel="Chapter" href="Pkcs11_CK_SLOT_INFO.html">
+<link title="Pkcs11_CK_TOKEN_INFO" rel="Chapter" href="Pkcs11_CK_TOKEN_INFO.html">
+<link title="Pkcs11_CK_ULONG" rel="Chapter" href="Pkcs11_CK_ULONG.html">
+<link title="Pkcs11_CK_USER_TYPE" rel="Chapter" href="Pkcs11_CK_USER_TYPE.html">
+<link title="Pkcs11_CK_UTF8CHAR" rel="Chapter" href="Pkcs11_CK_UTF8CHAR.html">
+<link title="Pkcs11_CK_VERSION" rel="Chapter" href="Pkcs11_CK_VERSION.html">
+<link title="Pkcs11_CK_VOID" rel="Chapter" href="Pkcs11_CK_VOID.html">
+<link title="Pkcs11_bindings" rel="Chapter" href="Pkcs11_bindings.html">
+<link title="Pkcs11_data" rel="Chapter" href="Pkcs11_data.html">
+<link title="Pkcs11_generator" rel="Chapter" href="Pkcs11_generator.html">
+<link title="Pkcs11_helpers" rel="Chapter" href="Pkcs11_helpers.html">
+<link title="Pkcs11_key_gen_mechanism" rel="Chapter" href="Pkcs11_key_gen_mechanism.html">
+<link title="Pkcs11_log" rel="Chapter" href="Pkcs11_log.html">
+<link title="Pkcs11_mechanism_list" rel="Chapter" href="Pkcs11_mechanism_list.html">
+<link title="Pkcs11_slot_list" rel="Chapter" href="Pkcs11_slot_list.html">
+<link title="Pkcs11_template" rel="Chapter" href="Pkcs11_template.html">
+<link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html"><title>Pkcs11.CK_ATTRIBUTE_TYPE</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Pkcs11.CK_SESSION_INFO.html" title="Pkcs11.CK_SESSION_INFO">Previous</a>
+&nbsp;<a class="up" href="Pkcs11.html" title="Pkcs11">Up</a>
+&nbsp;<a class="post" href="Pkcs11.CK_ATTRIBUTE.html" title="Pkcs11.CK_ATTRIBUTE">Next</a>
+</div>
+<h1>Module <a href="type_Pkcs11.CK_ATTRIBUTE_TYPE.html">Pkcs11.CK_ATTRIBUTE_TYPE</a></h1>
+
+<pre><span class="keyword">module</span> CK_ATTRIBUTE_TYPE: <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html">Pkcs11_CK_ATTRIBUTE_TYPE</a></code></pre><hr width="100%">
+
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = <code class="type"><a href="Pkcs11_CK_ULONG.html#TYPEt">Pkcs11_CK_ULONG.t</a></code> </pre>
+
+
+<pre><code><span id="TYPEnot_implemented"><span class="keyword">type</span> <code class="type"></code>not_implemented</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTnot_implemented.NOT_IMPLEMENTED"><span class="constructor">NOT_IMPLEMENTED</span></span> <span class="keyword">of</span> <code class="type">string</code></code></td>
+
+</tr></table>
+
+
+
+<pre><code><span id="TYPEu"><span class="keyword">type</span> <code class="type">'_</code> u</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_CLASS"><span class="constructor">CKA_CLASS</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_OBJECT_CLASS.html#TYPEu">Pkcs11_CK_OBJECT_CLASS.u</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_TOKEN"><span class="constructor">CKA_TOKEN</span></span> <span class="keyword">:</span> <code class="type">bool <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_PRIVATE"><span class="constructor">CKA_PRIVATE</span></span> <span class="keyword">:</span> <code class="type">bool <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_LABEL"><span class="constructor">CKA_LABEL</span></span> <span class="keyword">:</span> <code class="type">string <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_APPLICATION"><span class="constructor">CKA_APPLICATION</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_VALUE"><span class="constructor">CKA_VALUE</span></span> <span class="keyword">:</span> <code class="type">string <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_OBJECT_ID"><span class="constructor">CKA_OBJECT_ID</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_CERTIFICATE_TYPE"><span class="constructor">CKA_CERTIFICATE_TYPE</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_ISSUER"><span class="constructor">CKA_ISSUER</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_SERIAL_NUMBER"><span class="constructor">CKA_SERIAL_NUMBER</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_AC_ISSUER"><span class="constructor">CKA_AC_ISSUER</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_OWNER"><span class="constructor">CKA_OWNER</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_ATTR_TYPES"><span class="constructor">CKA_ATTR_TYPES</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_TRUSTED"><span class="constructor">CKA_TRUSTED</span></span> <span class="keyword">:</span> <code class="type">bool <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_CERTIFICATE_CATEGORY"><span class="constructor">CKA_CERTIFICATE_CATEGORY</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_JAVA_MIDP_SECURITY_DOMAIN"><span class="constructor">CKA_JAVA_MIDP_SECURITY_DOMAIN</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_URL"><span class="constructor">CKA_URL</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_HASH_OF_SUBJECT_PUBLIC_KEY"><span class="constructor">CKA_HASH_OF_SUBJECT_PUBLIC_KEY</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_HASH_OF_ISSUER_PUBLIC_KEY"><span class="constructor">CKA_HASH_OF_ISSUER_PUBLIC_KEY</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_CHECK_VALUE"><span class="constructor">CKA_CHECK_VALUE</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_KEY_TYPE"><span class="constructor">CKA_KEY_TYPE</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_KEY_TYPE.html#TYPEu">Pkcs11_CK_KEY_TYPE.u</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_SUBJECT"><span class="constructor">CKA_SUBJECT</span></span> <span class="keyword">:</span> <code class="type">string <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_ID"><span class="constructor">CKA_ID</span></span> <span class="keyword">:</span> <code class="type">string <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_SENSITIVE"><span class="constructor">CKA_SENSITIVE</span></span> <span class="keyword">:</span> <code class="type">bool <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_ENCRYPT"><span class="constructor">CKA_ENCRYPT</span></span> <span class="keyword">:</span> <code class="type">bool <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_DECRYPT"><span class="constructor">CKA_DECRYPT</span></span> <span class="keyword">:</span> <code class="type">bool <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_WRAP"><span class="constructor">CKA_WRAP</span></span> <span class="keyword">:</span> <code class="type">bool <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_UNWRAP"><span class="constructor">CKA_UNWRAP</span></span> <span class="keyword">:</span> <code class="type">bool <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_SIGN"><span class="constructor">CKA_SIGN</span></span> <span class="keyword">:</span> <code class="type">bool <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_SIGN_RECOVER"><span class="constructor">CKA_SIGN_RECOVER</span></span> <span class="keyword">:</span> <code class="type">bool <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_VERIFY"><span class="constructor">CKA_VERIFY</span></span> <span class="keyword">:</span> <code class="type">bool <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_VERIFY_RECOVER"><span class="constructor">CKA_VERIFY_RECOVER</span></span> <span class="keyword">:</span> <code class="type">bool <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_DERIVE"><span class="constructor">CKA_DERIVE</span></span> <span class="keyword">:</span> <code class="type">bool <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_START_DATE"><span class="constructor">CKA_START_DATE</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_END_DATE"><span class="constructor">CKA_END_DATE</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_MODULUS"><span class="constructor">CKA_MODULUS</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_BIGINT.html#TYPEt">Pkcs11_CK_BIGINT.t</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_MODULUS_BITS"><span class="constructor">CKA_MODULUS_BITS</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ULONG.html#TYPEt">Pkcs11_CK_ULONG.t</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_PUBLIC_EXPONENT"><span class="constructor">CKA_PUBLIC_EXPONENT</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_BIGINT.html#TYPEt">Pkcs11_CK_BIGINT.t</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_PRIVATE_EXPONENT"><span class="constructor">CKA_PRIVATE_EXPONENT</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_BIGINT.html#TYPEt">Pkcs11_CK_BIGINT.t</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_PRIME_1"><span class="constructor">CKA_PRIME_1</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_BIGINT.html#TYPEt">Pkcs11_CK_BIGINT.t</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_PRIME_2"><span class="constructor">CKA_PRIME_2</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_BIGINT.html#TYPEt">Pkcs11_CK_BIGINT.t</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_EXPONENT_1"><span class="constructor">CKA_EXPONENT_1</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_BIGINT.html#TYPEt">Pkcs11_CK_BIGINT.t</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_EXPONENT_2"><span class="constructor">CKA_EXPONENT_2</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_BIGINT.html#TYPEt">Pkcs11_CK_BIGINT.t</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_COEFFICIENT"><span class="constructor">CKA_COEFFICIENT</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_BIGINT.html#TYPEt">Pkcs11_CK_BIGINT.t</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_PRIME"><span class="constructor">CKA_PRIME</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_BIGINT.html#TYPEt">Pkcs11_CK_BIGINT.t</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_SUBPRIME"><span class="constructor">CKA_SUBPRIME</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_BIGINT.html#TYPEt">Pkcs11_CK_BIGINT.t</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_BASE"><span class="constructor">CKA_BASE</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_PRIME_BITS"><span class="constructor">CKA_PRIME_BITS</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ULONG.html#TYPEt">Pkcs11_CK_ULONG.t</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_SUBPRIME_BITS"><span class="constructor">CKA_SUBPRIME_BITS</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ULONG.html#TYPEt">Pkcs11_CK_ULONG.t</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_VALUE_BITS"><span class="constructor">CKA_VALUE_BITS</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_VALUE_LEN"><span class="constructor">CKA_VALUE_LEN</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ULONG.html#TYPEt">Pkcs11_CK_ULONG.t</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_EXTRACTABLE"><span class="constructor">CKA_EXTRACTABLE</span></span> <span class="keyword">:</span> <code class="type">bool <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_LOCAL"><span class="constructor">CKA_LOCAL</span></span> <span class="keyword">:</span> <code class="type">bool <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_NEVER_EXTRACTABLE"><span class="constructor">CKA_NEVER_EXTRACTABLE</span></span> <span class="keyword">:</span> <code class="type">bool <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_ALWAYS_SENSITIVE"><span class="constructor">CKA_ALWAYS_SENSITIVE</span></span> <span class="keyword">:</span> <code class="type">bool <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_KEY_GEN_MECHANISM"><span class="constructor">CKA_KEY_GEN_MECHANISM</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_key_gen_mechanism.html#TYPEu">Pkcs11_key_gen_mechanism.u</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_MODIFIABLE"><span class="constructor">CKA_MODIFIABLE</span></span> <span class="keyword">:</span> <code class="type">bool <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_EC_PARAMS"><span class="constructor">CKA_EC_PARAMS</span></span> <span class="keyword">:</span> <code class="type">Key_parsers.Asn1.EC.Params.t <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_EC_POINT"><span class="constructor">CKA_EC_POINT</span></span> <span class="keyword">:</span> <code class="type">Key_parsers.Asn1.EC.point <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_SECONDARY_AUTH"><span class="constructor">CKA_SECONDARY_AUTH</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_AUTH_PIN_FLAGS"><span class="constructor">CKA_AUTH_PIN_FLAGS</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_ALWAYS_AUTHENTICATE"><span class="constructor">CKA_ALWAYS_AUTHENTICATE</span></span> <span class="keyword">:</span> <code class="type">bool <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_WRAP_WITH_TRUSTED"><span class="constructor">CKA_WRAP_WITH_TRUSTED</span></span> <span class="keyword">:</span> <code class="type">bool <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_WRAP_TEMPLATE"><span class="constructor">CKA_WRAP_TEMPLATE</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_UNWRAP_TEMPLATE"><span class="constructor">CKA_UNWRAP_TEMPLATE</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_OTP_FORMAT"><span class="constructor">CKA_OTP_FORMAT</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_OTP_LENGTH"><span class="constructor">CKA_OTP_LENGTH</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_OTP_TIME_INTERVAL"><span class="constructor">CKA_OTP_TIME_INTERVAL</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_OTP_USER_FRIENDLY_MODE"><span class="constructor">CKA_OTP_USER_FRIENDLY_MODE</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_OTP_CHALLENGE_REQUIREMENT"><span class="constructor">CKA_OTP_CHALLENGE_REQUIREMENT</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_OTP_TIME_REQUIREMENT"><span class="constructor">CKA_OTP_TIME_REQUIREMENT</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_OTP_COUNTER_REQUIREMENT"><span class="constructor">CKA_OTP_COUNTER_REQUIREMENT</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_OTP_PIN_REQUIREMENT"><span class="constructor">CKA_OTP_PIN_REQUIREMENT</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_OTP_COUNTER"><span class="constructor">CKA_OTP_COUNTER</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_OTP_TIME"><span class="constructor">CKA_OTP_TIME</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_OTP_USER_IDENTIFIER"><span class="constructor">CKA_OTP_USER_IDENTIFIER</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_OTP_SERVICE_IDENTIFIER"><span class="constructor">CKA_OTP_SERVICE_IDENTIFIER</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_OTP_SERVICE_LOGO"><span class="constructor">CKA_OTP_SERVICE_LOGO</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_OTP_SERVICE_LOGO_TYPE"><span class="constructor">CKA_OTP_SERVICE_LOGO_TYPE</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_HW_FEATURE_TYPE"><span class="constructor">CKA_HW_FEATURE_TYPE</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_RESET_ON_INIT"><span class="constructor">CKA_RESET_ON_INIT</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_HAS_RESET"><span class="constructor">CKA_HAS_RESET</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_PIXEL_X"><span class="constructor">CKA_PIXEL_X</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_PIXEL_Y"><span class="constructor">CKA_PIXEL_Y</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_RESOLUTION"><span class="constructor">CKA_RESOLUTION</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_CHAR_ROWS"><span class="constructor">CKA_CHAR_ROWS</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_CHAR_COLUMNS"><span class="constructor">CKA_CHAR_COLUMNS</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_COLOR"><span class="constructor">CKA_COLOR</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_BITS_PER_PIXEL"><span class="constructor">CKA_BITS_PER_PIXEL</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_CHAR_SETS"><span class="constructor">CKA_CHAR_SETS</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_ENCODING_METHODS"><span class="constructor">CKA_ENCODING_METHODS</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_MIME_TYPES"><span class="constructor">CKA_MIME_TYPES</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_MECHANISM_TYPE"><span class="constructor">CKA_MECHANISM_TYPE</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_REQUIRED_CMS_ATTRIBUTES"><span class="constructor">CKA_REQUIRED_CMS_ATTRIBUTES</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_DEFAULT_CMS_ATTRIBUTES"><span class="constructor">CKA_DEFAULT_CMS_ATTRIBUTES</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_SUPPORTED_CMS_ATTRIBUTES"><span class="constructor">CKA_SUPPORTED_CMS_ATTRIBUTES</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_ALLOWED_MECHANISMS"><span class="constructor">CKA_ALLOWED_MECHANISMS</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_VENDOR_DEFINED"><span class="constructor">CKA_VENDOR_DEFINED</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTu.CKA_CS_UNKNOWN"><span class="constructor">CKA_CS_UNKNOWN</span></span> <span class="keyword">:</span> <code class="type">Unsigned.ULong.t</code> <span class="keyword">-></span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEnot_implemented">not_implemented</a> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code></code></td>
+
+</tr></table>
+
+
+
+<pre><code><span id="TYPEpack"><span class="keyword">type</span> <code class="type"></code>pack</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTpack.Pack"><span class="constructor">Pack</span></span> <span class="keyword">:</span> <code class="type">'a <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a></code> <span class="keyword">-></span> <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEpack">pack</a></code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VAL_CKA_CLASS"><span class="keyword">val</span> _CKA_CLASS</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_TOKEN"><span class="keyword">val</span> _CKA_TOKEN</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_PRIVATE"><span class="keyword">val</span> _CKA_PRIVATE</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_LABEL"><span class="keyword">val</span> _CKA_LABEL</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_APPLICATION"><span class="keyword">val</span> _CKA_APPLICATION</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_VALUE"><span class="keyword">val</span> _CKA_VALUE</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_OBJECT_ID"><span class="keyword">val</span> _CKA_OBJECT_ID</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_CERTIFICATE_TYPE"><span class="keyword">val</span> _CKA_CERTIFICATE_TYPE</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_ISSUER"><span class="keyword">val</span> _CKA_ISSUER</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_SERIAL_NUMBER"><span class="keyword">val</span> _CKA_SERIAL_NUMBER</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_AC_ISSUER"><span class="keyword">val</span> _CKA_AC_ISSUER</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_OWNER"><span class="keyword">val</span> _CKA_OWNER</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_ATTR_TYPES"><span class="keyword">val</span> _CKA_ATTR_TYPES</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_TRUSTED"><span class="keyword">val</span> _CKA_TRUSTED</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_CERTIFICATE_CATEGORY"><span class="keyword">val</span> _CKA_CERTIFICATE_CATEGORY</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_JAVA_MIDP_SECURITY_DOMAIN"><span class="keyword">val</span> _CKA_JAVA_MIDP_SECURITY_DOMAIN</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_URL"><span class="keyword">val</span> _CKA_URL</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_HASH_OF_SUBJECT_PUBLIC_KEY"><span class="keyword">val</span> _CKA_HASH_OF_SUBJECT_PUBLIC_KEY</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_HASH_OF_ISSUER_PUBLIC_KEY"><span class="keyword">val</span> _CKA_HASH_OF_ISSUER_PUBLIC_KEY</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_CHECK_VALUE"><span class="keyword">val</span> _CKA_CHECK_VALUE</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_KEY_TYPE"><span class="keyword">val</span> _CKA_KEY_TYPE</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_SUBJECT"><span class="keyword">val</span> _CKA_SUBJECT</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_ID"><span class="keyword">val</span> _CKA_ID</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_SENSITIVE"><span class="keyword">val</span> _CKA_SENSITIVE</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_ENCRYPT"><span class="keyword">val</span> _CKA_ENCRYPT</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_DECRYPT"><span class="keyword">val</span> _CKA_DECRYPT</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_WRAP"><span class="keyword">val</span> _CKA_WRAP</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_UNWRAP"><span class="keyword">val</span> _CKA_UNWRAP</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_SIGN"><span class="keyword">val</span> _CKA_SIGN</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_SIGN_RECOVER"><span class="keyword">val</span> _CKA_SIGN_RECOVER</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_VERIFY"><span class="keyword">val</span> _CKA_VERIFY</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_VERIFY_RECOVER"><span class="keyword">val</span> _CKA_VERIFY_RECOVER</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_DERIVE"><span class="keyword">val</span> _CKA_DERIVE</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_START_DATE"><span class="keyword">val</span> _CKA_START_DATE</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_END_DATE"><span class="keyword">val</span> _CKA_END_DATE</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_MODULUS"><span class="keyword">val</span> _CKA_MODULUS</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_MODULUS_BITS"><span class="keyword">val</span> _CKA_MODULUS_BITS</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_PUBLIC_EXPONENT"><span class="keyword">val</span> _CKA_PUBLIC_EXPONENT</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_PRIVATE_EXPONENT"><span class="keyword">val</span> _CKA_PRIVATE_EXPONENT</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_PRIME_1"><span class="keyword">val</span> _CKA_PRIME_1</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_PRIME_2"><span class="keyword">val</span> _CKA_PRIME_2</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_EXPONENT_1"><span class="keyword">val</span> _CKA_EXPONENT_1</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_EXPONENT_2"><span class="keyword">val</span> _CKA_EXPONENT_2</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_COEFFICIENT"><span class="keyword">val</span> _CKA_COEFFICIENT</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_PRIME"><span class="keyword">val</span> _CKA_PRIME</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_SUBPRIME"><span class="keyword">val</span> _CKA_SUBPRIME</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_BASE"><span class="keyword">val</span> _CKA_BASE</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_PRIME_BITS"><span class="keyword">val</span> _CKA_PRIME_BITS</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_SUBPRIME_BITS"><span class="keyword">val</span> _CKA_SUBPRIME_BITS</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_VALUE_BITS"><span class="keyword">val</span> _CKA_VALUE_BITS</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_VALUE_LEN"><span class="keyword">val</span> _CKA_VALUE_LEN</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_EXTRACTABLE"><span class="keyword">val</span> _CKA_EXTRACTABLE</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_LOCAL"><span class="keyword">val</span> _CKA_LOCAL</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_NEVER_EXTRACTABLE"><span class="keyword">val</span> _CKA_NEVER_EXTRACTABLE</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_ALWAYS_SENSITIVE"><span class="keyword">val</span> _CKA_ALWAYS_SENSITIVE</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_KEY_GEN_MECHANISM"><span class="keyword">val</span> _CKA_KEY_GEN_MECHANISM</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_MODIFIABLE"><span class="keyword">val</span> _CKA_MODIFIABLE</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_EC_PARAMS"><span class="keyword">val</span> _CKA_EC_PARAMS</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_EC_POINT"><span class="keyword">val</span> _CKA_EC_POINT</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_SECONDARY_AUTH"><span class="keyword">val</span> _CKA_SECONDARY_AUTH</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_AUTH_PIN_FLAGS"><span class="keyword">val</span> _CKA_AUTH_PIN_FLAGS</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_ALWAYS_AUTHENTICATE"><span class="keyword">val</span> _CKA_ALWAYS_AUTHENTICATE</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_WRAP_WITH_TRUSTED"><span class="keyword">val</span> _CKA_WRAP_WITH_TRUSTED</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_WRAP_TEMPLATE"><span class="keyword">val</span> _CKA_WRAP_TEMPLATE</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_UNWRAP_TEMPLATE"><span class="keyword">val</span> _CKA_UNWRAP_TEMPLATE</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_OTP_FORMAT"><span class="keyword">val</span> _CKA_OTP_FORMAT</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_OTP_LENGTH"><span class="keyword">val</span> _CKA_OTP_LENGTH</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_OTP_TIME_INTERVAL"><span class="keyword">val</span> _CKA_OTP_TIME_INTERVAL</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_OTP_USER_FRIENDLY_MODE"><span class="keyword">val</span> _CKA_OTP_USER_FRIENDLY_MODE</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_OTP_CHALLENGE_REQUIREMENT"><span class="keyword">val</span> _CKA_OTP_CHALLENGE_REQUIREMENT</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_OTP_TIME_REQUIREMENT"><span class="keyword">val</span> _CKA_OTP_TIME_REQUIREMENT</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_OTP_COUNTER_REQUIREMENT"><span class="keyword">val</span> _CKA_OTP_COUNTER_REQUIREMENT</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_OTP_PIN_REQUIREMENT"><span class="keyword">val</span> _CKA_OTP_PIN_REQUIREMENT</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_OTP_COUNTER"><span class="keyword">val</span> _CKA_OTP_COUNTER</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_OTP_TIME"><span class="keyword">val</span> _CKA_OTP_TIME</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_OTP_USER_IDENTIFIER"><span class="keyword">val</span> _CKA_OTP_USER_IDENTIFIER</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_OTP_SERVICE_IDENTIFIER"><span class="keyword">val</span> _CKA_OTP_SERVICE_IDENTIFIER</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_OTP_SERVICE_LOGO"><span class="keyword">val</span> _CKA_OTP_SERVICE_LOGO</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_OTP_SERVICE_LOGO_TYPE"><span class="keyword">val</span> _CKA_OTP_SERVICE_LOGO_TYPE</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_HW_FEATURE_TYPE"><span class="keyword">val</span> _CKA_HW_FEATURE_TYPE</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_RESET_ON_INIT"><span class="keyword">val</span> _CKA_RESET_ON_INIT</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_HAS_RESET"><span class="keyword">val</span> _CKA_HAS_RESET</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_PIXEL_X"><span class="keyword">val</span> _CKA_PIXEL_X</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_PIXEL_Y"><span class="keyword">val</span> _CKA_PIXEL_Y</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_RESOLUTION"><span class="keyword">val</span> _CKA_RESOLUTION</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_CHAR_ROWS"><span class="keyword">val</span> _CKA_CHAR_ROWS</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_CHAR_COLUMNS"><span class="keyword">val</span> _CKA_CHAR_COLUMNS</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_COLOR"><span class="keyword">val</span> _CKA_COLOR</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_BITS_PER_PIXEL"><span class="keyword">val</span> _CKA_BITS_PER_PIXEL</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_CHAR_SETS"><span class="keyword">val</span> _CKA_CHAR_SETS</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_ENCODING_METHODS"><span class="keyword">val</span> _CKA_ENCODING_METHODS</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_MIME_TYPES"><span class="keyword">val</span> _CKA_MIME_TYPES</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_MECHANISM_TYPE"><span class="keyword">val</span> _CKA_MECHANISM_TYPE</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_REQUIRED_CMS_ATTRIBUTES"><span class="keyword">val</span> _CKA_REQUIRED_CMS_ATTRIBUTES</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_DEFAULT_CMS_ATTRIBUTES"><span class="keyword">val</span> _CKA_DEFAULT_CMS_ATTRIBUTES</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_SUPPORTED_CMS_ATTRIBUTES"><span class="keyword">val</span> _CKA_SUPPORTED_CMS_ATTRIBUTES</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_ALLOWED_MECHANISMS"><span class="keyword">val</span> _CKA_ALLOWED_MECHANISMS</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKA_VENDOR_DEFINED"><span class="keyword">val</span> _CKA_VENDOR_DEFINED</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type">'a <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a> -> string</code></pre>
+<pre><span id="VALof_string"><span class="keyword">val</span> of_string</span> : <code class="type">string -> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEpack">pack</a></code></pre>
+<pre><span id="VALmake"><span class="keyword">val</span> make</span> : <code class="type">'a <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a> -> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VALview"><span class="keyword">val</span> view</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a> -> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEpack">pack</a></code></pre>
+<pre><span id="VALcompare"><span class="keyword">val</span> compare</span> : <code class="type">'a <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a> -> 'b <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a> -> int</code></pre>
+<pre><span id="VALcompare_t"><span class="keyword">val</span> compare_t</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a> -> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a> -> int</code></pre>
+<pre><span id="VALcompare_pack"><span class="keyword">val</span> compare_pack</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEpack">pack</a> -> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEpack">pack</a> -> int</code></pre>
+<pre><code><span id="TYPEcomparison"><span class="keyword">type</span> <code class="type">('_, '_)</code> comparison</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomparison.Equal"><span class="constructor">Equal</span></span> <span class="keyword">:</span> <code class="type">('a, 'a) <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEcomparison">comparison</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTcomparison.Not_equal"><span class="constructor">Not_equal</span></span> <span class="keyword">:</span> <code class="type">int</code> <span class="keyword">-></span> <code class="type">('a0, 'b) <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEcomparison">comparison</a></code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALcompare'"><span class="keyword">val</span> compare'</span> : <code class="type">'a <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a> -><br>       'b <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a> -> ('a, 'b) <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEcomparison">comparison</a></code></pre>
+<pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type">'a <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a> -> 'b <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEu">u</a> -> bool</code></pre>
+<pre><span id="VALequal_t"><span class="keyword">val</span> equal_t</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a> -> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a> -> bool</code></pre>
+<pre><span id="VALequal_pack"><span class="keyword">val</span> equal_pack</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEpack">pack</a> -> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEpack">pack</a> -> bool</code></pre>
+<pre><span id="VAL(==)"><span class="keyword">val</span> (==)</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a> -> <a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a> -> bool</code></pre>
+<pre><span id="VALtyp"><span class="keyword">val</span> typ</span> : <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#TYPEt">t</a> Ctypes.typ</code></pre></body></html>
