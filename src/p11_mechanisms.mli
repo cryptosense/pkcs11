@@ -1,3 +1,5 @@
+(** Information about mechanisms *)
+
 (** The type of kinds that applies to a given mechanism. There are two
     flavor of kinds: kinds that come from the standard (in particular
     table 34 of v2.20); and tags that we apply to groups of mechanisms.  *)

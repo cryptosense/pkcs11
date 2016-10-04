@@ -1,11 +1,11 @@
 (**
-   Big integers.
+   Big integers used in PKCS#11.
 
    PKCS#11 expects them to be encoded in big-endian,
    so manipulating the underlying representation is error-prone.
 
-   The name is not explicitly stated in the standard but would collide with
-   Big_int.
+   The name is not explicitly stated in the standard but is used to avoid
+   collisions with [Big_int].
 *)
 
 type t

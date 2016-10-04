@@ -1,3 +1,5 @@
+(** Helper to define [CK_*_CBC_ENCRYPT_DATA_PARAMS] *)
+
 open Ctypes
 open Ctypes_helpers
 

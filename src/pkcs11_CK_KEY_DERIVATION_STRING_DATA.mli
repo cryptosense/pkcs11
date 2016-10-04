@@ -1,3 +1,4 @@
+(** Parameter for [CKM_EXTRACT_KEY_FROM_KEY] ([CK_KEY_DERIVATION_STRING_DATA]) *)
 type _t
 type t = _t Ctypes.structure
 

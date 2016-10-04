@@ -1,3 +1,4 @@
+(** Parameters for [CKA_KEY_GEN_MECHANISM] *)
 type t = Pkcs11_CK_ULONG.t
 
 type u =

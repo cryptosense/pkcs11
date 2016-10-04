@@ -1,3 +1,5 @@
+(** Bytes ([CK_BYTE]) *)
+
 type t = char
 val zero : t
 val one : t

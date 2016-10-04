@@ -1,3 +1,4 @@
+(** Mechanisms (type and value) ([CK_KEY_TYPE]) *)
 type _t
 type t = _t Ctypes.structure
 

@@ -1,3 +1,5 @@
+(** Object types ([CK_OBJECT_CLASS]) *)
+
 type t = Pkcs11_CK_ULONG.t
 
 type u =

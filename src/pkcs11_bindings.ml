@@ -1,3 +1,4 @@
+(** Bindings defined using [Foreign] *)
 open Ctypes
 
 open Pkcs11_types

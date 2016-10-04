@@ -1,3 +1,5 @@
+(** Key types ([CK_KEY_TYPE]) *)
+
 type t = Pkcs11_CK_ULONG.t
 
 type u =
