@@ -1,3 +1,4 @@
+(** Mechanism types without value ([CK_MECHANISM_TYPE]) *)
 type t = Pkcs11_CK_ULONG.t
 
 type u =

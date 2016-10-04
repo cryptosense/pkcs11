@@ -1,3 +1,4 @@
+(** Information about a slot ([CK_SLOT_INFO]) *)
 type _t
 type t = _t Ctypes.structure
 

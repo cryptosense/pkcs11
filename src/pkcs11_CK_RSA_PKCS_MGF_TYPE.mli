@@ -1,3 +1,4 @@
+(** MGF used in [CKM_RSA_PKCS_OAEP] ([CK_RSA_PKCS_MGF_TYPE]) *)
 type t = Pkcs11_CK_ULONG.t
 [@@deriving ord]
 val _CKG_MGF1_SHA1 : t

@@ -1,3 +1,4 @@
+(** Parameters for EC key agreement schemes ([CK_EC_KDF_TYPE]) *)
 type t
 
 type u =

@@ -1,4 +1,4 @@
-(** Driver information. *)
+(** Driver information ([CK_INFO]) *)
 type _t
 type t = _t Ctypes.structure
 

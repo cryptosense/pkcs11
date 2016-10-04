@@ -1,3 +1,4 @@
+(** Generator of C and ML code from [Cstubs] description *)
 let stubs_c = "src/pkcs11_stubs.c"
 let stubs_ml = "src/pkcs11_generated.ml"
 

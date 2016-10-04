@@ -1,3 +1,4 @@
+(** Bit flags used in several places ([CK_FLAGS]) *)
 type t = Pkcs11_CK_ULONG.t
 
 val empty : t

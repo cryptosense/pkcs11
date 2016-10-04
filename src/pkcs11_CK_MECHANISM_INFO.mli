@@ -1,3 +1,5 @@
+(** Information about a particular mechanism ([CK_MECHANISM_INFO]) *)
+
 type _t
 type t = _t Ctypes.structure
 

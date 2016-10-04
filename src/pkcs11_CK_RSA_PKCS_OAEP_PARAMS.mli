@@ -1,3 +1,4 @@
+(** Parameters for [CKM_RSA_PKCS_OAEP] ([CK_RSA_PKCS_OAEP_PARAMS]) *)
 type _t
 type t = _t Ctypes.structure
 

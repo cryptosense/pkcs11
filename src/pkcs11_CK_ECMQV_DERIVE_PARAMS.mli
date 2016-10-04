@@ -1,3 +1,4 @@
+(** Parameters for [CKM_ECMQV_DERIVE] ([CK_ECMQV_DERIVE_PARAMS]) *)
 type _t
 type t = _t Ctypes.structure
 

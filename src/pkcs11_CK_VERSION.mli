@@ -1,4 +1,4 @@
-(** [C] type  *)
+(** Version numbers used in several places ([CK_VERSION]) *)
 type t
 
 type u =

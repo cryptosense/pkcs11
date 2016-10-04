@@ -1,3 +1,5 @@
+(** Attribute types ([CK_ATTRIBUTE_TYPE]) *)
+
 type t = Pkcs11_CK_ULONG.t
 
 type not_implemented = NOT_IMPLEMENTED of string

@@ -1,3 +1,4 @@
+(** Unsigned values (at least 32 bits long) ([CK_ULONG]) *)
 type t = Unsigned.ulong
 val compare : t -> t -> int
 

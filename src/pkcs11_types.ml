@@ -1,3 +1,4 @@
+(** Types used in the API *)
 open Ctypes
 
 (** The bindings come in two flavours. The first one is the Direct

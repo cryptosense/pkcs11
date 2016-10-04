@@ -1,3 +1,4 @@
+(** Parameters for [CKM_PKCS5_PBKD2] ([CK_PKCS5_PBKD2_PARAMS]) *)
 type _t
 type t = _t Ctypes.structure
 

@@ -1,3 +1,4 @@
+(** Low-level interface to templates (arrays of attributes) *)
 type t = Pkcs11_CK_ATTRIBUTE.t Ctypes.carray
 val of_list : Pkcs11_CK_ATTRIBUTE.t list -> t
 val allocate : t -> unit

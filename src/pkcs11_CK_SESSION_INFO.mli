@@ -1,3 +1,4 @@
+(** Information about a session ([CK_SESSION_INFO]) *)
 type _t
 type t = _t Ctypes.structure
 

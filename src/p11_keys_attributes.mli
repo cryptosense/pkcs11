@@ -1,3 +1,5 @@
+(** Information about key types *)
+
 (**
    The type of kinds that applies to a given object.
 *)

@@ -1,3 +1,4 @@
+(** Salt used in [CKM_PKCS5_PBKD2] ([CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE]) *)
 type t = Pkcs11_CK_ULONG.t
 
 type u =

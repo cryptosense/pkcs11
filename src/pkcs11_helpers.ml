@@ -1,3 +1,5 @@
+(** Miscellaneous helpers *)
+
 let string_of_record
     ?(newlines = false)
     ?(indent = "")
