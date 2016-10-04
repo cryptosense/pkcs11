@@ -61,18 +61,18 @@
 <link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html"><title>Pkcs11_mechanism_list</title>
 </head>
 <body>
-<code class="code"><span class="keyword">sig</span><br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;create&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_mechanism_list</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;allocate&nbsp;:&nbsp;<span class="constructor">Pkcs11_mechanism_list</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;of_raw&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ULONG</span>.t&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_mechanism_list</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;u&nbsp;=&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.u&nbsp;list<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make&nbsp;:&nbsp;<span class="constructor">Pkcs11_mechanism_list</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_mechanism_list</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;view&nbsp;:&nbsp;<span class="constructor">Pkcs11_mechanism_list</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_mechanism_list</span>.u<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_content&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_mechanism_list</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t&nbsp;<span class="constructor">Ctypes</span>.ptr<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_length_addr&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_mechanism_list</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ULONG</span>.t&nbsp;<span class="constructor">Ctypes</span>.ptr<br>
+<code class="code"><span class="keyword">sig</span>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;create&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_mechanism_list</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;allocate&nbsp;:&nbsp;<span class="constructor">Pkcs11_mechanism_list</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;of_raw&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ULONG</span>.t&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_mechanism_list</span>.t
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;u&nbsp;=&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.u&nbsp;list
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make&nbsp;:&nbsp;<span class="constructor">Pkcs11_mechanism_list</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_mechanism_list</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;view&nbsp;:&nbsp;<span class="constructor">Pkcs11_mechanism_list</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_mechanism_list</span>.u
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_content&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_mechanism_list</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t&nbsp;<span class="constructor">Ctypes</span>.ptr
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_length_addr&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_mechanism_list</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ULONG</span>.t&nbsp;<span class="constructor">Ctypes</span>.ptr
 <span class="keyword">end</span></code></body></html>

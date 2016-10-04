@@ -61,21 +61,21 @@
 <link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html"><title>Pkcs11_CK_MECHANISM_INFO</title>
 </head>
 <body>
-<code class="code"><span class="keyword">sig</span><br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;_t<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_INFO</span>._t&nbsp;<span class="constructor">Ctypes</span>.structure<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;u&nbsp;=&nbsp;{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;ulMinKeySize&nbsp;:&nbsp;<span class="constructor">Unsigned</span>.<span class="constructor">ULong</span>.t;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;ulMaxKeySize&nbsp;:&nbsp;<span class="constructor">Unsigned</span>.<span class="constructor">ULong</span>.t;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;flags&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t;<br>
-&nbsp;&nbsp;}<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_INFO</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_INFO</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;view&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_INFO</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_INFO</span>.u<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_flags&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;strings_of_flags&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;list<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;allowed_flags&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_string&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;?newlines:bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;?indent:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_INFO</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_strings&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_INFO</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;list<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;ck_mechanism_info&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_INFO</span>.t&nbsp;<span class="constructor">Ctypes</span>.typ<br>
+<code class="code"><span class="keyword">sig</span>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;_t
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_INFO</span>._t&nbsp;<span class="constructor">Ctypes</span>.structure
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;u&nbsp;=&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;ulMinKeySize&nbsp;:&nbsp;<span class="constructor">Unsigned</span>.<span class="constructor">ULong</span>.t;
+&nbsp;&nbsp;&nbsp;&nbsp;ulMaxKeySize&nbsp;:&nbsp;<span class="constructor">Unsigned</span>.<span class="constructor">ULong</span>.t;
+&nbsp;&nbsp;&nbsp;&nbsp;flags&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t;
+&nbsp;&nbsp;}
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_INFO</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_INFO</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;view&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_INFO</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_INFO</span>.u
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string_of_flags&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;strings_of_flags&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;list
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;allowed_flags&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_string&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;?newlines:bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;?indent:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_INFO</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_strings&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_INFO</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;list
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;ck_mechanism_info&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_INFO</span>.t&nbsp;<span class="constructor">Ctypes</span>.typ
 <span class="keyword">end</span></code></body></html>

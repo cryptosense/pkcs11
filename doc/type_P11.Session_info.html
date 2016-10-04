@@ -61,16 +61,16 @@
 <link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html"><title>P11.Session_info</title>
 </head>
 <body>
-<code class="code"><span class="keyword">sig</span><br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11</span>.<span class="constructor">CK_SESSION_INFO</span>.u&nbsp;=&nbsp;{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;slotID&nbsp;:&nbsp;<span class="constructor">Unsigned</span>.<span class="constructor">ULong</span>.t;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;state&nbsp;:&nbsp;<span class="constructor">Unsigned</span>.<span class="constructor">ULong</span>.t;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;flags&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Flags</span>.t;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;ulDeviceError&nbsp;:&nbsp;<span class="constructor">Unsigned</span>.<span class="constructor">ULong</span>.t;<br>
-&nbsp;&nbsp;}<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_string&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;?newlines:bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;?indent:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11</span>.<span class="constructor">Session_info</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_strings&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Session_info</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;list<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;typ&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Session_info</span>.t&nbsp;<span class="constructor">Record</span>.<span class="constructor">Type</span>.t<br>
+<code class="code"><span class="keyword">sig</span>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11</span>.<span class="constructor">CK_SESSION_INFO</span>.u&nbsp;=&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;slotID&nbsp;:&nbsp;<span class="constructor">Unsigned</span>.<span class="constructor">ULong</span>.t;
+&nbsp;&nbsp;&nbsp;&nbsp;state&nbsp;:&nbsp;<span class="constructor">Unsigned</span>.<span class="constructor">ULong</span>.t;
+&nbsp;&nbsp;&nbsp;&nbsp;flags&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Flags</span>.t;
+&nbsp;&nbsp;&nbsp;&nbsp;ulDeviceError&nbsp;:&nbsp;<span class="constructor">Unsigned</span>.<span class="constructor">ULong</span>.t;
+&nbsp;&nbsp;}
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_string&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;?newlines:bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;?indent:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11</span>.<span class="constructor">Session_info</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_strings&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Session_info</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;list
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;typ&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Session_info</span>.t&nbsp;<span class="constructor">Record</span>.<span class="constructor">Type</span>.t
 <span class="keyword">end</span></code></body></html>

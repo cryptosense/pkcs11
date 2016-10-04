@@ -1,7 +1,30 @@
+body::before {
+    background: url("https://cryptosense.com/wp-content/uploads/2013/10/CSlogo-new-White-website-230px.png");
+    background-repeat: no-repeat;
+    background-color: #414042;
+    background-position: left 6% top 7px;;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 53px;
+    content: "";
+    display: block;
+}
+
+body {
+    width: 90%;
+    font: 13px sans-serif;
+    color: black;
+    text-align: left;
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .keyword { font-weight : bold ; color : Red }
 .keywordsign { color : #C04600 }
-.superscript { font-size : 4 }
-.subscript { font-size : 4 }
 .comment { color : Green }
 .constructor { color : Blue }
 .type { color : #5C6585 }
@@ -16,7 +39,6 @@ tr { background-color : White }
 td.typefieldcomment { background-color : #FFFFFF ; font-size: smaller ;}
 div.sig_block {margin-left: 2em}
 *:target { background: yellow; }
-body {font: 13px sans-serif; color: black; text-align: left; padding: 5px; margin: 0}
 h1 { font-size : 20pt ; text-align: center; }
 h2 { font-size : 20pt ; border: 1px solid #000000; margin-top: 5px; margin-bottom: 2px;text-align: center; background-color: #90BDFF ;padding: 2px; }
 h3 { font-size : 20pt ; border: 1px solid #000000; margin-top: 5px; margin-bottom: 2px;text-align: center; background-color: #90DDFF ;padding: 2px; }
@@ -33,7 +55,7 @@ pre.verbatim, pre.codepre { }
 .indextable {border: 1px #ddd solid; border-collapse: collapse}
 .indextable td, .indextable th {border: 1px #ddd solid; min-width: 80px}
 .indextable td.module {background-color: #eee ;  padding-left: 2px; padding-right: 2px}
-.indextable td.module a {color: 4E6272; text-decoration: none; display: block; width: 100%}
+.indextable td.module a {color: #4E6272; text-decoration: none; display: block; width: 100%;}
 .indextable td.module a:hover {text-decoration: underline; background-color: transparent}
 .deprecated {color: #888; font-style: italic}
 .indextable tr td div.info { margin-left: 2px; margin-right: 2px }

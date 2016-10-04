@@ -61,12 +61,12 @@
 <link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html"><title>P11.Data</title>
 </head>
 <body>
-<code class="code"><span class="keyword">sig</span><br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=&nbsp;string<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_yojson&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Data</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Yojson</span>.<span class="constructor">Safe</span>.json<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;of_yojson&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Yojson</span>.<span class="constructor">Safe</span>.json&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11</span>.<span class="constructor">Data</span>.t&nbsp;<span class="constructor">Ppx_deriving_yojson_runtime</span>.error_or<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;normalize&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Data</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11</span>.<span class="constructor">Data</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;compare&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Data</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11</span>.<span class="constructor">Data</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;typ&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Data</span>.t&nbsp;<span class="constructor">Record</span>.<span class="constructor">Type</span>.t<br>
+<code class="code"><span class="keyword">sig</span>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=&nbsp;string
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_yojson&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Data</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Yojson</span>.<span class="constructor">Safe</span>.json
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;of_yojson&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Yojson</span>.<span class="constructor">Safe</span>.json&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11</span>.<span class="constructor">Data</span>.t&nbsp;<span class="constructor">Ppx_deriving_yojson_runtime</span>.error_or
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;normalize&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Data</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11</span>.<span class="constructor">Data</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;compare&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Data</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11</span>.<span class="constructor">Data</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;typ&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Data</span>.t&nbsp;<span class="constructor">Record</span>.<span class="constructor">Type</span>.t
 <span class="keyword">end</span></code></body></html>

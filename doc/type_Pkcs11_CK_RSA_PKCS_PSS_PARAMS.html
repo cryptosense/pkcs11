@@ -61,19 +61,19 @@
 <link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html"><title>Pkcs11_CK_RSA_PKCS_PSS_PARAMS</title>
 </head>
 <body>
-<code class="code"><span class="keyword">sig</span><br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;_t<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=&nbsp;<span class="constructor">Pkcs11_CK_RSA_PKCS_PSS_PARAMS</span>._t&nbsp;<span class="constructor">Ctypes</span>.structure<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;u&nbsp;=&nbsp;{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;hashAlg&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.u;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;mgf&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RSA_PKCS_MGF_TYPE</span>.t;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;sLen&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ULONG</span>.t;<br>
-&nbsp;&nbsp;}<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_RSA_PKCS_PSS_PARAMS</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_RSA_PKCS_PSS_PARAMS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;view&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_RSA_PKCS_PSS_PARAMS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_RSA_PKCS_PSS_PARAMS</span>.u<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;compare&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_RSA_PKCS_PSS_PARAMS</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_RSA_PKCS_PSS_PARAMS</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;t&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RSA_PKCS_PSS_PARAMS</span>.t&nbsp;<span class="constructor">Ctypes</span>.typ<br>
+<code class="code"><span class="keyword">sig</span>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;_t
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=&nbsp;<span class="constructor">Pkcs11_CK_RSA_PKCS_PSS_PARAMS</span>._t&nbsp;<span class="constructor">Ctypes</span>.structure
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;u&nbsp;=&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;hashAlg&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.u;
+&nbsp;&nbsp;&nbsp;&nbsp;mgf&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RSA_PKCS_MGF_TYPE</span>.t;
+&nbsp;&nbsp;&nbsp;&nbsp;sLen&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ULONG</span>.t;
+&nbsp;&nbsp;}
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_RSA_PKCS_PSS_PARAMS</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_RSA_PKCS_PSS_PARAMS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;view&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_RSA_PKCS_PSS_PARAMS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_RSA_PKCS_PSS_PARAMS</span>.u
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;compare&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_RSA_PKCS_PSS_PARAMS</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_RSA_PKCS_PSS_PARAMS</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;t&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RSA_PKCS_PSS_PARAMS</span>.t&nbsp;<span class="constructor">Ctypes</span>.typ
 <span class="keyword">end</span></code></body></html>

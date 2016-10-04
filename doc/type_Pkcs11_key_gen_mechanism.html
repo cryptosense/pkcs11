@@ -61,13 +61,13 @@
 <link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html"><title>Pkcs11_key_gen_mechanism</title>
 </head>
 <body>
-<code class="code"><span class="keyword">sig</span><br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=&nbsp;<span class="constructor">Pkcs11_CK_ULONG</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;u&nbsp;=&nbsp;<span class="constructor">CKM</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.u&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CK_UNAVAILABLE_INFORMATION</span><br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_string&nbsp;:&nbsp;<span class="constructor">Pkcs11_key_gen_mechanism</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;of_string&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_key_gen_mechanism</span>.u<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make&nbsp;:&nbsp;<span class="constructor">Pkcs11_key_gen_mechanism</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_key_gen_mechanism</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;view&nbsp;:&nbsp;<span class="constructor">Pkcs11_key_gen_mechanism</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_key_gen_mechanism</span>.u<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;compare&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_key_gen_mechanism</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_key_gen_mechanism</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+<code class="code"><span class="keyword">sig</span>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=&nbsp;<span class="constructor">Pkcs11_CK_ULONG</span>.t
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;u&nbsp;=&nbsp;<span class="constructor">CKM</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.u&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CK_UNAVAILABLE_INFORMATION</span>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_string&nbsp;:&nbsp;<span class="constructor">Pkcs11_key_gen_mechanism</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;of_string&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_key_gen_mechanism</span>.u
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make&nbsp;:&nbsp;<span class="constructor">Pkcs11_key_gen_mechanism</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_key_gen_mechanism</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;view&nbsp;:&nbsp;<span class="constructor">Pkcs11_key_gen_mechanism</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_key_gen_mechanism</span>.u
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;compare&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_key_gen_mechanism</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_key_gen_mechanism</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int
 <span class="keyword">end</span></code></body></html>

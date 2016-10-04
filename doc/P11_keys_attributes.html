@@ -73,11 +73,14 @@
 <h1>Module <a href="type_P11_keys_attributes.html">P11_keys_attributes</a></h1>
 
 <pre><span class="keyword">module</span> P11_keys_attributes: <code class="code"><span class="keyword">sig</span></code> <a href="P11_keys_attributes.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
-The type of kinds that applies to a given object.<br>
+Information about key types<br>
 </div>
 <hr width="100%">
 
 <pre><span id="TYPEkind"><span class="keyword">type</span> <code class="type"></code>kind</span> = <code class="type">[ `AES<br>       | `BATON<br>       | `BLOWFISH<br>       | `CAST<br>       | `CAST128<br>       | `CAST3<br>       | `CDMF<br>       | `DES<br>       | `DES2<br>       | `DES3<br>       | `DH_X9_42_private<br>       | `DH_X9_42_public<br>       | `DH_private<br>       | `DH_public<br>       | `DSA_private<br>       | `DSA_public<br>       | `EC_private<br>       | `EC_public<br>       | `Generic_secret<br>       | `IDEA<br>       | `JUNIPER<br>       | `KEA_private<br>       | `KEA_public<br>       | `Key<br>       | `Private<br>       | `Public<br>       | `RC2<br>       | `RC4<br>       | `RC5<br>       | `RSA_private<br>       | `RSA_public<br>       | `SKIPJACK<br>       | `Secret<br>       | `TWOFISH<br>       | `VENDOR_DEFINED ]</code> </pre>
+<div class="info ">
+The type of kinds that applies to a given object.<br>
+</div>
 
 
 <pre><span id="VALpossibles"><span class="keyword">val</span> possibles</span> : <code class="type"><a href="P11_keys_attributes.html#TYPEkind">kind</a> -> <a href="P11.Attribute_types.html#TYPEt">P11.Attribute_types.t</a></code></pre><div class="info ">

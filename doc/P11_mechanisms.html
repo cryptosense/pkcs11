@@ -73,9 +73,7 @@
 <h1>Module <a href="type_P11_mechanisms.html">P11_mechanisms</a></h1>
 
 <pre><span class="keyword">module</span> P11_mechanisms: <code class="code"><span class="keyword">sig</span></code> <a href="P11_mechanisms.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
-The type of kinds that applies to a given mechanism. There are two
-    flavor of kinds: kinds that come from the standard (in particular
-    table 34 of v2.20); and tags that we apply to groups of mechanisms.<br>
+Information about mechanisms<br>
 </div>
 <hr width="100%">
 
@@ -186,6 +184,11 @@ The type of kinds that applies to a given mechanism. There are two
 
 </tr></table>
 
+<div class="info ">
+The type of kinds that applies to a given mechanism. There are two
+    flavor of kinds: kinds that come from the standard (in particular
+    table 34 of v2.20); and tags that we apply to groups of mechanisms.<br>
+</div>
 
 
 <pre><span id="VALkinds"><span class="keyword">val</span> kinds</span> : <code class="type">Pkcs11.CK_MECHANISM_TYPE.u -> <a href="P11_mechanisms.html#TYPEkind">kind</a> list</code></pre><div class="info ">

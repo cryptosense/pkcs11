@@ -73,15 +73,15 @@
 <h1>Module <a href="type_Pkcs11_CK_BIGINT.html">Pkcs11_CK_BIGINT</a></h1>
 
 <pre><span class="keyword">module</span> Pkcs11_CK_BIGINT: <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_CK_BIGINT.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
-Big integers.
+Big integers used in PKCS#11.
 <p>
 
    PKCS#11 expects them to be encoded in big-endian,
    so manipulating the underlying representation is error-prone.
 <p>
 
-   The name is not explicitly stated in the standard but would collide with
-   Big_int.<br>
+   The name is not explicitly stated in the standard but is used to avoid
+   collisions with <code class="code"><span class="constructor">Big_int</span></code>.<br>
 </div>
 <hr width="100%">
 

@@ -61,21 +61,21 @@
 <link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html"><title>P11.Slot_info</title>
 </head>
 <body>
-<code class="code"><span class="keyword">sig</span><br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11</span>.<span class="constructor">CK_SLOT_INFO</span>.u&nbsp;=&nbsp;{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;slotDescription&nbsp;:&nbsp;string;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;manufacturerID&nbsp;:&nbsp;string;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;flags&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Flags</span>.t;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;hardwareVersion&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Version</span>.t;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;firmwareVersion&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Version</span>.t;<br>
-&nbsp;&nbsp;}<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_yojson&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Slot_info</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Yojson</span>.<span class="constructor">Safe</span>.json<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;of_yojson&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Yojson</span>.<span class="constructor">Safe</span>.json&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11</span>.<span class="constructor">Slot_info</span>.t&nbsp;<span class="constructor">Ppx_deriving_yojson_runtime</span>.error_or<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_string&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;?newlines:bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;?indent:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11</span>.<span class="constructor">Slot_info</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_strings&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Slot_info</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;list<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;flags_to_string&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Flags</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;typ&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Slot_info</span>.t&nbsp;<span class="constructor">Record</span>.<span class="constructor">Type</span>.t<br>
+<code class="code"><span class="keyword">sig</span>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11</span>.<span class="constructor">CK_SLOT_INFO</span>.u&nbsp;=&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;slotDescription&nbsp;:&nbsp;string;
+&nbsp;&nbsp;&nbsp;&nbsp;manufacturerID&nbsp;:&nbsp;string;
+&nbsp;&nbsp;&nbsp;&nbsp;flags&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Flags</span>.t;
+&nbsp;&nbsp;&nbsp;&nbsp;hardwareVersion&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Version</span>.t;
+&nbsp;&nbsp;&nbsp;&nbsp;firmwareVersion&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Version</span>.t;
+&nbsp;&nbsp;}
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_yojson&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Slot_info</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Yojson</span>.<span class="constructor">Safe</span>.json
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;of_yojson&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Yojson</span>.<span class="constructor">Safe</span>.json&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11</span>.<span class="constructor">Slot_info</span>.t&nbsp;<span class="constructor">Ppx_deriving_yojson_runtime</span>.error_or
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_string&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;?newlines:bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;?indent:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11</span>.<span class="constructor">Slot_info</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_strings&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Slot_info</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;list
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;flags_to_string&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Flags</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;typ&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Slot_info</span>.t&nbsp;<span class="constructor">Record</span>.<span class="constructor">Type</span>.t
 <span class="keyword">end</span></code></body></html>

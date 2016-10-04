@@ -61,25 +61,25 @@
 <link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html"><title>P11_mechanisms</title>
 </head>
 <body>
-<code class="code"><span class="keyword">sig</span><br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;kind&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Encrypt</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Sign</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">SignRecover</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Wrap</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Derive</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Digest</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Generate</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Symmetric</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Asymmetric</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">DES</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">DES3</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">AES</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">RSA</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">DH</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">EC</span><br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;kinds&nbsp;:&nbsp;<span class="constructor">Pkcs11</span>.<span class="constructor">CK_MECHANISM_TYPE</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11_mechanisms</span>.kind&nbsp;list<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is&nbsp;:&nbsp;<span class="constructor">P11_mechanisms</span>.kind&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11</span>.<span class="constructor">CK_MECHANISM_TYPE</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
-&nbsp;&nbsp;<span class="keyword">exception</span>&nbsp;<span class="constructor">Mechanism_not_supported</span>&nbsp;<span class="keyword">of</span>&nbsp;string<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;key_type&nbsp;:&nbsp;<span class="constructor">Pkcs11</span>.<span class="constructor">CK_MECHANISM_TYPE</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11</span>.<span class="constructor">CK_KEY_TYPE</span>.u&nbsp;option<br>
+<code class="code"><span class="keyword">sig</span>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;kind&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Encrypt</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Sign</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">SignRecover</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Wrap</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Derive</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Digest</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Generate</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Symmetric</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Asymmetric</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">DES</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">DES3</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">AES</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">RSA</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">DH</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">EC</span>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;kinds&nbsp;:&nbsp;<span class="constructor">Pkcs11</span>.<span class="constructor">CK_MECHANISM_TYPE</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11_mechanisms</span>.kind&nbsp;list
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is&nbsp;:&nbsp;<span class="constructor">P11_mechanisms</span>.kind&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11</span>.<span class="constructor">CK_MECHANISM_TYPE</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool
+&nbsp;&nbsp;<span class="keyword">exception</span>&nbsp;<span class="constructor">Mechanism_not_supported</span>&nbsp;<span class="keyword">of</span>&nbsp;string
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;key_type&nbsp;:&nbsp;<span class="constructor">Pkcs11</span>.<span class="constructor">CK_MECHANISM_TYPE</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11</span>.<span class="constructor">CK_KEY_TYPE</span>.u&nbsp;option
 <span class="keyword">end</span></code></body></html>

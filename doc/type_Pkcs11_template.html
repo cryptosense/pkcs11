@@ -61,12 +61,12 @@
 <link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html"><title>Pkcs11_template</title>
 </head>
 <body>
-<code class="code"><span class="keyword">sig</span><br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE</span>.t&nbsp;<span class="constructor">Ctypes</span>.carray<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;of_list&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE</span>.t&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_template</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;allocate&nbsp;:&nbsp;<span class="constructor">Pkcs11_template</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_list&nbsp;:&nbsp;<span class="constructor">Pkcs11_template</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE</span>.t&nbsp;list<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;u&nbsp;=&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE</span>.pack&nbsp;list<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make&nbsp;:&nbsp;<span class="constructor">Pkcs11_template</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_template</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;view&nbsp;:&nbsp;<span class="constructor">Pkcs11_template</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_template</span>.u<br>
+<code class="code"><span class="keyword">sig</span>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE</span>.t&nbsp;<span class="constructor">Ctypes</span>.carray
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;of_list&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE</span>.t&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_template</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;allocate&nbsp;:&nbsp;<span class="constructor">Pkcs11_template</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_list&nbsp;:&nbsp;<span class="constructor">Pkcs11_template</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE</span>.t&nbsp;list
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;u&nbsp;=&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE</span>.pack&nbsp;list
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make&nbsp;:&nbsp;<span class="constructor">Pkcs11_template</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_template</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;view&nbsp;:&nbsp;<span class="constructor">Pkcs11_template</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_template</span>.u
 <span class="keyword">end</span></code></body></html>

@@ -61,93 +61,93 @@
 <link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html"><title>Pkcs11_CK_FLAGS</title>
 </head>
 <body>
-<code class="code"><span class="keyword">sig</span><br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=&nbsp;<span class="constructor">Pkcs11_CK_ULONG</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;empty&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;compare&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;equal&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;logical_or&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;(&nbsp;<span class="keywordsign">||</span>&nbsp;)&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;(&nbsp;<span class="keywordsign">&amp;&amp;</span>&nbsp;)&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get&nbsp;:&nbsp;flags:<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;flag:<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;domain&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Info_domain</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Slot_info_domain</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Token_info_domain</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Session_info_domain</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Mechanism_info_domain</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Initialize_domain</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Wait_for_slot_domain</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">OTP_signature_info_domain</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Any_domain</span><br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_TOKEN_PRESENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_REMOVABLE_DEVICE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_HW_SLOT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_RNG&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_WRITE_PROTECTED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_LOGIN_REQUIRED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_USER_PIN_INITIALIZED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_RESTORE_KEY_NOT_NEEDED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_CLOCK_ON_TOKEN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_PROTECTED_AUTHENTICATION_PATH&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_DUAL_CRYPTO_OPERATIONS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_TOKEN_INITIALIZED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_SECONDARY_AUTHENTICATION&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_USER_PIN_COUNT_LOW&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_USER_PIN_FINAL_TRY&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_USER_PIN_LOCKED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_USER_PIN_TO_BE_CHANGED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_SO_PIN_COUNT_LOW&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_SO_PIN_FINAL_TRY&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_SO_PIN_LOCKED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_SO_PIN_TO_BE_CHANGED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_RW_SESSION&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_SERIAL_SESSION&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_ARRAY_ATTRIBUTE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_HW&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_ENCRYPT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_DECRYPT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_DIGEST&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_SIGN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_SIGN_RECOVER&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_VERIFY&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_VERIFY_RECOVER&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_GENERATE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_GENERATE_KEY_PAIR&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_WRAP&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_UNWRAP&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_DERIVE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_EC_F_P&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_EC_F_2M&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_EC_ECPARAMETERS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_EC_NAMEDCURVE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_EC_UNCOMPRESS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_EC_COMPRESS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_EXTENSION&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_LIBRARY_CANT_CREATE_OS_THREADS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_OS_LOCKING_OK&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_DONT_BLOCK&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_NEXT_OTP&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_EXCLUDE_TIME&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_EXCLUDE_COUNTER&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_EXCLUDE_CHALLENGE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_EXCLUDE_PIN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_USER_FRIENDLY_OTP&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_string&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;of_string&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;flags_of_domain&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.domain&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;*&nbsp;string)&nbsp;list<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;split_with_string&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.domain&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;*&nbsp;string)&nbsp;list&nbsp;*&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;split&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.domain&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;list&nbsp;*&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_pretty_string&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.domain&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_pretty_strings&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.domain&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;list<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;t&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="constructor">Ctypes</span>.typ<br>
+<code class="code"><span class="keyword">sig</span>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=&nbsp;<span class="constructor">Pkcs11_CK_ULONG</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;empty&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;compare&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;equal&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;logical_or&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;(&nbsp;<span class="keywordsign">||</span>&nbsp;)&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;(&nbsp;<span class="keywordsign">&amp;&amp;</span>&nbsp;)&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get&nbsp;:&nbsp;flags:<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;flag:<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;domain&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Info_domain</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Slot_info_domain</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Token_info_domain</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Session_info_domain</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Mechanism_info_domain</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Initialize_domain</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Wait_for_slot_domain</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">OTP_signature_info_domain</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Any_domain</span>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_TOKEN_PRESENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_REMOVABLE_DEVICE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_HW_SLOT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_RNG&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_WRITE_PROTECTED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_LOGIN_REQUIRED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_USER_PIN_INITIALIZED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_RESTORE_KEY_NOT_NEEDED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_CLOCK_ON_TOKEN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_PROTECTED_AUTHENTICATION_PATH&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_DUAL_CRYPTO_OPERATIONS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_TOKEN_INITIALIZED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_SECONDARY_AUTHENTICATION&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_USER_PIN_COUNT_LOW&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_USER_PIN_FINAL_TRY&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_USER_PIN_LOCKED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_USER_PIN_TO_BE_CHANGED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_SO_PIN_COUNT_LOW&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_SO_PIN_FINAL_TRY&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_SO_PIN_LOCKED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_SO_PIN_TO_BE_CHANGED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_RW_SESSION&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_SERIAL_SESSION&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_ARRAY_ATTRIBUTE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_HW&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_ENCRYPT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_DECRYPT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_DIGEST&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_SIGN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_SIGN_RECOVER&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_VERIFY&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_VERIFY_RECOVER&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_GENERATE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_GENERATE_KEY_PAIR&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_WRAP&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_UNWRAP&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_DERIVE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_EC_F_P&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_EC_F_2M&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_EC_ECPARAMETERS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_EC_NAMEDCURVE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_EC_UNCOMPRESS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_EC_COMPRESS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_EXTENSION&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_LIBRARY_CANT_CREATE_OS_THREADS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_OS_LOCKING_OK&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_DONT_BLOCK&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_NEXT_OTP&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_EXCLUDE_TIME&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_EXCLUDE_COUNTER&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_EXCLUDE_CHALLENGE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_EXCLUDE_PIN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKF_USER_FRIENDLY_OTP&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_string&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;of_string&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;flags_of_domain&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.domain&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;*&nbsp;string)&nbsp;list
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;split_with_string&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.domain&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;*&nbsp;string)&nbsp;list&nbsp;*&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;split&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.domain&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;list&nbsp;*&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_pretty_string&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.domain&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_pretty_strings&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.domain&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;list
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;t&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_FLAGS</span>.t&nbsp;<span class="constructor">Ctypes</span>.typ
 <span class="keyword">end</span></code></body></html>
