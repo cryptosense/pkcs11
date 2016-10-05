@@ -60,4 +60,8 @@ let () =
     Pkg.mllib ~api "src/pkcs11.mllib";
     Pkg.clib "src/libpkcs11_stubs.clib";
     Pkg.test "test/test_suite";
+    Pkg.lib "include/pkcs11.h";
+    Pkg.lib "include/pkcs11t.h";
+    Pkg.lib "include/pkcs11f.h";
+    Pkg.lib "include/pkcs11_module.h";
   ]
