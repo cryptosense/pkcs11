@@ -3,7 +3,7 @@ v0.2.0 2016-10-07
 
 Breaking changes:
 
-- Rename `CK_PKCS5_PBKD2_DATA_PARAMS` to `CK_PKCS5_PBKD2_DATA_PARAMS` (#5)
+- Rename `CK_PKCS5_PBKD2_DATA_PARAMS` to `CK_PKCS5_PBKD2_PARAMS` (#5)
 
 New features:
 
