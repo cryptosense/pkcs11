@@ -1,12 +1,7 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<head>
+<html><head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <link rel="Start" href="index.html">
-<link rel="previous" href="Pkcs11_CK_OBJECT_HANDLE.html">
-<link rel="next" href="Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE.html">
-<link rel="Up" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
 <link title="Index of values" rel=Appendix href="index_values.html">
@@ -36,7 +31,7 @@
 <link title="Pkcs11_CK_MECHANISM_TYPE" rel="Chapter" href="Pkcs11_CK_MECHANISM_TYPE.html">
 <link title="Pkcs11_CK_OBJECT_CLASS" rel="Chapter" href="Pkcs11_CK_OBJECT_CLASS.html">
 <link title="Pkcs11_CK_OBJECT_HANDLE" rel="Chapter" href="Pkcs11_CK_OBJECT_HANDLE.html">
-<link title="Pkcs11_CK_PKCS5_PBKD2_DATA_PARAMS" rel="Chapter" href="Pkcs11_CK_PKCS5_PBKD2_DATA_PARAMS.html">
+<link title="Pkcs11_CK_PKCS5_PBKD2_PARAMS" rel="Chapter" href="Pkcs11_CK_PKCS5_PBKD2_PARAMS.html">
 <link title="Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE" rel="Chapter" href="Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE.html">
 <link title="Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE" rel="Chapter" href="Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.html">
 <link title="Pkcs11_CK_RAW_PAYLOAD" rel="Chapter" href="Pkcs11_CK_RAW_PAYLOAD.html">
@@ -63,74 +58,7 @@
 <link title="Pkcs11_mechanism_list" rel="Chapter" href="Pkcs11_mechanism_list.html">
 <link title="Pkcs11_slot_list" rel="Chapter" href="Pkcs11_slot_list.html">
 <link title="Pkcs11_template" rel="Chapter" href="Pkcs11_template.html">
-<link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html"><title>Pkcs11_CK_PKCS5_PBKD2_DATA_PARAMS</title>
+<link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html"><title>Pkcs11_types.CK_PKCS5_PBKD2_PARAMS</title>
 </head>
 <body>
-<div class="navbar"><a class="pre" href="Pkcs11_CK_OBJECT_HANDLE.html" title="Pkcs11_CK_OBJECT_HANDLE">Previous</a>
-&nbsp;<a class="up" href="index.html" title="Index">Up</a>
-&nbsp;<a class="post" href="Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE.html" title="Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE">Next</a>
-</div>
-<h1>Module <a href="type_Pkcs11_CK_PKCS5_PBKD2_DATA_PARAMS.html">Pkcs11_CK_PKCS5_PBKD2_DATA_PARAMS</a></h1>
-
-<pre><span class="keyword">module</span> Pkcs11_CK_PKCS5_PBKD2_DATA_PARAMS: <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_CK_PKCS5_PBKD2_DATA_PARAMS.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
-Parameters for <code class="code"><span class="constructor">CKM_PKCS5_PBKD2</span></code> (<code class="code"><span class="constructor">CK_PKCS5_PBKD2_PARAMS</span></code>)<br>
-</div>
-<hr width="100%">
-
-<pre><span id="TYPE_t"><span class="keyword">type</span> <code class="type"></code>_t</span> </pre>
-
-
-<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = <code class="type">Pkcs11_CK_PKCS5_PBKD2_DATA_PARAMS._t Ctypes.structure</code> </pre>
-
-
-<pre><code><span id="TYPEu"><span class="keyword">type</span> <code class="type"></code>u</span> = {</code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
-<code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTu.saltSource">saltSource</span>&nbsp;: <code class="type"><a href="Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.html#TYPEu">Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.u</a></code>;</code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTu.saltSourceData">saltSourceData</span>&nbsp;: <code class="type">string option</code>;</code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTu.iterations">iterations</span>&nbsp;: <code class="type">int</code>;</code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTu.prf">prf</span>&nbsp;: <code class="type"><a href="Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE.html#TYPEu">Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE.u</a></code>;</code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTu.prfData">prfData</span>&nbsp;: <code class="type">string option</code>;</code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTu.password">password</span>&nbsp;: <code class="type">string</code>;</code></td>
-
-</tr></table>
-}
-
-
-
-<pre><span id="VALmake"><span class="keyword">val</span> make</span> : <code class="type"><a href="Pkcs11_CK_PKCS5_PBKD2_DATA_PARAMS.html#TYPEu">u</a> -> <a href="Pkcs11_CK_PKCS5_PBKD2_DATA_PARAMS.html#TYPEt">t</a></code></pre>
-<pre><span id="VALview"><span class="keyword">val</span> view</span> : <code class="type"><a href="Pkcs11_CK_PKCS5_PBKD2_DATA_PARAMS.html#TYPEt">t</a> -> <a href="Pkcs11_CK_PKCS5_PBKD2_DATA_PARAMS.html#TYPEu">u</a></code></pre>
-<pre><span id="VALcompare"><span class="keyword">val</span> compare</span> : <code class="type"><a href="Pkcs11_CK_PKCS5_PBKD2_DATA_PARAMS.html#TYPEu">u</a> -><br>       <a href="Pkcs11_CK_PKCS5_PBKD2_DATA_PARAMS.html#TYPEu">u</a> -> int</code></pre>
-<pre><span id="VALt"><span class="keyword">val</span> t</span> : <code class="type"><a href="Pkcs11_CK_PKCS5_PBKD2_DATA_PARAMS.html#TYPEt">t</a> Ctypes.typ</code></pre></body></html>
+<code class="code">(<span class="keyword">module</span>&nbsp;<span class="constructor">Pkcs11_CK_PKCS5_PBKD2_PARAMS</span>)</code></body></html>

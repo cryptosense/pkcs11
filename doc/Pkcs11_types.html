@@ -35,7 +35,7 @@
 <link title="Pkcs11_CK_MECHANISM_TYPE" rel="Chapter" href="Pkcs11_CK_MECHANISM_TYPE.html">
 <link title="Pkcs11_CK_OBJECT_CLASS" rel="Chapter" href="Pkcs11_CK_OBJECT_CLASS.html">
 <link title="Pkcs11_CK_OBJECT_HANDLE" rel="Chapter" href="Pkcs11_CK_OBJECT_HANDLE.html">
-<link title="Pkcs11_CK_PKCS5_PBKD2_DATA_PARAMS" rel="Chapter" href="Pkcs11_CK_PKCS5_PBKD2_DATA_PARAMS.html">
+<link title="Pkcs11_CK_PKCS5_PBKD2_PARAMS" rel="Chapter" href="Pkcs11_CK_PKCS5_PBKD2_PARAMS.html">
 <link title="Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE" rel="Chapter" href="Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE.html">
 <link title="Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE" rel="Chapter" href="Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.html">
 <link title="Pkcs11_CK_RAW_PAYLOAD" rel="Chapter" href="Pkcs11_CK_RAW_PAYLOAD.html">
@@ -74,12 +74,6 @@
 Types used in the API<br>
 </div>
 <hr width="100%">
-<br>
-The bindings come in two flavours. The first one is the Direct
-    mode, in which each function from the PKCS11.h header are binded
-    directly. The second one is the Indirect mode, in which we use an
-    indirection through the list of function returned by
-    GetFunctionList.<br>
 
 <pre><span id="EXCEPTIONGetFunctionList_Failure"><span class="keyword">exception</span> GetFunctionList_Failure</span> <span class="keyword">of</span> <code class="type">string</code></pre>
 <div class="info ">
@@ -87,42 +81,6 @@ The GetFunctionList function failed, i.e., returned a return-value
     different from CKR_OK. This exception can only be triggered in the
     Indirect mode of our bindings.<br>
 </div>
-<br>
-CONVENTIONS.
-<p>
-
-    _t is a type variable that is used to constraint the <code class="code"><span class="constructor">Ctypes</span></code>
-    representation. It would appear in the signature of <code class="code"><span class="constructor">Version</span></code> for
-    instance. However, to make it more palatable for the outside world,
-    what is exported is <code class="code">t</code>, which is defined as <code class="code">_t structure</code>. For
-    some modules, it is quite easy to work with <code class="code">t</code> seen as an abstract
-    time. For other modules, we provide a <code class="code">u</code>ser version of the type,
-    with suitable functions.
-<p>
-
-    When appropriate, we provide the following functions:
-<p>
-<ul>
-<li><code class="code">create: unit <span class="keywordsign">-&gt;</span> t</code> will allocate a new object of type t
-      (possibly, not initialized)</li>
-</ul>
-<ul>
-<li><code class="code">allocate: t <span class="keywordsign">-&gt;</span> unit</code> will update <code class="code">t</code> in place by allocating
-      memory for its various fields.</li>
-</ul>
-<ul>
-<li><code class="code">view: t <span class="keywordsign">-&gt;</span> u</code> will build the user-land version of the data
-      represented by <code class="code">t</code>.</li>
-</ul>
-<ul>
-<li><code class="code">make: u <span class="keywordsign">-&gt;</span> t</code> will build the ctypes version of the data
-      represented by <code class="code">u</code>.</li>
-</ul>
-
-    N.B. The last two functions raise the question of why we are not
-    using Ctypes views. The problem is that for some functions of the
-    PKCS11 interface, we have to make several calls to the API to
-    build a proper <code class="code">t</code>, that could then be used to build an <code class="code">u</code>.<br>
 
 <pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_ULONG.html">CK_ULONG</a>: <code class="type"><a href="Pkcs11_CK_ULONG.html">Pkcs11_CK_ULONG</a></code></pre>
 <pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_BYTE.html">CK_BYTE</a>: <code class="type"><a href="Pkcs11_CK_BYTE.html">Pkcs11_CK_BYTE</a></code></pre>
@@ -154,7 +112,7 @@ CONVENTIONS.
 <pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_AES_CBC_ENCRYPT_DATA_PARAMS.html">CK_AES_CBC_ENCRYPT_DATA_PARAMS</a>: <code class="type"><a href="Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_AES_CBC_ENCRYPT_DATA_PARAMS.html">Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_AES_CBC_ENCRYPT_DATA_PARAMS</a></code></pre>
 <pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.html">CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE</a>: <code class="type"><a href="Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.html">Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE</a></code></pre>
 <pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE.html">CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE</a>: <code class="type"><a href="Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE.html">Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_PKCS5_PBKD2_DATA_PARAMS.html">CK_PKCS5_PBKD2_DATA_PARAMS</a>: <code class="type"><a href="Pkcs11_CK_PKCS5_PBKD2_DATA_PARAMS.html">Pkcs11_CK_PKCS5_PBKD2_DATA_PARAMS</a></code></pre>
+<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_PKCS5_PBKD2_PARAMS.html">CK_PKCS5_PBKD2_PARAMS</a>: <code class="type"><a href="Pkcs11_CK_PKCS5_PBKD2_PARAMS.html">Pkcs11_CK_PKCS5_PBKD2_PARAMS</a></code></pre>
 <pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_EC_KDF_TYPE.html">CK_EC_KDF_TYPE</a>: <code class="type"><a href="Pkcs11_CK_EC_KDF_TYPE.html">Pkcs11_CK_EC_KDF_TYPE</a></code></pre>
 <pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_ECDH1_DERIVE_PARAMS.html">CK_ECDH1_DERIVE_PARAMS</a>: <code class="type"><a href="Pkcs11_CK_ECDH1_DERIVE_PARAMS.html">Pkcs11_CK_ECDH1_DERIVE_PARAMS</a></code></pre>
 <pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_ECMQV_DERIVE_PARAMS.html">CK_ECMQV_DERIVE_PARAMS</a>: <code class="type"><a href="Pkcs11_CK_ECMQV_DERIVE_PARAMS.html">Pkcs11_CK_ECMQV_DERIVE_PARAMS</a></code></pre>
