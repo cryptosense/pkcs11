@@ -72,7 +72,7 @@ type u =
   | CKM_ECDH1_DERIVE of Pkcs11_CK_ECDH1_DERIVE_PARAMS.u
   | CKM_ECDH1_COFACTOR_DERIVE of Pkcs11_CK_ECDH1_DERIVE_PARAMS.u
   | CKM_ECMQV_DERIVE of Pkcs11_CK_ECMQV_DERIVE_PARAMS.u
-  | CKM_PKCS5_PBKD2 of Pkcs11_CK_PKCS5_PBKD2_DATA_PARAMS.u
+  | CKM_PKCS5_PBKD2 of Pkcs11_CK_PKCS5_PBKD2_PARAMS.u
   | CKM_CS_UNKNOWN of Pkcs11_CK_RAW_PAYLOAD.t
 
 let make: u -> t =
@@ -228,8 +228,8 @@ let make: u -> t =
         struct_ _CKM_ECMQV_DERIVE p Pkcs11_CK_ECMQV_DERIVE_PARAMS.t
           Pkcs11_CK_ECMQV_DERIVE_PARAMS.make
     | CKM_PKCS5_PBKD2 p ->
-        struct_ _CKM_PKCS5_PBKD2 p Pkcs11_CK_PKCS5_PBKD2_DATA_PARAMS.t
-          Pkcs11_CK_PKCS5_PBKD2_DATA_PARAMS.make
+        struct_ _CKM_PKCS5_PBKD2 p Pkcs11_CK_PKCS5_PBKD2_PARAMS.t
+          Pkcs11_CK_PKCS5_PBKD2_PARAMS.make
     | CKM_CS_UNKNOWN (ckm, param) ->
         string ckm param
 
@@ -306,7 +306,7 @@ let compare a b =
       | CKM_RSA_PKCS_OAEP a_param, CKM_RSA_PKCS_OAEP b_param
         -> Pkcs11_CK_RSA_PKCS_OAEP_PARAMS.compare a_param b_param
       | CKM_PKCS5_PBKD2 a_param, CKM_PKCS5_PBKD2 b_param
-        -> Pkcs11_CK_PKCS5_PBKD2_DATA_PARAMS.compare a_param b_param
+        -> Pkcs11_CK_PKCS5_PBKD2_PARAMS.compare a_param b_param
       | CKM_RSA_PKCS_PSS a_param, CKM_RSA_PKCS_PSS b_param
       | CKM_SHA1_RSA_PKCS_PSS a_param, CKM_SHA1_RSA_PKCS_PSS b_param
       | CKM_SHA224_RSA_PKCS_PSS a_param, CKM_SHA224_RSA_PKCS_PSS b_param

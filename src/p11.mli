@@ -644,7 +644,7 @@ end
 
 module PKCS5_PBKD2_DATA_params :
 sig
-  type t = Pkcs11.CK_PKCS5_PBKD2_DATA_PARAMS.u =
+  type t = Pkcs11.CK_PKCS5_PBKD2_PARAMS.u =
     {
       saltSource: PKCS5_PBKDF2_SALT_SOURCE_type.t;
       saltSourceData: string option;
