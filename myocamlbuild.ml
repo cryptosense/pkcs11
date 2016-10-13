@@ -12,6 +12,15 @@ let ctypes_generator name base : unit =
        Cmd (S [P exe; A arg])
     )
 
+let lib base =
+  let use_flag = "use_" ^ base in
+  let link_flag = "link_" ^ base in
+  let lib_installed = Printf.sprintf "-l%s_stubs" base in
+  let lib_build = Printf.sprintf "src/lib%s_stubs.a" base in
+  flag ["library"; "link"; "byte"; use_flag] (S ([A "-dllib"; A lib_installed]));
+  flag ["library"; "link"; "native"; use_flag] (S ([A "-cclib"; A lib_installed]));
+  flag ["link"; "ocaml"; link_flag] (A lib_build);
+  dep ["link"; "ocaml"; use_flag] [lib_build]
 
 let after_rules () =
   ctypes_generator "from **/*_generator.ml" "%(name: <**/*> and not <**/*_generator>)";
@@ -19,14 +28,9 @@ let after_rules () =
   flag ["compile"; "c"] (S [A "-I"; P ocaml_ctypes_lib_path]);
   pdep ["compile"; "c"] "depend" (fun s -> [s]);
   pflag ["compile";"c"] "depend" (fun s -> S [A "-I"; P (Filename.dirname s)]);
-  flag ["library"; "link"; "byte"; "use_pkcs11"]
-      (S ([A "-dllib"; A "-lpkcs11_stubs"]));
-  flag ["library"; "link"; "native"; "use_pkcs11"]
-      (S ([A "-cclib"; A "-lpkcs11_stubs"]));
-    flag ["link"; "ocaml"; "link_pkcs11"]
-      (A "src/libpkcs11_stubs.a");
-    dep ["link"; "ocaml"; "use_pkcs11"]
-      ["src/libpkcs11_stubs.a"];
+  lib "pkcs11";
+  lib "pkcs11_rev";
+  flag ["here"] (S ([A "-cclib"; A "-Lsrc"]));
   ()
 
 let () = dispatch (function

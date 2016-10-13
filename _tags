@@ -15,5 +15,11 @@ true: package(records)
 <src/pkcs11.{cma,cmxa}>: use_pkcs11
 <src/pkcs11.cmxs>: link_pkcs11
 
+<src/pkcs11_rev.{cma,cmxa}>: use_pkcs11_rev
+<src/pkcs11_rev.cmxs>: link_pkcs11_rev, here
+
+<src/pkcs11_rev_generator.*>: link_pkcs11
+<src/*>: depend(src/snippets/prelude.h)
+
 <test/*>: package(oUnit)
 <test/test_suite.*>: link_pkcs11

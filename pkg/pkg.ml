@@ -64,4 +64,7 @@ let () =
     Pkg.lib "include/pkcs11t.h";
     Pkg.lib "include/pkcs11f.h";
     Pkg.lib "include/pkcs11_module.h";
+    Pkg.mllib ~api:["Pkcs11_rev"] "src/pkcs11_rev.mllib";
+    Pkg.clib "src/libpkcs11_rev_stubs.clib";
+    Pkg.clib "src/libpkcs11_rev_dllmain.clib";
   ]
