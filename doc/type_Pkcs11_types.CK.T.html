@@ -58,321 +58,322 @@
 <link title="Pkcs11_mechanism_list" rel="Chapter" href="Pkcs11_mechanism_list.html">
 <link title="Pkcs11_slot_list" rel="Chapter" href="Pkcs11_slot_list.html">
 <link title="Pkcs11_template" rel="Chapter" href="Pkcs11_template.html">
-<link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html"><title>Pkcs11_types.CK.T</title>
+<link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html">
+<link title="Pkcs11_rev" rel="Chapter" href="Pkcs11_rev.html"><title>Pkcs11_types.CK.T</title>
 </head>
 <body>
-<code class="code"><span class="keyword">sig</span><br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_Initialize&nbsp;:&nbsp;(unit&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_Finalize&nbsp;:&nbsp;(unit&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GetInfo&nbsp;:&nbsp;(<span class="constructor">CK_INFO</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GetFunctionList&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(ck_function_list&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GetSlotList&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_SLOT_ID</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GetSlotInfo&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SLOT_ID</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_SLOT_INFO</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GetTokenInfo&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SLOT_ID</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_TOKEN_INFO</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GetMechanismList&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SLOT_ID</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM_TYPE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GetMechanismInfo&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SLOT_ID</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_MECHANISM_INFO</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_InitToken&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SLOT_ID</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_InitPIN&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_SetPIN&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_OpenSession&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SLOT_ID</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unit&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_NOTIFY</span>.u&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_CloseSession&nbsp;:&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_CloseAllSessions&nbsp;:&nbsp;(<span class="constructor">CK_SLOT_ID</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GetSessionInfo&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_SESSION_INFO</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GetOperationState&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_SetOperationState&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_Login&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_USER_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_Logout&nbsp;:&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_CreateObject&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_ATTRIBUTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_CopyObject&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_ATTRIBUTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_DestroyObject&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GetObjectSize&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GetAttributeValue&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_ATTRIBUTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_SetAttributeValue&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_ATTRIBUTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_FindObjectsInit&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_ATTRIBUTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_FindObjects&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_FindObjectsFinal&nbsp;:&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_EncryptInit&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_Encrypt&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_EncryptUpdate&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_EncryptFinal&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_DecryptInit&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_Decrypt&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_DecryptUpdate&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_DecryptFinal&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_DigestInit&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_MECHANISM</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_Digest&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_DigestUpdate&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_DigestKey&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_DigestFinal&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_SignInit&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_Sign&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_SignUpdate&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_SignFinal&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_SignRecoverInit&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_SignRecover&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_VerifyInit&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_Verify&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_VerifyUpdate&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_VerifyFinal&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_VerifyRecoverInit&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_VerifyRecover&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_DigestEncryptUpdate&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_DecryptDigestUpdate&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_SignEncryptUpdate&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_DecryptVerifyUpdate&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GenerateKey&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_ATTRIBUTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GenerateKeyPair&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_ATTRIBUTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_ATTRIBUTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_WrapKey&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_UnwrapKey&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_ATTRIBUTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_DeriveKey&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_ATTRIBUTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_SeedRandom&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GenerateRandom&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GetFunctionStatus&nbsp;:&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_CancelFunction&nbsp;:&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_WaitForSlotEvent&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_SLOT_ID</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn<br>
+<code class="code"><span class="keyword">sig</span>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_Initialize&nbsp;:&nbsp;(unit&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_Finalize&nbsp;:&nbsp;(unit&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GetInfo&nbsp;:&nbsp;(<span class="constructor">CK_INFO</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GetFunctionList&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(ck_function_list&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GetSlotList&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_SLOT_ID</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GetSlotInfo&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SLOT_ID</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_SLOT_INFO</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GetTokenInfo&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SLOT_ID</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_TOKEN_INFO</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GetMechanismList&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SLOT_ID</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM_TYPE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GetMechanismInfo&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SLOT_ID</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_MECHANISM_INFO</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_InitToken&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SLOT_ID</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_InitPIN&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_SetPIN&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_OpenSession&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SLOT_ID</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unit&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_NOTIFY</span>.u&nbsp;<span class="constructor">Ctypes</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_CloseSession&nbsp;:&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_CloseAllSessions&nbsp;:&nbsp;(<span class="constructor">CK_SLOT_ID</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GetSessionInfo&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_SESSION_INFO</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GetOperationState&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_SetOperationState&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_Login&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_USER_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_Logout&nbsp;:&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_CreateObject&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_ATTRIBUTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_CopyObject&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_ATTRIBUTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_DestroyObject&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GetObjectSize&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GetAttributeValue&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_ATTRIBUTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_SetAttributeValue&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_ATTRIBUTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_FindObjectsInit&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_ATTRIBUTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_FindObjects&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_FindObjectsFinal&nbsp;:&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_EncryptInit&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_Encrypt&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_EncryptUpdate&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_EncryptFinal&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_DecryptInit&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_Decrypt&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_DecryptUpdate&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_DecryptFinal&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_DigestInit&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_MECHANISM</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_Digest&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_DigestUpdate&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_DigestKey&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_DigestFinal&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_SignInit&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_Sign&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_SignUpdate&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_SignFinal&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_SignRecoverInit&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_SignRecover&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_VerifyInit&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_Verify&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_VerifyUpdate&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_VerifyFinal&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_VerifyRecoverInit&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_VerifyRecover&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_DigestEncryptUpdate&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_DecryptDigestUpdate&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_SignEncryptUpdate&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_DecryptVerifyUpdate&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GenerateKey&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_ATTRIBUTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GenerateKeyPair&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_ATTRIBUTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_ATTRIBUTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_WrapKey&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_UnwrapKey&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_ATTRIBUTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_DeriveKey&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_MECHANISM</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_ATTRIBUTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_OBJECT_HANDLE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_SeedRandom&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GenerateRandom&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Unsigned</span>.ulong&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_GetFunctionStatus&nbsp;:&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_CancelFunction&nbsp;:&nbsp;(<span class="constructor">CK_SESSION_HANDLE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)&nbsp;<span class="constructor">Ctypes</span>.fn
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_WaitForSlotEvent&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">CK_FLAGS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CK_SLOT_ID</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;<span class="constructor">Ctypes_static</span>.ptr&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.fn
 <span class="keyword">end</span></code></body></html>

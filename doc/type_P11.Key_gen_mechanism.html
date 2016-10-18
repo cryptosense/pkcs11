@@ -58,17 +58,18 @@
 <link title="Pkcs11_mechanism_list" rel="Chapter" href="Pkcs11_mechanism_list.html">
 <link title="Pkcs11_slot_list" rel="Chapter" href="Pkcs11_slot_list.html">
 <link title="Pkcs11_template" rel="Chapter" href="Pkcs11_template.html">
-<link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html"><title>P11.Key_gen_mechanism</title>
+<link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html">
+<link title="Pkcs11_rev" rel="Chapter" href="Pkcs11_rev.html"><title>P11.Key_gen_mechanism</title>
 </head>
 <body>
-<code class="code"><span class="keyword">sig</span><br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11</span>.<span class="constructor">Key_gen_mechanism</span>.u&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CKM</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">P11</span>.<span class="constructor">Mechanism_type</span>.t<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CK_UNAVAILABLE_INFORMATION</span><br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_yojson&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Key_gen_mechanism</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Yojson</span>.<span class="constructor">Safe</span>.json<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;of_yojson&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Yojson</span>.<span class="constructor">Safe</span>.json&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">P11</span>.<span class="constructor">Key_gen_mechanism</span>.t&nbsp;<span class="constructor">Ppx_deriving_yojson_runtime</span>.error_or<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;typ&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Key_gen_mechanism</span>.t&nbsp;<span class="constructor">Record</span>.<span class="constructor">Type</span>.t<br>
+<code class="code"><span class="keyword">sig</span>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11</span>.<span class="constructor">Key_gen_mechanism</span>.u&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CKM</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">P11</span>.<span class="constructor">Mechanism_type</span>.t
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CK_UNAVAILABLE_INFORMATION</span>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_yojson&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Key_gen_mechanism</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Yojson</span>.<span class="constructor">Safe</span>.json
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;of_yojson&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Yojson</span>.<span class="constructor">Safe</span>.json&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">P11</span>.<span class="constructor">Key_gen_mechanism</span>.t&nbsp;<span class="constructor">Ppx_deriving_yojson_runtime</span>.error_or
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;typ&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Key_gen_mechanism</span>.t&nbsp;<span class="constructor">Record</span>.<span class="constructor">Type</span>.t
 <span class="keyword">end</span></code></body></html>

@@ -58,14 +58,15 @@
 <link title="Pkcs11_mechanism_list" rel="Chapter" href="Pkcs11_mechanism_list.html">
 <link title="Pkcs11_slot_list" rel="Chapter" href="Pkcs11_slot_list.html">
 <link title="Pkcs11_template" rel="Chapter" href="Pkcs11_template.html">
-<link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html"><title>P11.RSA_PKCS_PSS_params</title>
+<link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html">
+<link title="Pkcs11_rev" rel="Chapter" href="Pkcs11_rev.html"><title>P11.RSA_PKCS_PSS_params</title>
 </head>
 <body>
-<code class="code"><span class="keyword">sig</span><br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11</span>.<span class="constructor">CK_RSA_PKCS_PSS_PARAMS</span>.u&nbsp;=&nbsp;{<br>
-&nbsp;&nbsp;&nbsp;&nbsp;hashAlg&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Mechanism_type</span>.t;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;mgf&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">RSA_PKCS_MGF_type</span>.t;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;sLen&nbsp;:&nbsp;<span class="constructor">P11</span>.ulong;<br>
-&nbsp;&nbsp;}<br>
+<code class="code"><span class="keyword">sig</span>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11</span>.<span class="constructor">CK_RSA_PKCS_PSS_PARAMS</span>.u&nbsp;=&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;hashAlg&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Mechanism_type</span>.t;
+&nbsp;&nbsp;&nbsp;&nbsp;mgf&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">RSA_PKCS_MGF_type</span>.t;
+&nbsp;&nbsp;&nbsp;&nbsp;sLen&nbsp;:&nbsp;<span class="constructor">P11</span>.ulong;
+&nbsp;&nbsp;}
 <span class="keyword">end</span></code></body></html>

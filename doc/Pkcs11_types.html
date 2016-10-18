@@ -5,6 +5,7 @@
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Pkcs11_template.html">
+<link rel="next" href="Pkcs11_rev.html">
 <link rel="Up" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
@@ -62,18 +63,26 @@
 <link title="Pkcs11_mechanism_list" rel="Chapter" href="Pkcs11_mechanism_list.html">
 <link title="Pkcs11_slot_list" rel="Chapter" href="Pkcs11_slot_list.html">
 <link title="Pkcs11_template" rel="Chapter" href="Pkcs11_template.html">
-<link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html"><title>Pkcs11_types</title>
+<link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html">
+<link title="Pkcs11_rev" rel="Chapter" href="Pkcs11_rev.html"><title>Pkcs11_types</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Pkcs11_template.html" title="Pkcs11_template">Previous</a>
 &nbsp;<a class="up" href="index.html" title="Index">Up</a>
-&nbsp;</div>
+&nbsp;<a class="post" href="Pkcs11_rev.html" title="Pkcs11_rev">Next</a>
+</div>
 <h1>Module <a href="type_Pkcs11_types.html">Pkcs11_types</a></h1>
 
 <pre><span class="keyword">module</span> Pkcs11_types: <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_types.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
 Types used in the API<br>
 </div>
 <hr width="100%">
+<br>
+The bindings come in two flavours. The first one is the Direct
+    mode, in which each function from the PKCS11.h header are binded
+    directly. The second one is the Indirect mode, in which we use an
+    indirection through the list of function returned by
+    GetFunctionList.<br>
 
 <pre><span id="EXCEPTIONGetFunctionList_Failure"><span class="keyword">exception</span> GetFunctionList_Failure</span> <span class="keyword">of</span> <code class="type">string</code></pre>
 <div class="info ">
@@ -81,6 +90,42 @@ The GetFunctionList function failed, i.e., returned a return-value
     different from CKR_OK. This exception can only be triggered in the
     Indirect mode of our bindings.<br>
 </div>
+<br>
+CONVENTIONS.
+<p>
+
+    _t is a type variable that is used to constraint the <code class="code"><span class="constructor">Ctypes</span></code>
+    representation. It would appear in the signature of <code class="code"><span class="constructor">Version</span></code> for
+    instance. However, to make it more palatable for the outside world,
+    what is exported is <code class="code">t</code>, which is defined as <code class="code">_t structure</code>. For
+    some modules, it is quite easy to work with <code class="code">t</code> seen as an abstract
+    time. For other modules, we provide a <code class="code">u</code>ser version of the type,
+    with suitable functions.
+<p>
+
+    When appropriate, we provide the following functions:
+<p>
+<ul>
+<li><code class="code">create: unit <span class="keywordsign">-&gt;</span> t</code> will allocate a new object of type t
+      (possibly, not initialized)</li>
+</ul>
+<ul>
+<li><code class="code">allocate: t <span class="keywordsign">-&gt;</span> unit</code> will update <code class="code">t</code> in place by allocating
+      memory for its various fields.</li>
+</ul>
+<ul>
+<li><code class="code">view: t <span class="keywordsign">-&gt;</span> u</code> will build the user-land version of the data
+      represented by <code class="code">t</code>.</li>
+</ul>
+<ul>
+<li><code class="code">make: u <span class="keywordsign">-&gt;</span> t</code> will build the ctypes version of the data
+      represented by <code class="code">u</code>.</li>
+</ul>
+
+    N.B. The last two functions raise the question of why we are not
+    using Ctypes views. The problem is that for some functions of the
+    PKCS11 interface, we have to make several calls to the API to
+    build a proper <code class="code">t</code>, that could then be used to build an <code class="code">u</code>.<br>
 
 <pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_ULONG.html">CK_ULONG</a>: <code class="type"><a href="Pkcs11_CK_ULONG.html">Pkcs11_CK_ULONG</a></code></pre>
 <pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_BYTE.html">CK_BYTE</a>: <code class="type"><a href="Pkcs11_CK_BYTE.html">Pkcs11_CK_BYTE</a></code></pre>

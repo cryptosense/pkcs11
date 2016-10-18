@@ -58,43 +58,44 @@
 <link title="Pkcs11_mechanism_list" rel="Chapter" href="Pkcs11_mechanism_list.html">
 <link title="Pkcs11_slot_list" rel="Chapter" href="Pkcs11_slot_list.html">
 <link title="Pkcs11_template" rel="Chapter" href="Pkcs11_template.html">
-<link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html"><title>Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CBC_ENCRYPT_DATA_PARAMS</title>
+<link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html">
+<link title="Pkcs11_rev" rel="Chapter" href="Pkcs11_rev.html"><title>Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CBC_ENCRYPT_DATA_PARAMS</title>
 </head>
 <body>
-<code class="code"><span class="keyword">functor</span>&nbsp;(<span class="constructor">Param</span>&nbsp;:&nbsp;<span class="constructor">CBC_ENCRYPT_DATA_PARAMS_PARAM</span>)&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;<span class="keyword">sig</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;_t<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CBC_ENCRYPT_DATA_PARAMS</span>.<span class="constructor">CBC_ENCRYPT_DATA_PARAMS</span>._t<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.structure<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;t&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CBC_ENCRYPT_DATA_PARAMS</span>.<span class="constructor">CBC_ENCRYPT_DATA_PARAMS</span>.t&nbsp;<span class="constructor">Ctypes</span>.typ<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;iv_size&nbsp;:&nbsp;int<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;(&nbsp;-:&nbsp;)&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Ctypes</span>.typ&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="constructor">Pkcs11_CBC_ENCRYPT_DATA_PARAMS</span>.<span class="constructor">CBC_ENCRYPT_DATA_PARAMS</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.field<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;iv&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Pkcs11_CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes</span>.<span class="constructor">CArray</span>.t,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CBC_ENCRYPT_DATA_PARAMS</span>.<span class="constructor">CBC_ENCRYPT_DATA_PARAMS</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.field<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;pData&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Pkcs11_CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CBC_ENCRYPT_DATA_PARAMS</span>.<span class="constructor">CBC_ENCRYPT_DATA_PARAMS</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.field<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;length&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Unsigned</span>.ulong,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CBC_ENCRYPT_DATA_PARAMS</span>.<span class="constructor">CBC_ENCRYPT_DATA_PARAMS</span>.t)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.field<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;u&nbsp;=&nbsp;{&nbsp;iv&nbsp;:&nbsp;string;&nbsp;data&nbsp;:&nbsp;string;&nbsp;}<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CBC_ENCRYPT_DATA_PARAMS</span>.<span class="constructor">CBC_ENCRYPT_DATA_PARAMS</span>.u&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CBC_ENCRYPT_DATA_PARAMS</span>.<span class="constructor">CBC_ENCRYPT_DATA_PARAMS</span>.t<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;view&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CBC_ENCRYPT_DATA_PARAMS</span>.<span class="constructor">CBC_ENCRYPT_DATA_PARAMS</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CBC_ENCRYPT_DATA_PARAMS</span>.<span class="constructor">CBC_ENCRYPT_DATA_PARAMS</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;compare&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CBC_ENCRYPT_DATA_PARAMS</span>.<span class="constructor">CBC_ENCRYPT_DATA_PARAMS</span>.u&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CBC_ENCRYPT_DATA_PARAMS</span>.<span class="constructor">CBC_ENCRYPT_DATA_PARAMS</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
+<code class="code"><span class="keyword">functor</span>&nbsp;(<span class="constructor">Param</span>&nbsp;:&nbsp;<span class="constructor">CBC_ENCRYPT_DATA_PARAMS_PARAM</span>)&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;<span class="keyword">sig</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;_t
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CBC_ENCRYPT_DATA_PARAMS</span>.<span class="constructor">CBC_ENCRYPT_DATA_PARAMS</span>._t
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.structure
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;t&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CBC_ENCRYPT_DATA_PARAMS</span>.<span class="constructor">CBC_ENCRYPT_DATA_PARAMS</span>.t&nbsp;<span class="constructor">Ctypes</span>.typ
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;iv_size&nbsp;:&nbsp;int
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;(&nbsp;-:&nbsp;)&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Ctypes</span>.typ&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="constructor">Pkcs11_CBC_ENCRYPT_DATA_PARAMS</span>.<span class="constructor">CBC_ENCRYPT_DATA_PARAMS</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;iv&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Pkcs11_CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes</span>.<span class="constructor">CArray</span>.t,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CBC_ENCRYPT_DATA_PARAMS</span>.<span class="constructor">CBC_ENCRYPT_DATA_PARAMS</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;pData&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Pkcs11_CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CBC_ENCRYPT_DATA_PARAMS</span>.<span class="constructor">CBC_ENCRYPT_DATA_PARAMS</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;length&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Unsigned</span>.ulong,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CBC_ENCRYPT_DATA_PARAMS</span>.<span class="constructor">CBC_ENCRYPT_DATA_PARAMS</span>.t)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;u&nbsp;=&nbsp;{&nbsp;iv&nbsp;:&nbsp;string;&nbsp;data&nbsp;:&nbsp;string;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CBC_ENCRYPT_DATA_PARAMS</span>.<span class="constructor">CBC_ENCRYPT_DATA_PARAMS</span>.u&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CBC_ENCRYPT_DATA_PARAMS</span>.<span class="constructor">CBC_ENCRYPT_DATA_PARAMS</span>.t
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;view&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CBC_ENCRYPT_DATA_PARAMS</span>.<span class="constructor">CBC_ENCRYPT_DATA_PARAMS</span>.t&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CBC_ENCRYPT_DATA_PARAMS</span>.<span class="constructor">CBC_ENCRYPT_DATA_PARAMS</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;compare&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CBC_ENCRYPT_DATA_PARAMS</span>.<span class="constructor">CBC_ENCRYPT_DATA_PARAMS</span>.u&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CBC_ENCRYPT_DATA_PARAMS</span>.<span class="constructor">CBC_ENCRYPT_DATA_PARAMS</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int
 &nbsp;&nbsp;<span class="keyword">end</span></code></body></html>
