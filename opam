@@ -25,4 +25,5 @@ depends: [
   "ocamlfind" {build}
   "topkg" {build}
 ]
+tags: ["org:cryptosense"]
 available: [ocaml-version >= "4.02.0"]
