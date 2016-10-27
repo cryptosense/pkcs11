@@ -10,8 +10,7 @@
     of the data. Then, the user allocates memory for this Data.t, and
     performs a second call to the function.*)
 
-type _t
-type t = _t Ctypes.structure
+type t
 
 val to_string : t -> string
 val of_string : string -> t
