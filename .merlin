@@ -1,0 +1,12 @@
+S pkg
+S src
+B _build/pkg
+B _build/src
+PKG ctypes.foreign
+PKG ctypes.stubs
+PKG hex
+PKG key-parsers
+PKG oUnit
+PKG ppx_deriving.std
+PKG ppx_deriving_yojson
+PKG records
