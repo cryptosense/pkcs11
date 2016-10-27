@@ -6,7 +6,6 @@ type t =
   ; mutable content : Pkcs11_CK_BYTE.t ptr
   }
 
-(* accessors *)
 let get_length t =
   safe_deref t.length
 
@@ -36,7 +35,9 @@ let of_string (s:string) : t =
   }
 
 let create () : t =
-  of_string ""
+  { length = allocate ulong (Unsigned.ULong.of_int 0)
+  ; content = from_voidp Pkcs11_CK_BYTE.typ null
+  }
 
 let allocate (t:t) : unit =
   let n = get_length t |> Unsigned.ULong.to_int in
