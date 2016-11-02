@@ -16,6 +16,34 @@ let safe_deref p =
 let is_null (type a)(x : a Ctypes.ptr) : bool =
   Ctypes.(ptr_compare null (to_voidp x)) = 0
 
+module Reachable_ptr : sig
+  type 'a t
+  val typ : 'a Ctypes_static.typ -> 'a t Ctypes_static.typ
+  val setf : ('b, 'c) Ctypes.structured ->
+    ('a t, ('b, 'c) Ctypes.structured) Ctypes.field -> 'a Ctypes.ptr -> unit
+  val getf : ('b, 'c) Ctypes.structured ->
+    ('a t, ('b, 'c) Ctypes.structured) Ctypes.field -> 'a Ctypes.ptr
+end = struct
+
+  type 'a t = 'a ptr
+
+  let typ = Ctypes.ptr
+
+  (** Add a GC dependency from one object to another:
+      while [from] is reachable, [to_] is reachable too. *)
+  let add_gc_link ~from ~to_ =
+    let r = ref (Some (Obj.repr to_)) in
+    let finaliser _ = r := None in
+    Gc.finalise finaliser from
+
+  let setf s f v =
+    add_gc_link ~from:s ~to_:v;
+    Ctypes.setf s f v
+
+  let getf = Ctypes.getf
+
+end
+
 (******************************************************************************)
 (*                                    Ulong                                   *)
 (******************************************************************************)
@@ -77,7 +105,7 @@ let make_string
     (str: string)
     (p: s structure)
     (lengthField: (Unsigned.ULong.t,s structure) field)
-    (dataField:  (data ptr, s structure) field)
+    (dataField: (data Reachable_ptr.t, s structure) field)
   : unit =
   let len = String.length str in
   let ptr = allocate_n char ~count:len in
@@ -95,9 +123,9 @@ let view_string
     (type s)
     (p: s structure)
     (lengthField: (ulong, s structure) field)
-    (dataField: ('a ptr, s structure) field) : string =
+    (dataField: ('a Reachable_ptr.t, s structure) field) : string =
   let length = Unsigned.ULong.to_int @@ getf p lengthField in
-  let ptr = from_voidp char @@ to_voidp @@ getf p dataField in
+  let ptr = from_voidp char @@ to_voidp @@ Reachable_ptr.getf p dataField in
   string_from_ptr ptr ~length
 
 (**
@@ -121,7 +149,7 @@ let make_string_option stro p lengthField dataField =
  * Same arguments as view_string.
  *)
 let view_string_option p lengthField dataField =
-  if is_null (getf p dataField) then
+  if is_null (Reachable_ptr.getf p dataField) then
     None
   else
     Some (view_string p lengthField dataField)
@@ -198,8 +226,3 @@ let with_out_fmt filename f =
   in
   finally ();
   result
-
-let add_gc_link ~from ~to_ =
-  let r = ref (Some (Obj.repr to_)) in
-  let finaliser _ = r := None in
-  Gc.finalise finaliser from

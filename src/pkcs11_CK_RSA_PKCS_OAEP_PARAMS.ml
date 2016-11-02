@@ -13,7 +13,7 @@ let (-:) ty label = smart_field t label ty
 let hashAlg = Pkcs11_CK_MECHANISM_TYPE.typ -: "hashAlg"
 let mgf = Pkcs11_CK_RSA_PKCS_MGF_TYPE.typ -: "mgf"
 let source  = source_type -: "source"
-let pSourceData = ptr void -: "pSourceData"
+let pSourceData = Reachable_ptr.typ void -: "pSourceData"
 let pSourceDataLen = ulong -: "pSourceDataLen"
 let () = seal t
 

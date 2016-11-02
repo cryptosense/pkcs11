@@ -37,4 +37,4 @@ val to_string_pair: 'a u -> string * string
 val ck_attribute : t Ctypes.typ
 
 val ulValueLen : (Unsigned.ulong, t) Ctypes.field
-val pValue : (unit Ctypes_static.ptr, t) Ctypes.field
+val pValue : (unit Ctypes_helpers.Reachable_ptr.t, t) Ctypes.field

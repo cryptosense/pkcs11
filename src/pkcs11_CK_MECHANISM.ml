@@ -9,7 +9,7 @@ let ck_mechanism : t typ = structure "CK_MECHANISM"
 
 let (-:) ty label = smart_field ck_mechanism label ty
 let mechanism = Pkcs11_CK_MECHANISM_TYPE.typ -: "mechanism"
-let parameter = ptr void -: "pParameter"
+let parameter = Reachable_ptr.typ void -: "pParameter"
 let parameter_len = ulong -: "pParameterLen"
 let () = seal ck_mechanism
 
@@ -80,8 +80,7 @@ let make: u -> t =
     let open Ctypes in
     let m = make ck_mechanism in
     setf m mechanism ckm;
-    setf m parameter param;
-    add_gc_link ~from:m ~to_:param;
+    Reachable_ptr.setf m parameter param;
     setf m parameter_len param_len;
     m
   in
@@ -97,9 +96,7 @@ let make: u -> t =
     let params = Pkcs11_data.of_string param in
     let char_ptr = Pkcs11_data.get_content params in
     let param_len = Pkcs11_data.get_length params in
-    let mech = make ckm (to_voidp char_ptr) param_len in
-    add_gc_link ~from:mech ~to_:char_ptr;
-    mech
+    make ckm (to_voidp char_ptr) param_len
   in
   let derivation_string ckm param =
     struct_ ckm param
@@ -433,7 +430,7 @@ let unsafe_get_string t =
   view_string t parameter_len parameter
 
 let unsafe_get_struct t typ view =
-  let p = from_voidp typ (getf t parameter) in
+  let p = from_voidp typ (Reachable_ptr.getf t parameter) in
   view (!@ p)
 
 let unsafe_get_oaep t =
@@ -463,7 +460,7 @@ let unsafe_get_ecmqv_derive_param t =
     Pkcs11_CK_ECMQV_DERIVE_PARAMS.view
 
 let unsafe_get_ulong t =
-  let p = getf t parameter |> from_voidp ulong in
+  let p =  Reachable_ptr.getf t parameter |> from_voidp ulong in
   !@ p
 
 let view (t:t) : u =

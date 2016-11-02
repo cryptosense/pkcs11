@@ -14,7 +14,7 @@ let _setter_ : (unit Ctypes.ptr -> 'a -> unit) -> Unsigned.ULong.t -> t -> 'a ->
         if getf t ulValueLen >= size
         then
           begin
-            ff (getf t pValue) elem;
+            ff (Ctypes_helpers.Reachable_ptr.getf t pValue) elem;
             setf t ulValueLen size;
             Pkcs11_CK_RV.CKR_OK
           end

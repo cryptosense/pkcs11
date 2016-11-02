@@ -37,7 +37,7 @@ type t = _t structure
 let ck_attribute : _t structure typ = structure "CK_ATTRIBUTE"
 let (-:) ty label = smart_field ck_attribute label ty
 let _type = Pkcs11_CK_ATTRIBUTE_TYPE.typ -: "type"
-let pValue = Ctypes.ptr void -: "pValue"
+let pValue = Reachable_ptr.typ void -: "pValue"
 let ulValueLen = ulong -: "ulValueLen"
 let () = seal ck_attribute
 
@@ -50,7 +50,7 @@ type pack = Pack : 'a u -> pack
 let create attribute_type : t =
   let a = Ctypes.make ck_attribute in
   setf a _type attribute_type;
-  setf a pValue null;
+  Reachable_ptr.setf a pValue null;
   setf a ulValueLen (Unsigned.ULong.zero);
   a
 
@@ -58,9 +58,7 @@ let create attribute_type : t =
     for the value. *)
 let allocate (t: t) : unit =
   let count = Unsigned.ULong.to_int  (getf t ulValueLen) in
-  let ptr = allocate_n (char) ~count in
-  add_gc_link ~from:t ~to_:ptr;
-  setf t pValue (to_voidp ptr);
+  Reachable_ptr.setf t pValue (to_voidp (allocate_n (char) ~count));
   ()
 
 let get_type t =
@@ -69,12 +67,12 @@ let get_type t =
 let get_length t =
   Unsigned.ULong.to_int (getf t ulValueLen)
 
-let pvalue_is_null_ptr t = is_null (getf t pValue)
+let pvalue_is_null_ptr t = is_null (Reachable_ptr.getf t pValue)
 
 let unsafe_get_value typ t =
-  from_voidp typ (getf t pValue)
+  from_voidp typ (Reachable_ptr.getf t pValue)
 
-let ck_true : Pkcs11_CK_BBOOL.t ptr  = Ctypes.allocate Pkcs11_CK_BBOOL.typ Pkcs11_CK_BBOOL._CK_TRUE
+let ck_true : Pkcs11_CK_BBOOL.t ptr = Ctypes.allocate Pkcs11_CK_BBOOL.typ Pkcs11_CK_BBOOL._CK_TRUE
 let ck_false : Pkcs11_CK_BBOOL.t ptr = Ctypes.allocate Pkcs11_CK_BBOOL.typ Pkcs11_CK_BBOOL._CK_FALSE
 
 (* Constructors *)
@@ -83,33 +81,31 @@ let boolean attribute_type bool : t =
   let a = Ctypes.make ck_attribute in
   let bool = if bool then ck_true else ck_false in
   setf a _type attribute_type;
-  setf a pValue (to_voidp bool);
+  Reachable_ptr.setf a pValue (to_voidp bool);
   setf a ulValueLen (Unsigned.ULong.of_int (sizeof uint8_t));
   a
 
 let byte attribute_type byte : t =
-  let  a= Ctypes.make ck_attribute in
+  let a = Ctypes.make ck_attribute in
   let byte = Ctypes.allocate Ctypes.uint8_t (Unsigned.UInt8.of_int byte) in
   setf a _type attribute_type;
-  setf a pValue (to_voidp byte);
+  Reachable_ptr.setf a pValue (to_voidp byte);
   setf a ulValueLen (Unsigned.ULong.of_int (sizeof uint8_t));
   a
 
 let ulong attribute_type ulong : t =
   let a = Ctypes.make ck_attribute in
   let ulong = Ctypes.allocate Ctypes.ulong ulong in
-  add_gc_link ~from:a ~to_:ulong;
   setf a _type attribute_type;
-  setf a pValue (to_voidp ulong);
+  Reachable_ptr.setf a pValue (to_voidp ulong);
   setf a ulValueLen (Unsigned.ULong.of_int (sizeof Ctypes.ulong));
   a
 
 let string attribute_type string : t =
   let a = Ctypes.make ck_attribute in
   let s = ptr_from_string string in
-  add_gc_link ~from:a ~to_:s;
   setf a _type attribute_type;
-  setf a pValue (to_voidp s);
+  Reachable_ptr.setf a pValue (to_voidp s);
   setf a ulValueLen (Unsigned.ULong.of_int (String.length string));
   a
 
