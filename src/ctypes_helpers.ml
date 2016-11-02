@@ -198,3 +198,8 @@ let with_out_fmt filename f =
   in
   finally ();
   result
+
+let add_gc_link ~from ~to_ =
+  let r = ref (Some (Obj.repr to_)) in
+  let finaliser _ = r := None in
+  Gc.finalise finaliser from

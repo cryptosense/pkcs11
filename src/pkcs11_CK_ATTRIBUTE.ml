@@ -58,7 +58,9 @@ let create attribute_type : t =
     for the value. *)
 let allocate (t: t) : unit =
   let count = Unsigned.ULong.to_int  (getf t ulValueLen) in
-  setf t pValue (to_voidp (allocate_n (char) ~count));
+  let ptr = allocate_n (char) ~count in
+  add_gc_link ~from:t ~to_:ptr;
+  setf t pValue (to_voidp ptr);
   ()
 
 let get_type t =
@@ -94,8 +96,9 @@ let byte attribute_type byte : t =
   a
 
 let ulong attribute_type ulong : t =
-  let  a= Ctypes.make ck_attribute in
+  let a = Ctypes.make ck_attribute in
   let ulong = Ctypes.allocate Ctypes.ulong ulong in
+  add_gc_link ~from:a ~to_:ulong;
   setf a _type attribute_type;
   setf a pValue (to_voidp ulong);
   setf a ulValueLen (Unsigned.ULong.of_int (sizeof Ctypes.ulong));
@@ -104,6 +107,7 @@ let ulong attribute_type ulong : t =
 let string attribute_type string : t =
   let a = Ctypes.make ck_attribute in
   let s = ptr_from_string string in
+  add_gc_link ~from:a ~to_:s;
   setf a _type attribute_type;
   setf a pValue (to_voidp s);
   setf a ulValueLen (Unsigned.ULong.of_int (String.length string));

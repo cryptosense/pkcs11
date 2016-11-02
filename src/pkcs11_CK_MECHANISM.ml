@@ -81,6 +81,7 @@ let make: u -> t =
     let m = make ck_mechanism in
     setf m mechanism ckm;
     setf m parameter param;
+    add_gc_link ~from:m ~to_:param;
     setf m parameter_len param_len;
     m
   in
@@ -92,12 +93,14 @@ let make: u -> t =
   let pss ckm params =
     struct_ ckm params Pkcs11_CK_RSA_PKCS_PSS_PARAMS.t Pkcs11_CK_RSA_PKCS_PSS_PARAMS.make
   in
-  let data ckm params =
+  let string ckm param =
+    let params = Pkcs11_data.of_string param in
     let char_ptr = Pkcs11_data.get_content params in
     let param_len = Pkcs11_data.get_length params in
-    make ckm (to_voidp char_ptr) param_len
+    let mech = make ckm (to_voidp char_ptr) param_len in
+    add_gc_link ~from:mech ~to_:char_ptr;
+    mech
   in
-  let string ckm param = data ckm (Pkcs11_data.of_string param) in
   let derivation_string ckm param =
     struct_ ckm param
       Pkcs11_CK_KEY_DERIVATION_STRING_DATA.t Pkcs11_CK_KEY_DERIVATION_STRING_DATA.make

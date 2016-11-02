@@ -100,3 +100,7 @@ val smart_field : 't Ctypes.typ -> string -> 'a Ctypes.typ -> ('a, (('s, [<`Stru
 
 (** Open a file for writing and returns a formatter to it. *)
 val with_out_fmt : string -> (Format.formatter -> 'a) -> 'a
+
+(** Add a GC dependency from one object to another:
+    while [from] is reachable, [to_] is reachable too. *)
+val add_gc_link : from:'a -> to_:'b -> unit
