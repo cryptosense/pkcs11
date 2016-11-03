@@ -69,7 +69,8 @@
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;iv_size&nbsp;:&nbsp;int
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;(&nbsp;-:&nbsp;)&nbsp;:&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Ctypes</span>.typ&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;t)&nbsp;<span class="constructor">Ctypes</span>.field
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;iv&nbsp;:&nbsp;(<span class="constructor">Pkcs11_CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes</span>.<span class="constructor">CArray</span>.t,&nbsp;t)&nbsp;<span class="constructor">Ctypes</span>.field
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;pData&nbsp;:&nbsp;(<span class="constructor">Pkcs11_CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_static</span>.ptr,&nbsp;t)&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;pData&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Pkcs11_CK_BYTE</span>.t&nbsp;<span class="constructor">Ctypes_helpers</span>.<span class="constructor">Reachable_ptr</span>.t,&nbsp;t)&nbsp;<span class="constructor">Ctypes</span>.field
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;length&nbsp;:&nbsp;(<span class="constructor">Unsigned</span>.ulong,&nbsp;t)&nbsp;<span class="constructor">Ctypes</span>.field
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;u&nbsp;=&nbsp;{&nbsp;iv&nbsp;:&nbsp;string;&nbsp;data&nbsp;:&nbsp;string;&nbsp;}
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make&nbsp;:&nbsp;u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;t

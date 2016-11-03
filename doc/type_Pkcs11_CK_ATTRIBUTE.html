@@ -101,5 +101,6 @@
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_string_pair&nbsp;:&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;*&nbsp;string
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;ck_attribute&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE</span>.t&nbsp;<span class="constructor">Ctypes</span>.typ
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;ulValueLen&nbsp;:&nbsp;(<span class="constructor">Unsigned</span>.ulong,&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE</span>.t)&nbsp;<span class="constructor">Ctypes</span>.field
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;pValue&nbsp;:&nbsp;(unit&nbsp;<span class="constructor">Ctypes_static</span>.ptr,&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE</span>.t)&nbsp;<span class="constructor">Ctypes</span>.field
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;pValue&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;(unit&nbsp;<span class="constructor">Ctypes_helpers</span>.<span class="constructor">Reachable_ptr</span>.t,&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE</span>.t)&nbsp;<span class="constructor">Ctypes</span>.field
 <span class="keyword">end</span></code></body></html>
