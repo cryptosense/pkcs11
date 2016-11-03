@@ -9,6 +9,27 @@ val safe_deref : 'a Ctypes.ptr -> 'a
 
 type ulong = Unsigned.ULong.t
 
+module Reachable_ptr : sig
+  (** Pointers with a GC link from the structure they are in.
+      These are like [Ctypes.ptr] except that [setf] will add a link (through a
+      finalizer) from the structure to the pointer to prevent its early
+      collection. *)
+
+  type 'a t
+
+  (** Ctypes type. *)
+  val typ : 'a Ctypes_static.typ -> 'a t Ctypes_static.typ
+
+  (** Combine [Ctypes.setf] and [create].
+      The parent object is set to the structured value. *)
+  val setf : ('b, 'c) Ctypes.structured ->
+    ('a t, ('b, 'c) Ctypes.structured) Ctypes.field -> 'a Ctypes.ptr -> unit
+
+  (** Call [Ctypes.getf] and unwrap the result. *)
+  val getf : ('b, 'c) Ctypes.structured ->
+    ('a t, ('b, 'c) Ctypes.structured) Ctypes.field -> 'a Ctypes.ptr
+end
+
 (******************************************************************************)
 (*                    String conversions to/from C pointers                   *)
 (******************************************************************************)
@@ -49,7 +70,7 @@ val make_string :
   string ->
   'a Ctypes.structure ->
   (Unsigned.ULong.t, 'a Ctypes.structure) Ctypes.field ->
-  ('b Ctypes.ptr, 'a Ctypes.structure) Ctypes.field -> unit
+  ('b Reachable_ptr.t, 'a Ctypes.structure) Ctypes.field -> unit
 
 (**
  * Read an OCaml string from a Ctypes struct.
@@ -59,7 +80,7 @@ val make_string :
 val view_string :
   'b Ctypes.structure ->
   (ulong, 'b Ctypes.structure) Ctypes.field ->
-  ('a Ctypes.ptr, 'b Ctypes.structure) Ctypes.field -> string
+  ('a Reachable_ptr.t, 'b Ctypes.structure) Ctypes.field -> string
 
 (**
  * Copy a string option to a pointer + length.
@@ -70,7 +91,7 @@ val make_string_option :
   string option ->
   ('a, [ `Struct ]) Ctypes.structured ->
   (Unsigned.ULong.t, ('a, [ `Struct ]) Ctypes.structured) Ctypes.field ->
-  ('b Ctypes.ptr, ('a, [ `Struct ]) Ctypes.structured) Ctypes.field -> unit
+  ('b Reachable_ptr.t, ('a, [ `Struct ]) Ctypes.structured) Ctypes.field -> unit
 
 (**
  * Make a string option out of a pointer + length.
@@ -80,7 +101,7 @@ val make_string_option :
 val view_string_option :
   ('a, [ `Struct ]) Ctypes.structured ->
   (ulong, 'a Ctypes.structure) Ctypes.field ->
-  ('b Ctypes.ptr, ('a, [ `Struct ]) Ctypes.structured) Ctypes.field ->
+  ('b Reachable_ptr.t, ('a, [ `Struct ]) Ctypes.structured) Ctypes.field ->
   string option
 
 exception Buffer_overflow

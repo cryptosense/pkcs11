@@ -19,7 +19,7 @@ struct
 
   let (-:) typ label = smart_field t label typ
   let iv = array iv_size Pkcs11_CK_BYTE.typ -: "iv"
-  let pData = ptr Pkcs11_CK_BYTE.typ -: "pData"
+  let pData = Reachable_ptr.typ Pkcs11_CK_BYTE.typ -: "pData"
   let length = ulong -: "length"
   let () = seal t
 
@@ -47,7 +47,7 @@ struct
       data =
         string_from_ptr
           ~length:(getf t length |> Unsigned.ULong.to_int)
-          (getf t pData);
+          (Reachable_ptr.getf t pData);
     }
 
   let compare a b =

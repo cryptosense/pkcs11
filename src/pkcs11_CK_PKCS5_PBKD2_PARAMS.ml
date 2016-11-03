@@ -7,14 +7,14 @@ let t: t typ = structure "CK_PKCS5_PBKD2_DATA_PARAMS"
 
 let (-:) typ label = smart_field t label typ
 let saltSource = Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE.typ -: "saltSource"
-let pSaltSourceData = ptr void -: "pSaltSourceData"
+let pSaltSourceData = Reachable_ptr.typ void -: "pSaltSourceData"
 let ulSaltSourceDataLen = ulong -: "ulSaltSourceDataLen"
 let iterations = ulong -: "iterations"
 let prf = Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE.typ -: "prf"
-let pPrfData = ptr void -: "pPrfData"
+let pPrfData = Reachable_ptr.typ void -: "pPrfData"
 let ulPrfDataLen = ulong -: "ulPrfDataLen"
-let pPassword = ptr char -: "pPassword"
-let pPasswordLen = ptr ulong -: "pPasswordLen"
+let pPassword = Reachable_ptr.typ char -: "pPassword"
+let pPasswordLen = Reachable_ptr.typ ulong -: "pPasswordLen"
 let () = seal t
 
 type u =
@@ -37,8 +37,8 @@ let make (u: u): t =
   setf t iterations (Unsigned.ULong.of_int u.iterations);
   setf t prf @@ Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE.make u.prf;
   make_string_option u.prfData t ulPrfDataLen pPrfData;
-  setf t pPassword @@ ptr_from_string u.password;
-  setf t pPasswordLen @@ Ctypes.allocate ulong (
+  Reachable_ptr.setf t pPassword @@ ptr_from_string u.password;
+  Reachable_ptr.setf t pPasswordLen @@ Ctypes.allocate ulong (
     Unsigned.ULong.of_int @@ String.length u.password
   );
   t
@@ -50,8 +50,8 @@ let view (t: t): u =
   let prf = Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE.view @@ getf t prf in
   let prfData = view_string_option t ulPrfDataLen pPrfData in
   let password =
-    let pPassword = getf t pPassword in
-    let pPasswordLen = getf t pPasswordLen in
+    let pPassword = Reachable_ptr.getf t pPassword in
+    let pPasswordLen = Reachable_ptr.getf t pPasswordLen in
     let pPasswordLen = !@ pPasswordLen in
     string_from_ptr
       ~length: (Unsigned.ULong.to_int pPasswordLen)

@@ -8,13 +8,13 @@ let t : t typ = structure "CK_ECMQV_DERIVE_PARAMS"
 let (-:) typ label = smart_field t label typ
 let kdf              = Pkcs11_CK_EC_KDF_TYPE.t -: "kdf"
 let ulSharedDataLen  = ulong            -: "ulSharedDataLen"
-let pSharedData      = ptr char         -: "pSharedData"
+let pSharedData      = Reachable_ptr.typ char -: "pSharedData"
 let ulPublicDataLen  = ulong            -: "ulPublicDataLen"
-let pPublicData      = ptr char         -: "pPublicData"
+let pPublicData      = Reachable_ptr.typ char         -: "pPublicData"
 let ulPrivateDataLen = ulong            -: "ulPrivateDataLen"
 let hPrivateData     = Pkcs11_CK_OBJECT_HANDLE.typ -: "hPrivateData"
 let ulPublicDataLen2 = ulong            -: "ulPublicDataLen2"
-let pPublicData2     = ptr char         -: "pPublicData2"
+let pPublicData2     = Reachable_ptr.typ char -: "pPublicData2"
 let publicKey        = Pkcs11_CK_OBJECT_HANDLE.typ -: "publicKey"
 let () = seal t
 
