@@ -1,3 +1,21 @@
+v0.4.0 2016-11-03
+=================
+
+Breaking changes:
+
+- Changed the type of some low-level fields from `Ctypes.ptr` to
+  `Ctypes_helpers.Reachable_ptr.t`. Those can be accessed using the `setf` and
+  `getf` functions in the same module.
+- Make `Pkcs11_data.t` abstract.
+
+Fixes:
+
+- Fix several use-after-free bugs (#10)
+
+Build system:
+
+- Add merlin configuration (#11)
+
 v0.3.0 2016-10-18
 =================
 
