@@ -995,7 +995,6 @@ sig
   type pack = Pkcs11.CK_ATTRIBUTE_TYPE.pack = Pack : 'a t -> pack
     [@@deriving yojson]
 
-  val to_string : 'a t -> string
   val of_string : string -> pack
 
 

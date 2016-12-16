@@ -11,9 +11,6 @@ type u =
 
 let (==) a b = Unsigned.ULong.compare a b = 0
 
-let equal = (Pervasives.(=): u -> u -> bool)
-let compare = (Pervasives.compare: u -> u -> int)
-
 let to_string = function
   | CKP_PKCS5_PBKD2_HMAC_SHA1 -> "CKP_PKCS5_PBKD2_HMAC_SHA1"
 

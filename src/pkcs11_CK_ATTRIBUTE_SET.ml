@@ -33,12 +33,6 @@ let boolean =
     (function true -> Pkcs11_CK_BBOOL._CK_TRUE | false -> Pkcs11_CK_BBOOL._CK_FALSE)
     (Unsigned.ULong.of_int (sizeof uint8_t))
 
-let byte =
-  _setter
-    Ctypes.uint8_t
-    Unsigned.UInt8.of_int
-    (Unsigned.ULong.of_int (sizeof uint8_t))
-
 let ulong =
   _setter
     Ctypes.ulong

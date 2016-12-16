@@ -1,10 +1,5 @@
 type t = Pkcs11_CK_ULONG.t
 
-let compare = Unsigned.ULong.compare
-let equal (a:t) (b:t) = Unsigned.ULong.compare a b = 0
-
-let (==) a b = Unsigned.ULong.compare a b = 0
-
 let view_error n =
   Pkcs11_log.log @@ Printf.sprintf
     "Unknown CKU code: 0x%Lx" n

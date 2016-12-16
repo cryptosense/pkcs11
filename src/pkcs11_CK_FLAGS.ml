@@ -207,10 +207,6 @@ let flags_of_domain domain =
   try List.assoc domain pretty_string_mappings
   with Not_found -> []
 
-let pretty_string_of_flag domain flag =
-  try Some (List.assoc flag (flags_of_domain domain))
-  with Not_found -> None
-
 let split_with_string domain flags : ((t * string) list * t) =
   let expected_flags = flags_of_domain domain in
   let (split_flags, remaining) =

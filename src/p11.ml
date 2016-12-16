@@ -59,7 +59,6 @@ struct
   let of_yojson = ulong_of_yojson
   let compare = Unsigned.ULong.compare
   let typ = ulong_typ "object_handle"
-  let of_raw x = x
 end
 
 module HW_feature_type =
