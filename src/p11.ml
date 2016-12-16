@@ -99,12 +99,9 @@ module Slot = struct
   let invalid_slot_msg slot =
     let slot_type, value = to_string slot in
       Printf.sprintf
-        "No %s matches %s. \
-         To display information about slots run \"./cs info -S\"."
+        "No %s matches %s."
         slot_type value
 end
-
-exception Invalid_slot of Slot.t
 
 module Slot_id =
 struct
@@ -2456,7 +2453,7 @@ sig
   val initialize : unit -> unit
   val finalize : unit -> unit
   val get_info : unit -> Info.t
-  val get_slot : Slot.t -> Slot_id.t
+  val get_slot : Slot.t -> (Slot_id.t, string) Result.result
   val get_slot_list : bool -> Slot_id.t list
   val get_slot_info : slot: Slot_id.t -> Slot_info.t
   val get_token_info : slot: Slot_id.t -> Token_info.t
@@ -2643,8 +2640,8 @@ struct
     let slot_list = get_slot_list false in
     let predicate = find_slot slot in
     match findi_option predicate slot_list with
-    | Some s -> s
-    | None -> raise (Invalid_slot slot)
+    | Some s -> Result.Ok s
+    | None -> Result.Error (invalid_slot_msg slot)
 
   let get_mechanism_list: slot: Slot_id.t -> Mechanism_type.t list t =
     fun ~slot ->
