@@ -1,3 +1,20 @@
+v0.5.0 2016-12-16
+=================
+
+Breaking changes:
+
+- `get_slot` return a result instead of raising an exception (#16)
+- Make `P11.Mechanism.key_type` return an option (#17)
+
+Cleanup:
+
+- Fix warning 32 (#18)
+- Fix warning 52 (#15)
+
+Tests:
+
+- Add tests for the bigint module (#14)
+
 v0.4.0 2016-11-03
 =================
 
