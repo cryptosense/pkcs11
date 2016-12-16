@@ -2636,7 +2636,8 @@ struct
                  trim token_info.Token_info.label = trim s)
               slot_list
     with
-      | Failure "nth" | Invalid_argument "List.nth"
+      | Failure _ (* nth *)
+      | Invalid_argument _ (* nth *)
       | Not_found (* List.find *)
         -> raise (Invalid_slot slot)
 
