@@ -677,8 +677,6 @@ module Fake (X : sig end): RAW = struct
       | Ctypes_static.Function (ty, fn) -> fun _x -> return fn
     in return
 
-  let ok = CK_RV._CKR_OK
-  let err = CK_RV._CKR_FUNCTION_FAILED
   let nimplem = CK_RV._CKR_FUNCTION_NOT_SUPPORTED
 
   let declare field typ = return nimplem typ

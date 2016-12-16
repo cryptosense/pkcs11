@@ -16,10 +16,6 @@ let make = function
   | CKD_NULL     -> _CKD_NULL
   | CKD_SHA1_KDF -> _CKD_SHA1_KDF
 
-let to_string = function
-  | CKD_NULL     -> "CKD_NULL"
-  | CKD_SHA1_KDF -> "CKD_SHA1_KDF"
-
 let view ul =
   if ul = _CKD_NULL     then CKD_NULL
   else if ul = _CKD_SHA1_KDF then CKD_SHA1_KDF
