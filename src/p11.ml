@@ -2612,41 +2612,37 @@ struct
     let rv, info = c_GetTokenInfo ~slot in
     check_ckr rv info
 
-  let nth_option l n =
-    try Some (List.nth l n) with
-    | Failure _
-    | Invalid_argument _ -> None
+  let findi_option p l =
+    let rec go i = function
+      | [] -> None
+      | x::_ when p i x -> Some x
+      | _::xs -> go (i+1) xs
+    in
+    go 0 l
 
-  let find_option p l =
-    try Some (List.find p l) with
-    | Not_found -> None
+  let trimmed_eq a b =
+    let open Ctypes_helpers in
+    trim_and_quote a = trim_and_quote b
+
+  let find_slot slot_desc i slot =
+    let open Slot in
+    match slot_desc with
+    | Id id ->
+      Slot_id.equal slot @@ Unsigned.ULong.of_int id
+    | Index idx ->
+      idx = i
+    | Description s ->
+      let { Slot_info.slotDescription } = get_slot_info ~slot in
+      trimmed_eq slotDescription s
+    | Label s ->
+      let { Token_info.label } = get_token_info ~slot in
+      trimmed_eq label s
 
   let get_slot slot =
     let open Slot in
     let slot_list = get_slot_list false in
-    let trim = Ctypes_helpers.trim_and_quote in
-    let so =
-      match slot with
-        | Id i ->
-            let slot_id = Unsigned.ULong.of_int i in
-            find_option
-              (Slot_id.equal slot_id) slot_list
-        | Index i ->
-            nth_option slot_list i
-        | Description s ->
-            find_option
-              (fun slot ->
-                 let slot_info = get_slot_info ~slot in
-                 trim slot_info.Slot_info.slotDescription = trim s)
-              slot_list
-        | Label s ->
-            find_option
-              (fun slot ->
-                 let token_info = get_token_info ~slot in
-                 trim token_info.Token_info.label = trim s)
-              slot_list
-    in
-    match so with
+    let predicate = find_slot slot in
+    match findi_option predicate slot_list with
     | Some s -> s
     | None -> raise (Invalid_slot slot)
 
