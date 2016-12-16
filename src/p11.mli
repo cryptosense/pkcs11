@@ -50,10 +50,7 @@ sig
 
   val default: t
   val to_string: t -> string * string
-  val invalid_slot_msg: t -> string
 end
-
-exception Invalid_slot of Slot.t
 
 module Slot_id :
 sig
@@ -1180,7 +1177,7 @@ sig
   val initialize : unit -> unit
   val finalize : unit -> unit
   val get_info : unit -> Info.t
-  val get_slot: Slot.t -> Slot_id.t
+  val get_slot: Slot.t -> (Slot_id.t, string) Result.result
   val get_slot_list : bool -> Slot_id.t list
   val get_slot_info : slot: Slot_id.t -> Slot_info.t
   val get_token_info : slot: Slot_id.t -> Token_info.t
