@@ -2612,34 +2612,43 @@ struct
     let rv, info = c_GetTokenInfo ~slot in
     check_ckr rv info
 
+  let nth_option l n =
+    try Some (List.nth l n) with
+    | Failure _
+    | Invalid_argument _ -> None
+
+  let find_option p l =
+    try Some (List.find p l) with
+    | Not_found -> None
+
   let get_slot slot =
     let open Slot in
     let slot_list = get_slot_list false in
     let trim = Ctypes_helpers.trim_and_quote in
-    try
+    let so =
       match slot with
         | Id i ->
             let slot_id = Unsigned.ULong.of_int i in
-            List.find (Slot_id.equal slot_id) slot_list
+            find_option
+              (Slot_id.equal slot_id) slot_list
         | Index i ->
-            List.nth slot_list i
+            nth_option slot_list i
         | Description s ->
-            List.find
+            find_option
               (fun slot ->
                  let slot_info = get_slot_info ~slot in
                  trim slot_info.Slot_info.slotDescription = trim s)
               slot_list
         | Label s ->
-            List.find
+            find_option
               (fun slot ->
                  let token_info = get_token_info ~slot in
                  trim token_info.Token_info.label = trim s)
               slot_list
-    with
-      | Failure _ (* nth *)
-      | Invalid_argument _ (* nth *)
-      | Not_found (* List.find *)
-        -> raise (Invalid_slot slot)
+    in
+    match so with
+    | Some s -> s
+    | None -> raise (Invalid_slot slot)
 
   let get_mechanism_list: slot: Slot_id.t -> Mechanism_type.t list t =
     fun ~slot ->
