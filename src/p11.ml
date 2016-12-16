@@ -1096,32 +1096,27 @@ struct
   let is k m  = P11_mechanisms.is k (mechanism_type m)
   let kinds m = P11_mechanisms.kinds (mechanism_type m)
 
-  exception Undefined_key_type
-
   let key_type = function
+    | CKM_AES_KEY_GEN
+      -> Some Key_type.CKK_AES
+    | CKM_DES_KEY_GEN
+      -> Some Key_type.CKK_DES
+    | CKM_DES3_KEY_GEN
+      -> Some Key_type.CKK_DES3
+    | CKM_RSA_PKCS_KEY_PAIR_GEN
+      -> Some Key_type.CKK_RSA
+    | CKM_RSA_X9_31_KEY_PAIR_GEN
+      -> Some Key_type.CKK_RSA
+    | CKM_EC_KEY_PAIR_GEN
+      -> Some Key_type.CKK_EC
     | CKM_SHA_1
     | CKM_SHA224
     | CKM_SHA256
     | CKM_SHA512
     | CKM_MD5
-      -> raise Undefined_key_type
-    | CKM_AES_KEY_GEN
-      -> Key_type.CKK_AES
-    | CKM_DES_KEY_GEN
-      -> Key_type.CKK_DES
-    | CKM_DES3_KEY_GEN
-      -> Key_type.CKK_DES3
-    | CKM_RSA_PKCS_KEY_PAIR_GEN
-      ->  Key_type.CKK_RSA
-    | CKM_RSA_X9_31_KEY_PAIR_GEN
-      -> Key_type.CKK_RSA
-    | CKM_EC_KEY_PAIR_GEN
-      -> Key_type.CKK_EC
     | CKM_RSA_PKCS
     | CKM_RSA_X_509
-      -> raise Undefined_key_type
     | CKM_RSA_PKCS_OAEP _
-      -> raise Undefined_key_type
     | CKM_RSA_PKCS_PSS _
     | CKM_SHA1_RSA_PKCS
     | CKM_SHA224_RSA_PKCS
@@ -1133,57 +1128,40 @@ struct
     | CKM_SHA256_RSA_PKCS_PSS _
     | CKM_SHA384_RSA_PKCS_PSS _
     | CKM_SHA512_RSA_PKCS_PSS _
-      -> raise Undefined_key_type
     | CKM_ECDSA
     | CKM_ECDSA_SHA1
     | CKM_ECDH1_DERIVE _
     | CKM_ECDH1_COFACTOR_DERIVE _
     | CKM_ECMQV_DERIVE _
-      -> raise Undefined_key_type
     | CKM_DES_ECB
     | CKM_DES_CBC _
     | CKM_DES_CBC_PAD _
-      -> raise Undefined_key_type
     | CKM_DES3_ECB
     | CKM_DES3_CBC _
     | CKM_DES3_CBC_PAD _
-      -> raise Undefined_key_type
     | CKM_AES_ECB
     | CKM_AES_CBC _
     | CKM_AES_CBC_PAD _
-      -> raise Undefined_key_type
     | CKM_DES_MAC
     | CKM_DES_MAC_GENERAL _
-      -> raise Undefined_key_type
     | CKM_DES3_MAC
     | CKM_DES3_MAC_GENERAL _
-      -> raise Undefined_key_type
     | CKM_AES_MAC
     | CKM_AES_MAC_GENERAL _
-      -> raise Undefined_key_type
     | CKM_AES_ECB_ENCRYPT_DATA _
     | CKM_AES_CBC_ENCRYPT_DATA _
-      -> raise Undefined_key_type
     | CKM_DES_ECB_ENCRYPT_DATA _
     | CKM_DES_CBC_ENCRYPT_DATA _
-      -> raise Undefined_key_type
     | CKM_DES3_ECB_ENCRYPT_DATA _
     | CKM_DES3_CBC_ENCRYPT_DATA _
-      -> raise Undefined_key_type
     | CKM_CONCATENATE_BASE_AND_DATA _
     | CKM_CONCATENATE_DATA_AND_BASE _
     | CKM_EXTRACT_KEY_FROM_KEY _
     | CKM_CONCATENATE_BASE_AND_KEY _
-      (* TODO: Note sure about those four: probably the length matters.
-         What's certain is that RSA key pairs cannot be concatenated, nor
-         xor'ed. *)
-      -> raise Undefined_key_type
     | CKM_XOR_BASE_AND_DATA _
-      -> raise Undefined_key_type
-    | CKM_PKCS5_PBKD2 _ ->
-        raise Undefined_key_type
+    | CKM_PKCS5_PBKD2 _
     | CKM_CS_UNKNOWN _ ->
-        raise Undefined_key_type
+        None
 
   let to_string x = mechanism_type x |> Mechanism_type.to_string
   let pp fmt m = Format.fprintf fmt "%s" @@ to_string m
