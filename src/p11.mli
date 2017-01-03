@@ -14,6 +14,7 @@ sig
   val compare : t -> t -> int
 
   val typ: t Record.Type.t
+  [@@deprecated "Please use yojson functions directly"]
 end
 
 module Session_handle :
@@ -22,6 +23,7 @@ sig
   [@@deriving yojson]
   val to_string: t -> string
   val typ: t Record.Type.t
+  [@@deprecated "Please use yojson functions directly"]
   val equal: t -> t -> bool
   val hash: t -> int
 end
@@ -32,6 +34,7 @@ sig
   val to_string: t -> string
   val compare: t -> t -> int
   val typ: t Record.Type.t
+  [@@deprecated "Please use yojson functions directly"]
 end
 
 module HW_feature_type :
@@ -61,6 +64,7 @@ sig
   val equal : t -> t -> bool
   val hash : t -> int
   val typ : t Record.Type.t
+  [@@deprecated "Please use yojson functions directly"]
 end
 
 module Flags :
@@ -153,6 +157,7 @@ sig
   val of_string : string -> t
   val to_string : t -> string
   val typ : t Record.Type.t
+  [@@deprecated "Please use yojson functions directly"]
 end
 
 module Key_type :
@@ -199,6 +204,7 @@ sig
   val of_string : string -> t
   val to_string : t -> string
   val typ: t Record.Type.t
+  [@@deprecated "Please use yojson functions directly"]
 end
 
 module Version :
@@ -572,6 +578,7 @@ sig
   val elements : t list
 
   val typ : t Record.Type.t
+  [@@deprecated "Please use yojson functions directly"]
 end
 
 module Key_gen_mechanism : sig
@@ -580,6 +587,7 @@ module Key_gen_mechanism : sig
     | CK_UNAVAILABLE_INFORMATION  [@@deriving yojson]
 
   val typ:t Record.Type.t
+  [@@deprecated "Please use yojson functions directly"]
 end
 
 module RSA_PKCS_MGF_type :
@@ -730,6 +738,7 @@ sig
   val pp : Format.formatter -> t -> unit
 
   val typ : t Record.Type.t
+  [@@deprecated "Please use yojson functions directly"]
   val of_raw : Pkcs11.CK_MECHANISM.t -> t
 
   (** Kinds are "tags" on mechanisms which describe how they can be
@@ -801,6 +810,7 @@ sig
   val to_strings:  t -> string list
   val flags_to_string : Flags.t -> string
   val typ : t Record.Type.t
+  [@@deprecated "Please use yojson functions directly"]
 end
 
 module Token_info :
@@ -832,6 +842,7 @@ sig
   val to_strings : t -> string list
   val flags_to_string : Flags.t -> string
   val typ : t Record.Type.t
+  [@@deprecated "Please use yojson functions directly"]
 end
 
 module Slot_info :
@@ -850,6 +861,7 @@ sig
   val flags_to_string : Flags.t -> string
 
   val typ : t Record.Type.t
+  [@@deprecated "Please use yojson functions directly"]
 end
 
 module Mechanism_info :
@@ -871,6 +883,7 @@ sig
   val allowed_flags : Flags.t
 
   val typ : t Record.Type.t
+  [@@deprecated "Please use yojson functions directly"]
 end
 
 module Session_info :
@@ -886,6 +899,7 @@ sig
   val to_string : ?newlines: bool -> ?indent: string -> t -> string
   val to_strings : t -> string list
   val typ : t Record.Type.t
+  [@@deprecated "Please use yojson functions directly"]
 end
 
 module Attribute_type :
@@ -1027,6 +1041,7 @@ sig
   val compare : t -> t -> int
 
   val typ : t Record.Type.t
+  [@@deprecated "Please use yojson functions directly"]
 end
 
 
@@ -1076,6 +1091,7 @@ sig
   val to_string : t -> string
   val pp : Format.formatter -> t -> unit
   val typ : t Record.Type.t
+  [@@deprecated "Please use yojson functions directly"]
 
   (** Return the value of the first occurrence of an attribute. *)
   val get : t -> 'a Attribute_type.t -> 'a option
