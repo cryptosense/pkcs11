@@ -29,3 +29,4 @@ val of_z : Z.t -> t
 val to_z : t -> Z.t
 
 val typ : t Record.Type.t
+[@@deprecated "Please use yojson functions directly"]
