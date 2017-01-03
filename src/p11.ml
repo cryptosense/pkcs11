@@ -45,6 +45,8 @@ module Data = Pkcs11_hex_data
 module Session_handle =
 struct
   type t = Pkcs11.CK_SESSION_HANDLE.t
+  let of_yojson = ulong_of_yojson
+  let to_yojson = ulong_to_yojson
   let to_string = Unsigned.ULong.to_string
   let typ = ulong_typ "session_handle"
   let equal a b = Unsigned.ULong.compare a b = 0
