@@ -19,6 +19,7 @@ end
 module Session_handle :
 sig
   type t = Pkcs11.CK_SESSION_HANDLE.t
+  [@@deriving yojson]
   val to_string: t -> string
   val typ: t Record.Type.t
   val equal: t -> t -> bool
@@ -825,6 +826,7 @@ sig
       firmwareVersion : Version.t;
       utcTime : string;
     }
+  [@@deriving yojson]
   val ul_to_string : Unsigned.ULong.t -> string
   val to_string : ?newlines: bool -> ?indent: string -> t -> string
   val to_strings : t -> string list
@@ -880,6 +882,7 @@ sig
       flags : Flags.t;
       ulDeviceError : Unsigned.ULong.t;
     }
+  [@@deriving yojson]
   val to_string : ?newlines: bool -> ?indent: string -> t -> string
   val to_strings : t -> string list
   val typ : t Record.Type.t
