@@ -173,7 +173,7 @@ let key_type (m : Pkcs11.CK_MECHANISM_TYPE.u) : Pkcs11.CK_KEY_TYPE.u option =
     | CKM_PBE_SHA1_RC2_128_CBC  -> none
     | CKM_PBE_SHA1_RC2_40_CBC  -> none
 
-    | CKM_PKCS5_PBKD2  -> fail ()
+    | CKM_PKCS5_PBKD2  -> none
     | CKM_PBA_SHA1_WITH_SHA1_HMAC  -> fail ()
     | CKM_WTLS_PRE_MASTER_KEY_GEN  -> fail ()
     | CKM_WTLS_MASTER_KEY_DERIVE  -> fail ()
@@ -259,4 +259,4 @@ let key_type (m : Pkcs11.CK_MECHANISM_TYPE.u) : Pkcs11.CK_KEY_TYPE.u option =
     | CKM_DH_PKCS_PARAMETER_GEN  -> some CKK_DH
     | CKM_X9_42_DH_PARAMETER_GEN  -> some CKK_DH
     | CKM_VENDOR_DEFINED  -> fail ()
-    | CKM_CS_UNKNOWN _ -> fail ()
+    | CKM_CS_UNKNOWN _ -> none
