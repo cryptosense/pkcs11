@@ -743,7 +743,7 @@ sig
 
   (** Kinds are "tags" on mechanisms which describe how they can be
       used. *)
-  type kind = P11_mechanisms.kind =
+  type kind =
     | Encrypt                     (* Encrypt & Decrypt *)
     | Sign                        (* Sign & Verify *)
     | SignRecover                 (* Sign Recover & Verify recover *)
