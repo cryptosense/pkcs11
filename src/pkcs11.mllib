@@ -50,5 +50,4 @@ Pkcs11_CK_SESSION_HANDLE
 Pkcs11_CK_VOID
 Pkcs11_generated
 Pkcs11_bindings
-P11_mechanisms
 P11_keys_attributes

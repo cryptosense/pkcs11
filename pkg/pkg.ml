@@ -50,7 +50,6 @@ let api =
   ; "Pkcs11_CK_HW_FEATURE_TYPE"
   ; "Pkcs11_CK_SESSION_HANDLE"
   ; "Pkcs11_CK_VOID"
-  ; "P11_mechanisms"
   ; "P11_keys_attributes"
   ]
 
