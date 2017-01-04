@@ -2316,7 +2316,6 @@ struct
       template
     else
       attribute :: template
-  let (^::^) = set_attribute
 
   let remove_attribute attribute template =
     List.filter (fun x -> not (Attribute.equal_pack x attribute)) template
@@ -2331,11 +2330,9 @@ struct
 
   let union template1 template2 =
     List.fold_left
-      (fun template attribute -> attribute ^::^ template)
+      (fun template attribute -> set_attribute attribute template)
       template2
       (List.rev template1)
-
-  let (^@^) = union
 
   let only_attribute_types types template =
     List.fold_left (fun template attribute ->
@@ -2366,8 +2363,6 @@ struct
             end
     in
     aux types []
-
-  let (^-^) = except_attribute_types
 
   let correspond ~source ~tested =
     (* For all the elements of source, check if an element in tested

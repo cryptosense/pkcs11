@@ -1126,18 +1126,10 @@ sig
   (** Iterate one of the above operation. Same as List.fold_right*)
   val fold: ('a -> t -> t) -> 'a list -> t -> t
 
-  (** same as [set_attribute]  *)
-  val (^::^) : Attribute.pack -> t -> t
-      [@@deprecated "Please use set_attribute instead."]
-
   (** [union template1 template2] concatenates the templates. If an
       attribute is present in both [template1] and [template2], the
       value in [template1] is kept. *)
   val union : t -> t -> t
-
-  (** Same as [union] *)
-  val (^@^) : t -> t -> t
-      [@@deprecated "Please use union instead."]
 
   (** [only_attribute_types attr_types template] keeps only the
       attributes in [template] that are present in [attr_types]. *)
@@ -1151,10 +1143,6 @@ sig
       attribute type in the list l in [template]. Return [None] if one
       or several attribute types cannot be found in [template]. *)
   val find_attribute_types : Attribute_type.pack list -> t -> t option
-
-  (** Same as [except_attribute_types]. *)
-  val (^-^) : Attribute_type.pack list -> t -> t
-      [@@deprecated "Please use except_attribute_types instead."]
 
   (** [correspond source tested] check if [tested] match
       [source].
