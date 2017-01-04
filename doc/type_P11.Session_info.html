@@ -9,7 +9,6 @@
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Index of module types" rel=Appendix href="index_module_types.html">
 <link title="P11" rel="Chapter" href="P11.html">
-<link title="P11_mechanisms" rel="Chapter" href="P11_mechanisms.html">
 <link title="P11_keys_attributes" rel="Chapter" href="P11_keys_attributes.html">
 <link title="Pkcs11" rel="Chapter" href="Pkcs11.html">
 <link title="Pkcs11_CBC_ENCRYPT_DATA_PARAMS" rel="Chapter" href="Pkcs11_CBC_ENCRYPT_DATA_PARAMS.html">
@@ -71,6 +70,10 @@
 &nbsp;&nbsp;&nbsp;&nbsp;flags&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Flags</span>.t;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;ulDeviceError&nbsp;:&nbsp;<span class="constructor">Unsigned</span>.<span class="constructor">ULong</span>.t;<br>
 &nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_yojson&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Session_info</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Yojson</span>.<span class="constructor">Safe</span>.json<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;of_yojson&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Yojson</span>.<span class="constructor">Safe</span>.json&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">P11</span>.<span class="constructor">Session_info</span>.t&nbsp;<span class="constructor">Ppx_deriving_yojson_runtime</span>.error_or<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_string&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;?newlines:bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;?indent:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11</span>.<span class="constructor">Session_info</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_strings&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Session_info</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;list<br>

@@ -14,7 +14,6 @@
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Index of module types" rel=Appendix href="index_module_types.html">
 <link title="P11" rel="Chapter" href="P11.html">
-<link title="P11_mechanisms" rel="Chapter" href="P11_mechanisms.html">
 <link title="P11_keys_attributes" rel="Chapter" href="P11_keys_attributes.html">
 <link title="Pkcs11" rel="Chapter" href="Pkcs11.html">
 <link title="Pkcs11_CBC_ENCRYPT_DATA_PARAMS" rel="Chapter" href="Pkcs11_CBC_ENCRYPT_DATA_PARAMS.html">
@@ -120,18 +119,10 @@ Compares two normalized templates.<br>
 Iterate one of the above operation. Same as List.fold_right<br>
 </div>
 
-<pre><span id="VAL(^::^)"><span class="keyword">val</span> (^::^)</span> : <code class="type"><a href="P11.Attribute.html#TYPEpack">P11.Attribute.pack</a> -> <a href="P11.Template.html#TYPEt">t</a> -> <a href="P11.Template.html#TYPEt">t</a></code></pre><div class="info ">
-same as <code class="code">set_attribute</code><br>
-</div>
-
 <pre><span id="VALunion"><span class="keyword">val</span> union</span> : <code class="type"><a href="P11.Template.html#TYPEt">t</a> -> <a href="P11.Template.html#TYPEt">t</a> -> <a href="P11.Template.html#TYPEt">t</a></code></pre><div class="info ">
 <code class="code">union&nbsp;template1&nbsp;template2</code> concatenates the templates. If an
       attribute is present in both <code class="code">template1</code> and <code class="code">template2</code>, the
       value in <code class="code">template1</code> is kept.<br>
-</div>
-
-<pre><span id="VAL(^@^)"><span class="keyword">val</span> (^@^)</span> : <code class="type"><a href="P11.Template.html#TYPEt">t</a> -> <a href="P11.Template.html#TYPEt">t</a> -> <a href="P11.Template.html#TYPEt">t</a></code></pre><div class="info ">
-Same as <code class="code">union</code><br>
 </div>
 
 <pre><span id="VALonly_attribute_types"><span class="keyword">val</span> only_attribute_types</span> : <code class="type"><a href="P11.Attribute_type.html#TYPEpack">P11.Attribute_type.pack</a> list -> <a href="P11.Template.html#TYPEt">t</a> -> <a href="P11.Template.html#TYPEt">t</a></code></pre><div class="info ">
@@ -148,10 +139,6 @@ Same as <code class="code">union</code><br>
 <code class="code">find_attribute_types&nbsp;l&nbsp;template</code> look up for the value of each
       attribute type in the list l in <code class="code">template</code>. Return <code class="code"><span class="constructor">None</span></code> if one
       or several attribute types cannot be found in <code class="code">template</code>.<br>
-</div>
-
-<pre><span id="VAL(^-^)"><span class="keyword">val</span> (^-^)</span> : <code class="type"><a href="P11.Attribute_type.html#TYPEpack">P11.Attribute_type.pack</a> list -> <a href="P11.Template.html#TYPEt">t</a> -> <a href="P11.Template.html#TYPEt">t</a></code></pre><div class="info ">
-Same as <code class="code">except_attribute_types</code>.<br>
 </div>
 
 <pre><span id="VALcorrespond"><span class="keyword">val</span> correspond</span> : <code class="type">source:<a href="P11.Template.html#TYPEt">t</a> -> tested:<a href="P11.Template.html#TYPEt">t</a> -> bool</code></pre><div class="info ">
