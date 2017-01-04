@@ -1,3 +1,32 @@
+v0.6.0 2016-01-04
+=================
+
+Breaking changes:
+
+- Removed deprecated operator aliases (#22)
+- Remove the `P11_mechanisms` module (#23)
+  + `kinds` is moved to `P11`
+  + `key_type` can be replaced by `P11.Mechanism.key_type` (its results only
+    depend on the mechanism type)
+
+New features:
+
+- Add yojson functions to several modules (#20)
+
+Changes:
+
+- `P11.Mechanism.key_type` is extended to non-keygen mechanisms.
+
+Deprecated values:
+
+- Deprecate `typ` values from `records` (#21).
+  Users are expected to use the underlying `yojson` functions directly.
+  The `records` dependency should be dropped in the next release.
+
+Build system:
+
+- Use docker for travis builds (#19)
+
 v0.5.0 2016-12-16
 =================
 
