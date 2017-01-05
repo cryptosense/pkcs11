@@ -11,13 +11,6 @@ let ulong_of_yojson = function
 let ulong_to_yojson ulong =
   `String (Unsigned.ULong.to_string ulong)
 
-let ulong_typ name =
-  Record.Type.make
-    ~name
-    ~to_yojson:ulong_to_yojson
-    ~of_yojson:ulong_of_yojson
-    ()
-
 (**
     Build a of_json function out of a of_string function.
     The typename is used for the error message.
@@ -37,9 +30,6 @@ let of_json_string ~typename of_string json =
         end
     | _ -> err "Not a JSON string"
 
-let ulong =
-  ulong_typ "ulong"
-
 module Data = Pkcs11_hex_data
 
 module Session_handle =
@@ -48,7 +38,6 @@ struct
   let of_yojson = ulong_of_yojson
   let to_yojson = ulong_to_yojson
   let to_string = Unsigned.ULong.to_string
-  let typ = ulong_typ "session_handle"
   let equal a b = Unsigned.ULong.compare a b = 0
   let hash x = Unsigned.ULong.to_int x
 end
@@ -60,7 +49,6 @@ struct
   let to_yojson = ulong_to_yojson
   let of_yojson = ulong_of_yojson
   let compare = Unsigned.ULong.compare
-  let typ = ulong_typ "object_handle"
 end
 
 module HW_feature_type =
@@ -111,9 +99,8 @@ struct
   let to_string = Unsigned.ULong.to_string
   let equal a b = Unsigned.ULong.compare a b = 0
   let hash  = Unsigned.ULong.to_int
-  let typ = ulong_typ "slot_id"
-  let to_yojson = Record.Type.to_yojson typ
-  let of_yojson = Record.Type.of_yojson typ
+  let to_yojson = ulong_to_yojson
+  let of_yojson = ulong_of_yojson
 end
 
 module Flags =
@@ -177,13 +164,6 @@ struct
     `String (to_string object_class)
 
   let of_yojson = of_json_string ~typename:"object class" of_string
-
-  let typ =
-    Record.Type.make
-      ~name:"object_class"
-      ~of_yojson
-      ~to_yojson
-      ()
 end
 
 module Key_type =
@@ -230,13 +210,6 @@ struct
     `String (to_string key_type)
 
   let of_yojson = of_json_string ~typename:"key type" of_string
-
-  let typ =
-    Record.Type.make
-      ~name: "key_type"
-      ~to_yojson
-      ~of_yojson
-      ()
 end
 
 module Version =
@@ -615,13 +588,6 @@ struct
       `Null
 
   let of_yojson = of_json_string ~typename:"mechanism type" of_string
-
-  let typ =
-    Record.Type.make
-      ~name:"CK_MECHANISM_TYPE"
-      ~to_yojson
-      ~of_yojson
-      ()
 end
 
 module Key_gen_mechanism =
@@ -639,13 +605,6 @@ struct
       `Null
 
   let of_yojson = of_json_string ~typename:"keygen mechanism" of_string
-
-  let typ : t Record.Type.t =
-    Record.Type.make
-      ~name: "key_gen_mechanism"
-      ~to_yojson
-      ~of_yojson
-      ()
 end
 module RSA_PKCS_MGF_type =
 struct
@@ -682,8 +641,6 @@ struct
     }
     [@@deriving yojson]
 end
-
-let string_of_yojson = Record.Type.(of_yojson string)
 
 module AES_CBC_ENCRYPT_DATA_params =
 struct
@@ -1061,13 +1018,6 @@ struct
           Result.Error "Ill-formed mechanism"
 
   let to_yojson = to_json
-
-  let typ =
-    Record.Type.make
-      ~name: "mechanism"
-      ~to_yojson
-      ~of_yojson
-      ()
 
   let mechanism_type = Pkcs11.CK_MECHANISM.mechanism_type
   let compare = Pkcs11.CK_MECHANISM.compare
@@ -1508,13 +1458,6 @@ struct
       "libraryDescription", `String info.libraryDescription;
       "libraryVersion", Version.to_yojson info.libraryVersion;
     ]
-
-  let typ =
-    Record.Type.make
-      ~name: "CK_INFO"
-      ~to_yojson
-      ~of_yojson
-      ()
 end
 
 module Token_info =
@@ -1570,13 +1513,6 @@ struct
       "firmwareVersion", Version.to_yojson info.firmwareVersion;
       "utcTime", `String info.utcTime;
     ]
-
-  let typ =
-    Record.Type.make
-      ~name: "CK_TOKEN_INFO"
-      ~to_yojson
-      ~of_yojson
-      ()
 end
 
 module Slot_info =
@@ -1604,13 +1540,6 @@ struct
       "hardwareVersion", Version.to_yojson info.hardwareVersion;
       "firmwareVersion", Version.to_yojson info.firmwareVersion;
     ]
-
-  let typ =
-    Record.Type.make
-      ~name: "CK_SLOT_INFO"
-      ~to_yojson
-      ~of_yojson
-      ()
 end
 
 module Mechanism_info =
@@ -1636,13 +1565,6 @@ struct
       "flags",
       Flags.to_json ~pretty:flags_to_string info.flags;
     ]
-
-  let typ =
-    Record.Type.make
-      ~name: "CK_MECHANISM_INFO"
-      ~to_yojson
-      ~of_yojson
-      ()
 end
 
 module Session_info =
@@ -1667,13 +1589,6 @@ struct
       Flags.to_json ~pretty: Pkcs11.CK_SESSION_INFO.string_of_flags info.flags;
       "ulDeviceError", `String (info.ulDeviceError |> Unsigned.ULong.to_string);
     ]
-
-  let typ =
-    Record.Type.make
-      ~name: "CK_SESSION_INFO"
-      ~to_yojson
-      ~of_yojson
-      ()
 end
 
 module Attribute_type =
@@ -2102,7 +2017,7 @@ struct
           | `String "CK_FALSE" -> Result.Ok false
           | _ -> Result.Error "Not a CK_BBOOL"
         ) in
-      let p_string = parse_using string_of_yojson in
+      let p_string = parse_using [%of_yojson: string] in
       let p_data = parse_using Data.of_yojson in
       let p_key_type = parse_using Key_type.of_yojson in
       let p_ulong = parse_using ulong_of_yojson in
@@ -2517,13 +2432,6 @@ struct
           else cmp
 
   let remove_duplicates l = remove_duplicates l []
-
-  let typ =
-    Record.Type.make
-      ~name: "attribute_type_list"
-      ~to_yojson
-      ~of_yojson
-      ()
 end
 
 module Template =
@@ -2548,13 +2456,6 @@ struct
             map_bind Attribute.pack_of_yojson [] attributes
           end
       | _ -> Result.Error "Ill-formed template"
-
-  let typ =
-    Record.Type.make
-      ~name: "template"
-      ~to_yojson
-      ~of_yojson
-      ()
 
   let rec get : type a . t -> a Attribute_type.t -> a option = fun template x ->
     match template with

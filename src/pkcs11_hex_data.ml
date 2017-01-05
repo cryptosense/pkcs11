@@ -44,10 +44,3 @@ let of_yojson =
         end
     | `String _ -> err "string does not start with \"0x\""
     | _ -> err "not a string"
-
-let typ =
-  Record.Type.make
-    ~name:"data"
-    ~to_yojson
-    ~of_yojson
-    ()

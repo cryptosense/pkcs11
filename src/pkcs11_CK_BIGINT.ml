@@ -43,10 +43,3 @@ let zero = Z.zero
 
 let of_z z = z
 let to_z z = z
-
-let typ =
-  Record.Type.make
-    ~name:"big_int"
-    ~to_yojson
-    ~of_yojson
-    ()
