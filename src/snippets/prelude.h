@@ -10,7 +10,7 @@
 #include <windows.h>
 #else
 
-#if defined(__GLIBC__) || (defined(__sun) && defined(__SVR4))
+#if defined(__linux__) || (defined(__sun) && defined(__SVR4))
 #include <dlfcn.h>
 #endif
 #ifdef _AIX
