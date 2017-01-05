@@ -1,5 +1,5 @@
 P11
-P11_keys_attributes
+P11_key_attributes
 Pkcs11
 Pkcs11_CBC_ENCRYPT_DATA_PARAMS
 Pkcs11_CK_ATTRIBUTE
