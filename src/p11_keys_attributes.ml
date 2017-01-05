@@ -165,7 +165,7 @@ let kind_attributes : P11.Attribute_types.t Kind_map.t=
   |> add `Generic_secret generic_secret
   |> add `Fixed_length_secret fixed_length_secret
 
-let possibles kind =
+let possible kind =
   try
     (Kind_map.find (Internal_kind.of_kind kind) kind_attributes)
   with Not_found -> []

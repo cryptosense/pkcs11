@@ -18,4 +18,4 @@ type kind =
     kind is a high level kind (Secret for example), it is possible
     that some other attribute can be given but not necessarily to all
     of the object of this kind. *)
-val possibles : kind -> P11.Attribute_types.t
+val possible : kind -> P11.Attribute_types.t
