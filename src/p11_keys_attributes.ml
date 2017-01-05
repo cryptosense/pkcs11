@@ -7,7 +7,7 @@ type kind =
   | `RSA_private
   | `RSA_public
   | `Secret
-  ] [@@deriving ord]
+  ]
 
 (** Representation used internally, it prevents repetitions. *)
 module Internal_kind =
@@ -23,24 +23,6 @@ struct
       | `Generic_secret
       | `Fixed_length_secret
     ] [@@deriving ord]
-
-  let to_kinds : t -> kind list = function
-    | `Secret -> [`Secret]
-    | `RSA_public -> [`RSA_public]
-    | `RSA_private -> [`RSA_private]
-    | `EC_public -> [`EC_public]
-    | `EC_private -> [`EC_private]
-    | `Generic_secret ->
-        [
-          `Secret;
-          `AES;
-        ]
-    | `Fixed_length_secret ->
-        [
-          `Secret;
-          `DES;
-          `DES3;
-        ]
 
   let of_kind : kind -> t = function
     | `Secret -> `Secret
@@ -187,22 +169,3 @@ let possibles kind =
   try
     (Kind_map.find (Internal_kind.of_kind kind) kind_attributes)
   with Not_found -> []
-
-let kinds attribute =
-  Kind_map.filter
-    (fun _ x -> List.exists (P11.Attribute_type.equal_pack attribute) x)
-    kind_attributes
-  |> Kind_map.bindings
-  |> List.map fst
-  |> List.fold_left (fun acc x -> (Internal_kind.to_kinds x)@acc) []
-  |> List.sort_uniq compare_kind
-
-let is kinds attribute =
-  List.for_all
-    (fun kind ->
-       try
-         List.exists (P11.Attribute_type.equal_pack attribute)
-         @@ Kind_map.find (Internal_kind.of_kind kind) kind_attributes
-       with Not_found -> false
-    )
-    kinds
