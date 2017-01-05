@@ -4,7 +4,6 @@ true: package(hex)
 true: package(key-parsers)
 true: package(ppx_deriving.std)
 true: package(ppx_deriving_yojson)
-true: package(records)
 <src>: include
 <include>: include
 <src/*>: depend(include/pkcs11.h)
