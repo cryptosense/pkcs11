@@ -1601,21 +1601,8 @@ struct
     | CKA_TOKEN : bool t
     | CKA_PRIVATE : bool t
     | CKA_LABEL : string t
-    | CKA_APPLICATION : not_implemented t
     | CKA_VALUE : string t
-    | CKA_OBJECT_ID : not_implemented t
-    | CKA_CERTIFICATE_TYPE : not_implemented t
-    | CKA_ISSUER : not_implemented t
-    | CKA_SERIAL_NUMBER : not_implemented t
-    | CKA_AC_ISSUER : not_implemented t
-    | CKA_OWNER : not_implemented t
-    | CKA_ATTR_TYPES : not_implemented t
     | CKA_TRUSTED : bool t
-    | CKA_CERTIFICATE_CATEGORY : not_implemented t
-    | CKA_JAVA_MIDP_SECURITY_DOMAIN : not_implemented t
-    | CKA_URL : not_implemented t
-    | CKA_HASH_OF_SUBJECT_PUBLIC_KEY : not_implemented t
-    | CKA_HASH_OF_ISSUER_PUBLIC_KEY : not_implemented t
     | CKA_CHECK_VALUE : not_implemented t
     | CKA_KEY_TYPE : Pkcs11.CK_KEY_TYPE.u t
     | CKA_SUBJECT : string t
@@ -1643,11 +1630,8 @@ struct
     | CKA_COEFFICIENT : Pkcs11.CK_BIGINT.t t
     | CKA_PRIME : Pkcs11.CK_BIGINT.t t
     | CKA_SUBPRIME : Pkcs11.CK_BIGINT.t t
-    | CKA_BASE : not_implemented t
     | CKA_PRIME_BITS : Pkcs11.CK_ULONG.t t
     | CKA_SUBPRIME_BITS : Pkcs11.CK_ULONG.t t
-    (* | CKA_SUB_PRIME_BITS : not_implemented t *)
-    | CKA_VALUE_BITS : not_implemented t
     | CKA_VALUE_LEN : Pkcs11.CK_ULONG.t t
     | CKA_EXTRACTABLE : bool t
     | CKA_LOCAL : bool t
@@ -1658,45 +1642,11 @@ struct
     (* | CKA_ECDSA_PARAMS : string t *)
     | CKA_EC_PARAMS : Key_parsers.Asn1.EC.Params.t t
     | CKA_EC_POINT : Key_parsers.Asn1.EC.point t
-    | CKA_SECONDARY_AUTH : not_implemented t
-    | CKA_AUTH_PIN_FLAGS : not_implemented t
     | CKA_ALWAYS_AUTHENTICATE : bool t
     | CKA_WRAP_WITH_TRUSTED : bool t
     | CKA_WRAP_TEMPLATE : not_implemented t
     | CKA_UNWRAP_TEMPLATE : not_implemented t
-    | CKA_OTP_FORMAT : not_implemented t
-    | CKA_OTP_LENGTH : not_implemented t
-    | CKA_OTP_TIME_INTERVAL : not_implemented t
-    | CKA_OTP_USER_FRIENDLY_MODE : not_implemented t
-    | CKA_OTP_CHALLENGE_REQUIREMENT : not_implemented t
-    | CKA_OTP_TIME_REQUIREMENT : not_implemented t
-    | CKA_OTP_COUNTER_REQUIREMENT : not_implemented t
-    | CKA_OTP_PIN_REQUIREMENT : not_implemented t
-    | CKA_OTP_COUNTER : not_implemented t
-    | CKA_OTP_TIME : not_implemented t
-    | CKA_OTP_USER_IDENTIFIER : not_implemented t
-    | CKA_OTP_SERVICE_IDENTIFIER : not_implemented t
-    | CKA_OTP_SERVICE_LOGO : not_implemented t
-    | CKA_OTP_SERVICE_LOGO_TYPE : not_implemented t
-    | CKA_HW_FEATURE_TYPE : not_implemented t
-    | CKA_RESET_ON_INIT : not_implemented t
-    | CKA_HAS_RESET : not_implemented t
-    | CKA_PIXEL_X : not_implemented t
-    | CKA_PIXEL_Y : not_implemented t
-    | CKA_RESOLUTION : not_implemented t
-    | CKA_CHAR_ROWS : not_implemented t
-    | CKA_CHAR_COLUMNS : not_implemented t
-    | CKA_COLOR : not_implemented t
-    | CKA_BITS_PER_PIXEL : not_implemented t
-    | CKA_CHAR_SETS : not_implemented t
-    | CKA_ENCODING_METHODS : not_implemented t
-    | CKA_MIME_TYPES : not_implemented t
-    | CKA_MECHANISM_TYPE : not_implemented t
-    | CKA_REQUIRED_CMS_ATTRIBUTES : not_implemented t
-    | CKA_DEFAULT_CMS_ATTRIBUTES : not_implemented t
-    | CKA_SUPPORTED_CMS_ATTRIBUTES : not_implemented t
     | CKA_ALLOWED_MECHANISMS : not_implemented t
-    | CKA_VENDOR_DEFINED : not_implemented t
     | CKA_CS_UNKNOWN: Unsigned.ULong.t -> not_implemented t
 
   type pack = Pkcs11.CK_ATTRIBUTE_TYPE.pack = Pack : 'a t -> pack
@@ -1874,8 +1824,6 @@ struct
           p_mechanism_type "CKA_KEY_GEN_MECHANISM" param
       | CKA_MODIFIABLE, param ->
           p_bool "CKA_MODIFIABLE" param
-      (* | CKA_ECDSA_PARAMS, param -> *)
-      (*     p_data "CKA_ECDSA_PARAMS" param *)
       | CKA_EC_PARAMS, param ->
           p_ec_params "CKA_EC_PARAMS" param
       | CKA_EC_POINT, param ->
@@ -1884,122 +1832,22 @@ struct
           p_bool "CKA_ALWAYS_AUTHENTICATE" param
       | CKA_WRAP_WITH_TRUSTED, param ->
           p_bool "CKA_WRAP_WITH_TRUSTED" param
-      | CKA_APPLICATION, NOT_IMPLEMENTED param ->
-          p_data "CKA_APPLICATION" param
-      | CKA_OBJECT_ID, NOT_IMPLEMENTED param ->
-          p_data "CKA_OBJECT_ID" param
-      | CKA_CERTIFICATE_TYPE, NOT_IMPLEMENTED param ->
-          p_data "CKA_CERTIFICATE_TYPE" param
-      | CKA_ISSUER, NOT_IMPLEMENTED param ->
-          p_data "CKA_ISSUER" param
-      | CKA_SERIAL_NUMBER, NOT_IMPLEMENTED param ->
-          p_data "CKA_SERIAL_NUMBER" param
-      | CKA_AC_ISSUER, NOT_IMPLEMENTED param ->
-          p_data "CKA_AC_ISSUER" param
-      | CKA_OWNER, NOT_IMPLEMENTED param ->
-          p_data "CKA_OWNER" param
-      | CKA_ATTR_TYPES, NOT_IMPLEMENTED param ->
-          p_data "CKA_ATTR_TYPES" param
-      | CKA_CERTIFICATE_CATEGORY, NOT_IMPLEMENTED param ->
-          p_data "CKA_CERTIFICATE_CATEGORY" param
-      | CKA_JAVA_MIDP_SECURITY_DOMAIN, NOT_IMPLEMENTED param ->
-          p_data "CKA_JAVA_MIDP_SECURITY_DOMAIN" param
-      | CKA_URL, NOT_IMPLEMENTED param ->
-          p_data "CKA_URL" param
-      | CKA_HASH_OF_SUBJECT_PUBLIC_KEY, NOT_IMPLEMENTED param ->
-          p_data "CKA_HASH_OF_SUBJECT_PUBLIC_KEY" param
-      | CKA_HASH_OF_ISSUER_PUBLIC_KEY, NOT_IMPLEMENTED param ->
-          p_data "CKA_HASH_OF_ISSUER_PUBLIC_KEY" param
       | CKA_CHECK_VALUE, NOT_IMPLEMENTED param ->
           p_data "CKA_CHECK_VALUE" param
       | CKA_START_DATE, NOT_IMPLEMENTED param ->
           p_data "CKA_START_DATE" param
       | CKA_END_DATE, NOT_IMPLEMENTED param ->
           p_data "CKA_END_DATE" param
-      | CKA_BASE, NOT_IMPLEMENTED param ->
-          p_data "CKA_BASE" param
       | CKA_PRIME_BITS, param ->
           p_ulong "CKA_PRIME_BITS" param
       | CKA_SUBPRIME_BITS, param ->
           p_ulong "CKA_SUBPRIME_BITS" param
-      (* | CKA_SUB_PRIME_BITS, NOT_IMPLEMENTED param -> *)
-      (*     p_data "CKA_SUB_PRIME_BITS" param *)
-      | CKA_VALUE_BITS, NOT_IMPLEMENTED param ->
-          p_data "CKA_VALUE_BITS" param
-      | CKA_SECONDARY_AUTH, NOT_IMPLEMENTED param ->
-          p_data "CKA_SECONDARY_AUTH" param
-      | CKA_AUTH_PIN_FLAGS, NOT_IMPLEMENTED param ->
-          p_data "CKA_AUTH_PIN_FLAGS" param
       | CKA_WRAP_TEMPLATE, NOT_IMPLEMENTED param ->
           p_data "CKA_WRAP_TEMPLATE" param
       | CKA_UNWRAP_TEMPLATE, NOT_IMPLEMENTED param ->
           p_data "CKA_UNWRAP_TEMPLATE" param
-      | CKA_OTP_FORMAT, NOT_IMPLEMENTED param ->
-          p_data "CKA_OTP_FORMAT" param
-      | CKA_OTP_LENGTH, NOT_IMPLEMENTED param ->
-          p_data "CKA_OTP_LENGTH" param
-      | CKA_OTP_TIME_INTERVAL, NOT_IMPLEMENTED param ->
-          p_data "CKA_OTP_TIME_INTERVAL" param
-      | CKA_OTP_USER_FRIENDLY_MODE, NOT_IMPLEMENTED param ->
-          p_data "CKA_OTP_USER_FRIENDLY_MODE" param
-      | CKA_OTP_CHALLENGE_REQUIREMENT, NOT_IMPLEMENTED param ->
-          p_data "CKA_OTP_CHALLENGE_REQUIREMENT" param
-      | CKA_OTP_TIME_REQUIREMENT, NOT_IMPLEMENTED param ->
-          p_data "CKA_OTP_TIME_REQUIREMENT" param
-      | CKA_OTP_COUNTER_REQUIREMENT, NOT_IMPLEMENTED param ->
-          p_data "CKA_OTP_COUNTER_REQUIREMENT" param
-      | CKA_OTP_PIN_REQUIREMENT, NOT_IMPLEMENTED param ->
-          p_data "CKA_OTP_PIN_REQUIREMENT" param
-      | CKA_OTP_COUNTER, NOT_IMPLEMENTED param ->
-          p_data "CKA_OTP_COUNTER" param
-      | CKA_OTP_TIME, NOT_IMPLEMENTED param ->
-          p_data "CKA_OTP_TIME" param
-      | CKA_OTP_USER_IDENTIFIER, NOT_IMPLEMENTED param ->
-          p_data "CKA_OTP_USER_IDENTIFIER" param
-      | CKA_OTP_SERVICE_IDENTIFIER, NOT_IMPLEMENTED param ->
-          p_data "CKA_OTP_SERVICE_IDENTIFIER" param
-      | CKA_OTP_SERVICE_LOGO, NOT_IMPLEMENTED param ->
-          p_data "CKA_OTP_SERVICE_LOGO" param
-      | CKA_OTP_SERVICE_LOGO_TYPE, NOT_IMPLEMENTED param ->
-          p_data "CKA_OTP_SERVICE_LOGO_TYPE" param
-      | CKA_HW_FEATURE_TYPE, NOT_IMPLEMENTED param ->
-          p_data "CKA_HW_FEATURE_TYPE" param
-      | CKA_RESET_ON_INIT, NOT_IMPLEMENTED param ->
-          p_data "CKA_RESET_ON_INIT" param
-      | CKA_HAS_RESET, NOT_IMPLEMENTED param ->
-          p_data "CKA_HAS_RESET" param
-      | CKA_PIXEL_X, NOT_IMPLEMENTED param ->
-          p_data "CKA_PIXEL_X" param
-      | CKA_PIXEL_Y, NOT_IMPLEMENTED param ->
-          p_data "CKA_PIXEL_Y" param
-      | CKA_RESOLUTION, NOT_IMPLEMENTED param ->
-          p_data "CKA_RESOLUTION" param
-      | CKA_CHAR_ROWS, NOT_IMPLEMENTED param ->
-          p_data "CKA_CHAR_ROWS" param
-      | CKA_CHAR_COLUMNS, NOT_IMPLEMENTED param ->
-          p_data "CKA_CHAR_COLUMNS" param
-      | CKA_COLOR, NOT_IMPLEMENTED param ->
-          p_data "CKA_COLOR" param
-      | CKA_BITS_PER_PIXEL, NOT_IMPLEMENTED param ->
-          p_data "CKA_BITS_PER_PIXEL" param
-      | CKA_CHAR_SETS, NOT_IMPLEMENTED param ->
-          p_data "CKA_CHAR_SETS" param
-      | CKA_ENCODING_METHODS, NOT_IMPLEMENTED param ->
-          p_data "CKA_ENCODING_METHODS" param
-      | CKA_MIME_TYPES, NOT_IMPLEMENTED param ->
-          p_data "CKA_MIME_TYPES" param
-      | CKA_MECHANISM_TYPE, NOT_IMPLEMENTED param ->
-          p_data "CKA_MECHANISM_TYPE" param
-      | CKA_REQUIRED_CMS_ATTRIBUTES, NOT_IMPLEMENTED param ->
-          p_data "CKA_REQUIRED_CMS_ATTRIBUTES" param
-      | CKA_DEFAULT_CMS_ATTRIBUTES, NOT_IMPLEMENTED param ->
-          p_data "CKA_DEFAULT_CMS_ATTRIBUTES" param
-      | CKA_SUPPORTED_CMS_ATTRIBUTES, NOT_IMPLEMENTED param ->
-          p_data "CKA_SUPPORTED_CMS_ATTRIBUTES" param
       | CKA_ALLOWED_MECHANISMS, NOT_IMPLEMENTED param ->
           p_data "CKA_ALLOWED_MECHANISMS" param
-      | CKA_VENDOR_DEFINED, NOT_IMPLEMENTED param ->
-          p_data "CKA_VENDOR_DEFINED" param
       | CKA_CS_UNKNOWN ul, NOT_IMPLEMENTED param ->
           p_data (Unsigned.ULong.to_string ul) param
 
@@ -2110,8 +1958,6 @@ struct
             p_mechanism_type CKA_KEY_GEN_MECHANISM
         | "CKA_MODIFIABLE" ->
             p_bool CKA_MODIFIABLE
-        (* | "CKA_ECDSA_PARAMS" -> *)
-        (*     p_data CKA_ECDSA_PARAMS *)
         | "CKA_EC_PARAMS" ->
             p_ec_params CKA_EC_PARAMS
         | "CKA_EC_POINT" ->
@@ -2120,120 +1966,22 @@ struct
             p_bool CKA_ALWAYS_AUTHENTICATE
         | "CKA_WRAP_WITH_TRUSTED" ->
             p_bool CKA_WRAP_WITH_TRUSTED
-        | "CKA_APPLICATION" ->
-            p_not_implemented CKA_APPLICATION
-        | "CKA_OBJECT_ID" ->
-            p_not_implemented CKA_OBJECT_ID
-        | "CKA_CERTIFICATE_TYPE" ->
-            p_not_implemented CKA_CERTIFICATE_TYPE
-        | "CKA_ISSUER" ->
-            p_not_implemented CKA_ISSUER
-        | "CKA_SERIAL_NUMBER" ->
-            p_not_implemented CKA_SERIAL_NUMBER
-        | "CKA_AC_ISSUER" ->
-            p_not_implemented CKA_AC_ISSUER
-        | "CKA_OWNER" ->
-            p_not_implemented CKA_OWNER
-        | "CKA_ATTR_TYPES" ->
-            p_not_implemented CKA_ATTR_TYPES
-        | "CKA_CERTIFICATE_CATEGORY" ->
-            p_not_implemented CKA_CERTIFICATE_CATEGORY
-        | "CKA_JAVA_MIDP_SECURITY_DOMAIN" ->
-            p_not_implemented CKA_JAVA_MIDP_SECURITY_DOMAIN
-        | "CKA_URL" ->
-            p_not_implemented CKA_URL
-        | "CKA_HASH_OF_SUBJECT_PUBLIC_KEY" ->
-            p_not_implemented CKA_HASH_OF_SUBJECT_PUBLIC_KEY
-        | "CKA_HASH_OF_ISSUER_PUBLIC_KEY" ->
-            p_not_implemented CKA_HASH_OF_ISSUER_PUBLIC_KEY
         | "CKA_CHECK_VALUE" ->
             p_not_implemented CKA_CHECK_VALUE
         | "CKA_START_DATE" ->
             p_not_implemented CKA_START_DATE
         | "CKA_END_DATE" ->
             p_not_implemented CKA_END_DATE
-        | "CKA_BASE" ->
-            p_not_implemented CKA_BASE
         | "CKA_PRIME_BITS" ->
             p_ulong CKA_PRIME_BITS
         | "CKA_SUBPRIME_BITS" ->
             p_ulong CKA_SUBPRIME_BITS
-        | "CKA_VALUE_BITS" ->
-            p_not_implemented CKA_VALUE_BITS
-        | "CKA_SECONDARY_AUTH" ->
-            p_not_implemented CKA_SECONDARY_AUTH
-        | "CKA_AUTH_PIN_FLAGS" ->
-            p_not_implemented CKA_AUTH_PIN_FLAGS
         | "CKA_WRAP_TEMPLATE" ->
             p_not_implemented CKA_WRAP_TEMPLATE
         | "CKA_UNWRAP_TEMPLATE" ->
             p_not_implemented CKA_UNWRAP_TEMPLATE
-        | "CKA_OTP_FORMAT" ->
-            p_not_implemented CKA_OTP_FORMAT
-        | "CKA_OTP_LENGTH" ->
-            p_not_implemented CKA_OTP_LENGTH
-        | "CKA_OTP_TIME_INTERVAL" ->
-            p_not_implemented CKA_OTP_TIME_INTERVAL
-        | "CKA_OTP_USER_FRIENDLY_MODE" ->
-            p_not_implemented CKA_OTP_USER_FRIENDLY_MODE
-        | "CKA_OTP_CHALLENGE_REQUIREMENT" ->
-            p_not_implemented CKA_OTP_CHALLENGE_REQUIREMENT
-        | "CKA_OTP_TIME_REQUIREMENT" ->
-            p_not_implemented CKA_OTP_TIME_REQUIREMENT
-        | "CKA_OTP_COUNTER_REQUIREMENT" ->
-            p_not_implemented CKA_OTP_COUNTER_REQUIREMENT
-        | "CKA_OTP_PIN_REQUIREMENT" ->
-            p_not_implemented CKA_OTP_PIN_REQUIREMENT
-        | "CKA_OTP_COUNTER" ->
-            p_not_implemented CKA_OTP_COUNTER
-        | "CKA_OTP_TIME" ->
-            p_not_implemented CKA_OTP_TIME
-        | "CKA_OTP_USER_IDENTIFIER" ->
-            p_not_implemented CKA_OTP_USER_IDENTIFIER
-        | "CKA_OTP_SERVICE_IDENTIFIER" ->
-            p_not_implemented CKA_OTP_SERVICE_IDENTIFIER
-        | "CKA_OTP_SERVICE_LOGO" ->
-            p_not_implemented CKA_OTP_SERVICE_LOGO
-        | "CKA_OTP_SERVICE_LOGO_TYPE" ->
-            p_not_implemented CKA_OTP_SERVICE_LOGO_TYPE
-        | "CKA_HW_FEATURE_TYPE" ->
-            p_not_implemented CKA_HW_FEATURE_TYPE
-        | "CKA_RESET_ON_INIT" ->
-            p_not_implemented CKA_RESET_ON_INIT
-        | "CKA_HAS_RESET" ->
-            p_not_implemented CKA_HAS_RESET
-        | "CKA_PIXEL_X" ->
-            p_not_implemented CKA_PIXEL_X
-        | "CKA_PIXEL_Y" ->
-            p_not_implemented CKA_PIXEL_Y
-        | "CKA_RESOLUTION" ->
-            p_not_implemented CKA_RESOLUTION
-        | "CKA_CHAR_ROWS" ->
-            p_not_implemented CKA_CHAR_ROWS
-        | "CKA_CHAR_COLUMNS" ->
-            p_not_implemented CKA_CHAR_COLUMNS
-        | "CKA_COLOR" ->
-            p_not_implemented CKA_COLOR
-        | "CKA_BITS_PER_PIXEL" ->
-            p_not_implemented CKA_BITS_PER_PIXEL
-        | "CKA_CHAR_SETS" ->
-            p_not_implemented CKA_CHAR_SETS
-        | "CKA_ENCODING_METHODS" ->
-            p_not_implemented CKA_ENCODING_METHODS
-        | "CKA_MIME_TYPES" ->
-            p_not_implemented CKA_MIME_TYPES
-        | "CKA_MECHANISM_TYPE" ->
-            p_not_implemented CKA_MECHANISM_TYPE
-        | "CKA_REQUIRED_CMS_ATTRIBUTES" ->
-            p_not_implemented CKA_REQUIRED_CMS_ATTRIBUTES
-        | "CKA_DEFAULT_CMS_ATTRIBUTES" ->
-            p_not_implemented CKA_DEFAULT_CMS_ATTRIBUTES
-        | "CKA_SUPPORTED_CMS_ATTRIBUTES" ->
-            p_not_implemented CKA_SUPPORTED_CMS_ATTRIBUTES
         | "CKA_ALLOWED_MECHANISMS" ->
             p_not_implemented CKA_ALLOWED_MECHANISMS
-        | "CKA_VENDOR_DEFINED" ->
-            p_not_implemented CKA_VENDOR_DEFINED
         | _ as ul ->
             try
               p_not_implemented
@@ -2321,68 +2069,17 @@ struct
       | CKA_COEFFICIENT      -> rsa_private
       | CKA_PRIME            -> []
       | CKA_SUBPRIME         -> []
-      (* | CKA_ECDSA_PARAMS     -> [ [ EC; Public; Private ] ] *)
       | CKA_EC_PARAMS        -> [ [ EC; Public; Private ] ]
       | CKA_EC_POINT         -> [ [ EC; Public ] ]
       | CKA_SUBJECT          -> [ [ Public; Private ] ]
-      | CKA_APPLICATION -> assert false
-      | CKA_OBJECT_ID -> assert false
-      | CKA_CERTIFICATE_TYPE -> assert false
-      | CKA_ISSUER -> assert false
-      | CKA_SERIAL_NUMBER -> assert false
-      | CKA_AC_ISSUER -> assert false
-      | CKA_OWNER -> assert false
-      | CKA_ATTR_TYPES -> assert false
-      | CKA_CERTIFICATE_CATEGORY -> assert false
-      | CKA_JAVA_MIDP_SECURITY_DOMAIN -> assert false
-      | CKA_URL -> assert false
-      | CKA_HASH_OF_SUBJECT_PUBLIC_KEY -> assert false
-      | CKA_HASH_OF_ISSUER_PUBLIC_KEY -> assert false
       | CKA_CHECK_VALUE -> assert false
       | CKA_START_DATE -> assert false
       | CKA_END_DATE -> assert false
-      | CKA_BASE -> assert false
       | CKA_PRIME_BITS -> assert false
       | CKA_SUBPRIME_BITS -> assert false
-      (* | CKA_SUB_PRIME_BITS -> assert false *)
-      | CKA_VALUE_BITS -> assert false
-      | CKA_SECONDARY_AUTH -> assert false
-      | CKA_AUTH_PIN_FLAGS -> assert false
       | CKA_WRAP_TEMPLATE -> assert false
       | CKA_UNWRAP_TEMPLATE -> assert false
-      | CKA_OTP_FORMAT -> assert false
-      | CKA_OTP_LENGTH -> assert false
-      | CKA_OTP_TIME_INTERVAL -> assert false
-      | CKA_OTP_USER_FRIENDLY_MODE -> assert false
-      | CKA_OTP_CHALLENGE_REQUIREMENT -> assert false
-      | CKA_OTP_TIME_REQUIREMENT -> assert false
-      | CKA_OTP_COUNTER_REQUIREMENT -> assert false
-      | CKA_OTP_PIN_REQUIREMENT -> assert false
-      | CKA_OTP_COUNTER -> assert false
-      | CKA_OTP_TIME -> assert false
-      | CKA_OTP_USER_IDENTIFIER -> assert false
-      | CKA_OTP_SERVICE_IDENTIFIER -> assert false
-      | CKA_OTP_SERVICE_LOGO -> assert false
-      | CKA_OTP_SERVICE_LOGO_TYPE -> assert false
-      | CKA_HW_FEATURE_TYPE -> assert false
-      | CKA_RESET_ON_INIT -> assert false
-      | CKA_HAS_RESET -> assert false
-      | CKA_PIXEL_X -> assert false
-      | CKA_PIXEL_Y -> assert false
-      | CKA_RESOLUTION -> assert false
-      | CKA_CHAR_ROWS -> assert false
-      | CKA_CHAR_COLUMNS -> assert false
-      | CKA_COLOR -> assert false
-      | CKA_BITS_PER_PIXEL -> assert false
-      | CKA_CHAR_SETS -> assert false
-      | CKA_ENCODING_METHODS -> assert false
-      | CKA_MIME_TYPES -> assert false
-      | CKA_MECHANISM_TYPE -> assert false
-      | CKA_REQUIRED_CMS_ATTRIBUTES -> assert false
-      | CKA_DEFAULT_CMS_ATTRIBUTES -> assert false
-      | CKA_SUPPORTED_CMS_ATTRIBUTES -> assert false
       | CKA_ALLOWED_MECHANISMS -> assert false
-      | CKA_VENDOR_DEFINED -> assert false
       | CKA_CS_UNKNOWN _ -> []
 
   (* Return whether [a] has all kinds [k]. *)

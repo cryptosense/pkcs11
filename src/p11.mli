@@ -874,21 +874,8 @@ sig
     | CKA_TOKEN : bool t
     | CKA_PRIVATE : bool t
     | CKA_LABEL : string t
-    | CKA_APPLICATION : not_implemented t
     | CKA_VALUE : string t
-    | CKA_OBJECT_ID : not_implemented t
-    | CKA_CERTIFICATE_TYPE : not_implemented t
-    | CKA_ISSUER : not_implemented t
-    | CKA_SERIAL_NUMBER : not_implemented t
-    | CKA_AC_ISSUER : not_implemented t
-    | CKA_OWNER : not_implemented t
-    | CKA_ATTR_TYPES : not_implemented t
     | CKA_TRUSTED : bool t
-    | CKA_CERTIFICATE_CATEGORY : not_implemented t
-    | CKA_JAVA_MIDP_SECURITY_DOMAIN : not_implemented t
-    | CKA_URL : not_implemented t
-    | CKA_HASH_OF_SUBJECT_PUBLIC_KEY : not_implemented t
-    | CKA_HASH_OF_ISSUER_PUBLIC_KEY : not_implemented t
     | CKA_CHECK_VALUE : not_implemented t
     | CKA_KEY_TYPE : Pkcs11.CK_KEY_TYPE.u t
     | CKA_SUBJECT : string t
@@ -916,11 +903,8 @@ sig
     | CKA_COEFFICIENT : Pkcs11.CK_BIGINT.t t
     | CKA_PRIME : Pkcs11.CK_BIGINT.t t
     | CKA_SUBPRIME : Pkcs11.CK_BIGINT.t t
-    | CKA_BASE : not_implemented t
     | CKA_PRIME_BITS : Pkcs11.CK_ULONG.t t
     | CKA_SUBPRIME_BITS : Pkcs11.CK_ULONG.t t
-    (* | CKA_SUB_PRIME_BITS : not_implemented t *)
-    | CKA_VALUE_BITS : not_implemented t
     | CKA_VALUE_LEN : Pkcs11.CK_ULONG.t t
     | CKA_EXTRACTABLE : bool t
     | CKA_LOCAL : bool t
@@ -931,45 +915,11 @@ sig
     (* | CKA_ECDSA_PARAMS : string t *)
     | CKA_EC_PARAMS : Key_parsers.Asn1.EC.Params.t t
     | CKA_EC_POINT : Key_parsers.Asn1.EC.point t
-    | CKA_SECONDARY_AUTH : not_implemented t
-    | CKA_AUTH_PIN_FLAGS : not_implemented t
     | CKA_ALWAYS_AUTHENTICATE : bool t
     | CKA_WRAP_WITH_TRUSTED : bool t
     | CKA_WRAP_TEMPLATE : not_implemented t
     | CKA_UNWRAP_TEMPLATE : not_implemented t
-    | CKA_OTP_FORMAT : not_implemented t
-    | CKA_OTP_LENGTH : not_implemented t
-    | CKA_OTP_TIME_INTERVAL : not_implemented t
-    | CKA_OTP_USER_FRIENDLY_MODE : not_implemented t
-    | CKA_OTP_CHALLENGE_REQUIREMENT : not_implemented t
-    | CKA_OTP_TIME_REQUIREMENT : not_implemented t
-    | CKA_OTP_COUNTER_REQUIREMENT : not_implemented t
-    | CKA_OTP_PIN_REQUIREMENT : not_implemented t
-    | CKA_OTP_COUNTER : not_implemented t
-    | CKA_OTP_TIME : not_implemented t
-    | CKA_OTP_USER_IDENTIFIER : not_implemented t
-    | CKA_OTP_SERVICE_IDENTIFIER : not_implemented t
-    | CKA_OTP_SERVICE_LOGO : not_implemented t
-    | CKA_OTP_SERVICE_LOGO_TYPE : not_implemented t
-    | CKA_HW_FEATURE_TYPE : not_implemented t
-    | CKA_RESET_ON_INIT : not_implemented t
-    | CKA_HAS_RESET : not_implemented t
-    | CKA_PIXEL_X : not_implemented t
-    | CKA_PIXEL_Y : not_implemented t
-    | CKA_RESOLUTION : not_implemented t
-    | CKA_CHAR_ROWS : not_implemented t
-    | CKA_CHAR_COLUMNS : not_implemented t
-    | CKA_COLOR : not_implemented t
-    | CKA_BITS_PER_PIXEL : not_implemented t
-    | CKA_CHAR_SETS : not_implemented t
-    | CKA_ENCODING_METHODS : not_implemented t
-    | CKA_MIME_TYPES : not_implemented t
-    | CKA_MECHANISM_TYPE : not_implemented t
-    | CKA_REQUIRED_CMS_ATTRIBUTES : not_implemented t
-    | CKA_DEFAULT_CMS_ATTRIBUTES : not_implemented t
-    | CKA_SUPPORTED_CMS_ATTRIBUTES : not_implemented t
     | CKA_ALLOWED_MECHANISMS : not_implemented t
-    | CKA_VENDOR_DEFINED : not_implemented t
     | CKA_CS_UNKNOWN: Unsigned.ULong.t -> not_implemented t
 
   type pack = Pkcs11.CK_ATTRIBUTE_TYPE.pack = Pack : 'a t -> pack
