@@ -4,54 +4,14 @@
    The type of kinds that applies to a given object.
 *)
 type kind =
-  [
-    | `Key
-    | `Public
-    | `Private
-    | `Secret
-    (* | `OTP (* V2.20 amendment 1 *) *)
-    | `RSA_public
-    | `RSA_private
-    | `DSA_public
-    | `DSA_private
-    | `EC_public
-    | `EC_private
-    | `DH_public
-    | `DH_private
-    | `DH_X9_42_public
-    | `DH_X9_42_private
-    | `KEA_public
-    | `KEA_private
-    | `Generic_secret
-    | `RC2
-    | `RC4
-    | `RC5
-    | `AES
-    | `DES
-    | `CAST
-    | `CAST3
-    | `CAST128
-    | `IDEA
-    | `CDMF
-    | `DES2
-    | `DES3
-    | `SKIPJACK
-    | `BATON
-    | `JUNIPER
-    | `BLOWFISH
-    | `TWOFISH
-    (*
-    | `CAMELLIA (* V2.20 amendment 3 *)
-    | `ARIA (* V2.20 amendment 3 *)
-    | `ACTI (* V2.20 amendment 1 *)
-    | `SEED (* V2.30 *)
-    | `SECURID (* V2.20 amendment 1 *)
-    | `HOTP (* V2.20 amendment 1 *)
-    | `GOST_28147_89 (* V2.30 *)
-    | `GOST_R_34_10_2001_public (* V2.30 *)
-    | `GOST_R_34_10_2001_private (* V2.30 *)
-    *)
-    | `VENDOR_DEFINED
+  [ `AES
+  | `DES
+  | `DES3
+  | `EC_private
+  | `EC_public
+  | `RSA_private
+  | `RSA_public
+  | `Secret
   ]
 
 (** Return all the possible attributes for a given kind, if the
