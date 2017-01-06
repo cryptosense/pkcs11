@@ -192,6 +192,7 @@ let view (t : t) : pack =
   else if ul ==  _CKA_LABEL                         then Pack (CKA_LABEL, (unsafe_get_string t))
   else if ul ==  _CKA_VALUE                         then Pack (CKA_VALUE, (unsafe_get_string t))
   else if ul ==  _CKA_TRUSTED                       then Pack (CKA_TRUSTED, (unsafe_get_bool t))
+  else if ul ==  _CKA_CHECK_VALUE                   then Pack (CKA_CHECK_VALUE, NOT_IMPLEMENTED (unsafe_get_string t))
   else if ul ==  _CKA_KEY_TYPE                      then Pack (CKA_KEY_TYPE, (unsafe_get_key_type t |> Pkcs11_CK_KEY_TYPE.view))
   else if ul ==  _CKA_SUBJECT                       then Pack (CKA_SUBJECT,  (unsafe_get_string t))
   else if ul ==  _CKA_ID                            then Pack (CKA_ID,       (unsafe_get_string t))
@@ -205,6 +206,8 @@ let view (t : t) : pack =
   else if ul ==  _CKA_VERIFY                        then Pack (CKA_VERIFY, (unsafe_get_bool t))
   else if ul ==  _CKA_VERIFY_RECOVER                then Pack (CKA_VERIFY_RECOVER, (unsafe_get_bool t))
   else if ul ==  _CKA_DERIVE                        then Pack (CKA_DERIVE, (unsafe_get_bool t))
+  else if ul ==  _CKA_START_DATE                    then Pack (CKA_START_DATE, NOT_IMPLEMENTED (unsafe_get_string t))
+  else if ul ==  _CKA_END_DATE                      then Pack (CKA_END_DATE, NOT_IMPLEMENTED (unsafe_get_string t))
   else if ul ==  _CKA_MODULUS                       then Pack (CKA_MODULUS, (unsafe_get_bigint t))
   else if ul ==  _CKA_MODULUS_BITS                  then Pack (CKA_MODULUS_BITS, (unsafe_get_ulong t))
   else if ul ==  _CKA_PUBLIC_EXPONENT               then Pack (CKA_PUBLIC_EXPONENT, (unsafe_get_bigint t))
@@ -230,6 +233,9 @@ let view (t : t) : pack =
   else if ul ==  _CKA_EC_POINT                      then decode_cka_ec_point (unsafe_get_string t)
   else if ul ==  _CKA_ALWAYS_AUTHENTICATE           then Pack (CKA_ALWAYS_AUTHENTICATE, (unsafe_get_bool t))
   else if ul ==  _CKA_WRAP_WITH_TRUSTED             then Pack (CKA_WRAP_WITH_TRUSTED,   (unsafe_get_bool t))
+  else if ul ==  _CKA_WRAP_TEMPLATE                 then Pack (CKA_WRAP_TEMPLATE, NOT_IMPLEMENTED (unsafe_get_string t))
+  else if ul ==  _CKA_UNWRAP_TEMPLATE               then Pack (CKA_UNWRAP_TEMPLATE, NOT_IMPLEMENTED (unsafe_get_string t))
+  else if ul ==  _CKA_ALLOWED_MECHANISMS            then Pack (CKA_ALLOWED_MECHANISMS, NOT_IMPLEMENTED (unsafe_get_string t))
   else
     begin
       Pkcs11_log.log @@ Printf.sprintf "Unknown CKA code: 0x%Lx" @@ Int64.of_string @@ Unsigned.ULong.to_string ul;
@@ -247,6 +253,7 @@ let make : type s . s u -> t = fun x ->
   | CKA_LABEL, s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_LABEL s
   | CKA_VALUE, s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_VALUE s
   | CKA_TRUSTED, b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_TRUSTED b
+  | CKA_CHECK_VALUE, NOT_IMPLEMENTED s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_CHECK_VALUE s
   | CKA_KEY_TYPE, ckk -> ulong Pkcs11_CK_ATTRIBUTE_TYPE._CKA_KEY_TYPE (Pkcs11_CK_KEY_TYPE.make ckk)
   | CKA_SUBJECT, s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_SUBJECT s
   | CKA_ID, s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_ID s
@@ -260,6 +267,8 @@ let make : type s . s u -> t = fun x ->
   | CKA_VERIFY, b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_VERIFY b
   | CKA_VERIFY_RECOVER, b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_VERIFY_RECOVER b
   | CKA_DERIVE, b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_DERIVE b
+  | CKA_START_DATE, NOT_IMPLEMENTED s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_START_DATE s
+  | CKA_END_DATE, NOT_IMPLEMENTED s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_END_DATE s
   | CKA_MODULUS, n -> bigint Pkcs11_CK_ATTRIBUTE_TYPE._CKA_MODULUS n
   | CKA_MODULUS_BITS,     ul -> ulong Pkcs11_CK_ATTRIBUTE_TYPE._CKA_MODULUS_BITS     ul
   | CKA_PUBLIC_EXPONENT, n -> bigint Pkcs11_CK_ATTRIBUTE_TYPE._CKA_PUBLIC_EXPONENT n
@@ -288,6 +297,9 @@ let make : type s . s u -> t = fun x ->
   | CKA_EC_POINT, p -> encode_ec_point p |> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_EC_POINT
   | CKA_ALWAYS_AUTHENTICATE, b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_ALWAYS_AUTHENTICATE b
   | CKA_WRAP_WITH_TRUSTED,   b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_WRAP_WITH_TRUSTED   b
+  | CKA_WRAP_TEMPLATE, NOT_IMPLEMENTED s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_WRAP_TEMPLATE s
+  | CKA_UNWRAP_TEMPLATE, NOT_IMPLEMENTED s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_UNWRAP_TEMPLATE s
+  | CKA_ALLOWED_MECHANISMS, NOT_IMPLEMENTED s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_ALLOWED_MECHANISMS s
   | CKA_CS_UNKNOWN ul, NOT_IMPLEMENTED s ->
       string ul s
 
@@ -312,6 +324,7 @@ let to_string_pair =
       | CKA_LABEL, x               -> string "CKA_LABEL" x
       | CKA_VALUE, x               -> string "CKA_VALUE" x
       | CKA_TRUSTED, x             -> bool "CKA_TRUSTED" x
+      | CKA_CHECK_VALUE, NOT_IMPLEMENTED x -> string "CKA_CHECK_VALUE" x
       | CKA_KEY_TYPE, x            -> key_type "CKA_KEY_TYPE" x
       | CKA_SUBJECT, x             -> string "CKA_SUBJECT" x
       | CKA_ID, x                  -> string "CKA_ID" x
@@ -325,6 +338,8 @@ let to_string_pair =
       | CKA_VERIFY, x              -> bool "CKA_VERIFY" x
       | CKA_VERIFY_RECOVER, x      -> bool "CKA_VERIFY_RECOVER" x
       | CKA_DERIVE, x              -> bool "CKA_DERIVE" x
+      | CKA_START_DATE, NOT_IMPLEMENTED x -> string "CKA_START_DATE" x
+      | CKA_END_DATE, NOT_IMPLEMENTED x -> string "CKA_END_DATE" x
       | CKA_MODULUS,  x            -> bigint "CKA_MODULUS" x
       | CKA_MODULUS_BITS,     x    -> ulong "CKA_MODULUS_BITS" x
       | CKA_PUBLIC_EXPONENT,  x    -> bigint "CKA_PUBLIC_EXPONENT" x
@@ -350,6 +365,9 @@ let to_string_pair =
       | CKA_EC_POINT, x            -> ec_point "CKA_EC_POINT" x
       | CKA_ALWAYS_AUTHENTICATE, x -> bool "CKA_ALWAYS_AUTHENTICATE" x
       | CKA_WRAP_WITH_TRUSTED,   x -> bool "CKA_WRAP_WITH_TRUSTED" x
+      | CKA_WRAP_TEMPLATE, NOT_IMPLEMENTED x -> string "CKA_WRAP_TEMPLATE" x
+      | CKA_UNWRAP_TEMPLATE, NOT_IMPLEMENTED x -> string "CKA_UNWRAP_TEMPLATE" x
+      | CKA_ALLOWED_MECHANISMS, NOT_IMPLEMENTED x -> string "CKA_ALLOWED_MECHANISMS" x
       | CKA_CS_UNKNOWN ul, NOT_IMPLEMENTED x -> string (Unsigned.ULong.to_string ul) x
 
 let to_string x =
@@ -425,8 +443,14 @@ let compare : type a b. a u -> b u -> int = fun a b ->
       | (CKA_VALUE, a_param), (CKA_VALUE, b_param) -> compare_string a_param b_param
       | (CKA_SUBJECT, a_param), (CKA_SUBJECT, b_param) -> compare_string a_param b_param
       | (CKA_ID, a_param), (CKA_ID, b_param) -> compare_string a_param b_param
+      | (CKA_CHECK_VALUE, NOT_IMPLEMENTED a_param), (CKA_CHECK_VALUE, NOT_IMPLEMENTED b_param) -> compare_string a_param b_param
+      | (CKA_START_DATE, NOT_IMPLEMENTED a_param), (CKA_START_DATE, NOT_IMPLEMENTED b_param) -> compare_string a_param b_param
+      | (CKA_END_DATE, NOT_IMPLEMENTED a_param), (CKA_END_DATE, NOT_IMPLEMENTED b_param) -> compare_string a_param b_param
       | (CKA_PRIME_BITS, a_param), (CKA_PRIME_BITS,  b_param) -> compare_ulong a_param b_param
       | (CKA_SUBPRIME_BITS, a_param), (CKA_SUBPRIME_BITS, b_param) -> compare_ulong a_param b_param
+      | (CKA_WRAP_TEMPLATE, NOT_IMPLEMENTED a_param), (CKA_WRAP_TEMPLATE, NOT_IMPLEMENTED b_param) -> compare_string a_param b_param
+      | (CKA_UNWRAP_TEMPLATE, NOT_IMPLEMENTED a_param), (CKA_UNWRAP_TEMPLATE, NOT_IMPLEMENTED b_param) -> compare_string a_param b_param
+      | (CKA_ALLOWED_MECHANISMS, NOT_IMPLEMENTED a_param), (CKA_ALLOWED_MECHANISMS, NOT_IMPLEMENTED b_param) -> compare_string a_param b_param
       | (CKA_CS_UNKNOWN a_ul, NOT_IMPLEMENTED a_param),
         (CKA_CS_UNKNOWN b_ul, NOT_IMPLEMENTED b_param) ->
           let cmp = Unsigned.ULong.compare a_ul b_ul in
@@ -476,8 +500,14 @@ let compare : type a b. a u -> b u -> int = fun a b ->
       | (CKA_SUBPRIME, _), _ -> assert false
       | (CKA_EC_PARAMS, _), _ -> assert false
       | (CKA_EC_POINT, _), _ -> assert false
+      | (CKA_CHECK_VALUE, _), _ -> assert false
+      | (CKA_START_DATE, _), _ -> assert false
+      | (CKA_END_DATE, _), _ -> assert false
       | (CKA_PRIME_BITS, _), _ -> assert false
       | (CKA_SUBPRIME_BITS, _), _ -> assert false
+      | (CKA_WRAP_TEMPLATE, _), _ -> assert false
+      | (CKA_UNWRAP_TEMPLATE, _), _ -> assert false
+      | (CKA_ALLOWED_MECHANISMS, _), _ -> assert false
       | (CKA_CS_UNKNOWN _, _), _ -> assert false
 
 let compare_pack (Pack a) (Pack b) = compare a b
