@@ -68,6 +68,7 @@ let update (Pack x) t =
     | CKA_LABEL, s -> string t s
     | CKA_VALUE, s -> string t s
     | CKA_TRUSTED, b -> boolean t b
+    | CKA_CHECK_VALUE, not_implemented -> assert false
     | CKA_KEY_TYPE, ckk -> ulong t (Pkcs11_CK_KEY_TYPE.make ckk)
     | CKA_SUBJECT, s -> string t s
     | CKA_ID, s -> string t s
@@ -81,6 +82,8 @@ let update (Pack x) t =
     | CKA_VERIFY, b -> boolean t b
     | CKA_VERIFY_RECOVER, b -> boolean t b
     | CKA_DERIVE, b -> boolean t b
+    | CKA_START_DATE, not_implemented -> assert false
+    | CKA_END_DATE, not_implemented -> assert false
     | CKA_MODULUS, n -> bigint t n
     | CKA_MODULUS_BITS,     ul -> ulong t ul
     | CKA_PUBLIC_EXPONENT, n -> bigint t n
@@ -105,4 +108,7 @@ let update (Pack x) t =
     | CKA_EC_POINT, s -> assert false
     | CKA_ALWAYS_AUTHENTICATE, b -> boolean t b
     | CKA_WRAP_WITH_TRUSTED,   b -> boolean t b
+    | CKA_WRAP_TEMPLATE, not_implemented -> assert false
+    | CKA_UNWRAP_TEMPLATE, not_implemented -> assert false
+    | CKA_ALLOWED_MECHANISMS, not_implemented -> assert false
     | CKA_CS_UNKNOWN _, _ -> assert false

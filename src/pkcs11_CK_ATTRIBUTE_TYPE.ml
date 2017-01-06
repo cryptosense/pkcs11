@@ -506,6 +506,7 @@ let compare' : type a b . a u -> b u -> (a,b) comparison = fun a b ->
   | CKA_WRAP_TEMPLATE, _ -> assert false
   | CKA_UNWRAP_TEMPLATE, _ -> assert false
   | CKA_ALLOWED_MECHANISMS, _ -> assert false
+  | CKA_CS_UNKNOWN _, _ -> assert false
 
 let compare a b =
   let a = make a
