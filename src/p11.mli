@@ -1089,7 +1089,7 @@ sig
   val initialize : unit -> unit
   val finalize : unit -> unit
   val get_info : unit -> Info.t
-  val get_slot: Slot.t -> (Slot_id.t, string) Result.result
+  val get_slot: Slot.t -> (Slot_id.t, string) result
   val get_slot_list : bool -> Slot_id.t list
   val get_slot_info : slot: Slot_id.t -> Slot_info.t
   val get_token_info : slot: Slot_id.t -> Token_info.t

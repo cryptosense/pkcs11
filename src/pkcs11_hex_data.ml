@@ -27,7 +27,7 @@ exception Invalid_hex
 
 let of_yojson =
   let err msg =
-    Result.Error ("Pkcs11_hex_data: " ^ msg)
+    Error ("Pkcs11_hex_data: " ^ msg)
   in
   function
     | `String s when s.[0] = '0' && s.[1] = 'x' ->
@@ -38,7 +38,7 @@ let of_yojson =
                 | '0'..'9' | 'a'..'f' | 'A'..'F' -> ()
                 | _ -> raise Invalid_hex
               ) data;
-            Result.Ok (Hex.to_string @@ `Hex data)
+            Ok (Hex.to_string @@ `Hex data)
           with Invalid_hex ->
             err "not valid hex-encoded data"
         end
