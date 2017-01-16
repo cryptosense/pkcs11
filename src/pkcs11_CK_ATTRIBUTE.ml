@@ -30,7 +30,6 @@
 
 open Ctypes
 open Ctypes_helpers
-open Result
 
 type _t
 type t = _t structure

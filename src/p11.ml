@@ -5,8 +5,8 @@
 type ulong = Unsigned.ulong
 
 let ulong_of_yojson = function
-  | `String s -> Result.Ok (Unsigned.ULong.of_string s)
-  | _ -> Result.Error "ulong_of_yojson: not a string"
+  | `String s -> Ok (Unsigned.ULong.of_string s)
+  | _ -> Error "ulong_of_yojson: not a string"
 
 let ulong_to_yojson ulong =
   `String (Unsigned.ULong.to_string ulong)
@@ -17,14 +17,14 @@ let ulong_to_yojson ulong =
  *)
 let of_json_string ~typename of_string json =
   let err msg =
-    Result.Error
+    Error
       (Printf.sprintf "(while parsing %s): %s" typename msg)
   in
   match json with
     | `String s ->
         begin
           try
-            Result.Ok (of_string s)
+            Ok (of_string s)
           with Invalid_argument _ ->
             err "of_string failed"
         end
@@ -71,11 +71,11 @@ module Slot = struct
     | Label x -> `List [`String "label"; `String x]
 
   let of_yojson = function
-    | `List [`String "index" ; `Int x] -> Result.Ok (Index x)
-    | `List [`String "id" ; `Int x] -> Result.Ok (Id x)
-    | `List [`String "description" ; `String x] -> Result.Ok (Description x)
-    | `List [`String "label" ; `String x] -> Result.Ok (Label x)
-    | _ -> Result.Error "Slot.t"
+    | `List [`String "index" ; `Int x] -> Ok (Index x)
+    | `List [`String "id" ; `Int x] -> Ok (Id x)
+    | `List [`String "description" ; `String x] -> Ok (Description x)
+    | `List [`String "label" ; `String x] -> Ok (Label x)
+    | _ -> Error "Slot.t"
 
   let default = Index 0
 
@@ -127,8 +127,8 @@ struct
     let open Ppx_deriving_yojson_runtime in
     (* We know that [ulong_to_yojson] does not produce [`Assoc]s. *)
     let actual_json = match has_value_of_yojson json with
-      | Result.Ok { value } -> value
-      | Result.Error _ -> json
+      | Ok { value } -> value
+      | Error _ -> json
     in
     ulong_of_yojson actual_json
 
@@ -731,7 +731,7 @@ module RAW_PAYLOAD_params = struct
     let open Ppx_deriving_yojson_runtime in
     record_of_yojson json >>= fun { mechanism ; data } ->
     let mechanism_type = Pkcs11.CK_MECHANISM_TYPE.make mechanism in
-    Result.Ok (mechanism_type, data)
+    Ok (mechanism_type, data)
 end
 
 module Mechanism =
@@ -923,15 +923,15 @@ struct
     let parse name param =
       let simple ckm =
         if param = `Null then
-          Result.Ok ckm
+          Ok ckm
         else
-          Result.Error "Mechanism does not expect a parameter"
+          Error "Mechanism does not expect a parameter"
       in
       let open Ppx_deriving_yojson_runtime in
-      let oaep make = RSA_PKCS_OAEP_params.of_yojson param >>= fun r -> Result.Ok (make r) in
-      let pbkd2 make = PKCS5_PBKD2_DATA_params.of_yojson param >>= fun r -> Result.Ok (make r) in
-      let pss make = RSA_PKCS_PSS_params.of_yojson param >>= fun r -> Result.Ok (make r) in
-      let data make = Data.of_yojson param >>= fun r -> Result.Ok (make r) in
+      let oaep make = RSA_PKCS_OAEP_params.of_yojson param >>= fun r -> Ok (make r) in
+      let pbkd2 make = PKCS5_PBKD2_DATA_params.of_yojson param >>= fun r -> Ok (make r) in
+      let pss make = RSA_PKCS_PSS_params.of_yojson param >>= fun r -> Ok (make r) in
+      let data make = Data.of_yojson param >>= fun r -> Ok (make r) in
       match name with
         | "CKM_SHA_1" -> simple CKM_SHA_1
         | "CKM_SHA224" -> simple CKM_SHA224
@@ -961,33 +961,33 @@ struct
         | "CKM_AES_CBC_PAD" -> data (fun x -> CKM_AES_CBC_PAD x)
         | "CKM_AES_MAC" -> simple CKM_AES_MAC
         | "CKM_AES_MAC_GENERAL" ->
-            ulong_of_yojson param >>= fun r -> Result.Ok (CKM_AES_MAC_GENERAL r)
+            ulong_of_yojson param >>= fun r -> Ok (CKM_AES_MAC_GENERAL r)
         | "CKM_AES_ECB_ENCRYPT_DATA" ->
             data (fun x -> CKM_AES_ECB_ENCRYPT_DATA x)
         | "CKM_AES_CBC_ENCRYPT_DATA" ->
-            AES_CBC_ENCRYPT_DATA_params.of_yojson param >>= fun r -> Result.Ok (CKM_AES_CBC_ENCRYPT_DATA r)
+            AES_CBC_ENCRYPT_DATA_params.of_yojson param >>= fun r -> Ok (CKM_AES_CBC_ENCRYPT_DATA r)
         | "CKM_DES_KEY_GEN" -> simple CKM_DES_KEY_GEN
         | "CKM_DES_ECB" -> simple CKM_DES_ECB
         | "CKM_DES_CBC" -> data (fun x -> CKM_DES_CBC x)
         | "CKM_DES_CBC_PAD" -> data (fun x -> CKM_DES_CBC_PAD x)
         | "CKM_DES_MAC" -> simple CKM_DES_MAC
         | "CKM_DES_MAC_GENERAL" ->
-            ulong_of_yojson param >>= fun r -> Result.Ok (CKM_DES_MAC_GENERAL r)
+            ulong_of_yojson param >>= fun r -> Ok (CKM_DES_MAC_GENERAL r)
         | "CKM_DES_ECB_ENCRYPT_DATA" ->
             data (fun x -> CKM_DES_ECB_ENCRYPT_DATA x)
         | "CKM_DES_CBC_ENCRYPT_DATA" ->
-            DES_CBC_ENCRYPT_DATA_params.of_yojson param >>= fun r -> Result.Ok (CKM_DES_CBC_ENCRYPT_DATA r)
+            DES_CBC_ENCRYPT_DATA_params.of_yojson param >>= fun r -> Ok (CKM_DES_CBC_ENCRYPT_DATA r)
         | "CKM_DES3_KEY_GEN" -> simple CKM_DES3_KEY_GEN
         | "CKM_DES3_ECB" -> simple CKM_DES3_ECB
         | "CKM_DES3_CBC" -> data (fun x -> CKM_DES3_CBC x)
         | "CKM_DES3_CBC_PAD" -> data (fun x -> CKM_DES3_CBC_PAD x)
         | "CKM_DES3_MAC" -> simple CKM_DES3_MAC
         | "CKM_DES3_MAC_GENERAL" ->
-            ulong_of_yojson param >>= fun r -> Result.Ok (CKM_DES3_MAC_GENERAL r)
+            ulong_of_yojson param >>= fun r -> Ok (CKM_DES3_MAC_GENERAL r)
         | "CKM_DES3_ECB_ENCRYPT_DATA" ->
             data (fun x -> CKM_DES3_ECB_ENCRYPT_DATA x)
         | "CKM_DES3_CBC_ENCRYPT_DATA" ->
-            DES_CBC_ENCRYPT_DATA_params.of_yojson param >>= fun r -> Result.Ok (CKM_DES3_CBC_ENCRYPT_DATA r)
+            DES_CBC_ENCRYPT_DATA_params.of_yojson param >>= fun r -> Ok (CKM_DES3_CBC_ENCRYPT_DATA r)
         | "CKM_CONCATENATE_BASE_AND_DATA" ->
             data (fun x -> CKM_CONCATENATE_BASE_AND_DATA x)
         | "CKM_CONCATENATE_DATA_AND_BASE" ->
@@ -995,18 +995,18 @@ struct
         | "CKM_XOR_BASE_AND_DATA" ->
             data (fun x -> CKM_XOR_BASE_AND_DATA x)
         | "CKM_EXTRACT_KEY_FROM_KEY" ->
-            ulong_of_yojson param >>= fun r -> Result.Ok (CKM_EXTRACT_KEY_FROM_KEY r)
+            ulong_of_yojson param >>= fun r -> Ok (CKM_EXTRACT_KEY_FROM_KEY r)
         | "CKM_CONCATENATE_BASE_AND_KEY" ->
-            Object_handle.of_yojson param >>= fun r -> Result.Ok (CKM_CONCATENATE_BASE_AND_KEY r)
+            Object_handle.of_yojson param >>= fun r -> Ok (CKM_CONCATENATE_BASE_AND_KEY r)
         | "CKM_EC_KEY_PAIR_GEN" -> simple CKM_EC_KEY_PAIR_GEN
         | "CKM_ECDSA" -> simple CKM_ECDSA
         | "CKM_ECDSA_SHA1" -> simple CKM_ECDSA_SHA1
         | "CKM_ECDH1_DERIVE" ->
-            Pkcs11.CK_ECDH1_DERIVE_PARAMS.u_of_yojson param >>= fun r -> Result.Ok (CKM_ECDH1_DERIVE r)
+            Pkcs11.CK_ECDH1_DERIVE_PARAMS.u_of_yojson param >>= fun r -> Ok (CKM_ECDH1_DERIVE r)
         | _ ->
             begin
               RAW_PAYLOAD_params.of_yojson param >>= fun params ->
-              Result.Ok (CKM_CS_UNKNOWN params)
+              Ok (CKM_CS_UNKNOWN params)
             end
     in
     match json with
@@ -1015,7 +1015,7 @@ struct
       | `String name ->
           parse name `Null
       | _ ->
-          Result.Error "Ill-formed mechanism"
+          Error "Ill-formed mechanism"
 
   let to_yojson = to_json
 
@@ -1851,19 +1851,19 @@ struct
       | CKA_CS_UNKNOWN ul, NOT_IMPLEMENTED param ->
           p_data (Unsigned.ULong.to_string ul) param
 
-  let pack_of_yojson json : (pack , string) Result.result =
-    let parse name param : (pack , string) Result.result =
+  let pack_of_yojson json : (pack, string) result =
+    let parse name param : (pack, string) result =
       let parse_using f typ' =
         let open Ppx_deriving_yojson_runtime in
         f param >>= fun r ->
-        Result.Ok (Pack (typ', r))
+        Ok (Pack (typ', r))
       in
       let p_object_class = parse_using Object_class.of_yojson in
       let p_bool = parse_using (function
-          | `Bool b -> Result.Ok b
-          | `String "CK_TRUE" -> Result.Ok true
-          | `String "CK_FALSE" -> Result.Ok false
-          | _ -> Result.Error "Not a CK_BBOOL"
+          | `Bool b -> Ok b
+          | `String "CK_TRUE" -> Ok true
+          | `String "CK_FALSE" -> Ok false
+          | _ -> Error "Not a CK_BBOOL"
         ) in
       let p_string = parse_using [%of_yojson: string] in
       let p_data = parse_using Data.of_yojson in
@@ -1880,7 +1880,7 @@ struct
       let p_not_implemented typ' =
         let open Ppx_deriving_yojson_runtime in
         Data.of_yojson param >>= fun p ->
-        Result.Ok (Pack (typ', Attribute_type.NOT_IMPLEMENTED p))
+        Ok (Pack (typ', Attribute_type.NOT_IMPLEMENTED p))
       in
       let open Attribute_type in
       match name with
@@ -1986,13 +1986,13 @@ struct
             try
               p_not_implemented
                 (CKA_CS_UNKNOWN (Unsigned.ULong.of_string ul))
-            with Failure _ -> Result.Error "Invalid attribute"
+            with Failure _ -> Error "Invalid attribute"
     in
     match json with
       | `Assoc [ name, param ] ->
           parse name param
       | _ ->
-          Result.Error "Ill-formed attribute"
+          Error "Ill-formed attribute"
 
   let pack_to_yojson (Pack x) = to_json x
 
@@ -2152,7 +2152,7 @@ struct
             let attributes = List.map (fun (a, b) -> `Assoc [ a, b ]) assoc in
             map_bind Attribute.pack_of_yojson [] attributes
           end
-      | _ -> Result.Error "Ill-formed template"
+      | _ -> Error "Ill-formed template"
 
   let rec get : type a . t -> a Attribute_type.t -> a option = fun template x ->
     match template with
@@ -2322,7 +2322,7 @@ sig
   val initialize : unit -> unit
   val finalize : unit -> unit
   val get_info : unit -> Info.t
-  val get_slot : Slot.t -> (Slot_id.t, string) Result.result
+  val get_slot : Slot.t -> (Slot_id.t, string) result
   val get_slot_list : bool -> Slot_id.t list
   val get_slot_info : slot: Slot_id.t -> Slot_info.t
   val get_token_info : slot: Slot_id.t -> Token_info.t
@@ -2509,8 +2509,8 @@ struct
     let slot_list = get_slot_list false in
     let predicate = find_slot slot in
     match findi_option predicate slot_list with
-    | Some s -> Result.Ok s
-    | None -> Result.Error (invalid_slot_msg slot)
+    | Some s -> Ok s
+    | None -> Error (invalid_slot_msg slot)
 
   let get_mechanism_list: slot: Slot_id.t -> Mechanism_type.t list t =
     fun ~slot ->
