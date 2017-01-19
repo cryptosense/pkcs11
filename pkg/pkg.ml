@@ -53,8 +53,11 @@ let api =
   ; "P11_key_attributes"
   ]
 
+let cmdliner = Conf.with_pkg "cmdliner"
+
 let () =
   Pkg.describe "pkcs11" @@ fun c ->
+  let cmdliner = Conf.value c cmdliner in
   Ok [
     Pkg.mllib ~api "src/pkcs11.mllib";
     Pkg.clib "src/libpkcs11_stubs.clib";
@@ -66,4 +69,5 @@ let () =
     Pkg.mllib ~api:["Pkcs11_rev"] "src/pkcs11_rev.mllib";
     Pkg.clib "src/libpkcs11_rev_stubs.clib";
     Pkg.clib "src/libpkcs11_rev_dllmain.clib";
+    Pkg.mllib ~cond:cmdliner "src/pkcs11_cli.mllib";
   ]

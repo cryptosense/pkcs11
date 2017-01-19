@@ -15,3 +15,13 @@ package "rev" (
     plugin(native) = "pkcs11_rev.cmxs"
     requires = "pkcs11"
 )
+
+package "cli" (
+    version = "%%VERSION_NUM%%"
+    description = "Cmdliner support for pkcs11"
+    archive(byte) = "pkcs11_cli.cma"
+    archive(native) = "pkcs11_cli.cmxa"
+    plugin(byte) = "pkcs11_cli.cma"
+    plugin(native) = "pkcs11_cli.cmxs"
+    requires = "pkcs11 cmdliner"
+)

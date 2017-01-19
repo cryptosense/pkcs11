@@ -5,6 +5,7 @@ true: package(key-parsers)
 true: package(ppx_deriving.std)
 true: package(ppx_deriving_yojson)
 true: open(Result)
+<src/pkcs11_cli.*>: package(cmdliner)
 <src>: include
 <include>: include
 <src/*>: depend(include/pkcs11.h)

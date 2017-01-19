@@ -50,3 +50,4 @@ Pkcs11_slot_list
 Pkcs11_template
 Pkcs11_types
 Pkcs11_rev
+Pkcs11_cli

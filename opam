@@ -7,10 +7,10 @@ license: "BSD-2"
 dev-repo: "https://github.com/cryptosense/pkcs11.git"
 doc: "https://cryptosense.github.io/pkcs11/doc"
 build: [
-  [ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" ]
+  [ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--with-cmdliner" "%{cmdliner:installed}%" ]
 ]
 build-test: [
-  [ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true" ]
+  [ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true" "--with-cmdliner" "%{cmdliner:installed}%" ]
   [ "ocaml" "pkg/pkg.ml" "test" ]
 ]
 depends: [
@@ -23,6 +23,9 @@ depends: [
   "ocamlbuild" {build}
   "ocamlfind" {build}
   "topkg" {build}
+]
+depopts: [
+  "cmdliner"
 ]
 tags: ["org:cryptosense"]
 available: [ocaml-version >= "4.02.0" & os != "darwin"]
