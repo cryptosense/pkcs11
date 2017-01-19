@@ -23,6 +23,7 @@ depends: [
   "ocamlbuild" {build}
   "ocamlfind" {build}
   "topkg" {build}
+  "ounit" {test}
 ]
 depopts: [
   "cmdliner"
