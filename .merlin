@@ -2,6 +2,7 @@ S pkg
 S src
 B _build/pkg
 B _build/src
+PKG cmdliner
 PKG ctypes.foreign
 PKG ctypes.stubs
 PKG hex
