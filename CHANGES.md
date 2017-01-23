@@ -1,3 +1,32 @@
+v0.7.0 2016-01-23
+=================
+
+Breaking changes:
+
+- Remove `typ` values from `records`, deprecated in 0.6.0, and the associated
+  dependency (#26)
+- Rework the `P11_keys_attributes` module (#27):
+  + rename it to `P11_key_attributes`
+  + rename `possibles` to `possibles`
+  + remove `kinds` and `is`
+- Remove most "not implemented" attributes (#28, #29)
+
+Fixes:
+
+- Detect Linux hosts more robustly (#25)
+
+New features:
+
+- Provide optional `cmdliner` support through a new `Pkcs11_cli` module (in
+  `pkcs11.cli`) (#31)
+
+Build system:
+
+- Forbid `key-parsers.0.6.0`
+- Refer to the `Result` compatibility module only through a global `-open` (#30)
+- Install `cmti` files (#32)
+- Add missing `ounit` test-dependency (#32)
+
 v0.6.0 2016-01-04
 =================
 
