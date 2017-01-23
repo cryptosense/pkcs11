@@ -10,7 +10,7 @@
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Index of module types" rel=Appendix href="index_module_types.html">
 <link title="P11" rel="Chapter" href="P11.html">
-<link title="P11_keys_attributes" rel="Chapter" href="P11_keys_attributes.html">
+<link title="P11_key_attributes" rel="Chapter" href="P11_key_attributes.html">
 <link title="Pkcs11" rel="Chapter" href="Pkcs11.html">
 <link title="Pkcs11_CBC_ENCRYPT_DATA_PARAMS" rel="Chapter" href="Pkcs11_CBC_ENCRYPT_DATA_PARAMS.html">
 <link title="Pkcs11_CK_ATTRIBUTE" rel="Chapter" href="Pkcs11_CK_ATTRIBUTE.html">
@@ -60,7 +60,8 @@
 <link title="Pkcs11_slot_list" rel="Chapter" href="Pkcs11_slot_list.html">
 <link title="Pkcs11_template" rel="Chapter" href="Pkcs11_template.html">
 <link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html">
-<link title="Pkcs11_rev" rel="Chapter" href="Pkcs11_rev.html"><title>Index of values</title>
+<link title="Pkcs11_rev" rel="Chapter" href="Pkcs11_rev.html">
+<link title="Pkcs11_cli" rel="Chapter" href="Pkcs11_cli.html"><title>Index of values</title>
 </head>
 <body>
 <div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
@@ -2466,6 +2467,11 @@ Compares two normalized templates.
       that are not equal to an element of <code class="code">tested</code>.
 </div>
 </td></tr>
+<tr><td><a href="Pkcs11_cli.Arg.html#VALdll">dll</a> [<a href="Pkcs11_cli.Arg.html">Pkcs11_cli.Arg</a>]</td>
+<td><div class="info">
+<code class="code">-d</code>, <code class="code">--dll</code>: name of a DLL to load.
+</div>
+</td></tr>
 <tr><td align="left"><br>E</td></tr>
 <tr><td><a href="Pkcs11_CK_MECHANISM_TYPE.html#VALelements">elements</a> [<a href="Pkcs11_CK_MECHANISM_TYPE.html">Pkcs11_CK_MECHANISM_TYPE</a>]</td>
 <td></td></tr>
@@ -2665,12 +2671,6 @@ Will request several attributes at the same time.
 <td></td></tr>
 <tr><td><a href="P11.S.html#VALinitialize">initialize</a> [<a href="P11.S.html">P11.S</a>]</td>
 <td></td></tr>
-<tr><td><a href="P11_keys_attributes.html#VALis">is</a> [<a href="P11_keys_attributes.html">P11_keys_attributes</a>]</td>
-<td><div class="info">
-Check that an attribute_type could be used in all the kind present
-    in the list.
-</div>
-</td></tr>
 <tr><td><a href="P11.Attribute.html#VALis">is</a> [<a href="P11.Attribute.html">P11.Attribute</a>]</td>
 <td><div class="info">
 Return whether <code class="code">a</code> has all kinds <code class="code">k</code>.
@@ -2699,11 +2699,6 @@ Low-level PKCS#11 bindings.
 <tr><td><a href="P11.Mechanism.html#VALkey_type">key_type</a> [<a href="P11.Mechanism.html">P11.Mechanism</a>]</td>
 <td><div class="info">
 <code class="code">key_type&nbsp;t</code> returns the type of keys associated to the mechanism <code class="code">t</code>.
-</div>
-</td></tr>
-<tr><td><a href="P11_keys_attributes.html#VALkinds">kinds</a> [<a href="P11_keys_attributes.html">P11_keys_attributes</a>]</td>
-<td><div class="info">
-Return the list of kinds that are possible with this attribute.
 </div>
 </td></tr>
 <tr><td><a href="P11.Attribute.html#VALkinds">kinds</a> [<a href="P11.Attribute.html">P11.Attribute</a>]</td>
@@ -2966,7 +2961,17 @@ Remove unnecessary leading <code class="code"><span class="string">'\000'</span>
 <td></td></tr>
 <tr><td><a href="P11.Attribute_type.html#VALpack_to_yojson">pack_to_yojson</a> [<a href="P11.Attribute_type.html">P11.Attribute_type</a>]</td>
 <td></td></tr>
-<tr><td><a href="P11_keys_attributes.html#VALpossibles">possibles</a> [<a href="P11_keys_attributes.html">P11_keys_attributes</a>]</td>
+<tr><td><a href="Pkcs11_cli.Term.html#VALpin">pin</a> [<a href="Pkcs11_cli.Term.html">Pkcs11_cli.Term</a>]</td>
+<td><div class="info">
+Shortcut for <code class="code"><span class="constructor">Cmdliner</span>.<span class="constructor">Arg</span>.value&nbsp;<span class="constructor">Arg</span>.pin</code>.
+</div>
+</td></tr>
+<tr><td><a href="Pkcs11_cli.Arg.html#VALpin">pin</a> [<a href="Pkcs11_cli.Arg.html">Pkcs11_cli.Arg</a>]</td>
+<td><div class="info">
+<code class="code">-p</code>, <code class="code">--pin</code>: PIN to pass to <code class="code"><span class="constructor">C_Login</span></code>.
+</div>
+</td></tr>
+<tr><td><a href="P11_key_attributes.html#VALpossible">possible</a> [<a href="P11_key_attributes.html">P11_key_attributes</a>]</td>
 <td><div class="info">
 Return all the possible attributes for a given kind, if the
     kind is a high level kind (Secret for example), it is possible
@@ -3025,6 +3030,44 @@ Remove the duplicates from a list of attribute types
 <td></td></tr>
 <tr><td><a href="Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CBC_ENCRYPT_DATA_PARAMS_PARAM.html#VALsize">size</a> [<a href="Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CBC_ENCRYPT_DATA_PARAMS_PARAM.html">Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CBC_ENCRYPT_DATA_PARAMS_PARAM</a>]</td>
 <td></td></tr>
+<tr><td><a href="Pkcs11_cli.Term.html#VALslot">slot</a> [<a href="Pkcs11_cli.Term.html">Pkcs11_cli.Term</a>]</td>
+<td><div class="info">
+Term that combines the above slot-selecting terms: it makes sure that
+  at most one is passed and builds a <code class="code"><span class="constructor">P11</span>.<span class="constructor">Slot</span>.t</code> value out of it.
+</div>
+</td></tr>
+<tr><td><a href="Pkcs11_cli.Term.html#VALslot_description">slot_description</a> [<a href="Pkcs11_cli.Term.html">Pkcs11_cli.Term</a>]</td>
+<td><div class="info">
+Shortcut for <code class="code"><span class="constructor">Cmdliner</span>.<span class="constructor">Arg</span>.value&nbsp;<span class="constructor">Arg</span>.slot_description</code>.
+</div>
+</td></tr>
+<tr><td><a href="Pkcs11_cli.Arg.html#VALslot_description">slot_description</a> [<a href="Pkcs11_cli.Arg.html">Pkcs11_cli.Arg</a>]</td>
+<td><div class="info">
+<code class="code">--slot-description</code>: select a slot based on its description.
+</div>
+</td></tr>
+<tr><td><a href="Pkcs11_cli.Term.html#VALslot_id">slot_id</a> [<a href="Pkcs11_cli.Term.html">Pkcs11_cli.Term</a>]</td>
+<td><div class="info">
+Shortcut for <code class="code"><span class="constructor">Cmdliner</span>.<span class="constructor">Arg</span>.value&nbsp;<span class="constructor">Arg</span>.slot_id</code>.
+</div>
+</td></tr>
+<tr><td><a href="Pkcs11_cli.Arg.html#VALslot_id">slot_id</a> [<a href="Pkcs11_cli.Arg.html">Pkcs11_cli.Arg</a>]</td>
+<td><div class="info">
+<code class="code">--slot-id</code>: select a slot by its slot ID (in the list that
+      <code class="code"><span class="constructor">C_GetSlotList</span></code> outputs).
+</div>
+</td></tr>
+<tr><td><a href="Pkcs11_cli.Term.html#VALslot_index">slot_index</a> [<a href="Pkcs11_cli.Term.html">Pkcs11_cli.Term</a>]</td>
+<td><div class="info">
+Shortcut for <code class="code"><span class="constructor">Cmdliner</span>.<span class="constructor">Arg</span>.value&nbsp;<span class="constructor">Arg</span>.slot_index</code>.
+</div>
+</td></tr>
+<tr><td><a href="Pkcs11_cli.Arg.html#VALslot_index">slot_index</a> [<a href="Pkcs11_cli.Arg.html">Pkcs11_cli.Arg</a>]</td>
+<td><div class="info">
+<code class="code">-s</code>, <code class="code">--slot</code>, <code class="code">--slot-index</code>: select a slot based on its index in
+  <code class="code"><span class="constructor">C_GetSlotList</span></code> output.
+</div>
+</td></tr>
 <tr><td><a href="Pkcs11_CK_FLAGS.html#VALsplit">split</a> [<a href="Pkcs11_CK_FLAGS.html">Pkcs11_CK_FLAGS</a>]</td>
 <td><div class="info">
 * Split a combined flag value into a list of all the flags it comprises.
@@ -3247,6 +3290,16 @@ Returns list of pretty strings for flags for the given domain.
 <td></td></tr>
 <tr><td><a href="Pkcs11_CK_BIGINT.html#VALto_z">to_z</a> [<a href="Pkcs11_CK_BIGINT.html">Pkcs11_CK_BIGINT</a>]</td>
 <td></td></tr>
+<tr><td><a href="Pkcs11_cli.Term.html#VALtoken_label">token_label</a> [<a href="Pkcs11_cli.Term.html">Pkcs11_cli.Term</a>]</td>
+<td><div class="info">
+Shortcut for <code class="code"><span class="constructor">Cmdliner</span>.<span class="constructor">Arg</span>.value&nbsp;<span class="constructor">Arg</span>.token_label</code>.
+</div>
+</td></tr>
+<tr><td><a href="Pkcs11_cli.Arg.html#VALtoken_label">token_label</a> [<a href="Pkcs11_cli.Arg.html">Pkcs11_cli.Arg</a>]</td>
+<td><div class="info">
+<code class="code">--token-label</code>: select a slot based on the label of associated token.
+</div>
+</td></tr>
 <tr><td><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html#VALtyp">typ</a> [<a href="Pkcs11_CK_ATTRIBUTE_TYPE.html">Pkcs11_CK_ATTRIBUTE_TYPE</a>]</td>
 <td></td></tr>
 <tr><td><a href="Pkcs11_CK_USER_TYPE.html#VALtyp">typ</a> [<a href="Pkcs11_CK_USER_TYPE.html">Pkcs11_CK_USER_TYPE</a>]</td>
@@ -3277,40 +3330,6 @@ Returns list of pretty strings for flags for the given domain.
 <td></td></tr>
 <tr><td><a href="Pkcs11_CK_BYTE.html#VALtyp">typ</a> [<a href="Pkcs11_CK_BYTE.html">Pkcs11_CK_BYTE</a>]</td>
 <td></td></tr>
-<tr><td><a href="P11.Template.html#VALtyp">typ</a> [<a href="P11.Template.html">P11.Template</a>]</td>
-<td></td></tr>
-<tr><td><a href="P11.Attribute_types.html#VALtyp">typ</a> [<a href="P11.Attribute_types.html">P11.Attribute_types</a>]</td>
-<td></td></tr>
-<tr><td><a href="P11.Session_info.html#VALtyp">typ</a> [<a href="P11.Session_info.html">P11.Session_info</a>]</td>
-<td></td></tr>
-<tr><td><a href="P11.Mechanism_info.html#VALtyp">typ</a> [<a href="P11.Mechanism_info.html">P11.Mechanism_info</a>]</td>
-<td></td></tr>
-<tr><td><a href="P11.Slot_info.html#VALtyp">typ</a> [<a href="P11.Slot_info.html">P11.Slot_info</a>]</td>
-<td></td></tr>
-<tr><td><a href="P11.Token_info.html#VALtyp">typ</a> [<a href="P11.Token_info.html">P11.Token_info</a>]</td>
-<td></td></tr>
-<tr><td><a href="P11.Info.html#VALtyp">typ</a> [<a href="P11.Info.html">P11.Info</a>]</td>
-<td></td></tr>
-<tr><td><a href="P11.Mechanism.html#VALtyp">typ</a> [<a href="P11.Mechanism.html">P11.Mechanism</a>]</td>
-<td></td></tr>
-<tr><td><a href="P11.Key_gen_mechanism.html#VALtyp">typ</a> [<a href="P11.Key_gen_mechanism.html">P11.Key_gen_mechanism</a>]</td>
-<td></td></tr>
-<tr><td><a href="P11.Mechanism_type.html#VALtyp">typ</a> [<a href="P11.Mechanism_type.html">P11.Mechanism_type</a>]</td>
-<td></td></tr>
-<tr><td><a href="Pkcs11_CK_BIGINT.html#VALtyp">typ</a> [<a href="Pkcs11_CK_BIGINT.html">Pkcs11_CK_BIGINT</a>]</td>
-<td></td></tr>
-<tr><td><a href="P11.Key_type.html#VALtyp">typ</a> [<a href="P11.Key_type.html">P11.Key_type</a>]</td>
-<td></td></tr>
-<tr><td><a href="P11.Object_class.html#VALtyp">typ</a> [<a href="P11.Object_class.html">P11.Object_class</a>]</td>
-<td></td></tr>
-<tr><td><a href="P11.Slot_id.html#VALtyp">typ</a> [<a href="P11.Slot_id.html">P11.Slot_id</a>]</td>
-<td></td></tr>
-<tr><td><a href="P11.Object_handle.html#VALtyp">typ</a> [<a href="P11.Object_handle.html">P11.Object_handle</a>]</td>
-<td></td></tr>
-<tr><td><a href="P11.Session_handle.html#VALtyp">typ</a> [<a href="P11.Session_handle.html">P11.Session_handle</a>]</td>
-<td></td></tr>
-<tr><td><a href="P11.Data.html#VALtyp">typ</a> [<a href="P11.Data.html">P11.Data</a>]</td>
-<td></td></tr>
 <tr><td align="left"><br>U</td></tr>
 <tr><td><a href="Pkcs11_types.CK_NOTIFY.html#VALu">u</a> [<a href="Pkcs11_types.CK_NOTIFY.html">Pkcs11_types.CK_NOTIFY</a>]</td>
 <td></td></tr>
@@ -3333,8 +3352,6 @@ Returns list of pretty strings for flags for the given domain.
 <tr><td><a href="P11.Token_info.html#VALul_to_string">ul_to_string</a> [<a href="P11.Token_info.html">P11.Token_info</a>]</td>
 <td></td></tr>
 <tr><td><a href="Pkcs11_CK_ATTRIBUTE.html#VALulong">ulong</a> [<a href="Pkcs11_CK_ATTRIBUTE.html">Pkcs11_CK_ATTRIBUTE</a>]</td>
-<td></td></tr>
-<tr><td><a href="P11.html#VALulong">ulong</a> [<a href="P11.html">P11</a>]</td>
 <td></td></tr>
 <tr><td><a href="P11.html#VALulong_of_yojson">ulong_of_yojson</a> [<a href="P11.html">P11</a>]</td>
 <td></td></tr>
@@ -3363,6 +3380,27 @@ Returns list of pretty strings for flags for the given domain.
 <td></td></tr>
 <tr><td><a href="Pkcs11_CK_ATTRIBUTE_SET.html#VALupdate">update</a> [<a href="Pkcs11_CK_ATTRIBUTE_SET.html">Pkcs11_CK_ATTRIBUTE_SET</a>]</td>
 <td></td></tr>
+<tr><td><a href="Pkcs11_cli.Term.html#VALuse_get_function_list">use_get_function_list</a> [<a href="Pkcs11_cli.Term.html">Pkcs11_cli.Term</a>]</td>
+<td><div class="info">
+Shortcut for <code class="code"><span class="constructor">Cmdliner</span>.<span class="constructor">Arg</span>.value&nbsp;<span class="constructor">Arg</span>.use_get_function_list</code>.
+</div>
+</td></tr>
+<tr><td><a href="Pkcs11_cli.Arg.html#VALuse_get_function_list">use_get_function_list</a> [<a href="Pkcs11_cli.Arg.html">Pkcs11_cli.Arg</a>]</td>
+<td><div class="info">
+How to access the PKCS11 DLL.
+</div>
+</td></tr>
+<tr><td><a href="Pkcs11_cli.Term.html#VALuser_type">user_type</a> [<a href="Pkcs11_cli.Term.html">Pkcs11_cli.Term</a>]</td>
+<td><div class="info">
+Shortcut for <code class="code"><span class="constructor">Cmdliner</span>.<span class="constructor">Arg</span>.value&nbsp;<span class="constructor">Arg</span>.user_type</code>.
+</div>
+</td></tr>
+<tr><td><a href="Pkcs11_cli.Arg.html#VALuser_type">user_type</a> [<a href="Pkcs11_cli.Arg.html">Pkcs11_cli.Arg</a>]</td>
+<td><div class="info">
+<code class="code">--user-<span class="keyword">type</span></code>: select user type:
+  <code class="code"><span class="constructor">CKU_USER</span></code> (<code class="code"><span class="string">"user"</span></code>) or <code class="code"><span class="constructor">CKU_SO</span></code> (<code class="code"><span class="string">"so"</span></code>)
+</div>
+</td></tr>
 <tr><td><a href="Pkcs11_types.html#VALutf8char">utf8char</a> [<a href="Pkcs11_types.html">Pkcs11_types</a>]</td>
 <td></td></tr>
 <tr><td align="left"><br>V</td></tr>

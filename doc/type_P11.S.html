@@ -9,7 +9,7 @@
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Index of module types" rel=Appendix href="index_module_types.html">
 <link title="P11" rel="Chapter" href="P11.html">
-<link title="P11_keys_attributes" rel="Chapter" href="P11_keys_attributes.html">
+<link title="P11_key_attributes" rel="Chapter" href="P11_key_attributes.html">
 <link title="Pkcs11" rel="Chapter" href="Pkcs11.html">
 <link title="Pkcs11_CBC_ENCRYPT_DATA_PARAMS" rel="Chapter" href="Pkcs11_CBC_ENCRYPT_DATA_PARAMS.html">
 <link title="Pkcs11_CK_ATTRIBUTE" rel="Chapter" href="Pkcs11_CK_ATTRIBUTE.html">
@@ -59,14 +59,15 @@
 <link title="Pkcs11_slot_list" rel="Chapter" href="Pkcs11_slot_list.html">
 <link title="Pkcs11_template" rel="Chapter" href="Pkcs11_template.html">
 <link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html">
-<link title="Pkcs11_rev" rel="Chapter" href="Pkcs11_rev.html"><title>P11.S</title>
+<link title="Pkcs11_rev" rel="Chapter" href="Pkcs11_rev.html">
+<link title="Pkcs11_cli" rel="Chapter" href="Pkcs11_cli.html"><title>P11.S</title>
 </head>
 <body>
 <code class="code"><span class="keyword">sig</span><br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;initialize&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;finalize&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_info&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11</span>.<span class="constructor">Info</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_slot&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Slot</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="constructor">P11</span>.<span class="constructor">Slot_id</span>.t,&nbsp;string)&nbsp;<span class="constructor">Result</span>.result<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_slot&nbsp;:&nbsp;<span class="constructor">P11</span>.<span class="constructor">Slot</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="constructor">P11</span>.<span class="constructor">Slot_id</span>.t,&nbsp;string)&nbsp;<span class="constructor">Pervasives</span>.result<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_slot_list&nbsp;:&nbsp;bool&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11</span>.<span class="constructor">Slot_id</span>.t&nbsp;list<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_slot_info&nbsp;:&nbsp;slot:<span class="constructor">P11</span>.<span class="constructor">Slot_id</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11</span>.<span class="constructor">Slot_info</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_token_info&nbsp;:&nbsp;slot:<span class="constructor">P11</span>.<span class="constructor">Slot_id</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11</span>.<span class="constructor">Token_info</span>.t<br>
