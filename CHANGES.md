@@ -1,3 +1,11 @@
+v0.7.1 2016-01-25
+=================
+
+Build system:
+
+- Remove `records` from `META` to make it possible to actually use `pkcs11`
+  without `records` installed (#33)
+
 v0.7.0 2016-01-23
 =================
 
