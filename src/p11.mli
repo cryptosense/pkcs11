@@ -29,20 +29,7 @@ module Info = P11_info
 module Token_info = P11_token_info
 module Slot_info = P11_slot_info
 module Mechanism_info = P11_mechanism_info
-
-module Session_info :
-sig
-  type t = Pkcs11.CK_SESSION_INFO.u =
-    {
-      slotID : Unsigned.ULong.t;
-      state : Unsigned.ULong.t;
-      flags : Flags.t;
-      ulDeviceError : Unsigned.ULong.t;
-    }
-  [@@deriving yojson]
-  val to_string : ?newlines: bool -> ?indent: string -> t -> string
-  val to_strings : t -> string list
-end
+module Session_info = P11_session_info
 
 module Attribute_type :
 sig
