@@ -17,15 +17,7 @@ module Key_gen_mechanism = P11_key_gen_mechanism
 module RSA_PKCS_MGF_type = P11_rsa_pkcs_mgf_type
 module RSA_PKCS_OAEP_params = P11_rsa_pkcs_oaep_params
 module RSA_PKCS_PSS_params = P11_rsa_pkcs_pss_params
-
-module AES_CBC_ENCRYPT_DATA_params :
-sig
-  type t = Pkcs11.CK_AES_CBC_ENCRYPT_DATA_PARAMS.u =
-    {
-      iv: string;
-      data: string;
-    }
-end
+module AES_CBC_ENCRYPT_DATA_params = P11_aes_cbc_encrypt_data_params
 
 module DES_CBC_ENCRYPT_DATA_params :
 sig
