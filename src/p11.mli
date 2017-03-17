@@ -13,19 +13,7 @@ end
 module Session_handle = P11_session_handle
 module Object_handle = P11_object_handle
 module HW_feature_type = P11_hw_feature_type
-
-module Slot:
-sig
-  type t =
-    | Index of int
-    | Id of int
-    | Description of string
-    | Label of string
-    [@@deriving yojson]
-
-  val default: t
-  val to_string: t -> string * string
-end
+module Slot = P11_slot
 
 module Slot_id :
 sig

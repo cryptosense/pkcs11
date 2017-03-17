@@ -6,41 +6,7 @@ module Data = Pkcs11_hex_data
 module Session_handle = P11_session_handle
 module Object_handle = P11_object_handle
 module HW_feature_type = P11_hw_feature_type
-
-module Slot = struct
-  type t =
-    | Index of int
-    | Id of int
-    | Description of string
-    | Label of string
-
-  let to_yojson = function
-    | Index x -> `List [`String "index"; `Int x]
-    | Id x -> `List [`String "id"; `Int x]
-    | Description x -> `List [`String "description"; `String x]
-    | Label x -> `List [`String "label"; `String x]
-
-  let of_yojson = function
-    | `List [`String "index" ; `Int x] -> Ok (Index x)
-    | `List [`String "id" ; `Int x] -> Ok (Id x)
-    | `List [`String "description" ; `String x] -> Ok (Description x)
-    | `List [`String "label" ; `String x] -> Ok (Label x)
-    | _ -> Error "Slot.t"
-
-  let default = Index 0
-
-  let to_string = function
-    | Index i -> "slot index", string_of_int i
-    | Id i -> "slot ID", string_of_int i
-    | Description s -> "slot description", s
-    | Label s -> "token label", s
-
-  let invalid_slot_msg slot =
-    let slot_type, value = to_string slot in
-      Printf.sprintf
-        "No %s matches %s."
-        slot_type value
-end
+module Slot = P11_slot
 
 module Slot_id =
 struct
@@ -2456,6 +2422,12 @@ struct
     | Label s ->
       let { Token_info.label } = get_token_info ~slot in
       trimmed_eq label s
+
+  let invalid_slot_msg slot =
+    let slot_type, value = Slot.to_string slot in
+      Printf.sprintf
+        "No %s matches %s."
+        slot_type value
 
   let get_slot slot =
     let open Slot in
