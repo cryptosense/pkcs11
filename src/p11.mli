@@ -16,29 +16,7 @@ module HW_feature_type = P11_hw_feature_type
 module Slot = P11_slot
 module Slot_id = P11_slot_id
 module Flags = P11_flags
-
-module Object_class :
-sig
-  type t = Pkcs11.CK_OBJECT_CLASS.u =
-    | CKO_DATA
-    | CKO_CERTIFICATE
-    | CKO_PUBLIC_KEY
-    | CKO_PRIVATE_KEY
-    | CKO_SECRET_KEY
-    | CKO_HW_FEATURE
-    | CKO_DOMAIN_PARAMETERS
-    | CKO_MECHANISM
-    | CKO_OTP_KEY
-    | CKO_VENDOR_DEFINED
-
-    (* This is a catch-all case that makes it possible to deal with
-       vendor-specific/non-standard CKO. *)
-    | CKO_CS_UNKNOWN of Unsigned.ULong.t
-  [@@deriving eq,ord,show,yojson]
-
-  val of_string : string -> t
-  val to_string : t -> string
-end
+module Object_class = P11_object_class
 
 module Key_type :
 sig
