@@ -23,16 +23,7 @@ module Bigint = Pkcs11.CK_BIGINT
 module RV = P11_rv
 module Mechanism_type = P11_mechanism_type
 module Key_gen_mechanism = P11_key_gen_mechanism
-
-module RSA_PKCS_MGF_type :
-sig
-  type t = Pkcs11.CK_RSA_PKCS_MGF_TYPE.t
-  val _CKG_MGF1_SHA1 : t
-  val _CKG_MGF1_SHA256 : t
-  val _CKG_MGF1_SHA384 : t
-  val _CKG_MGF1_SHA512 : t
-  val _CKG_MGF1_SHA224 : t
-end
+module RSA_PKCS_MGF_type = P11_rsa_pkcs_mgf_type
 
 module RSA_PKCS_OAEP_params :
 sig

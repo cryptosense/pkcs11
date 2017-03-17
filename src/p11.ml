@@ -16,20 +16,7 @@ module Bigint = Pkcs11.CK_BIGINT
 module RV = P11_rv
 module Mechanism_type = P11_mechanism_type
 module Key_gen_mechanism = P11_key_gen_mechanism
-
-module RSA_PKCS_MGF_type =
-struct
-  include Pkcs11.CK_RSA_PKCS_MGF_TYPE
-
-  let to_json key_type =
-    try
-      `String (to_string key_type)
-    with Invalid_argument _ ->
-      `Null
-
-  let to_yojson = to_json
-  let of_yojson = Ctypes_helpers.of_json_string ~typename:"MGF type" of_string
-end
+module RSA_PKCS_MGF_type = P11_rsa_pkcs_mgf_type
 
 module RSA_PKCS_OAEP_params =
 struct
