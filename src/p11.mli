@@ -28,25 +28,7 @@ module User_type = P11_user_type
 module Info = P11_info
 module Token_info = P11_token_info
 module Slot_info = P11_slot_info
-
-module Mechanism_info :
-sig
-  type t = Pkcs11.CK_MECHANISM_INFO.u =
-    {
-      ulMinKeySize : Unsigned.ULong.t;
-      ulMaxKeySize : Unsigned.ULong.t;
-      flags : Flags.t;
-    }
-    [@@deriving yojson]
-
-  val to_string : ?newlines: bool -> ?indent: string -> t -> string
-  val to_strings :  t -> string list
-  val flags_to_string : Flags.t -> string
-  val flags_to_strings : Flags.t -> string list
-
-  (* flags possible to set for mechanism infos, aggregated *)
-  val allowed_flags : Flags.t
-end
+module Mechanism_info = P11_mechanism_info
 
 module Session_info :
 sig
