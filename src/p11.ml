@@ -26,25 +26,7 @@ module PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_type = P11_pkcs5_pbkd2_pseudo_random_f
 module PKCS5_PBKD2_DATA_params = P11_pkcs5_pbkd2_data_params
 module RAW_PAYLOAD_params = P11_raw_payload_params
 module Mechanism = P11_mechanism
-
-module User_type =
-struct
-  type t = Pkcs11.CK_USER_TYPE.u =
-    | CKU_SO
-    | CKU_USER
-    | CKU_CONTEXT_SPECIFIC
-    | CKU_CS_UNKNOWN of Unsigned.ULong.t
-
-  let compare x y = Pkcs11.CK_USER_TYPE.compare x y
-  let equal x y = Pkcs11.CK_USER_TYPE.equal x y
-  let to_string : t -> string = Pkcs11.CK_USER_TYPE.to_string
-  let of_string : string -> t = Pkcs11.CK_USER_TYPE.of_string
-
-  let to_yojson user_type =
-    `String (to_string user_type)
-
-  let of_yojson = Ctypes_helpers.of_json_string ~typename:"user type" of_string
-end
+module User_type = P11_user_type
 
 module Info =
 struct

@@ -24,21 +24,7 @@ module PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_type = P11_pkcs5_pbkd2_pseudo_random_f
 module PKCS5_PBKD2_DATA_params = P11_pkcs5_pbkd2_data_params
 module RAW_PAYLOAD_params = P11_raw_payload_params
 module Mechanism = P11_mechanism
-
-module User_type :
-sig
-  type t = Pkcs11.CK_USER_TYPE.u =
-    | CKU_SO
-    | CKU_USER
-    | CKU_CONTEXT_SPECIFIC
-    | CKU_CS_UNKNOWN of Unsigned.ULong.t
-    [@@deriving yojson]
-
-  val compare : t -> t -> int
-  val equal : t -> t -> bool
-  val to_string : t -> string
-  val of_string : string -> t
-end
+module User_type = P11_user_type
 
 module Info :
 sig
