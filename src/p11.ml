@@ -24,26 +24,7 @@ module DES_CBC_ENCRYPT_DATA_params = P11_des_cbc_encrypt_data_params
 module PKCS5_PBKDF2_SALT_SOURCE_type = P11_pkcs5_pbkdf2_salt_source_type
 module PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_type = P11_pkcs5_pbkd2_pseudo_random_function_type
 module PKCS5_PBKD2_DATA_params = P11_pkcs5_pbkd2_data_params
-
-module RAW_PAYLOAD_params = struct
-  type t = Pkcs11.CK_RAW_PAYLOAD.t
-
-  type record =
-    { mechanism: Mechanism_type.t
-    ; data: Data.t
-    }
-  [@@deriving yojson]
-
-  let to_yojson (ckm, data) =
-    let mechanism = Pkcs11.CK_MECHANISM_TYPE.view ckm in
-    record_to_yojson { mechanism ; data }
-
-  let of_yojson json =
-    let open Ppx_deriving_yojson_runtime in
-    record_of_yojson json >>= fun { mechanism ; data } ->
-    let mechanism_type = Pkcs11.CK_MECHANISM_TYPE.make mechanism in
-    Ok (mechanism_type, data)
-end
+module RAW_PAYLOAD_params = P11_raw_payload_params
 
 module Mechanism =
 struct
@@ -228,7 +209,7 @@ struct
       | CKM_PKCS5_PBKD2 p ->
           param "CKM_PKCS5_PBKD2" p PKCS5_PBKD2_DATA_params.to_yojson
       | CKM_CS_UNKNOWN p ->
-          param "CKM_NOT_IMPLEMENTED" p RAW_PAYLOAD_params.to_yojson
+          param "CKM_NOT_IMPLEMENTED" p P11_raw_payload_params.to_yojson
 
   let of_yojson json =
     let parse name param =

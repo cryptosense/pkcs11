@@ -22,11 +22,7 @@ module DES_CBC_ENCRYPT_DATA_params = P11_des_cbc_encrypt_data_params
 module PKCS5_PBKDF2_SALT_SOURCE_type = P11_pkcs5_pbkdf2_salt_source_type
 module PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_type = P11_pkcs5_pbkd2_pseudo_random_function_type
 module PKCS5_PBKD2_DATA_params = P11_pkcs5_pbkd2_data_params
-
-module RAW_PAYLOAD_params :
-sig
-  type t = Pkcs11.CK_RAW_PAYLOAD.t
-end
+module RAW_PAYLOAD_params = P11_raw_payload_params
 
 module Mechanism :
 sig
