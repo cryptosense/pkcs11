@@ -21,25 +21,7 @@ module RSA_PKCS_OAEP_params = P11_rsa_pkcs_oaep_params
 module RSA_PKCS_PSS_params = P11_rsa_pkcs_pss_params
 module AES_CBC_ENCRYPT_DATA_params = P11_aes_cbc_encrypt_data_params
 module DES_CBC_ENCRYPT_DATA_params = P11_des_cbc_encrypt_data_params
-
-module PKCS5_PBKDF2_SALT_SOURCE_type =
-struct
-  type t = Pkcs11.CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.u
-
-  let to_string =
-    Pkcs11.CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.to_string
-
-  let of_string =
-    Pkcs11.CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.of_string
-
-  let to_yojson salt_type =
-    try
-      `String (to_string salt_type)
-    with Invalid_argument _ ->
-      `Null
-
-  let of_yojson = Ctypes_helpers.of_json_string ~typename:"salt source type" of_string
-end
+module PKCS5_PBKDF2_SALT_SOURCE_type = P11_pkcs5_pbkdf2_salt_source_type
 
 module PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_type =
 struct
