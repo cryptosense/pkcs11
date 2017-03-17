@@ -27,32 +27,7 @@ module PKCS5_PBKD2_DATA_params = P11_pkcs5_pbkd2_data_params
 module RAW_PAYLOAD_params = P11_raw_payload_params
 module Mechanism = P11_mechanism
 module User_type = P11_user_type
-
-module Info =
-struct
-  type t = Pkcs11.CK_INFO.u =
-    {
-      cryptokiVersion : Version.t;
-      manufacturerID : string;
-      flags : Flags.t;
-      libraryDescription : string;
-      libraryVersion : Version.t;
-    }
-    [@@deriving eq,show,of_yojson]
-
-  let to_string = Pkcs11.CK_INFO.to_string
-  let to_strings = Pkcs11.CK_INFO.to_strings
-  let flags_to_string = Pkcs11.CK_INFO.string_of_flags
-
-  let to_yojson info =
-    `Assoc [
-      "cryptokiVersion", Version.to_yojson info.cryptokiVersion;
-      "manufacturerID", `String info.manufacturerID;
-      "flags", Flags.to_json ~pretty:flags_to_string info.flags;
-      "libraryDescription", `String info.libraryDescription;
-      "libraryVersion", Version.to_yojson info.libraryVersion;
-    ]
-end
+module Info = P11_info
 
 module Token_info =
 struct

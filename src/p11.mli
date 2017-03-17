@@ -25,23 +25,7 @@ module PKCS5_PBKD2_DATA_params = P11_pkcs5_pbkd2_data_params
 module RAW_PAYLOAD_params = P11_raw_payload_params
 module Mechanism = P11_mechanism
 module User_type = P11_user_type
-
-module Info :
-sig
-  type t = Pkcs11.CK_INFO.u =
-    {
-      cryptokiVersion : Version.t;
-      manufacturerID : string;
-      flags : Flags.t;
-      libraryDescription : string;
-      libraryVersion : Version.t;
-    }
-    [@@deriving eq,show,yojson]
-
-  val to_string : ?newlines: bool -> ?indent: string -> t -> string
-  val to_strings:  t -> string list
-  val flags_to_string : Flags.t -> string
-end
+module Info = P11_info
 
 module Token_info :
 sig
