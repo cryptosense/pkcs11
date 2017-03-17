@@ -18,17 +18,7 @@ module Mechanism_type = P11_mechanism_type
 module Key_gen_mechanism = P11_key_gen_mechanism
 module RSA_PKCS_MGF_type = P11_rsa_pkcs_mgf_type
 module RSA_PKCS_OAEP_params = P11_rsa_pkcs_oaep_params
-
-module RSA_PKCS_PSS_params =
-struct
-  type t = Pkcs11.CK_RSA_PKCS_PSS_PARAMS.u =
-    {
-      hashAlg: Mechanism_type.t;
-      mgf: RSA_PKCS_MGF_type.t;
-      sLen: Pkcs11_CK_ULONG.t;
-    }
-    [@@deriving yojson]
-end
+module RSA_PKCS_PSS_params = P11_rsa_pkcs_pss_params
 
 module AES_CBC_ENCRYPT_DATA_params =
 struct
