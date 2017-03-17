@@ -11,14 +11,8 @@ sig
 end
 
 module Session_handle = P11_session_handle
-
 module Object_handle = P11_object_handle
-
-module HW_feature_type :
-sig
-  type t = Pkcs11.CK_HW_FEATURE_TYPE.t
-  val to_string: t -> string
-end
+module HW_feature_type = P11_hw_feature_type
 
 module Slot:
 sig

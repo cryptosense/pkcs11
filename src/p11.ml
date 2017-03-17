@@ -5,12 +5,7 @@
 module Data = Pkcs11_hex_data
 module Session_handle = P11_session_handle
 module Object_handle = P11_object_handle
-
-module HW_feature_type =
-struct
-  type t = Pkcs11.CK_HW_FEATURE_TYPE.t
-  let to_string = Unsigned.ULong.to_string
-end
+module HW_feature_type = P11_hw_feature_type
 
 module Slot = struct
   type t =
