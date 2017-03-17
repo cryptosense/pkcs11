@@ -3,15 +3,7 @@
 (******************************************************************************)
 
 module Data = Pkcs11_hex_data
-
-module Session_handle =
-struct
-  type t = Pkcs11.CK_SESSION_HANDLE.t
-  [@@deriving yojson]
-  let to_string = Unsigned.ULong.to_string
-  let equal a b = Unsigned.ULong.compare a b = 0
-  let hash x = Unsigned.ULong.to_int x
-end
+module Session_handle = P11_session_handle
 
 module Object_handle =
 struct

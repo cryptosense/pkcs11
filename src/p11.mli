@@ -10,14 +10,7 @@ sig
   val compare : t -> t -> int
 end
 
-module Session_handle :
-sig
-  type t = Pkcs11.CK_SESSION_HANDLE.t
-  [@@deriving yojson]
-  val to_string: t -> string
-  val equal: t -> t -> bool
-  val hash: t -> int
-end
+module Session_handle = P11_session_handle
 
 module Object_handle :
 sig
