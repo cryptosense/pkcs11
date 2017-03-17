@@ -1,9 +1,8 @@
 (** Bit flags used in several places ([CK_FLAGS]) *)
 type t = Pkcs11_CK_ULONG.t
+[@@deriving eq,ord,show]
 
 val empty : t
-val compare : t -> t -> int
-val equal : t -> t -> bool
 val logical_or : t -> t -> t
 val ( || ) : t -> t -> t
 val ( && ) : t -> t -> t

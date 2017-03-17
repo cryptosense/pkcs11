@@ -1,6 +1,6 @@
 (** Unsigned values (at least 32 bits long) ([CK_ULONG]) *)
 type t = Unsigned.ulong
-val compare : t -> t -> int
+[@@deriving eq,ord,show,yojson]
 
 (** EFFECTIVELY_INFINITE constant specified in PKCS11 *)
 val _CK_EFFECTIVELY_INFINITE : t

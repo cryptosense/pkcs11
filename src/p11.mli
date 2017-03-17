@@ -1,7 +1,5 @@
 (** High-level PKCS#11 interface. *)
 
-type ulong = Unsigned.ulong [@@deriving yojson]
-
 module Data :
 sig
   type t = string [@@deriving yojson]
@@ -594,7 +592,7 @@ sig
     {
       hashAlg: Mechanism_type.t;
       mgf: RSA_PKCS_MGF_type.t;
-      sLen: ulong;
+      sLen: Pkcs11_CK_ULONG.t;
     }
 end
 
@@ -673,7 +671,7 @@ sig
     | CKM_AES_CBC of Data.t
     | CKM_AES_CBC_PAD of Data.t
     | CKM_AES_MAC
-    | CKM_AES_MAC_GENERAL of ulong
+    | CKM_AES_MAC_GENERAL of Pkcs11_CK_ULONG.t
     | CKM_AES_ECB_ENCRYPT_DATA of Data.t
     | CKM_AES_CBC_ENCRYPT_DATA of AES_CBC_ENCRYPT_DATA_params.t
     | CKM_DES_KEY_GEN
@@ -681,7 +679,7 @@ sig
     | CKM_DES_CBC of Data.t
     | CKM_DES_CBC_PAD of Data.t
     | CKM_DES_MAC
-    | CKM_DES_MAC_GENERAL of ulong
+    | CKM_DES_MAC_GENERAL of Pkcs11_CK_ULONG.t
     | CKM_DES_ECB_ENCRYPT_DATA of Data.t
     | CKM_DES_CBC_ENCRYPT_DATA of DES_CBC_ENCRYPT_DATA_params.t
     | CKM_DES3_KEY_GEN
@@ -689,13 +687,13 @@ sig
     | CKM_DES3_CBC of Data.t
     | CKM_DES3_CBC_PAD of Data.t
     | CKM_DES3_MAC
-    | CKM_DES3_MAC_GENERAL of ulong
+    | CKM_DES3_MAC_GENERAL of Pkcs11_CK_ULONG.t
     | CKM_DES3_ECB_ENCRYPT_DATA of Data.t
     | CKM_DES3_CBC_ENCRYPT_DATA of DES_CBC_ENCRYPT_DATA_params.t
     | CKM_CONCATENATE_BASE_AND_DATA of Data.t
     | CKM_CONCATENATE_DATA_AND_BASE of Data.t
     | CKM_XOR_BASE_AND_DATA of Data.t
-    | CKM_EXTRACT_KEY_FROM_KEY of ulong
+    | CKM_EXTRACT_KEY_FROM_KEY of Pkcs11_CK_ULONG.t
     | CKM_CONCATENATE_BASE_AND_KEY of Object_handle.t
     | CKM_EC_KEY_PAIR_GEN
     | CKM_ECDSA

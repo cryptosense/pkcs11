@@ -2,23 +2,6 @@
 (*                                    Types                                   *)
 (******************************************************************************)
 
-type ulong = Unsigned.ulong
-
-let ulong_of_yojson = function
-  | `String s -> Ok (Unsigned.ULong.of_string s)
-  | _ -> Error "ulong_of_yojson: not a string"
-
-let ulong_to_yojson ulong =
-  `String (Unsigned.ULong.to_string ulong)
-
-let compare_ulong = Unsigned.ULong.compare
-
-let equal_ulong a b =
-  compare_ulong a b = 0
-
-let pp_ulong fmt n =
-  Format.pp_print_string fmt (Unsigned.ULong.to_string n)
-
 (**
     Build a of_json function out of a of_string function.
     The typename is used for the error message.
@@ -43,8 +26,7 @@ module Data = Pkcs11_hex_data
 module Session_handle =
 struct
   type t = Pkcs11.CK_SESSION_HANDLE.t
-  let of_yojson = ulong_of_yojson
-  let to_yojson = ulong_to_yojson
+  [@@deriving yojson]
   let to_string = Unsigned.ULong.to_string
   let equal a b = Unsigned.ULong.compare a b = 0
   let hash x = Unsigned.ULong.to_int x
@@ -52,9 +34,10 @@ end
 
 module Object_handle =
 struct
-  type t = ulong
+  type t = Pkcs11.CK_OBJECT_HANDLE.t
   [@@deriving eq,ord,show,yojson]
   let to_string = Unsigned.ULong.to_string
+  let compare = Unsigned.ULong.compare
 end
 
 module HW_feature_type =
@@ -100,7 +83,7 @@ end
 
 module Slot_id =
 struct
-  type t = ulong
+  type t = Pkcs11.CK_SLOT_ID.t
   [@@deriving eq,ord,show,yojson]
 
   let to_string = Unsigned.ULong.to_string
@@ -111,15 +94,13 @@ module Flags =
 struct
   include Pkcs11.CK_FLAGS
 
-  let pp = pp_ulong
-
   let to_json ?pretty (flags:t) =
     match pretty with
       | None ->
-          ulong_to_yojson flags
+        Pkcs11_CK_ULONG.to_yojson flags
       | Some pretty ->
           `Assoc [
-            "value", ulong_to_yojson flags;
+            "value", Pkcs11_CK_ULONG.to_yojson flags;
             "string", `String (pretty flags);
           ]
 
@@ -130,13 +111,12 @@ struct
   [@@deriving of_yojson]
 
   let of_yojson json =
-    let open Ppx_deriving_yojson_runtime in
-    (* We know that [ulong_to_yojson] does not produce [`Assoc]s. *)
+    (* We know that [Pkcs11_CK_ULONG.to_yojson] does not produce [`Assoc]s. *)
     let actual_json = match has_value_of_yojson json with
       | Ok { value } -> value
       | Error _ -> json
     in
-    ulong_of_yojson actual_json
+    Pkcs11_CK_ULONG.of_yojson actual_json
 
   let to_yojson =
     to_json ?pretty:None
@@ -157,7 +137,7 @@ struct
     | CKO_VENDOR_DEFINED
     (* This is a catch-all case that makes it possible to deal with
        vendor-specific/non-standard CKO. *)
-    | CKO_CS_UNKNOWN of ulong
+    | CKO_CS_UNKNOWN of Pkcs11.CK_ULONG.t
   [@@deriving show]
 
   let equal = (Pervasives.(=): t -> t -> bool)
@@ -643,7 +623,7 @@ struct
     {
       hashAlg: Mechanism_type.t;
       mgf: RSA_PKCS_MGF_type.t;
-      sLen: ulong;
+      sLen: Pkcs11_CK_ULONG.t;
     }
     [@@deriving yojson]
 end
@@ -769,7 +749,7 @@ struct
     | CKM_AES_CBC of Data.t
     | CKM_AES_CBC_PAD of Data.t
     | CKM_AES_MAC
-    | CKM_AES_MAC_GENERAL of ulong
+    | CKM_AES_MAC_GENERAL of Pkcs11_CK_ULONG.t
     | CKM_AES_ECB_ENCRYPT_DATA of Data.t
     | CKM_AES_CBC_ENCRYPT_DATA of AES_CBC_ENCRYPT_DATA_params.t
     | CKM_DES_KEY_GEN
@@ -777,7 +757,7 @@ struct
     | CKM_DES_CBC of Data.t
     | CKM_DES_CBC_PAD of Data.t
     | CKM_DES_MAC
-    | CKM_DES_MAC_GENERAL of ulong
+    | CKM_DES_MAC_GENERAL of Pkcs11_CK_ULONG.t
     | CKM_DES_ECB_ENCRYPT_DATA of Data.t
     | CKM_DES_CBC_ENCRYPT_DATA of DES_CBC_ENCRYPT_DATA_params.t
     | CKM_DES3_KEY_GEN
@@ -785,13 +765,13 @@ struct
     | CKM_DES3_CBC of Data.t
     | CKM_DES3_CBC_PAD of Data.t
     | CKM_DES3_MAC
-    | CKM_DES3_MAC_GENERAL of ulong
+    | CKM_DES3_MAC_GENERAL of Pkcs11_CK_ULONG.t
     | CKM_DES3_ECB_ENCRYPT_DATA of Data.t
     | CKM_DES3_CBC_ENCRYPT_DATA of DES_CBC_ENCRYPT_DATA_params.t
     | CKM_CONCATENATE_BASE_AND_DATA of Data.t
     | CKM_CONCATENATE_DATA_AND_BASE of Data.t
     | CKM_XOR_BASE_AND_DATA of Data.t
-    | CKM_EXTRACT_KEY_FROM_KEY of ulong
+    | CKM_EXTRACT_KEY_FROM_KEY of Pkcs11_CK_ULONG.t
     | CKM_CONCATENATE_BASE_AND_KEY of Object_handle.t
     | CKM_EC_KEY_PAIR_GEN
     | CKM_ECDSA
@@ -805,7 +785,7 @@ struct
   let to_json =
     let simple name = `String name in
     let param name param json_of_param = `Assoc [ name, json_of_param param ] in
-    let ulong name p = param name p ulong_to_yojson in
+    let ulong name p = param name p Pkcs11_CK_ULONG.to_yojson in
     function
       | CKM_SHA_1 ->
           simple "CKM_SHA_1"
@@ -967,7 +947,7 @@ struct
         | "CKM_AES_CBC_PAD" -> data (fun x -> CKM_AES_CBC_PAD x)
         | "CKM_AES_MAC" -> simple CKM_AES_MAC
         | "CKM_AES_MAC_GENERAL" ->
-            ulong_of_yojson param >>= fun r -> Ok (CKM_AES_MAC_GENERAL r)
+            Pkcs11_CK_ULONG.of_yojson param >>= fun r -> Ok (CKM_AES_MAC_GENERAL r)
         | "CKM_AES_ECB_ENCRYPT_DATA" ->
             data (fun x -> CKM_AES_ECB_ENCRYPT_DATA x)
         | "CKM_AES_CBC_ENCRYPT_DATA" ->
@@ -978,7 +958,7 @@ struct
         | "CKM_DES_CBC_PAD" -> data (fun x -> CKM_DES_CBC_PAD x)
         | "CKM_DES_MAC" -> simple CKM_DES_MAC
         | "CKM_DES_MAC_GENERAL" ->
-            ulong_of_yojson param >>= fun r -> Ok (CKM_DES_MAC_GENERAL r)
+            Pkcs11_CK_ULONG.of_yojson param >>= fun r -> Ok (CKM_DES_MAC_GENERAL r)
         | "CKM_DES_ECB_ENCRYPT_DATA" ->
             data (fun x -> CKM_DES_ECB_ENCRYPT_DATA x)
         | "CKM_DES_CBC_ENCRYPT_DATA" ->
@@ -989,7 +969,7 @@ struct
         | "CKM_DES3_CBC_PAD" -> data (fun x -> CKM_DES3_CBC_PAD x)
         | "CKM_DES3_MAC" -> simple CKM_DES3_MAC
         | "CKM_DES3_MAC_GENERAL" ->
-            ulong_of_yojson param >>= fun r -> Ok (CKM_DES3_MAC_GENERAL r)
+            Pkcs11_CK_ULONG.of_yojson param >>= fun r -> Ok (CKM_DES3_MAC_GENERAL r)
         | "CKM_DES3_ECB_ENCRYPT_DATA" ->
             data (fun x -> CKM_DES3_ECB_ENCRYPT_DATA x)
         | "CKM_DES3_CBC_ENCRYPT_DATA" ->
@@ -1001,7 +981,7 @@ struct
         | "CKM_XOR_BASE_AND_DATA" ->
             data (fun x -> CKM_XOR_BASE_AND_DATA x)
         | "CKM_EXTRACT_KEY_FROM_KEY" ->
-            ulong_of_yojson param >>= fun r -> Ok (CKM_EXTRACT_KEY_FROM_KEY r)
+            Pkcs11_CK_ULONG.of_yojson param >>= fun r -> Ok (CKM_EXTRACT_KEY_FROM_KEY r)
         | "CKM_CONCATENATE_BASE_AND_KEY" ->
             Object_handle.of_yojson param >>= fun r -> Ok (CKM_CONCATENATE_BASE_AND_KEY r)
         | "CKM_EC_KEY_PAIR_GEN" -> simple CKM_EC_KEY_PAIR_GEN
@@ -1475,16 +1455,16 @@ struct
       model : string;
       serialNumber : string;
       flags : Flags.t;
-      ulMaxSessionCount : ulong;
-      ulSessionCount : ulong;
-      ulMaxRwSessionCount : ulong;
-      ulRwSessionCount : ulong;
-      ulMaxPinLen : ulong;
-      ulMinPinLen : ulong;
-      ulTotalPublicMemory : ulong;
-      ulFreePublicMemory : ulong;
-      ulTotalPrivateMemory : ulong;
-      ulFreePrivateMemory : ulong;
+      ulMaxSessionCount : Pkcs11_CK_ULONG.t;
+      ulSessionCount : Pkcs11_CK_ULONG.t;
+      ulMaxRwSessionCount : Pkcs11_CK_ULONG.t;
+      ulRwSessionCount : Pkcs11_CK_ULONG.t;
+      ulMaxPinLen : Pkcs11_CK_ULONG.t;
+      ulMinPinLen : Pkcs11_CK_ULONG.t;
+      ulTotalPublicMemory : Pkcs11_CK_ULONG.t;
+      ulFreePublicMemory : Pkcs11_CK_ULONG.t;
+      ulTotalPrivateMemory : Pkcs11_CK_ULONG.t;
+      ulFreePrivateMemory : Pkcs11_CK_ULONG.t;
       hardwareVersion : Version.t;
       firmwareVersion : Version.t;
       utcTime : string;
@@ -1552,8 +1532,8 @@ module Mechanism_info =
 struct
   type t = Pkcs11.CK_MECHANISM_INFO.u =
     {
-      ulMinKeySize : ulong;
-      ulMaxKeySize : ulong;
+      ulMinKeySize : Pkcs11_CK_ULONG.t;
+      ulMaxKeySize : Pkcs11_CK_ULONG.t;
       flags : Flags.t;
     }
     [@@deriving of_yojson]
@@ -1577,10 +1557,10 @@ module Session_info =
 struct
   type t = Pkcs11.CK_SESSION_INFO.u =
     {
-      slotID : ulong;
-      state : ulong;
+      slotID : Pkcs11_CK_ULONG.t;
+      state : Pkcs11_CK_ULONG.t;
       flags : Flags.t;
-      ulDeviceError : ulong;
+      ulDeviceError : Pkcs11_CK_ULONG.t;
     }
     [@@deriving of_yojson]
 
@@ -1749,7 +1729,7 @@ struct
       p @@ fun s -> `String s in
     let p_data = p Data.to_yojson in
     let p_key_type = p Key_type.to_yojson in
-    let p_ulong = p ulong_to_yojson in
+    let p_ulong = p Pkcs11_CK_ULONG.to_yojson in
     let p_bigint = p Pkcs11.CK_BIGINT.to_yojson in
     let p_mechanism_type = p Key_gen_mechanism.to_yojson in
     let p_ec_params = p Key_parsers.Asn1.EC.Params.to_yojson in
@@ -1874,7 +1854,7 @@ struct
       let p_string = parse_using [%of_yojson: string] in
       let p_data = parse_using Data.of_yojson in
       let p_key_type = parse_using Key_type.of_yojson in
-      let p_ulong = parse_using ulong_of_yojson in
+      let p_ulong = parse_using Pkcs11_CK_ULONG.of_yojson in
       let p_bigint = parse_using Pkcs11.CK_BIGINT.of_yojson in
       let p_mechanism_type = parse_using Key_gen_mechanism.of_yojson in
       let p_ec_params = parse_using Key_parsers.Asn1.EC.Params.of_yojson in
