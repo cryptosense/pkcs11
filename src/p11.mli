@@ -18,15 +18,7 @@ module Slot_id = P11_slot_id
 module Flags = P11_flags
 module Object_class = P11_object_class
 module Key_type = P11_key_type
-
-module Version :
-sig
-  type t = Pkcs11.CK_VERSION.u =
-    { major : int; minor : int; }
-  [@@deriving eq,show,yojson]
-  val to_string : t -> string
-end
-
+module Version = P11_version
 module Bigint = Pkcs11.CK_BIGINT
 
 module RV :
