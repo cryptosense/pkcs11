@@ -23,20 +23,7 @@ module AES_CBC_ENCRYPT_DATA_params = P11_aes_cbc_encrypt_data_params
 module DES_CBC_ENCRYPT_DATA_params = P11_des_cbc_encrypt_data_params
 module PKCS5_PBKDF2_SALT_SOURCE_type = P11_pkcs5_pbkdf2_salt_source_type
 module PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_type = P11_pkcs5_pbkd2_pseudo_random_function_type
-
-module PKCS5_PBKD2_DATA_params =
-struct
-  type t = Pkcs11.CK_PKCS5_PBKD2_PARAMS.u =
-    {
-      saltSource: PKCS5_PBKDF2_SALT_SOURCE_type.t;
-      saltSourceData: string option;
-      iterations: int;
-      prf: PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_type.t;
-      prfData: string option;
-      password: string;
-    }
-    [@@deriving yojson]
-end
+module PKCS5_PBKD2_DATA_params = P11_pkcs5_pbkd2_data_params
 
 module RAW_PAYLOAD_params = struct
   type t = Pkcs11.CK_RAW_PAYLOAD.t
