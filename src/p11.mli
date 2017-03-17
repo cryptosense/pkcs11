@@ -12,13 +12,7 @@ end
 
 module Session_handle = P11_session_handle
 
-module Object_handle :
-sig
-  type t = Pkcs11.CK_OBJECT_HANDLE.t
-  [@@deriving eq,ord,show,yojson]
-
-  val to_string: t -> string
-end
+module Object_handle = P11_object_handle
 
 module HW_feature_type :
 sig

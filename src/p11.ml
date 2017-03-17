@@ -4,14 +4,7 @@
 
 module Data = Pkcs11_hex_data
 module Session_handle = P11_session_handle
-
-module Object_handle =
-struct
-  type t = Pkcs11.CK_OBJECT_HANDLE.t
-  [@@deriving eq,ord,show,yojson]
-  let to_string = Unsigned.ULong.to_string
-  let compare = Unsigned.ULong.compare
-end
+module Object_handle = P11_object_handle
 
 module HW_feature_type =
 struct
