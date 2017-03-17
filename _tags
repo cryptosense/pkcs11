@@ -24,4 +24,4 @@ true: open(Result)
 <src/*>: depend(src/snippets/prelude.h)
 
 <test/*>: package(oUnit)
-<test/test_suite.*>: link_pkcs11
+<test/*>: link_pkcs11
