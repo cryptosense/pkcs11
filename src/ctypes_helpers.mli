@@ -121,3 +121,9 @@ val smart_field : 't Ctypes.typ -> string -> 'a Ctypes.typ -> ('a, (('s, [<`Stru
 
 (** Open a file for writing and returns a formatter to it. *)
 val with_out_fmt : string -> (Format.formatter -> 'a) -> 'a
+
+val of_json_string :
+  typename:string ->
+  (string -> 'a) ->
+  Yojson.Safe.json ->
+  ('a, string) Result.result

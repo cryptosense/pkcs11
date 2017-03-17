@@ -2,25 +2,6 @@
 (*                                    Types                                   *)
 (******************************************************************************)
 
-(**
-    Build a of_json function out of a of_string function.
-    The typename is used for the error message.
- *)
-let of_json_string ~typename of_string json =
-  let err msg =
-    Error
-      (Printf.sprintf "(while parsing %s): %s" typename msg)
-  in
-  match json with
-    | `String s ->
-        begin
-          try
-            Ok (of_string s)
-          with Invalid_argument _ ->
-            err "of_string failed"
-        end
-    | _ -> err "Not a JSON string"
-
 module Data = Pkcs11_hex_data
 
 module Session_handle =
@@ -149,7 +130,7 @@ struct
   let to_yojson object_class =
     `String (to_string object_class)
 
-  let of_yojson = of_json_string ~typename:"object class" of_string
+  let of_yojson = Ctypes_helpers.of_json_string ~typename:"object class" of_string
 end
 
 module Key_type =
@@ -195,7 +176,7 @@ struct
   let to_yojson key_type =
     `String (to_string key_type)
 
-  let of_yojson = of_json_string ~typename:"key type" of_string
+  let of_yojson = Ctypes_helpers.of_json_string ~typename:"key type" of_string
 end
 
 module Version =
@@ -573,7 +554,7 @@ struct
     with Invalid_argument _ ->
       `Null
 
-  let of_yojson = of_json_string ~typename:"mechanism type" of_string
+  let of_yojson = Ctypes_helpers.of_json_string ~typename:"mechanism type" of_string
 end
 
 module Key_gen_mechanism =
@@ -590,7 +571,7 @@ struct
     with Invalid_argument _ ->
       `Null
 
-  let of_yojson = of_json_string ~typename:"keygen mechanism" of_string
+  let of_yojson = Ctypes_helpers.of_json_string ~typename:"keygen mechanism" of_string
 end
 module RSA_PKCS_MGF_type =
 struct
@@ -603,7 +584,7 @@ struct
       `Null
 
   let to_yojson = to_json
-  let of_yojson = of_json_string ~typename:"MGF type" of_string
+  let of_yojson = Ctypes_helpers.of_json_string ~typename:"MGF type" of_string
 end
 
 module RSA_PKCS_OAEP_params =
@@ -664,7 +645,7 @@ struct
     with Invalid_argument _ ->
       `Null
 
-  let of_yojson = of_json_string ~typename:"salt source type" of_string
+  let of_yojson = Ctypes_helpers.of_json_string ~typename:"salt source type" of_string
 end
 
 module PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_type =
@@ -683,7 +664,7 @@ struct
     with Invalid_argument _ ->
       `Null
 
-  let of_yojson = of_json_string ~typename:"random function type" of_string
+  let of_yojson = Ctypes_helpers.of_json_string ~typename:"random function type" of_string
 end
 
 module PKCS5_PBKD2_DATA_params =
@@ -1417,7 +1398,7 @@ struct
   let to_yojson user_type =
     `String (to_string user_type)
 
-  let of_yojson = of_json_string ~typename:"user type" of_string
+  let of_yojson = Ctypes_helpers.of_json_string ~typename:"user type" of_string
 end
 
 module Info =
@@ -1654,7 +1635,7 @@ struct
 
   let pack_to_yojson = pack_to_json
 
-  let pack_of_yojson = of_json_string ~typename:"attribute type" of_string
+  let pack_of_yojson = Ctypes_helpers.of_json_string ~typename:"attribute type" of_string
 
   let elements =
     [
