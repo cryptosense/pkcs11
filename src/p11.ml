@@ -7,15 +7,7 @@ module Session_handle = P11_session_handle
 module Object_handle = P11_object_handle
 module HW_feature_type = P11_hw_feature_type
 module Slot = P11_slot
-
-module Slot_id =
-struct
-  type t = Pkcs11.CK_SLOT_ID.t
-  [@@deriving eq,ord,show,yojson]
-
-  let to_string = Unsigned.ULong.to_string
-  let hash  = Unsigned.ULong.to_int
-end
+module Slot_id = P11_slot_id
 
 module Flags =
 struct
