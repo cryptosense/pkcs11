@@ -22,12 +22,7 @@ module Version = P11_version
 module Bigint = Pkcs11.CK_BIGINT
 module RV = P11_rv
 module Mechanism_type = P11_mechanism_type
-
-module Key_gen_mechanism : sig
-  type t = Pkcs11.Key_gen_mechanism.u =
-    | CKM of Mechanism_type.t
-    | CK_UNAVAILABLE_INFORMATION  [@@deriving yojson]
-end
+module Key_gen_mechanism = P11_key_gen_mechanism
 
 module RSA_PKCS_MGF_type :
 sig

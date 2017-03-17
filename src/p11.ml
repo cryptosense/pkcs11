@@ -15,23 +15,8 @@ module Version = P11_version
 module Bigint = Pkcs11.CK_BIGINT
 module RV = P11_rv
 module Mechanism_type = P11_mechanism_type
+module Key_gen_mechanism = P11_key_gen_mechanism
 
-module Key_gen_mechanism =
-struct
-  open Pkcs11.Key_gen_mechanism
-
-  type t = Pkcs11.Key_gen_mechanism.u =
-    | CKM of Mechanism_type.t
-    | CK_UNAVAILABLE_INFORMATION
-
-  let to_yojson mechanism_type =
-    try
-      `String (to_string mechanism_type)
-    with Invalid_argument _ ->
-      `Null
-
-  let of_yojson = Ctypes_helpers.of_json_string ~typename:"keygen mechanism" of_string
-end
 module RSA_PKCS_MGF_type =
 struct
   include Pkcs11.CK_RSA_PKCS_MGF_TYPE
