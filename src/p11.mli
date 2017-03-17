@@ -1,15 +1,6 @@
 (** High-level PKCS#11 interface. *)
 
-module Data :
-sig
-  type t = string [@@deriving yojson]
-
-  (** Remove unnecessary leading ['\000']. *)
-  val normalize: t -> t
-
-  val compare : t -> t -> int
-end
-
+module Data = Pkcs11_hex_data
 module Session_handle = P11_session_handle
 module Object_handle = P11_object_handle
 module HW_feature_type = P11_hw_feature_type
@@ -24,16 +15,7 @@ module RV = P11_rv
 module Mechanism_type = P11_mechanism_type
 module Key_gen_mechanism = P11_key_gen_mechanism
 module RSA_PKCS_MGF_type = P11_rsa_pkcs_mgf_type
-
-module RSA_PKCS_OAEP_params :
-sig
-  type t = Pkcs11.CK_RSA_PKCS_OAEP_PARAMS.u =
-    {
-      hashAlg: Mechanism_type.t;
-      mgf: RSA_PKCS_MGF_type.t;
-      src: string option;
-    }
-end
+module RSA_PKCS_OAEP_params = P11_rsa_pkcs_oaep_params
 
 module RSA_PKCS_PSS_params :
 sig
