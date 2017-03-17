@@ -27,22 +27,7 @@ module Mechanism = P11_mechanism
 module User_type = P11_user_type
 module Info = P11_info
 module Token_info = P11_token_info
-
-module Slot_info :
-sig
-  type t = Pkcs11.CK_SLOT_INFO.u =
-    {
-      slotDescription : string;
-      manufacturerID : string;
-      flags : Flags.t;
-      hardwareVersion : Version.t;
-      firmwareVersion : Version.t;
-    }
-    [@@deriving yojson]
-  val to_string : ?newlines: bool -> ?indent: string -> t -> string
-  val to_strings: t -> string list
-  val flags_to_string : Flags.t -> string
-end
+module Slot_info = P11_slot_info
 
 module Mechanism_info :
 sig

@@ -29,33 +29,7 @@ module Mechanism = P11_mechanism
 module User_type = P11_user_type
 module Info = P11_info
 module Token_info = P11_token_info
-
-module Slot_info =
-struct
-  type t = Pkcs11.CK_SLOT_INFO.u =
-    {
-      slotDescription : string;
-      manufacturerID : string;
-      flags : Flags.t;
-      hardwareVersion : Version.t;
-      firmwareVersion : Version.t;
-    }
-    [@@deriving of_yojson]
-
-  let to_string = Pkcs11.CK_SLOT_INFO.to_string
-  let to_strings = Pkcs11.CK_SLOT_INFO.to_strings
-  let flags_to_string = Pkcs11.CK_SLOT_INFO.string_of_flags
-
-  let to_yojson info =
-    `Assoc [
-      "slotDescription", `String info.slotDescription;
-      "manufacturerID", `String info.manufacturerID;
-      "flags",
-      Flags.to_json ~pretty:flags_to_string info.flags;
-      "hardwareVersion", Version.to_yojson info.hardwareVersion;
-      "firmwareVersion", Version.to_yojson info.firmwareVersion;
-    ]
-end
+module Slot_info = P11_slot_info
 
 module Mechanism_info =
 struct
