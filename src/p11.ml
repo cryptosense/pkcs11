@@ -33,6 +33,7 @@ module Slot_info = P11_slot_info
 module Mechanism_info = P11_mechanism_info
 module Session_info = P11_session_info
 module Attribute_type = P11_attribute_type
+module Attribute_types = P11_attribute_types
 
 module Attribute =
 struct
@@ -413,42 +414,6 @@ struct
   let equal_kind (x:kind) y =
     x = y
 
-end
-
-module Attribute_types =
-struct
-  type t = Attribute_type.pack list [@@deriving yojson]
-  let rec mem: type a . t -> a Attribute_type.t -> bool = fun template x ->
-    match template with
-      | [] -> false
-      | head :: tail ->
-          match head with
-            | Attribute_type.Pack ty ->
-                match Pkcs11.CK_ATTRIBUTE_TYPE.compare' ty x with
-                  | Pkcs11.CK_ATTRIBUTE_TYPE.Equal -> true
-                  | Pkcs11.CK_ATTRIBUTE_TYPE.Not_equal _ -> mem tail x
-
-  let rec remove_duplicates l acc =
-    match l with
-      | [] -> List.rev acc
-      | (Attribute_type.Pack ty as p)::q ->
-          if mem acc ty
-          then remove_duplicates q acc
-          else remove_duplicates q (p::acc)
-
-  (** compares two normalized types list  *)
-  let rec compare a b =
-    match a,b with
-      | [], [] -> 0
-      | [], _::_ -> -1
-      | _::_, [] -> 1
-      | a1::a2, b1::b2 ->
-          let cmp = Attribute_type.compare_pack a1 b1 in
-          if cmp = 0
-          then compare a2 b2
-          else cmp
-
-  let remove_duplicates l = remove_duplicates l []
 end
 
 module Template =

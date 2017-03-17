@@ -31,20 +31,7 @@ module Slot_info = P11_slot_info
 module Mechanism_info = P11_mechanism_info
 module Session_info = P11_session_info
 module Attribute_type = P11_attribute_type
-
-module Attribute_types :
-sig
-  type t = Attribute_type.pack list [@@deriving yojson]
-
-  (** Return true if an attribute_type is present in an attribute_type list. *)
-  val mem : t -> 'a Attribute_type.t -> bool
-
-  (** Remove the duplicates from a list of attribute types *)
-  val remove_duplicates : t -> t
-
-  val compare : t -> t -> int
-end
-
+module Attribute_types = P11_attribute_types
 
 module Attribute :
 sig
