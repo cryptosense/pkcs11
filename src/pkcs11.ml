@@ -1416,9 +1416,8 @@ let load_driver ?log_calls ?on_unknown ~dll ~use_get_function_list =
       | `Auto | `False as fl ->
           let module P11_foreign_parameters =
           struct
-            let log_calls : (string * Format.formatter) option= log_calls
-            let library =
-              Dl.dlopen ~filename: dll ~flags: [ Dl.RTLD_LAZY; Dl.RTLD_DEEPBIND]
+            let log_calls = log_calls
+            let library = Dl.dlopen ~filename: dll ~flags:[Dl.RTLD_LAZY]
           end in
           match fl with `Auto -> (module (Auto(P11_foreign_parameters)))
                       | `False -> (module (Direct(P11_foreign_parameters)))
