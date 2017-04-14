@@ -1,4 +1,19 @@
-v0.7.1 2016-01-25
+v0.7.2 2017-04-14
+=================
+
+Changes:
+
+- Do not use `Dl.RTLD_DEEPBIND` (#38)
+
+Build system:
+
+- Support FreeBSD builds (#37, thanks to Hannes Mehnert)
+
+Documentation:
+
+- Add an example application (#34, #35)
+
+v0.7.1 2017-01-25
 =================
 
 Build system:
@@ -6,7 +21,7 @@ Build system:
 - Remove `records` from `META` to make it possible to actually use `pkcs11`
   without `records` installed (#33)
 
-v0.7.0 2016-01-23
+v0.7.0 2017-01-23
 =================
 
 Breaking changes:
@@ -35,7 +50,7 @@ Build system:
 - Install `cmti` files (#32)
 - Add missing `ounit` test-dependency (#32)
 
-v0.6.0 2016-01-04
+v0.6.0 2017-01-04
 =================
 
 Breaking changes:
