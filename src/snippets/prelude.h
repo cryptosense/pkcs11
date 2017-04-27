@@ -10,9 +10,26 @@
 #include <windows.h>
 #else
 
-#if defined(__linux__) || defined(__FreeBSD__) || (defined(__sun) && defined(__SVR4))
+#ifdef __linux__
+# define HAVE_DLFCN_H 1
+#endif
+
+#ifdef __FreeBSD__
+# define HAVE_DLFCN_H 1
+#endif
+
+#if defined(__sun) && defined(__SVR4)
+# define HAVE_DLFCN_H 1
+#endif
+
+#ifdef __hpux
+# define HAVE_DLFCN_H 1
+#endif
+
+#ifdef HAVE_DLFCN_H
 #include <dlfcn.h>
 #endif
+
 #ifdef _AIX
 #include <sys/ldr.h>
 #endif
