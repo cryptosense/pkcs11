@@ -22,6 +22,10 @@
 # define HAVE_DLFCN_H 1
 #endif
 
+#ifdef __hpux
+# define HAVE_DLFCN_H 1
+#endif
+
 #ifdef HAVE_DLFCN_H
 #include <dlfcn.h>
 #endif
