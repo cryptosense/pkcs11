@@ -1,7 +1,9 @@
 S pkg
 S src
+S test
 B _build/pkg
 B _build/src
+B _build/test
 PKG cmdliner
 PKG ctypes.foreign
 PKG ctypes.stubs
@@ -10,3 +12,4 @@ PKG key-parsers
 PKG oUnit
 PKG ppx_deriving.std
 PKG ppx_deriving_yojson
+PKG topkg

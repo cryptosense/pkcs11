@@ -11,6 +11,14 @@ let ulong_of_yojson = function
 let ulong_to_yojson ulong =
   `String (Unsigned.ULong.to_string ulong)
 
+let compare_ulong = Unsigned.ULong.compare
+
+let equal_ulong a b =
+  compare_ulong a b = 0
+
+let pp_ulong fmt n =
+  Format.pp_print_string fmt (Unsigned.ULong.to_string n)
+
 (**
     Build a of_json function out of a of_string function.
     The typename is used for the error message.
@@ -44,11 +52,9 @@ end
 
 module Object_handle =
 struct
-  type t = Pkcs11.CK_OBJECT_HANDLE.t
+  type t = ulong
+  [@@deriving eq,ord,show,yojson]
   let to_string = Unsigned.ULong.to_string
-  let to_yojson = ulong_to_yojson
-  let of_yojson = ulong_of_yojson
-  let compare = Unsigned.ULong.compare
 end
 
 module HW_feature_type =
@@ -94,18 +100,18 @@ end
 
 module Slot_id =
 struct
-  type t = Pkcs11.CK_SLOT_ID.t
-  let compare = Unsigned.ULong.compare
+  type t = ulong
+  [@@deriving eq,ord,show,yojson]
+
   let to_string = Unsigned.ULong.to_string
-  let equal a b = Unsigned.ULong.compare a b = 0
   let hash  = Unsigned.ULong.to_int
-  let to_yojson = ulong_to_yojson
-  let of_yojson = ulong_of_yojson
 end
 
 module Flags =
 struct
   include Pkcs11.CK_FLAGS
+
+  let pp = pp_ulong
 
   let to_json ?pretty (flags:t) =
     match pretty with
@@ -151,8 +157,8 @@ struct
     | CKO_VENDOR_DEFINED
     (* This is a catch-all case that makes it possible to deal with
        vendor-specific/non-standard CKO. *)
-    | CKO_CS_UNKNOWN of Unsigned.ULong.t
-
+    | CKO_CS_UNKNOWN of ulong
+  [@@deriving show]
 
   let equal = (Pervasives.(=): t -> t -> bool)
   let compare = (Pervasives.compare: t -> t -> int)
@@ -215,7 +221,7 @@ end
 module Version =
 struct
   type t = Pkcs11.CK_VERSION.u = { major : int; minor : int; }
-  [@@deriving yojson]
+  [@@deriving eq,show,yojson]
 
   let to_string = Pkcs11.CK_VERSION.to_string
 end
@@ -1444,7 +1450,7 @@ struct
       libraryDescription : string;
       libraryVersion : Version.t;
     }
-    [@@deriving of_yojson]
+    [@@deriving eq,show,of_yojson]
 
   let to_string = Pkcs11.CK_INFO.to_string
   let to_strings = Pkcs11.CK_INFO.to_strings
@@ -2006,6 +2012,12 @@ struct
   let equal_pack = Pkcs11.CK_ATTRIBUTE.equal_pack
   let equal_types_pack a b = (compare_types_pack a b) = 0
   let equal_values a v1 v2 = equal (a,v1) (a,v2)
+
+  let show_pack (Pack attr) =
+    to_string attr
+
+  let pp_pack fmt pack =
+    Format.pp_print_string fmt (show_pack pack)
 
   type kind =
     | Secret (* Can be used by secret keys. *)

@@ -23,9 +23,10 @@ end
 
 module Object_handle :
 sig
-  type t = Pkcs11.CK_OBJECT_HANDLE.t [@@deriving yojson]
+  type t = Pkcs11.CK_OBJECT_HANDLE.t
+  [@@deriving eq,ord,show,yojson]
+
   val to_string: t -> string
-  val compare: t -> t -> int
 end
 
 module HW_feature_type :
@@ -49,16 +50,16 @@ end
 
 module Slot_id :
 sig
-  type t = Pkcs11.CK_SLOT_ID.t [@@deriving yojson]
-  val compare: t -> t -> int
+  type t = Pkcs11.CK_SLOT_ID.t
+  [@@deriving eq,ord,show,yojson]
   val to_string: t -> string
-  val equal : t -> t -> bool
   val hash : t -> int
 end
 
 module Flags :
 sig
-  type t = Pkcs11.CK_FLAGS.t [@@deriving yojson]
+  type t = Pkcs11.CK_FLAGS.t
+  [@@deriving yojson]
   val empty : t
   val compare : t -> t -> int
   val equal : t -> t -> bool
@@ -139,10 +140,8 @@ sig
     (* This is a catch-all case that makes it possible to deal with
        vendor-specific/non-standard CKO. *)
     | CKO_CS_UNKNOWN of Unsigned.ULong.t
-    [@@deriving yojson]
+  [@@deriving eq,ord,show,yojson]
 
-  val equal : t -> t -> bool
-  val compare : t -> t -> int
   val of_string : string -> t
   val to_string : t -> string
 end
@@ -196,7 +195,7 @@ module Version :
 sig
   type t = Pkcs11.CK_VERSION.u =
     { major : int; minor : int; }
-    [@@deriving yojson]
+  [@@deriving eq,show,yojson]
   val to_string : t -> string
 end
 
@@ -779,7 +778,7 @@ sig
       libraryDescription : string;
       libraryVersion : Version.t;
     }
-    [@@deriving yojson]
+    [@@deriving eq,show,yojson]
 
   val to_string : ?newlines: bool -> ?indent: string -> t -> string
   val to_strings:  t -> string list
@@ -959,8 +958,10 @@ module Attribute :
 sig
 
   type 'a t = 'a Attribute_type.t * 'a
-  type pack = Pkcs11.CK_ATTRIBUTE.pack = Pack : 'a t -> pack
-    [@@deriving yojson]
+  type pack =
+    Pkcs11.CK_ATTRIBUTE.pack = Pack : 'a t -> pack
+  [@@deriving eq,ord,show,yojson]
+
   val to_string : 'a t -> string
   val to_string_pair : 'a t -> string * string
 
@@ -969,9 +970,7 @@ sig
   val compare_types: 'a t -> 'b t -> int
   val compare_types_pack: pack -> pack -> int
   val compare: 'a t -> 'b t -> int
-  val compare_pack : pack -> pack -> int
   val equal: 'a t -> 'b t -> bool
-  val equal_pack : pack -> pack -> bool
   val equal_types_pack: pack -> pack -> bool
   val equal_values: 'a Attribute_type.t -> 'a -> 'a -> bool
 
