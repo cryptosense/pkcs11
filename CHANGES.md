@@ -1,3 +1,15 @@
+v0.7.3 2017-05-02
+=================
+
+Tests:
+
+- Add some functional tests that load a fake DLL (#39)
+
+Build system:
+
+- Support HP/UX (#40)
+- Support OCaml 4.05 (#41)
+
 v0.7.2 2017-04-14
 =================
 
