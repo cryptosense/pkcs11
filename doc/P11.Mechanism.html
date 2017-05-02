@@ -3,7 +3,6 @@
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="previous" href="P11.RAW_PAYLOAD_params.html">
 <link rel="next" href="P11.User_type.html">
@@ -491,7 +490,7 @@
 <pre><span id="VALmechanism_type"><span class="keyword">val</span> mechanism_type</span> : <code class="type"><a href="P11.Mechanism.html#TYPEt">t</a> -> <a href="P11.Mechanism_type.html#TYPEt">P11.Mechanism_type.t</a></code></pre>
 <pre><span id="VALcompare"><span class="keyword">val</span> compare</span> : <code class="type"><a href="P11.Mechanism.html#TYPEt">t</a> -> <a href="P11.Mechanism.html#TYPEt">t</a> -> int</code></pre>
 <pre><span id="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type"><a href="P11.Mechanism.html#TYPEt">t</a> -> string</code></pre><div class="info ">
-<code class="code">to_string</code> is defined as <code class="code"><span class="keyword">fun</span>&nbsp;x&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Mechanism_type</span>.to_string&nbsp;(mechanism_type&nbsp;x)&nbsp;</code><br>
+<code class="code">to_string</code> is defined as <code class="code"><span class="keyword">fun</span> x <span class="keywordsign">-&gt;</span> <span class="constructor">Mechanism_type</span>.to_string (mechanism_type x) </code><br>
 </div>
 
 <pre><span id="VALpp"><span class="keyword">val</span> pp</span> : <code class="type">Format.formatter -> <a href="P11.Mechanism.html#TYPEt">t</a> -> unit</code></pre>
@@ -610,16 +609,16 @@ Kinds are "tags" on mechanisms which describe how they can be
 
 
 <pre><span id="VALkinds"><span class="keyword">val</span> kinds</span> : <code class="type"><a href="P11.Mechanism.html#TYPEt">t</a> -> <a href="P11.Mechanism.html#TYPEkind">kind</a> list</code></pre><div class="info ">
-<code class="code">kinds&nbsp;mechanism</code> returns the tags for the mechanism
+<code class="code">kinds mechanism</code> returns the tags for the mechanism
       <code class="code">mechanism</code>.<br>
 </div>
 
 <pre><span id="VALis"><span class="keyword">val</span> is</span> : <code class="type"><a href="P11.Mechanism.html#TYPEkind">kind</a> list -> <a href="P11.Mechanism.html#TYPEt">t</a> -> bool</code></pre><div class="info ">
-<code class="code">is&nbsp;kinds&nbsp;t</code> checks that the mechanism <code class="code">t</code> has all the tags in
+<code class="code">is kinds t</code> checks that the mechanism <code class="code">t</code> has all the tags in
       the list <code class="code">kinds</code>.<br>
 </div>
 
 <pre><span id="VALkey_type"><span class="keyword">val</span> key_type</span> : <code class="type"><a href="P11.Mechanism.html#TYPEt">t</a> -> <a href="P11.Key_type.html#TYPEt">P11.Key_type.t</a> option</code></pre><div class="info ">
-<code class="code">key_type&nbsp;t</code> returns the type of keys associated to the mechanism <code class="code">t</code>.<br>
+<code class="code">key_type t</code> returns the type of keys associated to the mechanism <code class="code">t</code>.<br>
 </div>
 </body></html>

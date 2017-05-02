@@ -3,7 +3,6 @@
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Pkcs11_template.html">
 <link rel="next" href="Pkcs11_rev.html">
@@ -98,7 +97,7 @@ CONVENTIONS.
     _t is a type variable that is used to constraint the <code class="code"><span class="constructor">Ctypes</span></code>
     representation. It would appear in the signature of <code class="code"><span class="constructor">Version</span></code> for
     instance. However, to make it more palatable for the outside world,
-    what is exported is <code class="code">t</code>, which is defined as <code class="code">_t&nbsp;structure</code>. For
+    what is exported is <code class="code">t</code>, which is defined as <code class="code">_t structure</code>. For
     some modules, it is quite easy to work with <code class="code">t</code> seen as an abstract
     time. For other modules, we provide a <code class="code">u</code>ser version of the type,
     with suitable functions.
@@ -107,19 +106,19 @@ CONVENTIONS.
     When appropriate, we provide the following functions:
 <p>
 <ul>
-<li><code class="code">create:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;t</code> will allocate a new object of type t
+<li><code class="code">create: unit <span class="keywordsign">-&gt;</span> t</code> will allocate a new object of type t
       (possibly, not initialized)</li>
 </ul>
 <ul>
-<li><code class="code">allocate:&nbsp;t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit</code> will update <code class="code">t</code> in place by allocating
+<li><code class="code">allocate: t <span class="keywordsign">-&gt;</span> unit</code> will update <code class="code">t</code> in place by allocating
       memory for its various fields.</li>
 </ul>
 <ul>
-<li><code class="code">view:&nbsp;t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;u</code> will build the user-land version of the data
+<li><code class="code">view: t <span class="keywordsign">-&gt;</span> u</code> will build the user-land version of the data
       represented by <code class="code">t</code>.</li>
 </ul>
 <ul>
-<li><code class="code">make:&nbsp;u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;t</code> will build the ctypes version of the data
+<li><code class="code">make: u <span class="keywordsign">-&gt;</span> t</code> will build the ctypes version of the data
       represented by <code class="code">u</code>.</li>
 </ul>
 

@@ -1,7 +1,6 @@
 <html><head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
@@ -63,193 +62,193 @@
 <link title="Pkcs11_cli" rel="Chapter" href="Pkcs11_cli.html"><title>Pkcs11_CK_ATTRIBUTE_TYPE</title>
 </head>
 <body>
-<code class="code"><span class="keyword">sig</span><br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=&nbsp;<span class="constructor">Pkcs11_CK_ULONG</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;not_implemented&nbsp;=&nbsp;<span class="constructor">NOT_IMPLEMENTED</span>&nbsp;<span class="keyword">of</span>&nbsp;string<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;_&nbsp;u&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CKA_CLASS</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_OBJECT_CLASS</span>.u&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_TOKEN</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_PRIVATE</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_LABEL</span>&nbsp;:&nbsp;string&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_VALUE</span>&nbsp;:&nbsp;string&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_TRUSTED</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_CHECK_VALUE</span>&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.not_implemented&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_KEY_TYPE</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_KEY_TYPE</span>.u&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_SUBJECT</span>&nbsp;:&nbsp;string&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_ID</span>&nbsp;:&nbsp;string&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_SENSITIVE</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_ENCRYPT</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_DECRYPT</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_WRAP</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_UNWRAP</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_SIGN</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_SIGN_RECOVER</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_VERIFY</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_VERIFY_RECOVER</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_DERIVE</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_START_DATE</span>&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.not_implemented&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_END_DATE</span>&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.not_implemented&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_MODULUS</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_BIGINT</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_MODULUS_BITS</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ULONG</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_PUBLIC_EXPONENT</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_BIGINT</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_PRIVATE_EXPONENT</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_BIGINT</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_PRIME_1</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_BIGINT</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_PRIME_2</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_BIGINT</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_EXPONENT_1</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_BIGINT</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_EXPONENT_2</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_BIGINT</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_COEFFICIENT</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_BIGINT</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_PRIME</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_BIGINT</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_SUBPRIME</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_BIGINT</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_PRIME_BITS</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ULONG</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_SUBPRIME_BITS</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ULONG</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_VALUE_LEN</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ULONG</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_EXTRACTABLE</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_LOCAL</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_NEVER_EXTRACTABLE</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_ALWAYS_SENSITIVE</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_KEY_GEN_MECHANISM</span>&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_key_gen_mechanism</span>.u&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_MODIFIABLE</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_EC_PARAMS</span>&nbsp;:&nbsp;<span class="constructor">Key_parsers</span>.<span class="constructor">Asn1</span>.<span class="constructor">EC</span>.<span class="constructor">Params</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_EC_POINT</span>&nbsp;:&nbsp;<span class="constructor">Key_parsers</span>.<span class="constructor">Asn1</span>.<span class="constructor">EC</span>.point&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_ALWAYS_AUTHENTICATE</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_WRAP_WITH_TRUSTED</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_WRAP_TEMPLATE</span>&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.not_implemented&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_UNWRAP_TEMPLATE</span>&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.not_implemented&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_ALLOWED_MECHANISMS</span>&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.not_implemented&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_CS_UNKNOWN</span>&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.<span class="constructor">ULong</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.not_implemented<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;pack&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pack</span>&nbsp;:&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.pack<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_CLASS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_TOKEN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_PRIVATE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_LABEL&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_APPLICATION&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_VALUE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OBJECT_ID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_CERTIFICATE_TYPE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_ISSUER&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_SERIAL_NUMBER&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_AC_ISSUER&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OWNER&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_ATTR_TYPES&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_TRUSTED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_CERTIFICATE_CATEGORY&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_JAVA_MIDP_SECURITY_DOMAIN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_URL&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_HASH_OF_SUBJECT_PUBLIC_KEY&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_HASH_OF_ISSUER_PUBLIC_KEY&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_CHECK_VALUE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_KEY_TYPE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_SUBJECT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_ID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_SENSITIVE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_ENCRYPT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_DECRYPT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_WRAP&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_UNWRAP&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_SIGN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_SIGN_RECOVER&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_VERIFY&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_VERIFY_RECOVER&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_DERIVE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_START_DATE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_END_DATE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_MODULUS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_MODULUS_BITS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_PUBLIC_EXPONENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_PRIVATE_EXPONENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_PRIME_1&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_PRIME_2&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_EXPONENT_1&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_EXPONENT_2&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_COEFFICIENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_PRIME&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_SUBPRIME&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_BASE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_PRIME_BITS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_SUBPRIME_BITS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_VALUE_BITS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_VALUE_LEN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_EXTRACTABLE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_LOCAL&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_NEVER_EXTRACTABLE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_ALWAYS_SENSITIVE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_KEY_GEN_MECHANISM&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_MODIFIABLE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_EC_PARAMS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_EC_POINT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_SECONDARY_AUTH&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_AUTH_PIN_FLAGS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_ALWAYS_AUTHENTICATE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_WRAP_WITH_TRUSTED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_WRAP_TEMPLATE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_UNWRAP_TEMPLATE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_FORMAT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_LENGTH&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_TIME_INTERVAL&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_USER_FRIENDLY_MODE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_CHALLENGE_REQUIREMENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_TIME_REQUIREMENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_COUNTER_REQUIREMENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_PIN_REQUIREMENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_COUNTER&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_TIME&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_USER_IDENTIFIER&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_SERVICE_IDENTIFIER&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_SERVICE_LOGO&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_SERVICE_LOGO_TYPE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_HW_FEATURE_TYPE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_RESET_ON_INIT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_HAS_RESET&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_PIXEL_X&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_PIXEL_Y&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_RESOLUTION&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_CHAR_ROWS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_CHAR_COLUMNS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_COLOR&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_BITS_PER_PIXEL&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_CHAR_SETS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_ENCODING_METHODS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_MIME_TYPES&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_MECHANISM_TYPE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_REQUIRED_CMS_ATTRIBUTES&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_DEFAULT_CMS_ATTRIBUTES&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_SUPPORTED_CMS_ATTRIBUTES&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_ALLOWED_MECHANISMS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_VENDOR_DEFINED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_string&nbsp;:&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;of_string&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.pack<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make&nbsp;:&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;view&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.pack<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;compare&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>b&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;compare_t&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;compare_pack&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.pack&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.pack&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;(_,&nbsp;_)&nbsp;comparison&nbsp;=<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Equal</span>&nbsp;:&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>a)&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.comparison<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Not_equal</span>&nbsp;:&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.comparison<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;compare'&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>b&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.comparison<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;equal&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>b&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;equal_t&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;equal_pack&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.pack&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.pack&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;(&nbsp;==&nbsp;)&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;typ&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t&nbsp;<span class="constructor">Ctypes</span>.typ<br>
+<code class="code"><span class="keyword">sig</span>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=&nbsp;<span class="constructor">Pkcs11_CK_ULONG</span>.t
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;not_implemented&nbsp;=&nbsp;<span class="constructor">NOT_IMPLEMENTED</span>&nbsp;<span class="keyword">of</span>&nbsp;string
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;_&nbsp;u&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CKA_CLASS</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_OBJECT_CLASS</span>.u&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_TOKEN</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_PRIVATE</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_LABEL</span>&nbsp;:&nbsp;string&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_VALUE</span>&nbsp;:&nbsp;string&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_TRUSTED</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_CHECK_VALUE</span>&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.not_implemented&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_KEY_TYPE</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_KEY_TYPE</span>.u&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_SUBJECT</span>&nbsp;:&nbsp;string&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_ID</span>&nbsp;:&nbsp;string&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_SENSITIVE</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_ENCRYPT</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_DECRYPT</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_WRAP</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_UNWRAP</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_SIGN</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_SIGN_RECOVER</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_VERIFY</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_VERIFY_RECOVER</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_DERIVE</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_START_DATE</span>&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.not_implemented&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_END_DATE</span>&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.not_implemented&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_MODULUS</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_BIGINT</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_MODULUS_BITS</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ULONG</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_PUBLIC_EXPONENT</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_BIGINT</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_PRIVATE_EXPONENT</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_BIGINT</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_PRIME_1</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_BIGINT</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_PRIME_2</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_BIGINT</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_EXPONENT_1</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_BIGINT</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_EXPONENT_2</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_BIGINT</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_COEFFICIENT</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_BIGINT</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_PRIME</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_BIGINT</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_SUBPRIME</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_BIGINT</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_PRIME_BITS</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ULONG</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_SUBPRIME_BITS</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ULONG</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_VALUE_LEN</span>&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ULONG</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_EXTRACTABLE</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_LOCAL</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_NEVER_EXTRACTABLE</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_ALWAYS_SENSITIVE</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_KEY_GEN_MECHANISM</span>&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_key_gen_mechanism</span>.u&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_MODIFIABLE</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_EC_PARAMS</span>&nbsp;:&nbsp;<span class="constructor">Key_parsers</span>.<span class="constructor">Asn1</span>.<span class="constructor">EC</span>.<span class="constructor">Params</span>.t&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_EC_POINT</span>&nbsp;:&nbsp;<span class="constructor">Key_parsers</span>.<span class="constructor">Asn1</span>.<span class="constructor">EC</span>.point&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_ALWAYS_AUTHENTICATE</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_WRAP_WITH_TRUSTED</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_WRAP_TEMPLATE</span>&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.not_implemented&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_UNWRAP_TEMPLATE</span>&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.not_implemented&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_ALLOWED_MECHANISMS</span>&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.not_implemented&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKA_CS_UNKNOWN</span>&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Unsigned</span>.<span class="constructor">ULong</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.not_implemented
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;pack&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pack</span>&nbsp;:&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.pack
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_CLASS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_TOKEN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_PRIVATE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_LABEL&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_APPLICATION&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_VALUE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OBJECT_ID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_CERTIFICATE_TYPE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_ISSUER&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_SERIAL_NUMBER&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_AC_ISSUER&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OWNER&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_ATTR_TYPES&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_TRUSTED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_CERTIFICATE_CATEGORY&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_JAVA_MIDP_SECURITY_DOMAIN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_URL&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_HASH_OF_SUBJECT_PUBLIC_KEY&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_HASH_OF_ISSUER_PUBLIC_KEY&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_CHECK_VALUE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_KEY_TYPE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_SUBJECT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_ID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_SENSITIVE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_ENCRYPT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_DECRYPT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_WRAP&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_UNWRAP&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_SIGN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_SIGN_RECOVER&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_VERIFY&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_VERIFY_RECOVER&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_DERIVE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_START_DATE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_END_DATE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_MODULUS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_MODULUS_BITS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_PUBLIC_EXPONENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_PRIVATE_EXPONENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_PRIME_1&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_PRIME_2&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_EXPONENT_1&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_EXPONENT_2&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_COEFFICIENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_PRIME&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_SUBPRIME&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_BASE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_PRIME_BITS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_SUBPRIME_BITS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_VALUE_BITS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_VALUE_LEN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_EXTRACTABLE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_LOCAL&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_NEVER_EXTRACTABLE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_ALWAYS_SENSITIVE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_KEY_GEN_MECHANISM&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_MODIFIABLE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_EC_PARAMS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_EC_POINT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_SECONDARY_AUTH&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_AUTH_PIN_FLAGS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_ALWAYS_AUTHENTICATE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_WRAP_WITH_TRUSTED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_WRAP_TEMPLATE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_UNWRAP_TEMPLATE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_FORMAT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_LENGTH&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_TIME_INTERVAL&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_USER_FRIENDLY_MODE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_CHALLENGE_REQUIREMENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_TIME_REQUIREMENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_COUNTER_REQUIREMENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_PIN_REQUIREMENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_COUNTER&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_TIME&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_USER_IDENTIFIER&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_SERVICE_IDENTIFIER&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_SERVICE_LOGO&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_OTP_SERVICE_LOGO_TYPE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_HW_FEATURE_TYPE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_RESET_ON_INIT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_HAS_RESET&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_PIXEL_X&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_PIXEL_Y&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_RESOLUTION&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_CHAR_ROWS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_CHAR_COLUMNS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_COLOR&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_BITS_PER_PIXEL&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_CHAR_SETS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_ENCODING_METHODS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_MIME_TYPES&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_MECHANISM_TYPE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_REQUIRED_CMS_ATTRIBUTES&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_DEFAULT_CMS_ATTRIBUTES&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_SUPPORTED_CMS_ATTRIBUTES&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_ALLOWED_MECHANISMS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKA_VENDOR_DEFINED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_string&nbsp;:&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;of_string&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.pack
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make&nbsp;:&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;view&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.pack
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;compare&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>b&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;compare_t&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;compare_pack&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.pack&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.pack&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;(_,&nbsp;_)&nbsp;comparison&nbsp;=
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Equal</span>&nbsp;:&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>a)&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.comparison
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Not_equal</span>&nbsp;:&nbsp;int&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.comparison
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;compare'&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>b&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u&nbsp;<span class="keywordsign">-&gt;</span>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="keywordsign">'</span>a,&nbsp;<span class="keywordsign">'</span>b)&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.comparison
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;equal&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>b&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;equal_t&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;equal_pack&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.pack&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.pack&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;(&nbsp;==&nbsp;)&nbsp;:
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;typ&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t&nbsp;<span class="constructor">Ctypes</span>.typ
 <span class="keyword">end</span></code></body></html>

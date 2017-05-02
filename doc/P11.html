@@ -3,7 +3,6 @@
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="next" href="P11_key_attributes.html">
 <link rel="Up" href="index.html">
@@ -119,7 +118,7 @@ High-level PKCS#11 interface.<br>
 <pre><span id="EXCEPTIONCKR"><span class="keyword">exception</span> CKR</span> <span class="keyword">of</span> <code class="type"><a href="P11.RV.html#TYPEt">RV.t</a></code></pre>
 
 <pre><span class="keyword">module type</span> <a href="P11.S.html">S</a> = <code class="code"><span class="keyword">sig</span></code> <a href="P11.S.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
-<pre><span class="keyword">module</span> <a href="P11.Make.html">Make</a>: <div class="sig_block"><code class="code"><span class="keyword">functor</span>&nbsp;(</code><code class="code"><span class="constructor">X</span></code><code class="code">&nbsp;:&nbsp;</code><code class="type"><a href="Pkcs11.RAW.html">Pkcs11.RAW</a></code><code class="code">)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;</code><code class="type"><a href="P11.S.html">S</a></code><code class="type"> </code></div></pre>
+<pre><span class="keyword">module</span> <a href="P11.Make.html">Make</a>: <div class="sig_block"><code class="code"><span class="keyword">functor</span> (</code><code class="code"><span class="constructor">X</span></code><code class="code"> : </code><code class="type"><a href="Pkcs11.RAW.html">Pkcs11.RAW</a></code><code class="code">) <span class="keywordsign">-&gt;</span> </code><code class="type"><a href="P11.S.html">S</a></code><code class="type"> </code></div></pre>
 <pre><span id="VALload_driver"><span class="keyword">val</span> load_driver</span> : <code class="type">?log_calls:string * Format.formatter -><br>       ?on_unknown:(string -> unit) -><br>       dll:string -><br>       use_get_function_list:[ `Auto | `False | `True ] -> (module P11.S)</code></pre><div class="info ">
 May raise <code class="code"><span class="constructor">Pkcs11</span>.<span class="constructor">Cannot_load_module</span></code>.  <code class="code">on_unknown</code> will be called with a warning
     message when unsupported codes are encountered.<br>

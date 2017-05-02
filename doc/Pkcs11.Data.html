@@ -3,7 +3,6 @@
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="next" href="Pkcs11.CK_ULONG.html">
 <link rel="Up" href="Pkcs11.html">
@@ -92,12 +91,12 @@ An element of type <code class="code">t</code> is a structure made of a pointer 
 <pre><span id="VALof_string"><span class="keyword">val</span> of_string</span> : <code class="type">string -> <a href="Pkcs11_data.html#TYPEt">t</a></code></pre>
 <pre><span id="VALstring_of_raw"><span class="keyword">val</span> string_of_raw</span> : <code class="type">'a Ctypes.ptr -> Unsigned.ULong.t -> string</code></pre>
 <pre><span id="VALcreate"><span class="keyword">val</span> create</span> : <code class="type">unit -> <a href="Pkcs11_data.html#TYPEt">t</a></code></pre><div class="info ">
-<code class="code">create&nbsp;()</code> allocates a new <code class="code">t</code> with length 0, and content the
+<code class="code">create ()</code> allocates a new <code class="code">t</code> with length 0, and content the
     null pointer.<br>
 </div>
 
 <pre><span id="VALallocate"><span class="keyword">val</span> allocate</span> : <code class="type"><a href="Pkcs11_data.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
-<code class="code">allocate&nbsp;t</code> updates the content of the <code class="code">t</code> structure to point
+<code class="code">allocate t</code> updates the content of the <code class="code">t</code> structure to point
     to freshly allocated memory.<br>
 </div>
 

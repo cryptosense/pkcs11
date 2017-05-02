@@ -2,7 +2,6 @@
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
@@ -1290,7 +1289,7 @@ UNAVAILABLE INFORMATION constant specified in PKCS11
 <tr><td align="left"><br>A</td></tr>
 <tr><td><a href="Pkcs11_mechanism_list.html#VALallocate">allocate</a> [<a href="Pkcs11_mechanism_list.html">Pkcs11_mechanism_list</a>]</td>
 <td><div class="info">
-<code class="code">allocate&nbsp;t</code> updates the content of the <code class="code">t</code> structure to point
+<code class="code">allocate t</code> updates the content of the <code class="code">t</code> structure to point
     to freshly allocated memory.
 </div>
 </td></tr>
@@ -1300,13 +1299,13 @@ UNAVAILABLE INFORMATION constant specified in PKCS11
 <td></td></tr>
 <tr><td><a href="Pkcs11_slot_list.html#VALallocate">allocate</a> [<a href="Pkcs11_slot_list.html">Pkcs11_slot_list</a>]</td>
 <td><div class="info">
-<code class="code">allocate&nbsp;t</code> updates the content of the <code class="code">t</code> structure to point
+<code class="code">allocate t</code> updates the content of the <code class="code">t</code> structure to point
     to freshly allocated memory.
 </div>
 </td></tr>
 <tr><td><a href="Pkcs11_data.html#VALallocate">allocate</a> [<a href="Pkcs11_data.html">Pkcs11_data</a>]</td>
 <td><div class="info">
-<code class="code">allocate&nbsp;t</code> updates the content of the <code class="code">t</code> structure to point
+<code class="code">allocate t</code> updates the content of the <code class="code">t</code> structure to point
     to freshly allocated memory.
 </div>
 </td></tr>
@@ -2420,13 +2419,13 @@ Compares two normalized templates.
 <td></td></tr>
 <tr><td><a href="P11.Template.html#VALcorrespond">correspond</a> [<a href="P11.Template.html">P11.Template</a>]</td>
 <td><div class="info">
-<code class="code">correspond&nbsp;source&nbsp;tested</code> check if <code class="code">tested</code> match
+<code class="code">correspond source tested</code> check if <code class="code">tested</code> match
       <code class="code">source</code>.
 </div>
 </td></tr>
 <tr><td><a href="Pkcs11_mechanism_list.html#VALcreate">create</a> [<a href="Pkcs11_mechanism_list.html">Pkcs11_mechanism_list</a>]</td>
 <td><div class="info">
-<code class="code">create&nbsp;()</code> allocates a new <code class="code">t</code> with length 0, and content the
+<code class="code">create ()</code> allocates a new <code class="code">t</code> with length 0, and content the
     null pointer.
 </div>
 </td></tr>
@@ -2434,13 +2433,13 @@ Compares two normalized templates.
 <td></td></tr>
 <tr><td><a href="Pkcs11_slot_list.html#VALcreate">create</a> [<a href="Pkcs11_slot_list.html">Pkcs11_slot_list</a>]</td>
 <td><div class="info">
-<code class="code">create&nbsp;()</code> allocates a new <code class="code">t</code> with length 0, and content the
+<code class="code">create ()</code> allocates a new <code class="code">t</code> with length 0, and content the
     null pointer.
 </div>
 </td></tr>
 <tr><td><a href="Pkcs11_data.html#VALcreate">create</a> [<a href="Pkcs11_data.html">Pkcs11_data</a>]</td>
 <td><div class="info">
-<code class="code">create&nbsp;()</code> allocates a new <code class="code">t</code> with length 0, and content the
+<code class="code">create ()</code> allocates a new <code class="code">t</code> with length 0, and content the
     null pointer.
 </div>
 </td></tr>
@@ -2463,7 +2462,7 @@ Compares two normalized templates.
 <td></td></tr>
 <tr><td><a href="P11.Template.html#VALdiff">diff</a> [<a href="P11.Template.html">P11.Template</a>]</td>
 <td><div class="info">
-<code class="code">diff&nbsp;source&nbsp;tested</code> search for all the elements of <code class="code">source</code>
+<code class="code">diff source tested</code> search for all the elements of <code class="code">source</code>
       that are not equal to an element of <code class="code">tested</code>.
 </div>
 </td></tr>
@@ -2503,6 +2502,8 @@ Convert to/from a big-endian byte array.
 <td></td></tr>
 <tr><td><a href="P11.Attribute_type.html#VALequal">equal</a> [<a href="P11.Attribute_type.html">P11.Attribute_type</a>]</td>
 <td></td></tr>
+<tr><td><a href="P11.Info.html#VALequal">equal</a> [<a href="P11.Info.html">P11.Info</a>]</td>
+<td></td></tr>
 <tr><td><a href="P11.User_type.html#VALequal">equal</a> [<a href="P11.User_type.html">P11.User_type</a>]</td>
 <td></td></tr>
 <tr><td><a href="P11.Mechanism_type.html#VALequal">equal</a> [<a href="P11.Mechanism_type.html">P11.Mechanism_type</a>]</td>
@@ -2511,6 +2512,8 @@ Convert to/from a big-endian byte array.
 <td></td></tr>
 <tr><td><a href="Pkcs11_CK_BIGINT.html#VALequal">equal</a> [<a href="Pkcs11_CK_BIGINT.html">Pkcs11_CK_BIGINT</a>]</td>
 <td></td></tr>
+<tr><td><a href="P11.Version.html#VALequal">equal</a> [<a href="P11.Version.html">P11.Version</a>]</td>
+<td></td></tr>
 <tr><td><a href="P11.Key_type.html#VALequal">equal</a> [<a href="P11.Key_type.html">P11.Key_type</a>]</td>
 <td></td></tr>
 <tr><td><a href="P11.Object_class.html#VALequal">equal</a> [<a href="P11.Object_class.html">P11.Object_class</a>]</td>
@@ -2518,6 +2521,8 @@ Convert to/from a big-endian byte array.
 <tr><td><a href="P11.Flags.html#VALequal">equal</a> [<a href="P11.Flags.html">P11.Flags</a>]</td>
 <td></td></tr>
 <tr><td><a href="P11.Slot_id.html#VALequal">equal</a> [<a href="P11.Slot_id.html">P11.Slot_id</a>]</td>
+<td></td></tr>
+<tr><td><a href="P11.Object_handle.html#VALequal">equal</a> [<a href="P11.Object_handle.html">P11.Object_handle</a>]</td>
 <td></td></tr>
 <tr><td><a href="P11.Session_handle.html#VALequal">equal</a> [<a href="P11.Session_handle.html">P11.Session_handle</a>]</td>
 <td></td></tr>
@@ -2539,7 +2544,7 @@ Convert to/from a big-endian byte array.
 <td></td></tr>
 <tr><td><a href="P11.Template.html#VALexcept_attribute_types">except_attribute_types</a> [<a href="P11.Template.html">P11.Template</a>]</td>
 <td><div class="info">
-<code class="code">except_attribute_types&nbsp;attr_types&nbsp;template</code> removes all the
+<code class="code">except_attribute_types attr_types template</code> removes all the
       attributes in <code class="code">template</code> that are present in <code class="code">attr_types</code>.
 </div>
 </td></tr>
@@ -2550,7 +2555,7 @@ Convert to/from a big-endian byte array.
 <td></td></tr>
 <tr><td><a href="P11.Template.html#VALfind_attribute_types">find_attribute_types</a> [<a href="P11.Template.html">P11.Template</a>]</td>
 <td><div class="info">
-<code class="code">find_attribute_types&nbsp;l&nbsp;template</code> look up for the value of each
+<code class="code">find_attribute_types l template</code> look up for the value of each
       attribute type in the list l in <code class="code">template</code>.
 </div>
 </td></tr>
@@ -2587,7 +2592,7 @@ Iterate one of the above operation.
 <td></td></tr>
 <tr><td><a href="Pkcs11_CK_FLAGS.html#VALget">get</a> [<a href="Pkcs11_CK_FLAGS.html">Pkcs11_CK_FLAGS</a>]</td>
 <td><div class="info">
-<code class="code">get&nbsp;flags&nbsp;flag</code> returns true if flag is set in flags.
+<code class="code">get flags flag</code> returns true if flag is set in flags.
 </div>
 </td></tr>
 <tr><td><a href="P11.Template.html#VALget">get</a> [<a href="P11.Template.html">P11.Template</a>]</td>
@@ -2657,7 +2662,7 @@ Will request several attributes at the same time.
 <tr><td align="left"><br>H</td></tr>
 <tr><td><a href="P11.Template.html#VALhash">hash</a> [<a href="P11.Template.html">P11.Template</a>]</td>
 <td><div class="info">
-<code class="code">hash&nbsp;template</code> creates a digest from a template.
+<code class="code">hash template</code> creates a digest from a template.
 </div>
 </td></tr>
 <tr><td><a href="P11.Slot_id.html#VALhash">hash</a> [<a href="P11.Slot_id.html">P11.Slot_id</a>]</td>
@@ -2678,7 +2683,7 @@ Return whether <code class="code">a</code> has all kinds <code class="code">k</c
 </td></tr>
 <tr><td><a href="P11.Mechanism.html#VALis">is</a> [<a href="P11.Mechanism.html">P11.Mechanism</a>]</td>
 <td><div class="info">
-<code class="code">is&nbsp;kinds&nbsp;t</code> checks that the mechanism <code class="code">t</code> has all the tags in
+<code class="code">is kinds t</code> checks that the mechanism <code class="code">t</code> has all the tags in
       the list <code class="code">kinds</code>.
 </div>
 </td></tr>
@@ -2698,7 +2703,7 @@ Low-level PKCS#11 bindings.
 <tr><td align="left"><br>K</td></tr>
 <tr><td><a href="P11.Mechanism.html#VALkey_type">key_type</a> [<a href="P11.Mechanism.html">P11.Mechanism</a>]</td>
 <td><div class="info">
-<code class="code">key_type&nbsp;t</code> returns the type of keys associated to the mechanism <code class="code">t</code>.
+<code class="code">key_type t</code> returns the type of keys associated to the mechanism <code class="code">t</code>.
 </div>
 </td></tr>
 <tr><td><a href="P11.Attribute.html#VALkinds">kinds</a> [<a href="P11.Attribute.html">P11.Attribute</a>]</td>
@@ -2708,7 +2713,7 @@ Low-level PKCS#11 bindings.
 </td></tr>
 <tr><td><a href="P11.Mechanism.html#VALkinds">kinds</a> [<a href="P11.Mechanism.html">P11.Mechanism</a>]</td>
 <td><div class="info">
-<code class="code">kinds&nbsp;mechanism</code> returns the tags for the mechanism
+<code class="code">kinds mechanism</code> returns the tags for the mechanism
       <code class="code">mechanism</code>.
 </div>
 </td></tr>
@@ -2938,7 +2943,7 @@ Remove unnecessary leading <code class="code"><span class="string">'\000'</span>
 <td></td></tr>
 <tr><td><a href="P11.Template.html#VALonly_attribute_types">only_attribute_types</a> [<a href="P11.Template.html">P11.Template</a>]</td>
 <td><div class="info">
-<code class="code">only_attribute_types&nbsp;attr_types&nbsp;template</code> keeps only the
+<code class="code">only_attribute_types attr_types template</code> keeps only the
       attributes in <code class="code">template</code> that are present in <code class="code">attr_types</code>.
 </div>
 </td></tr>
@@ -2963,7 +2968,7 @@ Remove unnecessary leading <code class="code"><span class="string">'\000'</span>
 <td></td></tr>
 <tr><td><a href="Pkcs11_cli.Term.html#VALpin">pin</a> [<a href="Pkcs11_cli.Term.html">Pkcs11_cli.Term</a>]</td>
 <td><div class="info">
-Shortcut for <code class="code"><span class="constructor">Cmdliner</span>.<span class="constructor">Arg</span>.value&nbsp;<span class="constructor">Arg</span>.pin</code>.
+Shortcut for <code class="code"><span class="constructor">Cmdliner</span>.<span class="constructor">Arg</span>.value <span class="constructor">Arg</span>.pin</code>.
 </div>
 </td></tr>
 <tr><td><a href="Pkcs11_cli.Arg.html#VALpin">pin</a> [<a href="Pkcs11_cli.Arg.html">Pkcs11_cli.Arg</a>]</td>
@@ -2981,7 +2986,19 @@ Return all the possible attributes for a given kind, if the
 </td></tr>
 <tr><td><a href="P11.Template.html#VALpp">pp</a> [<a href="P11.Template.html">P11.Template</a>]</td>
 <td></td></tr>
+<tr><td><a href="P11.Info.html#VALpp">pp</a> [<a href="P11.Info.html">P11.Info</a>]</td>
+<td></td></tr>
 <tr><td><a href="P11.Mechanism.html#VALpp">pp</a> [<a href="P11.Mechanism.html">P11.Mechanism</a>]</td>
+<td></td></tr>
+<tr><td><a href="P11.Version.html#VALpp">pp</a> [<a href="P11.Version.html">P11.Version</a>]</td>
+<td></td></tr>
+<tr><td><a href="P11.Object_class.html#VALpp">pp</a> [<a href="P11.Object_class.html">P11.Object_class</a>]</td>
+<td></td></tr>
+<tr><td><a href="P11.Slot_id.html#VALpp">pp</a> [<a href="P11.Slot_id.html">P11.Slot_id</a>]</td>
+<td></td></tr>
+<tr><td><a href="P11.Object_handle.html#VALpp">pp</a> [<a href="P11.Object_handle.html">P11.Object_handle</a>]</td>
+<td></td></tr>
+<tr><td><a href="P11.Attribute.html#VALpp_pack">pp_pack</a> [<a href="P11.Attribute.html">P11.Attribute</a>]</td>
 <td></td></tr>
 <tr><td><a href="Pkcs11_generator.html#VALprefix">prefix</a> [<a href="Pkcs11_generator.html">Pkcs11_generator</a>]</td>
 <td></td></tr>
@@ -2990,13 +3007,13 @@ Return all the possible attributes for a given kind, if the
 <tr><td align="left"><br>R</td></tr>
 <tr><td><a href="P11.Template.html#VALremove_attribute">remove_attribute</a> [<a href="P11.Template.html">P11.Template</a>]</td>
 <td><div class="info">
-<code class="code">remove_attribute&nbsp;attribute&nbsp;template</code> removes the value
+<code class="code">remove_attribute attribute template</code> removes the value
       <code class="code">attribute</code> from <code class="code">template</code> if present.
 </div>
 </td></tr>
 <tr><td><a href="P11.Template.html#VALremove_attribute_type">remove_attribute_type</a> [<a href="P11.Template.html">P11.Template</a>]</td>
 <td><div class="info">
-<code class="code">remove_attribute&nbsp;attribute_type&nbsp;template</code> removes the attribute
+<code class="code">remove_attribute attribute_type template</code> removes the attribute
       type <code class="code">attribute_type</code> from <code class="code">template</code> if present with any
       value.
 </div>
@@ -3015,7 +3032,7 @@ Remove the duplicates from a list of attribute types
 <td></td></tr>
 <tr><td><a href="P11.Template.html#VALset_attribute">set_attribute</a> [<a href="P11.Template.html">P11.Template</a>]</td>
 <td><div class="info">
-<code class="code">set_attribute&nbsp;attribute&nbsp;template</code> replaces the value of
+<code class="code">set_attribute attribute template</code> replaces the value of
       <code class="code">attribute</code> in <code class="code">template</code> if it already exists and adds
       <code class="code">attribute</code> otherwise.
 </div>
@@ -3023,6 +3040,18 @@ Remove the duplicates from a list of attribute types
 <tr><td><a href="P11.S.html#VALset_attribute_value">set_attribute_value</a> [<a href="P11.S.html">P11.S</a>]</td>
 <td></td></tr>
 <tr><td><a href="Pkcs11_log.html#VALset_logging_function">set_logging_function</a> [<a href="Pkcs11_log.html">Pkcs11_log</a>]</td>
+<td></td></tr>
+<tr><td><a href="P11.Info.html#VALshow">show</a> [<a href="P11.Info.html">P11.Info</a>]</td>
+<td></td></tr>
+<tr><td><a href="P11.Version.html#VALshow">show</a> [<a href="P11.Version.html">P11.Version</a>]</td>
+<td></td></tr>
+<tr><td><a href="P11.Object_class.html#VALshow">show</a> [<a href="P11.Object_class.html">P11.Object_class</a>]</td>
+<td></td></tr>
+<tr><td><a href="P11.Slot_id.html#VALshow">show</a> [<a href="P11.Slot_id.html">P11.Slot_id</a>]</td>
+<td></td></tr>
+<tr><td><a href="P11.Object_handle.html#VALshow">show</a> [<a href="P11.Object_handle.html">P11.Object_handle</a>]</td>
+<td></td></tr>
+<tr><td><a href="P11.Attribute.html#VALshow_pack">show_pack</a> [<a href="P11.Attribute.html">P11.Attribute</a>]</td>
 <td></td></tr>
 <tr><td><a href="P11.S.html#VALsign">sign</a> [<a href="P11.S.html">P11.S</a>]</td>
 <td></td></tr>
@@ -3038,7 +3067,7 @@ Term that combines the above slot-selecting terms: it makes sure that
 </td></tr>
 <tr><td><a href="Pkcs11_cli.Term.html#VALslot_description">slot_description</a> [<a href="Pkcs11_cli.Term.html">Pkcs11_cli.Term</a>]</td>
 <td><div class="info">
-Shortcut for <code class="code"><span class="constructor">Cmdliner</span>.<span class="constructor">Arg</span>.value&nbsp;<span class="constructor">Arg</span>.slot_description</code>.
+Shortcut for <code class="code"><span class="constructor">Cmdliner</span>.<span class="constructor">Arg</span>.value <span class="constructor">Arg</span>.slot_description</code>.
 </div>
 </td></tr>
 <tr><td><a href="Pkcs11_cli.Arg.html#VALslot_description">slot_description</a> [<a href="Pkcs11_cli.Arg.html">Pkcs11_cli.Arg</a>]</td>
@@ -3048,7 +3077,7 @@ Shortcut for <code class="code"><span class="constructor">Cmdliner</span>.<span 
 </td></tr>
 <tr><td><a href="Pkcs11_cli.Term.html#VALslot_id">slot_id</a> [<a href="Pkcs11_cli.Term.html">Pkcs11_cli.Term</a>]</td>
 <td><div class="info">
-Shortcut for <code class="code"><span class="constructor">Cmdliner</span>.<span class="constructor">Arg</span>.value&nbsp;<span class="constructor">Arg</span>.slot_id</code>.
+Shortcut for <code class="code"><span class="constructor">Cmdliner</span>.<span class="constructor">Arg</span>.value <span class="constructor">Arg</span>.slot_id</code>.
 </div>
 </td></tr>
 <tr><td><a href="Pkcs11_cli.Arg.html#VALslot_id">slot_id</a> [<a href="Pkcs11_cli.Arg.html">Pkcs11_cli.Arg</a>]</td>
@@ -3059,7 +3088,7 @@ Shortcut for <code class="code"><span class="constructor">Cmdliner</span>.<span 
 </td></tr>
 <tr><td><a href="Pkcs11_cli.Term.html#VALslot_index">slot_index</a> [<a href="Pkcs11_cli.Term.html">Pkcs11_cli.Term</a>]</td>
 <td><div class="info">
-Shortcut for <code class="code"><span class="constructor">Cmdliner</span>.<span class="constructor">Arg</span>.value&nbsp;<span class="constructor">Arg</span>.slot_index</code>.
+Shortcut for <code class="code"><span class="constructor">Cmdliner</span>.<span class="constructor">Arg</span>.value <span class="constructor">Arg</span>.slot_index</code>.
 </div>
 </td></tr>
 <tr><td><a href="Pkcs11_cli.Arg.html#VALslot_index">slot_index</a> [<a href="Pkcs11_cli.Arg.html">Pkcs11_cli.Arg</a>]</td>
@@ -3195,7 +3224,7 @@ Returns list of pretty strings for flags for the given domain.
 <td></td></tr>
 <tr><td><a href="P11.Mechanism.html#VALto_string">to_string</a> [<a href="P11.Mechanism.html">P11.Mechanism</a>]</td>
 <td><div class="info">
-<code class="code">to_string</code> is defined as <code class="code"><span class="keyword">fun</span>&nbsp;x&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Mechanism_type</span>.to_string&nbsp;(mechanism_type&nbsp;x)&nbsp;</code>
+<code class="code">to_string</code> is defined as <code class="code"><span class="keyword">fun</span> x <span class="keywordsign">-&gt;</span> <span class="constructor">Mechanism_type</span>.to_string (mechanism_type x) </code>
 </div>
 </td></tr>
 <tr><td><a href="P11.Mechanism_type.html#VALto_string">to_string</a> [<a href="P11.Mechanism_type.html">P11.Mechanism_type</a>]</td>
@@ -3292,7 +3321,7 @@ Returns list of pretty strings for flags for the given domain.
 <td></td></tr>
 <tr><td><a href="Pkcs11_cli.Term.html#VALtoken_label">token_label</a> [<a href="Pkcs11_cli.Term.html">Pkcs11_cli.Term</a>]</td>
 <td><div class="info">
-Shortcut for <code class="code"><span class="constructor">Cmdliner</span>.<span class="constructor">Arg</span>.value&nbsp;<span class="constructor">Arg</span>.token_label</code>.
+Shortcut for <code class="code"><span class="constructor">Cmdliner</span>.<span class="constructor">Arg</span>.value <span class="constructor">Arg</span>.token_label</code>.
 </div>
 </td></tr>
 <tr><td><a href="Pkcs11_cli.Arg.html#VALtoken_label">token_label</a> [<a href="Pkcs11_cli.Arg.html">Pkcs11_cli.Arg</a>]</td>
@@ -3359,7 +3388,7 @@ Shortcut for <code class="code"><span class="constructor">Cmdliner</span>.<span 
 <td></td></tr>
 <tr><td><a href="P11.Template.html#VALunion">union</a> [<a href="P11.Template.html">P11.Template</a>]</td>
 <td><div class="info">
-<code class="code">union&nbsp;template1&nbsp;template2</code> concatenates the templates.
+<code class="code">union template1 template2</code> concatenates the templates.
 </div>
 </td></tr>
 <tr><td><a href="Pkcs11_types.Initialize_arg.html#VALunlockMutex">unlockMutex</a> [<a href="Pkcs11_types.Initialize_arg.html">Pkcs11_types.Initialize_arg</a>]</td>
@@ -3382,7 +3411,7 @@ Shortcut for <code class="code"><span class="constructor">Cmdliner</span>.<span 
 <td></td></tr>
 <tr><td><a href="Pkcs11_cli.Term.html#VALuse_get_function_list">use_get_function_list</a> [<a href="Pkcs11_cli.Term.html">Pkcs11_cli.Term</a>]</td>
 <td><div class="info">
-Shortcut for <code class="code"><span class="constructor">Cmdliner</span>.<span class="constructor">Arg</span>.value&nbsp;<span class="constructor">Arg</span>.use_get_function_list</code>.
+Shortcut for <code class="code"><span class="constructor">Cmdliner</span>.<span class="constructor">Arg</span>.value <span class="constructor">Arg</span>.use_get_function_list</code>.
 </div>
 </td></tr>
 <tr><td><a href="Pkcs11_cli.Arg.html#VALuse_get_function_list">use_get_function_list</a> [<a href="Pkcs11_cli.Arg.html">Pkcs11_cli.Arg</a>]</td>
@@ -3392,7 +3421,7 @@ How to access the PKCS11 DLL.
 </td></tr>
 <tr><td><a href="Pkcs11_cli.Term.html#VALuser_type">user_type</a> [<a href="Pkcs11_cli.Term.html">Pkcs11_cli.Term</a>]</td>
 <td><div class="info">
-Shortcut for <code class="code"><span class="constructor">Cmdliner</span>.<span class="constructor">Arg</span>.value&nbsp;<span class="constructor">Arg</span>.user_type</code>.
+Shortcut for <code class="code"><span class="constructor">Cmdliner</span>.<span class="constructor">Arg</span>.value <span class="constructor">Arg</span>.user_type</code>.
 </div>
 </td></tr>
 <tr><td><a href="Pkcs11_cli.Arg.html#VALuser_type">user_type</a> [<a href="Pkcs11_cli.Arg.html">Pkcs11_cli.Arg</a>]</td>
