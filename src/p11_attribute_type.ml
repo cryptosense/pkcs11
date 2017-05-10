@@ -1,7 +1,7 @@
 type not_implemented = Pkcs11.CK_ATTRIBUTE_TYPE.not_implemented = NOT_IMPLEMENTED of string
 
 type 'a t = 'a Pkcs11.CK_ATTRIBUTE_TYPE.u =
-  | CKA_CLASS : Pkcs11.CK_OBJECT_CLASS.u t
+  | CKA_CLASS : P11_object_class.t t
   | CKA_TOKEN : bool t
   | CKA_PRIVATE : bool t
   | CKA_LABEL : string t

@@ -306,7 +306,7 @@ let make_pack (Pack x) = make x
 
 let to_string_pair =
   let ulong cka x = cka, Unsigned.ULong.to_string x in
-  let object_class cka cko = cka, Pkcs11_CK_OBJECT_CLASS.to_string cko in
+  let object_class cka cko = cka, P11_object_class.to_string cko in
   let bool cka x = cka, if x then "CK_TRUE" else "CK_FALSE" in
   let string cka x = cka, Printf.sprintf "%S" x in
   let key_type cka ckk = cka, P11_key_type.to_string ckk in
@@ -394,7 +394,7 @@ let compare : type a b. a u -> b u -> int = fun a b ->
        non-exhaustive) is related to the left part. *)
     match[@ocaml.warning "-4"] a, b with
       | (CKA_CLASS, a_param), (CKA_CLASS, b_param) ->
-          Pkcs11_CK_OBJECT_CLASS.compare a_param b_param
+          P11_object_class.compare a_param b_param
       | (CKA_KEY_TYPE, a_param), (CKA_KEY_TYPE, b_param) ->
           P11_key_type.compare a_param b_param
       | (CKA_MODULUS_BITS, a_param), (CKA_MODULUS_BITS, b_param) ->

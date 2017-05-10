@@ -5,7 +5,7 @@ type t = Pkcs11_CK_ULONG.t
 type not_implemented = NOT_IMPLEMENTED of string
 
 type _ u =
-  | CKA_CLASS : Pkcs11_CK_OBJECT_CLASS.u u
+  | CKA_CLASS : P11_object_class.t u
   | CKA_TOKEN : bool u
   | CKA_PRIVATE : bool u
   | CKA_LABEL : string u
