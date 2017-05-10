@@ -2,7 +2,7 @@
 type t = Pkcs11_CK_ULONG.t
 
 type u =
-  | CKM of Pkcs11_CK_MECHANISM_TYPE.u
+  | CKM of P11_mechanism_type.t
   | CK_UNAVAILABLE_INFORMATION
 val to_string : u -> string
 val of_string : string -> u

@@ -19,7 +19,7 @@ val allocate: t -> unit
 
 val of_raw : Pkcs11_CK_MECHANISM_TYPE.t Ctypes.ptr -> Pkcs11_CK_ULONG.t Ctypes.ptr -> t
 
-type u = Pkcs11_CK_MECHANISM_TYPE.u list
+type u = P11_mechanism_type.t list
 val make : u -> t
 val view : t -> u
 

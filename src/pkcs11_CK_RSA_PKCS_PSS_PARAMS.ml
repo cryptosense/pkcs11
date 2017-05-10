@@ -13,7 +13,7 @@ let () = seal t
 
 type u =
   {
-    hashAlg: Pkcs11_CK_MECHANISM_TYPE.u;
+    hashAlg: P11_mechanism_type.t;
     mgf: Pkcs11_CK_RSA_PKCS_MGF_TYPE.t;
     sLen: Pkcs11_CK_ULONG.t;
   }
@@ -36,7 +36,7 @@ let view (c: t): u =
   }
 
 let compare a b =
-  let c = Pkcs11_CK_MECHANISM_TYPE.compare a.hashAlg b.hashAlg in
+  let c = P11_mechanism_type.compare a.hashAlg b.hashAlg in
   if c <> 0 then
     c
   else

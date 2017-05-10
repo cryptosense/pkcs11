@@ -62,7 +62,7 @@ type u =
   | CKM_PKCS5_PBKD2 of Pkcs11_CK_PKCS5_PBKD2_PARAMS.u
   | CKM_CS_UNKNOWN of Pkcs11_CK_RAW_PAYLOAD.t
 
-val mechanism_type: u -> Pkcs11_CK_MECHANISM_TYPE.u
+val mechanism_type: u -> P11_mechanism_type.t
 
 val make : u -> t
 val view : t -> u

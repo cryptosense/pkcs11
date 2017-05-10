@@ -4,7 +4,7 @@ type t = _t Ctypes.structure
 
 type u =
   {
-    hashAlg: Pkcs11_CK_MECHANISM_TYPE.u;
+    hashAlg: P11_mechanism_type.t;
     mgf: Pkcs11_CK_RSA_PKCS_MGF_TYPE.t;
     sLen: Pkcs11_CK_ULONG.t;
   }

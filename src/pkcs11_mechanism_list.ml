@@ -8,7 +8,7 @@ type t =
       mutable content: Pkcs11_CK_MECHANISM_TYPE.t ptr;
     }
 
-type u = Pkcs11_CK_MECHANISM_TYPE.u list
+type u = P11_mechanism_type.t list
 
 let get_length (t:t) : Pkcs11_CK_ULONG.t =
   !@ (t.length)

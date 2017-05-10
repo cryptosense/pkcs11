@@ -234,7 +234,7 @@ let make: u -> t =
         string ckm param
 
 let mechanism_type m =
-  let module T = Pkcs11_CK_MECHANISM_TYPE in
+  let module T = P11_mechanism_type in
   match m with
     | CKM_SHA_1 -> T.CKM_SHA_1
     | CKM_SHA224 -> T.CKM_SHA224
@@ -298,7 +298,7 @@ let mechanism_type m =
 let compare a b =
   let a_type = mechanism_type a in
   let b_type = mechanism_type b in
-  let c = Pkcs11_CK_MECHANISM_TYPE.compare a_type b_type in
+  let c = P11_mechanism_type.compare a_type b_type in
   if c <> 0 then
     c
   else
@@ -469,7 +469,7 @@ let view (t:t) : u =
   let (==) = fun a b ->
     let ua = Pkcs11_CK_MECHANISM_TYPE.view a in
     let ub = Pkcs11_CK_MECHANISM_TYPE.view b in
-    Pkcs11_CK_MECHANISM_TYPE.equal ua ub
+    P11_mechanism_type.equal ua ub
   in
   if ul == _CKM_SHA_1 then CKM_SHA_1
   else if ul == _CKM_SHA224 then CKM_SHA224

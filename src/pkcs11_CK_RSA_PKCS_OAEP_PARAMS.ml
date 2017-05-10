@@ -19,7 +19,7 @@ let () = seal t
 
 type u =
   {
-    hashAlg: Pkcs11_CK_MECHANISM_TYPE.u [@compare Pkcs11_CK_MECHANISM_TYPE.compare];
+    hashAlg: P11_mechanism_type.t [@compare P11_mechanism_type.compare];
     mgf: Pkcs11_CK_RSA_PKCS_MGF_TYPE.t;
     src: string option;
   }

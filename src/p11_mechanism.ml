@@ -310,7 +310,7 @@ type kind =
    follow the numbering of values in the header, to make it easier to
    add new values. *)
 let kinds m =
-  let open Pkcs11.CK_MECHANISM_TYPE in
+  let open P11_mechanism_type in
   match mechanism_type m with
   | CKM_RSA_PKCS_KEY_PAIR_GEN -> [Generate; Asymmetric; RSA]
   | CKM_RSA_PKCS -> [Encrypt; Sign; SignRecover; Wrap; RSA; Asymmetric]
