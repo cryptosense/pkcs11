@@ -1,13 +1,13 @@
 open Ctypes
 open Pkcs11_CK_ATTRIBUTE
 
-let _setter_ : (unit Ctypes.ptr -> 'a -> unit) -> Unsigned.ULong.t -> t -> 'a -> Pkcs11_CK_RV.u =
+let _setter_ : (unit Ctypes.ptr -> 'a -> unit) -> Unsigned.ULong.t -> t -> 'a -> P11_rv.t =
   fun ff size t elem ->
     if pvalue_is_null_ptr t
     then
       begin
         setf t ulValueLen size;
-        Pkcs11_CK_RV.CKR_OK
+        P11_rv.CKR_OK
       end
     else
       begin
@@ -16,12 +16,12 @@ let _setter_ : (unit Ctypes.ptr -> 'a -> unit) -> Unsigned.ULong.t -> t -> 'a ->
           begin
             ff (Ctypes_helpers.Reachable_ptr.getf t pValue) elem;
             setf t ulValueLen size;
-            Pkcs11_CK_RV.CKR_OK
+            P11_rv.CKR_OK
           end
         else
           begin
             setf t ulValueLen Unsigned.ULong.max_int;
-            Pkcs11_CK_RV.CKR_BUFFER_TOO_SMALL
+            P11_rv.CKR_BUFFER_TOO_SMALL
           end
       end
 

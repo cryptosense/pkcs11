@@ -1,4 +1,4 @@
-type t = Pkcs11.CK_RV.u =
+type t =
   | CKR_OK
   | CKR_CANCEL
   | CKR_HOST_MEMORY

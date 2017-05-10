@@ -490,7 +490,7 @@ module type CONFIG = sig
   val library : Dl.library
 end
 
-exception Cannot_load_module of string * CK_RV.u
+exception Cannot_load_module of string * P11_rv.t
 
 module Stubs (X: sig val library: string end) : RAW =
 struct
@@ -526,7 +526,7 @@ struct
     let rv,fl = c_GetFunctionList () in
     if rv = CK_RV._CKR_OK
     then fl
-    else raise (GetFunctionList_Failure (CK_RV.(to_string @@ view rv)))
+    else raise (GetFunctionList_Failure (P11_rv.to_string @@ Pkcs11_CK_RV.view rv))
 
   include Raw(struct
       let declare name field typ =
