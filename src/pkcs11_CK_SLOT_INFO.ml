@@ -20,8 +20,8 @@ type u =
     slotDescription: string;
     manufacturerID : string;
     flags: Pkcs11_CK_ULONG.t;
-    hardwareVersion: Pkcs11_CK_VERSION.u;
-    firmwareVersion: Pkcs11_CK_VERSION.u;
+    hardwareVersion: P11_version.t;
+    firmwareVersion: P11_version.t;
   }
 
 let view (c: t) : u =
@@ -58,8 +58,8 @@ let to_strings info =
     "Slot Description", trim_and_quote info.slotDescription;
     "Manufacturer ID", trim_and_quote info.manufacturerID;
     "Flags", string_of_flags info.flags;
-    "Hardware Version", Pkcs11_CK_VERSION.to_string info.hardwareVersion;
-    "Firmware Version", Pkcs11_CK_VERSION.to_string info.firmwareVersion;
+    "Firmware Version", P11_version.to_string info.firmwareVersion;
+    "Hardware Version", P11_version.to_string info.hardwareVersion;
   ]
 
 let to_string ?newlines ?indent info =

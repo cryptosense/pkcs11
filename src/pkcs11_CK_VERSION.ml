@@ -20,23 +20,15 @@ let major = Pkcs11_CK_BYTE.typ -: "major"
 let minor = Pkcs11_CK_BYTE.typ -: "minor"
 let () = seal ck_version
 
-type u =
-  {
-    major: int;             (* ck_byte *)
-    minor: int;             (* ck_byte *)
+let view c =
+  let open P11_version in
+  { major = Pkcs11_CK_BYTE.to_int (getf c major)
+  ; minor = Pkcs11_CK_BYTE.to_int (getf c minor)
   }
 
-let view (c:t) : u =
-  {
-    major = Pkcs11_CK_BYTE.to_int (getf c major);
-    minor = Pkcs11_CK_BYTE.to_int (getf c minor);
-  }
-
-let make (u:u) : t =
+let make u =
+  let open P11_version in
   let t = Ctypes.make ck_version in
   setf t major (Pkcs11_CK_BYTE.of_int u.major);
   setf t minor (Pkcs11_CK_BYTE.of_int u.minor);
   t
-
-let to_string u =
-  Printf.sprintf "%i.%i" u.major u.minor

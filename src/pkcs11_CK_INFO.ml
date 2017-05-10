@@ -18,11 +18,11 @@ let () = seal ck_info
 
 (* User space *)
 type u = {
-  cryptokiVersion: Pkcs11_CK_VERSION.u;
+  cryptokiVersion: P11_version.t;
   manufacturerID : string;
   flags : Pkcs11_CK_FLAGS.t;
   libraryDescription: string;
-  libraryVersion : Pkcs11_CK_VERSION.u;
+  libraryVersion : P11_version.t;
 }
 
 let view (c: t) : u =
@@ -57,11 +57,11 @@ let string_of_flags = Pkcs11_CK_FLAGS.(to_pretty_string Info_domain)
 
 let to_strings info =
   [
-    "Version", Pkcs11_CK_VERSION.to_string info.cryptokiVersion;
+    "Version", P11_version.to_string info.cryptokiVersion;
     "Manufacturer ID", trim_and_quote info.manufacturerID;
     "Flags", string_of_flags info.flags;
     "Library Description", trim_and_quote info.libraryDescription;
-    "Library Version", Pkcs11_CK_VERSION.to_string info.libraryVersion;
+    "Library Version", P11_version.to_string info.libraryVersion;
   ]
 
 let to_string ?newlines ?indent info =

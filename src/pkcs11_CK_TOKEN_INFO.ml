@@ -47,8 +47,8 @@ type u =
     ulFreePublicMemory   : Unsigned.ULong.t;
     ulTotalPrivateMemory : Unsigned.ULong.t;
     ulFreePrivateMemory  : Unsigned.ULong.t;
-    hardwareVersion : Pkcs11_CK_VERSION.u;
-    firmwareVersion : Pkcs11_CK_VERSION.u;
+    hardwareVersion : P11_version.t;
+    firmwareVersion : P11_version.t;
     utcTime: string;
   }
 
@@ -160,8 +160,8 @@ let to_strings info =
     "Free Public Memory", ul_to_string info.ulFreePublicMemory;
     "Total Private Memory", ul_to_string info.ulTotalPrivateMemory;
     "Free Private Memory", ul_to_string info.ulFreePrivateMemory;
-    "Hardware Version", (Pkcs11_CK_VERSION.to_string info.hardwareVersion);
-    "Firmware Version", (Pkcs11_CK_VERSION.to_string info.firmwareVersion);
+    "Hardware Version", (P11_version.to_string info.hardwareVersion);
+    "Firmware Version", (P11_version.to_string info.firmwareVersion);
     "UTC Time", trim_and_quote info.utcTime;
   ]
 

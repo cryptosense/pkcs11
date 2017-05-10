@@ -4,11 +4,11 @@ type t = _t Ctypes.structure
 
 type u =
   {
-    cryptokiVersion : Pkcs11_CK_VERSION.u;
+    cryptokiVersion : P11_version.t;
     manufacturerID : string;
     flags : Pkcs11_CK_FLAGS.t;
     libraryDescription : string;
-    libraryVersion : Pkcs11_CK_VERSION.u;
+    libraryVersion : P11_version.t;
   }
 val make : u -> t
 val view : t -> u

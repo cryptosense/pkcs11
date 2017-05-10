@@ -19,8 +19,8 @@ type u =
     ulFreePublicMemory   : Unsigned.ULong.t;
     ulTotalPrivateMemory : Unsigned.ULong.t;
     ulFreePrivateMemory  : Unsigned.ULong.t;
-    hardwareVersion : Pkcs11_CK_VERSION.u;
-    firmwareVersion : Pkcs11_CK_VERSION.u;
+    hardwareVersion : P11_version.t;
+    firmwareVersion : P11_version.t;
     utcTime: string
   }
 

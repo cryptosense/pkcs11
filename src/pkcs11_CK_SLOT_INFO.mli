@@ -7,8 +7,8 @@ type u =
     slotDescription: string;
     manufacturerID : string;
     flags: Pkcs11_CK_FLAGS.t;
-    hardwareVersion: Pkcs11_CK_VERSION.u;
-    firmwareVersion: Pkcs11_CK_VERSION.u;
+    hardwareVersion: P11_version.t;
+    firmwareVersion: P11_version.t;
   }
 
 val make : u -> t
