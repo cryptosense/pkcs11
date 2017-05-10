@@ -1,4 +1,4 @@
-type t = Pkcs11.CK_KEY_TYPE.u =
+type t =
   | CKK_RSA
   | CKK_DSA
   | CKK_DH

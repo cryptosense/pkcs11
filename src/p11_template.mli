@@ -81,5 +81,5 @@ val hash : t -> Digest.t
 (** {2 Accessors }  *)
 
 val get_class : t -> Pkcs11.CK_OBJECT_CLASS.u option
-val get_key_type : t -> Pkcs11.CK_KEY_TYPE.u option
+val get_key_type : t -> P11_key_type.t option
 val get_label : t -> string option

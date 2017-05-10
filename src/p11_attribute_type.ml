@@ -8,7 +8,7 @@ type 'a t = 'a Pkcs11.CK_ATTRIBUTE_TYPE.u =
   | CKA_VALUE : string t
   | CKA_TRUSTED : bool t
   | CKA_CHECK_VALUE : not_implemented t
-  | CKA_KEY_TYPE : Pkcs11.CK_KEY_TYPE.u t
+  | CKA_KEY_TYPE : P11_key_type.t t
   | CKA_SUBJECT : string t
   | CKA_ID : string t
   | CKA_SENSITIVE : bool t

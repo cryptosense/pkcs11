@@ -12,7 +12,7 @@ type _ u =
   | CKA_VALUE : string u
   | CKA_TRUSTED : bool u
   | CKA_CHECK_VALUE : not_implemented u
-  | CKA_KEY_TYPE : Pkcs11_CK_KEY_TYPE.u u
+  | CKA_KEY_TYPE : P11_key_type.t u
   | CKA_SUBJECT : string u
   | CKA_ID : string u
   | CKA_SENSITIVE : bool u
