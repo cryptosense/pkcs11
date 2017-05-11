@@ -26,17 +26,17 @@ type u =
   | CKM_RSA_PKCS
   | CKM_RSA_PKCS_OAEP of P11_rsa_pkcs_oaep_params.t
   | CKM_RSA_X_509
-  | CKM_RSA_PKCS_PSS of Pkcs11_CK_RSA_PKCS_PSS_PARAMS.u
+  | CKM_RSA_PKCS_PSS of P11_rsa_pkcs_pss_params.t
   | CKM_SHA1_RSA_PKCS
   | CKM_SHA224_RSA_PKCS
   | CKM_SHA256_RSA_PKCS
   | CKM_SHA384_RSA_PKCS
   | CKM_SHA512_RSA_PKCS
-  | CKM_SHA1_RSA_PKCS_PSS of Pkcs11_CK_RSA_PKCS_PSS_PARAMS.u
-  | CKM_SHA224_RSA_PKCS_PSS of Pkcs11_CK_RSA_PKCS_PSS_PARAMS.u
-  | CKM_SHA256_RSA_PKCS_PSS of Pkcs11_CK_RSA_PKCS_PSS_PARAMS.u
-  | CKM_SHA384_RSA_PKCS_PSS of Pkcs11_CK_RSA_PKCS_PSS_PARAMS.u
-  | CKM_SHA512_RSA_PKCS_PSS of Pkcs11_CK_RSA_PKCS_PSS_PARAMS.u
+  | CKM_SHA1_RSA_PKCS_PSS of P11_rsa_pkcs_pss_params.t
+  | CKM_SHA224_RSA_PKCS_PSS of P11_rsa_pkcs_pss_params.t
+  | CKM_SHA256_RSA_PKCS_PSS of P11_rsa_pkcs_pss_params.t
+  | CKM_SHA384_RSA_PKCS_PSS of P11_rsa_pkcs_pss_params.t
+  | CKM_SHA512_RSA_PKCS_PSS of P11_rsa_pkcs_pss_params.t
   | CKM_AES_KEY_GEN
   | CKM_AES_ECB
   | CKM_AES_CBC of string
@@ -313,7 +313,7 @@ let compare a b =
       | CKM_SHA256_RSA_PKCS_PSS a_param, CKM_SHA256_RSA_PKCS_PSS b_param
       | CKM_SHA384_RSA_PKCS_PSS a_param, CKM_SHA384_RSA_PKCS_PSS b_param
       | CKM_SHA512_RSA_PKCS_PSS a_param, CKM_SHA512_RSA_PKCS_PSS b_param
-        -> Pkcs11_CK_RSA_PKCS_PSS_PARAMS.compare a_param b_param
+        -> P11_rsa_pkcs_pss_params.compare a_param b_param
       | CKM_AES_CBC a_param, CKM_AES_CBC b_param
       | CKM_AES_CBC_PAD a_param, CKM_AES_CBC_PAD b_param
       | CKM_DES_CBC a_param, CKM_DES_CBC b_param
