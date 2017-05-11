@@ -53,7 +53,7 @@ let make (u : u) : t =
   setf t library_version (Pkcs11_CK_VERSION.make u.libraryVersion);
   t
 
-let string_of_flags = Pkcs11_CK_FLAGS.(to_pretty_string Info_domain)
+let string_of_flags = P11_flags.(to_pretty_string Info_domain)
 
 let to_strings info =
   [

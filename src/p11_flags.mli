@@ -1,11 +1,25 @@
-type t = Pkcs11.CK_FLAGS.t
+type t = Unsigned.ULong.t
 [@@deriving eq,ord,show,yojson]
 
-val to_json : ?pretty:(t -> string) -> t -> Yojson.Safe.json
+type domain =
+  | Info_domain
+  | Slot_info_domain
+  | Token_info_domain
+  | Session_info_domain
+  | Mechanism_info_domain
+  | Initialize_domain
+  | Wait_for_slot_domain
+  | OTP_signature_info_domain
+  | Any_domain
+
 val empty : t
+
 val logical_or : t -> t -> t
+
 val ( || ) : t -> t -> t
-val get : flags: t -> flag: t -> bool
+
+val get : flags:t -> flag:t -> bool
+
 val _CKF_TOKEN_PRESENT : t
 val _CKF_REMOVABLE_DEVICE : t
 val _CKF_HW_SLOT : t
@@ -59,5 +73,17 @@ val _CKF_EXCLUDE_COUNTER : t
 val _CKF_EXCLUDE_CHALLENGE : t
 val _CKF_EXCLUDE_PIN : t
 val _CKF_USER_FRIENDLY_OTP : t
+
 val to_string : t -> string
+
 val of_string : string -> t
+
+val to_pretty_string : domain -> t -> string
+
+val to_pretty_strings : domain -> t -> string list
+
+val to_json : ?pretty:(t -> string) -> t -> Yojson.Safe.json
+
+val split : domain -> t -> t list * t
+
+val flags_of_domain : domain -> (t * string) list

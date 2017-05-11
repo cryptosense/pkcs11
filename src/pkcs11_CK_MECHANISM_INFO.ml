@@ -9,7 +9,7 @@ let (-:) ty label = Ctypes_helpers.smart_field ck_mechanism_info label ty
 
 let ulMinKeySize = ulong -: "ulMinKeySize"
 let ulMaxKeySize = ulong -: "ulMaxKeySize"
-let flags = Pkcs11_CK_FLAGS.t -: "flags"
+let flags = Pkcs11_CK_FLAGS.typ -: "flags"
 let () = seal ck_mechanism_info
 
 type u =
@@ -37,12 +37,12 @@ let make (u:u) : t =
   t
 
 let allowed_flags =
-  let flags = Pkcs11_CK_FLAGS.(flags_of_domain Mechanism_info_domain) in
+  let flags = P11_flags.(flags_of_domain Mechanism_info_domain) in
   let flags = List.map fst flags in
-  List.fold_left Pkcs11_CK_FLAGS.logical_or Pkcs11_CK_FLAGS.empty flags
+  List.fold_left P11_flags.logical_or Pkcs11_CK_FLAGS.empty flags
 
-let string_of_flags = Pkcs11_CK_FLAGS.(to_pretty_string Mechanism_info_domain)
-let strings_of_flags = Pkcs11_CK_FLAGS.(to_pretty_strings Mechanism_info_domain)
+let string_of_flags = P11_flags.(to_pretty_string Mechanism_info_domain)
+let strings_of_flags = P11_flags.(to_pretty_strings Mechanism_info_domain)
 
 let to_strings info =
   [

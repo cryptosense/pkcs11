@@ -9,7 +9,7 @@ let (-:) ty label = Ctypes_helpers.smart_field ck_session_info label ty
 
 let slotID        = ulong    -: "slotID"
 let state         = ulong    -: "state"
-let flags         = Pkcs11_CK_FLAGS.t -: "flags"
+let flags         = Pkcs11_CK_FLAGS.typ -: "flags"
 let ulDeviceError = ulong    -: "ulDeviceError"
 let () = seal ck_session_info
 
@@ -41,7 +41,7 @@ let make (u : u) : t =
   setf t ulDeviceError u.ulDeviceError;
   t
 
-let string_of_flags = Pkcs11_CK_FLAGS.(to_pretty_string Session_info_domain)
+let string_of_flags = P11_flags.(to_pretty_string Session_info_domain)
 
 let to_strings info =
   [

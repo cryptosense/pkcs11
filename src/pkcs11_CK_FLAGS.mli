@@ -1,29 +1,15 @@
-(** Bit flags used in several places ([CK_FLAGS]) *)
 type t = Pkcs11_CK_ULONG.t
-[@@deriving eq,ord,show]
+[@@deriving eq,ord,yojson]
+
+val typ : t Ctypes.typ
 
 val empty : t
+
 val logical_or : t -> t -> t
+
 val ( || ) : t -> t -> t
-val ( && ) : t -> t -> t
 
-(** [get flags flag] returns true if flag is set in flags. *)
 val get : flags: t -> flag: t -> bool
-
-(**
- * Domains used to distinguish flag values.
- * Any_domain is for flags that can be used across all domains.
-*)
-type domain =
-  | Info_domain
-  | Slot_info_domain
-  | Token_info_domain
-  | Session_info_domain
-  | Mechanism_info_domain
-  | Initialize_domain
-  | Wait_for_slot_domain
-  | OTP_signature_info_domain
-  | Any_domain
 
 val _CKF_TOKEN_PRESENT : t
 val _CKF_REMOVABLE_DEVICE : t
@@ -78,30 +64,9 @@ val _CKF_EXCLUDE_COUNTER : t
 val _CKF_EXCLUDE_CHALLENGE : t
 val _CKF_EXCLUDE_PIN : t
 val _CKF_USER_FRIENDLY_OTP : t
+
+val to_json : ?pretty:(t -> string) -> t -> Yojson.Safe.json
+
 val to_string : t -> string
+
 val of_string : string -> t
-
-(** Returns list of (flag, flag pretty string) for the given domain *)
-val flags_of_domain : domain -> (t * string) list
-
-(**
- * Split a combined flag value into a list of all the flags it comprises.
- * Returns tuple of list of known (flag, pretty string) for the domain and
- * unknown remaining flags.
-*)
-val split_with_string : domain -> t -> ((t * string) list * t)
-
-(**
- * Split a combined flag value into a list of all the flags it comprises.
- * Returns tuple of list of known flags for the domain and unknown remaining
- * flags.
-*)
-val split : domain -> t -> t list * t
-
-(** Returns pretty strings for flags separated with | for the given domain. *)
-val to_pretty_string : domain -> t -> string
-
-(** Returns list of pretty strings for flags for the given domain. *)
-val to_pretty_strings : domain -> t -> string list
-
-val t : t Ctypes.typ

@@ -10,7 +10,7 @@ let (-:) ty label = smart_field ck_slot_info label ty
 
 let slotDescription = array 64 Pkcs11_CK_UTF8CHAR.typ -: "slotDescription"
 let manufacturerID = array 32 Pkcs11_CK_UTF8CHAR.typ  -: "manufacturerID"
-let flags = Pkcs11_CK_FLAGS.t -: "flags"
+let flags = Pkcs11_CK_FLAGS.typ -: "flags"
 let hardwareVersion = Pkcs11_CK_VERSION.ck_version -: "hardwareVersion"
 let firmwareVersion = Pkcs11_CK_VERSION.ck_version -: "firmwareVersion"
 let () = seal ck_slot_info
@@ -51,7 +51,7 @@ let make (u : u) : t =
   setf t firmwareVersion (Pkcs11_CK_VERSION.make u.firmwareVersion);
   t
 
-let string_of_flags = Pkcs11_CK_FLAGS.(to_pretty_string Slot_info_domain)
+let string_of_flags = P11_flags.(to_pretty_string Slot_info_domain)
 
 let to_strings info =
   [

@@ -12,7 +12,7 @@ let label                = array 32 Pkcs11_CK_UTF8CHAR.typ -: "label"           
 let manufacturerID       = array 32 Pkcs11_CK_UTF8CHAR.typ -: "manufacturerID"          (* blank padded *)
 let model                = array 16 Pkcs11_CK_UTF8CHAR.typ -: "model"                (* blank padded *)
 let serialNumber         = array 16 char     -: "serialNumber"         (* blank padded *)
-let flags                = Pkcs11_CK_FLAGS.t -: "flags"
+let flags                = Pkcs11_CK_FLAGS.typ -: "flags"
 
 let ulMaxSessionCount    = ulong                -: "ulMaxSessionCount"     (* max open sessions *)
 let ulSessionCount       = ulong                -: "ulSessionCount"        (* sess. now open *)
@@ -131,7 +131,7 @@ let make (u : u) : t =
   setf t utcTime (carray_from_string (blank_padded ~length:16 u.utcTime));
   t
 
-let string_of_flags = Pkcs11_CK_FLAGS.(to_pretty_string Token_info_domain)
+let string_of_flags = P11_flags.(to_pretty_string Token_info_domain)
 
 let ul_to_string t =
   Pkcs11_CK_ULONG.(
