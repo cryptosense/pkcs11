@@ -1,6 +1,12 @@
-type t = Pkcs11.CK_AES_CBC_ENCRYPT_DATA_PARAMS.u =
-  {
-    iv: string;
-    data: string;
+type t =
+  { iv: string
+  ; data: string
   }
-[@@deriving yojson]
+[@@deriving ord,yojson]
+
+let compare a b =
+  let c = String.compare a.iv b.iv in
+  if c <> 0 then
+    c
+  else
+    String.compare a.data b.data

@@ -3,13 +3,21 @@
 open Ctypes
 open Ctypes_helpers
 
-module type CBC_ENCRYPT_DATA_PARAMS_PARAM =
-sig
+module type HIGHER = sig
+  type t =
+    { iv: string
+    ; data: string
+    }
+  [@@deriving ord,yojson]
+end
+
+module type PARAM = sig
   val name: string
+
   val size: int
 end
 
-module CBC_ENCRYPT_DATA_PARAMS (Param: CBC_ENCRYPT_DATA_PARAMS_PARAM) =
+module Make(Param : PARAM)(Higher : HIGHER) =
 struct
   type _t
   type t = _t structure
@@ -23,14 +31,8 @@ struct
   let length = ulong -: "length"
   let () = seal t
 
-  type u =
-    {
-      iv: string;
-      data: string;
-    }
-
-
-  let make (u: u): t =
+  let make u =
+    let open Higher in
     let t = make t in
     (* Build the variable length string *)
     make_string u.data t length pData;
@@ -41,30 +43,30 @@ struct
     string_copy u.iv iv_size (CArray.start (getf t iv));
     t
 
-  let view (t: t): u =
-    {
-      iv = string_from_carray (getf t iv);
-      data =
+  let view t =
+    let open Higher in
+    { iv = string_from_carray (getf t iv)
+    ; data =
         string_from_ptr
           ~length:(getf t length |> Unsigned.ULong.to_int)
-          (Reachable_ptr.getf t pData);
+          (Reachable_ptr.getf t pData)
     }
-
-  let compare a b =
-    let c = String.compare a.iv b.iv in
-    if c <> 0 then
-      c
-    else
-      String.compare a.data b.data
 end
 
 module CK_DES_CBC_ENCRYPT_DATA_PARAMS =
-  CBC_ENCRYPT_DATA_PARAMS (struct
-    let name = "CK_DES_CBC_ENCRYPT_DATA_PARAMS"
-    let size = 8
-  end)
+  Make
+    (struct
+      let name = "CK_DES_CBC_ENCRYPT_DATA_PARAMS"
+
+      let size = 8
+    end)
+    (P11_des_cbc_encrypt_data_params)
+
 module CK_AES_CBC_ENCRYPT_DATA_PARAMS =
-  CBC_ENCRYPT_DATA_PARAMS (struct
-    let name = "CK_AES_CBC_ENCRYPT_DATA_PARAMS"
-    let size = 16
-  end)
+  Make
+    (struct
+      let name = "CK_AES_CBC_ENCRYPT_DATA_PARAMS"
+
+      let size = 16
+    end)
+    (P11_aes_cbc_encrypt_data_params)

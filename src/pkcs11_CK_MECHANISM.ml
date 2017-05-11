@@ -44,7 +44,7 @@ type u =
   | CKM_AES_MAC
   | CKM_AES_MAC_GENERAL of Pkcs11_CK_ULONG.t
   | CKM_AES_ECB_ENCRYPT_DATA of Pkcs11_CK_KEY_DERIVATION_STRING_DATA.u
-  | CKM_AES_CBC_ENCRYPT_DATA of Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_AES_CBC_ENCRYPT_DATA_PARAMS.u
+  | CKM_AES_CBC_ENCRYPT_DATA of P11_aes_cbc_encrypt_data_params.t
   | CKM_DES_KEY_GEN
   | CKM_DES_ECB
   | CKM_DES_CBC of string
@@ -52,7 +52,7 @@ type u =
   | CKM_DES_MAC
   | CKM_DES_MAC_GENERAL of Pkcs11_CK_ULONG.t
   | CKM_DES_ECB_ENCRYPT_DATA of Pkcs11_CK_KEY_DERIVATION_STRING_DATA.u
-  | CKM_DES_CBC_ENCRYPT_DATA of Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_DES_CBC_ENCRYPT_DATA_PARAMS.u
+  | CKM_DES_CBC_ENCRYPT_DATA of P11_des_cbc_encrypt_data_params.t
   | CKM_DES3_KEY_GEN
   | CKM_DES3_ECB
   | CKM_DES3_CBC of string
@@ -60,7 +60,7 @@ type u =
   | CKM_DES3_MAC
   | CKM_DES3_MAC_GENERAL of Pkcs11_CK_ULONG.t
   | CKM_DES3_ECB_ENCRYPT_DATA of Pkcs11_CK_KEY_DERIVATION_STRING_DATA.u
-  | CKM_DES3_CBC_ENCRYPT_DATA of Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_DES_CBC_ENCRYPT_DATA_PARAMS.u
+  | CKM_DES3_CBC_ENCRYPT_DATA of P11_des_cbc_encrypt_data_params.t
   | CKM_CONCATENATE_BASE_AND_DATA of Pkcs11_CK_KEY_DERIVATION_STRING_DATA.u
   | CKM_CONCATENATE_DATA_AND_BASE of Pkcs11_CK_KEY_DERIVATION_STRING_DATA.u
   | CKM_XOR_BASE_AND_DATA of Pkcs11_CK_KEY_DERIVATION_STRING_DATA.u
@@ -335,12 +335,12 @@ let compare a b =
         -> String.compare a_param b_param
       | CKM_AES_CBC_ENCRYPT_DATA a_param,
         CKM_AES_CBC_ENCRYPT_DATA b_param
-        -> Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_AES_CBC_ENCRYPT_DATA_PARAMS.compare a_param b_param
+        -> P11_aes_cbc_encrypt_data_params.compare a_param b_param
       | CKM_DES_CBC_ENCRYPT_DATA a_param,
         CKM_DES_CBC_ENCRYPT_DATA b_param
       | CKM_DES3_CBC_ENCRYPT_DATA a_param,
         CKM_DES3_CBC_ENCRYPT_DATA b_param
-        -> Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_DES_CBC_ENCRYPT_DATA_PARAMS.compare a_param b_param
+        -> P11_des_cbc_encrypt_data_params.compare a_param b_param
       | CKM_EXTRACT_KEY_FROM_KEY a_param,
         CKM_EXTRACT_KEY_FROM_KEY b_param
       | CKM_CONCATENATE_BASE_AND_KEY a_param,
