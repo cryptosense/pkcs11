@@ -19,10 +19,10 @@ let () = seal t
 
 type u =
   {
-    saltSource: Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.u;
+    saltSource: P11_pkcs5_pbkdf2_salt_source_type.t;
     saltSourceData: string option;
     iterations: int;
-    prf: Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE.u;
+    prf: P11_pkcs5_pbkd2_pseudo_random_function_type.t;
     prfData: string option;
     password: string;
   }
