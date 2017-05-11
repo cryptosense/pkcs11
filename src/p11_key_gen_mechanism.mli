@@ -1,4 +1,8 @@
-type t = Pkcs11.Key_gen_mechanism.u =
+type t =
   | CKM of P11_mechanism_type.t
   | CK_UNAVAILABLE_INFORMATION 
-[@@deriving yojson]
+[@@deriving ord,yojson]
+
+val to_string : t -> string
+
+val of_string : string -> t

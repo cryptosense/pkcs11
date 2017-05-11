@@ -310,7 +310,7 @@ let to_string_pair =
   let bool cka x = cka, if x then "CK_TRUE" else "CK_FALSE" in
   let string cka x = cka, Printf.sprintf "%S" x in
   let key_type cka ckk = cka, P11_key_type.to_string ckk in
-  let mechanism_type cka x = cka, Pkcs11_key_gen_mechanism.to_string x in
+  let mechanism_type cka x = cka, P11_key_gen_mechanism.to_string x in
   let ec_parameters cka x = cka, Key_parsers.Asn1.EC.Params.show x in
   let ec_point cka x = cka, Key_parsers.Asn1.EC.show_point x in
   let bigint cka x = cka, Pkcs11_CK_BIGINT.to_string x in
@@ -402,7 +402,7 @@ let compare : type a b. a u -> b u -> int = fun a b ->
       | (CKA_VALUE_LEN, a_param), (CKA_VALUE_LEN, b_param) ->
           Pkcs11_CK_ULONG.compare a_param b_param
       | (CKA_KEY_GEN_MECHANISM, a_param), (CKA_KEY_GEN_MECHANISM, b_param) ->
-          Pkcs11_key_gen_mechanism.compare a_param b_param
+          P11_key_gen_mechanism.compare a_param b_param
       | (CKA_EC_PARAMS, a_param), (CKA_EC_PARAMS, b_param) ->
           Key_parsers.Asn1.EC.Params.compare a_param b_param
       | (CKA_EC_POINT, a_param), (CKA_EC_POINT, b_param) ->

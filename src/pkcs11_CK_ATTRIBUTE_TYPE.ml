@@ -45,7 +45,7 @@ type _ u =
   | CKA_LOCAL : bool u
   | CKA_NEVER_EXTRACTABLE : bool u
   | CKA_ALWAYS_SENSITIVE : bool u
-  | CKA_KEY_GEN_MECHANISM : Pkcs11_key_gen_mechanism.u u
+  | CKA_KEY_GEN_MECHANISM : P11_key_gen_mechanism.t u
   | CKA_MODIFIABLE : bool u
   (* | CKA_ECDSA_PARAMS : string u *)
   | CKA_EC_PARAMS : Key_parsers.Asn1.EC.Params.t u

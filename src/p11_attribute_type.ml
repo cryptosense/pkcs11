@@ -41,7 +41,7 @@ type 'a t = 'a Pkcs11.CK_ATTRIBUTE_TYPE.u =
   | CKA_LOCAL : bool t
   | CKA_NEVER_EXTRACTABLE : bool t
   | CKA_ALWAYS_SENSITIVE : bool t
-  | CKA_KEY_GEN_MECHANISM : Pkcs11.Key_gen_mechanism.u t
+  | CKA_KEY_GEN_MECHANISM : P11_key_gen_mechanism.t t
   | CKA_MODIFIABLE : bool t
   (* | CKA_ECDSA_PARAMS : string t *)
   | CKA_EC_PARAMS : Key_parsers.Asn1.EC.Params.t t
