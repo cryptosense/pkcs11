@@ -24,7 +24,7 @@ type u =
   | CKM_RSA_PKCS_KEY_PAIR_GEN
   | CKM_RSA_X9_31_KEY_PAIR_GEN
   | CKM_RSA_PKCS
-  | CKM_RSA_PKCS_OAEP of Pkcs11_CK_RSA_PKCS_OAEP_PARAMS.u
+  | CKM_RSA_PKCS_OAEP of P11_rsa_pkcs_oaep_params.t
   | CKM_RSA_X_509
   | CKM_RSA_PKCS_PSS of Pkcs11_CK_RSA_PKCS_PSS_PARAMS.u
   | CKM_SHA1_RSA_PKCS
@@ -304,7 +304,7 @@ let compare a b =
   else
     match a, b with
       | CKM_RSA_PKCS_OAEP a_param, CKM_RSA_PKCS_OAEP b_param
-        -> Pkcs11_CK_RSA_PKCS_OAEP_PARAMS.compare a_param b_param
+        -> P11_rsa_pkcs_oaep_params.compare a_param b_param
       | CKM_PKCS5_PBKD2 a_param, CKM_PKCS5_PBKD2 b_param
         -> Pkcs11_CK_PKCS5_PBKD2_PARAMS.compare a_param b_param
       | CKM_RSA_PKCS_PSS a_param, CKM_RSA_PKCS_PSS b_param
