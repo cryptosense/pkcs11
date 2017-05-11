@@ -72,7 +72,7 @@ type u =
   | CKM_ECDH1_DERIVE of Pkcs11_CK_ECDH1_DERIVE_PARAMS.u
   | CKM_ECDH1_COFACTOR_DERIVE of Pkcs11_CK_ECDH1_DERIVE_PARAMS.u
   | CKM_ECMQV_DERIVE of Pkcs11_CK_ECMQV_DERIVE_PARAMS.u
-  | CKM_PKCS5_PBKD2 of Pkcs11_CK_PKCS5_PBKD2_PARAMS.u
+  | CKM_PKCS5_PBKD2 of P11_pkcs5_pbkd2_data_params.t
   | CKM_CS_UNKNOWN of Pkcs11_CK_RAW_PAYLOAD.t
 
 let make: u -> t =
@@ -306,7 +306,7 @@ let compare a b =
       | CKM_RSA_PKCS_OAEP a_param, CKM_RSA_PKCS_OAEP b_param
         -> P11_rsa_pkcs_oaep_params.compare a_param b_param
       | CKM_PKCS5_PBKD2 a_param, CKM_PKCS5_PBKD2 b_param
-        -> Pkcs11_CK_PKCS5_PBKD2_PARAMS.compare a_param b_param
+        -> P11_pkcs5_pbkd2_data_params.compare a_param b_param
       | CKM_RSA_PKCS_PSS a_param, CKM_RSA_PKCS_PSS b_param
       | CKM_SHA1_RSA_PKCS_PSS a_param, CKM_SHA1_RSA_PKCS_PSS b_param
       | CKM_SHA224_RSA_PKCS_PSS a_param, CKM_SHA224_RSA_PKCS_PSS b_param

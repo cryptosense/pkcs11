@@ -59,7 +59,7 @@ type u =
   | CKM_ECDH1_DERIVE of Pkcs11_CK_ECDH1_DERIVE_PARAMS.u
   | CKM_ECDH1_COFACTOR_DERIVE of Pkcs11_CK_ECDH1_DERIVE_PARAMS.u
   | CKM_ECMQV_DERIVE of Pkcs11_CK_ECMQV_DERIVE_PARAMS.u
-  | CKM_PKCS5_PBKD2 of Pkcs11_CK_PKCS5_PBKD2_PARAMS.u
+  | CKM_PKCS5_PBKD2 of P11_pkcs5_pbkd2_data_params.t
   | CKM_CS_UNKNOWN of Pkcs11_CK_RAW_PAYLOAD.t
 
 val mechanism_type: u -> P11_mechanism_type.t
