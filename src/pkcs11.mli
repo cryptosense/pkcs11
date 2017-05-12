@@ -946,7 +946,7 @@ sig
   val c_GetTokenInfo : slot: CK_SLOT_ID.t -> CK_RV.t * P11_token_info.t
   val c_GetMechanismList : slot: CK_SLOT_ID.t -> Mechanism_list.t -> CK_RV.t
   val c_GetMechanismInfo : slot: CK_SLOT_ID.t -> CK_MECHANISM_TYPE.t ->
-    CK_RV.t * CK_MECHANISM_INFO.u
+    CK_RV.t * P11_mechanism_info.t
   val c_InitToken : slot: CK_SLOT_ID.t -> pin:string -> label:string -> CK_RV.t
   val c_InitPIN : CK_SESSION_HANDLE.t -> string -> CK_RV.t
   val c_SetPIN : CK_SESSION_HANDLE.t -> oldpin:string -> newpin:string ->
