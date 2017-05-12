@@ -955,7 +955,7 @@ sig
     CK_RV.t * CK_SESSION_HANDLE.t
   val c_CloseSession : CK_SESSION_HANDLE.t -> CK_RV.t
   val c_CloseAllSessions : slot: CK_SLOT_ID.t -> CK_RV.t
-  val c_GetSessionInfo : CK_SESSION_HANDLE.t -> CK_RV.t * CK_SESSION_INFO.u
+  val c_GetSessionInfo : CK_SESSION_HANDLE.t -> CK_RV.t * P11_session_info.t
   (* val c_GetOperation_state *)
   (* val c_SetOperation_state *)
   val c_Login : CK_SESSION_HANDLE.t -> CK_USER_TYPE.t -> string -> CK_RV.t
