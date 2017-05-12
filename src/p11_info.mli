@@ -5,7 +5,7 @@ type t =
   ; libraryDescription : string
   ; libraryVersion : P11_version.t
   }
-[@@deriving eq,show,of_yojson]
+[@@deriving eq,show,yojson]
 
 val to_string : ?newlines: bool -> ?indent: string -> t -> string
 

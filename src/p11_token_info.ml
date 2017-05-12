@@ -1,30 +1,64 @@
-type t = Pkcs11.CK_TOKEN_INFO.u =
-  {
-    label : string;
-    manufacturerID : string;
-    model : string;
-    serialNumber : string;
-    flags : P11_flags.t;
-    ulMaxSessionCount : Pkcs11_CK_ULONG.t;
-    ulSessionCount : Pkcs11_CK_ULONG.t;
-    ulMaxRwSessionCount : Pkcs11_CK_ULONG.t;
-    ulRwSessionCount : Pkcs11_CK_ULONG.t;
-    ulMaxPinLen : Pkcs11_CK_ULONG.t;
-    ulMinPinLen : Pkcs11_CK_ULONG.t;
-    ulTotalPublicMemory : Pkcs11_CK_ULONG.t;
-    ulFreePublicMemory : Pkcs11_CK_ULONG.t;
-    ulTotalPrivateMemory : Pkcs11_CK_ULONG.t;
-    ulFreePrivateMemory : Pkcs11_CK_ULONG.t;
-    hardwareVersion : P11_version.t;
-    firmwareVersion : P11_version.t;
-    utcTime : string;
+type t =
+  { label : string
+  ; manufacturerID : string
+  ; model : string
+  ; serialNumber : string
+  ; flags : P11_flags.t
+  ; ulMaxSessionCount : Pkcs11_CK_ULONG.t
+  ; ulSessionCount : Pkcs11_CK_ULONG.t
+  ; ulMaxRwSessionCount : Pkcs11_CK_ULONG.t
+  ; ulRwSessionCount : Pkcs11_CK_ULONG.t
+  ; ulMaxPinLen : Pkcs11_CK_ULONG.t
+  ; ulMinPinLen : Pkcs11_CK_ULONG.t
+  ; ulTotalPublicMemory : Pkcs11_CK_ULONG.t
+  ; ulFreePublicMemory : Pkcs11_CK_ULONG.t
+  ; ulTotalPrivateMemory : Pkcs11_CK_ULONG.t
+  ; ulFreePrivateMemory : Pkcs11_CK_ULONG.t
+  ; hardwareVersion : P11_version.t
+  ; firmwareVersion : P11_version.t
+  ; utcTime : string
   }
-  [@@deriving of_yojson]
+[@@deriving of_yojson]
 
-let ul_to_string = Pkcs11.CK_TOKEN_INFO.ul_to_string
-let to_string = Pkcs11.CK_TOKEN_INFO.to_string
-let to_strings = Pkcs11.CK_TOKEN_INFO.to_strings
-let flags_to_string = Pkcs11.CK_TOKEN_INFO.string_of_flags
+let flags_to_string = P11_flags.(to_pretty_string Token_info_domain)
+
+let ul_to_string t =
+  Pkcs11_CK_ULONG.(
+    if is_effectively_infinite t then
+      "CK_EFFECTIVELY_INFINITE"
+    else if is_unavailable_information t then
+      "CK_UNAVAILABLE_INFORMATION"
+    else
+      Unsigned.ULong.to_string t
+  )
+
+let to_strings info =
+  let open Ctypes_helpers in
+  [
+    "Label", trim_and_quote info.label;
+    "Manufacturer ID", trim_and_quote info.manufacturerID;
+    "Model", trim_and_quote info.model;
+    "Serial Number", trim_and_quote info.serialNumber;
+    "Flags", flags_to_string info.flags;
+    "Maximum Session Count", ul_to_string info.ulMaxSessionCount;
+    "Session count", ul_to_string info.ulSessionCount;
+    "Maximum Read-Write Session Count", ul_to_string info.ulMaxRwSessionCount;
+    "Read-Write Session Count", ul_to_string info.ulRwSessionCount;
+    "Maximum PIN Length", Unsigned.ULong.to_string info.ulMaxPinLen;
+    "Minimim PIN Length", Unsigned.ULong.to_string info.ulMinPinLen;
+    "Total Public Memory", ul_to_string info.ulTotalPublicMemory;
+    "Free Public Memory", ul_to_string info.ulFreePublicMemory;
+    "Total Private Memory", ul_to_string info.ulTotalPrivateMemory;
+    "Free Private Memory", ul_to_string info.ulFreePrivateMemory;
+    "Hardware Version", (P11_version.to_string info.hardwareVersion);
+    "Firmware Version", (P11_version.to_string info.firmwareVersion);
+    "UTC Time", trim_and_quote info.utcTime;
+  ]
+
+let to_string ?newlines ?indent info =
+  Pkcs11_helpers.string_of_record ?newlines ?indent (to_strings info)
+
+let to_strings info = Pkcs11_helpers.strings_of_record @@ to_strings info
 
 let to_yojson info =
   let ulong x = `String (Unsigned.ULong.to_string x) in
