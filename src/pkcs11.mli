@@ -939,7 +939,7 @@ module type S =
 sig
   val c_Initialize : unit -> CK_RV.t
   val c_Finalize : unit -> CK_RV.t
-  val c_GetInfo : unit -> CK_RV.t * CK_INFO.u
+  val c_GetInfo : unit -> CK_RV.t * P11_info.t
   (* val c_GetFunctionList : unit -> CK_RV.t * CK_FUNCTION_LIST.t *)
   val c_GetSlotList : bool -> Slot_list.t -> CK_RV.t
   val c_GetSlotInfo : slot: CK_SLOT_ID.t -> CK_RV.t * CK_SLOT_INFO.u

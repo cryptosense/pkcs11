@@ -698,7 +698,7 @@ module type S =
 sig
   val c_Initialize : unit -> CK_RV.t
   val c_Finalize : unit -> CK_RV.t
-  val c_GetInfo : unit -> CK_RV.t * CK_INFO.u
+  val c_GetInfo : unit -> CK_RV.t * P11_info.t
   (* 03/24/2015: At the moment, we do not need to use GetFunctionList
      from the high level bindings. Since this function is quite
      complicated in terms of bindings, we should refrain from using
@@ -835,7 +835,7 @@ struct
     let f = F.c_Finalize in
     fun () -> f Ctypes.null
 
-  let c_GetInfo : unit -> CK_RV.t * CK_INFO.u =
+  let c_GetInfo : unit -> CK_RV.t * P11_info.t =
     let f = F.c_GetInfo in
     fun () ->
       let info = Ctypes.make ck_info in

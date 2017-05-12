@@ -16,34 +16,17 @@ let library_description = array 32 char -: "libraryDescription"
 let library_version = Pkcs11_CK_VERSION.ck_version -: "libraryVersion"
 let () = seal ck_info
 
-(* User space *)
-type u = {
-  cryptokiVersion: P11_version.t;
-  manufacturerID : string;
-  flags : Pkcs11_CK_FLAGS.t;
-  libraryDescription: string;
-  libraryVersion : P11_version.t;
-}
-
-let view (c: t) : u =
-  {
-    cryptokiVersion =
-      Pkcs11_CK_VERSION.view (getf c cryptoki_version);
-
-    manufacturerID  =
-      string_from_carray (getf c manufacturer_id);
-
-    flags           =
-      getf c flags;
-
-    libraryDescription =
-      string_from_carray (getf c library_description);
-
-    libraryVersion  =
-      Pkcs11_CK_VERSION.view (getf c library_version);
+let view c =
+  let open P11_info in
+  { cryptokiVersion = Pkcs11_CK_VERSION.view (getf c cryptoki_version)
+  ; manufacturerID = string_from_carray (getf c manufacturer_id)
+  ; flags = getf c flags
+  ; libraryDescription = string_from_carray (getf c library_description)
+  ; libraryVersion = Pkcs11_CK_VERSION.view (getf c library_version)
   }
 
-let make (u : u) : t =
+let make u =
+  let open P11_info in
   let t = Ctypes.make ck_info in
   setf t cryptoki_version (Pkcs11_CK_VERSION.make u.cryptokiVersion);
   setf t manufacturer_id (carray_from_string (blank_padded ~length:32 u.manufacturerID));
@@ -52,19 +35,3 @@ let make (u : u) : t =
     (carray_from_string (blank_padded ~length:32 u.libraryDescription));
   setf t library_version (Pkcs11_CK_VERSION.make u.libraryVersion);
   t
-
-let string_of_flags = P11_flags.(to_pretty_string Info_domain)
-
-let to_strings info =
-  [
-    "Version", P11_version.to_string info.cryptokiVersion;
-    "Manufacturer ID", trim_and_quote info.manufacturerID;
-    "Flags", string_of_flags info.flags;
-    "Library Description", trim_and_quote info.libraryDescription;
-    "Library Version", P11_version.to_string info.libraryVersion;
-  ]
-
-let to_string ?newlines ?indent info =
-  string_of_record ?newlines ?indent (to_strings info)
-
-let to_strings info = to_strings info |> strings_of_record
