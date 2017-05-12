@@ -705,7 +705,7 @@ sig
      it. *)
   (* val c_GetFunctionList : unit -> CK_RV.t * CK_FUNCTION_LIST.t *)
   val c_GetSlotList : bool -> Slot_list.t -> CK_RV.t
-  val c_GetSlotInfo : slot: CK_SLOT_ID.t -> CK_RV.t * CK_SLOT_INFO.u
+  val c_GetSlotInfo : slot: CK_SLOT_ID.t -> CK_RV.t * P11_slot_info.t
   val c_GetTokenInfo : slot: CK_SLOT_ID.t -> CK_RV.t * P11_token_info.t
   val c_GetMechanismList : slot: CK_SLOT_ID.t -> Mechanism_list.t -> CK_RV.t
   val c_GetMechanismInfo : slot: CK_SLOT_ID.t -> CK_MECHANISM_TYPE.t ->
