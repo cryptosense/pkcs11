@@ -73,7 +73,7 @@ type u =
   | CKM_ECDH1_COFACTOR_DERIVE of Pkcs11_CK_ECDH1_DERIVE_PARAMS.u
   | CKM_ECMQV_DERIVE of Pkcs11_CK_ECMQV_DERIVE_PARAMS.u
   | CKM_PKCS5_PBKD2 of P11_pkcs5_pbkd2_data_params.t
-  | CKM_CS_UNKNOWN of Pkcs11_CK_RAW_PAYLOAD.t
+  | CKM_CS_UNKNOWN of P11_raw_payload_params.t
 
 let make: u -> t =
   let make ckm param param_len =
@@ -230,8 +230,9 @@ let make: u -> t =
     | CKM_PKCS5_PBKD2 p ->
         struct_ _CKM_PKCS5_PBKD2 p Pkcs11_CK_PKCS5_PBKD2_PARAMS.t
           Pkcs11_CK_PKCS5_PBKD2_PARAMS.make
-    | CKM_CS_UNKNOWN (ckm, param) ->
-        string ckm param
+    | CKM_CS_UNKNOWN params ->
+      let (mechanism_type, data) = Pkcs11_CK_RAW_PAYLOAD.make params in
+      string mechanism_type data
 
 let mechanism_type m =
   let module T = P11_mechanism_type in
@@ -293,7 +294,9 @@ let mechanism_type m =
     | CKM_ECDH1_COFACTOR_DERIVE _ -> T.CKM_ECDH1_COFACTOR_DERIVE
     | CKM_ECMQV_DERIVE _ -> T.CKM_ECMQV_DERIVE
     | CKM_PKCS5_PBKD2 _ -> T.CKM_PKCS5_PBKD2
-    | CKM_CS_UNKNOWN (ckm, _) -> T.CKM_CS_UNKNOWN ckm
+    | CKM_CS_UNKNOWN params ->
+      let (mechanism_type, _) = Pkcs11_CK_RAW_PAYLOAD.make params in
+      T.CKM_CS_UNKNOWN mechanism_type
 
 let compare a b =
   let a_type = mechanism_type a in
@@ -354,7 +357,7 @@ let compare a b =
         -> Pkcs11_CK_ULONG.compare a_param b_param
       | CKM_CS_UNKNOWN a_param,
         CKM_CS_UNKNOWN b_param
-          -> Pkcs11_CK_RAW_PAYLOAD.compare a_param b_param
+        -> P11_raw_payload_params.compare a_param b_param
       | CKM_ECDH1_DERIVE a_param,
         CKM_ECDH1_DERIVE b_param
       | CKM_ECDH1_COFACTOR_DERIVE a_param,
@@ -544,4 +547,5 @@ let view (t:t) : u =
     CKM_ECDH1_COFACTOR_DERIVE (unsafe_get_ecdh1_derive_param t)
   else if ul == _CKM_ECMQV_DERIVE then
     CKM_ECMQV_DERIVE (unsafe_get_ecmqv_derive_param t)
-  else CKM_CS_UNKNOWN (ul, (unsafe_get_string t))
+  else
+    CKM_CS_UNKNOWN (Pkcs11_CK_RAW_PAYLOAD.view (ul, (unsafe_get_string t)))

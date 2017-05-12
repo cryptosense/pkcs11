@@ -1,9 +1,16 @@
 type t = Pkcs11_CK_MECHANISM_TYPE.t * string
 
-let compare (a_ckm, a_param) (b_ckm, b_param) =
-  let ua_ckm = Pkcs11_CK_MECHANISM_TYPE.view a_ckm in
-  let ub_ckm = Pkcs11_CK_MECHANISM_TYPE.view b_ckm in
-  if P11_mechanism_type.equal ua_ckm ub_ckm then
-    String.compare a_param b_param
-  else
-    P11_mechanism_type.compare ua_ckm ub_ckm
+let make params =
+  let open P11_raw_payload_params in
+  ( Pkcs11_CK_MECHANISM_TYPE.make params.mechanism
+  , params.data
+  )
+
+let view (raw_mechanism_type, raw_data) =
+  let open P11_raw_payload_params in
+  { mechanism = Pkcs11_CK_MECHANISM_TYPE.view raw_mechanism_type
+  ; data = raw_data
+  }
+
+let compare a b =
+  P11_raw_payload_params.compare (view a) (view b)

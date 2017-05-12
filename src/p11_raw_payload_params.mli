@@ -1,2 +1,5 @@
-type t = Pkcs11.CK_RAW_PAYLOAD.t
-[@@deriving yojson]
+type t =
+  { mechanism: P11_mechanism_type.t
+  ; data: Pkcs11_hex_data.t
+  }
+[@@deriving ord,yojson]
