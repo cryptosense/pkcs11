@@ -14,38 +14,28 @@ exception GetFunctionList_Failure of string
 
 (** CONVENTIONS.
 
-    _t is a type variable that is used to constraint the [Ctypes]
-    representation. It would appear in the signature of [Version] for
-    instance. However, to make it more palatable for the outside world,
-    what is exported is [t], which is defined as [_t structure]. For
-    some modules, it is quite easy to work with [t] seen as an abstract
-    time. For other modules, we provide a [u]ser version of the type,
-    with suitable functions.
+    _t is a type variable used to constrain the [Ctypes] representation.  It
+    appears in [Pkcs11.CK_VERSION], for instance. However, only [t] is exported,
+    which is defined as [_t structure]. For some modules, it is quite easy to
+    work with [t] seen as an abstract type.  For other modules, the higher-level
+    type such as [P11.Version.t] is more practical.
 
-    When appropriate, we provide the following functions:
+    Where appropriate, we provide the following functions:
 
-    - [create: unit -> t] will allocate a new object of type t
-      (possibly, not initialized)
+    - [create: unit -> Pkcs11.CK_x.t]: Allocate a new object of type t (possibly, not
+      initialized).
+    - [allocate: Pkcs11.CK_x.t -> unit]: Update the object in place by allocating memory for
+      its various fields.
+    - [view: Pkcs11.CK_x.t -> P11.X.t]: Build the high-level version of the data
+      represented by the argument.
+    - [make: P11.X.t -> Pkcs11.CK_x.t]: Build the Ctypes version of the data
+      represented by [P11.X.t].
 
-    - [allocate: t -> unit] will update [t] in place by allocating
-      memory for its various fields.
-
-    - [view: t -> u] will build the user-land version of the data
-      represented by [t].
-
-    - [make: u -> t] will build the ctypes version of the data
-      represented by [u].
-
-    N.B. The last two functions raise the question of why we are not
-    using Ctypes views. The problem is that for some functions of the
-    PKCS11 interface, we have to make several calls to the API to
-    build a proper [t], that could then be used to build an [u].
+    N.B. The last two functions raise the question of why we are not using
+    Ctypes views. The problem is that for some functions of the PKCS#11
+    interface, we have to make several calls to the API to build a proper
+    [Pkcs11.CK_x.t], that could then be used to build a [P11.X.t].
 *)
-
-(*
-   Module aliases to speed up separate compilation.
-   See https://blogs.janestreet.com/better-namespaces-through-module-aliases/
- *)
 
 module CK_ULONG = Pkcs11_CK_ULONG
 module CK_BYTE = Pkcs11_CK_BYTE

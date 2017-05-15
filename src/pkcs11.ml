@@ -2,43 +2,6 @@ open Ctypes
 
 include Ctypes_helpers
 
-
-(** The bindings come in two flavours. The first one is the Direct
-    mode, in which each function from the PKCS11.h header are binded
-    directly. The second one is the Indirect mode, in which we use an
-    indirection through the list of function returned by
-    GetFunctionList. *)
-
-(** CONVENTIONS.
-
-    _t is a type variable that is used to constraint the [Ctypes]
-    representation. It would appear in the signature of [Version] for
-    instance. However, to make it more palatable for the outside world,
-    what is exported is [t], which is defined as [_t structure]. For
-    some modules, it is quite easy to work with [t] seen as an abstract
-    time. For other modules, we provide a [u]ser version of the type,
-    with suitable functions.
-
-    When appropriate, we provide the following functions:
-
-    - [create: unit -> t] will allocate a new object of type t
-      (possibly, not initialized)
-
-    - [allocate: t -> unit] will update [t] in place by allocating
-      memory for its various fields.
-
-    - [view: t -> u] will build the user-land version of the data
-      represented by [t].
-
-    - [make: u -> t] will build the ctypes version of the data
-      represented by [u].
-
-    N.B. The last two functions raise the question of why we are not
-    using Ctypes views. The problem is that for some functions of the
-    PKCS11 interface, we have to make several calls to the API to
-    build a proper [t], that could then be used to build an [u].
-*)
-
 let format_val = Ctypes.format
 
 (* Logging functions. There is a bit of boilerplate, here. The problem
