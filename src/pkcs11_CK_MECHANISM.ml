@@ -71,7 +71,7 @@ type u =
   | CKM_ECDSA_SHA1
   | CKM_ECDH1_DERIVE of P11_ecdh1_derive_params.t
   | CKM_ECDH1_COFACTOR_DERIVE of P11_ecdh1_derive_params.t
-  | CKM_ECMQV_DERIVE of Pkcs11_CK_ECMQV_DERIVE_PARAMS.u
+  | CKM_ECMQV_DERIVE of P11_ecmqv_derive_params.t
   | CKM_PKCS5_PBKD2 of P11_pkcs5_pbkd2_data_params.t
   | CKM_CS_UNKNOWN of P11_raw_payload_params.t
 
@@ -365,7 +365,7 @@ let compare a b =
         -> P11_ecdh1_derive_params.compare a_param b_param
       | CKM_ECMQV_DERIVE a_param,
         CKM_ECMQV_DERIVE b_param
-        -> Pkcs11_CK_ECMQV_DERIVE_PARAMS.compare a_param b_param
+        -> P11_ecmqv_derive_params.compare a_param b_param
       | CKM_RSA_PKCS_OAEP _, _
       | CKM_PKCS5_PBKD2 _, _
       | CKM_RSA_PKCS_PSS _, _

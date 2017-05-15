@@ -54,7 +54,7 @@ type t = Pkcs11.CK_MECHANISM.u =
   | CKM_ECDSA_SHA1
   | CKM_ECDH1_DERIVE of P11_ecdh1_derive_params.t
   | CKM_ECDH1_COFACTOR_DERIVE of P11_ecdh1_derive_params.t
-  | CKM_ECMQV_DERIVE of Pkcs11.CK_ECMQV_DERIVE_PARAMS.u
+  | CKM_ECMQV_DERIVE of P11_ecmqv_derive_params.t
   | CKM_PKCS5_PBKD2 of P11_pkcs5_pbkd2_data_params.t
   | CKM_CS_UNKNOWN of P11_raw_payload_params.t
 
@@ -175,7 +175,7 @@ let to_json =
     | CKM_ECDH1_COFACTOR_DERIVE p ->
         param "CKM_ECDH1_COFACTOR_DERIVE" p P11_ecdh1_derive_params.to_yojson
     | CKM_ECMQV_DERIVE p ->
-        param "CKM_ECMQV_DERIVE" p Pkcs11.CK_ECMQV_DERIVE_PARAMS.u_to_yojson
+        param "CKM_ECMQV_DERIVE" p P11_ecmqv_derive_params.to_yojson
     | CKM_PKCS5_PBKD2 p ->
         param "CKM_PKCS5_PBKD2" p P11_pkcs5_pbkd2_data_params.to_yojson
     | CKM_CS_UNKNOWN p ->
