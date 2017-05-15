@@ -31,8 +31,6 @@ val equal_pack : pack -> pack -> bool
 val compare_types: 'a u -> 'b u -> int
 val compare_types_pack: pack -> pack -> int
 val compare_pack: pack -> pack -> int
-val to_string: 'a u -> string
-val to_string_pair: 'a u -> string * string
 
 val ck_attribute : t Ctypes.typ
 

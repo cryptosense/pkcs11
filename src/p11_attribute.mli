@@ -4,6 +4,7 @@ type pack =
 [@@deriving eq,ord,show,yojson]
 
 val to_string : 'a t -> string
+
 val to_string_pair : 'a t -> string * string
 
 val to_json : 'a t -> Yojson.Safe.json
