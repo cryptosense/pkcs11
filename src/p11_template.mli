@@ -10,8 +10,6 @@ val get_pack : t -> P11_attribute_type.pack -> P11_attribute.pack option
 
 val mem : P11_attribute.pack -> t -> bool
 
-val of_raw : Pkcs11.Template.t -> t
-
 val normalize: t -> t
 
 (** Compares two normalized templates.  *)

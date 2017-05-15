@@ -34,8 +34,6 @@ let get_pack template (P11_attribute_type.Pack ty) =
     | None -> None
     | Some v -> Some (P11_attribute.Pack (ty,v))
 
-let of_raw = Pkcs11.Template.view
-
 (** [normalize t] returns a normal form for the template [t]. That
     is, a template that is sorted. *)
 let normalize (t:t) : t =
