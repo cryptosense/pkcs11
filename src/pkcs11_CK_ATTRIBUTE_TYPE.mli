@@ -1,62 +1,7 @@
 (** Attribute types ([CK_ATTRIBUTE_TYPE]) *)
 
 type t = Pkcs11_CK_ULONG.t
-
-type not_implemented = NOT_IMPLEMENTED of string
-
-type _ u =
-  | CKA_CLASS : P11_object_class.t u
-  | CKA_TOKEN : bool u
-  | CKA_PRIVATE : bool u
-  | CKA_LABEL : string u
-  | CKA_VALUE : string u
-  | CKA_TRUSTED : bool u
-  | CKA_CHECK_VALUE : not_implemented u
-  | CKA_KEY_TYPE : P11_key_type.t u
-  | CKA_SUBJECT : string u
-  | CKA_ID : string u
-  | CKA_SENSITIVE : bool u
-  | CKA_ENCRYPT : bool u
-  | CKA_DECRYPT : bool u
-  | CKA_WRAP : bool u
-  | CKA_UNWRAP : bool u
-  | CKA_SIGN : bool u
-  | CKA_SIGN_RECOVER : bool u
-  | CKA_VERIFY : bool u
-  | CKA_VERIFY_RECOVER : bool u
-  | CKA_DERIVE : bool u
-  | CKA_START_DATE : not_implemented u
-  | CKA_END_DATE : not_implemented u
-  | CKA_MODULUS : Pkcs11_CK_BIGINT.t u
-  | CKA_MODULUS_BITS : Pkcs11_CK_ULONG.t u
-  | CKA_PUBLIC_EXPONENT : Pkcs11_CK_BIGINT.t u
-  | CKA_PRIVATE_EXPONENT : Pkcs11_CK_BIGINT.t u
-  | CKA_PRIME_1 : Pkcs11_CK_BIGINT.t u
-  | CKA_PRIME_2 : Pkcs11_CK_BIGINT.t u
-  | CKA_EXPONENT_1 : Pkcs11_CK_BIGINT.t u
-  | CKA_EXPONENT_2 : Pkcs11_CK_BIGINT.t u
-  | CKA_COEFFICIENT : Pkcs11_CK_BIGINT.t u
-  | CKA_PRIME : Pkcs11_CK_BIGINT.t u
-  | CKA_SUBPRIME : Pkcs11_CK_BIGINT.t u
-  | CKA_PRIME_BITS : Pkcs11_CK_ULONG.t u
-  | CKA_SUBPRIME_BITS : Pkcs11_CK_ULONG.t u
-  | CKA_VALUE_LEN : Pkcs11_CK_ULONG.t u
-  | CKA_EXTRACTABLE : bool u
-  | CKA_LOCAL : bool u
-  | CKA_NEVER_EXTRACTABLE : bool u
-  | CKA_ALWAYS_SENSITIVE : bool u
-  | CKA_KEY_GEN_MECHANISM : P11_key_gen_mechanism.t u
-  | CKA_MODIFIABLE : bool u
-  | CKA_EC_PARAMS : Key_parsers.Asn1.EC.Params.t u
-  | CKA_EC_POINT : Key_parsers.Asn1.EC.point u
-  | CKA_ALWAYS_AUTHENTICATE : bool u
-  | CKA_WRAP_WITH_TRUSTED : bool u
-  | CKA_WRAP_TEMPLATE : not_implemented u
-  | CKA_UNWRAP_TEMPLATE : not_implemented u
-  | CKA_ALLOWED_MECHANISMS : not_implemented u
-  | CKA_CS_UNKNOWN : Unsigned.ULong.t -> not_implemented u
-
-type pack = Pack : 'a u -> pack
+[@@deriving ord]
 
 val _CKA_CLASS : t
 val _CKA_TOKEN : t
@@ -159,26 +104,8 @@ val _CKA_SUPPORTED_CMS_ATTRIBUTES : t
 val _CKA_ALLOWED_MECHANISMS : t
 val _CKA_VENDOR_DEFINED : t
 
-val to_string : 'a u -> string
-val of_string : string -> pack
+val make : 'a P11_attribute_type.t -> t
 
-val make : 'a u -> t
-val view : t -> pack
-
-val compare: 'a u -> 'b u -> int
-val compare_t: t -> t -> int
-val compare_pack: pack -> pack -> int
-
-type (_,_) comparison =
-  | Equal : ('a, 'a) comparison
-  | Not_equal : int -> ('a,'b) comparison
-
-val compare': 'a u -> 'b u -> ('a,'b) comparison
-
-val equal : 'a u -> 'b u -> bool
-val equal_t : t -> t -> bool
-val equal_pack: pack -> pack -> bool
-
-val (==) : t -> t -> bool
+val view : t -> P11_attribute_type.pack
 
 val typ : t Ctypes.typ

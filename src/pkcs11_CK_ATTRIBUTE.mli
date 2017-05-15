@@ -1,7 +1,7 @@
 (** Attributes (with values). *)
 type _t
 type t = _t Ctypes.structure
-type 'a u = 'a Pkcs11_CK_ATTRIBUTE_TYPE.u * 'a
+type 'a u = 'a P11_attribute_type.t * 'a
 type pack = Pack : 'a u -> pack
 
 val boolean : Pkcs11_CK_ATTRIBUTE_TYPE.t -> bool -> t

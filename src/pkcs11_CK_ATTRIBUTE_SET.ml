@@ -60,6 +60,7 @@ let bigint t elem = string t (Pkcs11_CK_BIGINT.encode elem)
 let set_access_error t = setf t ulValueLen Unsigned.ULong.max_int
 
 let update (Pack x) t =
+  let open P11_attribute_type in
   let open Pkcs11_CK_ATTRIBUTE_TYPE in
   match x with
     | CKA_CLASS, cko -> ulong t (Pkcs11_CK_OBJECT_CLASS.make cko)

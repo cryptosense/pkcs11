@@ -1,8 +1,8 @@
 type 'a t = 'a P11_attribute_type.t * 'a
-type pack = Pkcs11.CK_ATTRIBUTE.pack = Pack : 'a t -> pack
+type pack = Pkcs11_CK_ATTRIBUTE.pack = Pack : 'a t -> pack
 
-let to_string = Pkcs11.CK_ATTRIBUTE.to_string
-let to_string_pair = Pkcs11.CK_ATTRIBUTE.to_string_pair
+let to_string = Pkcs11_CK_ATTRIBUTE.to_string
+let to_string_pair = Pkcs11_CK_ATTRIBUTE.to_string_pair
 
 (* Note: it is important for [Template.to_json] and [Template.of_json]
    that all attributes are represented using [`Assoc]. *)
@@ -271,14 +271,14 @@ let pack_of_yojson json : (pack, string) result =
 
 let pack_to_yojson (Pack x) = to_json x
 
-let compare_types = Pkcs11.CK_ATTRIBUTE.compare_types
-let compare_types_pack = Pkcs11.CK_ATTRIBUTE.compare_types_pack
+let compare_types = Pkcs11_CK_ATTRIBUTE.compare_types
+let compare_types_pack = Pkcs11_CK_ATTRIBUTE.compare_types_pack
 
-let compare = Pkcs11.CK_ATTRIBUTE.compare
-let compare_pack = Pkcs11.CK_ATTRIBUTE.compare_pack
+let compare = Pkcs11_CK_ATTRIBUTE.compare
+let compare_pack = Pkcs11_CK_ATTRIBUTE.compare_pack
 
-let equal = Pkcs11.CK_ATTRIBUTE.equal
-let equal_pack = Pkcs11.CK_ATTRIBUTE.equal_pack
+let equal = Pkcs11_CK_ATTRIBUTE.equal
+let equal_pack = Pkcs11_CK_ATTRIBUTE.equal_pack
 let equal_types_pack a b = (compare_types_pack a b) = 0
 let equal_values a v1 v2 = equal (a,v1) (a,v2)
 

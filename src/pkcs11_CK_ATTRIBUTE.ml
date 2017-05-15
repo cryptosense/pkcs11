@@ -40,7 +40,7 @@ let pValue = Reachable_ptr.typ void -: "pValue"
 let ulValueLen = ulong -: "ulValueLen"
 let () = seal ck_attribute
 
-type 'a u = 'a Pkcs11_CK_ATTRIBUTE_TYPE.u * 'a
+type 'a u = 'a P11_attribute_type.t * 'a
 type pack = Pack : 'a u -> pack
 
 (** [create cka] allocates a new struct and set the [attribute_type]
@@ -161,6 +161,7 @@ let decode_cka attr_type decode s =
     | Ok p -> Pack (attr_type, p)
     | Error e ->
         begin
+          let open P11_attribute_type in
           let open Pkcs11_CK_ATTRIBUTE_TYPE in
           let name = to_string attr_type in
           Pkcs11_log.log @@ Printf.sprintf "Invalid %s: %S (error: %S)" name s e;
@@ -170,10 +171,10 @@ let decode_cka attr_type decode s =
         end
 
 let decode_cka_ec_point s =
-  decode_cka Pkcs11_CK_ATTRIBUTE_TYPE.CKA_EC_POINT decode_ec_point s
+  decode_cka P11_attribute_type.CKA_EC_POINT decode_ec_point s
 
 let decode_cka_ec_params s =
-  decode_cka Pkcs11_CK_ATTRIBUTE_TYPE.CKA_EC_PARAMS Key_parsers.Asn1.EC.Params.decode s
+  decode_cka P11_attribute_type.CKA_EC_PARAMS Key_parsers.Asn1.EC.Params.decode s
 
 let encode_asn grammar x =
   let codec = Asn.codec Asn.der grammar in
@@ -184,6 +185,7 @@ let encode_ec_point = encode_asn Key_parsers.Asn1.EC.point_grammar
 
 let view (t : t) : pack =
   let ul = getf t _type in
+  let open P11_attribute_type in
   let open Pkcs11_CK_ATTRIBUTE_TYPE in
   if ul ==  _CKA_CLASS                              then Pack (CKA_CLASS, (unsafe_get_object_class t |> Pkcs11_CK_OBJECT_CLASS.view))
   else if ul ==  _CKA_TOKEN                         then Pack (CKA_TOKEN, (unsafe_get_bool t))
@@ -244,7 +246,7 @@ let view (t : t) : pack =
 (* Useful regexp |\(.*\) of string -> | \1 s -> string AttributesType.\1 s): *)
 
 let make : type s . s u -> t = fun x ->
-  let open Pkcs11_CK_ATTRIBUTE_TYPE in
+  let open P11_attribute_type in
   match x with
   | CKA_CLASS, cko -> ulong Pkcs11_CK_ATTRIBUTE_TYPE._CKA_CLASS (Pkcs11_CK_OBJECT_CLASS.make cko)
   | CKA_TOKEN, b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_TOKEN b
@@ -315,7 +317,7 @@ let to_string_pair =
   let ec_point cka x = cka, Key_parsers.Asn1.EC.show_point x in
   let bigint cka x = cka, Pkcs11_CK_BIGINT.to_string x in
   fun (type s) (x : s u) ->
-    let open Pkcs11_CK_ATTRIBUTE_TYPE in
+    let open P11_attribute_type in
     match x with
       | CKA_CLASS, x               -> object_class "CKA_CLASS" x
       | CKA_TOKEN, x               -> bool "CKA_TOKEN" x
@@ -374,15 +376,16 @@ let to_string x =
   Printf.sprintf "%s %s" a b
 
 let compare_types (a,_) (b,_) =
-  Pkcs11_CK_ATTRIBUTE_TYPE.compare a b
+  P11_attribute_type.compare a b
 
-let compare_types_pack (Pack(a,_)) (Pack(b,_)) = Pkcs11_CK_ATTRIBUTE_TYPE.compare a b
+let compare_types_pack (Pack (a, _)) (Pack (b, _)) =
+  P11_attribute_type.compare a b
 
 let compare_bool (x : bool) (y : bool) = compare x y
 let compare_string (x : string) (y : string) = compare x y
 let compare_ulong = Unsigned.ULong.compare
 let compare : type a b. a u -> b u -> int = fun a b ->
-  let open Pkcs11_CK_ATTRIBUTE_TYPE in
+  let open P11_attribute_type in
   let c = compare_types a b in
   if c <> 0 then
     c
