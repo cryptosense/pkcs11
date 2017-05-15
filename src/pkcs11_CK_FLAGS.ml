@@ -1,13 +1,13 @@
 open Ctypes
 
 type t = Pkcs11_CK_ULONG.t
+[@@deriving eq,ord,show]
+
 let (!) x  = Unsigned.ULong.of_string (Int64.to_string x)
 
 let t = ulong
 
 let empty = Unsigned.ULong.zero
-let compare = Unsigned.ULong.compare
-let equal (a:t) (b:t) = Unsigned.ULong.compare a b = 0
 let logical_or = Unsigned.ULong.logor
 let ( || ) = logical_or
 let logical_and = Unsigned.ULong.logand
