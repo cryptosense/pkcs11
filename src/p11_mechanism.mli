@@ -1,4 +1,4 @@
-type t = Pkcs11.CK_MECHANISM.u =
+type t =
   | CKM_SHA_1
   | CKM_SHA224
   | CKM_SHA256
@@ -57,17 +57,14 @@ type t = Pkcs11.CK_MECHANISM.u =
   | CKM_ECMQV_DERIVE of P11_ecmqv_derive_params.t
   | CKM_PKCS5_PBKD2 of P11_pkcs5_pbkd2_data_params.t
   | CKM_CS_UNKNOWN of P11_raw_payload_params.t
-  [@@deriving yojson]
+[@@deriving ord,yojson]
 
 val mechanism_type: t -> P11_mechanism_type.t
-val compare: t -> t -> int
 
 (** [to_string] is defined as [fun x -> Mechanism_type.to_string (mechanism_type x) ]  *)
 val to_string : t -> string
 
 val pp : Format.formatter -> t -> unit
-
-val of_raw : Pkcs11.CK_MECHANISM.t -> t
 
 (** Kinds are "tags" on mechanisms which describe how they can be
     used. *)
