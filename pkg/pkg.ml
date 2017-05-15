@@ -55,6 +55,7 @@ let api =
   ; "P11_attribute"
   ; "P11_attribute_types"
   ; "P11_attribute_type"
+  ; "P11_ecdh1_derive_params"
   ; "P11_session_info"
   ; "P11_mechanism_info"
   ; "P11_slot_info"
