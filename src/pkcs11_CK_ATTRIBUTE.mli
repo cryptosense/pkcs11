@@ -1,7 +1,7 @@
 (** Attributes (with values). *)
 type _t
 type t = _t Ctypes.structure
-type 'a u = 'a Pkcs11_CK_ATTRIBUTE_TYPE.u * 'a
+type 'a u = 'a P11_attribute_type.t * 'a
 type pack = Pack : 'a u -> pack
 
 val boolean : Pkcs11_CK_ATTRIBUTE_TYPE.t -> bool -> t
@@ -31,8 +31,6 @@ val equal_pack : pack -> pack -> bool
 val compare_types: 'a u -> 'b u -> int
 val compare_types_pack: pack -> pack -> int
 val compare_pack: pack -> pack -> int
-val to_string: 'a u -> string
-val to_string_pair: 'a u -> string * string
 
 val ck_attribute : t Ctypes.typ
 

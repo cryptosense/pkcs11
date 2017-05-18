@@ -1,9 +1,10 @@
 type 'a t = 'a P11_attribute_type.t * 'a
 type pack =
-  Pkcs11.CK_ATTRIBUTE.pack = Pack : 'a t -> pack
+  Pkcs11_CK_ATTRIBUTE.pack = Pack : 'a t -> pack
 [@@deriving eq,ord,show,yojson]
 
 val to_string : 'a t -> string
+
 val to_string_pair : 'a t -> string * string
 
 val to_json : 'a t -> Yojson.Safe.json

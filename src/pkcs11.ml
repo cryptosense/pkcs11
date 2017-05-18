@@ -2,43 +2,6 @@ open Ctypes
 
 include Ctypes_helpers
 
-
-(** The bindings come in two flavours. The first one is the Direct
-    mode, in which each function from the PKCS11.h header are binded
-    directly. The second one is the Indirect mode, in which we use an
-    indirection through the list of function returned by
-    GetFunctionList. *)
-
-(** CONVENTIONS.
-
-    _t is a type variable that is used to constraint the [Ctypes]
-    representation. It would appear in the signature of [Version] for
-    instance. However, to make it more palatable for the outside world,
-    what is exported is [t], which is defined as [_t structure]. For
-    some modules, it is quite easy to work with [t] seen as an abstract
-    time. For other modules, we provide a [u]ser version of the type,
-    with suitable functions.
-
-    When appropriate, we provide the following functions:
-
-    - [create: unit -> t] will allocate a new object of type t
-      (possibly, not initialized)
-
-    - [allocate: t -> unit] will update [t] in place by allocating
-      memory for its various fields.
-
-    - [view: t -> u] will build the user-land version of the data
-      represented by [t].
-
-    - [make: u -> t] will build the ctypes version of the data
-      represented by [u].
-
-    N.B. The last two functions raise the question of why we are not
-    using Ctypes views. The problem is that for some functions of the
-    PKCS11 interface, we have to make several calls to the API to
-    build a proper [t], that could then be used to build an [u].
-*)
-
 let format_val = Ctypes.format
 
 (* Logging functions. There is a bit of boilerplate, here. The problem
@@ -490,7 +453,7 @@ module type CONFIG = sig
   val library : Dl.library
 end
 
-exception Cannot_load_module of string * CK_RV.u
+exception Cannot_load_module of string * P11_rv.t
 
 module Stubs (X: sig val library: string end) : RAW =
 struct
@@ -526,7 +489,7 @@ struct
     let rv,fl = c_GetFunctionList () in
     if rv = CK_RV._CKR_OK
     then fl
-    else raise (GetFunctionList_Failure (CK_RV.(to_string @@ view rv)))
+    else raise (GetFunctionList_Failure (P11_rv.to_string @@ Pkcs11_CK_RV.view rv))
 
   include Raw(struct
       let declare name field typ =
@@ -698,18 +661,18 @@ module type S =
 sig
   val c_Initialize : unit -> CK_RV.t
   val c_Finalize : unit -> CK_RV.t
-  val c_GetInfo : unit -> CK_RV.t * CK_INFO.u
+  val c_GetInfo : unit -> CK_RV.t * P11_info.t
   (* 03/24/2015: At the moment, we do not need to use GetFunctionList
      from the high level bindings. Since this function is quite
      complicated in terms of bindings, we should refrain from using
      it. *)
   (* val c_GetFunctionList : unit -> CK_RV.t * CK_FUNCTION_LIST.t *)
   val c_GetSlotList : bool -> Slot_list.t -> CK_RV.t
-  val c_GetSlotInfo : slot: CK_SLOT_ID.t -> CK_RV.t * CK_SLOT_INFO.u
-  val c_GetTokenInfo : slot: CK_SLOT_ID.t -> CK_RV.t * CK_TOKEN_INFO.u
+  val c_GetSlotInfo : slot: CK_SLOT_ID.t -> CK_RV.t * P11_slot_info.t
+  val c_GetTokenInfo : slot: CK_SLOT_ID.t -> CK_RV.t * P11_token_info.t
   val c_GetMechanismList : slot: CK_SLOT_ID.t -> Mechanism_list.t -> CK_RV.t
   val c_GetMechanismInfo : slot: CK_SLOT_ID.t -> CK_MECHANISM_TYPE.t ->
-    CK_RV.t * CK_MECHANISM_INFO.u
+    CK_RV.t * P11_mechanism_info.t
   val c_InitToken : slot: CK_SLOT_ID.t -> pin:string -> label:string -> CK_RV.t
   val c_InitPIN : CK_SESSION_HANDLE.t -> string -> CK_RV.t
   val c_SetPIN : CK_SESSION_HANDLE.t -> oldpin:string -> newpin:string ->
@@ -718,7 +681,7 @@ sig
     CK_RV.t * CK_SESSION_HANDLE.t
   val c_CloseSession : CK_SESSION_HANDLE.t -> CK_RV.t
   val c_CloseAllSessions : slot: CK_SLOT_ID.t -> CK_RV.t
-  val c_GetSessionInfo : CK_SESSION_HANDLE.t -> CK_RV.t * CK_SESSION_INFO.u
+  val c_GetSessionInfo : CK_SESSION_HANDLE.t -> CK_RV.t * P11_session_info.t
   (* val c_GetOperation_state *)
   (* val c_SetOperation_state *)
   val c_Login : CK_SESSION_HANDLE.t -> CK_USER_TYPE.t -> string -> CK_RV.t
@@ -835,14 +798,14 @@ struct
     let f = F.c_Finalize in
     fun () -> f Ctypes.null
 
-  let c_GetInfo : unit -> CK_RV.t * CK_INFO.u =
+  let c_GetInfo : unit -> CK_RV.t * P11_info.t =
     let f = F.c_GetInfo in
     fun () ->
       let info = Ctypes.make ck_info in
       let rv = f (Ctypes.addr info) in
       rv, CK_INFO.view info
 
-  let c_GetTokenInfo: slot: CK_SLOT_ID.t -> CK_RV.t * CK_TOKEN_INFO.u =
+  let c_GetTokenInfo: slot: CK_SLOT_ID.t -> CK_RV.t * P11_token_info.t =
     let f = F.c_GetTokenInfo in
     fun ~slot ->
       let info = Ctypes.make ck_token_info in
@@ -932,7 +895,7 @@ struct
     fun ~slot ->
       f slot
 
-  let c_GetSessionInfo : CK_SESSION_HANDLE.t -> CK_RV.t * CK_SESSION_INFO.u =
+  let c_GetSessionInfo : CK_SESSION_HANDLE.t -> CK_RV.t * P11_session_info.t =
     let f = F.c_GetSessionInfo in
     fun hSession ->
       let info = Ctypes.make ck_session_info in

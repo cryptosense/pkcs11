@@ -13,69 +13,7 @@ let parameter = Reachable_ptr.typ void -: "pParameter"
 let parameter_len = ulong -: "pParameterLen"
 let () = seal ck_mechanism
 
-(* user type *)
-
-type u =
-  | CKM_SHA_1
-  | CKM_SHA224
-  | CKM_SHA256
-  | CKM_SHA512
-  | CKM_MD5
-  | CKM_RSA_PKCS_KEY_PAIR_GEN
-  | CKM_RSA_X9_31_KEY_PAIR_GEN
-  | CKM_RSA_PKCS
-  | CKM_RSA_PKCS_OAEP of Pkcs11_CK_RSA_PKCS_OAEP_PARAMS.u
-  | CKM_RSA_X_509
-  | CKM_RSA_PKCS_PSS of Pkcs11_CK_RSA_PKCS_PSS_PARAMS.u
-  | CKM_SHA1_RSA_PKCS
-  | CKM_SHA224_RSA_PKCS
-  | CKM_SHA256_RSA_PKCS
-  | CKM_SHA384_RSA_PKCS
-  | CKM_SHA512_RSA_PKCS
-  | CKM_SHA1_RSA_PKCS_PSS of Pkcs11_CK_RSA_PKCS_PSS_PARAMS.u
-  | CKM_SHA224_RSA_PKCS_PSS of Pkcs11_CK_RSA_PKCS_PSS_PARAMS.u
-  | CKM_SHA256_RSA_PKCS_PSS of Pkcs11_CK_RSA_PKCS_PSS_PARAMS.u
-  | CKM_SHA384_RSA_PKCS_PSS of Pkcs11_CK_RSA_PKCS_PSS_PARAMS.u
-  | CKM_SHA512_RSA_PKCS_PSS of Pkcs11_CK_RSA_PKCS_PSS_PARAMS.u
-  | CKM_AES_KEY_GEN
-  | CKM_AES_ECB
-  | CKM_AES_CBC of string
-  | CKM_AES_CBC_PAD of string
-  | CKM_AES_MAC
-  | CKM_AES_MAC_GENERAL of Pkcs11_CK_ULONG.t
-  | CKM_AES_ECB_ENCRYPT_DATA of Pkcs11_CK_KEY_DERIVATION_STRING_DATA.u
-  | CKM_AES_CBC_ENCRYPT_DATA of Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_AES_CBC_ENCRYPT_DATA_PARAMS.u
-  | CKM_DES_KEY_GEN
-  | CKM_DES_ECB
-  | CKM_DES_CBC of string
-  | CKM_DES_CBC_PAD of string
-  | CKM_DES_MAC
-  | CKM_DES_MAC_GENERAL of Pkcs11_CK_ULONG.t
-  | CKM_DES_ECB_ENCRYPT_DATA of Pkcs11_CK_KEY_DERIVATION_STRING_DATA.u
-  | CKM_DES_CBC_ENCRYPT_DATA of Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_DES_CBC_ENCRYPT_DATA_PARAMS.u
-  | CKM_DES3_KEY_GEN
-  | CKM_DES3_ECB
-  | CKM_DES3_CBC of string
-  | CKM_DES3_CBC_PAD of string
-  | CKM_DES3_MAC
-  | CKM_DES3_MAC_GENERAL of Pkcs11_CK_ULONG.t
-  | CKM_DES3_ECB_ENCRYPT_DATA of Pkcs11_CK_KEY_DERIVATION_STRING_DATA.u
-  | CKM_DES3_CBC_ENCRYPT_DATA of Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_DES_CBC_ENCRYPT_DATA_PARAMS.u
-  | CKM_CONCATENATE_BASE_AND_DATA of Pkcs11_CK_KEY_DERIVATION_STRING_DATA.u
-  | CKM_CONCATENATE_DATA_AND_BASE of Pkcs11_CK_KEY_DERIVATION_STRING_DATA.u
-  | CKM_XOR_BASE_AND_DATA of Pkcs11_CK_KEY_DERIVATION_STRING_DATA.u
-  | CKM_EXTRACT_KEY_FROM_KEY of Pkcs11_CK_ULONG.t
-  | CKM_CONCATENATE_BASE_AND_KEY of Pkcs11_CK_OBJECT_HANDLE.t
-  | CKM_EC_KEY_PAIR_GEN
-  | CKM_ECDSA
-  | CKM_ECDSA_SHA1
-  | CKM_ECDH1_DERIVE of Pkcs11_CK_ECDH1_DERIVE_PARAMS.u
-  | CKM_ECDH1_COFACTOR_DERIVE of Pkcs11_CK_ECDH1_DERIVE_PARAMS.u
-  | CKM_ECMQV_DERIVE of Pkcs11_CK_ECMQV_DERIVE_PARAMS.u
-  | CKM_PKCS5_PBKD2 of Pkcs11_CK_PKCS5_PBKD2_PARAMS.u
-  | CKM_CS_UNKNOWN of Pkcs11_CK_RAW_PAYLOAD.t
-
-let make: u -> t =
+let make =
   let make ckm param param_len =
     let open Ctypes in
     let m = make ck_mechanism in
@@ -106,6 +44,7 @@ let make: u -> t =
     let ptr = allocate ulong param in
     make ckm (to_voidp ptr) (Unsigned.ULong.of_int (sizeof ulong))
   in
+  let open P11_mechanism in
   let open Pkcs11_CK_MECHANISM_TYPE in
   function
     | CKM_SHA_1 ->
@@ -230,201 +169,9 @@ let make: u -> t =
     | CKM_PKCS5_PBKD2 p ->
         struct_ _CKM_PKCS5_PBKD2 p Pkcs11_CK_PKCS5_PBKD2_PARAMS.t
           Pkcs11_CK_PKCS5_PBKD2_PARAMS.make
-    | CKM_CS_UNKNOWN (ckm, param) ->
-        string ckm param
-
-let mechanism_type m =
-  let module T = Pkcs11_CK_MECHANISM_TYPE in
-  match m with
-    | CKM_SHA_1 -> T.CKM_SHA_1
-    | CKM_SHA224 -> T.CKM_SHA224
-    | CKM_SHA256 -> T.CKM_SHA256
-    | CKM_SHA512 -> T.CKM_SHA512
-    | CKM_MD5 -> T.CKM_MD5
-    | CKM_RSA_PKCS_KEY_PAIR_GEN -> T.CKM_RSA_PKCS_KEY_PAIR_GEN
-    | CKM_RSA_X9_31_KEY_PAIR_GEN -> T.CKM_RSA_X9_31_KEY_PAIR_GEN
-    | CKM_RSA_PKCS -> T.CKM_RSA_PKCS
-    | CKM_RSA_PKCS_OAEP _ -> T.CKM_RSA_PKCS_OAEP
-    | CKM_RSA_X_509 -> T.CKM_RSA_X_509
-    | CKM_RSA_PKCS_PSS _ -> T.CKM_RSA_PKCS_PSS
-    | CKM_SHA1_RSA_PKCS -> T.CKM_SHA1_RSA_PKCS
-    | CKM_SHA224_RSA_PKCS -> T.CKM_SHA224_RSA_PKCS
-    | CKM_SHA256_RSA_PKCS -> T.CKM_SHA256_RSA_PKCS
-    | CKM_SHA384_RSA_PKCS -> T.CKM_SHA384_RSA_PKCS
-    | CKM_SHA512_RSA_PKCS -> T.CKM_SHA512_RSA_PKCS
-    | CKM_SHA1_RSA_PKCS_PSS _ -> T.CKM_SHA1_RSA_PKCS_PSS
-    | CKM_SHA224_RSA_PKCS_PSS _ -> T.CKM_SHA224_RSA_PKCS_PSS
-    | CKM_SHA256_RSA_PKCS_PSS _ -> T.CKM_SHA256_RSA_PKCS_PSS
-    | CKM_SHA384_RSA_PKCS_PSS _ -> T.CKM_SHA384_RSA_PKCS_PSS
-    | CKM_SHA512_RSA_PKCS_PSS _ -> T.CKM_SHA512_RSA_PKCS_PSS
-    | CKM_AES_KEY_GEN -> T.CKM_AES_KEY_GEN
-    | CKM_AES_ECB -> T.CKM_AES_ECB
-    | CKM_AES_CBC _ -> T.CKM_AES_CBC
-    | CKM_AES_CBC_PAD _ -> T.CKM_AES_CBC_PAD
-    | CKM_AES_MAC -> T.CKM_AES_MAC
-    | CKM_AES_MAC_GENERAL _ -> T.CKM_AES_MAC_GENERAL
-    | CKM_AES_ECB_ENCRYPT_DATA _ -> T.CKM_AES_ECB_ENCRYPT_DATA
-    | CKM_AES_CBC_ENCRYPT_DATA _ -> T.CKM_AES_CBC_ENCRYPT_DATA
-    | CKM_DES_KEY_GEN -> T.CKM_DES_KEY_GEN
-    | CKM_DES_ECB -> T.CKM_DES_ECB
-    | CKM_DES_CBC _ -> T.CKM_DES_CBC
-    | CKM_DES_CBC_PAD _ -> T.CKM_DES_CBC_PAD
-    | CKM_DES_MAC -> T.CKM_DES_MAC
-    | CKM_DES_MAC_GENERAL _ -> T.CKM_DES_MAC_GENERAL
-    | CKM_DES_ECB_ENCRYPT_DATA _ -> T.CKM_DES_ECB_ENCRYPT_DATA
-    | CKM_DES_CBC_ENCRYPT_DATA _ -> T.CKM_DES_CBC_ENCRYPT_DATA
-    | CKM_DES3_KEY_GEN -> T.CKM_DES3_KEY_GEN
-    | CKM_DES3_ECB -> T.CKM_DES3_ECB
-    | CKM_DES3_CBC _ -> T.CKM_DES3_CBC
-    | CKM_DES3_CBC_PAD _ -> T.CKM_DES3_CBC_PAD
-    | CKM_DES3_MAC -> T.CKM_DES3_MAC
-    | CKM_DES3_MAC_GENERAL _ -> T.CKM_DES3_MAC_GENERAL
-    | CKM_DES3_ECB_ENCRYPT_DATA _ -> T.CKM_DES3_ECB_ENCRYPT_DATA
-    | CKM_DES3_CBC_ENCRYPT_DATA _ -> T.CKM_DES3_CBC_ENCRYPT_DATA
-    | CKM_CONCATENATE_BASE_AND_DATA _ -> T.CKM_CONCATENATE_BASE_AND_DATA
-    | CKM_CONCATENATE_DATA_AND_BASE _ -> T.CKM_CONCATENATE_DATA_AND_BASE
-    | CKM_XOR_BASE_AND_DATA _ -> T.CKM_XOR_BASE_AND_DATA
-    | CKM_EXTRACT_KEY_FROM_KEY _ -> T.CKM_EXTRACT_KEY_FROM_KEY
-    | CKM_CONCATENATE_BASE_AND_KEY _ -> T.CKM_CONCATENATE_BASE_AND_KEY
-    | CKM_EC_KEY_PAIR_GEN -> T.CKM_EC_KEY_PAIR_GEN
-    | CKM_ECDSA -> T.CKM_ECDSA
-    | CKM_ECDSA_SHA1 -> T.CKM_ECDSA_SHA1
-    | CKM_ECDH1_DERIVE _ -> T.CKM_ECDH1_DERIVE
-    | CKM_ECDH1_COFACTOR_DERIVE _ -> T.CKM_ECDH1_COFACTOR_DERIVE
-    | CKM_ECMQV_DERIVE _ -> T.CKM_ECMQV_DERIVE
-    | CKM_PKCS5_PBKD2 _ -> T.CKM_PKCS5_PBKD2
-    | CKM_CS_UNKNOWN (ckm, _) -> T.CKM_CS_UNKNOWN ckm
-
-let compare a b =
-  let a_type = mechanism_type a in
-  let b_type = mechanism_type b in
-  let c = Pkcs11_CK_MECHANISM_TYPE.compare a_type b_type in
-  if c <> 0 then
-    c
-  else
-    match a, b with
-      | CKM_RSA_PKCS_OAEP a_param, CKM_RSA_PKCS_OAEP b_param
-        -> Pkcs11_CK_RSA_PKCS_OAEP_PARAMS.compare a_param b_param
-      | CKM_PKCS5_PBKD2 a_param, CKM_PKCS5_PBKD2 b_param
-        -> Pkcs11_CK_PKCS5_PBKD2_PARAMS.compare a_param b_param
-      | CKM_RSA_PKCS_PSS a_param, CKM_RSA_PKCS_PSS b_param
-      | CKM_SHA1_RSA_PKCS_PSS a_param, CKM_SHA1_RSA_PKCS_PSS b_param
-      | CKM_SHA224_RSA_PKCS_PSS a_param, CKM_SHA224_RSA_PKCS_PSS b_param
-      | CKM_SHA256_RSA_PKCS_PSS a_param, CKM_SHA256_RSA_PKCS_PSS b_param
-      | CKM_SHA384_RSA_PKCS_PSS a_param, CKM_SHA384_RSA_PKCS_PSS b_param
-      | CKM_SHA512_RSA_PKCS_PSS a_param, CKM_SHA512_RSA_PKCS_PSS b_param
-        -> Pkcs11_CK_RSA_PKCS_PSS_PARAMS.compare a_param b_param
-      | CKM_AES_CBC a_param, CKM_AES_CBC b_param
-      | CKM_AES_CBC_PAD a_param, CKM_AES_CBC_PAD b_param
-      | CKM_DES_CBC a_param, CKM_DES_CBC b_param
-      | CKM_DES_CBC_PAD a_param, CKM_DES_CBC_PAD b_param
-      | CKM_DES3_CBC a_param, CKM_DES3_CBC b_param
-      | CKM_DES3_CBC_PAD a_param, CKM_DES3_CBC_PAD b_param
-      | CKM_AES_ECB_ENCRYPT_DATA a_param,
-        CKM_AES_ECB_ENCRYPT_DATA b_param
-      | CKM_DES_ECB_ENCRYPT_DATA a_param,
-        CKM_DES_ECB_ENCRYPT_DATA b_param
-      | CKM_DES3_ECB_ENCRYPT_DATA a_param,
-        CKM_DES3_ECB_ENCRYPT_DATA b_param
-      | CKM_CONCATENATE_BASE_AND_DATA a_param,
-        CKM_CONCATENATE_BASE_AND_DATA b_param
-      | CKM_CONCATENATE_DATA_AND_BASE a_param,
-        CKM_CONCATENATE_DATA_AND_BASE b_param
-      | CKM_XOR_BASE_AND_DATA a_param,
-        CKM_XOR_BASE_AND_DATA b_param
-        -> String.compare a_param b_param
-      | CKM_AES_CBC_ENCRYPT_DATA a_param,
-        CKM_AES_CBC_ENCRYPT_DATA b_param
-        -> Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_AES_CBC_ENCRYPT_DATA_PARAMS.compare a_param b_param
-      | CKM_DES_CBC_ENCRYPT_DATA a_param,
-        CKM_DES_CBC_ENCRYPT_DATA b_param
-      | CKM_DES3_CBC_ENCRYPT_DATA a_param,
-        CKM_DES3_CBC_ENCRYPT_DATA b_param
-        -> Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_DES_CBC_ENCRYPT_DATA_PARAMS.compare a_param b_param
-      | CKM_EXTRACT_KEY_FROM_KEY a_param,
-        CKM_EXTRACT_KEY_FROM_KEY b_param
-      | CKM_CONCATENATE_BASE_AND_KEY a_param,
-        CKM_CONCATENATE_BASE_AND_KEY b_param
-      | CKM_AES_MAC_GENERAL a_param,
-        CKM_AES_MAC_GENERAL b_param
-      | CKM_DES_MAC_GENERAL a_param,
-        CKM_DES_MAC_GENERAL b_param
-      | CKM_DES3_MAC_GENERAL a_param,
-        CKM_DES3_MAC_GENERAL b_param
-        -> Pkcs11_CK_ULONG.compare a_param b_param
-      | CKM_CS_UNKNOWN a_param,
-        CKM_CS_UNKNOWN b_param
-          -> Pkcs11_CK_RAW_PAYLOAD.compare a_param b_param
-      | CKM_ECDH1_DERIVE a_param,
-        CKM_ECDH1_DERIVE b_param
-      | CKM_ECDH1_COFACTOR_DERIVE a_param,
-        CKM_ECDH1_COFACTOR_DERIVE b_param
-        -> Pkcs11_CK_ECDH1_DERIVE_PARAMS.compare a_param b_param
-      | CKM_ECMQV_DERIVE a_param,
-        CKM_ECMQV_DERIVE b_param
-        -> Pkcs11_CK_ECMQV_DERIVE_PARAMS.compare a_param b_param
-      | CKM_RSA_PKCS_OAEP _, _
-      | CKM_PKCS5_PBKD2 _, _
-      | CKM_RSA_PKCS_PSS _, _
-      | CKM_SHA1_RSA_PKCS_PSS _, _
-      | CKM_SHA224_RSA_PKCS_PSS _, _
-      | CKM_SHA256_RSA_PKCS_PSS _, _
-      | CKM_SHA384_RSA_PKCS_PSS _, _
-      | CKM_SHA512_RSA_PKCS_PSS _, _
-      | CKM_AES_CBC _, _
-      | CKM_AES_CBC_PAD _, _
-      | CKM_DES_CBC _, _
-      | CKM_DES_CBC_PAD _, _
-      | CKM_DES3_CBC _, _
-      | CKM_DES3_CBC_PAD _, _
-      | CKM_AES_ECB_ENCRYPT_DATA _, _
-      | CKM_DES_ECB_ENCRYPT_DATA _, _
-      | CKM_DES3_ECB_ENCRYPT_DATA _, _
-      | CKM_AES_CBC_ENCRYPT_DATA _, _
-      | CKM_DES_CBC_ENCRYPT_DATA _, _
-      | CKM_DES3_CBC_ENCRYPT_DATA _, _
-      | CKM_CONCATENATE_BASE_AND_DATA _, _
-      | CKM_CONCATENATE_DATA_AND_BASE _, _
-      | CKM_XOR_BASE_AND_DATA _, _
-      | CKM_EXTRACT_KEY_FROM_KEY _, _
-      | CKM_CONCATENATE_BASE_AND_KEY _, _
-      | CKM_AES_MAC_GENERAL _, _
-      | CKM_DES_MAC_GENERAL _, _
-      | CKM_DES3_MAC_GENERAL _, _
-      | CKM_ECDH1_DERIVE _, _
-      | CKM_ECDH1_COFACTOR_DERIVE _, _
-      | CKM_ECMQV_DERIVE _, _
-      | CKM_CS_UNKNOWN _, _
-        (* Should have been covered by the comparison of mechanism types,
-           or by the above cases. *)
-        -> assert false
-      | CKM_SHA_1, _
-      | CKM_SHA224, _
-      | CKM_SHA256, _
-      | CKM_SHA512, _
-      | CKM_MD5, _
-      | CKM_RSA_PKCS_KEY_PAIR_GEN, _
-      | CKM_RSA_X9_31_KEY_PAIR_GEN, _
-      | CKM_RSA_PKCS, _
-      | CKM_RSA_X_509, _
-      | CKM_SHA1_RSA_PKCS, _
-      | CKM_SHA224_RSA_PKCS, _
-      | CKM_SHA256_RSA_PKCS, _
-      | CKM_SHA384_RSA_PKCS, _
-      | CKM_SHA512_RSA_PKCS, _
-      | CKM_AES_KEY_GEN, _
-      | CKM_AES_ECB, _
-      | CKM_AES_MAC, _
-      | CKM_DES_KEY_GEN, _
-      | CKM_DES_ECB, _
-      | CKM_DES_MAC, _
-      | CKM_DES3_KEY_GEN, _
-      | CKM_DES3_ECB, _
-      | CKM_DES3_MAC, _
-      | CKM_EC_KEY_PAIR_GEN, _
-      | CKM_ECDSA, _
-      | CKM_ECDSA_SHA1, _
-        -> 0 (* Same mechanism types, no parameters. *)
+    | CKM_CS_UNKNOWN params ->
+      let (mechanism_type, data) = Pkcs11_CK_RAW_PAYLOAD.make params in
+      string mechanism_type data
 
 let unsafe_get_string t =
   view_string t parameter_len parameter
@@ -463,13 +210,14 @@ let unsafe_get_ulong t =
   let p =  Reachable_ptr.getf t parameter |> from_voidp ulong in
   !@ p
 
-let view (t:t) : u =
+let view t =
   let ul = getf t mechanism in
+  let open P11_mechanism in
   let open Pkcs11_CK_MECHANISM_TYPE in
   let (==) = fun a b ->
     let ua = Pkcs11_CK_MECHANISM_TYPE.view a in
     let ub = Pkcs11_CK_MECHANISM_TYPE.view b in
-    Pkcs11_CK_MECHANISM_TYPE.equal ua ub
+    P11_mechanism_type.equal ua ub
   in
   if ul == _CKM_SHA_1 then CKM_SHA_1
   else if ul == _CKM_SHA224 then CKM_SHA224
@@ -544,4 +292,5 @@ let view (t:t) : u =
     CKM_ECDH1_COFACTOR_DERIVE (unsafe_get_ecdh1_derive_param t)
   else if ul == _CKM_ECMQV_DERIVE then
     CKM_ECMQV_DERIVE (unsafe_get_ecmqv_derive_param t)
-  else CKM_CS_UNKNOWN (ul, (unsafe_get_string t))
+  else
+    CKM_CS_UNKNOWN (Pkcs11_CK_RAW_PAYLOAD.view (ul, (unsafe_get_string t)))

@@ -939,14 +939,14 @@ module type S =
 sig
   val c_Initialize : unit -> CK_RV.t
   val c_Finalize : unit -> CK_RV.t
-  val c_GetInfo : unit -> CK_RV.t * CK_INFO.u
+  val c_GetInfo : unit -> CK_RV.t * P11_info.t
   (* val c_GetFunctionList : unit -> CK_RV.t * CK_FUNCTION_LIST.t *)
   val c_GetSlotList : bool -> Slot_list.t -> CK_RV.t
-  val c_GetSlotInfo : slot: CK_SLOT_ID.t -> CK_RV.t * CK_SLOT_INFO.u
-  val c_GetTokenInfo : slot: CK_SLOT_ID.t -> CK_RV.t * CK_TOKEN_INFO.u
+  val c_GetSlotInfo : slot: CK_SLOT_ID.t -> CK_RV.t * P11_slot_info.t
+  val c_GetTokenInfo : slot: CK_SLOT_ID.t -> CK_RV.t * P11_token_info.t
   val c_GetMechanismList : slot: CK_SLOT_ID.t -> Mechanism_list.t -> CK_RV.t
   val c_GetMechanismInfo : slot: CK_SLOT_ID.t -> CK_MECHANISM_TYPE.t ->
-    CK_RV.t * CK_MECHANISM_INFO.u
+    CK_RV.t * P11_mechanism_info.t
   val c_InitToken : slot: CK_SLOT_ID.t -> pin:string -> label:string -> CK_RV.t
   val c_InitPIN : CK_SESSION_HANDLE.t -> string -> CK_RV.t
   val c_SetPIN : CK_SESSION_HANDLE.t -> oldpin:string -> newpin:string ->
@@ -955,7 +955,7 @@ sig
     CK_RV.t * CK_SESSION_HANDLE.t
   val c_CloseSession : CK_SESSION_HANDLE.t -> CK_RV.t
   val c_CloseAllSessions : slot: CK_SLOT_ID.t -> CK_RV.t
-  val c_GetSessionInfo : CK_SESSION_HANDLE.t -> CK_RV.t * CK_SESSION_INFO.u
+  val c_GetSessionInfo : CK_SESSION_HANDLE.t -> CK_RV.t * P11_session_info.t
   (* val c_GetOperation_state *)
   (* val c_SetOperation_state *)
   val c_Login : CK_SESSION_HANDLE.t -> CK_USER_TYPE.t -> string -> CK_RV.t
@@ -1059,7 +1059,7 @@ end
 
 module Make (X: RAW): S
 
-exception Cannot_load_module of string * CK_RV.u
+exception Cannot_load_module of string * P11_rv.t
 
 (** May raise [Pkcs11.Cannot_load_module]
    [on_unknown] will be called with a warning message

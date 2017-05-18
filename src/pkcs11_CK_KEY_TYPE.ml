@@ -3,41 +3,6 @@ type t = Pkcs11_CK_ULONG.t
 let view_error n =
   Pkcs11_log.log @@ Printf.sprintf "Unknown CKK code: 0x%Lx" n
 
-type u =
-  | CKK_RSA
-  | CKK_DSA
-  | CKK_DH
-  | CKK_EC
-  | CKK_X9_42_DH
-  | CKK_KEA
-  | CKK_GENERIC_SECRET
-  | CKK_RC2
-  | CKK_RC4
-  | CKK_DES
-  | CKK_DES2
-  | CKK_DES3
-  | CKK_CAST
-  | CKK_CAST3
-  | CKK_CAST128
-  | CKK_RC5
-  | CKK_IDEA
-  | CKK_SKIPJACK
-  | CKK_BATON
-  | CKK_JUNIPER
-  | CKK_CDMF
-  | CKK_AES
-  | CKK_BLOWFISH
-  | CKK_TWOFISH
-  | CKK_SECURID
-  | CKK_HOTP
-  | CKK_ACTI
-  | CKK_CAMELLIA
-  | CKK_ARIA
-  | CKK_VENDOR_DEFINED
-  (* This is a catch-all case that makes it possible to deal with
-     vendor-specific/non-standard CKK. *)
-  | CKK_CS_UNKNOWN of Unsigned.ULong.t
-
 let with_value x = Unsigned.ULong.of_string @@ Int64.to_string x
 
 let _CKK_RSA            = with_value 0x00000000L
@@ -71,8 +36,9 @@ let _CKK_CAMELLIA       = with_value 0x00000025L
 let _CKK_ARIA           = with_value 0x00000026L
 let _CKK_VENDOR_DEFINED = with_value 0x80000000L
 
-let make u =
-  match u with
+let make =
+  let open P11_key_type in
+  function
     | CKK_RSA  -> _CKK_RSA
     | CKK_DSA  -> _CKK_DSA
     | CKK_DH  -> _CKK_DH
@@ -106,6 +72,7 @@ let make u =
     | CKK_CS_UNKNOWN x -> x
 
 let view t =
+  let open P11_key_type in
   let is value =
     Unsigned.ULong.compare t value = 0
   in
@@ -141,81 +108,3 @@ let view t =
     | _ when is _CKK_ARIA -> CKK_ARIA
     | _ when is _CKK_VENDOR_DEFINED -> CKK_VENDOR_DEFINED
     | _ -> (view_error (Int64.of_string ( Unsigned.ULong.to_string t)); CKK_CS_UNKNOWN t)
-
-let to_string u =
-  match u with
-    | CKK_RSA  -> "CKK_RSA"
-    | CKK_DSA  -> "CKK_DSA"
-    | CKK_DH  -> "CKK_DH"
-    | CKK_EC  -> "CKK_EC"
-    | CKK_X9_42_DH  -> "CKK_X9_42_DH"
-    | CKK_KEA  -> "CKK_KEA"
-    | CKK_GENERIC_SECRET  -> "CKK_GENERIC_SECRET"
-    | CKK_RC2  -> "CKK_RC2"
-    | CKK_RC4  -> "CKK_RC4"
-    | CKK_DES  -> "CKK_DES"
-    | CKK_DES2  -> "CKK_DES2"
-    | CKK_DES3  -> "CKK_DES3"
-    | CKK_CAST  -> "CKK_CAST"
-    | CKK_CAST3  -> "CKK_CAST3"
-    | CKK_CAST128  -> "CKK_CAST128"
-    | CKK_RC5  -> "CKK_RC5"
-    | CKK_IDEA  -> "CKK_IDEA"
-    | CKK_SKIPJACK  -> "CKK_SKIPJACK"
-    | CKK_BATON  -> "CKK_BATON"
-    | CKK_JUNIPER  -> "CKK_JUNIPER"
-    | CKK_CDMF  -> "CKK_CDMF"
-    | CKK_AES  -> "CKK_AES"
-    | CKK_BLOWFISH  -> "CKK_BLOWFISH"
-    | CKK_TWOFISH  -> "CKK_TWOFISH"
-    | CKK_SECURID  -> "CKK_SECURID"
-    | CKK_HOTP  -> "CKK_HOTP"
-    | CKK_ACTI  -> "CKK_ACTI"
-    | CKK_CAMELLIA  -> "CKK_CAMELLIA"
-    | CKK_ARIA  -> "CKK_ARIA"
-    | CKK_VENDOR_DEFINED  -> "CKK_VENDOR_DEFINED"
-    | CKK_CS_UNKNOWN x -> Unsigned.ULong.to_string x
-
-let of_string s =
-  match s with
-    | "CKK_RSA" -> CKK_RSA
-    | "CKK_DSA" -> CKK_DSA
-    | "CKK_DH" -> CKK_DH
-    | "CKK_EC" -> CKK_EC
-    | "CKK_ECDSA" -> CKK_EC
-    | "CKK_X9_42_DH" -> CKK_X9_42_DH
-    | "CKK_KEA" -> CKK_KEA
-    | "CKK_GENERIC_SECRET" -> CKK_GENERIC_SECRET
-    | "CKK_RC2" -> CKK_RC2
-    | "CKK_RC4" -> CKK_RC4
-    | "CKK_DES" -> CKK_DES
-    | "CKK_DES2" -> CKK_DES2
-    | "CKK_DES3" -> CKK_DES3
-    | "CKK_CAST" -> CKK_CAST
-    | "CKK_CAST3" -> CKK_CAST3
-    | "CKK_CAST128" -> CKK_CAST128
-    | "CKK_CAST5" -> CKK_CAST128
-    | "CKK_RC5" -> CKK_RC5
-    | "CKK_IDEA" -> CKK_IDEA
-    | "CKK_SKIPJACK" -> CKK_SKIPJACK
-    | "CKK_BATON" -> CKK_BATON
-    | "CKK_JUNIPER" -> CKK_JUNIPER
-    | "CKK_CDMF" -> CKK_CDMF
-    | "CKK_AES" -> CKK_AES
-    | "CKK_BLOWFISH" -> CKK_BLOWFISH
-    | "CKK_TWOFISH" -> CKK_TWOFISH
-    | "CKK_SECURID" -> CKK_SECURID
-    | "CKK_HOTP" -> CKK_HOTP
-    | "CKK_ACTI" -> CKK_ACTI
-    | "CKK_CAMELLIA" -> CKK_CAMELLIA
-    | "CKK_ARIA" -> CKK_ARIA
-    | "CKK_VENDOR_DEFINED" -> CKK_VENDOR_DEFINED
-    | x ->
-        (try CKK_CS_UNKNOWN (Unsigned.ULong.of_string x)
-         with | Sys.Break  as e -> raise e
-              | _ ->
-                  invalid_arg
-                    ("Pkcs11_CK_KEY_TYPE.of_string" ^ (": cannot find " ^ x)))
-
-let equal (a : u) (b : u) = Pervasives.(=) a b
-let compare (a : u) (b : u) = Pervasives.compare a b

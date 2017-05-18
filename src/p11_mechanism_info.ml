@@ -1,21 +1,33 @@
-type t = Pkcs11.CK_MECHANISM_INFO.u =
-  {
-    ulMinKeySize : Pkcs11_CK_ULONG.t;
-    ulMaxKeySize : Pkcs11_CK_ULONG.t;
-    flags : P11_flags.t;
+type t =
+  { ulMinKeySize : Pkcs11_CK_ULONG.t
+  ; ulMaxKeySize : Pkcs11_CK_ULONG.t
+  ; flags : P11_flags.t
   }
-  [@@deriving of_yojson]
+[@@deriving of_yojson]
 
-let to_string = Pkcs11.CK_MECHANISM_INFO.to_string
-let to_strings = Pkcs11.CK_MECHANISM_INFO.to_strings
-let flags_to_string = Pkcs11.CK_MECHANISM_INFO.string_of_flags
-let flags_to_strings = Pkcs11.CK_MECHANISM_INFO.strings_of_flags
-let allowed_flags = Pkcs11.CK_MECHANISM_INFO.allowed_flags
+let allowed_flags =
+  let flags = P11_flags.(flags_of_domain Mechanism_info_domain) in
+  let flags = List.map fst flags in
+  List.fold_left P11_flags.logical_or Pkcs11_CK_FLAGS.empty flags
+
+let flags_to_string = P11_flags.(to_pretty_string Mechanism_info_domain)
+
+let flags_to_strings = P11_flags.(to_pretty_strings Mechanism_info_domain)
+
+let to_strings info =
+  [ "Minimum Key Size", Unsigned.ULong.to_string info.ulMinKeySize
+  ; "Maximum Key Size", Unsigned.ULong.to_string info.ulMaxKeySize
+  ; "Flags", flags_to_string info.flags
+  ]
+
+let to_string ?newlines ?indent info =
+  Pkcs11_helpers.string_of_record ?newlines ?indent (to_strings info)
+
+let to_strings info = to_strings info |> Pkcs11_helpers.strings_of_record
 
 let to_yojson info =
-  `Assoc [
-    "ulMinKeySize", `String (info.ulMinKeySize |> Unsigned.ULong.to_string );
-    "ulMaxKeySize", `String (info.ulMaxKeySize |> Unsigned.ULong.to_string );
-    "flags",
-    P11_flags.to_json ~pretty:flags_to_string info.flags;
-  ]
+  `Assoc
+    [ "ulMinKeySize", `String (info.ulMinKeySize |> Unsigned.ULong.to_string)
+    ; "ulMaxKeySize", `String (info.ulMaxKeySize |> Unsigned.ULong.to_string)
+    ; "flags", P11_flags.to_json ~pretty:flags_to_string info.flags
+    ]

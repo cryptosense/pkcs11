@@ -25,16 +25,14 @@ let rec get : type a . t -> a P11_attribute_type.t -> a option = fun template x 
     | head :: tail ->
         match head with
           | P11_attribute.Pack (ty,v) ->
-              match Pkcs11.CK_ATTRIBUTE_TYPE.compare' ty x with
-                | Pkcs11.CK_ATTRIBUTE_TYPE.Equal -> Some v
-                | Pkcs11.CK_ATTRIBUTE_TYPE.Not_equal _ -> get tail x
+              match P11_attribute_type.compare' ty x with
+                | P11_attribute_type.Equal -> Some v
+                | P11_attribute_type.Not_equal _ -> get tail x
 
 let get_pack template (P11_attribute_type.Pack ty) =
   match get template ty with
     | None -> None
     | Some v -> Some (P11_attribute.Pack (ty,v))
-
-let of_raw = Pkcs11.Template.view
 
 (** [normalize t] returns a normal form for the template [t]. That
     is, a template that is sorted. *)

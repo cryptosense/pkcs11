@@ -17,27 +17,19 @@ let pSourceData = Reachable_ptr.typ void -: "pSourceData"
 let pSourceDataLen = ulong -: "pSourceDataLen"
 let () = seal t
 
-type u =
-  {
-    hashAlg: Pkcs11_CK_MECHANISM_TYPE.u [@compare Pkcs11_CK_MECHANISM_TYPE.compare];
-    mgf: Pkcs11_CK_RSA_PKCS_MGF_TYPE.t;
-    src: string option;
-  }
-[@@deriving ord]
-
-let make (u: u): t =
-  let src = u.src in
+let make params =
+  let open P11_rsa_pkcs_oaep_params in
+  let src = params.src in
   let p = Ctypes.make t in
-  setf p hashAlg @@ Pkcs11_CK_MECHANISM_TYPE.make u.hashAlg;
-  setf p mgf u.mgf;
+  setf p hashAlg @@ Pkcs11_CK_MECHANISM_TYPE.make params.hashAlg;
+  setf p mgf params.mgf;
   setf p source _CKZ_DATA_SPECIFIED;
   make_string_option src p pSourceDataLen pSourceData;
   p
 
-let view (c: t): u =
+let view c =
+  let open P11_rsa_pkcs_oaep_params in
   { hashAlg = Pkcs11_CK_MECHANISM_TYPE.view @@ getf c hashAlg
   ; mgf = getf c mgf
   ; src = view_string_option c pSourceDataLen pSourceData
   }
-
-let compare = [%ord: u]

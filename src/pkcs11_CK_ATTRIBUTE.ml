@@ -40,7 +40,7 @@ let pValue = Reachable_ptr.typ void -: "pValue"
 let ulValueLen = ulong -: "ulValueLen"
 let () = seal ck_attribute
 
-type 'a u = 'a Pkcs11_CK_ATTRIBUTE_TYPE.u * 'a
+type 'a u = 'a P11_attribute_type.t * 'a
 type pack = Pack : 'a u -> pack
 
 (** [create cka] allocates a new struct and set the [attribute_type]
@@ -161,6 +161,7 @@ let decode_cka attr_type decode s =
     | Ok p -> Pack (attr_type, p)
     | Error e ->
         begin
+          let open P11_attribute_type in
           let open Pkcs11_CK_ATTRIBUTE_TYPE in
           let name = to_string attr_type in
           Pkcs11_log.log @@ Printf.sprintf "Invalid %s: %S (error: %S)" name s e;
@@ -170,10 +171,10 @@ let decode_cka attr_type decode s =
         end
 
 let decode_cka_ec_point s =
-  decode_cka Pkcs11_CK_ATTRIBUTE_TYPE.CKA_EC_POINT decode_ec_point s
+  decode_cka P11_attribute_type.CKA_EC_POINT decode_ec_point s
 
 let decode_cka_ec_params s =
-  decode_cka Pkcs11_CK_ATTRIBUTE_TYPE.CKA_EC_PARAMS Key_parsers.Asn1.EC.Params.decode s
+  decode_cka P11_attribute_type.CKA_EC_PARAMS Key_parsers.Asn1.EC.Params.decode s
 
 let encode_asn grammar x =
   let codec = Asn.codec Asn.der grammar in
@@ -184,6 +185,7 @@ let encode_ec_point = encode_asn Key_parsers.Asn1.EC.point_grammar
 
 let view (t : t) : pack =
   let ul = getf t _type in
+  let open P11_attribute_type in
   let open Pkcs11_CK_ATTRIBUTE_TYPE in
   if ul ==  _CKA_CLASS                              then Pack (CKA_CLASS, (unsafe_get_object_class t |> Pkcs11_CK_OBJECT_CLASS.view))
   else if ul ==  _CKA_TOKEN                         then Pack (CKA_TOKEN, (unsafe_get_bool t))
@@ -244,7 +246,7 @@ let view (t : t) : pack =
 (* Useful regexp |\(.*\) of string -> | \1 s -> string AttributesType.\1 s): *)
 
 let make : type s . s u -> t = fun x ->
-  let open Pkcs11_CK_ATTRIBUTE_TYPE in
+  let open P11_attribute_type in
   match x with
   | CKA_CLASS, cko -> ulong Pkcs11_CK_ATTRIBUTE_TYPE._CKA_CLASS (Pkcs11_CK_OBJECT_CLASS.make cko)
   | CKA_TOKEN, b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_TOKEN b
@@ -304,85 +306,17 @@ let make : type s . s u -> t = fun x ->
 
 let make_pack (Pack x) = make x
 
-let to_string_pair =
-  let ulong cka x = cka, Unsigned.ULong.to_string x in
-  let object_class cka cko = cka, Pkcs11_CK_OBJECT_CLASS.to_string cko in
-  let bool cka x = cka, if x then "CK_TRUE" else "CK_FALSE" in
-  let string cka x = cka, Printf.sprintf "%S" x in
-  let key_type cka ckk = cka, Pkcs11_CK_KEY_TYPE.to_string ckk in
-  let mechanism_type cka x = cka, Pkcs11_key_gen_mechanism.to_string x in
-  let ec_parameters cka x = cka, Key_parsers.Asn1.EC.Params.show x in
-  let ec_point cka x = cka, Key_parsers.Asn1.EC.show_point x in
-  let bigint cka x = cka, Pkcs11_CK_BIGINT.to_string x in
-  fun (type s) (x : s u) ->
-    let open Pkcs11_CK_ATTRIBUTE_TYPE in
-    match x with
-      | CKA_CLASS, x               -> object_class "CKA_CLASS" x
-      | CKA_TOKEN, x               -> bool "CKA_TOKEN" x
-      | CKA_PRIVATE, x             -> bool "CKA_PRIVATE" x
-      | CKA_LABEL, x               -> string "CKA_LABEL" x
-      | CKA_VALUE, x               -> string "CKA_VALUE" x
-      | CKA_TRUSTED, x             -> bool "CKA_TRUSTED" x
-      | CKA_CHECK_VALUE, NOT_IMPLEMENTED x -> string "CKA_CHECK_VALUE" x
-      | CKA_KEY_TYPE, x            -> key_type "CKA_KEY_TYPE" x
-      | CKA_SUBJECT, x             -> string "CKA_SUBJECT" x
-      | CKA_ID, x                  -> string "CKA_ID" x
-      | CKA_SENSITIVE, x           -> bool "CKA_SENSITIVE" x
-      | CKA_ENCRYPT,   x           -> bool "CKA_ENCRYPT" x
-      | CKA_DECRYPT,   x           -> bool "CKA_DECRYPT" x
-      | CKA_WRAP, x                -> bool "CKA_WRAP" x
-      | CKA_UNWRAP, x              -> bool "CKA_UNWRAP" x
-      | CKA_SIGN, x                -> bool "CKA_SIGN" x
-      | CKA_SIGN_RECOVER, x        -> bool "CKA_SIGN_RECOVER" x
-      | CKA_VERIFY, x              -> bool "CKA_VERIFY" x
-      | CKA_VERIFY_RECOVER, x      -> bool "CKA_VERIFY_RECOVER" x
-      | CKA_DERIVE, x              -> bool "CKA_DERIVE" x
-      | CKA_START_DATE, NOT_IMPLEMENTED x -> string "CKA_START_DATE" x
-      | CKA_END_DATE, NOT_IMPLEMENTED x -> string "CKA_END_DATE" x
-      | CKA_MODULUS,  x            -> bigint "CKA_MODULUS" x
-      | CKA_MODULUS_BITS,     x    -> ulong "CKA_MODULUS_BITS" x
-      | CKA_PUBLIC_EXPONENT,  x    -> bigint "CKA_PUBLIC_EXPONENT" x
-      | CKA_PRIVATE_EXPONENT, x    -> bigint "CKA_PRIVATE_EXPONENT" x
-      | CKA_PRIME_1,          x    -> bigint "CKA_PRIME_1" x
-      | CKA_PRIME_2,          x    -> bigint "CKA_PRIME_2" x
-      | CKA_EXPONENT_1,       x    -> bigint "CKA_EXPONENT_1" x
-      | CKA_EXPONENT_2,       x    -> bigint "CKA_EXPONENT_2" x
-      | CKA_COEFFICIENT,      x    -> bigint "CKA_COEFFICIENT" x
-      | CKA_PRIME,            x    -> bigint "CKA_PRIME" x
-      | CKA_SUBPRIME,         x    -> bigint "CKA_SUBPRIME" x
-      | CKA_PRIME_BITS,  x          -> ulong "CKA_PRIME_BITS" x
-      | CKA_SUBPRIME_BITS, x        -> ulong "CKA_SUBPRIME_BITS" x
-      | CKA_VALUE_LEN, x           -> ulong "CKA_VALUE_LEN" x
-      | CKA_EXTRACTABLE, x         -> bool "CKA_EXTRACTABLE" x
-      | CKA_LOCAL,  x              -> bool "CKA_LOCAL" x
-      | CKA_NEVER_EXTRACTABLE, x   -> bool "CKA_NEVER_EXTRACTABLE" x
-      | CKA_ALWAYS_SENSITIVE, x    -> bool "CKA_ALWAYS_SENSITIVE" x
-      | CKA_KEY_GEN_MECHANISM, x   -> mechanism_type "CKA_KEY_GEN_MECHANISM" x
-      | CKA_MODIFIABLE, x          -> bool "CKA_MODIFIABLE" x
-      (* | CKA_ECDSA_PARAMS, x        -> string "CKA_ECDSA_PARAMS" x *)
-      | CKA_EC_PARAMS, x           -> ec_parameters "CKA_EC_PARAMS" x
-      | CKA_EC_POINT, x            -> ec_point "CKA_EC_POINT" x
-      | CKA_ALWAYS_AUTHENTICATE, x -> bool "CKA_ALWAYS_AUTHENTICATE" x
-      | CKA_WRAP_WITH_TRUSTED,   x -> bool "CKA_WRAP_WITH_TRUSTED" x
-      | CKA_WRAP_TEMPLATE, NOT_IMPLEMENTED x -> string "CKA_WRAP_TEMPLATE" x
-      | CKA_UNWRAP_TEMPLATE, NOT_IMPLEMENTED x -> string "CKA_UNWRAP_TEMPLATE" x
-      | CKA_ALLOWED_MECHANISMS, NOT_IMPLEMENTED x -> string "CKA_ALLOWED_MECHANISMS" x
-      | CKA_CS_UNKNOWN ul, NOT_IMPLEMENTED x -> string (Unsigned.ULong.to_string ul) x
-
-let to_string x =
-  let a, b = to_string_pair x in
-  Printf.sprintf "%s %s" a b
-
 let compare_types (a,_) (b,_) =
-  Pkcs11_CK_ATTRIBUTE_TYPE.compare a b
+  P11_attribute_type.compare a b
 
-let compare_types_pack (Pack(a,_)) (Pack(b,_)) = Pkcs11_CK_ATTRIBUTE_TYPE.compare a b
+let compare_types_pack (Pack (a, _)) (Pack (b, _)) =
+  P11_attribute_type.compare a b
 
 let compare_bool (x : bool) (y : bool) = compare x y
 let compare_string (x : string) (y : string) = compare x y
 let compare_ulong = Unsigned.ULong.compare
 let compare : type a b. a u -> b u -> int = fun a b ->
-  let open Pkcs11_CK_ATTRIBUTE_TYPE in
+  let open P11_attribute_type in
   let c = compare_types a b in
   if c <> 0 then
     c
@@ -394,15 +328,15 @@ let compare : type a b. a u -> b u -> int = fun a b ->
        non-exhaustive) is related to the left part. *)
     match[@ocaml.warning "-4"] a, b with
       | (CKA_CLASS, a_param), (CKA_CLASS, b_param) ->
-          Pkcs11_CK_OBJECT_CLASS.compare a_param b_param
+          P11_object_class.compare a_param b_param
       | (CKA_KEY_TYPE, a_param), (CKA_KEY_TYPE, b_param) ->
-          Pkcs11_CK_KEY_TYPE.compare a_param b_param
+          P11_key_type.compare a_param b_param
       | (CKA_MODULUS_BITS, a_param), (CKA_MODULUS_BITS, b_param) ->
           Pkcs11_CK_ULONG.compare a_param b_param
       | (CKA_VALUE_LEN, a_param), (CKA_VALUE_LEN, b_param) ->
           Pkcs11_CK_ULONG.compare a_param b_param
       | (CKA_KEY_GEN_MECHANISM, a_param), (CKA_KEY_GEN_MECHANISM, b_param) ->
-          Pkcs11_key_gen_mechanism.compare a_param b_param
+          P11_key_gen_mechanism.compare a_param b_param
       | (CKA_EC_PARAMS, a_param), (CKA_EC_PARAMS, b_param) ->
           Key_parsers.Asn1.EC.Params.compare a_param b_param
       | (CKA_EC_POINT, a_param), (CKA_EC_POINT, b_param) ->

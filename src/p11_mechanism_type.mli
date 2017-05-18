@@ -1,4 +1,4 @@
-type t = Pkcs11.CK_MECHANISM_TYPE.u =
+type t =
   | CKM_RSA_PKCS_KEY_PAIR_GEN
   | CKM_RSA_PKCS
   | CKM_RSA_9796
@@ -247,12 +247,11 @@ type t = Pkcs11.CK_MECHANISM_TYPE.u =
   | CKM_DH_PKCS_PARAMETER_GEN
   | CKM_X9_42_DH_PARAMETER_GEN
   | CKM_VENDOR_DEFINED
-  | CKM_CS_UNKNOWN of Pkcs11.CK_MECHANISM_TYPE.t
-  [@@deriving yojson]
+  | CKM_CS_UNKNOWN of Pkcs11_CK_ULONG.t
+  [@@deriving eq,ord,yojson]
 
-val compare : t -> t -> int
-val equal : t -> t -> bool
 val to_string : t -> string
+val of_string : string -> t
 
 (** The list of all the CKM codes defined above, minus the vendor defined one. *)
 val elements : t list

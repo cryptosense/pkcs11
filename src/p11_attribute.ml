@@ -1,8 +1,75 @@
 type 'a t = 'a P11_attribute_type.t * 'a
-type pack = Pkcs11.CK_ATTRIBUTE.pack = Pack : 'a t -> pack
 
-let to_string = Pkcs11.CK_ATTRIBUTE.to_string
-let to_string_pair = Pkcs11.CK_ATTRIBUTE.to_string_pair
+type pack = Pkcs11_CK_ATTRIBUTE.pack = Pack : 'a t -> pack
+
+let to_string_pair =
+  let ulong cka x = cka, Unsigned.ULong.to_string x in
+  let object_class cka cko = cka, P11_object_class.to_string cko in
+  let bool cka x = cka, if x then "CK_TRUE" else "CK_FALSE" in
+  let string cka x = cka, Printf.sprintf "%S" x in
+  let key_type cka ckk = cka, P11_key_type.to_string ckk in
+  let mechanism_type cka x = cka, P11_key_gen_mechanism.to_string x in
+  let ec_parameters cka x = cka, Key_parsers.Asn1.EC.Params.show x in
+  let ec_point cka x = cka, Key_parsers.Asn1.EC.show_point x in
+  let bigint cka x = cka, Pkcs11_CK_BIGINT.to_string x in
+  fun (type s) (x : s t) ->
+    let open P11_attribute_type in
+    match x with
+      | CKA_CLASS, x               -> object_class "CKA_CLASS" x
+      | CKA_TOKEN, x               -> bool "CKA_TOKEN" x
+      | CKA_PRIVATE, x             -> bool "CKA_PRIVATE" x
+      | CKA_LABEL, x               -> string "CKA_LABEL" x
+      | CKA_VALUE, x               -> string "CKA_VALUE" x
+      | CKA_TRUSTED, x             -> bool "CKA_TRUSTED" x
+      | CKA_CHECK_VALUE, NOT_IMPLEMENTED x -> string "CKA_CHECK_VALUE" x
+      | CKA_KEY_TYPE, x            -> key_type "CKA_KEY_TYPE" x
+      | CKA_SUBJECT, x             -> string "CKA_SUBJECT" x
+      | CKA_ID, x                  -> string "CKA_ID" x
+      | CKA_SENSITIVE, x           -> bool "CKA_SENSITIVE" x
+      | CKA_ENCRYPT,   x           -> bool "CKA_ENCRYPT" x
+      | CKA_DECRYPT,   x           -> bool "CKA_DECRYPT" x
+      | CKA_WRAP, x                -> bool "CKA_WRAP" x
+      | CKA_UNWRAP, x              -> bool "CKA_UNWRAP" x
+      | CKA_SIGN, x                -> bool "CKA_SIGN" x
+      | CKA_SIGN_RECOVER, x        -> bool "CKA_SIGN_RECOVER" x
+      | CKA_VERIFY, x              -> bool "CKA_VERIFY" x
+      | CKA_VERIFY_RECOVER, x      -> bool "CKA_VERIFY_RECOVER" x
+      | CKA_DERIVE, x              -> bool "CKA_DERIVE" x
+      | CKA_START_DATE, NOT_IMPLEMENTED x -> string "CKA_START_DATE" x
+      | CKA_END_DATE, NOT_IMPLEMENTED x -> string "CKA_END_DATE" x
+      | CKA_MODULUS,  x            -> bigint "CKA_MODULUS" x
+      | CKA_MODULUS_BITS,     x    -> ulong "CKA_MODULUS_BITS" x
+      | CKA_PUBLIC_EXPONENT,  x    -> bigint "CKA_PUBLIC_EXPONENT" x
+      | CKA_PRIVATE_EXPONENT, x    -> bigint "CKA_PRIVATE_EXPONENT" x
+      | CKA_PRIME_1,          x    -> bigint "CKA_PRIME_1" x
+      | CKA_PRIME_2,          x    -> bigint "CKA_PRIME_2" x
+      | CKA_EXPONENT_1,       x    -> bigint "CKA_EXPONENT_1" x
+      | CKA_EXPONENT_2,       x    -> bigint "CKA_EXPONENT_2" x
+      | CKA_COEFFICIENT,      x    -> bigint "CKA_COEFFICIENT" x
+      | CKA_PRIME,            x    -> bigint "CKA_PRIME" x
+      | CKA_SUBPRIME,         x    -> bigint "CKA_SUBPRIME" x
+      | CKA_PRIME_BITS,  x          -> ulong "CKA_PRIME_BITS" x
+      | CKA_SUBPRIME_BITS, x        -> ulong "CKA_SUBPRIME_BITS" x
+      | CKA_VALUE_LEN, x           -> ulong "CKA_VALUE_LEN" x
+      | CKA_EXTRACTABLE, x         -> bool "CKA_EXTRACTABLE" x
+      | CKA_LOCAL,  x              -> bool "CKA_LOCAL" x
+      | CKA_NEVER_EXTRACTABLE, x   -> bool "CKA_NEVER_EXTRACTABLE" x
+      | CKA_ALWAYS_SENSITIVE, x    -> bool "CKA_ALWAYS_SENSITIVE" x
+      | CKA_KEY_GEN_MECHANISM, x   -> mechanism_type "CKA_KEY_GEN_MECHANISM" x
+      | CKA_MODIFIABLE, x          -> bool "CKA_MODIFIABLE" x
+      (* | CKA_ECDSA_PARAMS, x        -> string "CKA_ECDSA_PARAMS" x *)
+      | CKA_EC_PARAMS, x           -> ec_parameters "CKA_EC_PARAMS" x
+      | CKA_EC_POINT, x            -> ec_point "CKA_EC_POINT" x
+      | CKA_ALWAYS_AUTHENTICATE, x -> bool "CKA_ALWAYS_AUTHENTICATE" x
+      | CKA_WRAP_WITH_TRUSTED,   x -> bool "CKA_WRAP_WITH_TRUSTED" x
+      | CKA_WRAP_TEMPLATE, NOT_IMPLEMENTED x -> string "CKA_WRAP_TEMPLATE" x
+      | CKA_UNWRAP_TEMPLATE, NOT_IMPLEMENTED x -> string "CKA_UNWRAP_TEMPLATE" x
+      | CKA_ALLOWED_MECHANISMS, NOT_IMPLEMENTED x -> string "CKA_ALLOWED_MECHANISMS" x
+      | CKA_CS_UNKNOWN ul, NOT_IMPLEMENTED x -> string (Unsigned.ULong.to_string ul) x
+
+let to_string x =
+  let a, b = to_string_pair x in
+  Printf.sprintf "%s %s" a b
 
 (* Note: it is important for [Template.to_json] and [Template.of_json]
    that all attributes are represented using [`Assoc]. *)
@@ -271,14 +338,14 @@ let pack_of_yojson json : (pack, string) result =
 
 let pack_to_yojson (Pack x) = to_json x
 
-let compare_types = Pkcs11.CK_ATTRIBUTE.compare_types
-let compare_types_pack = Pkcs11.CK_ATTRIBUTE.compare_types_pack
+let compare_types = Pkcs11_CK_ATTRIBUTE.compare_types
+let compare_types_pack = Pkcs11_CK_ATTRIBUTE.compare_types_pack
 
-let compare = Pkcs11.CK_ATTRIBUTE.compare
-let compare_pack = Pkcs11.CK_ATTRIBUTE.compare_pack
+let compare = Pkcs11_CK_ATTRIBUTE.compare
+let compare_pack = Pkcs11_CK_ATTRIBUTE.compare_pack
 
-let equal = Pkcs11.CK_ATTRIBUTE.equal
-let equal_pack = Pkcs11.CK_ATTRIBUTE.equal_pack
+let equal = Pkcs11_CK_ATTRIBUTE.equal
+let equal_pack = Pkcs11_CK_ATTRIBUTE.equal_pack
 let equal_types_pack a b = (compare_types_pack a b) = 0
 let equal_values a v1 v2 = equal (a,v1) (a,v2)
 

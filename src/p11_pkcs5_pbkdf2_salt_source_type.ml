@@ -1,10 +1,13 @@
-type t = Pkcs11.CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.u
+type t =
+  | CKZ_SALT_SPECIFIED
+[@@deriving eq,ord,yojson]
 
-let to_string =
-  Pkcs11.CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.to_string
+let to_string = function
+  | CKZ_SALT_SPECIFIED -> "CKZ_SALT_SPECIFIED"
 
-let of_string =
-  Pkcs11.CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.of_string
+let of_string = function
+  | "CKZ_SALT_SPECIFIED" -> CKZ_SALT_SPECIFIED
+  | _ -> invalid_arg "CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.of_string"
 
 let to_yojson salt_type =
   try

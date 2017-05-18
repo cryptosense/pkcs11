@@ -5,9 +5,9 @@ let rec mem: type a . t -> a P11_attribute_type.t -> bool = fun template x ->
     | head :: tail ->
         match head with
           | P11_attribute_type.Pack ty ->
-              match Pkcs11.CK_ATTRIBUTE_TYPE.compare' ty x with
-                | Pkcs11.CK_ATTRIBUTE_TYPE.Equal -> true
-                | Pkcs11.CK_ATTRIBUTE_TYPE.Not_equal _ -> mem tail x
+              match P11_attribute_type.compare' ty x with
+                | P11_attribute_type.Equal -> true
+                | P11_attribute_type.Not_equal _ -> mem tail x
 
 let rec remove_duplicates l acc =
   match l with

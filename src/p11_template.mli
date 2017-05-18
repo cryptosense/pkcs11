@@ -10,8 +10,6 @@ val get_pack : t -> P11_attribute_type.pack -> P11_attribute.pack option
 
 val mem : P11_attribute.pack -> t -> bool
 
-val of_raw : Pkcs11.Template.t -> t
-
 val normalize: t -> t
 
 (** Compares two normalized templates.  *)
@@ -80,6 +78,6 @@ val hash : t -> Digest.t
 
 (** {2 Accessors }  *)
 
-val get_class : t -> Pkcs11.CK_OBJECT_CLASS.u option
-val get_key_type : t -> Pkcs11.CK_KEY_TYPE.u option
+val get_class : t -> P11_object_class.t option
+val get_key_type : t -> P11_key_type.t option
 val get_label : t -> string option

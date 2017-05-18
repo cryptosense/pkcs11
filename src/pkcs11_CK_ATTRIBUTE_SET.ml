@@ -1,13 +1,13 @@
 open Ctypes
 open Pkcs11_CK_ATTRIBUTE
 
-let _setter_ : (unit Ctypes.ptr -> 'a -> unit) -> Unsigned.ULong.t -> t -> 'a -> Pkcs11_CK_RV.u =
+let _setter_ : (unit Ctypes.ptr -> 'a -> unit) -> Unsigned.ULong.t -> t -> 'a -> P11_rv.t =
   fun ff size t elem ->
     if pvalue_is_null_ptr t
     then
       begin
         setf t ulValueLen size;
-        Pkcs11_CK_RV.CKR_OK
+        P11_rv.CKR_OK
       end
     else
       begin
@@ -16,12 +16,12 @@ let _setter_ : (unit Ctypes.ptr -> 'a -> unit) -> Unsigned.ULong.t -> t -> 'a ->
           begin
             ff (Ctypes_helpers.Reachable_ptr.getf t pValue) elem;
             setf t ulValueLen size;
-            Pkcs11_CK_RV.CKR_OK
+            P11_rv.CKR_OK
           end
         else
           begin
             setf t ulValueLen Unsigned.ULong.max_int;
-            Pkcs11_CK_RV.CKR_BUFFER_TOO_SMALL
+            P11_rv.CKR_BUFFER_TOO_SMALL
           end
       end
 
@@ -60,6 +60,7 @@ let bigint t elem = string t (Pkcs11_CK_BIGINT.encode elem)
 let set_access_error t = setf t ulValueLen Unsigned.ULong.max_int
 
 let update (Pack x) t =
+  let open P11_attribute_type in
   let open Pkcs11_CK_ATTRIBUTE_TYPE in
   match x with
     | CKA_CLASS, cko -> ulong t (Pkcs11_CK_OBJECT_CLASS.make cko)

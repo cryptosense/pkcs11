@@ -17,20 +17,8 @@ let pPassword = Reachable_ptr.typ char -: "pPassword"
 let pPasswordLen = Reachable_ptr.typ ulong -: "pPasswordLen"
 let () = seal t
 
-type u =
-  {
-    saltSource: Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.u;
-    saltSourceData: string option;
-    iterations: int;
-    prf: Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE.u;
-    prfData: string option;
-    password: string;
-  }
-
-let compare =
-  Pervasives.compare
-
-let make (u: u): t =
+let make u =
+  let open P11_pkcs5_pbkd2_data_params in
   let t = Ctypes.make t in
   setf t saltSource @@ Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.make u.saltSource;
   make_string_option u.saltSourceData t ulSaltSourceDataLen pSaltSourceData;
@@ -43,7 +31,8 @@ let make (u: u): t =
   );
   t
 
-let view (t: t): u =
+let view t =
+  let open P11_pkcs5_pbkd2_data_params in
   let saltSource = Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.view @@ getf t saltSource in
   let saltSourceData = view_string_option t ulSaltSourceDataLen pSaltSourceData in
   let iterations = Unsigned.ULong.to_int @@ getf t iterations in
@@ -57,11 +46,4 @@ let view (t: t): u =
       ~length: (Unsigned.ULong.to_int pPasswordLen)
       pPassword
   in
-  {
-    saltSource;
-    saltSourceData;
-    iterations;
-    prf;
-    prfData;
-    password;
-  }
+  {saltSource; saltSourceData; iterations; prf; prfData; password}
