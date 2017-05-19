@@ -1,5 +1,4 @@
 
-exception Null_pointer
 val is_null : 'a Ctypes.ptr -> bool
 (** Low-level PKCS#11 bindings. *)
 

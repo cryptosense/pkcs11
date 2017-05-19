@@ -1,16 +1,5 @@
 open Ctypes
 
-(******************************************************************************)
-(*                         Dealing with null pointers                         *)
-(******************************************************************************)
-
-exception Null_pointer
-
-let safe_deref p =
-  if Ctypes.ptr_compare (to_voidp p) null = 0
-  then raise Null_pointer
-  else Ctypes.(!@) p
-
 (* There is currently no [is_null] function in Ctypes.  Apparently
    [(=)] is NOT the way to go and cause segfault. *)
 let is_null (type a)(x : a Ctypes.ptr) : bool =

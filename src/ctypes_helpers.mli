@@ -1,11 +1,5 @@
-exception Null_pointer
-
 (** Check if a pointer is null.  *)
 val is_null : 'a Ctypes.ptr -> bool
-
-(** Check that a pointer is not null before dereferencing it and raise
-    [Null_pointer] if it is.  *)
-val safe_deref : 'a Ctypes.ptr -> 'a
 
 type ulong = Unsigned.ULong.t
 
