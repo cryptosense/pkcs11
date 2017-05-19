@@ -1,6 +1,3 @@
-(** Check if a pointer is null.  *)
-val is_null : 'a Ctypes.ptr -> bool
-
 type ulong = Unsigned.ULong.t
 
 module Reachable_ptr : sig

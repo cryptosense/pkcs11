@@ -7,7 +7,7 @@ type t =
   }
 
 let get_length t =
-  assert (not (Ctypes_helpers.is_null t.length));
+  assert (not (is_null t.length));
   !@ (t.length)
 
 let get_content t =
