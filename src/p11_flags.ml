@@ -14,7 +14,6 @@ let empty = Unsigned.ULong.zero
 let logical_or = Unsigned.ULong.logor
 let ( || ) = logical_or
 let logical_and = Unsigned.ULong.logand
-let ( && ) = logical_and
 
 let get ~(flags: t) ~(flag: t): bool =
   not (equal (logical_and flags flag) empty)
