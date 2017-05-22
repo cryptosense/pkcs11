@@ -1,21 +1,5 @@
 open Ctypes
 
-(******************************************************************************)
-(*                         Dealing with null pointers                         *)
-(******************************************************************************)
-
-exception Null_pointer
-
-let safe_deref p =
-  if Ctypes.ptr_compare (to_voidp p) null = 0
-  then raise Null_pointer
-  else Ctypes.(!@) p
-
-(* There is currently no [is_null] function in Ctypes.  Apparently
-   [(=)] is NOT the way to go and cause segfault. *)
-let is_null (type a)(x : a Ctypes.ptr) : bool =
-  Ctypes.(ptr_compare null (to_voidp x)) = 0
-
 module Reachable_ptr : sig
   type 'a t
   val typ : 'a Ctypes_static.typ -> 'a t Ctypes_static.typ
