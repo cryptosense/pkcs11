@@ -1,3 +1,39 @@
+v0.8.0 2017-05-22
+=================
+
+Breaking changes:
+
+- Related to `Ctypes_helpers` (#48):
+  + remove `is_null` (now in ctypes)
+  + remove `safe_deref` and `Null_pointer` (unused)
+- Make `Pkcs11` depend on `P11`, and not the other way around (#45).
+  + Thanks to Bertrand Bonnefoy-Claudet.
+  + This is a first step in splitting out the `ctypes` dependency.
+  + Remove `P11_sigs`
+  + Types named `u` are removed (use `t` types from `P11`).
+  + Constructor reexports are removed.
+  + `of_raw` aliases are removed.
+  + functions acting on `u` are moved to `P11_x`
+  + rename `compare_t` / `equal_t` to `compare` / `equal`
+- Split the `P11` module into several smaller modules.
+  + This is only breaking because it uses more global `P11_` names.
+
+Deprecated functions:
+
+- `P11_attribute_type.(==)` (#43, #50)
+
+New functions:
+
+- Add `eq` and `ord` instances for inner modules (#49).
+
+Cleanup:
+
+- Remove dead code here and there (#49).
+
+Packaging:
+
+- Always install fake DLL (#46, #47)
+
 v0.7.3 2017-05-02
 =================
 
