@@ -105,5 +105,5 @@ let () =
     Pkg.clib "src/libpkcs11_rev_dllmain.clib";
     Pkg.mllib ~cond:cmdliner "src/pkcs11_cli.mllib";
     Pkg.test ~run:false "test/example_sign";
-    Pkg.clib ~cond:(Conf.build_tests c) "test/libpkcs11_fake.clib";
+    Pkg.clib "src/fake_dll/libpkcs11_fake.clib";
   ]
