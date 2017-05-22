@@ -1,6 +1,6 @@
 type t =
   | CKZ_SALT_SPECIFIED
-[@@deriving eq,ord,yojson]
+[@@deriving eq,ord]
 
 let to_string = function
   | CKZ_SALT_SPECIFIED -> "CKZ_SALT_SPECIFIED"
