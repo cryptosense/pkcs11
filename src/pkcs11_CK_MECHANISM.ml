@@ -211,86 +211,69 @@ let unsafe_get_ulong t =
   !@ p
 
 let view t =
-  let ul = getf t mechanism in
   let open P11_mechanism in
   let open Pkcs11_CK_MECHANISM_TYPE in
-  let (==) = fun a b ->
-    let ua = Pkcs11_CK_MECHANISM_TYPE.view a in
-    let ub = Pkcs11_CK_MECHANISM_TYPE.view b in
-    P11_mechanism_type.equal ua ub
+  let ul = getf t mechanism in
+  let l = view ul in
+  let it_is c =
+    P11_mechanism_type.equal l @@ view c
   in
-  if ul == _CKM_SHA_1 then CKM_SHA_1
-  else if ul == _CKM_SHA224 then CKM_SHA224
-  else if ul == _CKM_SHA256 then CKM_SHA256
-  else if ul == _CKM_SHA512 then CKM_SHA512
-  else if ul == _CKM_MD5 then CKM_MD5
-  else if ul == _CKM_RSA_PKCS_KEY_PAIR_GEN then CKM_RSA_PKCS_KEY_PAIR_GEN
-  else if ul == _CKM_RSA_X9_31_KEY_PAIR_GEN then CKM_RSA_X9_31_KEY_PAIR_GEN
-  else if ul == _CKM_RSA_PKCS then CKM_RSA_PKCS
-  else if ul == _CKM_RSA_PKCS_OAEP then CKM_RSA_PKCS_OAEP (unsafe_get_oaep t)
-  else if ul == _CKM_RSA_X_509 then CKM_RSA_X_509
-  else if ul == _CKM_RSA_PKCS_PSS then CKM_RSA_PKCS_PSS (unsafe_get_pss t)
-  else if ul == _CKM_SHA1_RSA_PKCS then CKM_SHA1_RSA_PKCS
-  else if ul == _CKM_SHA224_RSA_PKCS then CKM_SHA224_RSA_PKCS
-  else if ul == _CKM_SHA256_RSA_PKCS then CKM_SHA256_RSA_PKCS
-  else if ul == _CKM_SHA384_RSA_PKCS then CKM_SHA384_RSA_PKCS
-  else if ul == _CKM_SHA512_RSA_PKCS then CKM_SHA512_RSA_PKCS
-  else if ul == _CKM_SHA1_RSA_PKCS_PSS then CKM_SHA1_RSA_PKCS_PSS (unsafe_get_pss t)
-  else if ul == _CKM_SHA224_RSA_PKCS_PSS then CKM_SHA224_RSA_PKCS_PSS (unsafe_get_pss t)
-  else if ul == _CKM_SHA256_RSA_PKCS_PSS then CKM_SHA256_RSA_PKCS_PSS (unsafe_get_pss t)
-  else if ul == _CKM_SHA384_RSA_PKCS_PSS then CKM_SHA384_RSA_PKCS_PSS (unsafe_get_pss t)
-  else if ul == _CKM_SHA512_RSA_PKCS_PSS then CKM_SHA512_RSA_PKCS_PSS (unsafe_get_pss t)
-  else if ul == _CKM_AES_KEY_GEN then CKM_AES_KEY_GEN
-  else if ul == _CKM_AES_ECB then CKM_AES_ECB
-  else if ul == _CKM_AES_CBC then CKM_AES_CBC (unsafe_get_string t)
-  else if ul == _CKM_AES_CBC_PAD then CKM_AES_CBC_PAD (unsafe_get_string t)
-  else if ul == _CKM_AES_MAC then CKM_AES_MAC
-  else if ul == _CKM_AES_MAC_GENERAL then
-    CKM_AES_MAC_GENERAL (unsafe_get_ulong t)
-  else if ul == _CKM_AES_ECB_ENCRYPT_DATA then
-    CKM_AES_ECB_ENCRYPT_DATA (unsafe_get_derivation_string t)
-  else if ul == _CKM_AES_CBC_ENCRYPT_DATA then
-    CKM_AES_CBC_ENCRYPT_DATA (unsafe_get_aes_cbc_param t)
-  else if ul == _CKM_DES_KEY_GEN then CKM_DES_KEY_GEN
-  else if ul == _CKM_DES_ECB then CKM_DES_ECB
-  else if ul == _CKM_DES_CBC then CKM_DES_CBC (unsafe_get_string t)
-  else if ul == _CKM_DES_CBC_PAD then CKM_DES_CBC_PAD (unsafe_get_string t)
-  else if ul == _CKM_DES_MAC then CKM_DES_MAC
-  else if ul == _CKM_DES_MAC_GENERAL then
-    CKM_DES_MAC_GENERAL (unsafe_get_ulong t)
-  else if ul == _CKM_DES_ECB_ENCRYPT_DATA then
-    CKM_DES_ECB_ENCRYPT_DATA (unsafe_get_derivation_string t)
-  else if ul == _CKM_DES_CBC_ENCRYPT_DATA then
-    CKM_DES_CBC_ENCRYPT_DATA (unsafe_get_des_cbc_param t)
-  else if ul == _CKM_DES3_KEY_GEN then CKM_DES3_KEY_GEN
-  else if ul == _CKM_DES3_ECB then CKM_DES3_ECB
-  else if ul == _CKM_DES3_CBC then CKM_DES3_CBC (unsafe_get_string t)
-  else if ul == _CKM_DES3_CBC_PAD then CKM_DES3_CBC_PAD (unsafe_get_string t)
-  else if ul == _CKM_DES3_MAC then CKM_DES3_MAC
-  else if ul == _CKM_DES3_MAC_GENERAL then
-    CKM_DES3_MAC_GENERAL (unsafe_get_ulong t)
-  else if ul == _CKM_DES3_ECB_ENCRYPT_DATA then
-    CKM_DES3_ECB_ENCRYPT_DATA (unsafe_get_derivation_string t)
-  else if ul == _CKM_DES3_CBC_ENCRYPT_DATA then
-    CKM_DES3_CBC_ENCRYPT_DATA (unsafe_get_des_cbc_param t)
-  else if ul == _CKM_CONCATENATE_BASE_AND_DATA then
-    CKM_CONCATENATE_BASE_AND_DATA (unsafe_get_derivation_string t)
-  else if ul == _CKM_CONCATENATE_DATA_AND_BASE then
-    CKM_CONCATENATE_DATA_AND_BASE (unsafe_get_derivation_string t)
-  else if ul == _CKM_XOR_BASE_AND_DATA then
-    CKM_XOR_BASE_AND_DATA (unsafe_get_derivation_string t)
-  else if ul == _CKM_EXTRACT_KEY_FROM_KEY then
-    CKM_EXTRACT_KEY_FROM_KEY (unsafe_get_ulong t)
-  else if ul == _CKM_CONCATENATE_BASE_AND_KEY then
-    CKM_CONCATENATE_BASE_AND_KEY (unsafe_get_ulong t)
-  else if ul == _CKM_EC_KEY_PAIR_GEN then CKM_EC_KEY_PAIR_GEN
-  else if ul == _CKM_ECDSA then CKM_ECDSA
-  else if ul == _CKM_ECDSA_SHA1 then CKM_ECDSA_SHA1
-  else if ul == _CKM_ECDH1_DERIVE then
-    CKM_ECDH1_DERIVE (unsafe_get_ecdh1_derive_param t)
-  else if ul == _CKM_ECDH1_COFACTOR_DERIVE then
-    CKM_ECDH1_COFACTOR_DERIVE (unsafe_get_ecdh1_derive_param t)
-  else if ul == _CKM_ECMQV_DERIVE then
-    CKM_ECMQV_DERIVE (unsafe_get_ecmqv_derive_param t)
-  else
+  match () with
+  | _ when it_is _CKM_SHA_1 -> CKM_SHA_1
+  | _ when it_is _CKM_SHA224 -> CKM_SHA224
+  | _ when it_is _CKM_SHA256 -> CKM_SHA256
+  | _ when it_is _CKM_SHA512 -> CKM_SHA512
+  | _ when it_is _CKM_MD5 -> CKM_MD5
+  | _ when it_is _CKM_RSA_PKCS_KEY_PAIR_GEN -> CKM_RSA_PKCS_KEY_PAIR_GEN
+  | _ when it_is _CKM_RSA_X9_31_KEY_PAIR_GEN -> CKM_RSA_X9_31_KEY_PAIR_GEN
+  | _ when it_is _CKM_RSA_PKCS -> CKM_RSA_PKCS
+  | _ when it_is _CKM_RSA_PKCS_OAEP -> CKM_RSA_PKCS_OAEP (unsafe_get_oaep t)
+  | _ when it_is _CKM_RSA_X_509 -> CKM_RSA_X_509
+  | _ when it_is _CKM_RSA_PKCS_PSS -> CKM_RSA_PKCS_PSS (unsafe_get_pss t)
+  | _ when it_is _CKM_SHA1_RSA_PKCS -> CKM_SHA1_RSA_PKCS
+  | _ when it_is _CKM_SHA224_RSA_PKCS -> CKM_SHA224_RSA_PKCS
+  | _ when it_is _CKM_SHA256_RSA_PKCS -> CKM_SHA256_RSA_PKCS
+  | _ when it_is _CKM_SHA384_RSA_PKCS -> CKM_SHA384_RSA_PKCS
+  | _ when it_is _CKM_SHA512_RSA_PKCS -> CKM_SHA512_RSA_PKCS
+  | _ when it_is _CKM_SHA1_RSA_PKCS_PSS -> CKM_SHA1_RSA_PKCS_PSS (unsafe_get_pss t)
+  | _ when it_is _CKM_SHA224_RSA_PKCS_PSS -> CKM_SHA224_RSA_PKCS_PSS (unsafe_get_pss t)
+  | _ when it_is _CKM_SHA256_RSA_PKCS_PSS -> CKM_SHA256_RSA_PKCS_PSS (unsafe_get_pss t)
+  | _ when it_is _CKM_SHA384_RSA_PKCS_PSS -> CKM_SHA384_RSA_PKCS_PSS (unsafe_get_pss t)
+  | _ when it_is _CKM_SHA512_RSA_PKCS_PSS -> CKM_SHA512_RSA_PKCS_PSS (unsafe_get_pss t)
+  | _ when it_is _CKM_AES_KEY_GEN -> CKM_AES_KEY_GEN
+  | _ when it_is _CKM_AES_ECB -> CKM_AES_ECB
+  | _ when it_is _CKM_AES_CBC -> CKM_AES_CBC (unsafe_get_string t)
+  | _ when it_is _CKM_AES_CBC_PAD -> CKM_AES_CBC_PAD (unsafe_get_string t)
+  | _ when it_is _CKM_AES_MAC -> CKM_AES_MAC
+  | _ when it_is _CKM_AES_MAC_GENERAL -> CKM_AES_MAC_GENERAL (unsafe_get_ulong t)
+  | _ when it_is _CKM_AES_ECB_ENCRYPT_DATA -> CKM_AES_ECB_ENCRYPT_DATA (unsafe_get_derivation_string t)
+  | _ when it_is _CKM_AES_CBC_ENCRYPT_DATA -> CKM_AES_CBC_ENCRYPT_DATA (unsafe_get_aes_cbc_param t)
+  | _ when it_is _CKM_DES_KEY_GEN -> CKM_DES_KEY_GEN
+  | _ when it_is _CKM_DES_ECB -> CKM_DES_ECB
+  | _ when it_is _CKM_DES_CBC -> CKM_DES_CBC (unsafe_get_string t)
+  | _ when it_is _CKM_DES_CBC_PAD -> CKM_DES_CBC_PAD (unsafe_get_string t)
+  | _ when it_is _CKM_DES_MAC -> CKM_DES_MAC
+  | _ when it_is _CKM_DES_MAC_GENERAL -> CKM_DES_MAC_GENERAL (unsafe_get_ulong t)
+  | _ when it_is _CKM_DES_ECB_ENCRYPT_DATA -> CKM_DES_ECB_ENCRYPT_DATA (unsafe_get_derivation_string t)
+  | _ when it_is _CKM_DES_CBC_ENCRYPT_DATA -> CKM_DES_CBC_ENCRYPT_DATA (unsafe_get_des_cbc_param t)
+  | _ when it_is _CKM_DES3_KEY_GEN -> CKM_DES3_KEY_GEN
+  | _ when it_is _CKM_DES3_ECB -> CKM_DES3_ECB
+  | _ when it_is _CKM_DES3_CBC -> CKM_DES3_CBC (unsafe_get_string t)
+  | _ when it_is _CKM_DES3_CBC_PAD -> CKM_DES3_CBC_PAD (unsafe_get_string t)
+  | _ when it_is _CKM_DES3_MAC -> CKM_DES3_MAC
+  | _ when it_is _CKM_DES3_MAC_GENERAL -> CKM_DES3_MAC_GENERAL (unsafe_get_ulong t)
+  | _ when it_is _CKM_DES3_ECB_ENCRYPT_DATA -> CKM_DES3_ECB_ENCRYPT_DATA (unsafe_get_derivation_string t)
+  | _ when it_is _CKM_DES3_CBC_ENCRYPT_DATA -> CKM_DES3_CBC_ENCRYPT_DATA (unsafe_get_des_cbc_param t)
+  | _ when it_is _CKM_CONCATENATE_BASE_AND_DATA -> CKM_CONCATENATE_BASE_AND_DATA (unsafe_get_derivation_string t)
+  | _ when it_is _CKM_CONCATENATE_DATA_AND_BASE -> CKM_CONCATENATE_DATA_AND_BASE (unsafe_get_derivation_string t)
+  | _ when it_is _CKM_XOR_BASE_AND_DATA -> CKM_XOR_BASE_AND_DATA (unsafe_get_derivation_string t)
+  | _ when it_is _CKM_EXTRACT_KEY_FROM_KEY -> CKM_EXTRACT_KEY_FROM_KEY (unsafe_get_ulong t)
+  | _ when it_is _CKM_CONCATENATE_BASE_AND_KEY -> CKM_CONCATENATE_BASE_AND_KEY (unsafe_get_ulong t)
+  | _ when it_is _CKM_EC_KEY_PAIR_GEN -> CKM_EC_KEY_PAIR_GEN
+  | _ when it_is _CKM_ECDSA -> CKM_ECDSA
+  | _ when it_is _CKM_ECDSA_SHA1 -> CKM_ECDSA_SHA1
+  | _ when it_is _CKM_ECDH1_DERIVE -> CKM_ECDH1_DERIVE (unsafe_get_ecdh1_derive_param t)
+  | _ when it_is _CKM_ECDH1_COFACTOR_DERIVE -> CKM_ECDH1_COFACTOR_DERIVE (unsafe_get_ecdh1_derive_param t)
+  | _ when it_is _CKM_ECMQV_DERIVE -> CKM_ECMQV_DERIVE (unsafe_get_ecmqv_derive_param t)
+  | _ ->
     CKM_CS_UNKNOWN (Pkcs11_CK_RAW_PAYLOAD.view (ul, (unsafe_get_string t)))
