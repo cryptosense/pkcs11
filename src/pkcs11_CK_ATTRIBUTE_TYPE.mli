@@ -1,7 +1,7 @@
 (** Attribute types ([CK_ATTRIBUTE_TYPE]) *)
 
 type t = Pkcs11_CK_ULONG.t
-[@@deriving ord]
+[@@deriving eq,ord]
 
 val _CKA_CLASS : t
 val _CKA_TOKEN : t

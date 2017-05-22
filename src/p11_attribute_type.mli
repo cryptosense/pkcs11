@@ -174,6 +174,7 @@ val compare': 'a t -> 'b t -> ('a,'b) comparison
 val equal : 'a t -> 'b t -> bool
 
 val (==) : Unsigned.ULong.t -> Unsigned.ULong.t -> bool
+[@@deprecated "Please use [Pkcs11.CK_ATTRIBUTE_TYPE.equal] instead."]
 
 val equal_pack: pack -> pack -> bool
 
