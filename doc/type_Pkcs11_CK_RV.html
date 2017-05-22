@@ -1,6 +1,7 @@
 <html><head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
@@ -9,6 +10,40 @@
 <link title="Index of module types" rel=Appendix href="index_module_types.html">
 <link title="P11" rel="Chapter" href="P11.html">
 <link title="P11_key_attributes" rel="Chapter" href="P11_key_attributes.html">
+<link title="P11_template" rel="Chapter" href="P11_template.html">
+<link title="P11_attribute" rel="Chapter" href="P11_attribute.html">
+<link title="P11_attribute_types" rel="Chapter" href="P11_attribute_types.html">
+<link title="P11_attribute_type" rel="Chapter" href="P11_attribute_type.html">
+<link title="P11_ecdh1_derive_params" rel="Chapter" href="P11_ecdh1_derive_params.html">
+<link title="P11_ecmqv_derive_params" rel="Chapter" href="P11_ecmqv_derive_params.html">
+<link title="P11_session_info" rel="Chapter" href="P11_session_info.html">
+<link title="P11_mechanism_info" rel="Chapter" href="P11_mechanism_info.html">
+<link title="P11_slot_info" rel="Chapter" href="P11_slot_info.html">
+<link title="P11_token_info" rel="Chapter" href="P11_token_info.html">
+<link title="P11_info" rel="Chapter" href="P11_info.html">
+<link title="P11_user_type" rel="Chapter" href="P11_user_type.html">
+<link title="P11_mechanism" rel="Chapter" href="P11_mechanism.html">
+<link title="P11_raw_payload_params" rel="Chapter" href="P11_raw_payload_params.html">
+<link title="P11_pkcs5_pbkd2_data_params" rel="Chapter" href="P11_pkcs5_pbkd2_data_params.html">
+<link title="P11_pkcs5_pbkd2_pseudo_random_function_type" rel="Chapter" href="P11_pkcs5_pbkd2_pseudo_random_function_type.html">
+<link title="P11_pkcs5_pbkdf2_salt_source_type" rel="Chapter" href="P11_pkcs5_pbkdf2_salt_source_type.html">
+<link title="P11_des_cbc_encrypt_data_params" rel="Chapter" href="P11_des_cbc_encrypt_data_params.html">
+<link title="P11_aes_cbc_encrypt_data_params" rel="Chapter" href="P11_aes_cbc_encrypt_data_params.html">
+<link title="P11_rsa_pkcs_pss_params" rel="Chapter" href="P11_rsa_pkcs_pss_params.html">
+<link title="P11_rsa_pkcs_oaep_params" rel="Chapter" href="P11_rsa_pkcs_oaep_params.html">
+<link title="P11_rsa_pkcs_mgf_type" rel="Chapter" href="P11_rsa_pkcs_mgf_type.html">
+<link title="P11_key_gen_mechanism" rel="Chapter" href="P11_key_gen_mechanism.html">
+<link title="P11_mechanism_type" rel="Chapter" href="P11_mechanism_type.html">
+<link title="P11_rv" rel="Chapter" href="P11_rv.html">
+<link title="P11_version" rel="Chapter" href="P11_version.html">
+<link title="P11_key_type" rel="Chapter" href="P11_key_type.html">
+<link title="P11_object_class" rel="Chapter" href="P11_object_class.html">
+<link title="P11_flags" rel="Chapter" href="P11_flags.html">
+<link title="P11_slot_id" rel="Chapter" href="P11_slot_id.html">
+<link title="P11_slot" rel="Chapter" href="P11_slot.html">
+<link title="P11_hw_feature_type" rel="Chapter" href="P11_hw_feature_type.html">
+<link title="P11_object_handle" rel="Chapter" href="P11_object_handle.html">
+<link title="P11_session_handle" rel="Chapter" href="P11_session_handle.html">
 <link title="Pkcs11" rel="Chapter" href="Pkcs11.html">
 <link title="Pkcs11_CBC_ENCRYPT_DATA_PARAMS" rel="Chapter" href="Pkcs11_CBC_ENCRYPT_DATA_PARAMS.html">
 <link title="Pkcs11_CK_ATTRIBUTE" rel="Chapter" href="Pkcs11_CK_ATTRIBUTE.html">
@@ -62,191 +97,99 @@
 <link title="Pkcs11_cli" rel="Chapter" href="Pkcs11_cli.html"><title>Pkcs11_CK_RV</title>
 </head>
 <body>
-<code class="code"><span class="keyword">sig</span>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=&nbsp;<span class="constructor">Pkcs11_CK_ULONG</span>.t
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;u&nbsp;=
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">CKR_OK</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_CANCEL</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_HOST_MEMORY</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_SLOT_ID_INVALID</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_GENERAL_ERROR</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_FUNCTION_FAILED</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_ARGUMENTS_BAD</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_NO_EVENT</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_NEED_TO_CREATE_THREADS</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_CANT_LOCK</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_ATTRIBUTE_READ_ONLY</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_ATTRIBUTE_SENSITIVE</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_ATTRIBUTE_TYPE_INVALID</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_ATTRIBUTE_VALUE_INVALID</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_DATA_INVALID</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_DATA_LEN_RANGE</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_DEVICE_ERROR</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_DEVICE_MEMORY</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_DEVICE_REMOVED</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_ENCRYPTED_DATA_INVALID</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_ENCRYPTED_DATA_LEN_RANGE</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_FUNCTION_CANCELED</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_FUNCTION_NOT_PARALLEL</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_FUNCTION_NOT_SUPPORTED</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_KEY_HANDLE_INVALID</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_KEY_SIZE_RANGE</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_KEY_TYPE_INCONSISTENT</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_KEY_NOT_NEEDED</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_KEY_CHANGED</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_KEY_NEEDED</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_KEY_INDIGESTIBLE</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_KEY_FUNCTION_NOT_PERMITTED</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_KEY_NOT_WRAPPABLE</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_KEY_UNEXTRACTABLE</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_MECHANISM_INVALID</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_MECHANISM_PARAM_INVALID</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_OBJECT_HANDLE_INVALID</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_OPERATION_ACTIVE</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_OPERATION_NOT_INITIALIZED</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_PIN_INCORRECT</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_PIN_INVALID</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_PIN_LEN_RANGE</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_PIN_EXPIRED</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_PIN_LOCKED</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_SESSION_CLOSED</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_SESSION_COUNT</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_SESSION_HANDLE_INVALID</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_SESSION_PARALLEL_NOT_SUPPORTED</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_SESSION_READ_ONLY</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_SESSION_EXISTS</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_SESSION_READ_ONLY_EXISTS</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_SESSION_READ_WRITE_SO_EXISTS</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_SIGNATURE_INVALID</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_SIGNATURE_LEN_RANGE</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_TEMPLATE_INCOMPLETE</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_TEMPLATE_INCONSISTENT</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_TOKEN_NOT_PRESENT</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_TOKEN_NOT_RECOGNIZED</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_TOKEN_WRITE_PROTECTED</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_UNWRAPPING_KEY_HANDLE_INVALID</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_UNWRAPPING_KEY_SIZE_RANGE</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_UNWRAPPING_KEY_TYPE_INCONSISTENT</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_USER_ALREADY_LOGGED_IN</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_USER_NOT_LOGGED_IN</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_USER_PIN_NOT_INITIALIZED</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_USER_TYPE_INVALID</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_USER_ANOTHER_ALREADY_LOGGED_IN</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_USER_TOO_MANY_TYPES</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_WRAPPED_KEY_INVALID</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_WRAPPED_KEY_LEN_RANGE</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_WRAPPING_KEY_HANDLE_INVALID</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_WRAPPING_KEY_SIZE_RANGE</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_WRAPPING_KEY_TYPE_INCONSISTENT</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_RANDOM_SEED_NOT_SUPPORTED</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_RANDOM_NO_RNG</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_DOMAIN_PARAMS_INVALID</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_BUFFER_TOO_SMALL</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_SAVED_STATE_INVALID</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_INFORMATION_SENSITIVE</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_STATE_UNSAVEABLE</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_CRYPTOKI_NOT_INITIALIZED</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_CRYPTOKI_ALREADY_INITIALIZED</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_MUTEX_BAD</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_MUTEX_NOT_LOCKED</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_NEW_PIN_MODE</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_NEXT_OTP</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_FUNCTION_REJECTED</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_VENDOR_DEFINED</span>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKR_CS_UNKNOWN</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Unsigned</span>.<span class="constructor">ULong</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_OK&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_CANCEL&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_HOST_MEMORY&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_SLOT_ID_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_GENERAL_ERROR&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_FUNCTION_FAILED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_ARGUMENTS_BAD&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_NO_EVENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_NEED_TO_CREATE_THREADS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_CANT_LOCK&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_ATTRIBUTE_READ_ONLY&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_ATTRIBUTE_SENSITIVE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_ATTRIBUTE_TYPE_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_ATTRIBUTE_VALUE_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_DATA_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_DATA_LEN_RANGE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_DEVICE_ERROR&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_DEVICE_MEMORY&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_DEVICE_REMOVED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_ENCRYPTED_DATA_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_ENCRYPTED_DATA_LEN_RANGE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_FUNCTION_CANCELED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_FUNCTION_NOT_PARALLEL&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_FUNCTION_NOT_SUPPORTED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_KEY_HANDLE_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_KEY_SIZE_RANGE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_KEY_TYPE_INCONSISTENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_KEY_NOT_NEEDED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_KEY_CHANGED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_KEY_NEEDED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_KEY_INDIGESTIBLE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_KEY_FUNCTION_NOT_PERMITTED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_KEY_NOT_WRAPPABLE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_KEY_UNEXTRACTABLE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_MECHANISM_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_MECHANISM_PARAM_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_OBJECT_HANDLE_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_OPERATION_ACTIVE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_OPERATION_NOT_INITIALIZED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_PIN_INCORRECT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_PIN_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_PIN_LEN_RANGE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_PIN_EXPIRED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_PIN_LOCKED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_SESSION_CLOSED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_SESSION_COUNT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_SESSION_HANDLE_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_SESSION_PARALLEL_NOT_SUPPORTED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_SESSION_READ_ONLY&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_SESSION_EXISTS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_SESSION_READ_ONLY_EXISTS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_SESSION_READ_WRITE_SO_EXISTS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_SIGNATURE_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_SIGNATURE_LEN_RANGE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_TEMPLATE_INCOMPLETE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_TEMPLATE_INCONSISTENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_TOKEN_NOT_PRESENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_TOKEN_NOT_RECOGNIZED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_TOKEN_WRITE_PROTECTED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_UNWRAPPING_KEY_HANDLE_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_UNWRAPPING_KEY_SIZE_RANGE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_UNWRAPPING_KEY_TYPE_INCONSISTENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_USER_ALREADY_LOGGED_IN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_USER_NOT_LOGGED_IN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_USER_PIN_NOT_INITIALIZED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_USER_TYPE_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_USER_ANOTHER_ALREADY_LOGGED_IN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_USER_TOO_MANY_TYPES&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_WRAPPED_KEY_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_WRAPPED_KEY_LEN_RANGE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_WRAPPING_KEY_HANDLE_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_WRAPPING_KEY_SIZE_RANGE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_WRAPPING_KEY_TYPE_INCONSISTENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_RANDOM_SEED_NOT_SUPPORTED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_RANDOM_NO_RNG&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_DOMAIN_PARAMS_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_BUFFER_TOO_SMALL&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_SAVED_STATE_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_INFORMATION_SENSITIVE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_STATE_UNSAVEABLE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_CRYPTOKI_NOT_INITIALIZED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_CRYPTOKI_ALREADY_INITIALIZED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_MUTEX_BAD&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_MUTEX_NOT_LOCKED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_NEW_PIN_MODE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_NEXT_OTP&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_FUNCTION_REJECTED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_VENDOR_DEFINED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make&nbsp;:&nbsp;u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;t
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;view&nbsp;:&nbsp;t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;u
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_string&nbsp;:&nbsp;u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;of_string&nbsp;:&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;u
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;equal&nbsp;:&nbsp;u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;compare&nbsp;:&nbsp;u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;u&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;int
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;typ&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t&nbsp;<span class="constructor">Ctypes</span>.typ
+<code class="code"><span class="keyword">sig</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=&nbsp;<span class="constructor">Pkcs11_CK_ULONG</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;equal&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Ppx_deriving_runtime</span>.bool<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;compare&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Ppx_deriving_runtime</span>.int<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_OK&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_CANCEL&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_HOST_MEMORY&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_SLOT_ID_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_GENERAL_ERROR&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_FUNCTION_FAILED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_ARGUMENTS_BAD&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_NO_EVENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_NEED_TO_CREATE_THREADS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_CANT_LOCK&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_ATTRIBUTE_READ_ONLY&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_ATTRIBUTE_SENSITIVE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_ATTRIBUTE_TYPE_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_ATTRIBUTE_VALUE_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_DATA_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_DATA_LEN_RANGE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_DEVICE_ERROR&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_DEVICE_MEMORY&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_DEVICE_REMOVED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_ENCRYPTED_DATA_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_ENCRYPTED_DATA_LEN_RANGE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_FUNCTION_CANCELED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_FUNCTION_NOT_PARALLEL&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_FUNCTION_NOT_SUPPORTED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_KEY_HANDLE_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_KEY_SIZE_RANGE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_KEY_TYPE_INCONSISTENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_KEY_NOT_NEEDED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_KEY_CHANGED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_KEY_NEEDED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_KEY_INDIGESTIBLE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_KEY_FUNCTION_NOT_PERMITTED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_KEY_NOT_WRAPPABLE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_KEY_UNEXTRACTABLE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_MECHANISM_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_MECHANISM_PARAM_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_OBJECT_HANDLE_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_OPERATION_ACTIVE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_OPERATION_NOT_INITIALIZED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_PIN_INCORRECT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_PIN_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_PIN_LEN_RANGE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_PIN_EXPIRED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_PIN_LOCKED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_SESSION_CLOSED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_SESSION_COUNT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_SESSION_HANDLE_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_SESSION_PARALLEL_NOT_SUPPORTED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_SESSION_READ_ONLY&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_SESSION_EXISTS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_SESSION_READ_ONLY_EXISTS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_SESSION_READ_WRITE_SO_EXISTS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_SIGNATURE_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_SIGNATURE_LEN_RANGE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_TEMPLATE_INCOMPLETE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_TEMPLATE_INCONSISTENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_TOKEN_NOT_PRESENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_TOKEN_NOT_RECOGNIZED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_TOKEN_WRITE_PROTECTED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_UNWRAPPING_KEY_HANDLE_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_UNWRAPPING_KEY_SIZE_RANGE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_UNWRAPPING_KEY_TYPE_INCONSISTENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_USER_ALREADY_LOGGED_IN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_USER_NOT_LOGGED_IN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_USER_PIN_NOT_INITIALIZED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_USER_TYPE_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_USER_ANOTHER_ALREADY_LOGGED_IN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_USER_TOO_MANY_TYPES&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_WRAPPED_KEY_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_WRAPPED_KEY_LEN_RANGE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_WRAPPING_KEY_HANDLE_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_WRAPPING_KEY_SIZE_RANGE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_WRAPPING_KEY_TYPE_INCONSISTENT&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_RANDOM_SEED_NOT_SUPPORTED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_RANDOM_NO_RNG&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_DOMAIN_PARAMS_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_BUFFER_TOO_SMALL&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_SAVED_STATE_INVALID&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_INFORMATION_SENSITIVE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_STATE_UNSAVEABLE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_CRYPTOKI_NOT_INITIALIZED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_CRYPTOKI_ALREADY_INITIALIZED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_MUTEX_BAD&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_MUTEX_NOT_LOCKED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_NEW_PIN_MODE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_NEXT_OTP&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_FUNCTION_REJECTED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKR_VENDOR_DEFINED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;typ&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t&nbsp;<span class="constructor">Ctypes</span>.typ<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;view&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11_rv</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make&nbsp;:&nbsp;<span class="constructor">P11_rv</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_RV</span>.t<br>
 <span class="keyword">end</span></code></body></html>

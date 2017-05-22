@@ -3,6 +3,7 @@
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Pkcs11_types.Slot_list.html">
 <link rel="next" href="Pkcs11_types.CK_SESSION_INFO.html">
@@ -14,6 +15,40 @@
 <link title="Index of module types" rel=Appendix href="index_module_types.html">
 <link title="P11" rel="Chapter" href="P11.html">
 <link title="P11_key_attributes" rel="Chapter" href="P11_key_attributes.html">
+<link title="P11_template" rel="Chapter" href="P11_template.html">
+<link title="P11_attribute" rel="Chapter" href="P11_attribute.html">
+<link title="P11_attribute_types" rel="Chapter" href="P11_attribute_types.html">
+<link title="P11_attribute_type" rel="Chapter" href="P11_attribute_type.html">
+<link title="P11_ecdh1_derive_params" rel="Chapter" href="P11_ecdh1_derive_params.html">
+<link title="P11_ecmqv_derive_params" rel="Chapter" href="P11_ecmqv_derive_params.html">
+<link title="P11_session_info" rel="Chapter" href="P11_session_info.html">
+<link title="P11_mechanism_info" rel="Chapter" href="P11_mechanism_info.html">
+<link title="P11_slot_info" rel="Chapter" href="P11_slot_info.html">
+<link title="P11_token_info" rel="Chapter" href="P11_token_info.html">
+<link title="P11_info" rel="Chapter" href="P11_info.html">
+<link title="P11_user_type" rel="Chapter" href="P11_user_type.html">
+<link title="P11_mechanism" rel="Chapter" href="P11_mechanism.html">
+<link title="P11_raw_payload_params" rel="Chapter" href="P11_raw_payload_params.html">
+<link title="P11_pkcs5_pbkd2_data_params" rel="Chapter" href="P11_pkcs5_pbkd2_data_params.html">
+<link title="P11_pkcs5_pbkd2_pseudo_random_function_type" rel="Chapter" href="P11_pkcs5_pbkd2_pseudo_random_function_type.html">
+<link title="P11_pkcs5_pbkdf2_salt_source_type" rel="Chapter" href="P11_pkcs5_pbkdf2_salt_source_type.html">
+<link title="P11_des_cbc_encrypt_data_params" rel="Chapter" href="P11_des_cbc_encrypt_data_params.html">
+<link title="P11_aes_cbc_encrypt_data_params" rel="Chapter" href="P11_aes_cbc_encrypt_data_params.html">
+<link title="P11_rsa_pkcs_pss_params" rel="Chapter" href="P11_rsa_pkcs_pss_params.html">
+<link title="P11_rsa_pkcs_oaep_params" rel="Chapter" href="P11_rsa_pkcs_oaep_params.html">
+<link title="P11_rsa_pkcs_mgf_type" rel="Chapter" href="P11_rsa_pkcs_mgf_type.html">
+<link title="P11_key_gen_mechanism" rel="Chapter" href="P11_key_gen_mechanism.html">
+<link title="P11_mechanism_type" rel="Chapter" href="P11_mechanism_type.html">
+<link title="P11_rv" rel="Chapter" href="P11_rv.html">
+<link title="P11_version" rel="Chapter" href="P11_version.html">
+<link title="P11_key_type" rel="Chapter" href="P11_key_type.html">
+<link title="P11_object_class" rel="Chapter" href="P11_object_class.html">
+<link title="P11_flags" rel="Chapter" href="P11_flags.html">
+<link title="P11_slot_id" rel="Chapter" href="P11_slot_id.html">
+<link title="P11_slot" rel="Chapter" href="P11_slot.html">
+<link title="P11_hw_feature_type" rel="Chapter" href="P11_hw_feature_type.html">
+<link title="P11_object_handle" rel="Chapter" href="P11_object_handle.html">
+<link title="P11_session_handle" rel="Chapter" href="P11_session_handle.html">
 <link title="Pkcs11" rel="Chapter" href="Pkcs11.html">
 <link title="Pkcs11_CBC_ENCRYPT_DATA_PARAMS" rel="Chapter" href="Pkcs11_CBC_ENCRYPT_DATA_PARAMS.html">
 <link title="Pkcs11_CK_ATTRIBUTE" rel="Chapter" href="Pkcs11_CK_ATTRIBUTE.html">
@@ -81,37 +116,6 @@
 <pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = <code class="type">Pkcs11_CK_MECHANISM_INFO._t Ctypes.structure</code> </pre>
 
 
-<pre><code><span id="TYPEu"><span class="keyword">type</span> <code class="type"></code>u</span> = {</code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
-<code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTu.ulMinKeySize">ulMinKeySize</span>&nbsp;: <code class="type">Unsigned.ULong.t</code>;</code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTu.ulMaxKeySize">ulMaxKeySize</span>&nbsp;: <code class="type">Unsigned.ULong.t</code>;</code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code>&nbsp;&nbsp;</code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTu.flags">flags</span>&nbsp;: <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEt">Pkcs11_CK_FLAGS.t</a></code>;</code></td>
-
-</tr></table>
-}
-
-
-
-<pre><span id="VALmake"><span class="keyword">val</span> make</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_INFO.html#TYPEu">u</a> -> <a href="Pkcs11_CK_MECHANISM_INFO.html#TYPEt">t</a></code></pre>
-<pre><span id="VALview"><span class="keyword">val</span> view</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_INFO.html#TYPEt">t</a> -> <a href="Pkcs11_CK_MECHANISM_INFO.html#TYPEu">u</a></code></pre>
-<pre><span id="VALstring_of_flags"><span class="keyword">val</span> string_of_flags</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEt">Pkcs11_CK_FLAGS.t</a> -> string</code></pre>
-<pre><span id="VALstrings_of_flags"><span class="keyword">val</span> strings_of_flags</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEt">Pkcs11_CK_FLAGS.t</a> -> string list</code></pre>
-<pre><span id="VALallowed_flags"><span class="keyword">val</span> allowed_flags</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEt">Pkcs11_CK_FLAGS.t</a></code></pre>
-<pre><span id="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type">?newlines:bool -> ?indent:string -> <a href="Pkcs11_CK_MECHANISM_INFO.html#TYPEu">u</a> -> string</code></pre>
-<pre><span id="VALto_strings"><span class="keyword">val</span> to_strings</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_INFO.html#TYPEu">u</a> -> string list</code></pre>
+<pre><span id="VALmake"><span class="keyword">val</span> make</span> : <code class="type"><a href="P11_mechanism_info.html#TYPEt">P11_mechanism_info.t</a> -> <a href="Pkcs11_CK_MECHANISM_INFO.html#TYPEt">t</a></code></pre>
+<pre><span id="VALview"><span class="keyword">val</span> view</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_INFO.html#TYPEt">t</a> -> <a href="P11_mechanism_info.html#TYPEt">P11_mechanism_info.t</a></code></pre>
 <pre><span id="VALck_mechanism_info"><span class="keyword">val</span> ck_mechanism_info</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_INFO.html#TYPEt">t</a> Ctypes.typ</code></pre></body></html>

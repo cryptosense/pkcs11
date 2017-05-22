@@ -3,6 +3,7 @@
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Pkcs11_template.html">
 <link rel="next" href="Pkcs11_rev.html">
@@ -14,6 +15,40 @@
 <link title="Index of module types" rel=Appendix href="index_module_types.html">
 <link title="P11" rel="Chapter" href="P11.html">
 <link title="P11_key_attributes" rel="Chapter" href="P11_key_attributes.html">
+<link title="P11_template" rel="Chapter" href="P11_template.html">
+<link title="P11_attribute" rel="Chapter" href="P11_attribute.html">
+<link title="P11_attribute_types" rel="Chapter" href="P11_attribute_types.html">
+<link title="P11_attribute_type" rel="Chapter" href="P11_attribute_type.html">
+<link title="P11_ecdh1_derive_params" rel="Chapter" href="P11_ecdh1_derive_params.html">
+<link title="P11_ecmqv_derive_params" rel="Chapter" href="P11_ecmqv_derive_params.html">
+<link title="P11_session_info" rel="Chapter" href="P11_session_info.html">
+<link title="P11_mechanism_info" rel="Chapter" href="P11_mechanism_info.html">
+<link title="P11_slot_info" rel="Chapter" href="P11_slot_info.html">
+<link title="P11_token_info" rel="Chapter" href="P11_token_info.html">
+<link title="P11_info" rel="Chapter" href="P11_info.html">
+<link title="P11_user_type" rel="Chapter" href="P11_user_type.html">
+<link title="P11_mechanism" rel="Chapter" href="P11_mechanism.html">
+<link title="P11_raw_payload_params" rel="Chapter" href="P11_raw_payload_params.html">
+<link title="P11_pkcs5_pbkd2_data_params" rel="Chapter" href="P11_pkcs5_pbkd2_data_params.html">
+<link title="P11_pkcs5_pbkd2_pseudo_random_function_type" rel="Chapter" href="P11_pkcs5_pbkd2_pseudo_random_function_type.html">
+<link title="P11_pkcs5_pbkdf2_salt_source_type" rel="Chapter" href="P11_pkcs5_pbkdf2_salt_source_type.html">
+<link title="P11_des_cbc_encrypt_data_params" rel="Chapter" href="P11_des_cbc_encrypt_data_params.html">
+<link title="P11_aes_cbc_encrypt_data_params" rel="Chapter" href="P11_aes_cbc_encrypt_data_params.html">
+<link title="P11_rsa_pkcs_pss_params" rel="Chapter" href="P11_rsa_pkcs_pss_params.html">
+<link title="P11_rsa_pkcs_oaep_params" rel="Chapter" href="P11_rsa_pkcs_oaep_params.html">
+<link title="P11_rsa_pkcs_mgf_type" rel="Chapter" href="P11_rsa_pkcs_mgf_type.html">
+<link title="P11_key_gen_mechanism" rel="Chapter" href="P11_key_gen_mechanism.html">
+<link title="P11_mechanism_type" rel="Chapter" href="P11_mechanism_type.html">
+<link title="P11_rv" rel="Chapter" href="P11_rv.html">
+<link title="P11_version" rel="Chapter" href="P11_version.html">
+<link title="P11_key_type" rel="Chapter" href="P11_key_type.html">
+<link title="P11_object_class" rel="Chapter" href="P11_object_class.html">
+<link title="P11_flags" rel="Chapter" href="P11_flags.html">
+<link title="P11_slot_id" rel="Chapter" href="P11_slot_id.html">
+<link title="P11_slot" rel="Chapter" href="P11_slot.html">
+<link title="P11_hw_feature_type" rel="Chapter" href="P11_hw_feature_type.html">
+<link title="P11_object_handle" rel="Chapter" href="P11_object_handle.html">
+<link title="P11_session_handle" rel="Chapter" href="P11_session_handle.html">
 <link title="Pkcs11" rel="Chapter" href="Pkcs11.html">
 <link title="Pkcs11_CBC_ENCRYPT_DATA_PARAMS" rel="Chapter" href="Pkcs11_CBC_ENCRYPT_DATA_PARAMS.html">
 <link title="Pkcs11_CK_ATTRIBUTE" rel="Chapter" href="Pkcs11_CK_ATTRIBUTE.html">
@@ -94,38 +129,30 @@ The GetFunctionList function failed, i.e., returned a return-value
 CONVENTIONS.
 <p>
 
-    _t is a type variable that is used to constraint the <code class="code"><span class="constructor">Ctypes</span></code>
-    representation. It would appear in the signature of <code class="code"><span class="constructor">Version</span></code> for
-    instance. However, to make it more palatable for the outside world,
-    what is exported is <code class="code">t</code>, which is defined as <code class="code">_t structure</code>. For
-    some modules, it is quite easy to work with <code class="code">t</code> seen as an abstract
-    time. For other modules, we provide a <code class="code">u</code>ser version of the type,
-    with suitable functions.
+    _t is a type variable used to constrain the <code class="code"><span class="constructor">Ctypes</span></code> representation.  It
+    appears in <code class="code"><span class="constructor">Pkcs11</span>.<span class="constructor">CK_VERSION</span></code>, for instance. However, only <code class="code">t</code> is exported,
+    which is defined as <code class="code">_t&nbsp;structure</code>. For some modules, it is quite easy to
+    work with <code class="code">t</code> seen as an abstract type.  For other modules, the higher-level
+    type such as <code class="code"><span class="constructor">P11</span>.<span class="constructor">Version</span>.t</code> is more practical.
 <p>
 
-    When appropriate, we provide the following functions:
+    Where appropriate, we provide the following functions:
 <p>
 <ul>
-<li><code class="code">create: unit <span class="keywordsign">-&gt;</span> t</code> will allocate a new object of type t
-      (possibly, not initialized)</li>
-</ul>
-<ul>
-<li><code class="code">allocate: t <span class="keywordsign">-&gt;</span> unit</code> will update <code class="code">t</code> in place by allocating
-      memory for its various fields.</li>
-</ul>
-<ul>
-<li><code class="code">view: t <span class="keywordsign">-&gt;</span> u</code> will build the user-land version of the data
-      represented by <code class="code">t</code>.</li>
-</ul>
-<ul>
-<li><code class="code">make: u <span class="keywordsign">-&gt;</span> t</code> will build the ctypes version of the data
-      represented by <code class="code">u</code>.</li>
+<li><code class="code">create:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11</span>.<span class="constructor">CK_x</span>.t</code>: Allocate a new object of type t (possibly, not
+      initialized).</li>
+<li><code class="code">allocate:&nbsp;<span class="constructor">Pkcs11</span>.<span class="constructor">CK_x</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit</code>: Update the object in place by allocating memory for
+      its various fields.</li>
+<li><code class="code">view:&nbsp;<span class="constructor">Pkcs11</span>.<span class="constructor">CK_x</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11</span>.<span class="constructor">X</span>.t</code>: Build the high-level version of the data
+      represented by the argument.</li>
+<li><code class="code">make:&nbsp;<span class="constructor">P11</span>.<span class="constructor">X</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11</span>.<span class="constructor">CK_x</span>.t</code>: Build the Ctypes version of the data
+      represented by <code class="code"><span class="constructor">P11</span>.<span class="constructor">X</span>.t</code>.</li>
 </ul>
 
-    N.B. The last two functions raise the question of why we are not
-    using Ctypes views. The problem is that for some functions of the
-    PKCS11 interface, we have to make several calls to the API to
-    build a proper <code class="code">t</code>, that could then be used to build an <code class="code">u</code>.<br>
+    N.B. The last two functions raise the question of why we are not using
+    Ctypes views. The problem is that for some functions of the PKCS#11
+    interface, we have to make several calls to the API to build a proper
+    <code class="code"><span class="constructor">Pkcs11</span>.<span class="constructor">CK_x</span>.t</code>, that could then be used to build a <code class="code"><span class="constructor">P11</span>.<span class="constructor">X</span>.t</code>.<br>
 
 <pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_ULONG.html">CK_ULONG</a>: <code class="type"><a href="Pkcs11_CK_ULONG.html">Pkcs11_CK_ULONG</a></code></pre>
 <pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_BYTE.html">CK_BYTE</a>: <code class="type"><a href="Pkcs11_CK_BYTE.html">Pkcs11_CK_BYTE</a></code></pre>

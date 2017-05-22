@@ -3,6 +3,7 @@
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="previous" href="P11.Template.html">
 <link rel="Up" href="P11.html">
@@ -13,6 +14,40 @@
 <link title="Index of module types" rel=Appendix href="index_module_types.html">
 <link title="P11" rel="Chapter" href="P11.html">
 <link title="P11_key_attributes" rel="Chapter" href="P11_key_attributes.html">
+<link title="P11_template" rel="Chapter" href="P11_template.html">
+<link title="P11_attribute" rel="Chapter" href="P11_attribute.html">
+<link title="P11_attribute_types" rel="Chapter" href="P11_attribute_types.html">
+<link title="P11_attribute_type" rel="Chapter" href="P11_attribute_type.html">
+<link title="P11_ecdh1_derive_params" rel="Chapter" href="P11_ecdh1_derive_params.html">
+<link title="P11_ecmqv_derive_params" rel="Chapter" href="P11_ecmqv_derive_params.html">
+<link title="P11_session_info" rel="Chapter" href="P11_session_info.html">
+<link title="P11_mechanism_info" rel="Chapter" href="P11_mechanism_info.html">
+<link title="P11_slot_info" rel="Chapter" href="P11_slot_info.html">
+<link title="P11_token_info" rel="Chapter" href="P11_token_info.html">
+<link title="P11_info" rel="Chapter" href="P11_info.html">
+<link title="P11_user_type" rel="Chapter" href="P11_user_type.html">
+<link title="P11_mechanism" rel="Chapter" href="P11_mechanism.html">
+<link title="P11_raw_payload_params" rel="Chapter" href="P11_raw_payload_params.html">
+<link title="P11_pkcs5_pbkd2_data_params" rel="Chapter" href="P11_pkcs5_pbkd2_data_params.html">
+<link title="P11_pkcs5_pbkd2_pseudo_random_function_type" rel="Chapter" href="P11_pkcs5_pbkd2_pseudo_random_function_type.html">
+<link title="P11_pkcs5_pbkdf2_salt_source_type" rel="Chapter" href="P11_pkcs5_pbkdf2_salt_source_type.html">
+<link title="P11_des_cbc_encrypt_data_params" rel="Chapter" href="P11_des_cbc_encrypt_data_params.html">
+<link title="P11_aes_cbc_encrypt_data_params" rel="Chapter" href="P11_aes_cbc_encrypt_data_params.html">
+<link title="P11_rsa_pkcs_pss_params" rel="Chapter" href="P11_rsa_pkcs_pss_params.html">
+<link title="P11_rsa_pkcs_oaep_params" rel="Chapter" href="P11_rsa_pkcs_oaep_params.html">
+<link title="P11_rsa_pkcs_mgf_type" rel="Chapter" href="P11_rsa_pkcs_mgf_type.html">
+<link title="P11_key_gen_mechanism" rel="Chapter" href="P11_key_gen_mechanism.html">
+<link title="P11_mechanism_type" rel="Chapter" href="P11_mechanism_type.html">
+<link title="P11_rv" rel="Chapter" href="P11_rv.html">
+<link title="P11_version" rel="Chapter" href="P11_version.html">
+<link title="P11_key_type" rel="Chapter" href="P11_key_type.html">
+<link title="P11_object_class" rel="Chapter" href="P11_object_class.html">
+<link title="P11_flags" rel="Chapter" href="P11_flags.html">
+<link title="P11_slot_id" rel="Chapter" href="P11_slot_id.html">
+<link title="P11_slot" rel="Chapter" href="P11_slot.html">
+<link title="P11_hw_feature_type" rel="Chapter" href="P11_hw_feature_type.html">
+<link title="P11_object_handle" rel="Chapter" href="P11_object_handle.html">
+<link title="P11_session_handle" rel="Chapter" href="P11_session_handle.html">
 <link title="Pkcs11" rel="Chapter" href="Pkcs11.html">
 <link title="Pkcs11_CBC_ENCRYPT_DATA_PARAMS" rel="Chapter" href="Pkcs11_CBC_ENCRYPT_DATA_PARAMS.html">
 <link title="Pkcs11_CK_ATTRIBUTE" rel="Chapter" href="Pkcs11_CK_ATTRIBUTE.html">
@@ -71,7 +106,7 @@
 &nbsp;</div>
 <h1>Functor <a href="type_P11.Make.html">P11.Make</a></h1>
 
-<pre><span class="keyword">module</span> Make: <div class="sig_block"><code class="code"><span class="keyword">functor</span> (</code><code class="code"><span class="constructor">X</span></code><code class="code"> : </code><code class="type"><a href="Pkcs11.RAW.html">Pkcs11.RAW</a></code><code class="code">) <span class="keywordsign">-&gt;</span> </code><code class="type"><a href="P11.S.html">S</a></code><code class="type"> </code></div></pre><table border="0" cellpadding="3" width="100%">
+<pre><span class="keyword">module</span> Make: <div class="sig_block"><code class="code"><span class="keyword">functor</span>&nbsp;(</code><code class="code"><span class="constructor">X</span></code><code class="code">&nbsp;:&nbsp;</code><code class="type"><a href="Pkcs11.RAW.html">Pkcs11.RAW</a></code><code class="code">)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;</code><code class="type"><a href="P11.S.html">S</a></code><code class="type"> </code></div></pre><table border="0" cellpadding="3" width="100%">
 <tr>
 <td align="left" valign="top" width="1%%"><b>Parameters: </b></td>
 <td>
@@ -89,65 +124,65 @@
 
 <pre><span id="VALinitialize"><span class="keyword">val</span> initialize</span> : <code class="type">unit -> unit</code></pre>
 <pre><span id="VALfinalize"><span class="keyword">val</span> finalize</span> : <code class="type">unit -> unit</code></pre>
-<pre><span id="VALget_info"><span class="keyword">val</span> get_info</span> : <code class="type">unit -> <a href="P11.Info.html#TYPEt">P11.Info.t</a></code></pre>
-<pre><span id="VALget_slot"><span class="keyword">val</span> get_slot</span> : <code class="type"><a href="P11.Slot.html#TYPEt">P11.Slot.t</a> -> (<a href="P11.Slot_id.html#TYPEt">P11.Slot_id.t</a>, string) Pervasives.result</code></pre>
-<pre><span id="VALget_slot_list"><span class="keyword">val</span> get_slot_list</span> : <code class="type">bool -> <a href="P11.Slot_id.html#TYPEt">P11.Slot_id.t</a> list</code></pre>
-<pre><span id="VALget_slot_info"><span class="keyword">val</span> get_slot_info</span> : <code class="type">slot:<a href="P11.Slot_id.html#TYPEt">P11.Slot_id.t</a> -> <a href="P11.Slot_info.html#TYPEt">P11.Slot_info.t</a></code></pre>
-<pre><span id="VALget_token_info"><span class="keyword">val</span> get_token_info</span> : <code class="type">slot:<a href="P11.Slot_id.html#TYPEt">P11.Slot_id.t</a> -> <a href="P11.Token_info.html#TYPEt">P11.Token_info.t</a></code></pre>
-<pre><span id="VALget_mechanism_list"><span class="keyword">val</span> get_mechanism_list</span> : <code class="type">slot:<a href="P11.Slot_id.html#TYPEt">P11.Slot_id.t</a> -> <a href="P11.Mechanism_type.html#TYPEt">P11.Mechanism_type.t</a> list</code></pre>
-<pre><span id="VALget_mechanism_info"><span class="keyword">val</span> get_mechanism_info</span> : <code class="type">slot:<a href="P11.Slot_id.html#TYPEt">P11.Slot_id.t</a> -> <a href="P11.Mechanism_type.html#TYPEt">P11.Mechanism_type.t</a> -> <a href="P11.Mechanism_info.html#TYPEt">P11.Mechanism_info.t</a></code></pre>
-<pre><span id="VALinit_token"><span class="keyword">val</span> init_token</span> : <code class="type">slot:<a href="P11.Slot_id.html#TYPEt">P11.Slot_id.t</a> -> pin:string -> label:string -> unit</code></pre>
-<pre><span id="VALinit_PIN"><span class="keyword">val</span> init_PIN</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -> pin:string -> unit</code></pre>
-<pre><span id="VALset_PIN"><span class="keyword">val</span> set_PIN</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -> oldpin:string -> newpin:string -> unit</code></pre>
-<pre><span id="VALopen_session"><span class="keyword">val</span> open_session</span> : <code class="type">slot:<a href="P11.Slot_id.html#TYPEt">P11.Slot_id.t</a> -> flags:<a href="P11.Flags.html#TYPEt">P11.Flags.t</a> -> <a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a></code></pre>
-<pre><span id="VALclose_session"><span class="keyword">val</span> close_session</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -> unit</code></pre>
-<pre><span id="VALclose_all_sessions"><span class="keyword">val</span> close_all_sessions</span> : <code class="type">slot:<a href="P11.Slot_id.html#TYPEt">P11.Slot_id.t</a> -> unit</code></pre>
-<pre><span id="VALget_session_info"><span class="keyword">val</span> get_session_info</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -> <a href="P11.Session_info.html#TYPEt">P11.Session_info.t</a></code></pre>
-<pre><span id="VALlogin"><span class="keyword">val</span> login</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -> <a href="P11.User_type.html#TYPEt">P11.User_type.t</a> -> string -> unit</code></pre>
-<pre><span id="VALlogout"><span class="keyword">val</span> logout</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -> unit</code></pre>
-<pre><span id="VALcreate_object"><span class="keyword">val</span> create_object</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -> <a href="P11.Template.html#TYPEt">P11.Template.t</a> -> <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a></code></pre>
-<pre><span id="VALcopy_object"><span class="keyword">val</span> copy_object</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -><br>       <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> -> <a href="P11.Template.html#TYPEt">P11.Template.t</a> -> <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a></code></pre>
-<pre><span id="VALdestroy_object"><span class="keyword">val</span> destroy_object</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -> <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> -> unit</code></pre>
-<pre><span id="VALget_attribute_value"><span class="keyword">val</span> get_attribute_value</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -><br>       <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> -> <a href="P11.Attribute_types.html#TYPEt">P11.Attribute_types.t</a> -> <a href="P11.Template.html#TYPEt">P11.Template.t</a></code></pre><div class="info ">
+<pre><span id="VALget_info"><span class="keyword">val</span> get_info</span> : <code class="type">unit -> Info.t</code></pre>
+<pre><span id="VALget_slot"><span class="keyword">val</span> get_slot</span> : <code class="type">Slot.t -> (Slot_id.t, string) Pervasives.result</code></pre>
+<pre><span id="VALget_slot_list"><span class="keyword">val</span> get_slot_list</span> : <code class="type">bool -> Slot_id.t list</code></pre>
+<pre><span id="VALget_slot_info"><span class="keyword">val</span> get_slot_info</span> : <code class="type">slot:Slot_id.t -> Slot_info.t</code></pre>
+<pre><span id="VALget_token_info"><span class="keyword">val</span> get_token_info</span> : <code class="type">slot:Slot_id.t -> Token_info.t</code></pre>
+<pre><span id="VALget_mechanism_list"><span class="keyword">val</span> get_mechanism_list</span> : <code class="type">slot:Slot_id.t -> Mechanism_type.t list</code></pre>
+<pre><span id="VALget_mechanism_info"><span class="keyword">val</span> get_mechanism_info</span> : <code class="type">slot:Slot_id.t -> Mechanism_type.t -> Mechanism_info.t</code></pre>
+<pre><span id="VALinit_token"><span class="keyword">val</span> init_token</span> : <code class="type">slot:Slot_id.t -> pin:string -> label:string -> unit</code></pre>
+<pre><span id="VALinit_PIN"><span class="keyword">val</span> init_PIN</span> : <code class="type">Session_handle.t -> pin:string -> unit</code></pre>
+<pre><span id="VALset_PIN"><span class="keyword">val</span> set_PIN</span> : <code class="type">Session_handle.t -> oldpin:string -> newpin:string -> unit</code></pre>
+<pre><span id="VALopen_session"><span class="keyword">val</span> open_session</span> : <code class="type">slot:Slot_id.t -> flags:Flags.t -> Session_handle.t</code></pre>
+<pre><span id="VALclose_session"><span class="keyword">val</span> close_session</span> : <code class="type">Session_handle.t -> unit</code></pre>
+<pre><span id="VALclose_all_sessions"><span class="keyword">val</span> close_all_sessions</span> : <code class="type">slot:Slot_id.t -> unit</code></pre>
+<pre><span id="VALget_session_info"><span class="keyword">val</span> get_session_info</span> : <code class="type">Session_handle.t -> Session_info.t</code></pre>
+<pre><span id="VALlogin"><span class="keyword">val</span> login</span> : <code class="type">Session_handle.t -> User_type.t -> string -> unit</code></pre>
+<pre><span id="VALlogout"><span class="keyword">val</span> logout</span> : <code class="type">Session_handle.t -> unit</code></pre>
+<pre><span id="VALcreate_object"><span class="keyword">val</span> create_object</span> : <code class="type">Session_handle.t -> Template.t -> Object_handle.t</code></pre>
+<pre><span id="VALcopy_object"><span class="keyword">val</span> copy_object</span> : <code class="type">Session_handle.t -> Object_handle.t -> Template.t -> Object_handle.t</code></pre>
+<pre><span id="VALdestroy_object"><span class="keyword">val</span> destroy_object</span> : <code class="type">Session_handle.t -> Object_handle.t -> unit</code></pre>
+<pre><span id="VALget_attribute_value"><span class="keyword">val</span> get_attribute_value</span> : <code class="type">Session_handle.t -> Object_handle.t -> Attribute_types.t -> Template.t</code></pre><div class="info ">
 May request several attributes at the same time.<br>
 </div>
 
-<pre><span id="VALget_attribute_value'"><span class="keyword">val</span> get_attribute_value'</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -><br>       <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> -> <a href="P11.Attribute_types.html#TYPEt">P11.Attribute_types.t</a> -> <a href="P11.Template.html#TYPEt">P11.Template.t</a></code></pre><div class="info ">
+<pre><span id="VALget_attribute_value'"><span class="keyword">val</span> get_attribute_value'</span> : <code class="type">Session_handle.t -> Object_handle.t -> Attribute_types.t -> Template.t</code></pre><div class="info ">
 Will request attributes one by one.<br>
 </div>
 
-<pre><span id="VALget_attribute_value_optimized"><span class="keyword">val</span> get_attribute_value_optimized</span> : <code class="type"><a href="P11.Attribute_types.html#TYPEt">P11.Attribute_types.t</a> -><br>       [ `Optimized of <a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -> <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> -> <a href="P11.Template.html#TYPEt">P11.Template.t</a> ]</code></pre><div class="info ">
+<pre><span id="VALget_attribute_value_optimized"><span class="keyword">val</span> get_attribute_value_optimized</span> : <code class="type">Attribute_types.t -><br>       [ `Optimized of Session_handle.t -> Object_handle.t -> Template.t ]</code></pre><div class="info ">
 Will request several attributes at the same time. (optimized version)<br>
 </div>
 
-<pre><span id="VALset_attribute_value"><span class="keyword">val</span> set_attribute_value</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -> <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> -> <a href="P11.Template.html#TYPEt">P11.Template.t</a> -> unit</code></pre>
-<pre><span id="VALfind_objects"><span class="keyword">val</span> find_objects</span> : <code class="type">?max_size:int -><br>       <a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -> <a href="P11.Template.html#TYPEt">P11.Template.t</a> -> <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> list</code></pre>
-<pre><span id="VALencrypt"><span class="keyword">val</span> encrypt</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -><br>       <a href="P11.Mechanism.html#TYPEt">P11.Mechanism.t</a> -> <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> -> <a href="P11.Data.html#TYPEt">P11.Data.t</a> -> <a href="P11.Data.html#TYPEt">P11.Data.t</a></code></pre>
-<pre><span id="VALmultipart_encrypt_init"><span class="keyword">val</span> multipart_encrypt_init</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -> <a href="P11.Mechanism.html#TYPEt">P11.Mechanism.t</a> -> <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> -> unit</code></pre>
-<pre><span id="VALmultipart_encrypt_chunck"><span class="keyword">val</span> multipart_encrypt_chunck</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -> <a href="P11.Data.html#TYPEt">P11.Data.t</a> -> <a href="P11.Data.html#TYPEt">P11.Data.t</a></code></pre>
-<pre><span id="VALmultipart_encrypt_final"><span class="keyword">val</span> multipart_encrypt_final</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -> <a href="P11.Data.html#TYPEt">P11.Data.t</a></code></pre>
-<pre><span id="VALmultipart_encrypt"><span class="keyword">val</span> multipart_encrypt</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -><br>       <a href="P11.Mechanism.html#TYPEt">P11.Mechanism.t</a> -> <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> -> <a href="P11.Data.html#TYPEt">P11.Data.t</a> list -> <a href="P11.Data.html#TYPEt">P11.Data.t</a></code></pre>
-<pre><span id="VALdecrypt"><span class="keyword">val</span> decrypt</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -><br>       <a href="P11.Mechanism.html#TYPEt">P11.Mechanism.t</a> -> <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> -> <a href="P11.Data.html#TYPEt">P11.Data.t</a> -> <a href="P11.Data.html#TYPEt">P11.Data.t</a></code></pre>
-<pre><span id="VALmultipart_decrypt_init"><span class="keyword">val</span> multipart_decrypt_init</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -> <a href="P11.Mechanism.html#TYPEt">P11.Mechanism.t</a> -> <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> -> unit</code></pre>
-<pre><span id="VALmultipart_decrypt_chunck"><span class="keyword">val</span> multipart_decrypt_chunck</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -> <a href="P11.Data.html#TYPEt">P11.Data.t</a> -> <a href="P11.Data.html#TYPEt">P11.Data.t</a></code></pre>
-<pre><span id="VALmultipart_decrypt_final"><span class="keyword">val</span> multipart_decrypt_final</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -> <a href="P11.Data.html#TYPEt">P11.Data.t</a></code></pre>
-<pre><span id="VALmultipart_decrypt"><span class="keyword">val</span> multipart_decrypt</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -><br>       <a href="P11.Mechanism.html#TYPEt">P11.Mechanism.t</a> -> <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> -> <a href="P11.Data.html#TYPEt">P11.Data.t</a> list -> <a href="P11.Data.html#TYPEt">P11.Data.t</a></code></pre>
-<pre><span id="VALsign"><span class="keyword">val</span> sign</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -><br>       <a href="P11.Mechanism.html#TYPEt">P11.Mechanism.t</a> -> <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> -> <a href="P11.Data.html#TYPEt">P11.Data.t</a> -> <a href="P11.Data.html#TYPEt">P11.Data.t</a></code></pre>
-<pre><span id="VALsign_recover"><span class="keyword">val</span> sign_recover</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -><br>       <a href="P11.Mechanism.html#TYPEt">P11.Mechanism.t</a> -> <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> -> <a href="P11.Data.html#TYPEt">P11.Data.t</a> -> <a href="P11.Data.html#TYPEt">P11.Data.t</a></code></pre>
-<pre><span id="VALmultipart_sign_init"><span class="keyword">val</span> multipart_sign_init</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -> <a href="P11.Mechanism.html#TYPEt">P11.Mechanism.t</a> -> <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> -> unit</code></pre>
-<pre><span id="VALmultipart_sign_chunck"><span class="keyword">val</span> multipart_sign_chunck</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -> <a href="P11.Data.html#TYPEt">P11.Data.t</a> -> unit</code></pre>
-<pre><span id="VALmultipart_sign_final"><span class="keyword">val</span> multipart_sign_final</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -> <a href="P11.Data.html#TYPEt">P11.Data.t</a></code></pre>
-<pre><span id="VALmultipart_sign"><span class="keyword">val</span> multipart_sign</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -><br>       <a href="P11.Mechanism.html#TYPEt">P11.Mechanism.t</a> -> <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> -> <a href="P11.Data.html#TYPEt">P11.Data.t</a> list -> <a href="P11.Data.html#TYPEt">P11.Data.t</a></code></pre>
-<pre><span id="VALverify"><span class="keyword">val</span> verify</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -><br>       <a href="P11.Mechanism.html#TYPEt">P11.Mechanism.t</a> -><br>       <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> -> data:<a href="P11.Data.html#TYPEt">P11.Data.t</a> -> signature:<a href="P11.Data.html#TYPEt">P11.Data.t</a> -> unit</code></pre>
-<pre><span id="VALverify_recover"><span class="keyword">val</span> verify_recover</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -><br>       <a href="P11.Mechanism.html#TYPEt">P11.Mechanism.t</a> -> <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> -> signature:<a href="P11.Data.html#TYPEt">P11.Data.t</a> -> <a href="P11.Data.html#TYPEt">P11.Data.t</a></code></pre>
-<pre><span id="VALmultipart_verify_init"><span class="keyword">val</span> multipart_verify_init</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -> <a href="P11.Mechanism.html#TYPEt">P11.Mechanism.t</a> -> <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> -> unit</code></pre>
-<pre><span id="VALmultipart_verify_chunck"><span class="keyword">val</span> multipart_verify_chunck</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -> <a href="P11.Data.html#TYPEt">P11.Data.t</a> -> unit</code></pre>
-<pre><span id="VALmultipart_verify_final"><span class="keyword">val</span> multipart_verify_final</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -> <a href="P11.Data.html#TYPEt">P11.Data.t</a> -> unit</code></pre>
-<pre><span id="VALmultipart_verify"><span class="keyword">val</span> multipart_verify</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -><br>       <a href="P11.Mechanism.html#TYPEt">P11.Mechanism.t</a> -><br>       <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> -> <a href="P11.Data.html#TYPEt">P11.Data.t</a> list -> <a href="P11.Data.html#TYPEt">P11.Data.t</a> -> unit</code></pre>
-<pre><span id="VALgenerate_key"><span class="keyword">val</span> generate_key</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -><br>       <a href="P11.Mechanism.html#TYPEt">P11.Mechanism.t</a> -> <a href="P11.Template.html#TYPEt">P11.Template.t</a> -> <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a></code></pre>
-<pre><span id="VALgenerate_key_pair"><span class="keyword">val</span> generate_key_pair</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -><br>       <a href="P11.Mechanism.html#TYPEt">P11.Mechanism.t</a> -><br>       <a href="P11.Template.html#TYPEt">P11.Template.t</a> -> <a href="P11.Template.html#TYPEt">P11.Template.t</a> -> <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> * <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a></code></pre>
-<pre><span id="VALwrap_key"><span class="keyword">val</span> wrap_key</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -><br>       <a href="P11.Mechanism.html#TYPEt">P11.Mechanism.t</a> -> <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> -> <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> -> <a href="P11.Data.html#TYPEt">P11.Data.t</a></code></pre>
-<pre><span id="VALunwrap_key"><span class="keyword">val</span> unwrap_key</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -><br>       <a href="P11.Mechanism.html#TYPEt">P11.Mechanism.t</a> -><br>       <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> -> <a href="P11.Data.html#TYPEt">P11.Data.t</a> -> <a href="P11.Template.html#TYPEt">P11.Template.t</a> -> <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a></code></pre>
-<pre><span id="VALderive_key"><span class="keyword">val</span> derive_key</span> : <code class="type"><a href="P11.Session_handle.html#TYPEt">P11.Session_handle.t</a> -><br>       <a href="P11.Mechanism.html#TYPEt">P11.Mechanism.t</a> -><br>       <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a> -> <a href="P11.Template.html#TYPEt">P11.Template.t</a> -> <a href="P11.Object_handle.html#TYPEt">P11.Object_handle.t</a></code></pre>
+<pre><span id="VALset_attribute_value"><span class="keyword">val</span> set_attribute_value</span> : <code class="type">Session_handle.t -> Object_handle.t -> Template.t -> unit</code></pre>
+<pre><span id="VALfind_objects"><span class="keyword">val</span> find_objects</span> : <code class="type">?max_size:int -> Session_handle.t -> Template.t -> Object_handle.t list</code></pre>
+<pre><span id="VALencrypt"><span class="keyword">val</span> encrypt</span> : <code class="type">Session_handle.t -> Mechanism.t -> Object_handle.t -> Data.t -> Data.t</code></pre>
+<pre><span id="VALmultipart_encrypt_init"><span class="keyword">val</span> multipart_encrypt_init</span> : <code class="type">Session_handle.t -> Mechanism.t -> Object_handle.t -> unit</code></pre>
+<pre><span id="VALmultipart_encrypt_chunck"><span class="keyword">val</span> multipart_encrypt_chunck</span> : <code class="type">Session_handle.t -> Data.t -> Data.t</code></pre>
+<pre><span id="VALmultipart_encrypt_final"><span class="keyword">val</span> multipart_encrypt_final</span> : <code class="type">Session_handle.t -> Data.t</code></pre>
+<pre><span id="VALmultipart_encrypt"><span class="keyword">val</span> multipart_encrypt</span> : <code class="type">Session_handle.t -> Mechanism.t -> Object_handle.t -> Data.t list -> Data.t</code></pre>
+<pre><span id="VALdecrypt"><span class="keyword">val</span> decrypt</span> : <code class="type">Session_handle.t -> Mechanism.t -> Object_handle.t -> Data.t -> Data.t</code></pre>
+<pre><span id="VALmultipart_decrypt_init"><span class="keyword">val</span> multipart_decrypt_init</span> : <code class="type">Session_handle.t -> Mechanism.t -> Object_handle.t -> unit</code></pre>
+<pre><span id="VALmultipart_decrypt_chunck"><span class="keyword">val</span> multipart_decrypt_chunck</span> : <code class="type">Session_handle.t -> Data.t -> Data.t</code></pre>
+<pre><span id="VALmultipart_decrypt_final"><span class="keyword">val</span> multipart_decrypt_final</span> : <code class="type">Session_handle.t -> Data.t</code></pre>
+<pre><span id="VALmultipart_decrypt"><span class="keyword">val</span> multipart_decrypt</span> : <code class="type">Session_handle.t -> Mechanism.t -> Object_handle.t -> Data.t list -> Data.t</code></pre>
+<pre><span id="VALsign"><span class="keyword">val</span> sign</span> : <code class="type">Session_handle.t -> Mechanism.t -> Object_handle.t -> Data.t -> Data.t</code></pre>
+<pre><span id="VALsign_recover"><span class="keyword">val</span> sign_recover</span> : <code class="type">Session_handle.t -> Mechanism.t -> Object_handle.t -> Data.t -> Data.t</code></pre>
+<pre><span id="VALmultipart_sign_init"><span class="keyword">val</span> multipart_sign_init</span> : <code class="type">Session_handle.t -> Mechanism.t -> Object_handle.t -> unit</code></pre>
+<pre><span id="VALmultipart_sign_chunck"><span class="keyword">val</span> multipart_sign_chunck</span> : <code class="type">Session_handle.t -> Data.t -> unit</code></pre>
+<pre><span id="VALmultipart_sign_final"><span class="keyword">val</span> multipart_sign_final</span> : <code class="type">Session_handle.t -> Data.t</code></pre>
+<pre><span id="VALmultipart_sign"><span class="keyword">val</span> multipart_sign</span> : <code class="type">Session_handle.t -> Mechanism.t -> Object_handle.t -> Data.t list -> Data.t</code></pre>
+<pre><span id="VALverify"><span class="keyword">val</span> verify</span> : <code class="type">Session_handle.t -><br>       Mechanism.t -> Object_handle.t -> data:Data.t -> signature:Data.t -> unit</code></pre>
+<pre><span id="VALverify_recover"><span class="keyword">val</span> verify_recover</span> : <code class="type">Session_handle.t -><br>       Mechanism.t -> Object_handle.t -> signature:Data.t -> Data.t</code></pre>
+<pre><span id="VALmultipart_verify_init"><span class="keyword">val</span> multipart_verify_init</span> : <code class="type">Session_handle.t -> Mechanism.t -> Object_handle.t -> unit</code></pre>
+<pre><span id="VALmultipart_verify_chunck"><span class="keyword">val</span> multipart_verify_chunck</span> : <code class="type">Session_handle.t -> Data.t -> unit</code></pre>
+<pre><span id="VALmultipart_verify_final"><span class="keyword">val</span> multipart_verify_final</span> : <code class="type">Session_handle.t -> Data.t -> unit</code></pre>
+<pre><span id="VALmultipart_verify"><span class="keyword">val</span> multipart_verify</span> : <code class="type">Session_handle.t -><br>       Mechanism.t -> Object_handle.t -> Data.t list -> Data.t -> unit</code></pre>
+<pre><span id="VALgenerate_key"><span class="keyword">val</span> generate_key</span> : <code class="type">Session_handle.t -> Mechanism.t -> Template.t -> Object_handle.t</code></pre>
+<pre><span id="VALgenerate_key_pair"><span class="keyword">val</span> generate_key_pair</span> : <code class="type">Session_handle.t -><br>       Mechanism.t -> Template.t -> Template.t -> Object_handle.t * Object_handle.t</code></pre>
+<pre><span id="VALwrap_key"><span class="keyword">val</span> wrap_key</span> : <code class="type">Session_handle.t -><br>       Mechanism.t -> Object_handle.t -> Object_handle.t -> Data.t</code></pre>
+<pre><span id="VALunwrap_key"><span class="keyword">val</span> unwrap_key</span> : <code class="type">Session_handle.t -><br>       Mechanism.t -> Object_handle.t -> Data.t -> Template.t -> Object_handle.t</code></pre>
+<pre><span id="VALderive_key"><span class="keyword">val</span> derive_key</span> : <code class="type">Session_handle.t -><br>       Mechanism.t -> Object_handle.t -> Template.t -> Object_handle.t</code></pre>
 <pre><span class="keyword">module</span> <a href="P11.S.Intermediate_level.html">Intermediate_level</a>: <code class="type"><a href="Pkcs11.S.html">Pkcs11.S</a></code><code class="type"> </code></pre>
 <pre><span class="keyword">module</span> <a href="P11.S.Low_level.html">Low_level</a>: <code class="type"><a href="Pkcs11.RAW.html">Pkcs11.RAW</a></code><code class="type"> </code></pre></body></html>

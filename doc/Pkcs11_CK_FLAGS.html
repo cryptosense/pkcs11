@@ -3,6 +3,7 @@
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Pkcs11_CK_EC_KDF_TYPE.html">
 <link rel="next" href="Pkcs11_CK_HW_FEATURE_TYPE.html">
@@ -14,6 +15,40 @@
 <link title="Index of module types" rel=Appendix href="index_module_types.html">
 <link title="P11" rel="Chapter" href="P11.html">
 <link title="P11_key_attributes" rel="Chapter" href="P11_key_attributes.html">
+<link title="P11_template" rel="Chapter" href="P11_template.html">
+<link title="P11_attribute" rel="Chapter" href="P11_attribute.html">
+<link title="P11_attribute_types" rel="Chapter" href="P11_attribute_types.html">
+<link title="P11_attribute_type" rel="Chapter" href="P11_attribute_type.html">
+<link title="P11_ecdh1_derive_params" rel="Chapter" href="P11_ecdh1_derive_params.html">
+<link title="P11_ecmqv_derive_params" rel="Chapter" href="P11_ecmqv_derive_params.html">
+<link title="P11_session_info" rel="Chapter" href="P11_session_info.html">
+<link title="P11_mechanism_info" rel="Chapter" href="P11_mechanism_info.html">
+<link title="P11_slot_info" rel="Chapter" href="P11_slot_info.html">
+<link title="P11_token_info" rel="Chapter" href="P11_token_info.html">
+<link title="P11_info" rel="Chapter" href="P11_info.html">
+<link title="P11_user_type" rel="Chapter" href="P11_user_type.html">
+<link title="P11_mechanism" rel="Chapter" href="P11_mechanism.html">
+<link title="P11_raw_payload_params" rel="Chapter" href="P11_raw_payload_params.html">
+<link title="P11_pkcs5_pbkd2_data_params" rel="Chapter" href="P11_pkcs5_pbkd2_data_params.html">
+<link title="P11_pkcs5_pbkd2_pseudo_random_function_type" rel="Chapter" href="P11_pkcs5_pbkd2_pseudo_random_function_type.html">
+<link title="P11_pkcs5_pbkdf2_salt_source_type" rel="Chapter" href="P11_pkcs5_pbkdf2_salt_source_type.html">
+<link title="P11_des_cbc_encrypt_data_params" rel="Chapter" href="P11_des_cbc_encrypt_data_params.html">
+<link title="P11_aes_cbc_encrypt_data_params" rel="Chapter" href="P11_aes_cbc_encrypt_data_params.html">
+<link title="P11_rsa_pkcs_pss_params" rel="Chapter" href="P11_rsa_pkcs_pss_params.html">
+<link title="P11_rsa_pkcs_oaep_params" rel="Chapter" href="P11_rsa_pkcs_oaep_params.html">
+<link title="P11_rsa_pkcs_mgf_type" rel="Chapter" href="P11_rsa_pkcs_mgf_type.html">
+<link title="P11_key_gen_mechanism" rel="Chapter" href="P11_key_gen_mechanism.html">
+<link title="P11_mechanism_type" rel="Chapter" href="P11_mechanism_type.html">
+<link title="P11_rv" rel="Chapter" href="P11_rv.html">
+<link title="P11_version" rel="Chapter" href="P11_version.html">
+<link title="P11_key_type" rel="Chapter" href="P11_key_type.html">
+<link title="P11_object_class" rel="Chapter" href="P11_object_class.html">
+<link title="P11_flags" rel="Chapter" href="P11_flags.html">
+<link title="P11_slot_id" rel="Chapter" href="P11_slot_id.html">
+<link title="P11_slot" rel="Chapter" href="P11_slot.html">
+<link title="P11_hw_feature_type" rel="Chapter" href="P11_hw_feature_type.html">
+<link title="P11_object_handle" rel="Chapter" href="P11_object_handle.html">
+<link title="P11_session_handle" rel="Chapter" href="P11_session_handle.html">
 <link title="Pkcs11" rel="Chapter" href="Pkcs11.html">
 <link title="Pkcs11_CBC_ENCRYPT_DATA_PARAMS" rel="Chapter" href="Pkcs11_CBC_ENCRYPT_DATA_PARAMS.html">
 <link title="Pkcs11_CK_ATTRIBUTE" rel="Chapter" href="Pkcs11_CK_ATTRIBUTE.html">
@@ -73,95 +108,20 @@
 </div>
 <h1>Module <a href="type_Pkcs11_CK_FLAGS.html">Pkcs11_CK_FLAGS</a></h1>
 
-<pre><span class="keyword">module</span> Pkcs11_CK_FLAGS: <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_CK_FLAGS.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
-Bit flags used in several places (<code class="code"><span class="constructor">CK_FLAGS</span></code>)<br>
-</div>
-<hr width="100%">
+<pre><span class="keyword">module</span> Pkcs11_CK_FLAGS: <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_CK_FLAGS.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
 
 <pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = <code class="type"><a href="Pkcs11_CK_ULONG.html#TYPEt">Pkcs11_CK_ULONG.t</a></code> </pre>
 
 
+<pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> <a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> Ppx_deriving_runtime.bool</code></pre>
+<pre><span id="VALcompare"><span class="keyword">val</span> compare</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> <a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> Ppx_deriving_runtime.int</code></pre>
+<pre><span id="VALto_yojson"><span class="keyword">val</span> to_yojson</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> Yojson.Safe.json</code></pre>
+<pre><span id="VALof_yojson"><span class="keyword">val</span> of_yojson</span> : <code class="type">Yojson.Safe.json -> <a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> Ppx_deriving_yojson_runtime.error_or</code></pre>
+<pre><span id="VALtyp"><span class="keyword">val</span> typ</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> Ctypes.typ</code></pre>
 <pre><span id="VALempty"><span class="keyword">val</span> empty</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a></code></pre>
-<pre><span id="VALcompare"><span class="keyword">val</span> compare</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> <a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> int</code></pre>
-<pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> <a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> bool</code></pre>
 <pre><span id="VALlogical_or"><span class="keyword">val</span> logical_or</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> <a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> <a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a></code></pre>
 <pre><span id="VAL(||)"><span class="keyword">val</span> (||)</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> <a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> <a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a></code></pre>
-<pre><span id="VAL(&&)"><span class="keyword">val</span> (&amp;&amp;)</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> <a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> <a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a></code></pre>
-<pre><span id="VALget"><span class="keyword">val</span> get</span> : <code class="type">flags:<a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> flag:<a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> bool</code></pre><div class="info ">
-<code class="code">get flags flag</code> returns true if flag is set in flags.<br>
-</div>
-
-<pre><code><span id="TYPEdomain"><span class="keyword">type</span> <code class="type"></code>domain</span> = </code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTdomain.Info_domain"><span class="constructor">Info_domain</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTdomain.Slot_info_domain"><span class="constructor">Slot_info_domain</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTdomain.Token_info_domain"><span class="constructor">Token_info_domain</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTdomain.Session_info_domain"><span class="constructor">Session_info_domain</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTdomain.Mechanism_info_domain"><span class="constructor">Mechanism_info_domain</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTdomain.Initialize_domain"><span class="constructor">Initialize_domain</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTdomain.Wait_for_slot_domain"><span class="constructor">Wait_for_slot_domain</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTdomain.OTP_signature_info_domain"><span class="constructor">OTP_signature_info_domain</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTdomain.Any_domain"><span class="constructor">Any_domain</span></span></code></td>
-
-</tr></table>
-
-<div class="info ">
-* Domains used to distinguish flag values.
- * Any_domain is for flags that can be used across all domains.<br>
-</div>
-
-
+<pre><span id="VALget"><span class="keyword">val</span> get</span> : <code class="type">flags:<a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> flag:<a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> bool</code></pre>
 <pre><span id="VAL_CKF_TOKEN_PRESENT"><span class="keyword">val</span> _CKF_TOKEN_PRESENT</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a></code></pre>
 <pre><span id="VAL_CKF_REMOVABLE_DEVICE"><span class="keyword">val</span> _CKF_REMOVABLE_DEVICE</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a></code></pre>
 <pre><span id="VAL_CKF_HW_SLOT"><span class="keyword">val</span> _CKF_HW_SLOT</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a></code></pre>
@@ -215,30 +175,6 @@ Bit flags used in several places (<code class="code"><span class="constructor">C
 <pre><span id="VAL_CKF_EXCLUDE_CHALLENGE"><span class="keyword">val</span> _CKF_EXCLUDE_CHALLENGE</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a></code></pre>
 <pre><span id="VAL_CKF_EXCLUDE_PIN"><span class="keyword">val</span> _CKF_EXCLUDE_PIN</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a></code></pre>
 <pre><span id="VAL_CKF_USER_FRIENDLY_OTP"><span class="keyword">val</span> _CKF_USER_FRIENDLY_OTP</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a></code></pre>
+<pre><span id="VALto_json"><span class="keyword">val</span> to_json</span> : <code class="type">?pretty:(<a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> string) -><br>       <a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> Yojson.Safe.json</code></pre>
 <pre><span id="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> string</code></pre>
-<pre><span id="VALof_string"><span class="keyword">val</span> of_string</span> : <code class="type">string -> <a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a></code></pre>
-<pre><span id="VALflags_of_domain"><span class="keyword">val</span> flags_of_domain</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEdomain">domain</a> -> (<a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> * string) list</code></pre><div class="info ">
-Returns list of (flag, flag pretty string) for the given domain<br>
-</div>
-
-<pre><span id="VALsplit_with_string"><span class="keyword">val</span> split_with_string</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEdomain">domain</a> -><br>       <a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> (<a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> * string) list * <a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a></code></pre><div class="info ">
-* Split a combined flag value into a list of all the flags it comprises.
- * Returns tuple of list of known (flag, pretty string) for the domain and
- * unknown remaining flags.<br>
-</div>
-
-<pre><span id="VALsplit"><span class="keyword">val</span> split</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEdomain">domain</a> -><br>       <a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> <a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> list * <a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a></code></pre><div class="info ">
-* Split a combined flag value into a list of all the flags it comprises.
- * Returns tuple of list of known flags for the domain and unknown remaining
- * flags.<br>
-</div>
-
-<pre><span id="VALto_pretty_string"><span class="keyword">val</span> to_pretty_string</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEdomain">domain</a> -> <a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> string</code></pre><div class="info ">
-Returns pretty strings for flags separated with | for the given domain.<br>
-</div>
-
-<pre><span id="VALto_pretty_strings"><span class="keyword">val</span> to_pretty_strings</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEdomain">domain</a> -> <a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> -> string list</code></pre><div class="info ">
-Returns list of pretty strings for flags for the given domain.<br>
-</div>
-
-<pre><span id="VALt"><span class="keyword">val</span> t</span> : <code class="type"><a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a> Ctypes.typ</code></pre></body></html>
+<pre><span id="VALof_string"><span class="keyword">val</span> of_string</span> : <code class="type">string -> <a href="Pkcs11_CK_FLAGS.html#TYPEt">t</a></code></pre></body></html>
