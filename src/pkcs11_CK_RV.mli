@@ -1,5 +1,6 @@
 (** Return values. *)
 type t = Pkcs11_CK_ULONG.t
+[@@deriving eq,ord]
 
 val _CKR_OK : t
 val _CKR_CANCEL : t

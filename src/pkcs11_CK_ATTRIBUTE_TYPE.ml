@@ -5,10 +5,9 @@ include P11_attribute_type.Encoding
 type t = Pkcs11_CK_ULONG.t
 [@@deriving ord]
 
-let (==) a b = Unsigned.ULong.compare a b = 0
-
 let view (ul : t) : P11_attribute_type.pack =
   let open P11_attribute_type in
+  let (==) = P11_attribute_type.(==) in
   if ul ==  _CKA_CLASS                              then Pack CKA_CLASS
   else if ul ==  _CKA_TOKEN                         then Pack CKA_TOKEN
   else if ul ==  _CKA_PRIVATE                       then Pack CKA_PRIVATE
