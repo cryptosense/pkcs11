@@ -103,7 +103,7 @@ let () =
     Pkg.mllib ~api:["Pkcs11_rev"] "src/pkcs11_rev.mllib";
     Pkg.clib "src/libpkcs11_rev_stubs.clib";
     Pkg.clib "src/libpkcs11_rev_dllmain.clib";
-    Pkg.mllib ~cond:cmdliner "src/pkcs11_cli.mllib";
+    Pkg.mllib ~cond:cmdliner "src_cli/pkcs11_cli.mllib";
     Pkg.test ~run:false "test/example_sign";
     Pkg.clib "src/fake_dll/libpkcs11_fake.clib";
   ]
