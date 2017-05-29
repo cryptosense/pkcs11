@@ -8,6 +8,7 @@ PKG cmdliner
 PKG ctypes.foreign
 PKG ctypes.stubs
 PKG hex
+PKG integers
 PKG key-parsers
 PKG oUnit
 PKG ppx_deriving.std
