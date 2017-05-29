@@ -100,10 +100,10 @@ let () =
     Pkg.lib "include/pkcs11t.h";
     Pkg.lib "include/pkcs11f.h";
     Pkg.lib "include/pkcs11_module.h";
-    Pkg.mllib ~api:["Pkcs11_rev"] "src/pkcs11_rev.mllib";
-    Pkg.clib "src/libpkcs11_rev_stubs.clib";
-    Pkg.clib "src/libpkcs11_rev_dllmain.clib";
-    Pkg.mllib ~cond:cmdliner "src/pkcs11_cli.mllib";
+    Pkg.mllib ~api:["Pkcs11_rev"] "src_rev/pkcs11_rev.mllib";
+    Pkg.clib "src_rev/libpkcs11_rev_stubs.clib";
+    Pkg.clib "src_rev/libpkcs11_rev_dllmain.clib";
+    Pkg.mllib ~cond:cmdliner "src_cli/pkcs11_cli.mllib";
     Pkg.test ~run:false "test/example_sign";
-    Pkg.clib "src/fake_dll/libpkcs11_fake.clib";
+    Pkg.clib "src_dll/libpkcs11_fake.clib";
   ]

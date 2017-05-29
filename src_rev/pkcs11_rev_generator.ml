@@ -22,7 +22,7 @@ let () =
 
   begin
     Ctypes_helpers.with_out_fmt stubs_c (fun fmt ->
-        input fmt "src/snippets/prelude.h";
+        input fmt "include/prelude.h";
         Cstubs_inverted.write_c fmt ~prefix (module Bindings);
       );
 
