@@ -459,9 +459,6 @@ let compare_pack (Pack a) (Pack b) =
 let equal a b =
   compare a b = 0
 
-let (==) a b =
-  Unsigned.ULong.compare a b = 0
-
 let equal_pack a b =
   compare_pack a b = 0
 
