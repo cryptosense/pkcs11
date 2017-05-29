@@ -159,11 +159,9 @@ module Encoding : sig
 end
 
 type pack = Pack : 'a t -> pack
-[@@deriving yojson]
+[@@deriving eq,ord,yojson]
 
 val compare: 'a t -> 'b t -> int
-
-val compare_pack: pack -> pack -> int
 
 type (_, _) comparison =
   | Equal : ('a, 'a) comparison
@@ -172,8 +170,6 @@ type (_, _) comparison =
 val compare': 'a t -> 'b t -> ('a,'b) comparison
 
 val equal : 'a t -> 'b t -> bool
-
-val equal_pack: pack -> pack -> bool
 
 val of_string : string -> pack
 
