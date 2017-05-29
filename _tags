@@ -13,15 +13,14 @@ true: open(Result)
 <**/*.c>: depend(include/pkcs11t.h)
 <**/*.c>: depend(include/pkcs11f.h)
 <**/*.c>: depend(include/pkcs11_module.h)
+<src_rev/*>: depend(include/prelude.h)
 
 <src/pkcs11.{cma,cmxa}>: use_pkcs11
 <src/pkcs11.cmxs>: link_pkcs11
 
-<src/pkcs11_rev.{cma,cmxa}>: use_pkcs11_rev
-<src/pkcs11_rev.cmxs>: link_pkcs11_rev, here
-
-<src/pkcs11_rev_generator.*>: link_pkcs11
-<src/*>: depend(src/snippets/prelude.h)
+<src_rev/pkcs11_rev.{cma,cmxa}>: use_pkcs11_rev
+<src_rev/pkcs11_rev.cmxs>: link_pkcs11_rev, here
+<src_rev/pkcs11_rev_generator.*>: link_pkcs11
 
 <test/*>: package(oUnit)
 <test/*>: link_pkcs11
