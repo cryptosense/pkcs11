@@ -22,6 +22,7 @@ type kind =
   | Private (* Can be used by private keys. *)
   | RSA (* Can ONLY be used by RSA keys. *)
   | EC (* Can ONLY be used by elliptic curves keys. *)
+[@@deriving eq]
 
 (** [kinds] returns a list of list.
    An attribute has kinds [ A; B; C ] if one of the lists returned by [kinds]
@@ -30,7 +31,5 @@ val kinds: pack -> kind list list
 
 (** Return whether [a] has all kinds [k]. *)
 val is : kind list -> pack -> bool
-
-val equal_kind : kind -> kind -> bool
 
 val type_ : pack -> P11_attribute_type.pack

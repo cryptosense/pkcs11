@@ -9,7 +9,7 @@
 *)
 
 type t
-[@@deriving yojson]
+[@@deriving eq,ord,yojson]
 
 (** Convert to/from a big-endian byte array. *)
 val encode : t -> string
@@ -17,9 +17,6 @@ val decode : string -> t
 
 val to_int : t -> int
 val of_int : int -> t
-
-val equal : t -> t -> bool
-val compare : t -> t -> int
 
 val to_string : t -> string
 

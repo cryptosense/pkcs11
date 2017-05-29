@@ -1,5 +1,5 @@
 type t = P11_attribute.pack list
-  [@@deriving yojson]
+[@@deriving ord,yojson]
 
 val to_string : t -> string
 val pp : Format.formatter -> t -> unit
@@ -11,9 +11,6 @@ val get_pack : t -> P11_attribute_type.pack -> P11_attribute.pack option
 val mem : P11_attribute.pack -> t -> bool
 
 val normalize: t -> t
-
-(** Compares two normalized templates.  *)
-val compare : t -> t -> int
 
 val attribute_types: t -> P11_attribute_type.pack list
 
