@@ -12,7 +12,7 @@ module Flags = P11_flags
 module Object_class = P11_object_class
 module Key_type = P11_key_type
 module Version = P11_version
-module Bigint = Pkcs11.CK_BIGINT
+module Bigint = Pkcs11_CK_BIGINT
 module RV = P11_rv
 module Mechanism_type = P11_mechanism_type
 module Key_gen_mechanism = P11_key_gen_mechanism
@@ -198,11 +198,11 @@ struct
     check_ckr rv info
 
   let get_slot_list : bool -> Slot_id.t list t = fun token_present ->
-    let slot_list = Pkcs11.Slot_list.create () in
+    let slot_list = Pkcs11_slot_list.create () in
     c_GetSlotList token_present slot_list >>? fun () ->
-    Pkcs11.Slot_list.allocate slot_list;
+    Pkcs11_slot_list.allocate slot_list;
     c_GetSlotList token_present slot_list >>? fun () ->
-    return (Pkcs11.Slot_list.view slot_list)
+    return (Pkcs11_slot_list.view slot_list)
 
   let get_slot_info : slot: Slot_id.t -> Slot_info.t t = fun ~slot ->
     let rv, info = c_GetSlotInfo ~slot in
