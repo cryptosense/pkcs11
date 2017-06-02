@@ -50,6 +50,7 @@ Pkcs11_CK_SESSION_HANDLE
 Pkcs11_CK_VOID
 Pkcs11_generated
 Pkcs11_bindings
+P11_driver
 P11_key_attributes
 P11_template
 P11_attribute

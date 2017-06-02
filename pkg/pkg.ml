@@ -19,6 +19,7 @@ let api =
   ; "Pkcs11_CK_ATTRIBUTE"
   ; "Pkcs11_CK_BIGINT"
   ; "Pkcs11_hex_data"
+  ; "P11_driver"
   ; "Pkcs11_key_gen_mechanism"
   ; "Pkcs11_CK_MECHANISM_TYPE"
   ; "Pkcs11_CK_ATTRIBUTE_TYPE"

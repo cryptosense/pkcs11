@@ -46,7 +46,7 @@ let get_singleton = function
 let run ~dll ~slot_id ~pin ~key_label ~plaintext =
   Pkcs11_log.set_logging_function prerr_endline;
   let (module S) =
-    P11.load_driver
+    P11_driver.load_driver
       ?log_calls:None
       ?on_unknown:None
       ~dll

@@ -12,7 +12,7 @@ let assert_equal_string ~ctxt =
     ~cmp:[%eq: string]
     ~printer:[%show: string]
 
-let test_get_info (module R : P11.S) ctxt =
+let test_get_info (module R : P11_driver.S) ctxt =
   let open P11.Info in
   let open P11.Version in
   let got = R.get_info () in
@@ -37,7 +37,7 @@ let test_get_info (module R : P11.S) ctxt =
     expected
     got
 
-let test_get_slot_list (module R : P11.S) ctxt =
+let test_get_slot_list (module R : P11_driver.S) ctxt =
   let expected_slots = [Unsigned.ULong.zero] in
   let got_slots = R.get_slot_list true in
   assert_equal
@@ -47,29 +47,29 @@ let test_get_slot_list (module R : P11.S) ctxt =
     expected_slots
     got_slots
 
-let test_encrypt (module R : P11.S) session key ctxt =
+let test_encrypt (module R : P11_driver.S) session key ctxt =
   let plaintext = "YELLOW SUBMARINE" in
   let got = R.encrypt session P11.Mechanism.CKM_AES_ECB key plaintext in
   let expected = "fake ciphertext" in
   assert_equal_string ~ctxt expected got
 
-let test_decrypt (module R : P11.S) session key ctxt =
+let test_decrypt (module R : P11_driver.S) session key ctxt =
   let ciphertext = "ICE ICE ICE BABY" in
   let got = R.decrypt session P11.Mechanism.CKM_AES_ECB key ciphertext in
   let expected = "fake recovered" in
   assert_equal_string ~ctxt expected got
 
-let test_create_object (module R : P11.S) session ctxt =
+let test_create_object (module R : P11_driver.S) session ctxt =
   let expected = Unsigned.ULong.of_int 1 in
   let got = R.create_object session [] in
   assert_equal_object_handle ~ctxt expected got
 
-let test_copy_object (module R : P11.S) session key ctxt =
+let test_copy_object (module R : P11_driver.S) session key ctxt =
   let expected = Unsigned.ULong.of_int 1 in
   let got = R.copy_object session key [] in
   assert_equal_object_handle ~ctxt expected got
 
-let test_get_attribute_value (module R : P11.S) session key =
+let test_get_attribute_value (module R : P11_driver.S) session key =
   let test attribute_type value ctxt =
     let pack_type = P11.Attribute_type.Pack attribute_type in
     let template = R.get_attribute_value session key [pack_type] in
@@ -100,29 +100,29 @@ let test_get_attribute_value (module R : P11.S) session key =
   ; "CKA_PUBLIC_EXPONENT" >:: test P11.Attribute_type.CKA_PUBLIC_EXPONENT (P11.Bigint.of_int 65537)
   ]
 
-let test_set_attribute_value (module R : P11.S) session key ctxt =
+let test_set_attribute_value (module R : P11_driver.S) session key ctxt =
   R.set_attribute_value session key []
 
-let test_generate_key_pair (module R : P11.S) session ctxt =
+let test_generate_key_pair (module R : P11_driver.S) session ctxt =
   let (pub, priv) = R.generate_key_pair session P11.Mechanism.CKM_AES_KEY_GEN [] [] in
   assert_equal_object_handle ~ctxt (Unsigned.ULong.of_int 1) pub;
   assert_equal_object_handle ~ctxt (Unsigned.ULong.of_int 2) priv
 
-let test_derive (module R : P11.S) session key ctxt =
+let test_derive (module R : P11_driver.S) session key ctxt =
   let mechanism = P11.Mechanism.CKM_XOR_BASE_AND_DATA "test" in
   let template = [] in
   let expected = Unsigned.ULong.of_int 1 in
   let got = R.derive_key session mechanism key template in
   assert_equal_object_handle ~ctxt expected got
 
-let test_sign (module R : P11.S) session key ctxt =
+let test_sign (module R : P11_driver.S) session key ctxt =
   let plaintext = "some data" in
   let mechanism = P11.Mechanism.CKM_SHA256_RSA_PKCS in
   let got = R.sign session mechanism key plaintext in
   let expected = "fake signature" in
   assert_equal_string ~ctxt expected got
 
-let test_verify (module R : P11.S) session key =
+let test_verify (module R : P11_driver.S) session key =
   let verify signature =
     let mechanism = P11.Mechanism.CKM_SHA256_RSA_PKCS in
     let data = "some data" in
@@ -135,20 +135,20 @@ let test_verify (module R : P11.S) session key =
       (verify "OK")
   in
   let test_invalid ctxt =
-    assert_raises (P11.CKR P11.RV.CKR_SIGNATURE_INVALID) @@ fun () ->
+    assert_raises (P11_driver.CKR P11.RV.CKR_SIGNATURE_INVALID) @@ fun () ->
     verify "Invalid"
   in
   [ "Valid" >:: test_valid
   ; "Invalid" >:: test_invalid
   ]
 
-let test_wrap (module R : P11.S) session key ctxt =
+let test_wrap (module R : P11_driver.S) session key ctxt =
   let mechanism = P11.Mechanism.CKM_AES_ECB in
   let expected = "fake wrapped" in
   let got = R.wrap_key session mechanism key key in
   assert_equal_string ~ctxt expected got
 
-let test_unwrap (module R : P11.S) session key ctxt =
+let test_unwrap (module R : P11_driver.S) session key ctxt =
   let mechanism = P11.Mechanism.CKM_AES_ECB in
   let expected = Unsigned.ULong.of_int 1 in
   let plaintext = "plaintext" in
@@ -160,7 +160,7 @@ let test_driver driver =
   ; "Get slot list" >:: test_get_slot_list driver
   ]
 
-let open_session (module R : P11.S) =
+let open_session (module R : P11_driver.S) =
   let session =
     R.open_session
       ~slot:Unsigned.ULong.zero
@@ -177,7 +177,7 @@ let test_session driver =
 
 let test_object driver =
   let session = open_session driver in
-  let (module R : P11.S) = driver in
+  let (module R : P11_driver.S) = driver in
   let key =
     R.generate_key
       session
@@ -203,7 +203,7 @@ let test_object driver =
 let test_p11_load =
   let dll = "./_build/src_dll/dllpkcs11_fake.so" in
   let driver =
-    P11.load_driver
+    P11_driver.load_driver
       ?log_calls:None
       ?on_unknown:None
       ~use_get_function_list:`False

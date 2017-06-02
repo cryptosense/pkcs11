@@ -77,6 +77,7 @@ Pkcs11_bindings
 Pkcs11_data
 Pkcs11_generator
 Pkcs11_helpers
+P11_driver
 Pkcs11_key_gen_mechanism
 Pkcs11_log
 Pkcs11_mechanism_list
