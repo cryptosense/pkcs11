@@ -55,4 +55,4 @@ let of_string =
 let to_yojson object_class =
   `String (to_string object_class)
 
-let of_yojson = Ctypes_helpers.of_json_string ~typename:"object class" of_string
+let of_yojson = Pkcs11_helpers.of_json_string ~typename:"object class" of_string

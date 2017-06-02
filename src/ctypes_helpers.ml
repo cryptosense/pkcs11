@@ -210,22 +210,3 @@ let with_out_fmt filename f =
   in
   finally ();
   result
-
-(**
-    Build a of_json function out of a of_string function.
-    The typename is used for the error message.
- *)
-let of_json_string ~typename of_string json =
-  let err msg =
-    Error
-      (Printf.sprintf "(while parsing %s): %s" typename msg)
-  in
-  match json with
-    | `String s ->
-        begin
-          try
-            Ok (of_string s)
-          with Invalid_argument _ ->
-            err "of_string failed"
-        end
-    | _ -> err "Not a JSON string"
