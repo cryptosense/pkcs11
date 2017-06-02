@@ -14,9 +14,10 @@ build-test: [
   [ "ocaml" "pkg/pkg.ml" "test" ]
 ]
 depends: [
-  "ctypes" { >= "0.11.0" }
+  "ctypes" { >= "0.12.0" }
   "ctypes-foreign" { >= "0.4.0" }
   "hex" { >= "1.0.0" }
+  "integers"
   "key-parsers" { >= "0.5.0" & != "0.6.0" }
   "ppx_deriving" { >= "4.0" }
   "ppx_deriving_yojson" { >= "3.0" }

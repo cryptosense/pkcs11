@@ -2,6 +2,7 @@ true: bin_annot
 true: package(ctypes.foreign)
 true: package(ctypes.stubs)
 true: package(hex)
+true: package(integers)
 true: package(key-parsers)
 true: package(ppx_deriving.std)
 true: package(ppx_deriving_yojson)
