@@ -5,7 +5,7 @@ Pkcs11_data
 Pkcs11_CK_BYTE
 Ctypes_helpers
 Pkcs11_CK_SESSION_INFO
-Pkcs11_helpers
+P11_helpers
 Pkcs11_CK_FLAGS
 Pkcs11_types
 Pkcs11_CK_ATTRIBUTE_SET

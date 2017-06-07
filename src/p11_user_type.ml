@@ -30,4 +30,4 @@ let of_string =
 let to_yojson user_type =
   `String (to_string user_type)
 
-let of_yojson = Pkcs11_helpers.of_json_string ~typename:"user type" of_string
+let of_yojson = P11_helpers.of_json_string ~typename:"user type" of_string

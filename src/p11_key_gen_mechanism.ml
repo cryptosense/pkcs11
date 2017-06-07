@@ -22,4 +22,4 @@ let to_yojson mechanism_type =
   with Invalid_argument _ ->
     `Null
 
-let of_yojson = Pkcs11_helpers.of_json_string ~typename:"keygen mechanism" of_string
+let of_yojson = P11_helpers.of_json_string ~typename:"keygen mechanism" of_string

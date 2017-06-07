@@ -473,7 +473,7 @@ let pack_to_json (Pack attribute) = to_json attribute
 
 let pack_to_yojson = pack_to_json
 
-let pack_of_yojson = Pkcs11_helpers.of_json_string ~typename:"attribute type" of_string
+let pack_of_yojson = P11_helpers.of_json_string ~typename:"attribute type" of_string
 
 let elements =
   [
