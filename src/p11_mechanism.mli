@@ -22,31 +22,31 @@ type t =
   | CKM_SHA512_RSA_PKCS_PSS of P11_rsa_pkcs_pss_params.t
   | CKM_AES_KEY_GEN
   | CKM_AES_ECB
-  | CKM_AES_CBC of Pkcs11_hex_data.t
-  | CKM_AES_CBC_PAD of Pkcs11_hex_data.t
+  | CKM_AES_CBC of P11_hex_data.t
+  | CKM_AES_CBC_PAD of P11_hex_data.t
   | CKM_AES_MAC
   | CKM_AES_MAC_GENERAL of P11_ulong.t
-  | CKM_AES_ECB_ENCRYPT_DATA of Pkcs11_hex_data.t
+  | CKM_AES_ECB_ENCRYPT_DATA of P11_hex_data.t
   | CKM_AES_CBC_ENCRYPT_DATA of P11_aes_cbc_encrypt_data_params.t
   | CKM_DES_KEY_GEN
   | CKM_DES_ECB
-  | CKM_DES_CBC of Pkcs11_hex_data.t
-  | CKM_DES_CBC_PAD of Pkcs11_hex_data.t
+  | CKM_DES_CBC of P11_hex_data.t
+  | CKM_DES_CBC_PAD of P11_hex_data.t
   | CKM_DES_MAC
   | CKM_DES_MAC_GENERAL of P11_ulong.t
-  | CKM_DES_ECB_ENCRYPT_DATA of Pkcs11_hex_data.t
+  | CKM_DES_ECB_ENCRYPT_DATA of P11_hex_data.t
   | CKM_DES_CBC_ENCRYPT_DATA of P11_des_cbc_encrypt_data_params.t
   | CKM_DES3_KEY_GEN
   | CKM_DES3_ECB
-  | CKM_DES3_CBC of Pkcs11_hex_data.t
-  | CKM_DES3_CBC_PAD of Pkcs11_hex_data.t
+  | CKM_DES3_CBC of P11_hex_data.t
+  | CKM_DES3_CBC_PAD of P11_hex_data.t
   | CKM_DES3_MAC
   | CKM_DES3_MAC_GENERAL of P11_ulong.t
-  | CKM_DES3_ECB_ENCRYPT_DATA of Pkcs11_hex_data.t
+  | CKM_DES3_ECB_ENCRYPT_DATA of P11_hex_data.t
   | CKM_DES3_CBC_ENCRYPT_DATA of P11_des_cbc_encrypt_data_params.t
-  | CKM_CONCATENATE_BASE_AND_DATA of Pkcs11_hex_data.t
-  | CKM_CONCATENATE_DATA_AND_BASE of Pkcs11_hex_data.t
-  | CKM_XOR_BASE_AND_DATA of Pkcs11_hex_data.t
+  | CKM_CONCATENATE_BASE_AND_DATA of P11_hex_data.t
+  | CKM_CONCATENATE_DATA_AND_BASE of P11_hex_data.t
+  | CKM_XOR_BASE_AND_DATA of P11_hex_data.t
   | CKM_EXTRACT_KEY_FROM_KEY of P11_ulong.t
   | CKM_CONCATENATE_BASE_AND_KEY of P11_object_handle.t
   | CKM_EC_KEY_PAIR_GEN

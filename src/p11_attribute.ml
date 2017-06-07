@@ -83,13 +83,13 @@ let to_json : type a . a t -> Yojson.Safe.json = fun attribute ->
     p @@ fun b -> `String (if b then "CK_TRUE" else "CK_FALSE") in
   let p_string : string -> string -> Yojson.Safe.json =
     p @@ fun s -> `String s in
-  let p_data = p Pkcs11_hex_data.to_yojson in
+  let p_data = p P11_hex_data.to_yojson in
   let p_key_type = p P11_key_type.to_yojson in
   let p_ulong = p P11_ulong.to_yojson in
   let p_bigint = p Pkcs11_CK_BIGINT.to_yojson in
   let p_mechanism_type = p P11_key_gen_mechanism.to_yojson in
   let p_ec_params = p Key_parsers.Asn1.EC.Params.to_yojson in
-  let p_ec_point = p (fun cs -> Pkcs11_hex_data.to_yojson @@ Cstruct.to_string cs)
+  let p_ec_point = p (fun cs -> P11_hex_data.to_yojson @@ Cstruct.to_string cs)
   in
   match attribute with
     | CKA_CLASS, param ->
@@ -208,7 +208,7 @@ let pack_of_yojson json : (pack, string) result =
         | _ -> Error "Not a CK_BBOOL"
       ) in
     let p_string = parse_using [%of_yojson: string] in
-    let p_data = parse_using Pkcs11_hex_data.of_yojson in
+    let p_data = parse_using P11_hex_data.of_yojson in
     let p_key_type = parse_using P11_key_type.of_yojson in
     let p_ulong = parse_using P11_ulong.of_yojson in
     let p_bigint = parse_using Pkcs11_CK_BIGINT.of_yojson in
@@ -216,12 +216,12 @@ let pack_of_yojson json : (pack, string) result =
     let p_ec_params = parse_using Key_parsers.Asn1.EC.Params.of_yojson in
     let p_ec_point = parse_using (fun js ->
         let open Ppx_deriving_yojson_runtime in
-        Pkcs11_hex_data.of_yojson js >|= Cstruct.of_string
+        P11_hex_data.of_yojson js >|= Cstruct.of_string
       )
     in
     let p_not_implemented typ' =
       let open Ppx_deriving_yojson_runtime in
-      Pkcs11_hex_data.of_yojson param >>= fun p ->
+      P11_hex_data.of_yojson param >>= fun p ->
       Ok (Pack (typ', P11_attribute_type.NOT_IMPLEMENTED p))
     in
     let open P11_attribute_type in

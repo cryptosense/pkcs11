@@ -1,4 +1,4 @@
-module Data = Pkcs11_hex_data
+module Data = P11_hex_data
 module Session_handle = P11_session_handle
 module Object_handle = P11_object_handle
 module HW_feature_type = P11_hw_feature_type

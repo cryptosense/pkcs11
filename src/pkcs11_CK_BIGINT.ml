@@ -29,10 +29,10 @@ let decode s = Z.of_bits @@ string_reverse s
 let to_int = Z.to_int
 let of_int = Z.of_int
 
-let to_yojson z = Pkcs11_hex_data.to_yojson @@ encode z
+let to_yojson z = P11_hex_data.to_yojson @@ encode z
 let of_yojson j =
   let open Ppx_deriving_yojson_runtime in
-  Pkcs11_hex_data.of_yojson j >|= decode
+  P11_hex_data.of_yojson j >|= decode
 
 let equal = Z.equal
 let compare = Z.compare
