@@ -27,3 +27,16 @@ let strings_of_record =
        Printf.sprintf "%s: %s" name value
     )
 
+let of_json_string ~typename of_string json =
+  let err msg =
+    Error (Printf.sprintf "(while parsing %s): %s" typename msg)
+  in
+  match json with
+  | `String s ->
+    begin
+      try
+        Ok (of_string s)
+      with Invalid_argument _ ->
+        err "of_string failed"
+    end
+  | _ -> err "Not a JSON string"

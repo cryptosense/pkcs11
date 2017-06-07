@@ -50,4 +50,4 @@ let to_json key_type =
     `Null
 
 let to_yojson = to_json
-let of_yojson = Ctypes_helpers.of_json_string ~typename:"MGF type" of_string
+let of_yojson = Pkcs11_helpers.of_json_string ~typename:"MGF type" of_string

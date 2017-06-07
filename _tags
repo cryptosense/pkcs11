@@ -1,12 +1,20 @@
 true: bin_annot
-true: package(ctypes.foreign)
-true: package(ctypes.stubs)
 true: package(hex)
 true: package(integers)
 true: package(key-parsers)
 true: package(ppx_deriving.std)
 true: package(ppx_deriving_yojson)
 true: open(Result)
+
+<src/ctypes_helpers.*>: package(ctypes.stubs)
+<src/p11_driver.*>: package(ctypes.stubs)
+<src/pkcs11*>: package(ctypes.foreign)
+<src/pkcs11*>: package(ctypes.stubs)
+<src_rev/*>: package(ctypes.foreign)
+<src_rev/*>: package(ctypes.stubs)
+<test/*>: package(ctypes.foreign)
+<test/*>: package(ctypes.stubs)
+
 <src_cli/*>: package(cmdliner)
 <src>: include
 <include>: include

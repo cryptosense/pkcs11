@@ -4,6 +4,5 @@ val of_list : Pkcs11_CK_ATTRIBUTE.t list -> t
 val allocate : t -> unit
 val to_list : t -> Pkcs11_CK_ATTRIBUTE.t list
 
-type u = Pkcs11_CK_ATTRIBUTE.pack list
-val make : u -> t
-val view : t -> u
+val make : P11_template.t -> t
+val view : t -> P11_template.t

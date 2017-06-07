@@ -17,9 +17,7 @@ let allocate t =
 
 let to_list (t: t) = Ctypes.CArray.to_list t
 
-type u = Pkcs11_CK_ATTRIBUTE.pack list
-
-let view (t) : u =
+let view t =
   Ctypes.CArray.to_list t
   |> List.map Pkcs11_CK_ATTRIBUTE.view
 
