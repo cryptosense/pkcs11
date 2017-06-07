@@ -109,7 +109,7 @@ let string attribute_type string : t =
   a
 
 let bigint attr_type u =
-  string attr_type (Pkcs11_CK_BIGINT.encode u)
+  string attr_type (P11_bigint.encode u)
 
 (* Accessors *)
 
@@ -141,7 +141,7 @@ let unsafe_get_key_type : t -> Pkcs11_CK_KEY_TYPE.t =
   unsafe_get_ulong
 
 let unsafe_get_bigint t =
-  Pkcs11_CK_BIGINT.decode (unsafe_get_string t)
+  P11_bigint.decode (unsafe_get_string t)
 
 let decode_ec_point cs =
   let grammar = Key_parsers.Asn1.EC.point_grammar in
@@ -344,16 +344,16 @@ let compare : type a b. a u -> b u -> int = fun a b ->
           Key_parsers.Asn1.EC.Params.compare a_param b_param
       | (CKA_EC_POINT, a_param), (CKA_EC_POINT, b_param) ->
           Key_parsers.Asn1.EC.compare_point a_param b_param
-      | (CKA_PUBLIC_EXPONENT, a_param), (CKA_PUBLIC_EXPONENT, b_param) -> Pkcs11_CK_BIGINT.compare a_param b_param
-      | (CKA_PRIVATE_EXPONENT, a_param), (CKA_PRIVATE_EXPONENT, b_param) -> Pkcs11_CK_BIGINT.compare a_param b_param
-      | (CKA_PRIME_1, a_param), (CKA_PRIME_1, b_param) -> Pkcs11_CK_BIGINT.compare a_param b_param
-      | (CKA_PRIME_2, a_param), (CKA_PRIME_2, b_param) -> Pkcs11_CK_BIGINT.compare a_param b_param
-      | (CKA_EXPONENT_1, a_param), (CKA_EXPONENT_1, b_param) -> Pkcs11_CK_BIGINT.compare a_param b_param
-      | (CKA_EXPONENT_2, a_param), (CKA_EXPONENT_2, b_param) -> Pkcs11_CK_BIGINT.compare a_param b_param
-      | (CKA_COEFFICIENT, a_param), (CKA_COEFFICIENT, b_param) -> Pkcs11_CK_BIGINT.compare a_param b_param
-      | (CKA_PRIME, a_param), (CKA_PRIME, b_param) -> Pkcs11_CK_BIGINT.compare a_param b_param
-      | (CKA_SUBPRIME, a_param), (CKA_SUBPRIME, b_param) -> Pkcs11_CK_BIGINT.compare a_param b_param
-      | (CKA_MODULUS, a_param), (CKA_MODULUS, b_param) -> Pkcs11_CK_BIGINT.compare a_param b_param
+      | (CKA_PUBLIC_EXPONENT, a_param), (CKA_PUBLIC_EXPONENT, b_param) -> P11_bigint.compare a_param b_param
+      | (CKA_PRIVATE_EXPONENT, a_param), (CKA_PRIVATE_EXPONENT, b_param) -> P11_bigint.compare a_param b_param
+      | (CKA_PRIME_1, a_param), (CKA_PRIME_1, b_param) -> P11_bigint.compare a_param b_param
+      | (CKA_PRIME_2, a_param), (CKA_PRIME_2, b_param) -> P11_bigint.compare a_param b_param
+      | (CKA_EXPONENT_1, a_param), (CKA_EXPONENT_1, b_param) -> P11_bigint.compare a_param b_param
+      | (CKA_EXPONENT_2, a_param), (CKA_EXPONENT_2, b_param) -> P11_bigint.compare a_param b_param
+      | (CKA_COEFFICIENT, a_param), (CKA_COEFFICIENT, b_param) -> P11_bigint.compare a_param b_param
+      | (CKA_PRIME, a_param), (CKA_PRIME, b_param) -> P11_bigint.compare a_param b_param
+      | (CKA_SUBPRIME, a_param), (CKA_SUBPRIME, b_param) -> P11_bigint.compare a_param b_param
+      | (CKA_MODULUS, a_param), (CKA_MODULUS, b_param) -> P11_bigint.compare a_param b_param
 
       | (CKA_TOKEN, a_param), (CKA_TOKEN, b_param) -> compare_bool a_param b_param
       | (CKA_PRIVATE, a_param), (CKA_PRIVATE, b_param) -> compare_bool a_param b_param

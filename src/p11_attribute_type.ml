@@ -23,17 +23,17 @@ type 'a t =
   | CKA_DERIVE : bool t
   | CKA_START_DATE : not_implemented t
   | CKA_END_DATE : not_implemented t
-  | CKA_MODULUS : Pkcs11_CK_BIGINT.t t
+  | CKA_MODULUS : P11_bigint.t t
   | CKA_MODULUS_BITS : P11_ulong.t t
-  | CKA_PUBLIC_EXPONENT : Pkcs11_CK_BIGINT.t t
-  | CKA_PRIVATE_EXPONENT : Pkcs11_CK_BIGINT.t t
-  | CKA_PRIME_1 : Pkcs11_CK_BIGINT.t t
-  | CKA_PRIME_2 : Pkcs11_CK_BIGINT.t t
-  | CKA_EXPONENT_1 : Pkcs11_CK_BIGINT.t t
-  | CKA_EXPONENT_2 : Pkcs11_CK_BIGINT.t t
-  | CKA_COEFFICIENT : Pkcs11_CK_BIGINT.t t
-  | CKA_PRIME : Pkcs11_CK_BIGINT.t t
-  | CKA_SUBPRIME : Pkcs11_CK_BIGINT.t t
+  | CKA_PUBLIC_EXPONENT : P11_bigint.t t
+  | CKA_PRIVATE_EXPONENT : P11_bigint.t t
+  | CKA_PRIME_1 : P11_bigint.t t
+  | CKA_PRIME_2 : P11_bigint.t t
+  | CKA_EXPONENT_1 : P11_bigint.t t
+  | CKA_EXPONENT_2 : P11_bigint.t t
+  | CKA_COEFFICIENT : P11_bigint.t t
+  | CKA_PRIME : P11_bigint.t t
+  | CKA_SUBPRIME : P11_bigint.t t
   | CKA_PRIME_BITS : P11_ulong.t t
   | CKA_SUBPRIME_BITS : P11_ulong.t t
   | CKA_VALUE_LEN : P11_ulong.t t

@@ -55,7 +55,7 @@ let string t elem =
     t
     elem
 
-let bigint t elem = string t (Pkcs11_CK_BIGINT.encode elem)
+let bigint t elem = string t (P11_bigint.encode elem)
 
 let set_access_error t = setf t ulValueLen Unsigned.ULong.max_int
 
