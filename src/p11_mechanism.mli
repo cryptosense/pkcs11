@@ -56,7 +56,7 @@ type t =
   | CKM_ECDH1_COFACTOR_DERIVE of P11_ecdh1_derive_params.t
   | CKM_ECMQV_DERIVE of P11_ecmqv_derive_params.t
   | CKM_PKCS5_PBKD2 of P11_pkcs5_pbkd2_data_params.t
-  | CKM_CS_UNKNOWN of P11_raw_payload_params.t
+  | CKM_CS_UNKNOWN of P11_ulong.t
 [@@deriving ord,yojson]
 
 val mechanism_type: t -> P11_mechanism_type.t

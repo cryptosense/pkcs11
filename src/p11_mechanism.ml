@@ -56,7 +56,7 @@ type t =
   | CKM_ECDH1_COFACTOR_DERIVE of P11_ecdh1_derive_params.t
   | CKM_ECMQV_DERIVE of P11_ecmqv_derive_params.t
   | CKM_PKCS5_PBKD2 of P11_pkcs5_pbkd2_data_params.t
-  | CKM_CS_UNKNOWN of P11_raw_payload_params.t
+  | CKM_CS_UNKNOWN of P11_ulong.t
 
 let to_json =
   let simple name = `String name in
@@ -179,7 +179,7 @@ let to_json =
     | CKM_PKCS5_PBKD2 p ->
         param "CKM_PKCS5_PBKD2" p P11_pkcs5_pbkd2_data_params.to_yojson
     | CKM_CS_UNKNOWN p ->
-        param "CKM_NOT_IMPLEMENTED" p P11_raw_payload_params.to_yojson
+        param "CKM_NOT_IMPLEMENTED" p P11_ulong.to_yojson
 
 let of_yojson json =
   let parse name param =
@@ -266,7 +266,7 @@ let of_yojson json =
       | "CKM_ECDH1_DERIVE" ->
         P11_ecdh1_derive_params.of_yojson param >>= fun r -> Ok (CKM_ECDH1_DERIVE r)
       | _ ->
-        P11_raw_payload_params.of_yojson param >>= fun params ->
+        P11_ulong.of_yojson param >>= fun params ->
         Ok (CKM_CS_UNKNOWN params)
   in
   match json with
@@ -339,8 +339,7 @@ let mechanism_type m =
     | CKM_ECDH1_COFACTOR_DERIVE _ -> T.CKM_ECDH1_COFACTOR_DERIVE
     | CKM_ECMQV_DERIVE _ -> T.CKM_ECMQV_DERIVE
     | CKM_PKCS5_PBKD2 _ -> T.CKM_PKCS5_PBKD2
-    | CKM_CS_UNKNOWN params ->
-      let (mechanism_type, _) = Pkcs11_CK_RAW_PAYLOAD.make params in
+    | CKM_CS_UNKNOWN mechanism_type ->
       T.CKM_CS_UNKNOWN mechanism_type
 
 let compare a b =
@@ -399,10 +398,9 @@ let compare a b =
         CKM_DES_MAC_GENERAL b_param
       | CKM_DES3_MAC_GENERAL a_param,
         CKM_DES3_MAC_GENERAL b_param
-        -> P11_ulong.compare a_param b_param
       | CKM_CS_UNKNOWN a_param,
         CKM_CS_UNKNOWN b_param
-        -> P11_raw_payload_params.compare a_param b_param
+        -> P11_ulong.compare a_param b_param
       | CKM_ECDH1_DERIVE a_param,
         CKM_ECDH1_DERIVE b_param
       | CKM_ECDH1_COFACTOR_DERIVE a_param,

@@ -13,7 +13,6 @@ P11_token_info
 P11_info
 P11_user_type
 P11_mechanism
-P11_raw_payload_params
 P11_pkcs5_pbkd2_data_params
 P11_pkcs5_pbkd2_pseudo_random_function_type
 P11_pkcs5_pbkdf2_salt_source_type
@@ -58,7 +57,6 @@ Pkcs11_CK_OBJECT_HANDLE
 Pkcs11_CK_PKCS5_PBKD2_PARAMS
 Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE
 Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE
-Pkcs11_CK_RAW_PAYLOAD
 Pkcs11_CK_RSA_PKCS_MGF_TYPE
 Pkcs11_CK_RSA_PKCS_OAEP_PARAMS
 Pkcs11_CK_RSA_PKCS_PSS_PARAMS
