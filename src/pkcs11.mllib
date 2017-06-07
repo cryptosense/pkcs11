@@ -84,3 +84,4 @@ P11_slot
 P11_hw_feature_type
 P11_object_handle
 P11_session_handle
+P11_ec_kdf

@@ -84,6 +84,7 @@ let api =
   ; "P11_hw_feature_type"
   ; "P11_object_handle"
   ; "P11_session_handle"
+  ; "P11_ec_kdf"
   ]
 
 let cmdliner = Conf.with_pkg "cmdliner"

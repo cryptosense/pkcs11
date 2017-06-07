@@ -32,3 +32,4 @@ module Attribute_type = P11_attribute_type
 module Attribute_types = P11_attribute_types
 module Attribute = P11_attribute
 module Template = P11_template
+module EC_KDF = P11_ec_kdf

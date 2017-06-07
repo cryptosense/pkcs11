@@ -1,5 +1,5 @@
 type t =
-  { kdf: Pkcs11_CK_EC_KDF_TYPE.u
+  { kdf: P11_ec_kdf.t
   ; shared_data: string option
   ; public_data: string
   ; private_data_len: P11_ulong.t
@@ -13,7 +13,7 @@ let compare : t -> t -> int =
 
 let to_yojson params =
   `Assoc
-    [ "kdf", Pkcs11_CK_EC_KDF_TYPE.u_to_yojson params.kdf
+    [ "kdf", P11_ec_kdf.to_yojson params.kdf
     ; "shared_data", [%to_yojson: string option] params.shared_data
     ; "public_data", `String params.public_data
     ; "private_data_len", `String (Unsigned.ULong.to_string params.private_data_len)
