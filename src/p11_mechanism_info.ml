@@ -8,7 +8,7 @@ type t =
 let allowed_flags =
   let flags = P11_flags.(flags_of_domain Mechanism_info_domain) in
   let flags = List.map fst flags in
-  List.fold_left P11_flags.logical_or Pkcs11_CK_FLAGS.empty flags
+  List.fold_left P11_flags.logical_or P11_flags.empty flags
 
 let flags_to_string = P11_flags.(to_pretty_string Mechanism_info_domain)
 
