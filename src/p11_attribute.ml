@@ -1,6 +1,6 @@
 type 'a t = 'a P11_attribute_type.t * 'a
 
-type pack = Pkcs11_CK_ATTRIBUTE.pack = Pack : 'a t -> pack
+type pack = Pack : 'a t -> pack
 
 let to_string_pair =
   let ulong cka x = cka, Unsigned.ULong.to_string x in
@@ -338,14 +338,151 @@ let pack_of_yojson json : (pack, string) result =
 
 let pack_to_yojson (Pack x) = to_json x
 
-let compare_types = Pkcs11_CK_ATTRIBUTE.compare_types
-let compare_types_pack = Pkcs11_CK_ATTRIBUTE.compare_types_pack
+let compare_types (a,_) (b,_) =
+  P11_attribute_type.compare a b
 
-let compare = Pkcs11_CK_ATTRIBUTE.compare
-let compare_pack = Pkcs11_CK_ATTRIBUTE.compare_pack
+let compare_types_pack (Pack (a, _)) (Pack (b, _)) =
+  P11_attribute_type.compare a b
 
-let equal = Pkcs11_CK_ATTRIBUTE.equal
-let equal_pack = Pkcs11_CK_ATTRIBUTE.equal_pack
+let compare_bool = [%ord: bool]
+let compare_string = [%ord: string]
+let compare_ulong = [%ord: P11_ulong.t]
+
+let compare (type a) (type b) (a:a t) (b: b t) =
+  let open P11_attribute_type in
+  let c = compare_types a b in
+  if c <> 0 then
+    c
+  else
+    (* This match raises warning 4 in a spurious manner. The first
+       component of the match would be non-exhaustive if we added a
+       new constructor to the the type. The system is not smart
+       enough to detect that the right part (which would become
+       non-exhaustive) is related to the left part. *)
+    match[@ocaml.warning "-4"] a, b with
+      | (CKA_CLASS, a_param), (CKA_CLASS, b_param) ->
+          P11_object_class.compare a_param b_param
+      | (CKA_KEY_TYPE, a_param), (CKA_KEY_TYPE, b_param) ->
+          P11_key_type.compare a_param b_param
+      | (CKA_MODULUS_BITS, a_param), (CKA_MODULUS_BITS, b_param) ->
+          P11_ulong.compare a_param b_param
+      | (CKA_VALUE_LEN, a_param), (CKA_VALUE_LEN, b_param) ->
+          P11_ulong.compare a_param b_param
+      | (CKA_KEY_GEN_MECHANISM, a_param), (CKA_KEY_GEN_MECHANISM, b_param) ->
+          P11_key_gen_mechanism.compare a_param b_param
+      | (CKA_EC_PARAMS, a_param), (CKA_EC_PARAMS, b_param) ->
+          Key_parsers.Asn1.EC.Params.compare a_param b_param
+      | (CKA_EC_POINT, a_param), (CKA_EC_POINT, b_param) ->
+          Key_parsers.Asn1.EC.compare_point a_param b_param
+      | (CKA_PUBLIC_EXPONENT, a_param), (CKA_PUBLIC_EXPONENT, b_param) -> P11_bigint.compare a_param b_param
+      | (CKA_PRIVATE_EXPONENT, a_param), (CKA_PRIVATE_EXPONENT, b_param) -> P11_bigint.compare a_param b_param
+      | (CKA_PRIME_1, a_param), (CKA_PRIME_1, b_param) -> P11_bigint.compare a_param b_param
+      | (CKA_PRIME_2, a_param), (CKA_PRIME_2, b_param) -> P11_bigint.compare a_param b_param
+      | (CKA_EXPONENT_1, a_param), (CKA_EXPONENT_1, b_param) -> P11_bigint.compare a_param b_param
+      | (CKA_EXPONENT_2, a_param), (CKA_EXPONENT_2, b_param) -> P11_bigint.compare a_param b_param
+      | (CKA_COEFFICIENT, a_param), (CKA_COEFFICIENT, b_param) -> P11_bigint.compare a_param b_param
+      | (CKA_PRIME, a_param), (CKA_PRIME, b_param) -> P11_bigint.compare a_param b_param
+      | (CKA_SUBPRIME, a_param), (CKA_SUBPRIME, b_param) -> P11_bigint.compare a_param b_param
+      | (CKA_MODULUS, a_param), (CKA_MODULUS, b_param) -> P11_bigint.compare a_param b_param
+
+      | (CKA_TOKEN, a_param), (CKA_TOKEN, b_param) -> compare_bool a_param b_param
+      | (CKA_PRIVATE, a_param), (CKA_PRIVATE, b_param) -> compare_bool a_param b_param
+      | (CKA_TRUSTED, a_param), (CKA_TRUSTED, b_param) -> compare_bool a_param b_param
+      | (CKA_SENSITIVE, a_param), (CKA_SENSITIVE, b_param) -> compare_bool a_param b_param
+      | (CKA_ENCRYPT, a_param), (CKA_ENCRYPT, b_param) -> compare_bool a_param b_param
+      | (CKA_DECRYPT, a_param), (CKA_DECRYPT, b_param) -> compare_bool a_param b_param
+      | (CKA_WRAP, a_param), (CKA_WRAP, b_param) -> compare_bool a_param b_param
+      | (CKA_UNWRAP, a_param), (CKA_UNWRAP, b_param) -> compare_bool a_param b_param
+      | (CKA_SIGN, a_param), (CKA_SIGN, b_param) -> compare_bool a_param b_param
+      | (CKA_SIGN_RECOVER, a_param), (CKA_SIGN_RECOVER, b_param) -> compare_bool a_param b_param
+      | (CKA_VERIFY, a_param), (CKA_VERIFY, b_param) -> compare_bool a_param b_param
+      | (CKA_VERIFY_RECOVER, a_param), (CKA_VERIFY_RECOVER, b_param) -> compare_bool a_param b_param
+      | (CKA_DERIVE, a_param), (CKA_DERIVE, b_param) -> compare_bool a_param b_param
+      | (CKA_EXTRACTABLE, a_param), (CKA_EXTRACTABLE, b_param) -> compare_bool a_param b_param
+      | (CKA_LOCAL, a_param), (CKA_LOCAL, b_param) -> compare_bool a_param b_param
+      | (CKA_NEVER_EXTRACTABLE, a_param), (CKA_NEVER_EXTRACTABLE, b_param) -> compare_bool a_param b_param
+      | (CKA_ALWAYS_SENSITIVE, a_param), (CKA_ALWAYS_SENSITIVE, b_param) -> compare_bool a_param b_param
+      | (CKA_MODIFIABLE, a_param), (CKA_MODIFIABLE, b_param) -> compare_bool a_param b_param
+      | (CKA_ALWAYS_AUTHENTICATE, a_param), (CKA_ALWAYS_AUTHENTICATE, b_param) -> compare_bool a_param b_param
+      | (CKA_WRAP_WITH_TRUSTED, a_param), (CKA_WRAP_WITH_TRUSTED, b_param) -> compare_bool a_param b_param
+      | (CKA_LABEL, a_param), (CKA_LABEL, b_param) -> compare_string a_param b_param
+      | (CKA_VALUE, a_param), (CKA_VALUE, b_param) -> compare_string a_param b_param
+      | (CKA_SUBJECT, a_param), (CKA_SUBJECT, b_param) -> compare_string a_param b_param
+      | (CKA_ID, a_param), (CKA_ID, b_param) -> compare_string a_param b_param
+      | (CKA_CHECK_VALUE, NOT_IMPLEMENTED a_param), (CKA_CHECK_VALUE, NOT_IMPLEMENTED b_param) -> compare_string a_param b_param
+      | (CKA_START_DATE, NOT_IMPLEMENTED a_param), (CKA_START_DATE, NOT_IMPLEMENTED b_param) -> compare_string a_param b_param
+      | (CKA_END_DATE, NOT_IMPLEMENTED a_param), (CKA_END_DATE, NOT_IMPLEMENTED b_param) -> compare_string a_param b_param
+      | (CKA_PRIME_BITS, a_param), (CKA_PRIME_BITS,  b_param) -> compare_ulong a_param b_param
+      | (CKA_SUBPRIME_BITS, a_param), (CKA_SUBPRIME_BITS, b_param) -> compare_ulong a_param b_param
+      | (CKA_WRAP_TEMPLATE, NOT_IMPLEMENTED a_param), (CKA_WRAP_TEMPLATE, NOT_IMPLEMENTED b_param) -> compare_string a_param b_param
+      | (CKA_UNWRAP_TEMPLATE, NOT_IMPLEMENTED a_param), (CKA_UNWRAP_TEMPLATE, NOT_IMPLEMENTED b_param) -> compare_string a_param b_param
+      | (CKA_ALLOWED_MECHANISMS, NOT_IMPLEMENTED a_param), (CKA_ALLOWED_MECHANISMS, NOT_IMPLEMENTED b_param) -> compare_string a_param b_param
+      | (CKA_CS_UNKNOWN a_ul, NOT_IMPLEMENTED a_param),
+        (CKA_CS_UNKNOWN b_ul, NOT_IMPLEMENTED b_param) ->
+          let cmp = Unsigned.ULong.compare a_ul b_ul in
+          if cmp = 0
+          then compare_string a_param b_param
+          else cmp
+        (* Should have been covered by the comparison of attribute types,
+           or by the above cases. *)
+      | (CKA_CLASS, _), _ -> assert false
+      | (CKA_KEY_TYPE, _), _ -> assert false
+      | (CKA_MODULUS_BITS, _), _ -> assert false
+      | (CKA_VALUE_LEN, _), _ -> assert false
+      | (CKA_KEY_GEN_MECHANISM, _), _ -> assert false
+      | (CKA_TOKEN, _), _ -> assert false
+      | (CKA_PRIVATE, _), _ -> assert false
+      | (CKA_TRUSTED, _), _ -> assert false
+      | (CKA_SENSITIVE, _), _ -> assert false
+      | (CKA_ENCRYPT, _), _ -> assert false
+      | (CKA_DECRYPT, _), _ -> assert false
+      | (CKA_WRAP, _), _ -> assert false
+      | (CKA_UNWRAP, _), _ -> assert false
+      | (CKA_SIGN, _), _ -> assert false
+      | (CKA_SIGN_RECOVER, _), _ -> assert false
+      | (CKA_VERIFY, _), _ -> assert false
+      | (CKA_VERIFY_RECOVER, _), _ -> assert false
+      | (CKA_DERIVE, _), _ -> assert false
+      | (CKA_EXTRACTABLE, _), _ -> assert false
+      | (CKA_LOCAL, _), _ -> assert false
+      | (CKA_NEVER_EXTRACTABLE, _), _ -> assert false
+      | (CKA_ALWAYS_SENSITIVE, _), _ -> assert false
+      | (CKA_MODIFIABLE, _), _ -> assert false
+      | (CKA_ALWAYS_AUTHENTICATE, _), _ -> assert false
+      | (CKA_WRAP_WITH_TRUSTED, _), _ -> assert false
+      | (CKA_LABEL, _), _ -> assert false
+      | (CKA_VALUE, _), _ -> assert false
+      | (CKA_SUBJECT, _), _ -> assert false
+      | (CKA_ID, _), _ -> assert false
+      | (CKA_MODULUS, _), _ -> assert false
+      | (CKA_PUBLIC_EXPONENT, _), _ -> assert false
+      | (CKA_PRIVATE_EXPONENT, _), _ -> assert false
+      | (CKA_PRIME_1, _), _ -> assert false
+      | (CKA_PRIME_2, _), _ -> assert false
+      | (CKA_EXPONENT_1, _), _ -> assert false
+      | (CKA_EXPONENT_2, _), _ -> assert false
+      | (CKA_COEFFICIENT, _), _ -> assert false
+      | (CKA_PRIME, _), _ -> assert false
+      | (CKA_SUBPRIME, _), _ -> assert false
+      | (CKA_EC_PARAMS, _), _ -> assert false
+      | (CKA_EC_POINT, _), _ -> assert false
+      | (CKA_CHECK_VALUE, _), _ -> assert false
+      | (CKA_START_DATE, _), _ -> assert false
+      | (CKA_END_DATE, _), _ -> assert false
+      | (CKA_PRIME_BITS, _), _ -> assert false
+      | (CKA_SUBPRIME_BITS, _), _ -> assert false
+      | (CKA_WRAP_TEMPLATE, _), _ -> assert false
+      | (CKA_UNWRAP_TEMPLATE, _), _ -> assert false
+      | (CKA_ALLOWED_MECHANISMS, _), _ -> assert false
+      | (CKA_CS_UNKNOWN _, _), _ -> assert false
+
+let compare_pack (Pack a) (Pack b) = compare a b
+
+let equal a b =
+  compare a b = 0
+
+let equal_pack (Pack a) (Pack b) = equal a b
+
 let equal_types_pack a b = (compare_types_pack a b) = 0
 let equal_values a v1 v2 = equal (a,v1) (a,v2)
 

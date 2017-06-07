@@ -8,4 +8,4 @@
       and ulValueLen will be value size.
 *)
 val set_access_error : Pkcs11_CK_ATTRIBUTE.t -> unit
-val update : Pkcs11_CK_ATTRIBUTE.pack -> Pkcs11_CK_ATTRIBUTE.t -> P11_rv.t
+val update : P11_attribute.pack -> Pkcs11_CK_ATTRIBUTE.t -> P11_rv.t

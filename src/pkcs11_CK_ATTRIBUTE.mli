@@ -2,8 +2,6 @@
 type _t
 type t = _t Ctypes.structure
 type 'a u = 'a P11_attribute_type.t * 'a
-type pack = Pack : 'a u -> pack
-[@@deriving ord]
 
 val boolean : Pkcs11_CK_ATTRIBUTE_TYPE.t -> bool -> t
 val byte : Pkcs11_CK_ATTRIBUTE_TYPE.t -> int -> t
@@ -23,14 +21,14 @@ val unsafe_get_ulong : t -> P11_ulong.t
 val unsafe_get_object_class : t -> Pkcs11_CK_OBJECT_CLASS.t
 val unsafe_get_key_type : t -> Pkcs11_CK_KEY_TYPE.t
 
-val view : t -> pack
+val view : t -> P11_attribute.pack
 val make : 'a u -> t
-val make_pack : pack -> t
+val make_pack : P11_attribute.pack -> t
 val compare: 'a u -> 'b u -> int
 val equal: 'a u -> 'b u -> bool
-val equal_pack : pack -> pack -> bool
+val equal_pack : P11_attribute.pack -> P11_attribute.pack -> bool
 val compare_types: 'a u -> 'b u -> int
-val compare_types_pack: pack -> pack -> int
+val compare_types_pack: P11_attribute.pack -> P11_attribute.pack -> int
 
 val ck_attribute : t Ctypes.typ
 

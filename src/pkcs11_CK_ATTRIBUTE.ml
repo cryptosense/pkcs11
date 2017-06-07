@@ -41,7 +41,8 @@ let ulValueLen = ulong -: "ulValueLen"
 let () = seal ck_attribute
 
 type 'a u = 'a P11_attribute_type.t * 'a
-type pack = Pack : 'a u -> pack
+
+let pack (a, b) = P11_attribute.Pack (a, b)
 
 (** [create cka] allocates a new struct and set the [attribute_type]
     field to [cka]. The value and its length are both initialised to
@@ -158,7 +159,7 @@ let decode_ec_point cs =
  *)
 let decode_cka attr_type decode s =
   match decode @@ Cstruct.of_string s with
-    | Ok p -> Pack (attr_type, p)
+    | Ok p -> pack (attr_type, p)
     | Error e ->
         begin
           let open P11_attribute_type in
@@ -167,7 +168,7 @@ let decode_cka attr_type decode s =
           Pkcs11_log.log @@ Printf.sprintf "Invalid %s: %S (error: %S)" name s e;
           let code = CKA_CS_UNKNOWN (make attr_type) in
           let value = NOT_IMPLEMENTED s in
-          Pack (code, value)
+          pack (code, value)
         end
 
 let decode_cka_ec_point s =
@@ -183,72 +184,70 @@ let encode_asn grammar x =
 let encode_ec_params = encode_asn Key_parsers.Asn1.EC.Params.grammar
 let encode_ec_point = encode_asn Key_parsers.Asn1.EC.point_grammar
 
-let view (t : t) : pack =
-  let ul = getf t _type in
+let view t =
   let open P11_attribute_type in
   let open Pkcs11_CK_ATTRIBUTE_TYPE in
+  let ul = getf t _type in
   let it_is c =
     Pkcs11_CK_ATTRIBUTE_TYPE.equal ul c
   in
   match () with
-  | _ when it_is _CKA_CLASS               -> Pack (CKA_CLASS, (unsafe_get_object_class t |> Pkcs11_CK_OBJECT_CLASS.view))
-  | _ when it_is _CKA_TOKEN               -> Pack (CKA_TOKEN, (unsafe_get_bool t))
-  | _ when it_is _CKA_PRIVATE             -> Pack (CKA_PRIVATE, (unsafe_get_bool t))
-  | _ when it_is _CKA_LABEL               -> Pack (CKA_LABEL, (unsafe_get_string t))
-  | _ when it_is _CKA_VALUE               -> Pack (CKA_VALUE, (unsafe_get_string t))
-  | _ when it_is _CKA_TRUSTED             -> Pack (CKA_TRUSTED, (unsafe_get_bool t))
-  | _ when it_is _CKA_CHECK_VALUE         -> Pack (CKA_CHECK_VALUE, NOT_IMPLEMENTED (unsafe_get_string t))
-  | _ when it_is _CKA_KEY_TYPE            -> Pack (CKA_KEY_TYPE, (unsafe_get_key_type t |> Pkcs11_CK_KEY_TYPE.view))
-  | _ when it_is _CKA_SUBJECT             -> Pack (CKA_SUBJECT,  (unsafe_get_string t))
-  | _ when it_is _CKA_ID                  -> Pack (CKA_ID,       (unsafe_get_string t))
-  | _ when it_is _CKA_SENSITIVE           -> Pack (CKA_SENSITIVE, (unsafe_get_bool t))
-  | _ when it_is _CKA_ENCRYPT             -> Pack (CKA_ENCRYPT, (unsafe_get_bool t))
-  | _ when it_is _CKA_DECRYPT             -> Pack (CKA_DECRYPT, (unsafe_get_bool t))
-  | _ when it_is _CKA_WRAP                -> Pack (CKA_WRAP, (unsafe_get_bool t))
-  | _ when it_is _CKA_UNWRAP              -> Pack (CKA_UNWRAP, (unsafe_get_bool t))
-  | _ when it_is _CKA_SIGN                -> Pack (CKA_SIGN, (unsafe_get_bool t))
-  | _ when it_is _CKA_SIGN_RECOVER        -> Pack (CKA_SIGN_RECOVER, (unsafe_get_bool t))
-  | _ when it_is _CKA_VERIFY              -> Pack (CKA_VERIFY, (unsafe_get_bool t))
-  | _ when it_is _CKA_VERIFY_RECOVER      -> Pack (CKA_VERIFY_RECOVER, (unsafe_get_bool t))
-  | _ when it_is _CKA_DERIVE              -> Pack (CKA_DERIVE, (unsafe_get_bool t))
-  | _ when it_is _CKA_START_DATE          -> Pack (CKA_START_DATE, NOT_IMPLEMENTED (unsafe_get_string t))
-  | _ when it_is _CKA_END_DATE            -> Pack (CKA_END_DATE, NOT_IMPLEMENTED (unsafe_get_string t))
-  | _ when it_is _CKA_MODULUS             -> Pack (CKA_MODULUS, (unsafe_get_bigint t))
-  | _ when it_is _CKA_MODULUS_BITS        -> Pack (CKA_MODULUS_BITS, (unsafe_get_ulong t))
-  | _ when it_is _CKA_PUBLIC_EXPONENT     -> Pack (CKA_PUBLIC_EXPONENT, (unsafe_get_bigint t))
-  | _ when it_is _CKA_PRIVATE_EXPONENT    -> Pack (CKA_PRIVATE_EXPONENT, (unsafe_get_bigint t))
-  | _ when it_is _CKA_PRIME_1             -> Pack (CKA_PRIME_1, (unsafe_get_bigint t))
-  | _ when it_is _CKA_PRIME_2             -> Pack (CKA_PRIME_2, (unsafe_get_bigint t))
-  | _ when it_is _CKA_EXPONENT_1          -> Pack (CKA_EXPONENT_1, (unsafe_get_bigint t))
-  | _ when it_is _CKA_EXPONENT_2          -> Pack (CKA_EXPONENT_2, (unsafe_get_bigint t))
-  | _ when it_is _CKA_COEFFICIENT         -> Pack (CKA_COEFFICIENT, (unsafe_get_bigint t))
-  | _ when it_is _CKA_PRIME               -> Pack (CKA_PRIME, (unsafe_get_bigint t))
-  | _ when it_is _CKA_SUBPRIME            -> Pack (CKA_SUBPRIME, (unsafe_get_bigint t))
-  | _ when it_is _CKA_PRIME_BITS          -> Pack (CKA_PRIME_BITS, unsafe_get_ulong t)
-  | _ when it_is _CKA_SUBPRIME_BITS       -> Pack (CKA_SUBPRIME_BITS, unsafe_get_ulong t)
-  | _ when it_is _CKA_VALUE_LEN           -> Pack (CKA_VALUE_LEN, (unsafe_get_ulong t))
-  | _ when it_is _CKA_EXTRACTABLE         -> Pack (CKA_EXTRACTABLE, (unsafe_get_bool t))
-  | _ when it_is _CKA_LOCAL               -> Pack (CKA_LOCAL, (unsafe_get_bool t))
-  | _ when it_is _CKA_NEVER_EXTRACTABLE   -> Pack (CKA_NEVER_EXTRACTABLE, (unsafe_get_bool t))
-  | _ when it_is _CKA_ALWAYS_SENSITIVE    -> Pack (CKA_ALWAYS_SENSITIVE, (unsafe_get_bool t))
-  | _ when it_is _CKA_KEY_GEN_MECHANISM   -> Pack (CKA_KEY_GEN_MECHANISM, Pkcs11_key_gen_mechanism.view (unsafe_get_ulong t))
-  | _ when it_is _CKA_MODIFIABLE          -> Pack (CKA_MODIFIABLE, (unsafe_get_bool t))
+  | _ when it_is _CKA_CLASS               -> pack (CKA_CLASS, (unsafe_get_object_class t |> Pkcs11_CK_OBJECT_CLASS.view))
+  | _ when it_is _CKA_TOKEN               -> pack (CKA_TOKEN, (unsafe_get_bool t))
+  | _ when it_is _CKA_PRIVATE             -> pack (CKA_PRIVATE, (unsafe_get_bool t))
+  | _ when it_is _CKA_LABEL               -> pack (CKA_LABEL, (unsafe_get_string t))
+  | _ when it_is _CKA_VALUE               -> pack (CKA_VALUE, (unsafe_get_string t))
+  | _ when it_is _CKA_TRUSTED             -> pack (CKA_TRUSTED, (unsafe_get_bool t))
+  | _ when it_is _CKA_CHECK_VALUE         -> pack (CKA_CHECK_VALUE, NOT_IMPLEMENTED (unsafe_get_string t))
+  | _ when it_is _CKA_KEY_TYPE            -> pack (CKA_KEY_TYPE, (unsafe_get_key_type t |> Pkcs11_CK_KEY_TYPE.view))
+  | _ when it_is _CKA_SUBJECT             -> pack (CKA_SUBJECT,  (unsafe_get_string t))
+  | _ when it_is _CKA_ID                  -> pack (CKA_ID,       (unsafe_get_string t))
+  | _ when it_is _CKA_SENSITIVE           -> pack (CKA_SENSITIVE, (unsafe_get_bool t))
+  | _ when it_is _CKA_ENCRYPT             -> pack (CKA_ENCRYPT, (unsafe_get_bool t))
+  | _ when it_is _CKA_DECRYPT             -> pack (CKA_DECRYPT, (unsafe_get_bool t))
+  | _ when it_is _CKA_WRAP                -> pack (CKA_WRAP, (unsafe_get_bool t))
+  | _ when it_is _CKA_UNWRAP              -> pack (CKA_UNWRAP, (unsafe_get_bool t))
+  | _ when it_is _CKA_SIGN                -> pack (CKA_SIGN, (unsafe_get_bool t))
+  | _ when it_is _CKA_SIGN_RECOVER        -> pack (CKA_SIGN_RECOVER, (unsafe_get_bool t))
+  | _ when it_is _CKA_VERIFY              -> pack (CKA_VERIFY, (unsafe_get_bool t))
+  | _ when it_is _CKA_VERIFY_RECOVER      -> pack (CKA_VERIFY_RECOVER, (unsafe_get_bool t))
+  | _ when it_is _CKA_DERIVE              -> pack (CKA_DERIVE, (unsafe_get_bool t))
+  | _ when it_is _CKA_START_DATE          -> pack (CKA_START_DATE, NOT_IMPLEMENTED (unsafe_get_string t))
+  | _ when it_is _CKA_END_DATE            -> pack (CKA_END_DATE, NOT_IMPLEMENTED (unsafe_get_string t))
+  | _ when it_is _CKA_MODULUS             -> pack (CKA_MODULUS, (unsafe_get_bigint t))
+  | _ when it_is _CKA_MODULUS_BITS        -> pack (CKA_MODULUS_BITS, (unsafe_get_ulong t))
+  | _ when it_is _CKA_PUBLIC_EXPONENT     -> pack (CKA_PUBLIC_EXPONENT, (unsafe_get_bigint t))
+  | _ when it_is _CKA_PRIVATE_EXPONENT    -> pack (CKA_PRIVATE_EXPONENT, (unsafe_get_bigint t))
+  | _ when it_is _CKA_PRIME_1             -> pack (CKA_PRIME_1, (unsafe_get_bigint t))
+  | _ when it_is _CKA_PRIME_2             -> pack (CKA_PRIME_2, (unsafe_get_bigint t))
+  | _ when it_is _CKA_EXPONENT_1          -> pack (CKA_EXPONENT_1, (unsafe_get_bigint t))
+  | _ when it_is _CKA_EXPONENT_2          -> pack (CKA_EXPONENT_2, (unsafe_get_bigint t))
+  | _ when it_is _CKA_COEFFICIENT         -> pack (CKA_COEFFICIENT, (unsafe_get_bigint t))
+  | _ when it_is _CKA_PRIME               -> pack (CKA_PRIME, (unsafe_get_bigint t))
+  | _ when it_is _CKA_SUBPRIME            -> pack (CKA_SUBPRIME, (unsafe_get_bigint t))
+  | _ when it_is _CKA_PRIME_BITS          -> pack (CKA_PRIME_BITS, unsafe_get_ulong t)
+  | _ when it_is _CKA_SUBPRIME_BITS       -> pack (CKA_SUBPRIME_BITS, unsafe_get_ulong t)
+  | _ when it_is _CKA_VALUE_LEN           -> pack (CKA_VALUE_LEN, (unsafe_get_ulong t))
+  | _ when it_is _CKA_EXTRACTABLE         -> pack (CKA_EXTRACTABLE, (unsafe_get_bool t))
+  | _ when it_is _CKA_LOCAL               -> pack (CKA_LOCAL, (unsafe_get_bool t))
+  | _ when it_is _CKA_NEVER_EXTRACTABLE   -> pack (CKA_NEVER_EXTRACTABLE, (unsafe_get_bool t))
+  | _ when it_is _CKA_ALWAYS_SENSITIVE    -> pack (CKA_ALWAYS_SENSITIVE, (unsafe_get_bool t))
+  | _ when it_is _CKA_KEY_GEN_MECHANISM   -> pack (CKA_KEY_GEN_MECHANISM, Pkcs11_key_gen_mechanism.view (unsafe_get_ulong t))
+  | _ when it_is _CKA_MODIFIABLE          -> pack (CKA_MODIFIABLE, (unsafe_get_bool t))
   | _ when it_is _CKA_EC_PARAMS           -> decode_cka_ec_params (unsafe_get_string t)
   | _ when it_is _CKA_EC_POINT            -> decode_cka_ec_point (unsafe_get_string t)
-  | _ when it_is _CKA_ALWAYS_AUTHENTICATE -> Pack (CKA_ALWAYS_AUTHENTICATE, (unsafe_get_bool t))
-  | _ when it_is _CKA_WRAP_WITH_TRUSTED   -> Pack (CKA_WRAP_WITH_TRUSTED,   (unsafe_get_bool t))
-  | _ when it_is _CKA_WRAP_TEMPLATE       -> Pack (CKA_WRAP_TEMPLATE, NOT_IMPLEMENTED (unsafe_get_string t))
-  | _ when it_is _CKA_UNWRAP_TEMPLATE     -> Pack (CKA_UNWRAP_TEMPLATE, NOT_IMPLEMENTED (unsafe_get_string t))
-  | _ when it_is _CKA_ALLOWED_MECHANISMS  -> Pack (CKA_ALLOWED_MECHANISMS, NOT_IMPLEMENTED (unsafe_get_string t))
+  | _ when it_is _CKA_ALWAYS_AUTHENTICATE -> pack (CKA_ALWAYS_AUTHENTICATE, (unsafe_get_bool t))
+  | _ when it_is _CKA_WRAP_WITH_TRUSTED   -> pack (CKA_WRAP_WITH_TRUSTED,   (unsafe_get_bool t))
+  | _ when it_is _CKA_WRAP_TEMPLATE       -> pack (CKA_WRAP_TEMPLATE, NOT_IMPLEMENTED (unsafe_get_string t))
+  | _ when it_is _CKA_UNWRAP_TEMPLATE     -> pack (CKA_UNWRAP_TEMPLATE, NOT_IMPLEMENTED (unsafe_get_string t))
+  | _ when it_is _CKA_ALLOWED_MECHANISMS  -> pack (CKA_ALLOWED_MECHANISMS, NOT_IMPLEMENTED (unsafe_get_string t))
   | _ ->
     begin
       Pkcs11_log.log @@ Printf.sprintf "Unknown CKA code: 0x%Lx" @@ Int64.of_string @@ Unsigned.ULong.to_string ul;
-      Pack (CKA_CS_UNKNOWN ul, NOT_IMPLEMENTED (unsafe_get_string t))
+      pack (CKA_CS_UNKNOWN ul, NOT_IMPLEMENTED (unsafe_get_string t))
     end
 
-(* Useful regexp |\(.*\) of string -> | \1 s -> string AttributesType.\1 s): *)
-
-let make : type s . s u -> t = fun x ->
+let make (type s) (x:s u) =
   let open P11_attribute_type in
   match x with
   | CKA_CLASS, cko -> ulong Pkcs11_CK_ATTRIBUTE_TYPE._CKA_CLASS (Pkcs11_CK_OBJECT_CLASS.make cko)
@@ -307,148 +306,14 @@ let make : type s . s u -> t = fun x ->
   | CKA_CS_UNKNOWN ul, NOT_IMPLEMENTED s ->
       string ul s
 
-let make_pack (Pack x) = make x
+let make_pack (P11_attribute.Pack x) = make x
 
-let compare_types (a,_) (b,_) =
-  P11_attribute_type.compare a b
+let compare_types = P11_attribute.compare_types
+let compare_types_pack = P11_attribute.compare_types_pack
 
-let compare_types_pack (Pack (a, _)) (Pack (b, _)) =
-  P11_attribute_type.compare a b
+let compare = P11_attribute.compare
 
-let compare_bool (x : bool) (y : bool) = compare x y
-let compare_string (x : string) (y : string) = compare x y
-let compare_ulong = Unsigned.ULong.compare
-let compare : type a b. a u -> b u -> int = fun a b ->
-  let open P11_attribute_type in
-  let c = compare_types a b in
-  if c <> 0 then
-    c
-  else
-    (* This match raises warning 4 in a spurious manner. The first
-       component of the match would be non-exhaustive if we added a
-       new constructor to the the type. The system is not smart
-       enough to detect that the right part (which would become
-       non-exhaustive) is related to the left part. *)
-    match[@ocaml.warning "-4"] a, b with
-      | (CKA_CLASS, a_param), (CKA_CLASS, b_param) ->
-          P11_object_class.compare a_param b_param
-      | (CKA_KEY_TYPE, a_param), (CKA_KEY_TYPE, b_param) ->
-          P11_key_type.compare a_param b_param
-      | (CKA_MODULUS_BITS, a_param), (CKA_MODULUS_BITS, b_param) ->
-          P11_ulong.compare a_param b_param
-      | (CKA_VALUE_LEN, a_param), (CKA_VALUE_LEN, b_param) ->
-          P11_ulong.compare a_param b_param
-      | (CKA_KEY_GEN_MECHANISM, a_param), (CKA_KEY_GEN_MECHANISM, b_param) ->
-          P11_key_gen_mechanism.compare a_param b_param
-      | (CKA_EC_PARAMS, a_param), (CKA_EC_PARAMS, b_param) ->
-          Key_parsers.Asn1.EC.Params.compare a_param b_param
-      | (CKA_EC_POINT, a_param), (CKA_EC_POINT, b_param) ->
-          Key_parsers.Asn1.EC.compare_point a_param b_param
-      | (CKA_PUBLIC_EXPONENT, a_param), (CKA_PUBLIC_EXPONENT, b_param) -> P11_bigint.compare a_param b_param
-      | (CKA_PRIVATE_EXPONENT, a_param), (CKA_PRIVATE_EXPONENT, b_param) -> P11_bigint.compare a_param b_param
-      | (CKA_PRIME_1, a_param), (CKA_PRIME_1, b_param) -> P11_bigint.compare a_param b_param
-      | (CKA_PRIME_2, a_param), (CKA_PRIME_2, b_param) -> P11_bigint.compare a_param b_param
-      | (CKA_EXPONENT_1, a_param), (CKA_EXPONENT_1, b_param) -> P11_bigint.compare a_param b_param
-      | (CKA_EXPONENT_2, a_param), (CKA_EXPONENT_2, b_param) -> P11_bigint.compare a_param b_param
-      | (CKA_COEFFICIENT, a_param), (CKA_COEFFICIENT, b_param) -> P11_bigint.compare a_param b_param
-      | (CKA_PRIME, a_param), (CKA_PRIME, b_param) -> P11_bigint.compare a_param b_param
-      | (CKA_SUBPRIME, a_param), (CKA_SUBPRIME, b_param) -> P11_bigint.compare a_param b_param
-      | (CKA_MODULUS, a_param), (CKA_MODULUS, b_param) -> P11_bigint.compare a_param b_param
+let compare_pack = P11_attribute.compare_pack
 
-      | (CKA_TOKEN, a_param), (CKA_TOKEN, b_param) -> compare_bool a_param b_param
-      | (CKA_PRIVATE, a_param), (CKA_PRIVATE, b_param) -> compare_bool a_param b_param
-      | (CKA_TRUSTED, a_param), (CKA_TRUSTED, b_param) -> compare_bool a_param b_param
-      | (CKA_SENSITIVE, a_param), (CKA_SENSITIVE, b_param) -> compare_bool a_param b_param
-      | (CKA_ENCRYPT, a_param), (CKA_ENCRYPT, b_param) -> compare_bool a_param b_param
-      | (CKA_DECRYPT, a_param), (CKA_DECRYPT, b_param) -> compare_bool a_param b_param
-      | (CKA_WRAP, a_param), (CKA_WRAP, b_param) -> compare_bool a_param b_param
-      | (CKA_UNWRAP, a_param), (CKA_UNWRAP, b_param) -> compare_bool a_param b_param
-      | (CKA_SIGN, a_param), (CKA_SIGN, b_param) -> compare_bool a_param b_param
-      | (CKA_SIGN_RECOVER, a_param), (CKA_SIGN_RECOVER, b_param) -> compare_bool a_param b_param
-      | (CKA_VERIFY, a_param), (CKA_VERIFY, b_param) -> compare_bool a_param b_param
-      | (CKA_VERIFY_RECOVER, a_param), (CKA_VERIFY_RECOVER, b_param) -> compare_bool a_param b_param
-      | (CKA_DERIVE, a_param), (CKA_DERIVE, b_param) -> compare_bool a_param b_param
-      | (CKA_EXTRACTABLE, a_param), (CKA_EXTRACTABLE, b_param) -> compare_bool a_param b_param
-      | (CKA_LOCAL, a_param), (CKA_LOCAL, b_param) -> compare_bool a_param b_param
-      | (CKA_NEVER_EXTRACTABLE, a_param), (CKA_NEVER_EXTRACTABLE, b_param) -> compare_bool a_param b_param
-      | (CKA_ALWAYS_SENSITIVE, a_param), (CKA_ALWAYS_SENSITIVE, b_param) -> compare_bool a_param b_param
-      | (CKA_MODIFIABLE, a_param), (CKA_MODIFIABLE, b_param) -> compare_bool a_param b_param
-      | (CKA_ALWAYS_AUTHENTICATE, a_param), (CKA_ALWAYS_AUTHENTICATE, b_param) -> compare_bool a_param b_param
-      | (CKA_WRAP_WITH_TRUSTED, a_param), (CKA_WRAP_WITH_TRUSTED, b_param) -> compare_bool a_param b_param
-      | (CKA_LABEL, a_param), (CKA_LABEL, b_param) -> compare_string a_param b_param
-      | (CKA_VALUE, a_param), (CKA_VALUE, b_param) -> compare_string a_param b_param
-      | (CKA_SUBJECT, a_param), (CKA_SUBJECT, b_param) -> compare_string a_param b_param
-      | (CKA_ID, a_param), (CKA_ID, b_param) -> compare_string a_param b_param
-      | (CKA_CHECK_VALUE, NOT_IMPLEMENTED a_param), (CKA_CHECK_VALUE, NOT_IMPLEMENTED b_param) -> compare_string a_param b_param
-      | (CKA_START_DATE, NOT_IMPLEMENTED a_param), (CKA_START_DATE, NOT_IMPLEMENTED b_param) -> compare_string a_param b_param
-      | (CKA_END_DATE, NOT_IMPLEMENTED a_param), (CKA_END_DATE, NOT_IMPLEMENTED b_param) -> compare_string a_param b_param
-      | (CKA_PRIME_BITS, a_param), (CKA_PRIME_BITS,  b_param) -> compare_ulong a_param b_param
-      | (CKA_SUBPRIME_BITS, a_param), (CKA_SUBPRIME_BITS, b_param) -> compare_ulong a_param b_param
-      | (CKA_WRAP_TEMPLATE, NOT_IMPLEMENTED a_param), (CKA_WRAP_TEMPLATE, NOT_IMPLEMENTED b_param) -> compare_string a_param b_param
-      | (CKA_UNWRAP_TEMPLATE, NOT_IMPLEMENTED a_param), (CKA_UNWRAP_TEMPLATE, NOT_IMPLEMENTED b_param) -> compare_string a_param b_param
-      | (CKA_ALLOWED_MECHANISMS, NOT_IMPLEMENTED a_param), (CKA_ALLOWED_MECHANISMS, NOT_IMPLEMENTED b_param) -> compare_string a_param b_param
-      | (CKA_CS_UNKNOWN a_ul, NOT_IMPLEMENTED a_param),
-        (CKA_CS_UNKNOWN b_ul, NOT_IMPLEMENTED b_param) ->
-          let cmp = Unsigned.ULong.compare a_ul b_ul in
-          if cmp = 0
-          then compare_string a_param b_param
-          else cmp
-        (* Should have been covered by the comparison of attribute types,
-           or by the above cases. *)
-      | (CKA_CLASS, _), _ -> assert false
-      | (CKA_KEY_TYPE, _), _ -> assert false
-      | (CKA_MODULUS_BITS, _), _ -> assert false
-      | (CKA_VALUE_LEN, _), _ -> assert false
-      | (CKA_KEY_GEN_MECHANISM, _), _ -> assert false
-      | (CKA_TOKEN, _), _ -> assert false
-      | (CKA_PRIVATE, _), _ -> assert false
-      | (CKA_TRUSTED, _), _ -> assert false
-      | (CKA_SENSITIVE, _), _ -> assert false
-      | (CKA_ENCRYPT, _), _ -> assert false
-      | (CKA_DECRYPT, _), _ -> assert false
-      | (CKA_WRAP, _), _ -> assert false
-      | (CKA_UNWRAP, _), _ -> assert false
-      | (CKA_SIGN, _), _ -> assert false
-      | (CKA_SIGN_RECOVER, _), _ -> assert false
-      | (CKA_VERIFY, _), _ -> assert false
-      | (CKA_VERIFY_RECOVER, _), _ -> assert false
-      | (CKA_DERIVE, _), _ -> assert false
-      | (CKA_EXTRACTABLE, _), _ -> assert false
-      | (CKA_LOCAL, _), _ -> assert false
-      | (CKA_NEVER_EXTRACTABLE, _), _ -> assert false
-      | (CKA_ALWAYS_SENSITIVE, _), _ -> assert false
-      | (CKA_MODIFIABLE, _), _ -> assert false
-      | (CKA_ALWAYS_AUTHENTICATE, _), _ -> assert false
-      | (CKA_WRAP_WITH_TRUSTED, _), _ -> assert false
-      | (CKA_LABEL, _), _ -> assert false
-      | (CKA_VALUE, _), _ -> assert false
-      | (CKA_SUBJECT, _), _ -> assert false
-      | (CKA_ID, _), _ -> assert false
-      | (CKA_MODULUS, _), _ -> assert false
-      | (CKA_PUBLIC_EXPONENT, _), _ -> assert false
-      | (CKA_PRIVATE_EXPONENT, _), _ -> assert false
-      | (CKA_PRIME_1, _), _ -> assert false
-      | (CKA_PRIME_2, _), _ -> assert false
-      | (CKA_EXPONENT_1, _), _ -> assert false
-      | (CKA_EXPONENT_2, _), _ -> assert false
-      | (CKA_COEFFICIENT, _), _ -> assert false
-      | (CKA_PRIME, _), _ -> assert false
-      | (CKA_SUBPRIME, _), _ -> assert false
-      | (CKA_EC_PARAMS, _), _ -> assert false
-      | (CKA_EC_POINT, _), _ -> assert false
-      | (CKA_CHECK_VALUE, _), _ -> assert false
-      | (CKA_START_DATE, _), _ -> assert false
-      | (CKA_END_DATE, _), _ -> assert false
-      | (CKA_PRIME_BITS, _), _ -> assert false
-      | (CKA_SUBPRIME_BITS, _), _ -> assert false
-      | (CKA_WRAP_TEMPLATE, _), _ -> assert false
-      | (CKA_UNWRAP_TEMPLATE, _), _ -> assert false
-      | (CKA_ALLOWED_MECHANISMS, _), _ -> assert false
-      | (CKA_CS_UNKNOWN _, _), _ -> assert false
-
-let compare_pack (Pack a) (Pack b) = compare a b
-
-let equal a b =
-  compare a b = 0
-
-let equal_pack (Pack a) (Pack b) = equal a b
+let equal = P11_attribute.equal
+let equal_pack = P11_attribute.equal_pack

@@ -59,7 +59,7 @@ let bigint t elem = string t (P11_bigint.encode elem)
 
 let set_access_error t = setf t ulValueLen Unsigned.ULong.max_int
 
-let update (Pack x) t =
+let update (P11_attribute.Pack x) t =
   let open P11_attribute_type in
   let open Pkcs11_CK_ATTRIBUTE_TYPE in
   match x with
