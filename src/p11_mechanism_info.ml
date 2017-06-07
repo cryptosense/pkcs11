@@ -1,6 +1,6 @@
 type t =
-  { ulMinKeySize : Pkcs11_CK_ULONG.t
-  ; ulMaxKeySize : Pkcs11_CK_ULONG.t
+  { ulMinKeySize : P11_ulong.t
+  ; ulMaxKeySize : P11_ulong.t
   ; flags : P11_flags.t
   }
 [@@deriving of_yojson]

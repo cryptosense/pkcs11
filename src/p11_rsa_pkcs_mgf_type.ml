@@ -1,4 +1,4 @@
-type t = Pkcs11_CK_ULONG.t
+type t = P11_ulong.t
 [@@deriving ord]
 
 let (!) x  = Unsigned.ULong.of_string (Int64.to_string x)

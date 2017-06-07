@@ -4,19 +4,19 @@ type _t
 
 type t =
     {
-      length: Pkcs11_CK_ULONG.t ptr;
+      length: P11_ulong.t ptr;
       mutable content: Pkcs11_CK_MECHANISM_TYPE.t ptr;
     }
 
 type u = P11_mechanism_type.t list
 
-let get_length (t:t) : Pkcs11_CK_ULONG.t =
+let get_length (t:t) : P11_ulong.t =
   !@ (t.length)
 
 let get_content (t:t) : Pkcs11_CK_MECHANISM_TYPE.t ptr =
   t.content
 
-let get_length_addr (t:t) : Pkcs11_CK_ULONG.t ptr =
+let get_length_addr (t:t) : P11_ulong.t ptr =
   t.length
 
 let create () : t =

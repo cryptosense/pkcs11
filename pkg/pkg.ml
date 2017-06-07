@@ -6,7 +6,7 @@ let api =
   [ "Pkcs11"
   ; "P11"
   ; "Pkcs11_CK_RV"
-  ; "Pkcs11_CK_ULONG"
+  ; "P11_ulong"
   ; "Pkcs11_log"
   ; "Pkcs11_data"
   ; "Pkcs11_CK_BYTE"

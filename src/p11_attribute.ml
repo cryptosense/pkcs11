@@ -85,7 +85,7 @@ let to_json : type a . a t -> Yojson.Safe.json = fun attribute ->
     p @@ fun s -> `String s in
   let p_data = p Pkcs11_hex_data.to_yojson in
   let p_key_type = p P11_key_type.to_yojson in
-  let p_ulong = p Pkcs11_CK_ULONG.to_yojson in
+  let p_ulong = p P11_ulong.to_yojson in
   let p_bigint = p Pkcs11_CK_BIGINT.to_yojson in
   let p_mechanism_type = p P11_key_gen_mechanism.to_yojson in
   let p_ec_params = p Key_parsers.Asn1.EC.Params.to_yojson in
@@ -210,7 +210,7 @@ let pack_of_yojson json : (pack, string) result =
     let p_string = parse_using [%of_yojson: string] in
     let p_data = parse_using Pkcs11_hex_data.of_yojson in
     let p_key_type = parse_using P11_key_type.of_yojson in
-    let p_ulong = parse_using Pkcs11_CK_ULONG.of_yojson in
+    let p_ulong = parse_using P11_ulong.of_yojson in
     let p_bigint = parse_using Pkcs11_CK_BIGINT.of_yojson in
     let p_mechanism_type = parse_using P11_key_gen_mechanism.of_yojson in
     let p_ec_params = parse_using Key_parsers.Asn1.EC.Params.of_yojson in

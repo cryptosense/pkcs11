@@ -7,7 +7,7 @@ type pack = Pack : 'a u -> pack
 
 val boolean : Pkcs11_CK_ATTRIBUTE_TYPE.t -> bool -> t
 val byte : Pkcs11_CK_ATTRIBUTE_TYPE.t -> int -> t
-val ulong : Pkcs11_CK_ATTRIBUTE_TYPE.t -> Pkcs11_CK_ULONG.t -> t
+val ulong : Pkcs11_CK_ATTRIBUTE_TYPE.t -> P11_ulong.t -> t
 val string  : Pkcs11_CK_ATTRIBUTE_TYPE.t -> string ->t
 
 val create : Pkcs11_CK_ATTRIBUTE_TYPE.t -> t
@@ -19,7 +19,7 @@ val pvalue_is_null_ptr : t -> bool
 val unsafe_get_bool : t -> bool
 val unsafe_get_string : t -> string
 val unsafe_get_byte  : t -> int
-val unsafe_get_ulong : t -> Pkcs11_CK_ULONG.t
+val unsafe_get_ulong : t -> P11_ulong.t
 val unsafe_get_object_class : t -> Pkcs11_CK_OBJECT_CLASS.t
 val unsafe_get_key_type : t -> Pkcs11_CK_KEY_TYPE.t
 

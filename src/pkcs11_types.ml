@@ -37,7 +37,7 @@ exception GetFunctionList_Failure of string
     [Pkcs11.CK_x.t], that could then be used to build a [P11.X.t].
 *)
 
-module CK_ULONG = Pkcs11_CK_ULONG
+module CK_ULONG = P11_ulong
 module CK_BYTE = Pkcs11_CK_BYTE
 module CK_BBOOL = Pkcs11_CK_BBOOL
 module CK_UTF8CHAR = Pkcs11_CK_UTF8CHAR

@@ -247,7 +247,7 @@ type t =
   | CKM_DH_PKCS_PARAMETER_GEN
   | CKM_X9_42_DH_PARAMETER_GEN
   | CKM_VENDOR_DEFINED
-  | CKM_CS_UNKNOWN of Pkcs11_CK_ULONG.t
+  | CKM_CS_UNKNOWN of P11_ulong.t
   [@@deriving eq,ord,yojson]
 
 val to_string : t -> string

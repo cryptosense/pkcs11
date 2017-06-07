@@ -17,11 +17,11 @@ val create : unit -> t
     to freshly allocated memory. *)
 val allocate: t -> unit
 
-val of_raw : Pkcs11_CK_MECHANISM_TYPE.t Ctypes.ptr -> Pkcs11_CK_ULONG.t Ctypes.ptr -> t
+val of_raw : Pkcs11_CK_MECHANISM_TYPE.t Ctypes.ptr -> P11_ulong.t Ctypes.ptr -> t
 
 type u = P11_mechanism_type.t list
 val make : u -> t
 val view : t -> u
 
 val get_content : t -> Pkcs11_CK_MECHANISM_TYPE.t Ctypes.ptr
-val get_length_addr : t -> Pkcs11_CK_ULONG.t Ctypes.ptr
+val get_length_addr : t -> P11_ulong.t Ctypes.ptr

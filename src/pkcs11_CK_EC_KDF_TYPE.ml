@@ -1,6 +1,6 @@
 open Ctypes
 
-type t = Pkcs11_CK_ULONG.t
+type t = P11_ulong.t
 let t : t typ = ulong
 
 let (!) x  = Unsigned.ULong.of_string (Int64.to_string x)

@@ -335,9 +335,9 @@ let compare : type a b. a u -> b u -> int = fun a b ->
       | (CKA_KEY_TYPE, a_param), (CKA_KEY_TYPE, b_param) ->
           P11_key_type.compare a_param b_param
       | (CKA_MODULUS_BITS, a_param), (CKA_MODULUS_BITS, b_param) ->
-          Pkcs11_CK_ULONG.compare a_param b_param
+          P11_ulong.compare a_param b_param
       | (CKA_VALUE_LEN, a_param), (CKA_VALUE_LEN, b_param) ->
-          Pkcs11_CK_ULONG.compare a_param b_param
+          P11_ulong.compare a_param b_param
       | (CKA_KEY_GEN_MECHANISM, a_param), (CKA_KEY_GEN_MECHANISM, b_param) ->
           P11_key_gen_mechanism.compare a_param b_param
       | (CKA_EC_PARAMS, a_param), (CKA_EC_PARAMS, b_param) ->

@@ -1,2 +1,2 @@
-type t = Pkcs11_CK_ULONG.t
+type t = P11_ulong.t
 let typ = Ctypes.ulong

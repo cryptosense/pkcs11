@@ -2,7 +2,7 @@ type t =
   | CKU_SO
   | CKU_USER
   | CKU_CONTEXT_SPECIFIC
-  | CKU_CS_UNKNOWN of Pkcs11_CK_ULONG.t
+  | CKU_CS_UNKNOWN of P11_ulong.t
 [@@deriving eq,ord,yojson]
 
 val to_string : t -> string

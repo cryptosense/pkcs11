@@ -26,5 +26,5 @@ val create : unit -> t
 val allocate: t -> unit
 
 val get_content : t -> Pkcs11_CK_BYTE.t Ctypes.ptr
-val get_length : t -> Pkcs11_CK_ULONG.t
-val get_length_addr : t -> Pkcs11_CK_ULONG.t Ctypes.ptr
+val get_length : t -> P11_ulong.t
+val get_length_addr : t -> P11_ulong.t Ctypes.ptr

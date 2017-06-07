@@ -14,7 +14,7 @@ Pkcs11_CK_KEY_TYPE
 Pkcs11_CK_ATTRIBUTE
 Pkcs11_CK_BIGINT
 Pkcs11_hex_data
-Pkcs11_CK_ULONG
+P11_ulong
 Pkcs11_key_gen_mechanism
 Pkcs11_CK_MECHANISM_TYPE
 Pkcs11_CK_ATTRIBUTE_TYPE

@@ -1,5 +1,5 @@
 (** Mechanism types without value ([CK_MECHANISM_TYPE]) *)
-type t = Pkcs11_CK_ULONG.t
+type t = P11_ulong.t
 [@@deriving eq,ord]
 
 val _CKM_RSA_PKCS_KEY_PAIR_GEN : t
