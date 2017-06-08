@@ -37,7 +37,7 @@ exception GetFunctionList_Failure of string
     [Pkcs11.CK_x.t], that could then be used to build a [P11.X.t].
 *)
 
-module CK_ULONG = Pkcs11_CK_ULONG
+module CK_ULONG = P11_ulong
 module CK_BYTE = Pkcs11_CK_BYTE
 module CK_BBOOL = Pkcs11_CK_BBOOL
 module CK_UTF8CHAR = Pkcs11_CK_UTF8CHAR
@@ -55,7 +55,7 @@ module CK_SLOT_INFO = Pkcs11_CK_SLOT_INFO
 module Slot_list = Pkcs11_slot_list
 module CK_MECHANISM_INFO = Pkcs11_CK_MECHANISM_INFO
 module CK_SESSION_INFO = Pkcs11_CK_SESSION_INFO
-module CK_BIGINT = Pkcs11_CK_BIGINT
+module CK_BIGINT = P11_bigint
 module CK_RV = Pkcs11_CK_RV
 module CK_MECHANISM_TYPE = Pkcs11_CK_MECHANISM_TYPE
 module Key_gen_mechanism = Pkcs11_key_gen_mechanism
@@ -71,7 +71,6 @@ module CK_PKCS5_PBKD2_PARAMS = Pkcs11_CK_PKCS5_PBKD2_PARAMS
 module CK_EC_KDF_TYPE = Pkcs11_CK_EC_KDF_TYPE
 module CK_ECDH1_DERIVE_PARAMS = Pkcs11_CK_ECDH1_DERIVE_PARAMS
 module CK_ECMQV_DERIVE_PARAMS = Pkcs11_CK_ECMQV_DERIVE_PARAMS
-module CK_RAW_PAYLOAD = Pkcs11_CK_RAW_PAYLOAD
 module CK_MECHANISM = Pkcs11_CK_MECHANISM
 module CK_USER_TYPE = Pkcs11_CK_USER_TYPE
 module CK_INFO = Pkcs11_CK_INFO

@@ -1,7 +1,7 @@
 open Ctypes
 open Ctypes_helpers
 
-type source_type = Pkcs11_CK_ULONG.t
+type source_type = P11_ulong.t
 let source_type : source_type typ = ulong
 
 let _CKZ_DATA_SPECIFIED    : source_type = Unsigned.ULong.of_int 0x00000001

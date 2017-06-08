@@ -1,12 +1,7 @@
 (** Parameters for EC key agreement schemes ([CK_EC_KDF_TYPE]) *)
 type t
 
-type u =
-  | CKD_NULL
-  | CKD_SHA1_KDF
-  [@@deriving yojson]
-
-val make : u -> t
-val view : t -> u
+val make : P11_ec_kdf.t -> t
+val view : t -> P11_ec_kdf.t
 
 val t : t Ctypes.typ

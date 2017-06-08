@@ -1,8 +1,8 @@
 type t =
-  { slotID : Pkcs11_CK_ULONG.t
-  ; state : Pkcs11_CK_ULONG.t
+  { slotID : P11_ulong.t
+  ; state : P11_ulong.t
   ; flags : P11_flags.t
-  ; ulDeviceError : Pkcs11_CK_ULONG.t;
+  ; ulDeviceError : P11_ulong.t;
   }
 [@@deriving yojson]
 

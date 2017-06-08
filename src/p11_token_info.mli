@@ -4,16 +4,16 @@ type t =
   ; model : string
   ; serialNumber : string
   ; flags : P11_flags.t
-  ; ulMaxSessionCount : Pkcs11_CK_ULONG.t
-  ; ulSessionCount : Pkcs11_CK_ULONG.t
-  ; ulMaxRwSessionCount : Pkcs11_CK_ULONG.t
-  ; ulRwSessionCount : Pkcs11_CK_ULONG.t
-  ; ulMaxPinLen : Pkcs11_CK_ULONG.t
-  ; ulMinPinLen : Pkcs11_CK_ULONG.t
-  ; ulTotalPublicMemory : Pkcs11_CK_ULONG.t
-  ; ulFreePublicMemory : Pkcs11_CK_ULONG.t
-  ; ulTotalPrivateMemory : Pkcs11_CK_ULONG.t
-  ; ulFreePrivateMemory : Pkcs11_CK_ULONG.t
+  ; ulMaxSessionCount : P11_ulong.t
+  ; ulSessionCount : P11_ulong.t
+  ; ulMaxRwSessionCount : P11_ulong.t
+  ; ulRwSessionCount : P11_ulong.t
+  ; ulMaxPinLen : P11_ulong.t
+  ; ulMinPinLen : P11_ulong.t
+  ; ulTotalPublicMemory : P11_ulong.t
+  ; ulFreePublicMemory : P11_ulong.t
+  ; ulTotalPrivateMemory : P11_ulong.t
+  ; ulFreePrivateMemory : P11_ulong.t
   ; hardwareVersion : P11_version.t
   ; firmwareVersion : P11_version.t
   ; utcTime : string

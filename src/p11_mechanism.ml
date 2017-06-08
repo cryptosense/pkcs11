@@ -22,32 +22,32 @@ type t =
   | CKM_SHA512_RSA_PKCS_PSS of P11_rsa_pkcs_pss_params.t
   | CKM_AES_KEY_GEN
   | CKM_AES_ECB
-  | CKM_AES_CBC of Pkcs11_hex_data.t
-  | CKM_AES_CBC_PAD of Pkcs11_hex_data.t
+  | CKM_AES_CBC of P11_hex_data.t
+  | CKM_AES_CBC_PAD of P11_hex_data.t
   | CKM_AES_MAC
-  | CKM_AES_MAC_GENERAL of Pkcs11_CK_ULONG.t
-  | CKM_AES_ECB_ENCRYPT_DATA of Pkcs11_hex_data.t
+  | CKM_AES_MAC_GENERAL of P11_ulong.t
+  | CKM_AES_ECB_ENCRYPT_DATA of P11_hex_data.t
   | CKM_AES_CBC_ENCRYPT_DATA of P11_aes_cbc_encrypt_data_params.t
   | CKM_DES_KEY_GEN
   | CKM_DES_ECB
-  | CKM_DES_CBC of Pkcs11_hex_data.t
-  | CKM_DES_CBC_PAD of Pkcs11_hex_data.t
+  | CKM_DES_CBC of P11_hex_data.t
+  | CKM_DES_CBC_PAD of P11_hex_data.t
   | CKM_DES_MAC
-  | CKM_DES_MAC_GENERAL of Pkcs11_CK_ULONG.t
-  | CKM_DES_ECB_ENCRYPT_DATA of Pkcs11_hex_data.t
+  | CKM_DES_MAC_GENERAL of P11_ulong.t
+  | CKM_DES_ECB_ENCRYPT_DATA of P11_hex_data.t
   | CKM_DES_CBC_ENCRYPT_DATA of P11_des_cbc_encrypt_data_params.t
   | CKM_DES3_KEY_GEN
   | CKM_DES3_ECB
-  | CKM_DES3_CBC of Pkcs11_hex_data.t
-  | CKM_DES3_CBC_PAD of Pkcs11_hex_data.t
+  | CKM_DES3_CBC of P11_hex_data.t
+  | CKM_DES3_CBC_PAD of P11_hex_data.t
   | CKM_DES3_MAC
-  | CKM_DES3_MAC_GENERAL of Pkcs11_CK_ULONG.t
-  | CKM_DES3_ECB_ENCRYPT_DATA of Pkcs11_hex_data.t
+  | CKM_DES3_MAC_GENERAL of P11_ulong.t
+  | CKM_DES3_ECB_ENCRYPT_DATA of P11_hex_data.t
   | CKM_DES3_CBC_ENCRYPT_DATA of P11_des_cbc_encrypt_data_params.t
-  | CKM_CONCATENATE_BASE_AND_DATA of Pkcs11_hex_data.t
-  | CKM_CONCATENATE_DATA_AND_BASE of Pkcs11_hex_data.t
-  | CKM_XOR_BASE_AND_DATA of Pkcs11_hex_data.t
-  | CKM_EXTRACT_KEY_FROM_KEY of Pkcs11_CK_ULONG.t
+  | CKM_CONCATENATE_BASE_AND_DATA of P11_hex_data.t
+  | CKM_CONCATENATE_DATA_AND_BASE of P11_hex_data.t
+  | CKM_XOR_BASE_AND_DATA of P11_hex_data.t
+  | CKM_EXTRACT_KEY_FROM_KEY of P11_ulong.t
   | CKM_CONCATENATE_BASE_AND_KEY of P11_object_handle.t
   | CKM_EC_KEY_PAIR_GEN
   | CKM_ECDSA
@@ -56,12 +56,12 @@ type t =
   | CKM_ECDH1_COFACTOR_DERIVE of P11_ecdh1_derive_params.t
   | CKM_ECMQV_DERIVE of P11_ecmqv_derive_params.t
   | CKM_PKCS5_PBKD2 of P11_pkcs5_pbkd2_data_params.t
-  | CKM_CS_UNKNOWN of P11_raw_payload_params.t
+  | CKM_CS_UNKNOWN of P11_ulong.t
 
 let to_json =
   let simple name = `String name in
   let param name param json_of_param = `Assoc [ name, json_of_param param ] in
-  let ulong name p = param name p Pkcs11_CK_ULONG.to_yojson in
+  let ulong name p = param name p P11_ulong.to_yojson in
   function
     | CKM_SHA_1 ->
         simple "CKM_SHA_1"
@@ -110,15 +110,15 @@ let to_json =
     | CKM_AES_ECB ->
         simple "CKM_AES_ECB"
     | CKM_AES_CBC p ->
-        param "CKM_AES_CBC" p Pkcs11_hex_data.to_yojson
+        param "CKM_AES_CBC" p P11_hex_data.to_yojson
     | CKM_AES_CBC_PAD p ->
-        param "CKM_AES_CBC_PAD" p Pkcs11_hex_data.to_yojson
+        param "CKM_AES_CBC_PAD" p P11_hex_data.to_yojson
     | CKM_AES_MAC ->
         simple "CKM_AES_MAC"
     | CKM_AES_MAC_GENERAL p ->
         ulong "CKM_AES_MAC_GENERAL" p
     | CKM_AES_ECB_ENCRYPT_DATA p ->
-        param "CKM_AES_ECB_ENCRYPT_DATA" p Pkcs11_hex_data.to_yojson
+        param "CKM_AES_ECB_ENCRYPT_DATA" p P11_hex_data.to_yojson
     | CKM_AES_CBC_ENCRYPT_DATA p ->
         param "CKM_AES_CBC_ENCRYPT_DATA" p P11_aes_cbc_encrypt_data_params.to_yojson
     | CKM_DES_KEY_GEN ->
@@ -126,15 +126,15 @@ let to_json =
     | CKM_DES_ECB ->
         simple "CKM_DES_ECB"
     | CKM_DES_CBC p ->
-        param "CKM_DES_CBC" p Pkcs11_hex_data.to_yojson
+        param "CKM_DES_CBC" p P11_hex_data.to_yojson
     | CKM_DES_CBC_PAD p ->
-        param "CKM_DES_CBC_PAD" p Pkcs11_hex_data.to_yojson
+        param "CKM_DES_CBC_PAD" p P11_hex_data.to_yojson
     | CKM_DES_MAC ->
         simple "CKM_DES_MAC"
     | CKM_DES_MAC_GENERAL p ->
         ulong "CKM_DES_MAC_GENERAL" p
     | CKM_DES_ECB_ENCRYPT_DATA p ->
-        param "CKM_DES_ECB_ENCRYPT_DATA" p Pkcs11_hex_data.to_yojson
+        param "CKM_DES_ECB_ENCRYPT_DATA" p P11_hex_data.to_yojson
     | CKM_DES_CBC_ENCRYPT_DATA p ->
         param "CKM_DES_CBC_ENCRYPT_DATA" p P11_des_cbc_encrypt_data_params.to_yojson
     | CKM_DES3_KEY_GEN ->
@@ -142,24 +142,24 @@ let to_json =
     | CKM_DES3_ECB ->
         simple "CKM_DES3_ECB"
     | CKM_DES3_CBC p ->
-        param "CKM_DES3_CBC" p Pkcs11_hex_data.to_yojson
+        param "CKM_DES3_CBC" p P11_hex_data.to_yojson
     | CKM_DES3_CBC_PAD p ->
-        param "CKM_DES3_CBC_PAD" p Pkcs11_hex_data.to_yojson
+        param "CKM_DES3_CBC_PAD" p P11_hex_data.to_yojson
     | CKM_DES3_MAC ->
         simple "CKM_DES3_MAC"
     | CKM_DES3_MAC_GENERAL p ->
         ulong "CKM_DES3_MAC_GENERAL" p
     | CKM_DES3_ECB_ENCRYPT_DATA p ->
-        param "CKM_DES3_ECB_ENCRYPT_DATA" p Pkcs11_hex_data.to_yojson
+        param "CKM_DES3_ECB_ENCRYPT_DATA" p P11_hex_data.to_yojson
     | CKM_DES3_CBC_ENCRYPT_DATA p ->
         param "CKM_DES3_CBC_ENCRYPT_DATA" p
           P11_des_cbc_encrypt_data_params.to_yojson
     | CKM_CONCATENATE_BASE_AND_DATA p ->
-        param "CKM_CONCATENATE_BASE_AND_DATA" p Pkcs11_hex_data.to_yojson
+        param "CKM_CONCATENATE_BASE_AND_DATA" p P11_hex_data.to_yojson
     | CKM_CONCATENATE_DATA_AND_BASE p ->
-        param "CKM_CONCATENATE_DATA_AND_BASE" p Pkcs11_hex_data.to_yojson
+        param "CKM_CONCATENATE_DATA_AND_BASE" p P11_hex_data.to_yojson
     | CKM_XOR_BASE_AND_DATA p ->
-        param "CKM_XOR_BASE_AND_DATA" p Pkcs11_hex_data.to_yojson
+        param "CKM_XOR_BASE_AND_DATA" p P11_hex_data.to_yojson
     | CKM_EXTRACT_KEY_FROM_KEY p ->
         ulong "CKM_EXTRACT_KEY_FROM_KEY" p
     | CKM_CONCATENATE_BASE_AND_KEY p ->
@@ -179,7 +179,7 @@ let to_json =
     | CKM_PKCS5_PBKD2 p ->
         param "CKM_PKCS5_PBKD2" p P11_pkcs5_pbkd2_data_params.to_yojson
     | CKM_CS_UNKNOWN p ->
-        param "CKM_NOT_IMPLEMENTED" p P11_raw_payload_params.to_yojson
+        param "CKM_NOT_IMPLEMENTED" p P11_ulong.to_yojson
 
 let of_yojson json =
   let parse name param =
@@ -193,7 +193,7 @@ let of_yojson json =
     let oaep make = P11_rsa_pkcs_oaep_params.of_yojson param >>= fun r -> Ok (make r) in
     let pbkd2 make = P11_pkcs5_pbkd2_data_params.of_yojson param >>= fun r -> Ok (make r) in
     let pss make = P11_rsa_pkcs_pss_params.of_yojson param >>= fun r -> Ok (make r) in
-    let data make = Pkcs11_hex_data.of_yojson param >>= fun r -> Ok (make r) in
+    let data make = P11_hex_data.of_yojson param >>= fun r -> Ok (make r) in
     match name with
       | "CKM_SHA_1" -> simple CKM_SHA_1
       | "CKM_SHA224" -> simple CKM_SHA224
@@ -223,7 +223,7 @@ let of_yojson json =
       | "CKM_AES_CBC_PAD" -> data (fun x -> CKM_AES_CBC_PAD x)
       | "CKM_AES_MAC" -> simple CKM_AES_MAC
       | "CKM_AES_MAC_GENERAL" ->
-          Pkcs11_CK_ULONG.of_yojson param >>= fun r -> Ok (CKM_AES_MAC_GENERAL r)
+          P11_ulong.of_yojson param >>= fun r -> Ok (CKM_AES_MAC_GENERAL r)
       | "CKM_AES_ECB_ENCRYPT_DATA" ->
           data (fun x -> CKM_AES_ECB_ENCRYPT_DATA x)
       | "CKM_AES_CBC_ENCRYPT_DATA" ->
@@ -234,7 +234,7 @@ let of_yojson json =
       | "CKM_DES_CBC_PAD" -> data (fun x -> CKM_DES_CBC_PAD x)
       | "CKM_DES_MAC" -> simple CKM_DES_MAC
       | "CKM_DES_MAC_GENERAL" ->
-          Pkcs11_CK_ULONG.of_yojson param >>= fun r -> Ok (CKM_DES_MAC_GENERAL r)
+          P11_ulong.of_yojson param >>= fun r -> Ok (CKM_DES_MAC_GENERAL r)
       | "CKM_DES_ECB_ENCRYPT_DATA" ->
           data (fun x -> CKM_DES_ECB_ENCRYPT_DATA x)
       | "CKM_DES_CBC_ENCRYPT_DATA" ->
@@ -245,7 +245,7 @@ let of_yojson json =
       | "CKM_DES3_CBC_PAD" -> data (fun x -> CKM_DES3_CBC_PAD x)
       | "CKM_DES3_MAC" -> simple CKM_DES3_MAC
       | "CKM_DES3_MAC_GENERAL" ->
-          Pkcs11_CK_ULONG.of_yojson param >>= fun r -> Ok (CKM_DES3_MAC_GENERAL r)
+          P11_ulong.of_yojson param >>= fun r -> Ok (CKM_DES3_MAC_GENERAL r)
       | "CKM_DES3_ECB_ENCRYPT_DATA" ->
           data (fun x -> CKM_DES3_ECB_ENCRYPT_DATA x)
       | "CKM_DES3_CBC_ENCRYPT_DATA" ->
@@ -257,7 +257,7 @@ let of_yojson json =
       | "CKM_XOR_BASE_AND_DATA" ->
           data (fun x -> CKM_XOR_BASE_AND_DATA x)
       | "CKM_EXTRACT_KEY_FROM_KEY" ->
-          Pkcs11_CK_ULONG.of_yojson param >>= fun r -> Ok (CKM_EXTRACT_KEY_FROM_KEY r)
+          P11_ulong.of_yojson param >>= fun r -> Ok (CKM_EXTRACT_KEY_FROM_KEY r)
       | "CKM_CONCATENATE_BASE_AND_KEY" ->
           P11_object_handle.of_yojson param >>= fun r -> Ok (CKM_CONCATENATE_BASE_AND_KEY r)
       | "CKM_EC_KEY_PAIR_GEN" -> simple CKM_EC_KEY_PAIR_GEN
@@ -266,7 +266,7 @@ let of_yojson json =
       | "CKM_ECDH1_DERIVE" ->
         P11_ecdh1_derive_params.of_yojson param >>= fun r -> Ok (CKM_ECDH1_DERIVE r)
       | _ ->
-        P11_raw_payload_params.of_yojson param >>= fun params ->
+        P11_ulong.of_yojson param >>= fun params ->
         Ok (CKM_CS_UNKNOWN params)
   in
   match json with
@@ -339,8 +339,7 @@ let mechanism_type m =
     | CKM_ECDH1_COFACTOR_DERIVE _ -> T.CKM_ECDH1_COFACTOR_DERIVE
     | CKM_ECMQV_DERIVE _ -> T.CKM_ECMQV_DERIVE
     | CKM_PKCS5_PBKD2 _ -> T.CKM_PKCS5_PBKD2
-    | CKM_CS_UNKNOWN params ->
-      let (mechanism_type, _) = Pkcs11_CK_RAW_PAYLOAD.make params in
+    | CKM_CS_UNKNOWN mechanism_type ->
       T.CKM_CS_UNKNOWN mechanism_type
 
 let compare a b =
@@ -399,10 +398,9 @@ let compare a b =
         CKM_DES_MAC_GENERAL b_param
       | CKM_DES3_MAC_GENERAL a_param,
         CKM_DES3_MAC_GENERAL b_param
-        -> Pkcs11_CK_ULONG.compare a_param b_param
       | CKM_CS_UNKNOWN a_param,
         CKM_CS_UNKNOWN b_param
-        -> P11_raw_payload_params.compare a_param b_param
+        -> P11_ulong.compare a_param b_param
       | CKM_ECDH1_DERIVE a_param,
         CKM_ECDH1_DERIVE b_param
       | CKM_ECDH1_COFACTOR_DERIVE a_param,

@@ -1,6 +1,6 @@
 open Ctypes
 open Ctypes_helpers
-open Pkcs11_helpers
+open P11_helpers
 
 type _t
 type t = _t structure

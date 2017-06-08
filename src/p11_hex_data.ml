@@ -27,7 +27,7 @@ exception Invalid_hex
 
 let of_yojson =
   let err msg =
-    Error ("Pkcs11_hex_data: " ^ msg)
+    Error ("P11_hex_data: " ^ msg)
   in
   function
     | `String s when s.[0] = '0' && s.[1] = 'x' ->

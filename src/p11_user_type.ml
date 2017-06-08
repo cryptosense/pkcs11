@@ -2,7 +2,7 @@ type t =
   | CKU_SO
   | CKU_USER
   | CKU_CONTEXT_SPECIFIC
-  | CKU_CS_UNKNOWN of Pkcs11_CK_ULONG.t
+  | CKU_CS_UNKNOWN of P11_ulong.t
 [@@deriving eq,ord]
 
 let to_string =
@@ -30,4 +30,4 @@ let of_string =
 let to_yojson user_type =
   `String (to_string user_type)
 
-let of_yojson = Pkcs11_helpers.of_json_string ~typename:"user type" of_string
+let of_yojson = P11_helpers.of_json_string ~typename:"user type" of_string

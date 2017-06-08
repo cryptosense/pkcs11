@@ -1,6 +1,6 @@
 (** Key types ([CK_KEY_TYPE]) *)
 
-type t = Pkcs11_CK_ULONG.t
+type t = P11_ulong.t
 
 val _CKK_RSA : t
 val _CKK_DSA : t

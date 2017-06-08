@@ -170,8 +170,7 @@ let make =
         struct_ _CKM_PKCS5_PBKD2 p Pkcs11_CK_PKCS5_PBKD2_PARAMS.t
           Pkcs11_CK_PKCS5_PBKD2_PARAMS.make
     | CKM_CS_UNKNOWN params ->
-      let (mechanism_type, data) = Pkcs11_CK_RAW_PAYLOAD.make params in
-      string mechanism_type data
+      simple params
 
 let unsafe_get_string t =
   view_string t parameter_len parameter
@@ -276,4 +275,4 @@ let view t =
   | _ when it_is _CKM_ECDH1_COFACTOR_DERIVE -> CKM_ECDH1_COFACTOR_DERIVE (unsafe_get_ecdh1_derive_param t)
   | _ when it_is _CKM_ECMQV_DERIVE -> CKM_ECMQV_DERIVE (unsafe_get_ecmqv_derive_param t)
   | _ ->
-    CKM_CS_UNKNOWN (Pkcs11_CK_RAW_PAYLOAD.view (ul, (unsafe_get_string t)))
+    CKM_CS_UNKNOWN ul

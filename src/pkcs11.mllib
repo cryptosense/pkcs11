@@ -5,16 +5,16 @@ Pkcs11_data
 Pkcs11_CK_BYTE
 Ctypes_helpers
 Pkcs11_CK_SESSION_INFO
-Pkcs11_helpers
+P11_helpers
 Pkcs11_CK_FLAGS
 Pkcs11_types
 Pkcs11_CK_ATTRIBUTE_SET
 Pkcs11_CK_OBJECT_CLASS
 Pkcs11_CK_KEY_TYPE
 Pkcs11_CK_ATTRIBUTE
-Pkcs11_CK_BIGINT
-Pkcs11_hex_data
-Pkcs11_CK_ULONG
+P11_bigint
+P11_hex_data
+P11_ulong
 Pkcs11_key_gen_mechanism
 Pkcs11_CK_MECHANISM_TYPE
 Pkcs11_CK_ATTRIBUTE_TYPE
@@ -39,7 +39,6 @@ Pkcs11_CK_RSA_PKCS_OAEP_PARAMS
 Pkcs11_CK_PKCS5_PBKD2_PARAMS
 Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE
 Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE
-Pkcs11_CK_RAW_PAYLOAD
 Pkcs11_CK_RV
 Pkcs11_CK_MECHANISM_INFO
 Pkcs11_slot_list
@@ -65,7 +64,6 @@ P11_token_info
 P11_info
 P11_user_type
 P11_mechanism
-P11_raw_payload_params
 P11_pkcs5_pbkd2_data_params
 P11_pkcs5_pbkd2_pseudo_random_function_type
 P11_pkcs5_pbkdf2_salt_source_type
@@ -86,3 +84,4 @@ P11_slot
 P11_hw_feature_type
 P11_object_handle
 P11_session_handle
+P11_ec_kdf

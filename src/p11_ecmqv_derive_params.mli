@@ -1,10 +1,10 @@
 type t =
-  { kdf: Pkcs11_CK_EC_KDF_TYPE.u
+  { kdf: P11_ec_kdf.t
   ; shared_data: string option
   ; public_data: string
-  ; private_data_len: Pkcs11_CK_ULONG.t
-  ; private_data: Pkcs11_CK_OBJECT_HANDLE.t
+  ; private_data_len: P11_ulong.t
+  ; private_data: P11_object_handle.t
   ; public_data2: string
-  ; public_key: Pkcs11_CK_OBJECT_HANDLE.t
+  ; public_key: P11_object_handle.t
   }
 [@@deriving ord,to_yojson]

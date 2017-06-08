@@ -4,16 +4,16 @@ type t =
   ; model : string
   ; serialNumber : string
   ; flags : P11_flags.t
-  ; ulMaxSessionCount : Pkcs11_CK_ULONG.t
-  ; ulSessionCount : Pkcs11_CK_ULONG.t
-  ; ulMaxRwSessionCount : Pkcs11_CK_ULONG.t
-  ; ulRwSessionCount : Pkcs11_CK_ULONG.t
-  ; ulMaxPinLen : Pkcs11_CK_ULONG.t
-  ; ulMinPinLen : Pkcs11_CK_ULONG.t
-  ; ulTotalPublicMemory : Pkcs11_CK_ULONG.t
-  ; ulFreePublicMemory : Pkcs11_CK_ULONG.t
-  ; ulTotalPrivateMemory : Pkcs11_CK_ULONG.t
-  ; ulFreePrivateMemory : Pkcs11_CK_ULONG.t
+  ; ulMaxSessionCount : P11_ulong.t
+  ; ulSessionCount : P11_ulong.t
+  ; ulMaxRwSessionCount : P11_ulong.t
+  ; ulRwSessionCount : P11_ulong.t
+  ; ulMaxPinLen : P11_ulong.t
+  ; ulMinPinLen : P11_ulong.t
+  ; ulTotalPublicMemory : P11_ulong.t
+  ; ulFreePublicMemory : P11_ulong.t
+  ; ulTotalPrivateMemory : P11_ulong.t
+  ; ulFreePrivateMemory : P11_ulong.t
   ; hardwareVersion : P11_version.t
   ; firmwareVersion : P11_version.t
   ; utcTime : string
@@ -23,7 +23,7 @@ type t =
 let flags_to_string = P11_flags.(to_pretty_string Token_info_domain)
 
 let ul_to_string t =
-  Pkcs11_CK_ULONG.(
+  P11_ulong.(
     if is_effectively_infinite t then
       "CK_EFFECTIVELY_INFINITE"
     else if is_unavailable_information t then
@@ -56,9 +56,9 @@ let to_strings info =
   ]
 
 let to_string ?newlines ?indent info =
-  Pkcs11_helpers.string_of_record ?newlines ?indent (to_strings info)
+  P11_helpers.string_of_record ?newlines ?indent (to_strings info)
 
-let to_strings info = Pkcs11_helpers.strings_of_record @@ to_strings info
+let to_strings info = P11_helpers.strings_of_record @@ to_strings info
 
 let to_yojson info =
   let ulong x = `String (Unsigned.ULong.to_string x) in

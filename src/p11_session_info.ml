@@ -1,8 +1,8 @@
 type t =
-  { slotID : Pkcs11_CK_ULONG.t
-  ; state : Pkcs11_CK_ULONG.t
+  { slotID : P11_ulong.t
+  ; state : P11_ulong.t
   ; flags : P11_flags.t
-  ; ulDeviceError : Pkcs11_CK_ULONG.t;
+  ; ulDeviceError : P11_ulong.t;
   }
 [@@deriving of_yojson]
 
@@ -17,9 +17,9 @@ let to_strings info =
   ]
 
 let to_string ?newlines ?indent info =
-  Pkcs11_helpers.string_of_record ?newlines ?indent (to_strings info)
+  P11_helpers.string_of_record ?newlines ?indent (to_strings info)
 
-let to_strings info = Pkcs11_helpers.strings_of_record @@ to_strings info
+let to_strings info = P11_helpers.strings_of_record @@ to_strings info
 
 let to_yojson info =
   `Assoc

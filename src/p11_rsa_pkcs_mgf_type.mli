@@ -1,4 +1,4 @@
-type t = Pkcs11_CK_ULONG.t
+type t = P11_ulong.t
 [@@deriving ord,yojson]
 
 val _CKG_MGF1_SHA1 : t

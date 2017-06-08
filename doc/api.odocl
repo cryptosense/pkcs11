@@ -13,7 +13,6 @@ P11_token_info
 P11_info
 P11_user_type
 P11_mechanism
-P11_raw_payload_params
 P11_pkcs5_pbkd2_data_params
 P11_pkcs5_pbkd2_pseudo_random_function_type
 P11_pkcs5_pbkdf2_salt_source_type
@@ -40,7 +39,7 @@ Pkcs11_CK_ATTRIBUTE
 Pkcs11_CK_ATTRIBUTE_SET
 Pkcs11_CK_ATTRIBUTE_TYPE
 Pkcs11_CK_BBOOL
-Pkcs11_CK_BIGINT
+P11_bigint
 Pkcs11_CK_BYTE
 Pkcs11_CK_ECDH1_DERIVE_PARAMS
 Pkcs11_CK_ECMQV_DERIVE_PARAMS
@@ -58,7 +57,6 @@ Pkcs11_CK_OBJECT_HANDLE
 Pkcs11_CK_PKCS5_PBKD2_PARAMS
 Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE
 Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE
-Pkcs11_CK_RAW_PAYLOAD
 Pkcs11_CK_RSA_PKCS_MGF_TYPE
 Pkcs11_CK_RSA_PKCS_OAEP_PARAMS
 Pkcs11_CK_RSA_PKCS_PSS_PARAMS
@@ -68,7 +66,7 @@ Pkcs11_CK_SESSION_INFO
 Pkcs11_CK_SLOT_ID
 Pkcs11_CK_SLOT_INFO
 Pkcs11_CK_TOKEN_INFO
-Pkcs11_CK_ULONG
+P11_ulong
 Pkcs11_CK_USER_TYPE
 Pkcs11_CK_UTF8CHAR
 Pkcs11_CK_VERSION
@@ -76,7 +74,7 @@ Pkcs11_CK_VOID
 Pkcs11_bindings
 Pkcs11_data
 Pkcs11_generator
-Pkcs11_helpers
+P11_helpers
 P11_driver
 Pkcs11_key_gen_mechanism
 Pkcs11_log
@@ -86,3 +84,4 @@ Pkcs11_template
 Pkcs11_types
 Pkcs11_rev
 Pkcs11_cli
+P11_ec_kdf

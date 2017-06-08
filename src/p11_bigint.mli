@@ -3,9 +3,6 @@
 
    PKCS#11 expects them to be encoded in big-endian,
    so manipulating the underlying representation is error-prone.
-
-   The name is not explicitly stated in the standard but is used to avoid
-   collisions with [Big_int].
 *)
 
 type t

@@ -13,7 +13,7 @@ let get_length t =
 let get_content t =
   t.content
 
-let get_length_addr (t:t) : Pkcs11_CK_ULONG.t ptr =
+let get_length_addr (t:t) : P11_ulong.t ptr =
   t.length
 
 let string_from_ptr ~length x =

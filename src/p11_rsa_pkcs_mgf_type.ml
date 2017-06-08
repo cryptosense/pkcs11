@@ -1,4 +1,4 @@
-type t = Pkcs11_CK_ULONG.t
+type t = P11_ulong.t
 [@@deriving ord]
 
 let (!) x  = Unsigned.ULong.of_string (Int64.to_string x)
@@ -50,4 +50,4 @@ let to_json key_type =
     `Null
 
 let to_yojson = to_json
-let of_yojson = Pkcs11_helpers.of_json_string ~typename:"MGF type" of_string
+let of_yojson = P11_helpers.of_json_string ~typename:"MGF type" of_string

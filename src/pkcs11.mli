@@ -9,7 +9,7 @@
  *)
 
 module Data = Pkcs11_data
-module CK_ULONG = Pkcs11_CK_ULONG
+module CK_ULONG = P11_ulong
 module CK_BYTE = Pkcs11_CK_BYTE
 module CK_BBOOL = Pkcs11_CK_BBOOL
 module CK_UTF8CHAR = Pkcs11_CK_UTF8CHAR 
@@ -22,7 +22,7 @@ module CK_FLAGS = Pkcs11_CK_FLAGS
 module CK_OBJECT_CLASS = Pkcs11_CK_OBJECT_CLASS
 module CK_KEY_TYPE = Pkcs11_CK_KEY_TYPE
 module CK_VERSION = Pkcs11_CK_VERSION 
-module CK_BIGINT = Pkcs11_CK_BIGINT
+module CK_BIGINT = P11_bigint
 module CK_RV = Pkcs11_CK_RV
 module CK_MECHANISM_TYPE = Pkcs11_CK_MECHANISM_TYPE
 module CK_RSA_PKCS_MGF_TYPE = Pkcs11_CK_RSA_PKCS_MGF_TYPE 
@@ -37,7 +37,6 @@ module CK_PKCS5_PBKD2_PARAMS = Pkcs11_CK_PKCS5_PBKD2_PARAMS
 module CK_EC_KDF_TYPE = Pkcs11_CK_EC_KDF_TYPE 
 module CK_ECDH1_DERIVE_PARAMS = Pkcs11_CK_ECDH1_DERIVE_PARAMS
 module CK_ECMQV_DERIVE_PARAMS = Pkcs11_CK_ECMQV_DERIVE_PARAMS 
-module CK_RAW_PAYLOAD = Pkcs11_CK_RAW_PAYLOAD
 module CK_MECHANISM = Pkcs11_CK_MECHANISM
 module Key_gen_mechanism = Pkcs11_key_gen_mechanism
 module CK_USER_TYPE = Pkcs11_CK_USER_TYPE

@@ -116,4 +116,4 @@ let of_string =
 let to_yojson key_type =
   `String (to_string key_type)
 
-let of_yojson = Pkcs11_helpers.of_json_string ~typename:"key type" of_string
+let of_yojson = P11_helpers.of_json_string ~typename:"key type" of_string

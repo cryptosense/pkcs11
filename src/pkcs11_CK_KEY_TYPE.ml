@@ -1,4 +1,4 @@
-type t = Pkcs11_CK_ULONG.t
+type t = P11_ulong.t
 
 let view_error n =
   Pkcs11_log.log @@ Printf.sprintf "Unknown CKK code: 0x%Lx" n
