@@ -7,15 +7,22 @@ license: "BSD-2"
 dev-repo: "https://github.com/cryptosense/pkcs11.git"
 doc: "https://cryptosense.github.io/pkcs11/doc"
 build: [
-  [ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--with-cmdliner" "%{cmdliner:installed}%" ]
+  [ "ocaml" "pkg/pkg.ml" "build"
+    "--pinned" "%{pinned}%"
+    "--with-cmdliner" "%{cmdliner:installed}%"
+    "--with-driver" "%{ctypes:installed}%"
+  ]
 ]
 build-test: [
-  [ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true" "--with-cmdliner" "%{cmdliner:installed}%" ]
+  [ "ocaml" "pkg/pkg.ml" "build"
+    "--pinned" "%{pinned}%"
+    "--tests" "true"
+    "--with-cmdliner" "%{cmdliner:installed}%"
+    "--with-driver" "%{ctypes:installed}%"
+  ]
   [ "ocaml" "pkg/pkg.ml" "test" ]
 ]
 depends: [
-  "ctypes" { >= "0.12.0" }
-  "ctypes-foreign" { >= "0.4.0" }
   "hex" { >= "1.0.0" }
   "integers"
   "key-parsers" { >= "0.5.0" & != "0.6.0" }
@@ -28,6 +35,11 @@ depends: [
 ]
 depopts: [
   "cmdliner"
+  "ctypes"
+  "ctypes-foreign"
+]
+conflicts: [
+  "ctypes" { < "0.12.0" }
 ]
 tags: ["org:cryptosense"]
 available: [ocaml-version >= "4.02.0" & os != "darwin"]

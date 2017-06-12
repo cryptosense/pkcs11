@@ -1,8 +1,10 @@
 S pkg
 S src
+S src_driver
 S test
 B _build/pkg
 B _build/src
+B _build/src_driver
 B _build/test
 PKG cmdliner
 PKG ctypes.foreign

@@ -1,4 +1,5 @@
 true: bin_annot
+true: package(str)
 true: package(hex)
 true: package(integers)
 true: package(key-parsers)
@@ -6,17 +7,20 @@ true: package(ppx_deriving.std)
 true: package(ppx_deriving_yojson)
 true: open(Result)
 
-<src/ctypes_helpers.*>: package(ctypes.stubs)
-<src/p11_driver.*>: package(ctypes.stubs)
-<src/pkcs11*>: package(ctypes.foreign)
-<src/pkcs11*>: package(ctypes.stubs)
+<src_driver/*>: package(ctypes.stubs)
+<src_driver/*>: package(ctypes.foreign)
 <src_rev/*>: package(ctypes.foreign)
 <src_rev/*>: package(ctypes.stubs)
-<test/*>: package(ctypes.foreign)
-<test/*>: package(ctypes.stubs)
+<test/test_driver.*>: package(ctypes.foreign)
+<test/test_driver.*>: package(ctypes.stubs)
+<test/example_sign.*>: package(ctypes.foreign)
+<test/example_sign.*>: package(ctypes.stubs)
 
 <src_cli/*>: package(cmdliner)
 <src>: include
+<src_cli>: include
+<src_rev>: include
+<src_driver>: include
 <include>: include
 <**/*.c>: depend(include/pkcs11.h)
 <**/*.c>: depend(include/pkcs11t.h)
@@ -24,12 +28,13 @@ true: open(Result)
 <**/*.c>: depend(include/pkcs11_module.h)
 <src_rev/*>: depend(include/prelude.h)
 
-<src/pkcs11.{cma,cmxa}>: use_pkcs11
-<src/pkcs11.cmxs>: link_pkcs11
+<src_driver/pkcs11_driver.{cma,cmxa}>: use_pkcs11
+<src_driver/pkcs11_driver.cmxs>: link_pkcs11, here
 
 <src_rev/pkcs11_rev.{cma,cmxa}>: use_pkcs11_rev
 <src_rev/pkcs11_rev.cmxs>: link_pkcs11_rev, here
 <src_rev/pkcs11_rev_generator.*>: link_pkcs11
 
 <test/*>: package(oUnit)
-<test/*>: link_pkcs11
+<test/test_driver.*>: link_pkcs11
+<test/example_sign.*>: link_pkcs11
