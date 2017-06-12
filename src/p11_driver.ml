@@ -179,7 +179,7 @@ struct
     go 0 l
 
   let trimmed_eq a b =
-    let open Ctypes_helpers in
+    let open P11_helpers in
     trim_and_quote a = trim_and_quote b
 
   let find_slot slot_desc i slot =

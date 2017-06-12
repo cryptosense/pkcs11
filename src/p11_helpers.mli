@@ -15,3 +15,6 @@ val of_json_string :
   (string -> 'a) ->
   Yojson.Safe.json ->
   ('a, string) Result.result
+
+(** Remove trailing zeros and spaces, and quote the result.*)
+val trim_and_quote : string -> string

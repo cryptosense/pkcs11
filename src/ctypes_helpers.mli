@@ -101,9 +101,6 @@ exception Buffer_overflow
     the string is too long.  *)
 val blank_padded : length:int -> string -> string
 
-(** Remove trailing zeros and spaces, and quote the result.*)
-val trim_and_quote : string -> string
-
 (** Like [Ctypes.field] except that it will always align to 1 byte. *)
 val packed_field : 't Ctypes.typ -> string -> 'a Ctypes.typ -> ('a, (('s, [<`Struct | `Union]) Ctypes_static.structured as 't)) Ctypes.field
 

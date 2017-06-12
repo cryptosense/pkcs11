@@ -33,12 +33,11 @@ let ul_to_string t =
   )
 
 let to_strings info =
-  let open Ctypes_helpers in
   [
-    "Label", trim_and_quote info.label;
-    "Manufacturer ID", trim_and_quote info.manufacturerID;
-    "Model", trim_and_quote info.model;
-    "Serial Number", trim_and_quote info.serialNumber;
+    "Label", P11_helpers.trim_and_quote info.label;
+    "Manufacturer ID", P11_helpers.trim_and_quote info.manufacturerID;
+    "Model", P11_helpers.trim_and_quote info.model;
+    "Serial Number", P11_helpers.trim_and_quote info.serialNumber;
     "Flags", flags_to_string info.flags;
     "Maximum Session Count", ul_to_string info.ulMaxSessionCount;
     "Session count", ul_to_string info.ulSessionCount;
@@ -52,7 +51,7 @@ let to_strings info =
     "Free Private Memory", ul_to_string info.ulFreePrivateMemory;
     "Hardware Version", (P11_version.to_string info.hardwareVersion);
     "Firmware Version", (P11_version.to_string info.firmwareVersion);
-    "UTC Time", trim_and_quote info.utcTime;
+    "UTC Time", P11_helpers.trim_and_quote info.utcTime;
   ]
 
 let to_string ?newlines ?indent info =

@@ -40,3 +40,19 @@ let of_json_string ~typename of_string json =
         err "of_string failed"
     end
   | _ -> err "Not a JSON string"
+
+(* Remove trailing zeros and spaces, and quote the result to prevent
+   the DLL from injecting stuff into our tool. *)
+let trim_and_quote string =
+  let len = String.length string in
+  let rec new_len i =
+    if i < 0 then
+      0
+    else match string.[i] with
+      | '\000' | ' ' ->
+          new_len (i - 1)
+      | _ ->
+          i + 1
+  in
+  let new_len = new_len (len - 1) in
+  Printf.sprintf "%S" (Str.first_chars string new_len)
