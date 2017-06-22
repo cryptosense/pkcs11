@@ -13,7 +13,7 @@ package "rev" (
     archive(native) = "pkcs11_rev.cmxa"
     plugin(byte) = "pkcs11_rev.cma"
     plugin(native) = "pkcs11_rev.cmxs"
-    requires = "pkcs11"
+    requires = "pkcs11.driver"
 )
 
 package "cli" (
