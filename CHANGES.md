@@ -1,3 +1,22 @@
+v0.9.0 2017-06-22
+=================
+
+Breaking changes:
+
+- Major reorganization of the package sources:
+  + Move the driver part to a `pkcs11.driver` subpackage.
+    This is based on `ctypes` and `ctypes-foreign` depopts. (#57)
+  + Some modules have been renamed to reflect this: `P11_*` are high level,
+    and `Pkcs11_*` correspond to the driver implementation. (#56)
+  + Make only the driver depend on `ctypes`.
+    The rest depends on `integers` only (#54, #55)
+- Remove deprecated value `P11_attribute_type.(==)` (#51)
+
+Build system:
+
+- Move files in different subdirectories (#52)
+- Ignore with git generated file "pkcs11.install" (#53)
+
 v0.8.0 2017-05-22
 =================
 
