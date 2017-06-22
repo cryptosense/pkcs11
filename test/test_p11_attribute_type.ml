@@ -28,7 +28,7 @@ let compare'_suite =
           let open P11_attribute_type in
           compare'
             CKA_MODIFIABLE
-            (CKA_CS_UNKNOWN Pkcs11_CK_ATTRIBUTE_TYPE._CKA_MODIFIABLE)
+            (CKA_CS_UNKNOWN P11_attribute_type.Encoding._CKA_MODIFIABLE)
           |> ignore;
           assert_failure "compare should have raised";
         with
@@ -43,7 +43,7 @@ let compare'_suite =
   ; "not equal with unknown" >::
     test
       ~a:P11_attribute_type.CKA_MODIFIABLE
-      ~b:(P11_attribute_type.CKA_CS_UNKNOWN Pkcs11_CK_ATTRIBUTE_TYPE._CKA_EXTRACTABLE)
+      ~b:(P11_attribute_type.CKA_CS_UNKNOWN P11_attribute_type.Encoding._CKA_EXTRACTABLE)
       ~expected:(P11_attribute_type.Not_equal 1)
   ]
 

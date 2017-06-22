@@ -12,9 +12,9 @@ let flags_to_string = P11_flags.(to_pretty_string Info_domain)
 let to_strings info =
   [
     "Version", P11_version.to_string info.cryptokiVersion;
-    "Manufacturer ID", Ctypes_helpers.trim_and_quote info.manufacturerID;
+    "Manufacturer ID", P11_helpers.trim_and_quote info.manufacturerID;
     "Flags", flags_to_string info.flags;
-    "Library Description", Ctypes_helpers.trim_and_quote info.libraryDescription;
+    "Library Description", P11_helpers.trim_and_quote info.libraryDescription;
     "Library Version", P11_version.to_string info.libraryVersion;
   ]
 

@@ -22,15 +22,22 @@ let lib ~dir base =
   flag ["link"; "ocaml"; link_flag] (A lib_build);
   dep ["link"; "ocaml"; use_flag] [lib_build]
 
+let add_ocamlfind_header_directory pkg =
+  let open Findlib in
+  match query pkg with
+  | exception Ocamlbuild_pack.Findlib.Findlib_error _ -> ()
+  | findlib_pkg ->
+    let lib_path = findlib_pkg.location in
+    flag ["compile"; "c"] (S [A "-I"; P lib_path])
+
 let after_rules () =
   ctypes_generator "from **/*_generator.ml" "%(name: <**/*> and not <**/*_generator>)";
-  let ocaml_ctypes_lib_path = Findlib.((query "ctypes").location) in
-  flag ["compile"; "c"] (S [A "-I"; P ocaml_ctypes_lib_path]);
+  add_ocamlfind_header_directory "ctypes";
   pdep ["compile"] "depend" (fun s -> [s]);
   pflag ["compile";"c"] "depend" (fun s -> S [A "-I"; P (Filename.dirname s)]);
-  lib ~dir:"src" "pkcs11";
+  lib ~dir:"src_driver" "pkcs11";
   lib ~dir:"src_rev" "pkcs11_rev";
-  flag ["here"] (S ([A "-cclib"; A "-Lsrc"]));
+  flag ["here"] (S ([A "-cclib" ;A "-Lsrc_driver"]));
   ()
 
 let () = dispatch (function

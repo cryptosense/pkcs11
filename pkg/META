@@ -4,7 +4,7 @@ archive(byte) = "pkcs11.cma"
 archive(native) = "pkcs11.cmxa"
 plugin(byte) = "pkcs11.cma"
 plugin(native) = "pkcs11.cmxs"
-requires = "ctypes.foreign ctypes.stubs hex ppx_deriving.runtime ppx_deriving_yojson.runtime key-parsers zarith"
+requires = "str hex integers ppx_deriving.runtime ppx_deriving_yojson.runtime key-parsers zarith"
 
 package "rev" (
     version = "%%VERSION_NUM%%"
@@ -24,4 +24,15 @@ package "cli" (
     plugin(byte) = "pkcs11_cli.cma"
     plugin(native) = "pkcs11_cli.cmxs"
     requires = "pkcs11 cmdliner"
+)
+
+package "driver" (
+    version = "%%VERSION_NUM%%"
+    description = "Driver for pkcs11"
+    archive(byte) = "pkcs11_driver.cma"
+    archive(native) = "pkcs11_driver.cmxa"
+    plugin(byte) = "pkcs11_driver.cma"
+    plugin(native) = "pkcs11_driver.cmxs"
+    exists_if = "pkcs11_driver.cma"
+    requires = "pkcs11 ctypes.foreign ctypes.stubs"
 )

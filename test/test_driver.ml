@@ -220,3 +220,5 @@ let suite =
   "Functional" >:::
   [ "Load P11" >::: test_p11_load
   ]
+
+let () = run_test_tt_main suite
