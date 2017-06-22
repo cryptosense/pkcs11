@@ -25,7 +25,6 @@
 <link title="P11_info" rel="Chapter" href="P11_info.html">
 <link title="P11_user_type" rel="Chapter" href="P11_user_type.html">
 <link title="P11_mechanism" rel="Chapter" href="P11_mechanism.html">
-<link title="P11_raw_payload_params" rel="Chapter" href="P11_raw_payload_params.html">
 <link title="P11_pkcs5_pbkd2_data_params" rel="Chapter" href="P11_pkcs5_pbkd2_data_params.html">
 <link title="P11_pkcs5_pbkd2_pseudo_random_function_type" rel="Chapter" href="P11_pkcs5_pbkd2_pseudo_random_function_type.html">
 <link title="P11_pkcs5_pbkdf2_salt_source_type" rel="Chapter" href="P11_pkcs5_pbkdf2_salt_source_type.html">
@@ -52,7 +51,7 @@
 <link title="Pkcs11_CK_ATTRIBUTE_SET" rel="Chapter" href="Pkcs11_CK_ATTRIBUTE_SET.html">
 <link title="Pkcs11_CK_ATTRIBUTE_TYPE" rel="Chapter" href="Pkcs11_CK_ATTRIBUTE_TYPE.html">
 <link title="Pkcs11_CK_BBOOL" rel="Chapter" href="Pkcs11_CK_BBOOL.html">
-<link title="Pkcs11_CK_BIGINT" rel="Chapter" href="Pkcs11_CK_BIGINT.html">
+<link title="P11_bigint" rel="Chapter" href="P11_bigint.html">
 <link title="Pkcs11_CK_BYTE" rel="Chapter" href="Pkcs11_CK_BYTE.html">
 <link title="Pkcs11_CK_ECDH1_DERIVE_PARAMS" rel="Chapter" href="Pkcs11_CK_ECDH1_DERIVE_PARAMS.html">
 <link title="Pkcs11_CK_ECMQV_DERIVE_PARAMS" rel="Chapter" href="Pkcs11_CK_ECMQV_DERIVE_PARAMS.html">
@@ -70,7 +69,6 @@
 <link title="Pkcs11_CK_PKCS5_PBKD2_PARAMS" rel="Chapter" href="Pkcs11_CK_PKCS5_PBKD2_PARAMS.html">
 <link title="Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE" rel="Chapter" href="Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE.html">
 <link title="Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE" rel="Chapter" href="Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.html">
-<link title="Pkcs11_CK_RAW_PAYLOAD" rel="Chapter" href="Pkcs11_CK_RAW_PAYLOAD.html">
 <link title="Pkcs11_CK_RSA_PKCS_MGF_TYPE" rel="Chapter" href="Pkcs11_CK_RSA_PKCS_MGF_TYPE.html">
 <link title="Pkcs11_CK_RSA_PKCS_OAEP_PARAMS" rel="Chapter" href="Pkcs11_CK_RSA_PKCS_OAEP_PARAMS.html">
 <link title="Pkcs11_CK_RSA_PKCS_PSS_PARAMS" rel="Chapter" href="Pkcs11_CK_RSA_PKCS_PSS_PARAMS.html">
@@ -80,7 +78,7 @@
 <link title="Pkcs11_CK_SLOT_ID" rel="Chapter" href="Pkcs11_CK_SLOT_ID.html">
 <link title="Pkcs11_CK_SLOT_INFO" rel="Chapter" href="Pkcs11_CK_SLOT_INFO.html">
 <link title="Pkcs11_CK_TOKEN_INFO" rel="Chapter" href="Pkcs11_CK_TOKEN_INFO.html">
-<link title="Pkcs11_CK_ULONG" rel="Chapter" href="Pkcs11_CK_ULONG.html">
+<link title="P11_ulong" rel="Chapter" href="P11_ulong.html">
 <link title="Pkcs11_CK_USER_TYPE" rel="Chapter" href="Pkcs11_CK_USER_TYPE.html">
 <link title="Pkcs11_CK_UTF8CHAR" rel="Chapter" href="Pkcs11_CK_UTF8CHAR.html">
 <link title="Pkcs11_CK_VERSION" rel="Chapter" href="Pkcs11_CK_VERSION.html">
@@ -88,7 +86,8 @@
 <link title="Pkcs11_bindings" rel="Chapter" href="Pkcs11_bindings.html">
 <link title="Pkcs11_data" rel="Chapter" href="Pkcs11_data.html">
 <link title="Pkcs11_generator" rel="Chapter" href="Pkcs11_generator.html">
-<link title="Pkcs11_helpers" rel="Chapter" href="Pkcs11_helpers.html">
+<link title="P11_helpers" rel="Chapter" href="P11_helpers.html">
+<link title="P11_driver" rel="Chapter" href="P11_driver.html">
 <link title="Pkcs11_key_gen_mechanism" rel="Chapter" href="Pkcs11_key_gen_mechanism.html">
 <link title="Pkcs11_log" rel="Chapter" href="Pkcs11_log.html">
 <link title="Pkcs11_mechanism_list" rel="Chapter" href="Pkcs11_mechanism_list.html">
@@ -96,7 +95,8 @@
 <link title="Pkcs11_template" rel="Chapter" href="Pkcs11_template.html">
 <link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html">
 <link title="Pkcs11_rev" rel="Chapter" href="Pkcs11_rev.html">
-<link title="Pkcs11_cli" rel="Chapter" href="Pkcs11_cli.html"><title></title>
+<link title="Pkcs11_cli" rel="Chapter" href="Pkcs11_cli.html">
+<link title="P11_ec_kdf" rel="Chapter" href="P11_ec_kdf.html"><title></title>
 </head>
 <body>
 <h1></h1>
@@ -110,7 +110,7 @@
 <br/><br>
 <table class="indextable">
 <tr><td class="module"><a href="P11.html">P11</a></td><td><div class="info">
-High-level PKCS#11 interface.
+High-level PKCS#11 types.
 </div>
 </td></tr>
 <tr><td class="module"><a href="P11_key_attributes.html">P11_key_attributes</a></td><td><div class="info">
@@ -145,7 +145,6 @@ Return correct string value if the unsigned long has a special value e.g.
 <code class="code">to_string</code> is defined as <code class="code"><span class="keyword">fun</span>&nbsp;x&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Mechanism_type</span>.to_string&nbsp;(mechanism_type&nbsp;x)&nbsp;</code>
 </div>
 </td></tr>
-<tr><td class="module"><a href="P11_raw_payload_params.html">P11_raw_payload_params</a></td><td></td></tr>
 <tr><td class="module"><a href="P11_pkcs5_pbkd2_data_params.html">P11_pkcs5_pbkd2_data_params</a></td><td></td></tr>
 <tr><td class="module"><a href="P11_pkcs5_pbkd2_pseudo_random_function_type.html">P11_pkcs5_pbkd2_pseudo_random_function_type</a></td><td></td></tr>
 <tr><td class="module"><a href="P11_pkcs5_pbkdf2_salt_source_type.html">P11_pkcs5_pbkdf2_salt_source_type</a></td><td></td></tr>
@@ -193,7 +192,7 @@ Attribute types (<code class="code"><span class="constructor">CK_ATTRIBUTE_TYPE<
 Booleans (<code class="code"><span class="constructor">CK_BBOOL</span></code>)
 </div>
 </td></tr>
-<tr><td class="module"><a href="Pkcs11_CK_BIGINT.html">Pkcs11_CK_BIGINT</a></td><td><div class="info">
+<tr><td class="module"><a href="P11_bigint.html">P11_bigint</a></td><td><div class="info">
 Big integers used in PKCS#11.
 </div>
 </td></tr>
@@ -262,10 +261,6 @@ PRF used to generate the key in <code class="code"><span class="constructor">CKM
 Salt used in <code class="code"><span class="constructor">CKM_PKCS5_PBKD2</span></code> (<code class="code"><span class="constructor">CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE</span></code>)
 </div>
 </td></tr>
-<tr><td class="module"><a href="Pkcs11_CK_RAW_PAYLOAD.html">Pkcs11_CK_RAW_PAYLOAD</a></td><td><div class="info">
-Mechanisms in a not-decoded form
-</div>
-</td></tr>
 <tr><td class="module"><a href="Pkcs11_CK_RSA_PKCS_MGF_TYPE.html">Pkcs11_CK_RSA_PKCS_MGF_TYPE</a></td><td><div class="info">
 MGF used in <code class="code"><span class="constructor">CKM_RSA_PKCS_OAEP</span></code> (<code class="code"><span class="constructor">CK_RSA_PKCS_MGF_TYPE</span></code>)
 </div>
@@ -302,7 +297,7 @@ Information about a slot (<code class="code"><span class="constructor">CK_SLOT_I
 Token information.
 </div>
 </td></tr>
-<tr><td class="module"><a href="Pkcs11_CK_ULONG.html">Pkcs11_CK_ULONG</a></td><td><div class="info">
+<tr><td class="module"><a href="P11_ulong.html">P11_ulong</a></td><td><div class="info">
 Unsigned values (at least 32 bits long) (<code class="code"><span class="constructor">CK_ULONG</span></code>)
 </div>
 </td></tr>
@@ -334,8 +329,12 @@ Data: input and output of encryption functions.
 Generator of C and ML code from <code class="code"><span class="constructor">Cstubs</span></code> description
 </div>
 </td></tr>
-<tr><td class="module"><a href="Pkcs11_helpers.html">Pkcs11_helpers</a></td><td><div class="info">
-Miscellaneous helpers
+<tr><td class="module"><a href="P11_helpers.html">P11_helpers</a></td><td><div class="info">
+Build a of_json function out of a of_string function.
+</div>
+</td></tr>
+<tr><td class="module"><a href="P11_driver.html">P11_driver</a></td><td><div class="info">
+High-level PKCS#11 bindings.
 </div>
 </td></tr>
 <tr><td class="module"><a href="Pkcs11_key_gen_mechanism.html">Pkcs11_key_gen_mechanism</a></td><td><div class="info">
@@ -372,6 +371,7 @@ Reverse bindings.
 Cmdliner support
 </div>
 </td></tr>
+<tr><td class="module"><a href="P11_ec_kdf.html">P11_ec_kdf</a></td><td></td></tr>
 </table>
 </body>
 </html>

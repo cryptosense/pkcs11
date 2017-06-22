@@ -28,7 +28,6 @@
 <link title="P11_info" rel="Chapter" href="P11_info.html">
 <link title="P11_user_type" rel="Chapter" href="P11_user_type.html">
 <link title="P11_mechanism" rel="Chapter" href="P11_mechanism.html">
-<link title="P11_raw_payload_params" rel="Chapter" href="P11_raw_payload_params.html">
 <link title="P11_pkcs5_pbkd2_data_params" rel="Chapter" href="P11_pkcs5_pbkd2_data_params.html">
 <link title="P11_pkcs5_pbkd2_pseudo_random_function_type" rel="Chapter" href="P11_pkcs5_pbkd2_pseudo_random_function_type.html">
 <link title="P11_pkcs5_pbkdf2_salt_source_type" rel="Chapter" href="P11_pkcs5_pbkdf2_salt_source_type.html">
@@ -55,7 +54,7 @@
 <link title="Pkcs11_CK_ATTRIBUTE_SET" rel="Chapter" href="Pkcs11_CK_ATTRIBUTE_SET.html">
 <link title="Pkcs11_CK_ATTRIBUTE_TYPE" rel="Chapter" href="Pkcs11_CK_ATTRIBUTE_TYPE.html">
 <link title="Pkcs11_CK_BBOOL" rel="Chapter" href="Pkcs11_CK_BBOOL.html">
-<link title="Pkcs11_CK_BIGINT" rel="Chapter" href="Pkcs11_CK_BIGINT.html">
+<link title="P11_bigint" rel="Chapter" href="P11_bigint.html">
 <link title="Pkcs11_CK_BYTE" rel="Chapter" href="Pkcs11_CK_BYTE.html">
 <link title="Pkcs11_CK_ECDH1_DERIVE_PARAMS" rel="Chapter" href="Pkcs11_CK_ECDH1_DERIVE_PARAMS.html">
 <link title="Pkcs11_CK_ECMQV_DERIVE_PARAMS" rel="Chapter" href="Pkcs11_CK_ECMQV_DERIVE_PARAMS.html">
@@ -73,7 +72,6 @@
 <link title="Pkcs11_CK_PKCS5_PBKD2_PARAMS" rel="Chapter" href="Pkcs11_CK_PKCS5_PBKD2_PARAMS.html">
 <link title="Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE" rel="Chapter" href="Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE.html">
 <link title="Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE" rel="Chapter" href="Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.html">
-<link title="Pkcs11_CK_RAW_PAYLOAD" rel="Chapter" href="Pkcs11_CK_RAW_PAYLOAD.html">
 <link title="Pkcs11_CK_RSA_PKCS_MGF_TYPE" rel="Chapter" href="Pkcs11_CK_RSA_PKCS_MGF_TYPE.html">
 <link title="Pkcs11_CK_RSA_PKCS_OAEP_PARAMS" rel="Chapter" href="Pkcs11_CK_RSA_PKCS_OAEP_PARAMS.html">
 <link title="Pkcs11_CK_RSA_PKCS_PSS_PARAMS" rel="Chapter" href="Pkcs11_CK_RSA_PKCS_PSS_PARAMS.html">
@@ -83,7 +81,7 @@
 <link title="Pkcs11_CK_SLOT_ID" rel="Chapter" href="Pkcs11_CK_SLOT_ID.html">
 <link title="Pkcs11_CK_SLOT_INFO" rel="Chapter" href="Pkcs11_CK_SLOT_INFO.html">
 <link title="Pkcs11_CK_TOKEN_INFO" rel="Chapter" href="Pkcs11_CK_TOKEN_INFO.html">
-<link title="Pkcs11_CK_ULONG" rel="Chapter" href="Pkcs11_CK_ULONG.html">
+<link title="P11_ulong" rel="Chapter" href="P11_ulong.html">
 <link title="Pkcs11_CK_USER_TYPE" rel="Chapter" href="Pkcs11_CK_USER_TYPE.html">
 <link title="Pkcs11_CK_UTF8CHAR" rel="Chapter" href="Pkcs11_CK_UTF8CHAR.html">
 <link title="Pkcs11_CK_VERSION" rel="Chapter" href="Pkcs11_CK_VERSION.html">
@@ -91,7 +89,8 @@
 <link title="Pkcs11_bindings" rel="Chapter" href="Pkcs11_bindings.html">
 <link title="Pkcs11_data" rel="Chapter" href="Pkcs11_data.html">
 <link title="Pkcs11_generator" rel="Chapter" href="Pkcs11_generator.html">
-<link title="Pkcs11_helpers" rel="Chapter" href="Pkcs11_helpers.html">
+<link title="P11_helpers" rel="Chapter" href="P11_helpers.html">
+<link title="P11_driver" rel="Chapter" href="P11_driver.html">
 <link title="Pkcs11_key_gen_mechanism" rel="Chapter" href="Pkcs11_key_gen_mechanism.html">
 <link title="Pkcs11_log" rel="Chapter" href="Pkcs11_log.html">
 <link title="Pkcs11_mechanism_list" rel="Chapter" href="Pkcs11_mechanism_list.html">
@@ -99,7 +98,8 @@
 <link title="Pkcs11_template" rel="Chapter" href="Pkcs11_template.html">
 <link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html">
 <link title="Pkcs11_rev" rel="Chapter" href="Pkcs11_rev.html">
-<link title="Pkcs11_cli" rel="Chapter" href="Pkcs11_cli.html"><title>P11.Attribute_type</title>
+<link title="Pkcs11_cli" rel="Chapter" href="Pkcs11_cli.html">
+<link title="P11_ec_kdf" rel="Chapter" href="P11_ec_kdf.html"><title>P11.Attribute_type</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="P11.Session_info.html" title="P11.Session_info">Previous</a>
@@ -280,98 +280,98 @@
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTt.CKA_MODULUS"><span class="constructor">CKA_MODULUS</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_BIGINT.html#TYPEt">Pkcs11_CK_BIGINT.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
+<code><span id="TYPEELTt.CKA_MODULUS"><span class="constructor">CKA_MODULUS</span></span> <span class="keyword">:</span> <code class="type"><a href="P11_bigint.html#TYPEt">P11_bigint.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
 
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTt.CKA_MODULUS_BITS"><span class="constructor">CKA_MODULUS_BITS</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ULONG.html#TYPEt">Pkcs11_CK_ULONG.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
+<code><span id="TYPEELTt.CKA_MODULUS_BITS"><span class="constructor">CKA_MODULUS_BITS</span></span> <span class="keyword">:</span> <code class="type"><a href="P11_ulong.html#TYPEt">P11_ulong.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
 
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTt.CKA_PUBLIC_EXPONENT"><span class="constructor">CKA_PUBLIC_EXPONENT</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_BIGINT.html#TYPEt">Pkcs11_CK_BIGINT.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
+<code><span id="TYPEELTt.CKA_PUBLIC_EXPONENT"><span class="constructor">CKA_PUBLIC_EXPONENT</span></span> <span class="keyword">:</span> <code class="type"><a href="P11_bigint.html#TYPEt">P11_bigint.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
 
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTt.CKA_PRIVATE_EXPONENT"><span class="constructor">CKA_PRIVATE_EXPONENT</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_BIGINT.html#TYPEt">Pkcs11_CK_BIGINT.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
+<code><span id="TYPEELTt.CKA_PRIVATE_EXPONENT"><span class="constructor">CKA_PRIVATE_EXPONENT</span></span> <span class="keyword">:</span> <code class="type"><a href="P11_bigint.html#TYPEt">P11_bigint.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
 
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTt.CKA_PRIME_1"><span class="constructor">CKA_PRIME_1</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_BIGINT.html#TYPEt">Pkcs11_CK_BIGINT.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
+<code><span id="TYPEELTt.CKA_PRIME_1"><span class="constructor">CKA_PRIME_1</span></span> <span class="keyword">:</span> <code class="type"><a href="P11_bigint.html#TYPEt">P11_bigint.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
 
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTt.CKA_PRIME_2"><span class="constructor">CKA_PRIME_2</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_BIGINT.html#TYPEt">Pkcs11_CK_BIGINT.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
+<code><span id="TYPEELTt.CKA_PRIME_2"><span class="constructor">CKA_PRIME_2</span></span> <span class="keyword">:</span> <code class="type"><a href="P11_bigint.html#TYPEt">P11_bigint.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
 
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTt.CKA_EXPONENT_1"><span class="constructor">CKA_EXPONENT_1</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_BIGINT.html#TYPEt">Pkcs11_CK_BIGINT.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
+<code><span id="TYPEELTt.CKA_EXPONENT_1"><span class="constructor">CKA_EXPONENT_1</span></span> <span class="keyword">:</span> <code class="type"><a href="P11_bigint.html#TYPEt">P11_bigint.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
 
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTt.CKA_EXPONENT_2"><span class="constructor">CKA_EXPONENT_2</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_BIGINT.html#TYPEt">Pkcs11_CK_BIGINT.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
+<code><span id="TYPEELTt.CKA_EXPONENT_2"><span class="constructor">CKA_EXPONENT_2</span></span> <span class="keyword">:</span> <code class="type"><a href="P11_bigint.html#TYPEt">P11_bigint.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
 
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTt.CKA_COEFFICIENT"><span class="constructor">CKA_COEFFICIENT</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_BIGINT.html#TYPEt">Pkcs11_CK_BIGINT.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
+<code><span id="TYPEELTt.CKA_COEFFICIENT"><span class="constructor">CKA_COEFFICIENT</span></span> <span class="keyword">:</span> <code class="type"><a href="P11_bigint.html#TYPEt">P11_bigint.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
 
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTt.CKA_PRIME"><span class="constructor">CKA_PRIME</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_BIGINT.html#TYPEt">Pkcs11_CK_BIGINT.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
+<code><span id="TYPEELTt.CKA_PRIME"><span class="constructor">CKA_PRIME</span></span> <span class="keyword">:</span> <code class="type"><a href="P11_bigint.html#TYPEt">P11_bigint.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
 
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTt.CKA_SUBPRIME"><span class="constructor">CKA_SUBPRIME</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_BIGINT.html#TYPEt">Pkcs11_CK_BIGINT.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
+<code><span id="TYPEELTt.CKA_SUBPRIME"><span class="constructor">CKA_SUBPRIME</span></span> <span class="keyword">:</span> <code class="type"><a href="P11_bigint.html#TYPEt">P11_bigint.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
 
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTt.CKA_PRIME_BITS"><span class="constructor">CKA_PRIME_BITS</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ULONG.html#TYPEt">Pkcs11_CK_ULONG.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
+<code><span id="TYPEELTt.CKA_PRIME_BITS"><span class="constructor">CKA_PRIME_BITS</span></span> <span class="keyword">:</span> <code class="type"><a href="P11_ulong.html#TYPEt">P11_ulong.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
 
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTt.CKA_SUBPRIME_BITS"><span class="constructor">CKA_SUBPRIME_BITS</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ULONG.html#TYPEt">Pkcs11_CK_ULONG.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
+<code><span id="TYPEELTt.CKA_SUBPRIME_BITS"><span class="constructor">CKA_SUBPRIME_BITS</span></span> <span class="keyword">:</span> <code class="type"><a href="P11_ulong.html#TYPEt">P11_ulong.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
 
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTt.CKA_VALUE_LEN"><span class="constructor">CKA_VALUE_LEN</span></span> <span class="keyword">:</span> <code class="type"><a href="Pkcs11_CK_ULONG.html#TYPEt">Pkcs11_CK_ULONG.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
+<code><span id="TYPEELTt.CKA_VALUE_LEN"><span class="constructor">CKA_VALUE_LEN</span></span> <span class="keyword">:</span> <code class="type"><a href="P11_ulong.html#TYPEt">P11_ulong.t</a> <a href="P11_attribute_type.html#TYPEt">t</a></code></code></td>
 
 </tr>
 <tr>
@@ -487,10 +487,11 @@
 
 
 
+<pre><span id="VALequal_pack"><span class="keyword">val</span> equal_pack</span> : <code class="type"><a href="P11_attribute_type.html#TYPEpack">pack</a> -><br>       <a href="P11_attribute_type.html#TYPEpack">pack</a> -> Ppx_deriving_runtime.bool</code></pre>
+<pre><span id="VALcompare_pack"><span class="keyword">val</span> compare_pack</span> : <code class="type"><a href="P11_attribute_type.html#TYPEpack">pack</a> -><br>       <a href="P11_attribute_type.html#TYPEpack">pack</a> -> Ppx_deriving_runtime.int</code></pre>
 <pre><span id="VALpack_to_yojson"><span class="keyword">val</span> pack_to_yojson</span> : <code class="type"><a href="P11_attribute_type.html#TYPEpack">pack</a> -> Yojson.Safe.json</code></pre>
 <pre><span id="VALpack_of_yojson"><span class="keyword">val</span> pack_of_yojson</span> : <code class="type">Yojson.Safe.json -><br>       <a href="P11_attribute_type.html#TYPEpack">pack</a> Ppx_deriving_yojson_runtime.error_or</code></pre>
 <pre><span id="VALcompare"><span class="keyword">val</span> compare</span> : <code class="type">'a <a href="P11_attribute_type.html#TYPEt">t</a> -> 'b <a href="P11_attribute_type.html#TYPEt">t</a> -> int</code></pre>
-<pre><span id="VALcompare_pack"><span class="keyword">val</span> compare_pack</span> : <code class="type"><a href="P11_attribute_type.html#TYPEpack">pack</a> -> <a href="P11_attribute_type.html#TYPEpack">pack</a> -> int</code></pre>
 <pre><code><span id="TYPEcomparison"><span class="keyword">type</span> <code class="type">('_, '_)</code> comparison</span> = </code></pre><table class="typetable">
 <tr>
 <td align="left" valign="top" >
@@ -511,8 +512,6 @@
 
 <pre><span id="VALcompare'"><span class="keyword">val</span> compare'</span> : <code class="type">'a <a href="P11_attribute_type.html#TYPEt">t</a> -><br>       'b <a href="P11_attribute_type.html#TYPEt">t</a> -> ('a, 'b) <a href="P11_attribute_type.html#TYPEcomparison">comparison</a></code></pre>
 <pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type">'a <a href="P11_attribute_type.html#TYPEt">t</a> -> 'b <a href="P11_attribute_type.html#TYPEt">t</a> -> bool</code></pre>
-<pre><span id="VAL(==)"><span class="keyword">val</span> (==)</span> : <code class="type">Unsigned.ULong.t -> Unsigned.ULong.t -> bool</code></pre>
-<pre><span id="VALequal_pack"><span class="keyword">val</span> equal_pack</span> : <code class="type"><a href="P11_attribute_type.html#TYPEpack">pack</a> -> <a href="P11_attribute_type.html#TYPEpack">pack</a> -> bool</code></pre>
 <pre><span id="VALof_string"><span class="keyword">val</span> of_string</span> : <code class="type">string -> <a href="P11_attribute_type.html#TYPEpack">pack</a></code></pre>
 <pre><span id="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type">'a <a href="P11_attribute_type.html#TYPEt">t</a> -> string</code></pre>
 <pre><span id="VALpack_to_json"><span class="keyword">val</span> pack_to_json</span> : <code class="type"><a href="P11_attribute_type.html#TYPEpack">pack</a> -> Yojson.Safe.json</code></pre>

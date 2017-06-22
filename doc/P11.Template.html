@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="Start" href="index.html">
 <link rel="previous" href="P11.Attribute.html">
-<link rel="next" href="P11.Make.html">
+<link rel="next" href="P11.EC_KDF.html">
 <link rel="Up" href="P11.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
@@ -28,7 +28,6 @@
 <link title="P11_info" rel="Chapter" href="P11_info.html">
 <link title="P11_user_type" rel="Chapter" href="P11_user_type.html">
 <link title="P11_mechanism" rel="Chapter" href="P11_mechanism.html">
-<link title="P11_raw_payload_params" rel="Chapter" href="P11_raw_payload_params.html">
 <link title="P11_pkcs5_pbkd2_data_params" rel="Chapter" href="P11_pkcs5_pbkd2_data_params.html">
 <link title="P11_pkcs5_pbkd2_pseudo_random_function_type" rel="Chapter" href="P11_pkcs5_pbkd2_pseudo_random_function_type.html">
 <link title="P11_pkcs5_pbkdf2_salt_source_type" rel="Chapter" href="P11_pkcs5_pbkdf2_salt_source_type.html">
@@ -55,7 +54,7 @@
 <link title="Pkcs11_CK_ATTRIBUTE_SET" rel="Chapter" href="Pkcs11_CK_ATTRIBUTE_SET.html">
 <link title="Pkcs11_CK_ATTRIBUTE_TYPE" rel="Chapter" href="Pkcs11_CK_ATTRIBUTE_TYPE.html">
 <link title="Pkcs11_CK_BBOOL" rel="Chapter" href="Pkcs11_CK_BBOOL.html">
-<link title="Pkcs11_CK_BIGINT" rel="Chapter" href="Pkcs11_CK_BIGINT.html">
+<link title="P11_bigint" rel="Chapter" href="P11_bigint.html">
 <link title="Pkcs11_CK_BYTE" rel="Chapter" href="Pkcs11_CK_BYTE.html">
 <link title="Pkcs11_CK_ECDH1_DERIVE_PARAMS" rel="Chapter" href="Pkcs11_CK_ECDH1_DERIVE_PARAMS.html">
 <link title="Pkcs11_CK_ECMQV_DERIVE_PARAMS" rel="Chapter" href="Pkcs11_CK_ECMQV_DERIVE_PARAMS.html">
@@ -73,7 +72,6 @@
 <link title="Pkcs11_CK_PKCS5_PBKD2_PARAMS" rel="Chapter" href="Pkcs11_CK_PKCS5_PBKD2_PARAMS.html">
 <link title="Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE" rel="Chapter" href="Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE.html">
 <link title="Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE" rel="Chapter" href="Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.html">
-<link title="Pkcs11_CK_RAW_PAYLOAD" rel="Chapter" href="Pkcs11_CK_RAW_PAYLOAD.html">
 <link title="Pkcs11_CK_RSA_PKCS_MGF_TYPE" rel="Chapter" href="Pkcs11_CK_RSA_PKCS_MGF_TYPE.html">
 <link title="Pkcs11_CK_RSA_PKCS_OAEP_PARAMS" rel="Chapter" href="Pkcs11_CK_RSA_PKCS_OAEP_PARAMS.html">
 <link title="Pkcs11_CK_RSA_PKCS_PSS_PARAMS" rel="Chapter" href="Pkcs11_CK_RSA_PKCS_PSS_PARAMS.html">
@@ -83,7 +81,7 @@
 <link title="Pkcs11_CK_SLOT_ID" rel="Chapter" href="Pkcs11_CK_SLOT_ID.html">
 <link title="Pkcs11_CK_SLOT_INFO" rel="Chapter" href="Pkcs11_CK_SLOT_INFO.html">
 <link title="Pkcs11_CK_TOKEN_INFO" rel="Chapter" href="Pkcs11_CK_TOKEN_INFO.html">
-<link title="Pkcs11_CK_ULONG" rel="Chapter" href="Pkcs11_CK_ULONG.html">
+<link title="P11_ulong" rel="Chapter" href="P11_ulong.html">
 <link title="Pkcs11_CK_USER_TYPE" rel="Chapter" href="Pkcs11_CK_USER_TYPE.html">
 <link title="Pkcs11_CK_UTF8CHAR" rel="Chapter" href="Pkcs11_CK_UTF8CHAR.html">
 <link title="Pkcs11_CK_VERSION" rel="Chapter" href="Pkcs11_CK_VERSION.html">
@@ -91,7 +89,8 @@
 <link title="Pkcs11_bindings" rel="Chapter" href="Pkcs11_bindings.html">
 <link title="Pkcs11_data" rel="Chapter" href="Pkcs11_data.html">
 <link title="Pkcs11_generator" rel="Chapter" href="Pkcs11_generator.html">
-<link title="Pkcs11_helpers" rel="Chapter" href="Pkcs11_helpers.html">
+<link title="P11_helpers" rel="Chapter" href="P11_helpers.html">
+<link title="P11_driver" rel="Chapter" href="P11_driver.html">
 <link title="Pkcs11_key_gen_mechanism" rel="Chapter" href="Pkcs11_key_gen_mechanism.html">
 <link title="Pkcs11_log" rel="Chapter" href="Pkcs11_log.html">
 <link title="Pkcs11_mechanism_list" rel="Chapter" href="Pkcs11_mechanism_list.html">
@@ -99,13 +98,14 @@
 <link title="Pkcs11_template" rel="Chapter" href="Pkcs11_template.html">
 <link title="Pkcs11_types" rel="Chapter" href="Pkcs11_types.html">
 <link title="Pkcs11_rev" rel="Chapter" href="Pkcs11_rev.html">
-<link title="Pkcs11_cli" rel="Chapter" href="Pkcs11_cli.html"><link title="Accessors " rel="Section" href="#2_Accessors">
+<link title="Pkcs11_cli" rel="Chapter" href="Pkcs11_cli.html">
+<link title="P11_ec_kdf" rel="Chapter" href="P11_ec_kdf.html"><link title="Accessors " rel="Section" href="#2_Accessors">
 <title>P11.Template</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="P11.Attribute.html" title="P11.Attribute">Previous</a>
 &nbsp;<a class="up" href="P11.html" title="P11">Up</a>
-&nbsp;<a class="post" href="P11.Make.html" title="P11.Make">Next</a>
+&nbsp;<a class="post" href="P11.EC_KDF.html" title="P11.EC_KDF">Next</a>
 </div>
 <h1>Module <a href="type_P11.Template.html">P11.Template</a></h1>
 
@@ -114,6 +114,7 @@
 <pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = <code class="type"><a href="P11_attribute.html#TYPEpack">P11_attribute.pack</a> list</code> </pre>
 
 
+<pre><span id="VALcompare"><span class="keyword">val</span> compare</span> : <code class="type"><a href="P11_template.html#TYPEt">t</a> -> <a href="P11_template.html#TYPEt">t</a> -> Ppx_deriving_runtime.int</code></pre>
 <pre><span id="VALto_yojson"><span class="keyword">val</span> to_yojson</span> : <code class="type"><a href="P11_template.html#TYPEt">t</a> -> Yojson.Safe.json</code></pre>
 <pre><span id="VALof_yojson"><span class="keyword">val</span> of_yojson</span> : <code class="type">Yojson.Safe.json -> <a href="P11_template.html#TYPEt">t</a> Ppx_deriving_yojson_runtime.error_or</code></pre>
 <pre><span id="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type"><a href="P11_template.html#TYPEt">t</a> -> string</code></pre>
@@ -125,10 +126,6 @@ Return the value of the first occurrence of an attribute.<br>
 <pre><span id="VALget_pack"><span class="keyword">val</span> get_pack</span> : <code class="type"><a href="P11_template.html#TYPEt">t</a> -> <a href="P11_attribute_type.html#TYPEpack">P11_attribute_type.pack</a> -> <a href="P11_attribute.html#TYPEpack">P11_attribute.pack</a> option</code></pre>
 <pre><span id="VALmem"><span class="keyword">val</span> mem</span> : <code class="type"><a href="P11_attribute.html#TYPEpack">P11_attribute.pack</a> -> <a href="P11_template.html#TYPEt">t</a> -> bool</code></pre>
 <pre><span id="VALnormalize"><span class="keyword">val</span> normalize</span> : <code class="type"><a href="P11_template.html#TYPEt">t</a> -> <a href="P11_template.html#TYPEt">t</a></code></pre>
-<pre><span id="VALcompare"><span class="keyword">val</span> compare</span> : <code class="type"><a href="P11_template.html#TYPEt">t</a> -> <a href="P11_template.html#TYPEt">t</a> -> int</code></pre><div class="info ">
-Compares two normalized templates.<br>
-</div>
-
 <pre><span id="VALattribute_types"><span class="keyword">val</span> attribute_types</span> : <code class="type"><a href="P11_template.html#TYPEt">t</a> -> <a href="P11_attribute_type.html#TYPEpack">P11_attribute_type.pack</a> list</code></pre>
 <pre><span id="VALset_attribute"><span class="keyword">val</span> set_attribute</span> : <code class="type"><a href="P11_attribute.html#TYPEpack">P11_attribute.pack</a> -> <a href="P11_template.html#TYPEt">t</a> -> <a href="P11_template.html#TYPEt">t</a></code></pre><div class="info ">
 <code class="code">set_attribute&nbsp;attribute&nbsp;template</code> replaces the value of
