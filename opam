@@ -25,9 +25,9 @@ build-test: [
 depends: [
   "hex" { >= "1.0.0" }
   "integers"
-  "key-parsers" { >= "0.5.0" & != "0.6.0" }
   "ppx_deriving" { >= "4.0" }
   "ppx_deriving_yojson" { >= "3.0" }
+  "zarith"
   "ocamlbuild" {build}
   "ocamlfind" {build}
   "topkg" {build}

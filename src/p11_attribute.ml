@@ -9,8 +9,6 @@ let to_string_pair =
   let string cka x = cka, Printf.sprintf "%S" x in
   let key_type cka ckk = cka, P11_key_type.to_string ckk in
   let mechanism_type cka x = cka, P11_key_gen_mechanism.to_string x in
-  let ec_parameters cka x = cka, Key_parsers.Asn1.EC.Params.show x in
-  let ec_point cka x = cka, Key_parsers.Asn1.EC.show_point x in
   let bigint cka x = cka, P11_bigint.to_string x in
   fun (type s) (x : s t) ->
     let open P11_attribute_type in
@@ -58,8 +56,8 @@ let to_string_pair =
       | CKA_KEY_GEN_MECHANISM, x   -> mechanism_type "CKA_KEY_GEN_MECHANISM" x
       | CKA_MODIFIABLE, x          -> bool "CKA_MODIFIABLE" x
       (* | CKA_ECDSA_PARAMS, x        -> string "CKA_ECDSA_PARAMS" x *)
-      | CKA_EC_PARAMS, x           -> ec_parameters "CKA_EC_PARAMS" x
-      | CKA_EC_POINT, x            -> ec_point "CKA_EC_POINT" x
+      | CKA_EC_PARAMS, x           -> string "CKA_EC_PARAMS" x
+      | CKA_EC_POINT, x            -> string "CKA_EC_POINT" x
       | CKA_ALWAYS_AUTHENTICATE, x -> bool "CKA_ALWAYS_AUTHENTICATE" x
       | CKA_WRAP_WITH_TRUSTED,   x -> bool "CKA_WRAP_WITH_TRUSTED" x
       | CKA_WRAP_TEMPLATE, NOT_IMPLEMENTED x -> string "CKA_WRAP_TEMPLATE" x
@@ -88,9 +86,6 @@ let to_json : type a . a t -> Yojson.Safe.json = fun attribute ->
   let p_ulong = p P11_ulong.to_yojson in
   let p_bigint = p P11_bigint.to_yojson in
   let p_mechanism_type = p P11_key_gen_mechanism.to_yojson in
-  let p_ec_params = p Key_parsers.Asn1.EC.Params.to_yojson in
-  let p_ec_point = p (fun cs -> P11_hex_data.to_yojson @@ Cstruct.to_string cs)
-  in
   match attribute with
     | CKA_CLASS, param ->
         p_object_class "CKA_CLASS" param
@@ -167,9 +162,9 @@ let to_json : type a . a t -> Yojson.Safe.json = fun attribute ->
     | CKA_MODIFIABLE, param ->
         p_bool "CKA_MODIFIABLE" param
     | CKA_EC_PARAMS, param ->
-        p_ec_params "CKA_EC_PARAMS" param
+        p_data "CKA_EC_PARAMS" param
     | CKA_EC_POINT, param ->
-        p_ec_point "CKA_EC_POINT" param
+        p_data "CKA_EC_POINT" param
     | CKA_ALWAYS_AUTHENTICATE, param ->
         p_bool "CKA_ALWAYS_AUTHENTICATE" param
     | CKA_WRAP_WITH_TRUSTED, param ->
@@ -213,12 +208,6 @@ let pack_of_yojson json : (pack, string) result =
     let p_ulong = parse_using P11_ulong.of_yojson in
     let p_bigint = parse_using P11_bigint.of_yojson in
     let p_mechanism_type = parse_using P11_key_gen_mechanism.of_yojson in
-    let p_ec_params = parse_using Key_parsers.Asn1.EC.Params.of_yojson in
-    let p_ec_point = parse_using (fun js ->
-        let open Ppx_deriving_yojson_runtime in
-        P11_hex_data.of_yojson js >|= Cstruct.of_string
-      )
-    in
     let p_not_implemented typ' =
       let open Ppx_deriving_yojson_runtime in
       P11_hex_data.of_yojson param >>= fun p ->
@@ -301,9 +290,9 @@ let pack_of_yojson json : (pack, string) result =
       | "CKA_MODIFIABLE" ->
           p_bool CKA_MODIFIABLE
       | "CKA_EC_PARAMS" ->
-          p_ec_params CKA_EC_PARAMS
+          p_data CKA_EC_PARAMS
       | "CKA_EC_POINT" ->
-          p_ec_point CKA_EC_POINT
+          p_data CKA_EC_POINT
       | "CKA_ALWAYS_AUTHENTICATE" ->
           p_bool CKA_ALWAYS_AUTHENTICATE
       | "CKA_WRAP_WITH_TRUSTED" ->
@@ -370,10 +359,8 @@ let compare (type a) (type b) (a:a t) (b: b t) =
           P11_ulong.compare a_param b_param
       | (CKA_KEY_GEN_MECHANISM, a_param), (CKA_KEY_GEN_MECHANISM, b_param) ->
           P11_key_gen_mechanism.compare a_param b_param
-      | (CKA_EC_PARAMS, a_param), (CKA_EC_PARAMS, b_param) ->
-          Key_parsers.Asn1.EC.Params.compare a_param b_param
-      | (CKA_EC_POINT, a_param), (CKA_EC_POINT, b_param) ->
-          Key_parsers.Asn1.EC.compare_point a_param b_param
+      | (CKA_EC_PARAMS, a_param), (CKA_EC_PARAMS, b_param) -> compare_string a_param b_param
+      | (CKA_EC_POINT, a_param), (CKA_EC_POINT, b_param) -> compare_string a_param b_param
       | (CKA_PUBLIC_EXPONENT, a_param), (CKA_PUBLIC_EXPONENT, b_param) -> P11_bigint.compare a_param b_param
       | (CKA_PRIVATE_EXPONENT, a_param), (CKA_PRIVATE_EXPONENT, b_param) -> P11_bigint.compare a_param b_param
       | (CKA_PRIME_1, a_param), (CKA_PRIME_1, b_param) -> P11_bigint.compare a_param b_param

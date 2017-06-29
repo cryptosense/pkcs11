@@ -4,7 +4,7 @@ archive(byte) = "pkcs11.cma"
 archive(native) = "pkcs11.cmxa"
 plugin(byte) = "pkcs11.cma"
 plugin(native) = "pkcs11.cmxs"
-requires = "str hex integers ppx_deriving.runtime ppx_deriving_yojson.runtime key-parsers zarith"
+requires = "str hex integers ppx_deriving.runtime ppx_deriving_yojson.runtime zarith"
 
 package "rev" (
     version = "%%VERSION_NUM%%"

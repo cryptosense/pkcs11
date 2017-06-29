@@ -44,8 +44,8 @@ type 'a t =
   | CKA_KEY_GEN_MECHANISM : P11_key_gen_mechanism.t t
   | CKA_MODIFIABLE : bool t
   (* | CKA_ECDSA_PARAMS : string t *)
-  | CKA_EC_PARAMS : Key_parsers.Asn1.EC.Params.t t
-  | CKA_EC_POINT : Key_parsers.Asn1.EC.point t
+  | CKA_EC_PARAMS : string t
+  | CKA_EC_POINT : string t
   | CKA_ALWAYS_AUTHENTICATE : bool t
   | CKA_WRAP_WITH_TRUSTED : bool t
   | CKA_WRAP_TEMPLATE : not_implemented t
