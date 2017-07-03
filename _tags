@@ -2,9 +2,9 @@ true: bin_annot
 true: package(str)
 true: package(hex)
 true: package(integers)
-true: package(key-parsers)
 true: package(ppx_deriving.std)
 true: package(ppx_deriving_yojson)
+true: package(zarith)
 true: open(Result)
 
 <src_driver/*>: package(ctypes.stubs)

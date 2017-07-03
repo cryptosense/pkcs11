@@ -144,46 +144,6 @@ let unsafe_get_key_type : t -> Pkcs11_CK_KEY_TYPE.t =
 let unsafe_get_bigint t =
   P11_bigint.decode (unsafe_get_string t)
 
-let decode_ec_point cs =
-  let grammar = Key_parsers.Asn1.EC.point_grammar in
-  let codec = Asn.codec Asn.ber grammar in
-  match Asn.decode codec cs with
-    | None -> Error "Parse error"
-    | Some (r, leftover) when Cstruct.len leftover <> 0 ->
-        Error ("CKA_EC_POINT: leftover")
-    | Some (r, _) -> Ok r
-
-(**
-   Pack the specified attribute, but if decoding fails, log the error and return
-   an CKA_CS_UNKNOWN attribute.
- *)
-let decode_cka attr_type decode s =
-  match decode @@ Cstruct.of_string s with
-    | Ok p -> pack (attr_type, p)
-    | Error e ->
-        begin
-          let open P11_attribute_type in
-          let open Pkcs11_CK_ATTRIBUTE_TYPE in
-          let name = to_string attr_type in
-          Pkcs11_log.log @@ Printf.sprintf "Invalid %s: %S (error: %S)" name s e;
-          let code = CKA_CS_UNKNOWN (make attr_type) in
-          let value = NOT_IMPLEMENTED s in
-          pack (code, value)
-        end
-
-let decode_cka_ec_point s =
-  decode_cka P11_attribute_type.CKA_EC_POINT decode_ec_point s
-
-let decode_cka_ec_params s =
-  decode_cka P11_attribute_type.CKA_EC_PARAMS Key_parsers.Asn1.EC.Params.decode s
-
-let encode_asn grammar x =
-  let codec = Asn.codec Asn.der grammar in
-  Cstruct.to_string @@ Asn.encode codec x
-
-let encode_ec_params = encode_asn Key_parsers.Asn1.EC.Params.grammar
-let encode_ec_point = encode_asn Key_parsers.Asn1.EC.point_grammar
-
 let view t =
   let open P11_attribute_type in
   let open Pkcs11_CK_ATTRIBUTE_TYPE in
@@ -234,8 +194,8 @@ let view t =
   | _ when it_is _CKA_ALWAYS_SENSITIVE    -> pack (CKA_ALWAYS_SENSITIVE, (unsafe_get_bool t))
   | _ when it_is _CKA_KEY_GEN_MECHANISM   -> pack (CKA_KEY_GEN_MECHANISM, Pkcs11_key_gen_mechanism.view (unsafe_get_ulong t))
   | _ when it_is _CKA_MODIFIABLE          -> pack (CKA_MODIFIABLE, (unsafe_get_bool t))
-  | _ when it_is _CKA_EC_PARAMS           -> decode_cka_ec_params (unsafe_get_string t)
-  | _ when it_is _CKA_EC_POINT            -> decode_cka_ec_point (unsafe_get_string t)
+  | _ when it_is _CKA_EC_PARAMS           -> pack (CKA_EC_PARAMS, unsafe_get_string t)
+  | _ when it_is _CKA_EC_POINT            -> pack (CKA_EC_POINT, unsafe_get_string t)
   | _ when it_is _CKA_ALWAYS_AUTHENTICATE -> pack (CKA_ALWAYS_AUTHENTICATE, (unsafe_get_bool t))
   | _ when it_is _CKA_WRAP_WITH_TRUSTED   -> pack (CKA_WRAP_WITH_TRUSTED,   (unsafe_get_bool t))
   | _ when it_is _CKA_WRAP_TEMPLATE       -> pack (CKA_WRAP_TEMPLATE, NOT_IMPLEMENTED (unsafe_get_string t))
@@ -295,9 +255,8 @@ let make (type s) (x:s u) =
       |> ulong Pkcs11_CK_ATTRIBUTE_TYPE._CKA_KEY_GEN_MECHANISM
   | CKA_MODIFIABLE, b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_MODIFIABLE b
   (* | CKA_ECDSA_PARAMS, s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_ECDSA_PARAMS s *)
-  | CKA_EC_PARAMS, p ->
-      encode_ec_params p |> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_EC_PARAMS
-  | CKA_EC_POINT, p -> encode_ec_point p |> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_EC_POINT
+  | CKA_EC_PARAMS, s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_EC_PARAMS s
+  | CKA_EC_POINT, s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_EC_POINT s
   | CKA_ALWAYS_AUTHENTICATE, b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_ALWAYS_AUTHENTICATE b
   | CKA_WRAP_WITH_TRUSTED,   b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_WRAP_WITH_TRUSTED   b
   | CKA_WRAP_TEMPLATE, NOT_IMPLEMENTED s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_WRAP_TEMPLATE s

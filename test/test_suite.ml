@@ -3,6 +3,7 @@ open OUnit2
 let suite =
   "Pkcs11" >:::
   [ Test_bigint.suite
+  ; Test_p11_attribute.suite
   ; Test_p11_attribute_type.suite
   ; Test_template.suite
   ]
