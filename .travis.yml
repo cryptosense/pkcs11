@@ -17,4 +17,5 @@ env:
     - OCAML_VERSION=4.03.0 DISTRO=alpine-3.5
 matrix:
   allow_failures:
+    - env: OCAML_VERSION=4.02.3
     - env: OCAML_VERSION=4.05.0
