@@ -1,3 +1,15 @@
+v0.10.0 2017-07-07
+==================
+
+Breaking changes:
+
+- Do not parse `CKA_EC_PARAMS` and `CKA_EC_POINT`. (#58)
+  + Makes it possible to interact with tokens that return invalid values for
+    these attributes. (that would otherwise trigger #42)
+  + The responsibility of parsing them (for example with `key-parsers`) is on
+    the caller.
+  + Remove `key-parsers` dependency.
+
 v0.9.0 2017-06-22
 =================
 
