@@ -109,9 +109,6 @@ sig
   val derive_key :
     Session_handle.t -> Mechanism.t -> Object_handle.t -> Template.t ->
     Object_handle.t
-
-  module Intermediate_level : Pkcs11.S
-  module Low_level : Pkcs11.RAW
 end
 
 module Make (X: Pkcs11.RAW): S
