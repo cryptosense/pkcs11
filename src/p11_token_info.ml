@@ -18,7 +18,7 @@ type t =
   ; firmwareVersion : P11_version.t
   ; utcTime : string
   }
-[@@deriving of_yojson]
+[@@deriving eq,ord,show,of_yojson]
 
 let flags_to_string = P11_flags.(to_pretty_string Token_info_domain)
 
