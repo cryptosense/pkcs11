@@ -5,7 +5,7 @@ type t =
   ; hardwareVersion : P11_version.t
   ; firmwareVersion : P11_version.t
   }
-[@@deriving of_yojson]
+[@@deriving eq,ord,show,of_yojson]
 
 let flags_to_string = P11_flags.(to_pretty_string Slot_info_domain)
 

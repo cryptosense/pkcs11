@@ -5,7 +5,7 @@ type t =
   ; hardwareVersion : P11_version.t
   ; firmwareVersion : P11_version.t
   }
-[@@deriving yojson]
+[@@deriving eq,ord,show,yojson]
 
 val to_string : ?newlines: bool -> ?indent: string -> t -> string
 
