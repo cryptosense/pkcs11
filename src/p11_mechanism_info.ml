@@ -3,7 +3,7 @@ type t =
   ; ulMaxKeySize : P11_ulong.t
   ; flags : P11_flags.t
   }
-[@@deriving of_yojson]
+[@@deriving eq,ord,show,of_yojson]
 
 let allowed_flags =
   let flags = P11_flags.(flags_of_domain Mechanism_info_domain) in
