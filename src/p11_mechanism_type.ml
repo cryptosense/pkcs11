@@ -1,8 +1,3 @@
-type raw = Unsigned.ULong.t
-[@@deriving ord]
-
-let equal_raw = Pervasives.(=)
-
 type t =
   | CKM_RSA_PKCS_KEY_PAIR_GEN
   | CKM_RSA_PKCS
@@ -252,8 +247,8 @@ type t =
   | CKM_DH_PKCS_PARAMETER_GEN
   | CKM_X9_42_DH_PARAMETER_GEN
   | CKM_VENDOR_DEFINED
-  | CKM_CS_UNKNOWN of raw
-[@@deriving eq,ord]
+  | CKM_CS_UNKNOWN of P11_ulong.t
+[@@deriving eq,ord,show]
 
 let to_string =
   function
