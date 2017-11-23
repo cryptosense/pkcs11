@@ -3,7 +3,7 @@ type t =
   | CKU_USER
   | CKU_CONTEXT_SPECIFIC
   | CKU_CS_UNKNOWN of P11_ulong.t
-[@@deriving eq,ord]
+[@@deriving eq,ord,show]
 
 let to_string =
   function
