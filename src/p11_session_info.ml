@@ -4,7 +4,7 @@ type t =
   ; flags : P11_flags.t
   ; ulDeviceError : P11_ulong.t;
   }
-[@@deriving of_yojson]
+[@@deriving eq,ord,show,of_yojson]
 
 let string_of_flags = P11_flags.(to_pretty_string Session_info_domain)
 

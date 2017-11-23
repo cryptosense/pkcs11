@@ -4,7 +4,7 @@ type t =
   ; flags : P11_flags.t
   ; ulDeviceError : P11_ulong.t;
   }
-[@@deriving yojson]
+[@@deriving eq,ord,show,yojson]
 
 val to_string : ?newlines: bool -> ?indent: string -> t -> string
 
