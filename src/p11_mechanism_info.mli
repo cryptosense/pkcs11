@@ -3,7 +3,7 @@ type t =
   ; ulMaxKeySize : P11_ulong.t
   ; flags : P11_flags.t
   }
-[@@deriving yojson]
+[@@deriving eq,ord,show,yojson]
 
 val to_string : ?newlines: bool -> ?indent: string -> t -> string
 

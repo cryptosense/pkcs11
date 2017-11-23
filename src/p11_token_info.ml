@@ -1,9 +1,17 @@
+let flags_to_string = P11_flags.(to_pretty_string Token_info_domain)
+
+type token_info_flags = P11_flags.t
+[@@deriving eq,ord,show,of_yojson]
+
+let token_info_flags_to_yojson flags =
+  P11_flags.to_json ~pretty:flags_to_string flags
+
 type t =
   { label : string
   ; manufacturerID : string
   ; model : string
   ; serialNumber : string
-  ; flags : P11_flags.t
+  ; flags : token_info_flags
   ; ulMaxSessionCount : P11_ulong.t
   ; ulSessionCount : P11_ulong.t
   ; ulMaxRwSessionCount : P11_ulong.t
@@ -18,9 +26,7 @@ type t =
   ; firmwareVersion : P11_version.t
   ; utcTime : string
   }
-[@@deriving of_yojson]
-
-let flags_to_string = P11_flags.(to_pretty_string Token_info_domain)
+[@@deriving eq,ord,show,yojson]
 
 let ul_to_string t =
   P11_ulong.(
@@ -58,27 +64,3 @@ let to_string ?newlines ?indent info =
   P11_helpers.string_of_record ?newlines ?indent (to_strings info)
 
 let to_strings info = P11_helpers.strings_of_record @@ to_strings info
-
-let to_yojson info =
-  let ulong x = `String (Unsigned.ULong.to_string x) in
-  `Assoc [
-    "label", `String info.label;
-    "manufacturerID", `String info.manufacturerID;
-    "model", `String info.model;
-    "serialNumber", `String info.serialNumber;
-    "flags",
-    P11_flags.to_json ~pretty:flags_to_string info.flags;
-    "ulMaxSessionCount", ulong info.ulMaxSessionCount;
-    "ulSessionCount", ulong info.ulSessionCount;
-    "ulMaxRwSessionCount", ulong info.ulMaxRwSessionCount;
-    "ulRwSessionCount", ulong info.ulRwSessionCount;
-    "ulMaxPinLen", ulong info.ulMaxPinLen;
-    "ulMinPinLen", ulong info.ulMinPinLen;
-    "ulTotalPublicMemory", ulong info.ulTotalPublicMemory;
-    "ulFreePublicMemory", ulong info.ulFreePublicMemory;
-    "ulTotalPrivateMemory", ulong info.ulTotalPrivateMemory;
-    "ulFreePrivateMemory", ulong info.ulFreePrivateMemory;
-    "hardwareVersion", P11_version.to_yojson info.hardwareVersion;
-    "firmwareVersion", P11_version.to_yojson info.firmwareVersion;
-    "utcTime", `String info.utcTime;
-  ]

@@ -18,7 +18,7 @@ type t =
   ; firmwareVersion : P11_version.t
   ; utcTime : string
   }
-[@@deriving yojson]
+[@@deriving eq,ord,show,yojson]
 
 (** Return correct string value if the unsigned long has a special value e.g.
     [CK_UNAVAILABLE_INFORMATION]. *)

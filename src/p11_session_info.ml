@@ -1,12 +1,18 @@
+let string_of_flags = P11_flags.(to_pretty_string Session_info_domain)
+
+let session_info_flags_to_yojson flags =
+  P11_flags.to_json ~pretty:string_of_flags flags
+
+type session_info_flags = P11_flags.t
+[@@deriving eq,ord,show,of_yojson]
+
 type t =
   { slotID : P11_ulong.t
   ; state : P11_ulong.t
-  ; flags : P11_flags.t
+  ; flags : session_info_flags
   ; ulDeviceError : P11_ulong.t;
   }
-[@@deriving of_yojson]
-
-let string_of_flags = P11_flags.(to_pretty_string Session_info_domain)
+[@@deriving eq,ord,show,yojson]
 
 let to_strings info =
   [
@@ -20,11 +26,3 @@ let to_string ?newlines ?indent info =
   P11_helpers.string_of_record ?newlines ?indent (to_strings info)
 
 let to_strings info = P11_helpers.strings_of_record @@ to_strings info
-
-let to_yojson info =
-  `Assoc
-    [ "slotID", `String (info.slotID |> Unsigned.ULong.to_string )
-    ; "state", `String (info.state |> Unsigned.ULong.to_string)
-    ; "flags", P11_flags.to_json ~pretty: string_of_flags info.flags
-    ; "ulDeviceError", `String (info.ulDeviceError |> Unsigned.ULong.to_string)
-    ]

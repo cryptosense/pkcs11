@@ -88,7 +88,7 @@ type t =
   | CKR_FUNCTION_REJECTED
   | CKR_VENDOR_DEFINED
   | CKR_CS_UNKNOWN of Unsigned.ULong.t
-[@@deriving eq,ord]
+[@@deriving eq,ord,show]
 
 val to_string : t -> string
 val of_string : string -> t
