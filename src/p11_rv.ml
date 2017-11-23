@@ -1,8 +1,3 @@
-type raw = Unsigned.ULong.t
-[@@deriving ord]
-
-let equal_raw = Pervasives.(=)
-
 type t =
   | CKR_OK
   | CKR_CANCEL
@@ -92,8 +87,8 @@ type t =
   | CKR_NEXT_OTP
   | CKR_FUNCTION_REJECTED
   | CKR_VENDOR_DEFINED
-  | CKR_CS_UNKNOWN of raw
-[@@deriving eq,ord]
+  | CKR_CS_UNKNOWN of P11_ulong.t
+[@@deriving eq,ord,show]
 
 let to_string =
   function
