@@ -16,6 +16,11 @@ let test_v2_40 =
   ; "CKM_DSA_SHA256" >:: test 0x00000014
   ; "CKM_DSA_SHA384" >:: test 0x00000015
   ; "CKM_DSA_SHA512" >:: test 0x00000016
+  ; "CKM_GOSTR3410_KEY_PAIR_GEN" >:: test 0x00001200
+  ; "CKM_GOSTR3410" >:: test 0x00001201
+  ; "CKM_GOSTR3410_WITH_GOSTR3411" >:: test 0x00001202
+  ; "CKM_GOSTR3411" >:: test 0x00001210
+  ; "CKM_GOSTR3411_HMAC" >:: test 0x00001211
   ]
 
 let suite =

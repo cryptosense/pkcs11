@@ -811,6 +811,13 @@ let kinds m =
   | CKM_DSA_PARAMETER_GEN
   | CKM_DH_PKCS_PARAMETER_GEN
   | CKM_X9_42_DH_PARAMETER_GEN -> [Generate]
+
+  | CKM_GOSTR3410_KEY_PAIR_GEN -> [Asymmetric; Generate]
+  | CKM_GOSTR3410 -> [Asymmetric; Sign]
+  | CKM_GOSTR3410_WITH_GOSTR3411 -> [Asymmetric; Sign]
+  | CKM_GOSTR3411 -> [Digest]
+  | CKM_GOSTR3411_HMAC -> [Sign]
+
   | CKM_VENDOR_DEFINED
   | CKM_CS_UNKNOWN _ -> []
 
