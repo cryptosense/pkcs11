@@ -258,6 +258,7 @@ val _CKM_GOSTR3410 : t
 val _CKM_GOSTR3410_WITH_GOSTR3411 : t
 val _CKM_GOSTR3411 : t
 val _CKM_GOSTR3411_HMAC : t
+val _CKM_AES_KEY_WRAP : t
 val _CKM_VENDOR_DEFINED : t
 
 val typ : t Ctypes.typ

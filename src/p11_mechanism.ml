@@ -811,6 +811,7 @@ let kinds m =
   | CKM_DSA_PARAMETER_GEN
   | CKM_DH_PKCS_PARAMETER_GEN
   | CKM_X9_42_DH_PARAMETER_GEN -> [Generate]
+  | CKM_AES_KEY_WRAP -> [AES; Wrap]
 
   | CKM_GOSTR3410_KEY_PAIR_GEN -> [Asymmetric; Generate]
   | CKM_GOSTR3410 -> [Asymmetric; Sign]

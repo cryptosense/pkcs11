@@ -260,6 +260,7 @@ let _CKM_GOSTR3410                      = with_value 0x00001201L
 let _CKM_GOSTR3410_WITH_GOSTR3411       = with_value 0x00001202L
 let _CKM_GOSTR3411                      = with_value 0x00001210L
 let _CKM_GOSTR3411_HMAC                 = with_value 0x00001211L
+let _CKM_AES_KEY_WRAP                   = with_value 0x00002109L
 let _CKM_VENDOR_DEFINED                 = with_value 0x80000000L
 
 
@@ -522,6 +523,7 @@ let make u =
     | CKM_GOSTR3410_WITH_GOSTR3411 -> _CKM_GOSTR3410_WITH_GOSTR3411
     | CKM_GOSTR3411 -> _CKM_GOSTR3411
     | CKM_GOSTR3411_HMAC -> _CKM_GOSTR3411_HMAC
+    | CKM_AES_KEY_WRAP -> _CKM_AES_KEY_WRAP
     | CKM_VENDOR_DEFINED  -> _CKM_VENDOR_DEFINED
     | CKM_CS_UNKNOWN x -> x
 
@@ -786,6 +788,7 @@ let view t =
     | _ when is _CKM_GOSTR3410_WITH_GOSTR3411 -> CKM_GOSTR3410_WITH_GOSTR3411
     | _ when is _CKM_GOSTR3411 -> CKM_GOSTR3411
     | _ when is _CKM_GOSTR3411_HMAC -> CKM_GOSTR3411_HMAC
+    | _ when is _CKM_AES_KEY_WRAP -> CKM_AES_KEY_WRAP
     | _ -> CKM_CS_UNKNOWN t
 
 let equal = Pervasives.(=)
