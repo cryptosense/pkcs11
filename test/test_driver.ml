@@ -7,6 +7,7 @@ let suite =
       ]
     ; "Unit" >:::
       [ Test_ck_rv.suite
+      ; Test_ck_mechanism_type.suite
       ]
     ]
 

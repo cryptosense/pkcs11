@@ -22,6 +22,10 @@ let _CKM_SHA1_RSA_PKCS_PSS              = with_value 0x0000000EL
 let _CKM_DSA_KEY_PAIR_GEN               = with_value 0x00000010L
 let _CKM_DSA                            = with_value 0x00000011L
 let _CKM_DSA_SHA1                       = with_value 0x00000012L
+let _CKM_DSA_SHA224                     = with_value 0x00000013L
+let _CKM_DSA_SHA256                     = with_value 0x00000014L
+let _CKM_DSA_SHA384                     = with_value 0x00000015L
+let _CKM_DSA_SHA512                     = with_value 0x00000016L
 let _CKM_DH_PKCS_KEY_PAIR_GEN           = with_value 0x00000020L
 let _CKM_DH_PKCS_DERIVE                 = with_value 0x00000021L
 let _CKM_X9_42_DH_KEY_PAIR_GEN          = with_value 0x00000030L
@@ -274,7 +278,11 @@ let make u =
     | CKM_SHA1_RSA_PKCS_PSS  -> _CKM_SHA1_RSA_PKCS_PSS
     | CKM_DSA_KEY_PAIR_GEN  -> _CKM_DSA_KEY_PAIR_GEN
     | CKM_DSA  -> _CKM_DSA
-    | CKM_DSA_SHA1  -> _CKM_DSA_SHA1
+    | CKM_DSA_SHA1 -> _CKM_DSA_SHA1
+    | CKM_DSA_SHA224 -> _CKM_DSA_SHA224
+    | CKM_DSA_SHA256 -> _CKM_DSA_SHA256
+    | CKM_DSA_SHA384 -> _CKM_DSA_SHA384
+    | CKM_DSA_SHA512 -> _CKM_DSA_SHA512
     | CKM_DH_PKCS_KEY_PAIR_GEN  -> _CKM_DH_PKCS_KEY_PAIR_GEN
     | CKM_DH_PKCS_DERIVE  -> _CKM_DH_PKCS_DERIVE
     | CKM_X9_42_DH_KEY_PAIR_GEN  -> _CKM_X9_42_DH_KEY_PAIR_GEN
@@ -529,6 +537,10 @@ let view t =
     | _ when is _CKM_DSA_KEY_PAIR_GEN -> CKM_DSA_KEY_PAIR_GEN
     | _ when is _CKM_DSA -> CKM_DSA
     | _ when is _CKM_DSA_SHA1 -> CKM_DSA_SHA1
+    | _ when is _CKM_DSA_SHA224 -> CKM_DSA_SHA224
+    | _ when is _CKM_DSA_SHA256 -> CKM_DSA_SHA256
+    | _ when is _CKM_DSA_SHA384 -> CKM_DSA_SHA384
+    | _ when is _CKM_DSA_SHA512 -> CKM_DSA_SHA512
     | _ when is _CKM_DH_PKCS_KEY_PAIR_GEN -> CKM_DH_PKCS_KEY_PAIR_GEN
     | _ when is _CKM_DH_PKCS_DERIVE -> CKM_DH_PKCS_DERIVE
     | _ when is _CKM_X9_42_DH_KEY_PAIR_GEN -> CKM_X9_42_DH_KEY_PAIR_GEN

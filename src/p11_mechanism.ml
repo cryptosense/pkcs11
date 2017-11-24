@@ -56,6 +56,11 @@ type t =
   | CKM_ECDH1_COFACTOR_DERIVE of P11_ecdh1_derive_params.t
   | CKM_ECMQV_DERIVE of P11_ecmqv_derive_params.t
   | CKM_PKCS5_PBKD2 of P11_pkcs5_pbkd2_data_params.t
+  | CKM_DSA_SHA1
+  | CKM_DSA_SHA224
+  | CKM_DSA_SHA256
+  | CKM_DSA_SHA384
+  | CKM_DSA_SHA512
   | CKM_CS_UNKNOWN of P11_ulong.t
 
 let to_json =
@@ -178,6 +183,11 @@ let to_json =
         param "CKM_ECMQV_DERIVE" p P11_ecmqv_derive_params.to_yojson
     | CKM_PKCS5_PBKD2 p ->
         param "CKM_PKCS5_PBKD2" p P11_pkcs5_pbkd2_data_params.to_yojson
+    | CKM_DSA_SHA1 -> simple "CKM_DSA_SHA1"
+    | CKM_DSA_SHA224 -> simple "CKM_DSA_SHA224"
+    | CKM_DSA_SHA256 -> simple "CKM_DSA_SHA256"
+    | CKM_DSA_SHA384 -> simple "CKM_DSA_SHA384"
+    | CKM_DSA_SHA512 -> simple "CKM_DSA_SHA512"
     | CKM_CS_UNKNOWN p ->
         param "CKM_NOT_IMPLEMENTED" p P11_ulong.to_yojson
 
@@ -339,6 +349,11 @@ let mechanism_type m =
     | CKM_ECDH1_COFACTOR_DERIVE _ -> T.CKM_ECDH1_COFACTOR_DERIVE
     | CKM_ECMQV_DERIVE _ -> T.CKM_ECMQV_DERIVE
     | CKM_PKCS5_PBKD2 _ -> T.CKM_PKCS5_PBKD2
+    | CKM_DSA_SHA1 -> T.CKM_DSA_SHA1
+    | CKM_DSA_SHA224 -> T.CKM_DSA_SHA224
+    | CKM_DSA_SHA256 -> T.CKM_DSA_SHA256
+    | CKM_DSA_SHA384 -> T.CKM_DSA_SHA384
+    | CKM_DSA_SHA512 -> T.CKM_DSA_SHA512
     | CKM_CS_UNKNOWN mechanism_type ->
       T.CKM_CS_UNKNOWN mechanism_type
 
@@ -470,6 +485,11 @@ let compare a b =
       | CKM_EC_KEY_PAIR_GEN, _
       | CKM_ECDSA, _
       | CKM_ECDSA_SHA1, _
+      | CKM_DSA_SHA1, _
+      | CKM_DSA_SHA224, _
+      | CKM_DSA_SHA256, _
+      | CKM_DSA_SHA384, _
+      | CKM_DSA_SHA512, _
         -> 0 (* Same mechanism types, no parameters. *)
 
 
@@ -517,8 +537,14 @@ let kinds m =
   | CKM_RSA_PKCS_PSS -> [Sign; Asymmetric; RSA]
   | CKM_SHA1_RSA_PKCS_PSS -> [Sign; Asymmetric; RSA]
   | CKM_DSA_KEY_PAIR_GEN -> [Generate; Asymmetric]
-  | CKM_DSA -> [Sign; Asymmetric]
-  | CKM_DSA_SHA1 -> [Sign; Asymmetric]
+
+  | CKM_DSA
+  | CKM_DSA_SHA1
+  | CKM_DSA_SHA224
+  | CKM_DSA_SHA256
+  | CKM_DSA_SHA384
+  | CKM_DSA_SHA512 -> [Sign; Asymmetric]
+
   | CKM_DH_PKCS_KEY_PAIR_GEN -> [Generate; Asymmetric]
   | CKM_DH_PKCS_DERIVE -> [Derive]
 
@@ -846,6 +872,12 @@ let key_type = function
   | CKM_ECDH1_COFACTOR_DERIVE _
   | CKM_ECMQV_DERIVE _
     -> Some P11_key_type.CKK_EC
+  | CKM_DSA_SHA1
+  | CKM_DSA_SHA224
+  | CKM_DSA_SHA256
+  | CKM_DSA_SHA384
+  | CKM_DSA_SHA512
+    -> Some P11_key_type.CKK_DSA
   | CKM_SHA_1
   | CKM_SHA224
   | CKM_SHA256

@@ -20,6 +20,10 @@ val _CKM_SHA1_RSA_PKCS_PSS : t
 val _CKM_DSA_KEY_PAIR_GEN : t
 val _CKM_DSA : t
 val _CKM_DSA_SHA1 : t
+val _CKM_DSA_SHA224 : t
+val _CKM_DSA_SHA256 : t
+val _CKM_DSA_SHA384 : t
+val _CKM_DSA_SHA512 : t
 val _CKM_DH_PKCS_KEY_PAIR_GEN : t
 val _CKM_DH_PKCS_DERIVE : t
 val _CKM_X9_42_DH_KEY_PAIR_GEN : t

@@ -169,6 +169,11 @@ let make =
     | CKM_PKCS5_PBKD2 p ->
         struct_ _CKM_PKCS5_PBKD2 p Pkcs11_CK_PKCS5_PBKD2_PARAMS.t
           Pkcs11_CK_PKCS5_PBKD2_PARAMS.make
+    | CKM_DSA_SHA1 -> simple _CKM_DSA_SHA1
+    | CKM_DSA_SHA224 -> simple _CKM_DSA_SHA224
+    | CKM_DSA_SHA256 -> simple _CKM_DSA_SHA256
+    | CKM_DSA_SHA384 -> simple _CKM_DSA_SHA384
+    | CKM_DSA_SHA512 -> simple _CKM_DSA_SHA512
     | CKM_CS_UNKNOWN params ->
       simple params
 
@@ -274,5 +279,10 @@ let view t =
   | _ when it_is _CKM_ECDH1_DERIVE -> CKM_ECDH1_DERIVE (unsafe_get_ecdh1_derive_param t)
   | _ when it_is _CKM_ECDH1_COFACTOR_DERIVE -> CKM_ECDH1_COFACTOR_DERIVE (unsafe_get_ecdh1_derive_param t)
   | _ when it_is _CKM_ECMQV_DERIVE -> CKM_ECMQV_DERIVE (unsafe_get_ecmqv_derive_param t)
+  | _ when it_is _CKM_DSA_SHA1 -> CKM_DSA_SHA1
+  | _ when it_is _CKM_DSA_SHA224 -> CKM_DSA_SHA224
+  | _ when it_is _CKM_DSA_SHA256 -> CKM_DSA_SHA256
+  | _ when it_is _CKM_DSA_SHA384 -> CKM_DSA_SHA384
+  | _ when it_is _CKM_DSA_SHA512 -> CKM_DSA_SHA512
   | _ ->
     CKM_CS_UNKNOWN ul
