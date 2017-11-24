@@ -56,6 +56,11 @@ type t =
   | CKM_ECDH1_COFACTOR_DERIVE of P11_ecdh1_derive_params.t
   | CKM_ECMQV_DERIVE of P11_ecmqv_derive_params.t
   | CKM_PKCS5_PBKD2 of P11_pkcs5_pbkd2_data_params.t
+  | CKM_DSA_SHA1
+  | CKM_DSA_SHA224
+  | CKM_DSA_SHA256
+  | CKM_DSA_SHA384
+  | CKM_DSA_SHA512
   | CKM_CS_UNKNOWN of P11_ulong.t
 [@@deriving ord,yojson]
 

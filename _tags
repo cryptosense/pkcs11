@@ -38,3 +38,5 @@ true: open(Result)
 <test/*>: package(oUnit)
 <test/test_driver.*>: link_pkcs11
 <test/example_sign.*>: link_pkcs11
+
+true: warn(@8)
