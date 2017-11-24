@@ -255,6 +255,7 @@ type t =
   | CKM_GOSTR3410_WITH_GOSTR3411
   | CKM_GOSTR3411
   | CKM_GOSTR3411_HMAC
+  | CKM_AES_KEY_WRAP
   | CKM_VENDOR_DEFINED
   | CKM_CS_UNKNOWN of P11_ulong.t
   [@@deriving eq,ord,show,yojson]

@@ -21,6 +21,8 @@ let test_v2_40 =
   ; "CKM_GOSTR3410_WITH_GOSTR3411" >:: test 0x00001202
   ; "CKM_GOSTR3411" >:: test 0x00001210
   ; "CKM_GOSTR3411_HMAC" >:: test 0x00001211
+  ; "CKM_GOSTR3411_HMAC" >:: test 0x00001211
+  ; "CKM_AES_KEY_WRAP" >:: test 0x00002109
   ]
 
 let suite =
