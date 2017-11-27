@@ -6,7 +6,7 @@
 *)
 
 type t
-[@@deriving eq,ord,yojson]
+[@@deriving eq,ord,show,yojson]
 
 (** Convert to/from a big-endian byte array. *)
 val encode : t -> string

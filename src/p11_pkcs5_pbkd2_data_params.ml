@@ -6,4 +6,4 @@ type t =
   ; prfData: string option
   ; password: string;
   }
-[@@deriving eq,ord,yojson]
+[@@deriving eq,ord,show,yojson]

@@ -1,5 +1,5 @@
 type t = P11_ulong.t
-[@@deriving ord]
+[@@deriving eq,ord,show]
 
 let (!) x  = Unsigned.ULong.of_string (Int64.to_string x)
 

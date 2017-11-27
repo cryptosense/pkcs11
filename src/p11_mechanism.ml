@@ -62,6 +62,7 @@ type t =
   | CKM_DSA_SHA384
   | CKM_DSA_SHA512
   | CKM_CS_UNKNOWN of P11_ulong.t
+[@@deriving show]
 
 let to_json =
   let simple name = `String name in
@@ -492,6 +493,8 @@ let compare a b =
       | CKM_DSA_SHA512, _
         -> 0 (* Same mechanism types, no parameters. *)
 
+let equal a b =
+  compare a b = 0
 
 (* Kinds are "tags" on mechanisms which describe how they can be
    used. *)

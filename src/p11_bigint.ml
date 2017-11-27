@@ -43,3 +43,7 @@ let zero = Z.zero
 
 let of_z z = z
 let to_z z = z
+
+let show = to_string
+let pp fmt x =
+  Format.fprintf fmt "%s" (show x)

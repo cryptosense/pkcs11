@@ -3,4 +3,4 @@ type t =
   ; shared_data: string option
   ; public_data: P11_hex_data.t
   }
-[@@deriving ord,yojson]
+[@@deriving eq,ord,show,yojson]

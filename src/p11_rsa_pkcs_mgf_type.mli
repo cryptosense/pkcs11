@@ -1,5 +1,5 @@
 type t = P11_ulong.t
-[@@deriving ord,yojson]
+[@@deriving eq,ord,show,yojson]
 
 val _CKG_MGF1_SHA1 : t
 val _CKG_MGF1_SHA256 : t

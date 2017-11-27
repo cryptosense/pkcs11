@@ -1,5 +1,5 @@
 type t = string
-[@@deriving ord]
+[@@deriving eq,ord,show]
 
 let normalize s =
   if s = "" then

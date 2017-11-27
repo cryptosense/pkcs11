@@ -2,4 +2,4 @@ type t =
   { iv: string
   ; data: string
   }
-[@@deriving ord,yojson]
+[@@deriving eq,ord,show,yojson]
