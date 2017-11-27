@@ -7,4 +7,4 @@ type t =
   ; public_data2: string
   ; public_key: P11_object_handle.t
   }
-[@@deriving ord,to_yojson]
+[@@deriving eq,ord,show,to_yojson]

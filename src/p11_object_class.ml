@@ -1,8 +1,3 @@
-type raw = Unsigned.ULong.t
-[@@deriving ord]
-
-let equal_raw = Pervasives.(=)
-
 type t =
   | CKO_DATA
   | CKO_CERTIFICATE
@@ -16,8 +11,8 @@ type t =
   | CKO_VENDOR_DEFINED
   (* This is a catch-all case that makes it possible to deal with
      vendor-specific/non-standard CKO. *)
-  | CKO_CS_UNKNOWN of raw
-[@@deriving eq,ord]
+  | CKO_CS_UNKNOWN of P11_ulong.t
+[@@deriving eq,ord,show]
 
 let to_string =
   function

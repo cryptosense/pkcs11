@@ -13,7 +13,7 @@ type t =
   (* This is a catch-all case that makes it possible to deal with
      vendor-specific/non-standard CKO. *)
   | CKO_CS_UNKNOWN of Unsigned.ULong.t
-[@@deriving eq,ord,yojson]
+[@@deriving eq,ord,show,yojson]
 
 val of_string : string -> t
 

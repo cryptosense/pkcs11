@@ -1,8 +1,3 @@
-type raw = Unsigned.ULong.t
-[@@deriving ord]
-
-let equal_raw = Pervasives.(=)
-
 type t =
   | CKK_RSA
   | CKK_DSA
@@ -34,8 +29,8 @@ type t =
   | CKK_CAMELLIA
   | CKK_ARIA
   | CKK_VENDOR_DEFINED
-  | CKK_CS_UNKNOWN of raw
-[@@deriving eq,ord]
+  | CKK_CS_UNKNOWN of P11_ulong.t
+[@@deriving eq,ord,show]
 
 let to_string =
   function

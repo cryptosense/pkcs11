@@ -95,7 +95,7 @@ type t =
   | CKR_FUNCTION_REJECTED
   | CKR_VENDOR_DEFINED
   | CKR_CS_UNKNOWN of P11_ulong.t
-[@@deriving eq,ord,show]
+[@@deriving eq,ord,show,yojson]
 
 let to_string =
   function

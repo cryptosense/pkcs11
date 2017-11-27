@@ -1,12 +1,7 @@
 type t =
   | CKM of P11_mechanism_type.t
   | CK_UNAVAILABLE_INFORMATION
-
-let compare a b = match a, b with
-  | CK_UNAVAILABLE_INFORMATION, CK_UNAVAILABLE_INFORMATION -> 0
-  | CKM x , CKM y -> P11_mechanism_type.compare x y
-  | CKM _, CK_UNAVAILABLE_INFORMATION -> 1
-  | CK_UNAVAILABLE_INFORMATION, CKM _ -> -1
+[@@deriving eq,ord,show]
 
 let to_string = function
   | CKM x -> P11_mechanism_type.to_string x

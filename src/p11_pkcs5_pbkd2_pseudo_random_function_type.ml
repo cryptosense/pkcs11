@@ -1,6 +1,6 @@
 type t =
   | CKP_PKCS5_PBKD2_HMAC_SHA1
-[@@deriving eq,ord]
+[@@deriving eq,ord,show]
 
 let to_string = function
   | CKP_PKCS5_PBKD2_HMAC_SHA1 -> "CKP_PKCS5_PBKD2_HMAC_SHA1"

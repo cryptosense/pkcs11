@@ -62,14 +62,12 @@ type t =
   | CKM_DSA_SHA384
   | CKM_DSA_SHA512
   | CKM_CS_UNKNOWN of P11_ulong.t
-[@@deriving ord,yojson]
+[@@deriving eq,ord,show,yojson]
 
 val mechanism_type: t -> P11_mechanism_type.t
 
 (** [to_string] is defined as [fun x -> Mechanism_type.to_string (mechanism_type x) ]  *)
 val to_string : t -> string
-
-val pp : Format.formatter -> t -> unit
 
 (** Kinds are "tags" on mechanisms which describe how they can be
     used. *)

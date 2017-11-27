@@ -3,6 +3,7 @@ type t =
   | Id of int
   | Description of string
   | Label of string
+[@@deriving eq,ord,show]
 
 let to_yojson = function
   | Index x -> `List [`String "index"; `Int x]

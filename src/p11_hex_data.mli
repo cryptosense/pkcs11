@@ -1,4 +1,4 @@
 type t = string
-[@@deriving ord,yojson]
+[@@deriving eq,ord,show,yojson]
 
 val normalize : t -> t
