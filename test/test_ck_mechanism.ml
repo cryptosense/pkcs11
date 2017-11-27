@@ -124,6 +124,15 @@ let test_make =
       )
       Pkcs11_CK_MECHANISM_TYPE._CKM_PKCS5_PBKD2
       (sizeof_ul Pkcs11_CK_PKCS5_PBKD2_PARAMS.t)
+  ; "AES CTR" >:: test
+      ( P11_mechanism.CKM_AES_CTR
+          ( P11_aes_ctr_params.make
+              ~bits:Unsigned.ULong.zero
+              ~block:""
+          )
+      )
+      Pkcs11_CK_MECHANISM_TYPE._CKM_AES_CTR
+      (sizeof_ul Pkcs11_CK_AES_CTR_PARAMS.t)
   ]
 
 let test_view =

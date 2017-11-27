@@ -25,6 +25,7 @@ type argument =
   | ECDH1 of P11_ecdh1_derive_params.t
   | ECMQV of P11_ecmqv_derive_params.t
   | PBKD2 of P11_pkcs5_pbkd2_data_params.t
+  | AES_CTR of P11_aes_ctr_params.t
 
 let argument =
   let open P11_mechanism in
@@ -91,6 +92,7 @@ let argument =
   | CKM_DSA_SHA256 -> No_argument
   | CKM_DSA_SHA384 -> No_argument
   | CKM_DSA_SHA512 -> No_argument
+  | CKM_AES_CTR p -> AES_CTR p
   | CKM_CS_UNKNOWN params -> No_argument
 
 let argument_params argument =
@@ -129,6 +131,8 @@ let argument_params argument =
     struct_ p Pkcs11_CK_ECMQV_DERIVE_PARAMS.t Pkcs11_CK_ECMQV_DERIVE_PARAMS.make
   | PBKD2 p ->
     struct_ p Pkcs11_CK_PKCS5_PBKD2_PARAMS.t Pkcs11_CK_PKCS5_PBKD2_PARAMS.make
+  | AES_CTR p ->
+    struct_ p Pkcs11_CK_AES_CTR_PARAMS.t Pkcs11_CK_AES_CTR_PARAMS.make
 
 let make x =
   let ckm = Pkcs11_CK_MECHANISM_TYPE.make @@ P11_mechanism.mechanism_type x in
@@ -242,6 +246,12 @@ let view t =
   | T.CKM_DSA_SHA256 -> CKM_DSA_SHA256
   | T.CKM_DSA_SHA384 -> CKM_DSA_SHA384
   | T.CKM_DSA_SHA512 -> CKM_DSA_SHA512
+  | T.CKM_AES_CTR ->
+    let param =
+      unsafe_get_struct t Pkcs11_CK_AES_CTR_PARAMS.t
+        Pkcs11_CK_AES_CTR_PARAMS.view
+    in
+    CKM_AES_CTR param
   | T.CKM_RSA_9796
   | T.CKM_MD2_RSA_PKCS
   | T.CKM_MD5_RSA_PKCS
@@ -424,7 +434,6 @@ let view t =
   | T.CKM_JUNIPER_SHUFFLE
   | T.CKM_JUNIPER_WRAP
   | T.CKM_FASTHASH
-  | T.CKM_AES_CTR
   | T.CKM_BLOWFISH_KEY_GEN
   | T.CKM_BLOWFISH_CBC
   | T.CKM_TWOFISH_KEY_GEN

@@ -61,6 +61,7 @@ type t =
   | CKM_DSA_SHA256
   | CKM_DSA_SHA384
   | CKM_DSA_SHA512
+  | CKM_AES_CTR of P11_aes_ctr_params.t
   | CKM_CS_UNKNOWN of P11_ulong.t
 [@@deriving show]
 
@@ -189,6 +190,7 @@ let to_json =
     | CKM_DSA_SHA256 -> simple "CKM_DSA_SHA256"
     | CKM_DSA_SHA384 -> simple "CKM_DSA_SHA384"
     | CKM_DSA_SHA512 -> simple "CKM_DSA_SHA512"
+    | CKM_AES_CTR p -> param "CKM_AES_CTR" p P11_aes_ctr_params.to_yojson
     | CKM_CS_UNKNOWN p ->
         param "CKM_NOT_IMPLEMENTED" p P11_ulong.to_yojson
 
@@ -276,6 +278,8 @@ let of_yojson json =
       | "CKM_ECDSA_SHA1" -> simple CKM_ECDSA_SHA1
       | "CKM_ECDH1_DERIVE" ->
         P11_ecdh1_derive_params.of_yojson param >>= fun r -> Ok (CKM_ECDH1_DERIVE r)
+      | "CKM_AES_CTR" ->
+        P11_aes_ctr_params.of_yojson param >>= fun r -> Ok (CKM_AES_CTR r)
       | _ ->
         P11_ulong.of_yojson param >>= fun params ->
         Ok (CKM_CS_UNKNOWN params)
@@ -355,6 +359,7 @@ let mechanism_type m =
     | CKM_DSA_SHA256 -> T.CKM_DSA_SHA256
     | CKM_DSA_SHA384 -> T.CKM_DSA_SHA384
     | CKM_DSA_SHA512 -> T.CKM_DSA_SHA512
+    | CKM_AES_CTR _ -> T.CKM_AES_CTR
     | CKM_CS_UNKNOWN mechanism_type ->
       T.CKM_CS_UNKNOWN mechanism_type
 
@@ -491,6 +496,7 @@ let compare a b =
       | CKM_DSA_SHA256, _
       | CKM_DSA_SHA384, _
       | CKM_DSA_SHA512, _
+      | CKM_AES_CTR _, _
         -> 0 (* Same mechanism types, no parameters. *)
 
 let equal a b =
@@ -839,6 +845,7 @@ let key_type = function
   | CKM_AES_MAC_GENERAL _
   | CKM_AES_ECB_ENCRYPT_DATA _
   | CKM_AES_CBC_ENCRYPT_DATA _
+  | CKM_AES_CTR _
     -> Some P11_key_type.CKK_AES
   | CKM_DES_KEY_GEN
   | CKM_DES_ECB
