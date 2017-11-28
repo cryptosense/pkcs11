@@ -35,3 +35,4 @@ module Attribute = P11_attribute
 module Template = P11_template
 module EC_KDF = P11_ec_kdf
 module AES_CTR_params = P11_aes_ctr_params
+module GCM_params = P11_gcm_params

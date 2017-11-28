@@ -62,6 +62,7 @@ type t =
   | CKM_DSA_SHA384
   | CKM_DSA_SHA512
   | CKM_AES_CTR of P11_aes_ctr_params.t
+  | CKM_AES_GCM of P11_gcm_params.t
   | CKM_CS_UNKNOWN of P11_ulong.t
 [@@deriving show]
 
@@ -191,6 +192,8 @@ let to_json =
     | CKM_DSA_SHA384 -> simple "CKM_DSA_SHA384"
     | CKM_DSA_SHA512 -> simple "CKM_DSA_SHA512"
     | CKM_AES_CTR p -> param "CKM_AES_CTR" p P11_aes_ctr_params.to_yojson
+    | CKM_AES_GCM p ->
+        param "CKM_AES_GCM" p P11_gcm_params.to_yojson
     | CKM_CS_UNKNOWN p ->
         param "CKM_NOT_IMPLEMENTED" p P11_ulong.to_yojson
 
@@ -280,6 +283,8 @@ let of_yojson json =
         P11_ecdh1_derive_params.of_yojson param >>= fun r -> Ok (CKM_ECDH1_DERIVE r)
       | "CKM_AES_CTR" ->
         P11_aes_ctr_params.of_yojson param >>= fun r -> Ok (CKM_AES_CTR r)
+      | "CKM_AES_GCM" ->
+        P11_gcm_params.of_yojson param >>= fun r -> Ok (CKM_AES_GCM r)
       | _ ->
         P11_ulong.of_yojson param >>= fun params ->
         Ok (CKM_CS_UNKNOWN params)
@@ -360,6 +365,7 @@ let mechanism_type m =
     | CKM_DSA_SHA384 -> T.CKM_DSA_SHA384
     | CKM_DSA_SHA512 -> T.CKM_DSA_SHA512
     | CKM_AES_CTR _ -> T.CKM_AES_CTR
+    | CKM_AES_GCM _ -> T.CKM_AES_GCM
     | CKM_CS_UNKNOWN mechanism_type ->
       T.CKM_CS_UNKNOWN mechanism_type
 
@@ -430,6 +436,9 @@ let compare a b =
       | CKM_ECMQV_DERIVE a_param,
         CKM_ECMQV_DERIVE b_param
         -> P11_ecmqv_derive_params.compare a_param b_param
+      | CKM_AES_GCM a_param,
+        CKM_AES_GCM b_param
+        -> P11_gcm_params.compare a_param b_param
       | CKM_RSA_PKCS_OAEP _, _
       | CKM_PKCS5_PBKD2 _, _
       | CKM_RSA_PKCS_PSS _, _
@@ -461,6 +470,7 @@ let compare a b =
       | CKM_ECDH1_DERIVE _, _
       | CKM_ECDH1_COFACTOR_DERIVE _, _
       | CKM_ECMQV_DERIVE _, _
+      | CKM_AES_GCM _, _
       | CKM_CS_UNKNOWN _, _
         (* Should have been covered by the comparison of mechanism types,
            or by the above cases. *)
@@ -804,6 +814,7 @@ let kinds m =
     -> [ AES; Symmetric; Encrypt; Wrap ]
 
   | CKM_AES_CTR
+  | CKM_AES_GCM
     -> [ AES; Symmetric; Encrypt; Wrap ]
 
   | CKM_BLOWFISH_KEY_GEN
@@ -846,6 +857,7 @@ let key_type = function
   | CKM_AES_ECB_ENCRYPT_DATA _
   | CKM_AES_CBC_ENCRYPT_DATA _
   | CKM_AES_CTR _
+  | CKM_AES_GCM _
     -> Some P11_key_type.CKK_AES
   | CKM_DES_KEY_GEN
   | CKM_DES_ECB

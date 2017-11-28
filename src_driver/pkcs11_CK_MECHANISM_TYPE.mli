@@ -240,6 +240,7 @@ val _CKM_AES_MAC : t
 val _CKM_AES_MAC_GENERAL : t
 val _CKM_AES_CBC_PAD : t
 val _CKM_AES_CTR : t
+val _CKM_AES_GCM : t
 val _CKM_BLOWFISH_KEY_GEN : t
 val _CKM_BLOWFISH_CBC : t
 val _CKM_TWOFISH_KEY_GEN : t

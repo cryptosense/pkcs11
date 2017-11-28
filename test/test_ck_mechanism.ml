@@ -133,6 +133,16 @@ let test_make =
       )
       Pkcs11_CK_MECHANISM_TYPE._CKM_AES_CTR
       (sizeof_ul Pkcs11_CK_AES_CTR_PARAMS.t)
+  ; "GCM" >:: test
+      ( P11_mechanism.CKM_AES_GCM
+          ( P11_gcm_params.make
+              ~iv:""
+              ~aad:""
+              ~tag_bits:Unsigned.ULong.zero
+          )
+      )
+      Pkcs11_CK_MECHANISM_TYPE._CKM_AES_GCM
+      (sizeof_ul Pkcs11_CK_GCM_PARAMS.t)
   ]
 
 let test_view =

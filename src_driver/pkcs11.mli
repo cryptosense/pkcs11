@@ -52,6 +52,7 @@ module CK_ATTRIBUTE_SET = Pkcs11_CK_ATTRIBUTE_SET
 module Template = Pkcs11_template
 module Mechanism_list = Pkcs11_mechanism_list
 module CK_AES_CTR_PARAMS = Pkcs11_CK_AES_CTR_PARAMS
+module CK_GCM_PARAMS = Pkcs11_CK_GCM_PARAMS
 
 module Initialize_arg : sig
   type _ck_c_initialize_args

@@ -10,6 +10,7 @@ P11_ec_kdf
 P11_ecdh1_derive_params
 P11_ecmqv_derive_params
 P11_flags
+P11_gcm_params
 P11_helpers
 P11_hex_data
 P11_hw_feature_type
