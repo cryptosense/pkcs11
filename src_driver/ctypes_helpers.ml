@@ -5,6 +5,8 @@ module Reachable_ptr : sig
   val typ : 'a Ctypes_static.typ -> 'a t Ctypes_static.typ
   val setf : ('b, 'c) Ctypes.structured ->
     ('a t, ('b, 'c) Ctypes.structured) Ctypes.field -> 'a Ctypes.ptr -> unit
+  val setf_direct : ('b, 'c) Ctypes.structured ->
+    ('a t, ('b, 'c) Ctypes.structured) Ctypes.field -> 'a t -> unit
   val getf : ('b, 'c) Ctypes.structured ->
     ('a t, ('b, 'c) Ctypes.structured) Ctypes.field -> 'a Ctypes.ptr
   val is_null: 'a t -> bool
@@ -24,6 +26,8 @@ end = struct
   let setf s f v =
     add_gc_link ~from:s ~to_:v;
     Ctypes.setf s f v
+
+  let setf_direct = setf
 
   let getf = Ctypes.getf
 
@@ -98,7 +102,7 @@ let make_string
   String.iteri (fun i c -> (ptr +@ i) <-@ c) str;
   setf p lengthField (Unsigned.ULong.of_int len);
   let ptr_typed = coerce Ctypes.(ptr char) Ctypes.(field_type dataField) ptr in
-  setf p dataField ptr_typed
+  Reachable_ptr.setf_direct p dataField ptr_typed
 
 (**
  * Read an OCaml string from a Ctypes struct.
