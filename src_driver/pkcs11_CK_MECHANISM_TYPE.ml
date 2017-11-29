@@ -1,4 +1,5 @@
 type t = P11_ulong.t
+[@@deriving eq,ord,show]
 
 let typ = Ctypes.ulong
 
@@ -790,6 +791,3 @@ let view t =
     | _ when is _CKM_GOSTR3411_HMAC -> CKM_GOSTR3411_HMAC
     | _ when is _CKM_AES_KEY_WRAP -> CKM_AES_KEY_WRAP
     | _ -> CKM_CS_UNKNOWN t
-
-let equal = Pervasives.(=)
-let compare = Pervasives.compare
