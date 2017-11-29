@@ -126,7 +126,34 @@ let test_make =
       (sizeof_ul Pkcs11_CK_PKCS5_PBKD2_PARAMS.t)
   ]
 
+let test_view =
+  let test low expected ctxt =
+    let got = Pkcs11_CK_MECHANISM.view low in
+    assert_equal
+      ~ctxt
+      ~cmp:[%eq: P11_mechanism.t]
+      ~printer:[%show: P11_mechanism.t]
+      expected
+      got
+  in
+  let build mechanism_type =
+    let m = Ctypes.make Pkcs11_CK_MECHANISM.ck_mechanism in
+    Ctypes.setf m Pkcs11_CK_MECHANISM.mechanism mechanism_type;
+    Ctypes_helpers.Reachable_ptr.setf m Pkcs11_CK_MECHANISM.parameter Ctypes.null;
+    Ctypes.setf m Pkcs11_CK_MECHANISM.parameter_len Unsigned.ULong.zero;
+    m
+  in
+  "view" >:::
+  [ "known with binding" >:: test
+      (build Pkcs11_CK_MECHANISM_TYPE._CKM_SHA_1)
+      P11_mechanism.CKM_SHA_1
+  ; "known with no binding" >:: test
+      (build Pkcs11_CK_MECHANISM_TYPE._CKM_GOSTR3411)
+      (P11_mechanism.CKM_CS_UNKNOWN Pkcs11_CK_MECHANISM_TYPE._CKM_GOSTR3411)
+  ]
+
 let suite =
   "CK_MECHANISM" >:::
   [ test_make
+  ; test_view
   ]
