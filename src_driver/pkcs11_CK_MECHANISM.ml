@@ -13,173 +13,131 @@ let parameter = Reachable_ptr.typ void -: "pParameter"
 let parameter_len = ulong -: "pParameterLen"
 let () = seal ck_mechanism
 
-let tag x =
-  Pkcs11_CK_MECHANISM_TYPE.make @@ P11_mechanism.mechanism_type x
+type argument =
+  | No_argument
+  | OAEP of P11_rsa_pkcs_oaep_params.t
+  | PSS of P11_rsa_pkcs_pss_params.t
+  | String of string
+  | Ulong of P11_ulong.t
+  | Derivation_string of P11_hex_data.t
+  | AES_CBC_encrypt of P11_aes_cbc_encrypt_data_params.t
+  | DES_CBC_encrypt of P11_des_cbc_encrypt_data_params.t
+  | ECDH1 of P11_ecdh1_derive_params.t
+  | ECMQV of P11_ecmqv_derive_params.t
+  | PBKD2 of P11_pkcs5_pbkd2_data_params.t
 
-let make x =
-  let make ckm param param_len =
-    let open Ctypes in
-    let m = make ck_mechanism in
-    setf m mechanism ckm;
-    Reachable_ptr.setf m parameter param;
-    setf m parameter_len param_len;
-    m
-  in
-  let ckm = tag x in
-  let simple () =
-    make ckm null Unsigned.ULong.zero in
+let argument =
+  let open P11_mechanism in
+  function
+  | CKM_SHA_1 -> No_argument
+  | CKM_SHA224 -> No_argument
+  | CKM_SHA256 -> No_argument
+  | CKM_SHA512 -> No_argument
+  | CKM_MD5 -> No_argument
+  | CKM_RSA_PKCS_KEY_PAIR_GEN -> No_argument
+  | CKM_RSA_X9_31_KEY_PAIR_GEN -> No_argument
+  | CKM_RSA_PKCS -> No_argument
+  | CKM_RSA_PKCS_OAEP p -> OAEP p
+  | CKM_RSA_X_509 -> No_argument
+  | CKM_RSA_PKCS_PSS p -> PSS p
+  | CKM_SHA1_RSA_PKCS -> No_argument
+  | CKM_SHA224_RSA_PKCS -> No_argument
+  | CKM_SHA256_RSA_PKCS -> No_argument
+  | CKM_SHA384_RSA_PKCS -> No_argument
+  | CKM_SHA512_RSA_PKCS -> No_argument
+  | CKM_SHA1_RSA_PKCS_PSS p -> PSS p
+  | CKM_SHA224_RSA_PKCS_PSS p -> PSS p
+  | CKM_SHA256_RSA_PKCS_PSS p -> PSS p
+  | CKM_SHA384_RSA_PKCS_PSS p -> PSS p
+  | CKM_SHA512_RSA_PKCS_PSS p -> PSS p
+  | CKM_AES_KEY_GEN -> No_argument
+  | CKM_AES_ECB -> No_argument
+  | CKM_AES_CBC p -> String p
+  | CKM_AES_CBC_PAD p -> String p
+  | CKM_AES_MAC -> No_argument
+  | CKM_AES_MAC_GENERAL p -> Ulong p
+  | CKM_AES_ECB_ENCRYPT_DATA p -> Derivation_string p
+  | CKM_AES_CBC_ENCRYPT_DATA p -> AES_CBC_encrypt p
+  | CKM_DES_KEY_GEN -> No_argument
+  | CKM_DES_ECB -> No_argument
+  | CKM_DES_CBC p -> String p
+  | CKM_DES_CBC_PAD p -> String p
+  | CKM_DES_MAC -> No_argument
+  | CKM_DES_MAC_GENERAL p -> Ulong p
+  | CKM_DES_ECB_ENCRYPT_DATA p -> Derivation_string p
+  | CKM_DES_CBC_ENCRYPT_DATA p -> DES_CBC_encrypt p
+  | CKM_DES3_KEY_GEN -> No_argument
+  | CKM_DES3_ECB -> No_argument
+  | CKM_DES3_CBC p -> String p
+  | CKM_DES3_CBC_PAD p -> String p
+  | CKM_DES3_MAC -> No_argument
+  | CKM_DES3_MAC_GENERAL p -> Ulong p
+  | CKM_DES3_ECB_ENCRYPT_DATA p -> Derivation_string p
+  | CKM_DES3_CBC_ENCRYPT_DATA p -> DES_CBC_encrypt p
+  | CKM_CONCATENATE_BASE_AND_DATA p -> Derivation_string p
+  | CKM_CONCATENATE_DATA_AND_BASE p -> Derivation_string p
+  | CKM_XOR_BASE_AND_DATA p -> Derivation_string p
+  | CKM_EXTRACT_KEY_FROM_KEY p -> Ulong p
+  | CKM_CONCATENATE_BASE_AND_KEY p -> Ulong p
+  | CKM_EC_KEY_PAIR_GEN -> No_argument
+  | CKM_ECDSA -> No_argument
+  | CKM_ECDSA_SHA1 -> No_argument
+  | CKM_ECDH1_DERIVE p -> ECDH1 p
+  | CKM_ECDH1_COFACTOR_DERIVE p -> ECDH1 p
+  | CKM_ECMQV_DERIVE p -> ECMQV p
+  | CKM_PKCS5_PBKD2 p -> PBKD2 p
+  | CKM_DSA_SHA1 -> No_argument
+  | CKM_DSA_SHA224 -> No_argument
+  | CKM_DSA_SHA256 -> No_argument
+  | CKM_DSA_SHA384 -> No_argument
+  | CKM_DSA_SHA512 -> No_argument
+  | CKM_CS_UNKNOWN params -> No_argument
+
+let argument_params argument =
   let struct_ params ctype make_ctype =
     let params = make_ctype params in
-    make ckm (to_voidp (addr params)) (sizeof ctype |> Unsigned.ULong.of_int)
+    let param = to_voidp (addr params) in
+    let param_len = Unsigned.ULong.of_int (sizeof ctype) in
+    (param, param_len)
   in
-  let pss params =
-    struct_ params Pkcs11_CK_RSA_PKCS_PSS_PARAMS.t Pkcs11_CK_RSA_PKCS_PSS_PARAMS.make
-  in
-  let string param =
-    let params = Pkcs11_data.of_string param in
+  match argument with
+  | No_argument ->
+    (null, Unsigned.ULong.zero)
+  | OAEP p ->
+    struct_ p Pkcs11_CK_RSA_PKCS_OAEP_PARAMS.t Pkcs11_CK_RSA_PKCS_OAEP_PARAMS.make
+  | PSS p ->
+    struct_ p Pkcs11_CK_RSA_PKCS_PSS_PARAMS.t Pkcs11_CK_RSA_PKCS_PSS_PARAMS.make
+  | String p ->
+    let params = Pkcs11_data.of_string p in
     let char_ptr = Pkcs11_data.get_content params in
     let param_len = Pkcs11_data.get_length params in
-    make ckm (to_voidp char_ptr) param_len
-  in
-  let derivation_string param =
-    struct_ param
-      Pkcs11_CK_KEY_DERIVATION_STRING_DATA.t Pkcs11_CK_KEY_DERIVATION_STRING_DATA.make
-  in
-  let ulong param =
-    let ptr = allocate ulong param in
-    make ckm (to_voidp ptr) (Unsigned.ULong.of_int (sizeof ulong))
-  in
-  let open P11_mechanism in
-  let open Pkcs11_CK_MECHANISM_TYPE in
-  match x with
-    | CKM_SHA_1 ->
-        simple ()
-    | CKM_SHA224 ->
-        simple ()
-    | CKM_SHA256 ->
-        simple ()
-    | CKM_SHA512 ->
-        simple ()
-    | CKM_MD5 ->
-        simple ()
-    | CKM_RSA_PKCS_KEY_PAIR_GEN ->
-        simple ()
-    | CKM_RSA_X9_31_KEY_PAIR_GEN ->
-        simple ()
-    | CKM_RSA_PKCS ->
-        simple ()
-    | CKM_RSA_PKCS_OAEP p ->
-        struct_ p Pkcs11_CK_RSA_PKCS_OAEP_PARAMS.t
-          Pkcs11_CK_RSA_PKCS_OAEP_PARAMS.make
-    | CKM_RSA_X_509 ->
-        simple ()
-    | CKM_RSA_PKCS_PSS p ->
-        pss p
-    | CKM_SHA1_RSA_PKCS ->
-        simple ()
-    | CKM_SHA224_RSA_PKCS ->
-        simple ()
-    | CKM_SHA256_RSA_PKCS ->
-        simple ()
-    | CKM_SHA384_RSA_PKCS ->
-        simple ()
-    | CKM_SHA512_RSA_PKCS ->
-        simple ()
-    | CKM_SHA1_RSA_PKCS_PSS p ->
-        pss p
-    | CKM_SHA224_RSA_PKCS_PSS p ->
-        pss p
-    | CKM_SHA256_RSA_PKCS_PSS p ->
-        pss p
-    | CKM_SHA384_RSA_PKCS_PSS p ->
-        pss p
-    | CKM_SHA512_RSA_PKCS_PSS p ->
-        pss p
-    | CKM_AES_KEY_GEN ->
-        simple ()
-    | CKM_AES_ECB ->
-        simple ()
-    | CKM_AES_CBC p ->
-        string p
-    | CKM_AES_CBC_PAD p ->
-        string p
-    | CKM_AES_MAC ->
-        simple ()
-    | CKM_AES_MAC_GENERAL p ->
-        ulong p
-    | CKM_AES_ECB_ENCRYPT_DATA p ->
-        derivation_string p
-    | CKM_AES_CBC_ENCRYPT_DATA p ->
-        struct_ p Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_AES_CBC_ENCRYPT_DATA_PARAMS.t
-          Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_AES_CBC_ENCRYPT_DATA_PARAMS.make
-    | CKM_DES_KEY_GEN ->
-        simple ()
-    | CKM_DES_ECB ->
-        simple ()
-    | CKM_DES_CBC p ->
-        string p
-    | CKM_DES_CBC_PAD p ->
-        string p
-    | CKM_DES_MAC ->
-        simple ()
-    | CKM_DES_MAC_GENERAL p ->
-        ulong p
-    | CKM_DES_ECB_ENCRYPT_DATA p ->
-        derivation_string p
-    | CKM_DES_CBC_ENCRYPT_DATA p ->
-        struct_ p Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_DES_CBC_ENCRYPT_DATA_PARAMS.t
-          Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_DES_CBC_ENCRYPT_DATA_PARAMS.make
-    | CKM_DES3_KEY_GEN ->
-        simple ()
-    | CKM_DES3_ECB ->
-        simple ()
-    | CKM_DES3_CBC p ->
-        string p
-    | CKM_DES3_CBC_PAD p ->
-        string p
-    | CKM_DES3_MAC ->
-        simple ()
-    | CKM_DES3_MAC_GENERAL p ->
-        ulong p
-    | CKM_DES3_ECB_ENCRYPT_DATA p ->
-        derivation_string p
-    | CKM_DES3_CBC_ENCRYPT_DATA p ->
-        struct_ p Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_DES_CBC_ENCRYPT_DATA_PARAMS.t
-          Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_DES_CBC_ENCRYPT_DATA_PARAMS.make
-    | CKM_CONCATENATE_BASE_AND_DATA p ->
-        derivation_string p
-    | CKM_CONCATENATE_DATA_AND_BASE p ->
-        derivation_string p
-    | CKM_XOR_BASE_AND_DATA p ->
-        derivation_string p
-    | CKM_EXTRACT_KEY_FROM_KEY p ->
-        ulong p
-    | CKM_CONCATENATE_BASE_AND_KEY p ->
-        ulong p
-    | CKM_EC_KEY_PAIR_GEN ->
-        simple ()
-    | CKM_ECDSA ->
-        simple ()
-    | CKM_ECDSA_SHA1 ->
-        simple ()
-    | CKM_ECDH1_DERIVE p ->
-        struct_ p Pkcs11_CK_ECDH1_DERIVE_PARAMS.t
-          Pkcs11_CK_ECDH1_DERIVE_PARAMS.make
-    | CKM_ECDH1_COFACTOR_DERIVE p ->
-        struct_ p Pkcs11_CK_ECDH1_DERIVE_PARAMS.t
-          Pkcs11_CK_ECDH1_DERIVE_PARAMS.make
-    | CKM_ECMQV_DERIVE p ->
-        struct_ p Pkcs11_CK_ECMQV_DERIVE_PARAMS.t
-          Pkcs11_CK_ECMQV_DERIVE_PARAMS.make
-    | CKM_PKCS5_PBKD2 p ->
-        struct_ p Pkcs11_CK_PKCS5_PBKD2_PARAMS.t
-          Pkcs11_CK_PKCS5_PBKD2_PARAMS.make
-    | CKM_DSA_SHA1 -> simple ()
-    | CKM_DSA_SHA224 -> simple ()
-    | CKM_DSA_SHA256 -> simple ()
-    | CKM_DSA_SHA384 -> simple ()
-    | CKM_DSA_SHA512 -> simple ()
-    | CKM_CS_UNKNOWN params -> simple ()
+    (to_voidp char_ptr, param_len)
+  | Ulong p ->
+    let ptr = allocate ulong p in
+    (to_voidp ptr, Unsigned.ULong.of_int (sizeof ulong))
+  | Derivation_string p ->
+    struct_ p Pkcs11_CK_KEY_DERIVATION_STRING_DATA.t Pkcs11_CK_KEY_DERIVATION_STRING_DATA.make
+  | AES_CBC_encrypt p ->
+    struct_ p Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_AES_CBC_ENCRYPT_DATA_PARAMS.t
+      Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_AES_CBC_ENCRYPT_DATA_PARAMS.make
+  | DES_CBC_encrypt p ->
+    struct_ p Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_DES_CBC_ENCRYPT_DATA_PARAMS.t
+      Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_DES_CBC_ENCRYPT_DATA_PARAMS.make
+  | ECDH1 p ->
+    struct_ p Pkcs11_CK_ECDH1_DERIVE_PARAMS.t Pkcs11_CK_ECDH1_DERIVE_PARAMS.make
+  | ECMQV p ->
+    struct_ p Pkcs11_CK_ECMQV_DERIVE_PARAMS.t Pkcs11_CK_ECMQV_DERIVE_PARAMS.make
+  | PBKD2 p ->
+    struct_ p Pkcs11_CK_PKCS5_PBKD2_PARAMS.t Pkcs11_CK_PKCS5_PBKD2_PARAMS.make
+
+let make x =
+  let ckm = Pkcs11_CK_MECHANISM_TYPE.make @@ P11_mechanism.mechanism_type x in
+  let (param, param_len) = argument_params @@ argument x in
+  let m = make ck_mechanism in
+  setf m mechanism ckm;
+  Reachable_ptr.setf m parameter param;
+  setf m parameter_len param_len;
+  m
 
 let unsafe_get_string t =
   view_string t parameter_len parameter
