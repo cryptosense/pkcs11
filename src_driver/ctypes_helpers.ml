@@ -7,6 +7,7 @@ module Reachable_ptr : sig
     ('a t, ('b, 'c) Ctypes.structured) Ctypes.field -> 'a Ctypes.ptr -> unit
   val getf : ('b, 'c) Ctypes.structured ->
     ('a t, ('b, 'c) Ctypes.structured) Ctypes.field -> 'a Ctypes.ptr
+  val is_null: 'a t -> bool
 end = struct
 
   type 'a t = 'a ptr
@@ -26,6 +27,7 @@ end = struct
 
   let getf = Ctypes.getf
 
+  let is_null = Ctypes.is_null
 end
 
 (******************************************************************************)

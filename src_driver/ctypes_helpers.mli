@@ -19,6 +19,9 @@ module Reachable_ptr : sig
   (** Call [Ctypes.getf] and unwrap the result. *)
   val getf : ('b, 'c) Ctypes.structured ->
     ('a t, ('b, 'c) Ctypes.structured) Ctypes.field -> 'a Ctypes.ptr
+
+  (** Call [Ctypes.is_null] on the underlying pointer *)
+  val is_null: 'a t -> bool
 end
 
 (******************************************************************************)
