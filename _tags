@@ -13,6 +13,7 @@ true: open(Result)
 <src_rev/*>: package(ctypes.stubs)
 <test/test_driver.*>: package(ctypes.foreign)
 <test/test_driver.*>: package(ctypes.stubs)
+<test/test_ck*>: package(ctypes)
 <test/example_sign.*>: package(ctypes.foreign)
 <test/example_sign.*>: package(ctypes.stubs)
 
