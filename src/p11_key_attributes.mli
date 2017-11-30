@@ -11,6 +11,8 @@ type kind =
   | `EC_public
   | `RSA_private
   | `RSA_public
+  | `DSA_private
+  | `DSA_public
   | `Secret
   ]
 

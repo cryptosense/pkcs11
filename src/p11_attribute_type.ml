@@ -34,6 +34,7 @@ type 'a t =
   | CKA_COEFFICIENT : P11_bigint.t t
   | CKA_PRIME : P11_bigint.t t
   | CKA_SUBPRIME : P11_bigint.t t
+  | CKA_BASE : P11_bigint.t t
   | CKA_PRIME_BITS : P11_ulong.t t
   | CKA_SUBPRIME_BITS : P11_ulong.t t
   | CKA_VALUE_LEN : P11_ulong.t t
@@ -43,7 +44,6 @@ type 'a t =
   | CKA_ALWAYS_SENSITIVE : bool t
   | CKA_KEY_GEN_MECHANISM : P11_key_gen_mechanism.t t
   | CKA_MODIFIABLE : bool t
-  (* | CKA_ECDSA_PARAMS : string t *)
   | CKA_EC_PARAMS : string t
   | CKA_EC_POINT : string t
   | CKA_ALWAYS_AUTHENTICATE : bool t
@@ -90,6 +90,7 @@ let to_string : type a. a t -> string =
   | CKA_COEFFICIENT -> "CKA_COEFFICIENT"
   | CKA_PRIME -> "CKA_PRIME"
   | CKA_SUBPRIME -> "CKA_SUBPRIME"
+  | CKA_BASE -> "CKA_BASE"
   | CKA_PRIME_BITS -> "CKA_PRIME_BITS"
   | CKA_SUBPRIME_BITS -> "CKA_SUBPRIME_BITS"
   | CKA_VALUE_LEN -> "CKA_VALUE_LEN"
@@ -143,6 +144,7 @@ let of_string = function
   | "CKA_COEFFICIENT" -> Pack CKA_COEFFICIENT
   | "CKA_PRIME" -> Pack CKA_PRIME
   | "CKA_SUBPRIME" -> Pack CKA_SUBPRIME
+  | "CKA_BASE" -> Pack CKA_BASE
   | "CKA_PRIME_BITS" -> Pack CKA_PRIME_BITS
   | "CKA_SUBPRIME_BITS" -> Pack CKA_SUBPRIME_BITS
   | "CKA_SUB_PRIME_BITS" -> Pack CKA_SUBPRIME_BITS
@@ -221,7 +223,6 @@ module Encoding = struct
   let  _CKA_BASE                        = ! 0x00000132L
   let  _CKA_PRIME_BITS                  = ! 0x00000133L
   let  _CKA_SUBPRIME_BITS               = ! 0x00000134L
-  (* let  _CKA_SUB_PRIME_BITS              =   _CKA_SUBPRIME_BITS *)
   let  _CKA_VALUE_BITS                  = ! 0x00000160L
   let  _CKA_VALUE_LEN                   = ! 0x00000161L
   let  _CKA_EXTRACTABLE                 = ! 0x00000162L
@@ -230,7 +231,6 @@ module Encoding = struct
   let  _CKA_ALWAYS_SENSITIVE            = ! 0x00000165L
   let  _CKA_KEY_GEN_MECHANISM           = ! 0x00000166L
   let  _CKA_MODIFIABLE                  = ! 0x00000170L
-  (* let  _CKA_ECDSA_PARAMS                = ! 0x00000180L *)
   let  _CKA_EC_PARAMS                   = ! 0x00000180L
   let  _CKA_EC_POINT                    = ! 0x00000181L
   let  _CKA_SECONDARY_AUTH              = ! 0x00000200L
@@ -308,6 +308,7 @@ module Encoding = struct
     | CKA_COEFFICIENT -> _CKA_COEFFICIENT
     | CKA_PRIME -> _CKA_PRIME
     | CKA_SUBPRIME -> _CKA_SUBPRIME
+    | CKA_BASE -> _CKA_BASE
     | CKA_PRIME_BITS -> _CKA_PRIME_BITS
     | CKA_SUBPRIME_BITS -> _CKA_SUBPRIME_BITS
     | CKA_VALUE_LEN -> _CKA_VALUE_LEN
@@ -317,7 +318,6 @@ module Encoding = struct
     | CKA_ALWAYS_SENSITIVE -> _CKA_ALWAYS_SENSITIVE
     | CKA_KEY_GEN_MECHANISM -> _CKA_KEY_GEN_MECHANISM
     | CKA_MODIFIABLE -> _CKA_MODIFIABLE
-    (* | CKA_ECDSA_PARAMS -> _CKA_ECDSA_PARAMS *)
     | CKA_EC_PARAMS -> _CKA_EC_PARAMS
     | CKA_EC_POINT -> _CKA_EC_POINT
     | CKA_ALWAYS_AUTHENTICATE -> _CKA_ALWAYS_AUTHENTICATE
@@ -379,6 +379,7 @@ let compare' : type a b. a t -> b t -> (a, b) comparison =
     | CKA_COEFFICIENT, CKA_COEFFICIENT -> Equal
     | CKA_PRIME, CKA_PRIME -> Equal
     | CKA_SUBPRIME, CKA_SUBPRIME -> Equal
+    | CKA_BASE, CKA_BASE -> Equal
     | CKA_PRIME_BITS, CKA_PRIME_BITS -> Equal
     | CKA_SUBPRIME_BITS, CKA_SUBPRIME_BITS -> Equal
     | CKA_VALUE_LEN, CKA_VALUE_LEN -> Equal
@@ -434,6 +435,7 @@ let compare' : type a b. a t -> b t -> (a, b) comparison =
     | CKA_COEFFICIENT, _ -> assert false
     | CKA_PRIME, _ -> assert false
     | CKA_SUBPRIME, _ -> assert false
+    | CKA_BASE, _ -> assert false
     | CKA_PRIME_BITS, _ -> assert false
     | CKA_SUBPRIME_BITS, _ -> assert false
     | CKA_VALUE_LEN, _ -> assert false
@@ -443,7 +445,6 @@ let compare' : type a b. a t -> b t -> (a, b) comparison =
     | CKA_ALWAYS_SENSITIVE, _ -> assert false
     | CKA_KEY_GEN_MECHANISM, _ -> assert false
     | CKA_MODIFIABLE, _ -> assert false
-    (* | CKA_ECDSA_PARAMS, _ -> assert false *)
     | CKA_EC_PARAMS, _ -> assert false
     | CKA_EC_POINT, _ -> assert false
     | CKA_ALWAYS_AUTHENTICATE, _ -> assert false
@@ -507,6 +508,7 @@ let elements =
     Pack CKA_COEFFICIENT;
     Pack CKA_PRIME;
     Pack CKA_SUBPRIME;
+    Pack CKA_BASE;
     Pack CKA_PRIME_BITS;
     Pack CKA_SUBPRIME_BITS;
     Pack CKA_VALUE_LEN;
