@@ -34,6 +34,7 @@ type 'a t =
   | CKA_COEFFICIENT : P11_bigint.t t
   | CKA_PRIME : P11_bigint.t t
   | CKA_SUBPRIME : P11_bigint.t t
+  | CKA_BASE : P11_bigint.t t
   | CKA_PRIME_BITS : P11_ulong.t t
   | CKA_SUBPRIME_BITS : P11_ulong.t t
   | CKA_VALUE_LEN : P11_ulong.t t
@@ -43,7 +44,6 @@ type 'a t =
   | CKA_ALWAYS_SENSITIVE : bool t
   | CKA_KEY_GEN_MECHANISM : P11_key_gen_mechanism.t t
   | CKA_MODIFIABLE : bool t
-  (* | CKA_ECDSA_PARAMS : string t *)
   | CKA_EC_PARAMS : string t
   | CKA_EC_POINT : string t
   | CKA_ALWAYS_AUTHENTICATE : bool t
@@ -103,7 +103,6 @@ module Encoding : sig
   val _CKA_BASE : Unsigned.ULong.t
   val _CKA_PRIME_BITS : Unsigned.ULong.t
   val _CKA_SUBPRIME_BITS : Unsigned.ULong.t
-  (* val _CKA_SUB_PRIME_BITS : t *)
   val _CKA_VALUE_BITS : Unsigned.ULong.t
   val _CKA_VALUE_LEN : Unsigned.ULong.t
   val _CKA_EXTRACTABLE : Unsigned.ULong.t
@@ -112,7 +111,6 @@ module Encoding : sig
   val _CKA_ALWAYS_SENSITIVE : Unsigned.ULong.t
   val _CKA_KEY_GEN_MECHANISM : Unsigned.ULong.t
   val _CKA_MODIFIABLE : Unsigned.ULong.t
-  (* val _CKA_ECDSA_PARAMS : t deprecated, and equal to EC_PARAMS *)
   val _CKA_EC_PARAMS : Unsigned.ULong.t
   val _CKA_EC_POINT : Unsigned.ULong.t
   val _CKA_SECONDARY_AUTH : Unsigned.ULong.t

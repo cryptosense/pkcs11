@@ -210,6 +210,7 @@ let repr (type a) : a P11_attribute_type.t -> a repr =
   | CKA_COEFFICIENT -> Repr_bigint
   | CKA_PRIME -> Repr_bigint
   | CKA_SUBPRIME -> Repr_bigint
+  | CKA_BASE -> Repr_bigint
   | CKA_PRIME_BITS -> Repr_ulong
   | CKA_SUBPRIME_BITS -> Repr_ulong
   | CKA_VALUE_LEN -> Repr_ulong

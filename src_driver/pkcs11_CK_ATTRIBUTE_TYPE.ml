@@ -44,6 +44,7 @@ let view (ul : t) : P11_attribute_type.pack =
   | _ when it_is _CKA_COEFFICIENT           -> Pack CKA_COEFFICIENT
   | _ when it_is _CKA_PRIME                 -> Pack CKA_PRIME
   | _ when it_is _CKA_SUBPRIME              -> Pack CKA_SUBPRIME
+  | _ when it_is _CKA_BASE                  -> Pack CKA_BASE
   | _ when it_is _CKA_PRIME_BITS            -> Pack CKA_PRIME_BITS
   | _ when it_is _CKA_SUBPRIME_BITS         -> Pack CKA_SUBPRIME_BITS
   | _ when it_is _CKA_VALUE_LEN             -> Pack CKA_VALUE_LEN

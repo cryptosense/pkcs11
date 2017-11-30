@@ -96,6 +96,7 @@ let update (P11_attribute.Pack x) t =
     | CKA_COEFFICIENT, n -> bigint t n
     | CKA_PRIME, n -> bigint t n
     | CKA_SUBPRIME, n -> bigint t n
+    | CKA_BASE, n -> bigint t n
     | CKA_PRIME_BITS, _ -> assert false
     | CKA_SUBPRIME_BITS, not_implemented -> assert false
     | CKA_VALUE_LEN, ul -> ulong t ul

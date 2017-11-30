@@ -46,6 +46,7 @@ let to_string_pair =
       | CKA_COEFFICIENT,      x    -> bigint "CKA_COEFFICIENT" x
       | CKA_PRIME,            x    -> bigint "CKA_PRIME" x
       | CKA_SUBPRIME,         x    -> bigint "CKA_SUBPRIME" x
+      | CKA_BASE,             x    -> bigint "CKA_BASE" x
       | CKA_PRIME_BITS,  x          -> ulong "CKA_PRIME_BITS" x
       | CKA_SUBPRIME_BITS, x        -> ulong "CKA_SUBPRIME_BITS" x
       | CKA_VALUE_LEN, x           -> ulong "CKA_VALUE_LEN" x
@@ -55,7 +56,6 @@ let to_string_pair =
       | CKA_ALWAYS_SENSITIVE, x    -> bool "CKA_ALWAYS_SENSITIVE" x
       | CKA_KEY_GEN_MECHANISM, x   -> mechanism_type "CKA_KEY_GEN_MECHANISM" x
       | CKA_MODIFIABLE, x          -> bool "CKA_MODIFIABLE" x
-      (* | CKA_ECDSA_PARAMS, x        -> string "CKA_ECDSA_PARAMS" x *)
       | CKA_EC_PARAMS, x           -> string "CKA_EC_PARAMS" x
       | CKA_EC_POINT, x            -> string "CKA_EC_POINT" x
       | CKA_ALWAYS_AUTHENTICATE, x -> bool "CKA_ALWAYS_AUTHENTICATE" x
@@ -147,6 +147,8 @@ let to_json : type a . a t -> Yojson.Safe.json = fun attribute ->
         p_bigint "CKA_PRIME" param
     | CKA_SUBPRIME, param ->
         p_bigint "CKA_SUBPRIME" param
+    | CKA_BASE, param ->
+        p_bigint "CKA_BASE" param
     | CKA_VALUE_LEN, param ->
         p_ulong "CKA_VALUE_LEN" param
     | CKA_EXTRACTABLE, param ->
@@ -275,6 +277,8 @@ let pack_of_yojson json : (pack, string) result =
           p_bigint CKA_PRIME
       | "CKA_SUBPRIME" ->
           p_bigint CKA_SUBPRIME
+      | "CKA_BASE" ->
+          p_bigint CKA_BASE
       | "CKA_VALUE_LEN" ->
           p_ulong CKA_VALUE_LEN
       | "CKA_EXTRACTABLE" ->
@@ -370,6 +374,7 @@ let compare (type a) (type b) (a:a t) (b: b t) =
       | (CKA_COEFFICIENT, a_param), (CKA_COEFFICIENT, b_param) -> P11_bigint.compare a_param b_param
       | (CKA_PRIME, a_param), (CKA_PRIME, b_param) -> P11_bigint.compare a_param b_param
       | (CKA_SUBPRIME, a_param), (CKA_SUBPRIME, b_param) -> P11_bigint.compare a_param b_param
+      | (CKA_BASE, a_param), (CKA_BASE, b_param) -> P11_bigint.compare a_param b_param
       | (CKA_MODULUS, a_param), (CKA_MODULUS, b_param) -> P11_bigint.compare a_param b_param
 
       | (CKA_TOKEN, a_param), (CKA_TOKEN, b_param) -> compare_bool a_param b_param
@@ -451,6 +456,7 @@ let compare (type a) (type b) (a:a t) (b: b t) =
       | (CKA_COEFFICIENT, _), _ -> assert false
       | (CKA_PRIME, _), _ -> assert false
       | (CKA_SUBPRIME, _), _ -> assert false
+      | (CKA_BASE, _), _ -> assert false
       | (CKA_EC_PARAMS, _), _ -> assert false
       | (CKA_EC_POINT, _), _ -> assert false
       | (CKA_CHECK_VALUE, _), _ -> assert false
@@ -541,6 +547,7 @@ let kinds : pack -> _ = fun (Pack (a,_)) ->
     | CKA_COEFFICIENT      -> rsa_private
     | CKA_PRIME            -> []
     | CKA_SUBPRIME         -> []
+    | CKA_BASE             -> []
     | CKA_EC_PARAMS        -> [ [ EC; Public; Private ] ]
     | CKA_EC_POINT         -> [ [ EC; Public ] ]
     | CKA_SUBJECT          -> [ [ Public; Private ] ]
