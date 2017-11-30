@@ -141,71 +141,97 @@ let unsafe_get_object_class : t -> Pkcs11_CK_OBJECT_CLASS.t =
 let unsafe_get_key_type : t -> Pkcs11_CK_KEY_TYPE.t =
   unsafe_get_ulong
 
-let unsafe_get_bigint t =
-  P11_bigint.decode (unsafe_get_string t)
+type _ repr =
+  | Repr_object_class : P11_object_class.t repr
+  | Repr_bool : bool repr
+  | Repr_string : string repr
+  | Repr_not_implemented : P11_attribute_type.not_implemented repr
+  | Repr_key_type : P11_key_type.t repr
+  | Repr_bigint : P11_bigint.t repr
+  | Repr_ulong : P11_ulong.t repr
+  | Repr_key_gen_mechanism : P11_key_gen_mechanism.t repr
+
+let repr_view (type a) t : a repr -> a =
+  let open P11_attribute_type in
+  function
+  | Repr_object_class -> Pkcs11_CK_OBJECT_CLASS.view (unsafe_get_object_class t)
+  | Repr_bool -> unsafe_get_bool t
+  | Repr_string -> unsafe_get_string t
+  | Repr_not_implemented -> NOT_IMPLEMENTED (unsafe_get_string t)
+  | Repr_key_type -> Pkcs11_CK_KEY_TYPE.view(unsafe_get_key_type t)
+  | Repr_bigint -> P11_bigint.decode (unsafe_get_string t)
+  | Repr_ulong -> unsafe_get_ulong t
+  | Repr_key_gen_mechanism -> Pkcs11_key_gen_mechanism.view (unsafe_get_ulong t)
+
+let repr (type a) : a P11_attribute_type.t -> a repr =
+  let open P11_attribute_type in
+  function
+  | CKA_CLASS -> Repr_object_class
+  | CKA_TOKEN -> Repr_bool
+  | CKA_PRIVATE -> Repr_bool
+  | CKA_LABEL -> Repr_string
+  | CKA_VALUE -> Repr_string
+  | CKA_TRUSTED -> Repr_bool
+  | CKA_CHECK_VALUE -> Repr_not_implemented
+  | CKA_KEY_TYPE -> Repr_key_type
+  | CKA_SUBJECT -> Repr_string
+  | CKA_ID -> Repr_string
+  | CKA_SENSITIVE -> Repr_bool
+  | CKA_ENCRYPT -> Repr_bool
+  | CKA_DECRYPT -> Repr_bool
+  | CKA_WRAP -> Repr_bool
+  | CKA_UNWRAP -> Repr_bool
+  | CKA_SIGN -> Repr_bool
+  | CKA_SIGN_RECOVER -> Repr_bool
+  | CKA_VERIFY -> Repr_bool
+  | CKA_VERIFY_RECOVER -> Repr_bool
+  | CKA_DERIVE -> Repr_bool
+  | CKA_START_DATE -> Repr_not_implemented
+  | CKA_END_DATE -> Repr_not_implemented
+  | CKA_MODULUS -> Repr_bigint
+  | CKA_MODULUS_BITS -> Repr_ulong
+  | CKA_PUBLIC_EXPONENT -> Repr_bigint
+  | CKA_PRIVATE_EXPONENT -> Repr_bigint
+  | CKA_PRIME_1 -> Repr_bigint
+  | CKA_PRIME_2 -> Repr_bigint
+  | CKA_EXPONENT_1 -> Repr_bigint
+  | CKA_EXPONENT_2 -> Repr_bigint
+  | CKA_COEFFICIENT -> Repr_bigint
+  | CKA_PRIME -> Repr_bigint
+  | CKA_SUBPRIME -> Repr_bigint
+  | CKA_PRIME_BITS -> Repr_ulong
+  | CKA_SUBPRIME_BITS -> Repr_ulong
+  | CKA_VALUE_LEN -> Repr_ulong
+  | CKA_EXTRACTABLE -> Repr_bool
+  | CKA_LOCAL -> Repr_bool
+  | CKA_NEVER_EXTRACTABLE -> Repr_bool
+  | CKA_ALWAYS_SENSITIVE -> Repr_bool
+  | CKA_KEY_GEN_MECHANISM -> Repr_key_gen_mechanism
+  | CKA_MODIFIABLE -> Repr_bool
+  | CKA_EC_PARAMS -> Repr_string
+  | CKA_EC_POINT -> Repr_string
+  | CKA_ALWAYS_AUTHENTICATE -> Repr_bool
+  | CKA_WRAP_WITH_TRUSTED -> Repr_bool
+  | CKA_WRAP_TEMPLATE -> Repr_not_implemented
+  | CKA_UNWRAP_TEMPLATE -> Repr_not_implemented
+  | CKA_ALLOWED_MECHANISMS -> Repr_not_implemented
+  | CKA_CS_UNKNOWN ul ->
+    begin
+      Printf.ksprintf
+        Pkcs11_log.log
+        "Unknown CKA code: 0x%Lx"
+        (Int64.of_string @@ Unsigned.ULong.to_string ul);
+      Repr_not_implemented
+    end
 
 let view t =
   let open P11_attribute_type in
   let open Pkcs11_CK_ATTRIBUTE_TYPE in
   let ul = getf t _type in
-  let it_is c =
-    Pkcs11_CK_ATTRIBUTE_TYPE.equal ul c
-  in
-  match () with
-  | _ when it_is _CKA_CLASS               -> pack (CKA_CLASS, (unsafe_get_object_class t |> Pkcs11_CK_OBJECT_CLASS.view))
-  | _ when it_is _CKA_TOKEN               -> pack (CKA_TOKEN, (unsafe_get_bool t))
-  | _ when it_is _CKA_PRIVATE             -> pack (CKA_PRIVATE, (unsafe_get_bool t))
-  | _ when it_is _CKA_LABEL               -> pack (CKA_LABEL, (unsafe_get_string t))
-  | _ when it_is _CKA_VALUE               -> pack (CKA_VALUE, (unsafe_get_string t))
-  | _ when it_is _CKA_TRUSTED             -> pack (CKA_TRUSTED, (unsafe_get_bool t))
-  | _ when it_is _CKA_CHECK_VALUE         -> pack (CKA_CHECK_VALUE, NOT_IMPLEMENTED (unsafe_get_string t))
-  | _ when it_is _CKA_KEY_TYPE            -> pack (CKA_KEY_TYPE, (unsafe_get_key_type t |> Pkcs11_CK_KEY_TYPE.view))
-  | _ when it_is _CKA_SUBJECT             -> pack (CKA_SUBJECT,  (unsafe_get_string t))
-  | _ when it_is _CKA_ID                  -> pack (CKA_ID,       (unsafe_get_string t))
-  | _ when it_is _CKA_SENSITIVE           -> pack (CKA_SENSITIVE, (unsafe_get_bool t))
-  | _ when it_is _CKA_ENCRYPT             -> pack (CKA_ENCRYPT, (unsafe_get_bool t))
-  | _ when it_is _CKA_DECRYPT             -> pack (CKA_DECRYPT, (unsafe_get_bool t))
-  | _ when it_is _CKA_WRAP                -> pack (CKA_WRAP, (unsafe_get_bool t))
-  | _ when it_is _CKA_UNWRAP              -> pack (CKA_UNWRAP, (unsafe_get_bool t))
-  | _ when it_is _CKA_SIGN                -> pack (CKA_SIGN, (unsafe_get_bool t))
-  | _ when it_is _CKA_SIGN_RECOVER        -> pack (CKA_SIGN_RECOVER, (unsafe_get_bool t))
-  | _ when it_is _CKA_VERIFY              -> pack (CKA_VERIFY, (unsafe_get_bool t))
-  | _ when it_is _CKA_VERIFY_RECOVER      -> pack (CKA_VERIFY_RECOVER, (unsafe_get_bool t))
-  | _ when it_is _CKA_DERIVE              -> pack (CKA_DERIVE, (unsafe_get_bool t))
-  | _ when it_is _CKA_START_DATE          -> pack (CKA_START_DATE, NOT_IMPLEMENTED (unsafe_get_string t))
-  | _ when it_is _CKA_END_DATE            -> pack (CKA_END_DATE, NOT_IMPLEMENTED (unsafe_get_string t))
-  | _ when it_is _CKA_MODULUS             -> pack (CKA_MODULUS, (unsafe_get_bigint t))
-  | _ when it_is _CKA_MODULUS_BITS        -> pack (CKA_MODULUS_BITS, (unsafe_get_ulong t))
-  | _ when it_is _CKA_PUBLIC_EXPONENT     -> pack (CKA_PUBLIC_EXPONENT, (unsafe_get_bigint t))
-  | _ when it_is _CKA_PRIVATE_EXPONENT    -> pack (CKA_PRIVATE_EXPONENT, (unsafe_get_bigint t))
-  | _ when it_is _CKA_PRIME_1             -> pack (CKA_PRIME_1, (unsafe_get_bigint t))
-  | _ when it_is _CKA_PRIME_2             -> pack (CKA_PRIME_2, (unsafe_get_bigint t))
-  | _ when it_is _CKA_EXPONENT_1          -> pack (CKA_EXPONENT_1, (unsafe_get_bigint t))
-  | _ when it_is _CKA_EXPONENT_2          -> pack (CKA_EXPONENT_2, (unsafe_get_bigint t))
-  | _ when it_is _CKA_COEFFICIENT         -> pack (CKA_COEFFICIENT, (unsafe_get_bigint t))
-  | _ when it_is _CKA_PRIME               -> pack (CKA_PRIME, (unsafe_get_bigint t))
-  | _ when it_is _CKA_SUBPRIME            -> pack (CKA_SUBPRIME, (unsafe_get_bigint t))
-  | _ when it_is _CKA_PRIME_BITS          -> pack (CKA_PRIME_BITS, unsafe_get_ulong t)
-  | _ when it_is _CKA_SUBPRIME_BITS       -> pack (CKA_SUBPRIME_BITS, unsafe_get_ulong t)
-  | _ when it_is _CKA_VALUE_LEN           -> pack (CKA_VALUE_LEN, (unsafe_get_ulong t))
-  | _ when it_is _CKA_EXTRACTABLE         -> pack (CKA_EXTRACTABLE, (unsafe_get_bool t))
-  | _ when it_is _CKA_LOCAL               -> pack (CKA_LOCAL, (unsafe_get_bool t))
-  | _ when it_is _CKA_NEVER_EXTRACTABLE   -> pack (CKA_NEVER_EXTRACTABLE, (unsafe_get_bool t))
-  | _ when it_is _CKA_ALWAYS_SENSITIVE    -> pack (CKA_ALWAYS_SENSITIVE, (unsafe_get_bool t))
-  | _ when it_is _CKA_KEY_GEN_MECHANISM   -> pack (CKA_KEY_GEN_MECHANISM, Pkcs11_key_gen_mechanism.view (unsafe_get_ulong t))
-  | _ when it_is _CKA_MODIFIABLE          -> pack (CKA_MODIFIABLE, (unsafe_get_bool t))
-  | _ when it_is _CKA_EC_PARAMS           -> pack (CKA_EC_PARAMS, unsafe_get_string t)
-  | _ when it_is _CKA_EC_POINT            -> pack (CKA_EC_POINT, unsafe_get_string t)
-  | _ when it_is _CKA_ALWAYS_AUTHENTICATE -> pack (CKA_ALWAYS_AUTHENTICATE, (unsafe_get_bool t))
-  | _ when it_is _CKA_WRAP_WITH_TRUSTED   -> pack (CKA_WRAP_WITH_TRUSTED,   (unsafe_get_bool t))
-  | _ when it_is _CKA_WRAP_TEMPLATE       -> pack (CKA_WRAP_TEMPLATE, NOT_IMPLEMENTED (unsafe_get_string t))
-  | _ when it_is _CKA_UNWRAP_TEMPLATE     -> pack (CKA_UNWRAP_TEMPLATE, NOT_IMPLEMENTED (unsafe_get_string t))
-  | _ when it_is _CKA_ALLOWED_MECHANISMS  -> pack (CKA_ALLOWED_MECHANISMS, NOT_IMPLEMENTED (unsafe_get_string t))
-  | _ ->
-    begin
-      Pkcs11_log.log @@ Printf.sprintf "Unknown CKA code: 0x%Lx" @@ Int64.of_string @@ Unsigned.ULong.to_string ul;
-      pack (CKA_CS_UNKNOWN ul, NOT_IMPLEMENTED (unsafe_get_string t))
-    end
+  let Pack attribute_type = Pkcs11_CK_ATTRIBUTE_TYPE.view ul in
+  let repr = repr attribute_type in
+  let param = repr_view t repr in
+  pack (attribute_type, param)
 
 let make (type s) (x:s u) =
   let open P11_attribute_type in
