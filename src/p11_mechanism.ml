@@ -56,6 +56,7 @@ type t =
   | CKM_ECDH1_COFACTOR_DERIVE of P11_ecdh1_derive_params.t
   | CKM_ECMQV_DERIVE of P11_ecmqv_derive_params.t
   | CKM_PKCS5_PBKD2 of P11_pkcs5_pbkd2_data_params.t
+  | CKM_DSA_KEY_PAIR_GEN
   | CKM_DSA_SHA1
   | CKM_DSA_SHA224
   | CKM_DSA_SHA256
@@ -186,6 +187,7 @@ let to_json =
         param "CKM_ECMQV_DERIVE" p P11_ecmqv_derive_params.to_yojson
     | CKM_PKCS5_PBKD2 p ->
         param "CKM_PKCS5_PBKD2" p P11_pkcs5_pbkd2_data_params.to_yojson
+    | CKM_DSA_KEY_PAIR_GEN -> simple "CKM_DSA_KEY_PAIR_GEN"
     | CKM_DSA_SHA1 -> simple "CKM_DSA_SHA1"
     | CKM_DSA_SHA224 -> simple "CKM_DSA_SHA224"
     | CKM_DSA_SHA256 -> simple "CKM_DSA_SHA256"
@@ -285,6 +287,7 @@ let of_yojson json =
         P11_aes_ctr_params.of_yojson param >>= fun r -> Ok (CKM_AES_CTR r)
       | "CKM_AES_GCM" ->
         P11_gcm_params.of_yojson param >>= fun r -> Ok (CKM_AES_GCM r)
+      | "CKM_DSA_KEY_PAIR_GEN" -> simple CKM_DSA_KEY_PAIR_GEN
       | "CKM_DSA_SHA1" -> simple CKM_DSA_SHA1
       | "CKM_DSA_SHA224" -> simple CKM_DSA_SHA224
       | "CKM_DSA_SHA256" -> simple CKM_DSA_SHA256
@@ -364,6 +367,7 @@ let mechanism_type m =
     | CKM_ECDH1_COFACTOR_DERIVE _ -> T.CKM_ECDH1_COFACTOR_DERIVE
     | CKM_ECMQV_DERIVE _ -> T.CKM_ECMQV_DERIVE
     | CKM_PKCS5_PBKD2 _ -> T.CKM_PKCS5_PBKD2
+    | CKM_DSA_KEY_PAIR_GEN -> T.CKM_DSA_KEY_PAIR_GEN
     | CKM_DSA_SHA1 -> T.CKM_DSA_SHA1
     | CKM_DSA_SHA224 -> T.CKM_DSA_SHA224
     | CKM_DSA_SHA256 -> T.CKM_DSA_SHA256
@@ -506,6 +510,7 @@ let compare a b =
       | CKM_EC_KEY_PAIR_GEN, _
       | CKM_ECDSA, _
       | CKM_ECDSA_SHA1, _
+      | CKM_DSA_KEY_PAIR_GEN, _
       | CKM_DSA_SHA1, _
       | CKM_DSA_SHA224, _
       | CKM_DSA_SHA256, _
@@ -907,6 +912,7 @@ let key_type = function
   | CKM_ECDH1_COFACTOR_DERIVE _
   | CKM_ECMQV_DERIVE _
     -> Some P11_key_type.CKK_EC
+  | CKM_DSA_KEY_PAIR_GEN
   | CKM_DSA_SHA1
   | CKM_DSA_SHA224
   | CKM_DSA_SHA256

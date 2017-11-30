@@ -88,6 +88,7 @@ let argument =
   | CKM_ECDH1_COFACTOR_DERIVE p -> ECDH1 p
   | CKM_ECMQV_DERIVE p -> ECMQV p
   | CKM_PKCS5_PBKD2 p -> PBKD2 p
+  | CKM_DSA_KEY_PAIR_GEN -> No_argument
   | CKM_DSA_SHA1 -> No_argument
   | CKM_DSA_SHA224 -> No_argument
   | CKM_DSA_SHA256 -> No_argument
@@ -245,6 +246,7 @@ let view t =
   | T.CKM_ECDH1_DERIVE -> CKM_ECDH1_DERIVE (unsafe_get_ecdh1_derive_param t)
   | T.CKM_ECDH1_COFACTOR_DERIVE -> CKM_ECDH1_COFACTOR_DERIVE (unsafe_get_ecdh1_derive_param t)
   | T.CKM_ECMQV_DERIVE -> CKM_ECMQV_DERIVE (unsafe_get_ecmqv_derive_param t)
+  | T.CKM_DSA_KEY_PAIR_GEN -> CKM_DSA_KEY_PAIR_GEN
   | T.CKM_DSA_SHA1 -> CKM_DSA_SHA1
   | T.CKM_DSA_SHA224 -> CKM_DSA_SHA224
   | T.CKM_DSA_SHA256 -> CKM_DSA_SHA256
@@ -269,7 +271,6 @@ let view t =
   | T.CKM_RIPEMD160_RSA_PKCS
   | T.CKM_RSA_X9_31
   | T.CKM_SHA1_RSA_X9_31
-  | T.CKM_DSA_KEY_PAIR_GEN
   | T.CKM_DSA
   | T.CKM_DH_PKCS_KEY_PAIR_GEN
   | T.CKM_DH_PKCS_DERIVE
