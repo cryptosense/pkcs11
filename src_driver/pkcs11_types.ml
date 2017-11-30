@@ -80,6 +80,7 @@ module CK_ATTRIBUTE = Pkcs11_CK_ATTRIBUTE
 module Template = Pkcs11_template
 module Mechanism_list = Pkcs11_mechanism_list
 module CK_ATTRIBUTE_SET = Pkcs11_CK_ATTRIBUTE_SET
+module CK_AES_CTR_PARAMS = Pkcs11_CK_AES_CTR_PARAMS
 
 let ck_byte = CK_BYTE.typ
 let utf8char = ck_byte

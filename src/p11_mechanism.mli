@@ -61,6 +61,7 @@ type t =
   | CKM_DSA_SHA256
   | CKM_DSA_SHA384
   | CKM_DSA_SHA512
+  | CKM_AES_CTR of P11_aes_ctr_params.t
   | CKM_CS_UNKNOWN of P11_ulong.t
 [@@deriving eq,ord,show,yojson]
 

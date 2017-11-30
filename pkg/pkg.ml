@@ -5,6 +5,7 @@ open Topkg
 let api =
   [ "P11"
   ; "P11_aes_cbc_encrypt_data_params"
+  ; "P11_aes_ctr_params"
   ; "P11_attribute"
   ; "P11_attribute_type"
   ; "P11_attribute_types"
@@ -48,6 +49,7 @@ let api_driver =
   [ "Ctypes_helpers"
   ; "P11_driver"
   ; "Pkcs11"
+  ; "Pkcs11_CK_AES_CTR_PARAMS"
   ; "Pkcs11_CK_ATTRIBUTE"
   ; "Pkcs11_CK_ATTRIBUTE_SET"
   ; "Pkcs11_CK_ATTRIBUTE_TYPE"
