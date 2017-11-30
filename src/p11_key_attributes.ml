@@ -6,6 +6,8 @@ type kind =
   | `EC_public
   | `RSA_private
   | `RSA_public
+  | `DSA_private
+  | `DSA_public
   | `Secret
   ]
 
@@ -18,6 +20,8 @@ struct
       | `Secret
       | `RSA_public
       | `RSA_private
+      | `DSA_private
+      | `DSA_public
       | `EC_public
       | `EC_private
       | `Generic_secret
@@ -28,6 +32,8 @@ struct
     | `Secret -> `Secret
     | `RSA_public -> `RSA_public
     | `RSA_private -> `RSA_private
+    | `DSA_public -> `DSA_public
+    | `DSA_private -> `DSA_private
     | `EC_public -> `EC_public
     | `EC_private -> `EC_private
     | `AES ->  `Generic_secret
@@ -131,6 +137,18 @@ let rsa_private =
     p CKA_COEFFICIENT;
   ]@private_
 
+let dsa_public =
+  [ p CKA_PRIME
+  ; p CKA_SUBPRIME
+  ; p CKA_BASE
+  ]@public
+
+let dsa_private =
+  [ p CKA_VALUE
+  ]
+  @dsa_public
+  @private_
+
 let ec_public =
   [
     p CKA_EC_PARAMS;
@@ -160,6 +178,8 @@ let kind_attributes : P11.Attribute_types.t Kind_map.t=
   |> add `Secret secret
   |> add `RSA_public rsa_public
   |> add `RSA_private rsa_private
+  |> add `DSA_public dsa_public
+  |> add `DSA_private dsa_private
   |> add `EC_public ec_public
   |> add `EC_private ec_private
   |> add `Generic_secret generic_secret
