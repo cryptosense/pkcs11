@@ -1,3 +1,37 @@
+v0.11.0 2017-11-30
+==================
+
+Breaking changes:
+
+- Removed `Low_level` and `Intermediate_level` from `P11_driver.S`. (#60)
+
+New features:
+
+- PKCS11 v2.40 support:
+  + CKR codes (#63)
+  + DSA+SHA2 mechanisms (#66)
+  + GOST mechanism types (#67)
+  + `CKM_AES_KEY_WRAP` (#68)
+- New supported mechanisms:
+  - `CKM_DSA_SHA1`
+  - `CKM_AES_CTR` (#71)
+  - `CKM_AES_GCM` (#74)
+  - `CKM_DSA_KEY_PAIR_GEN` and associated attributes (#77)
+- Add `eq,ord,show,yojson` instances to most types in `P11`. (#62, #72)
+
+Bug fixes:
+
+- Fix a memory leak with reachable pointers (#74)
+
+Refactoring:
+
+- Rework `CK_MECHANISM` internals (#75)
+- Rework `CK_ATTRIBUTE` internals (#76)
+
+Build system:
+
+- Use travis-opam 1.1.0 (#73)
+
 v0.10.0 2017-07-07
 ==================
 
