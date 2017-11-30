@@ -243,6 +243,7 @@ let _CKM_AES_MAC                        = with_value 0x00001083L
 let _CKM_AES_MAC_GENERAL                = with_value 0x00001084L
 let _CKM_AES_CBC_PAD                    = with_value 0x00001085L
 let _CKM_AES_CTR                        = with_value 0x00001086L
+let _CKM_AES_GCM                        = with_value 0x00001087L
 let _CKM_BLOWFISH_KEY_GEN               = with_value 0x00001090L
 let _CKM_BLOWFISH_CBC                   = with_value 0x00001091L
 let _CKM_TWOFISH_KEY_GEN                = with_value 0x00001092L
@@ -506,6 +507,7 @@ let make u =
     | CKM_AES_MAC_GENERAL  -> _CKM_AES_MAC_GENERAL
     | CKM_AES_CBC_PAD  -> _CKM_AES_CBC_PAD
     | CKM_AES_CTR  -> _CKM_AES_CTR
+    | CKM_AES_GCM  -> _CKM_AES_GCM
     | CKM_BLOWFISH_KEY_GEN  -> _CKM_BLOWFISH_KEY_GEN
     | CKM_BLOWFISH_CBC  -> _CKM_BLOWFISH_CBC
     | CKM_TWOFISH_KEY_GEN  -> _CKM_TWOFISH_KEY_GEN
@@ -770,6 +772,7 @@ let view t =
     | _ when is _CKM_AES_MAC_GENERAL -> CKM_AES_MAC_GENERAL
     | _ when is _CKM_AES_CBC_PAD -> CKM_AES_CBC_PAD
     | _ when is _CKM_AES_CTR -> CKM_AES_CTR
+    | _ when is _CKM_AES_GCM -> CKM_AES_GCM
     | _ when is _CKM_BLOWFISH_KEY_GEN -> CKM_BLOWFISH_KEY_GEN
     | _ when is _CKM_BLOWFISH_CBC -> CKM_BLOWFISH_CBC
     | _ when is _CKM_TWOFISH_KEY_GEN -> CKM_TWOFISH_KEY_GEN
