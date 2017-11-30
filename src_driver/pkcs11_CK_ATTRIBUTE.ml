@@ -226,7 +226,6 @@ let repr (type a) : a P11_attribute_type.t -> a repr =
 
 let view t =
   let open P11_attribute_type in
-  let open Pkcs11_CK_ATTRIBUTE_TYPE in
   let ul = getf t _type in
   let Pack attribute_type = Pkcs11_CK_ATTRIBUTE_TYPE.view ul in
   let repr = repr attribute_type in
