@@ -6,7 +6,8 @@ type 'a u = 'a P11_attribute_type.t * 'a
 val boolean : Pkcs11_CK_ATTRIBUTE_TYPE.t -> bool -> t
 val byte : Pkcs11_CK_ATTRIBUTE_TYPE.t -> int -> t
 val ulong : Pkcs11_CK_ATTRIBUTE_TYPE.t -> P11_ulong.t -> t
-val string  : Pkcs11_CK_ATTRIBUTE_TYPE.t -> string ->t
+val string : Pkcs11_CK_ATTRIBUTE_TYPE.t -> string -> t
+val bigint : Pkcs11_CK_ATTRIBUTE_TYPE.t -> P11_bigint.t -> t
 
 val create : Pkcs11_CK_ATTRIBUTE_TYPE.t -> t
 val allocate : t -> unit

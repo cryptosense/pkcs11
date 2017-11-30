@@ -10,6 +10,7 @@ let suite =
       ; Test_ck_mechanism_type.suite
       ; Test_ck_mechanism.suite
       ; Test_ck_aes_ctr_params.suite
+      ; Test_ck_attribute.suite
       ]
     ]
 
