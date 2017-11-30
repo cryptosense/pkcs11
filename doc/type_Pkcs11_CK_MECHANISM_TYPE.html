@@ -105,6 +105,10 @@
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;compare&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Ppx_deriving_runtime</span>.int<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;pp&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Format</span>.formatter&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Ppx_deriving_runtime</span>.unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;show&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Ppx_deriving_runtime</span>.string<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_RSA_PKCS_KEY_PAIR_GEN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_RSA_PKCS&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_RSA_9796&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
@@ -123,6 +127,10 @@
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_DSA_KEY_PAIR_GEN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_DSA&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_DSA_SHA1&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_DSA_SHA224&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_DSA_SHA256&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_DSA_SHA384&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_DSA_SHA512&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_DH_PKCS_KEY_PAIR_GEN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_DH_PKCS_DERIVE&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_X9_42_DH_KEY_PAIR_GEN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
@@ -339,6 +347,7 @@
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_AES_MAC_GENERAL&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_AES_CBC_PAD&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_AES_CTR&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_AES_GCM&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_BLOWFISH_KEY_GEN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_BLOWFISH_CBC&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_TWOFISH_KEY_GEN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
@@ -352,6 +361,12 @@
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_DSA_PARAMETER_GEN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_DH_PKCS_PARAMETER_GEN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_X9_42_DH_PARAMETER_GEN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_GOSTR3410_KEY_PAIR_GEN&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_GOSTR3410&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_GOSTR3410_WITH_GOSTR3411&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_GOSTR3411&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_GOSTR3411_HMAC&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_AES_KEY_WRAP&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;_CKM_VENDOR_DEFINED&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;typ&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t&nbsp;<span class="constructor">Ctypes</span>.typ<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;view&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11_mechanism_type</span>.t<br>

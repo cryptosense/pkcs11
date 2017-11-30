@@ -105,6 +105,11 @@
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;compare&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">P11_pkcs5_pbkdf2_salt_source_type</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">P11_pkcs5_pbkdf2_salt_source_type</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Ppx_deriving_runtime</span>.int<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;pp&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Format</span>.formatter&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">P11_pkcs5_pbkdf2_salt_source_type</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Ppx_deriving_runtime</span>.unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;show&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">P11_pkcs5_pbkdf2_salt_source_type</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Ppx_deriving_runtime</span>.string<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;to_yojson&nbsp;:&nbsp;<span class="constructor">P11_pkcs5_pbkdf2_salt_source_type</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Yojson</span>.<span class="constructor">Safe</span>.json<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;of_yojson&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Yojson</span>.<span class="constructor">Safe</span>.json&nbsp;<span class="keywordsign">-&gt;</span><br>

@@ -514,13 +514,72 @@
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
+<code><span id="TYPEELTt.CKM_DSA_KEY_PAIR_GEN"><span class="constructor">CKM_DSA_KEY_PAIR_GEN</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.CKM_DSA_SHA1"><span class="constructor">CKM_DSA_SHA1</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.CKM_DSA_SHA224"><span class="constructor">CKM_DSA_SHA224</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.CKM_DSA_SHA256"><span class="constructor">CKM_DSA_SHA256</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.CKM_DSA_SHA384"><span class="constructor">CKM_DSA_SHA384</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.CKM_DSA_SHA512"><span class="constructor">CKM_DSA_SHA512</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.CKM_AES_CTR"><span class="constructor">CKM_AES_CTR</span></span> <span class="keyword">of</span> <code class="type">P11_aes_ctr_params.t</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.CKM_AES_GCM"><span class="constructor">CKM_AES_GCM</span></span> <span class="keyword">of</span> <code class="type">P11_gcm_params.t</code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
 <code><span id="TYPEELTt.CKM_CS_UNKNOWN"><span class="constructor">CKM_CS_UNKNOWN</span></span> <span class="keyword">of</span> <code class="type"><a href="P11_ulong.html#TYPEt">P11_ulong.t</a></code></code></td>
 
 </tr></table>
 
 
 
+<pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type"><a href="P11_mechanism.html#TYPEt">t</a> -> <a href="P11_mechanism.html#TYPEt">t</a> -> Ppx_deriving_runtime.bool</code></pre>
 <pre><span id="VALcompare"><span class="keyword">val</span> compare</span> : <code class="type"><a href="P11_mechanism.html#TYPEt">t</a> -> <a href="P11_mechanism.html#TYPEt">t</a> -> Ppx_deriving_runtime.int</code></pre>
+<pre><span id="VALpp"><span class="keyword">val</span> pp</span> : <code class="type">Format.formatter -> <a href="P11_mechanism.html#TYPEt">t</a> -> Ppx_deriving_runtime.unit</code></pre>
+<pre><span id="VALshow"><span class="keyword">val</span> show</span> : <code class="type"><a href="P11_mechanism.html#TYPEt">t</a> -> Ppx_deriving_runtime.string</code></pre>
 <pre><span id="VALto_yojson"><span class="keyword">val</span> to_yojson</span> : <code class="type"><a href="P11_mechanism.html#TYPEt">t</a> -> Yojson.Safe.json</code></pre>
 <pre><span id="VALof_yojson"><span class="keyword">val</span> of_yojson</span> : <code class="type">Yojson.Safe.json -> <a href="P11_mechanism.html#TYPEt">t</a> Ppx_deriving_yojson_runtime.error_or</code></pre>
 <pre><span id="VALmechanism_type"><span class="keyword">val</span> mechanism_type</span> : <code class="type"><a href="P11_mechanism.html#TYPEt">t</a> -> <a href="P11_mechanism_type.html#TYPEt">P11_mechanism_type.t</a></code></pre>
@@ -528,7 +587,6 @@
 <code class="code">to_string</code> is defined as <code class="code"><span class="keyword">fun</span>&nbsp;x&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Mechanism_type</span>.to_string&nbsp;(mechanism_type&nbsp;x)&nbsp;</code><br>
 </div>
 
-<pre><span id="VALpp"><span class="keyword">val</span> pp</span> : <code class="type">Format.formatter -> <a href="P11_mechanism.html#TYPEt">t</a> -> unit</code></pre>
 <pre><code><span id="TYPEkind"><span class="keyword">type</span> <code class="type"></code>kind</span> = </code></pre><table class="typetable">
 <tr>
 <td align="left" valign="top" >

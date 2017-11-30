@@ -118,6 +118,8 @@ Mechanism types without value (<code class="code"><span class="constructor">CK_M
 
 <pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a> -><br>       <a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a> -> Ppx_deriving_runtime.bool</code></pre>
 <pre><span id="VALcompare"><span class="keyword">val</span> compare</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a> -><br>       <a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a> -> Ppx_deriving_runtime.int</code></pre>
+<pre><span id="VALpp"><span class="keyword">val</span> pp</span> : <code class="type">Format.formatter -> <a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a> -> Ppx_deriving_runtime.unit</code></pre>
+<pre><span id="VALshow"><span class="keyword">val</span> show</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a> -> Ppx_deriving_runtime.string</code></pre>
 <pre><span id="VAL_CKM_RSA_PKCS_KEY_PAIR_GEN"><span class="keyword">val</span> _CKM_RSA_PKCS_KEY_PAIR_GEN</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
 <pre><span id="VAL_CKM_RSA_PKCS"><span class="keyword">val</span> _CKM_RSA_PKCS</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
 <pre><span id="VAL_CKM_RSA_9796"><span class="keyword">val</span> _CKM_RSA_9796</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
@@ -136,6 +138,10 @@ Mechanism types without value (<code class="code"><span class="constructor">CK_M
 <pre><span id="VAL_CKM_DSA_KEY_PAIR_GEN"><span class="keyword">val</span> _CKM_DSA_KEY_PAIR_GEN</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
 <pre><span id="VAL_CKM_DSA"><span class="keyword">val</span> _CKM_DSA</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
 <pre><span id="VAL_CKM_DSA_SHA1"><span class="keyword">val</span> _CKM_DSA_SHA1</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKM_DSA_SHA224"><span class="keyword">val</span> _CKM_DSA_SHA224</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKM_DSA_SHA256"><span class="keyword">val</span> _CKM_DSA_SHA256</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKM_DSA_SHA384"><span class="keyword">val</span> _CKM_DSA_SHA384</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKM_DSA_SHA512"><span class="keyword">val</span> _CKM_DSA_SHA512</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
 <pre><span id="VAL_CKM_DH_PKCS_KEY_PAIR_GEN"><span class="keyword">val</span> _CKM_DH_PKCS_KEY_PAIR_GEN</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
 <pre><span id="VAL_CKM_DH_PKCS_DERIVE"><span class="keyword">val</span> _CKM_DH_PKCS_DERIVE</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
 <pre><span id="VAL_CKM_X9_42_DH_KEY_PAIR_GEN"><span class="keyword">val</span> _CKM_X9_42_DH_KEY_PAIR_GEN</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
@@ -352,6 +358,7 @@ Mechanism types without value (<code class="code"><span class="constructor">CK_M
 <pre><span id="VAL_CKM_AES_MAC_GENERAL"><span class="keyword">val</span> _CKM_AES_MAC_GENERAL</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
 <pre><span id="VAL_CKM_AES_CBC_PAD"><span class="keyword">val</span> _CKM_AES_CBC_PAD</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
 <pre><span id="VAL_CKM_AES_CTR"><span class="keyword">val</span> _CKM_AES_CTR</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKM_AES_GCM"><span class="keyword">val</span> _CKM_AES_GCM</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
 <pre><span id="VAL_CKM_BLOWFISH_KEY_GEN"><span class="keyword">val</span> _CKM_BLOWFISH_KEY_GEN</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
 <pre><span id="VAL_CKM_BLOWFISH_CBC"><span class="keyword">val</span> _CKM_BLOWFISH_CBC</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
 <pre><span id="VAL_CKM_TWOFISH_KEY_GEN"><span class="keyword">val</span> _CKM_TWOFISH_KEY_GEN</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
@@ -365,6 +372,12 @@ Mechanism types without value (<code class="code"><span class="constructor">CK_M
 <pre><span id="VAL_CKM_DSA_PARAMETER_GEN"><span class="keyword">val</span> _CKM_DSA_PARAMETER_GEN</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
 <pre><span id="VAL_CKM_DH_PKCS_PARAMETER_GEN"><span class="keyword">val</span> _CKM_DH_PKCS_PARAMETER_GEN</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
 <pre><span id="VAL_CKM_X9_42_DH_PARAMETER_GEN"><span class="keyword">val</span> _CKM_X9_42_DH_PARAMETER_GEN</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKM_GOSTR3410_KEY_PAIR_GEN"><span class="keyword">val</span> _CKM_GOSTR3410_KEY_PAIR_GEN</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKM_GOSTR3410"><span class="keyword">val</span> _CKM_GOSTR3410</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKM_GOSTR3410_WITH_GOSTR3411"><span class="keyword">val</span> _CKM_GOSTR3410_WITH_GOSTR3411</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKM_GOSTR3411"><span class="keyword">val</span> _CKM_GOSTR3411</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKM_GOSTR3411_HMAC"><span class="keyword">val</span> _CKM_GOSTR3411_HMAC</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
+<pre><span id="VAL_CKM_AES_KEY_WRAP"><span class="keyword">val</span> _CKM_AES_KEY_WRAP</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
 <pre><span id="VAL_CKM_VENDOR_DEFINED"><span class="keyword">val</span> _CKM_VENDOR_DEFINED</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a></code></pre>
 <pre><span id="VALtyp"><span class="keyword">val</span> typ</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a> Ctypes.typ</code></pre>
 <pre><span id="VALview"><span class="keyword">val</span> view</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">t</a> -> <a href="P11_mechanism_type.html#TYPEt">P11_mechanism_type.t</a></code></pre>

@@ -100,6 +100,11 @@
 <code class="code"><span class="keyword">sig</span><br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;_t<br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t&nbsp;=&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM</span>._t&nbsp;<span class="constructor">Ctypes</span>.structure<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;mechanism&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(<span class="constructor">Pkcs11_CK_MECHANISM_TYPE</span>.t,&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM</span>.t)&nbsp;<span class="constructor">Ctypes</span>.field<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;parameter&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(unit&nbsp;<span class="constructor">Ctypes_helpers</span>.<span class="constructor">Reachable_ptr</span>.t,&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM</span>.t)&nbsp;<span class="constructor">Ctypes</span>.field<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;parameter_len&nbsp;:&nbsp;(<span class="constructor">P11_ulong</span>.t,&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM</span>.t)&nbsp;<span class="constructor">Ctypes</span>.field<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;make&nbsp;:&nbsp;<span class="constructor">P11_mechanism</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;view&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11_mechanism</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;ck_mechanism&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_MECHANISM</span>.t&nbsp;<span class="constructor">Ctypes</span>.typ<br>

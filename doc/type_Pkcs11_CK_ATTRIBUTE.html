@@ -106,6 +106,8 @@
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;ulong&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11_ulong</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;string&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;bigint&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11_bigint</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;create&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;allocate&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;get_type&nbsp;:&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11_CK_ATTRIBUTE_TYPE</span>.t<br>

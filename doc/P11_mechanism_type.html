@@ -244,6 +244,34 @@ The list of all the CKM codes defined above, minus the vendor defined one.<br>
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
+<code><span id="TYPEELTt.CKM_DSA_SHA224"><span class="constructor">CKM_DSA_SHA224</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.CKM_DSA_SHA256"><span class="constructor">CKM_DSA_SHA256</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.CKM_DSA_SHA384"><span class="constructor">CKM_DSA_SHA384</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.CKM_DSA_SHA512"><span class="constructor">CKM_DSA_SHA512</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
 <code><span id="TYPEELTt.CKM_DH_PKCS_KEY_PAIR_GEN"><span class="constructor">CKM_DH_PKCS_KEY_PAIR_GEN</span></span></code></td>
 
 </tr>
@@ -1756,6 +1784,13 @@ The list of all the CKM codes defined above, minus the vendor defined one.<br>
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
+<code><span id="TYPEELTt.CKM_AES_GCM"><span class="constructor">CKM_AES_GCM</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
 <code><span id="TYPEELTt.CKM_BLOWFISH_KEY_GEN"><span class="constructor">CKM_BLOWFISH_KEY_GEN</span></span></code></td>
 
 </tr>
@@ -1847,6 +1882,48 @@ The list of all the CKM codes defined above, minus the vendor defined one.<br>
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
+<code><span id="TYPEELTt.CKM_GOSTR3410_KEY_PAIR_GEN"><span class="constructor">CKM_GOSTR3410_KEY_PAIR_GEN</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.CKM_GOSTR3410"><span class="constructor">CKM_GOSTR3410</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.CKM_GOSTR3410_WITH_GOSTR3411"><span class="constructor">CKM_GOSTR3410_WITH_GOSTR3411</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.CKM_GOSTR3411"><span class="constructor">CKM_GOSTR3411</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.CKM_GOSTR3411_HMAC"><span class="constructor">CKM_GOSTR3411_HMAC</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.CKM_AES_KEY_WRAP"><span class="constructor">CKM_AES_KEY_WRAP</span></span></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
 <code><span id="TYPEELTt.CKM_VENDOR_DEFINED"><span class="constructor">CKM_VENDOR_DEFINED</span></span></code></td>
 
 </tr>
@@ -1862,6 +1939,8 @@ The list of all the CKM codes defined above, minus the vendor defined one.<br>
 
 <pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type"><a href="P11_mechanism_type.html#TYPEt">t</a> -> <a href="P11_mechanism_type.html#TYPEt">t</a> -> Ppx_deriving_runtime.bool</code></pre>
 <pre><span id="VALcompare"><span class="keyword">val</span> compare</span> : <code class="type"><a href="P11_mechanism_type.html#TYPEt">t</a> -> <a href="P11_mechanism_type.html#TYPEt">t</a> -> Ppx_deriving_runtime.int</code></pre>
+<pre><span id="VALpp"><span class="keyword">val</span> pp</span> : <code class="type">Format.formatter -> <a href="P11_mechanism_type.html#TYPEt">t</a> -> Ppx_deriving_runtime.unit</code></pre>
+<pre><span id="VALshow"><span class="keyword">val</span> show</span> : <code class="type"><a href="P11_mechanism_type.html#TYPEt">t</a> -> Ppx_deriving_runtime.string</code></pre>
 <pre><span id="VALto_yojson"><span class="keyword">val</span> to_yojson</span> : <code class="type"><a href="P11_mechanism_type.html#TYPEt">t</a> -> Yojson.Safe.json</code></pre>
 <pre><span id="VALof_yojson"><span class="keyword">val</span> of_yojson</span> : <code class="type">Yojson.Safe.json -> <a href="P11_mechanism_type.html#TYPEt">t</a> Ppx_deriving_yojson_runtime.error_or</code></pre>
 <pre><span id="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type"><a href="P11_mechanism_type.html#TYPEt">t</a> -> string</code></pre>
