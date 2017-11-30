@@ -285,6 +285,11 @@ let of_yojson json =
         P11_aes_ctr_params.of_yojson param >>= fun r -> Ok (CKM_AES_CTR r)
       | "CKM_AES_GCM" ->
         P11_gcm_params.of_yojson param >>= fun r -> Ok (CKM_AES_GCM r)
+      | "CKM_DSA_SHA1" -> simple CKM_DSA_SHA1
+      | "CKM_DSA_SHA224" -> simple CKM_DSA_SHA224
+      | "CKM_DSA_SHA256" -> simple CKM_DSA_SHA256
+      | "CKM_DSA_SHA384" -> simple CKM_DSA_SHA384
+      | "CKM_DSA_SHA512" -> simple CKM_DSA_SHA512
       | _ ->
         P11_ulong.of_yojson param >>= fun params ->
         Ok (CKM_CS_UNKNOWN params)
