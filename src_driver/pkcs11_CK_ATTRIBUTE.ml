@@ -163,6 +163,17 @@ let repr_view (type a) t : a repr -> a =
   | Repr_ulong -> unsafe_get_ulong t
   | Repr_key_gen_mechanism -> Pkcs11_key_gen_mechanism.view (unsafe_get_ulong t)
 
+let repr_make (type a) at (param:a) : a repr -> _ =
+  function
+  | Repr_object_class -> ulong at (Pkcs11_CK_OBJECT_CLASS.make param)
+  | Repr_bool -> boolean at param
+  | Repr_string -> string at param
+  | Repr_not_implemented -> let P11_attribute_type.NOT_IMPLEMENTED s = param in string at s
+  | Repr_key_type -> ulong at (Pkcs11_CK_KEY_TYPE.make param)
+  | Repr_bigint -> bigint at param
+  | Repr_ulong -> ulong at param
+  | Repr_key_gen_mechanism -> ulong at (Pkcs11_key_gen_mechanism.make param)
+
 let repr (type a) : a P11_attribute_type.t -> a repr =
   let open P11_attribute_type in
   function
@@ -232,63 +243,11 @@ let view t =
   let param = repr_view t repr in
   pack (attribute_type, param)
 
-let make (type s) (x:s u) =
-  let open P11_attribute_type in
-  match x with
-  | CKA_CLASS, cko -> ulong Pkcs11_CK_ATTRIBUTE_TYPE._CKA_CLASS (Pkcs11_CK_OBJECT_CLASS.make cko)
-  | CKA_TOKEN, b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_TOKEN b
-  | CKA_PRIVATE, b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_PRIVATE b
-  | CKA_LABEL, s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_LABEL s
-  | CKA_VALUE, s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_VALUE s
-  | CKA_TRUSTED, b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_TRUSTED b
-  | CKA_CHECK_VALUE, NOT_IMPLEMENTED s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_CHECK_VALUE s
-  | CKA_KEY_TYPE, ckk -> ulong Pkcs11_CK_ATTRIBUTE_TYPE._CKA_KEY_TYPE (Pkcs11_CK_KEY_TYPE.make ckk)
-  | CKA_SUBJECT, s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_SUBJECT s
-  | CKA_ID, s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_ID s
-  | CKA_SENSITIVE, b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_SENSITIVE b
-  | CKA_ENCRYPT,   b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_ENCRYPT   b
-  | CKA_DECRYPT,   b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_DECRYPT   b
-  | CKA_WRAP, b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_WRAP b
-  | CKA_UNWRAP, b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_UNWRAP b
-  | CKA_SIGN, b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_SIGN b
-  | CKA_SIGN_RECOVER, b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_SIGN_RECOVER b
-  | CKA_VERIFY, b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_VERIFY b
-  | CKA_VERIFY_RECOVER, b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_VERIFY_RECOVER b
-  | CKA_DERIVE, b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_DERIVE b
-  | CKA_START_DATE, NOT_IMPLEMENTED s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_START_DATE s
-  | CKA_END_DATE, NOT_IMPLEMENTED s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_END_DATE s
-  | CKA_MODULUS, n -> bigint Pkcs11_CK_ATTRIBUTE_TYPE._CKA_MODULUS n
-  | CKA_MODULUS_BITS,     ul -> ulong Pkcs11_CK_ATTRIBUTE_TYPE._CKA_MODULUS_BITS     ul
-  | CKA_PUBLIC_EXPONENT, n -> bigint Pkcs11_CK_ATTRIBUTE_TYPE._CKA_PUBLIC_EXPONENT n
-  | CKA_PRIVATE_EXPONENT, n -> bigint Pkcs11_CK_ATTRIBUTE_TYPE._CKA_PRIVATE_EXPONENT n
-  | CKA_PRIME_1, n -> bigint Pkcs11_CK_ATTRIBUTE_TYPE._CKA_PRIME_1 n
-  | CKA_PRIME_2, n -> bigint Pkcs11_CK_ATTRIBUTE_TYPE._CKA_PRIME_2 n
-  | CKA_EXPONENT_1, n -> bigint Pkcs11_CK_ATTRIBUTE_TYPE._CKA_EXPONENT_1 n
-  | CKA_EXPONENT_2, n -> bigint Pkcs11_CK_ATTRIBUTE_TYPE._CKA_EXPONENT_2 n
-  | CKA_COEFFICIENT, n -> bigint Pkcs11_CK_ATTRIBUTE_TYPE._CKA_COEFFICIENT n
-  | CKA_PRIME, n -> bigint Pkcs11_CK_ATTRIBUTE_TYPE._CKA_PRIME n
-  | CKA_SUBPRIME, n -> bigint Pkcs11_CK_ATTRIBUTE_TYPE._CKA_SUBPRIME n
-  | CKA_PRIME_BITS, ul -> ulong Pkcs11_CK_ATTRIBUTE_TYPE._CKA_PRIME_BITS ul
-  | CKA_SUBPRIME_BITS, ul -> ulong Pkcs11_CK_ATTRIBUTE_TYPE._CKA_SUBPRIME_BITS ul
-  | CKA_VALUE_LEN, ul -> ulong Pkcs11_CK_ATTRIBUTE_TYPE._CKA_VALUE_LEN ul
-  | CKA_EXTRACTABLE, b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_EXTRACTABLE b
-  | CKA_LOCAL,  b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_LOCAL  b
-  | CKA_NEVER_EXTRACTABLE, b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_NEVER_EXTRACTABLE b
-  | CKA_ALWAYS_SENSITIVE, b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_ALWAYS_SENSITIVE b
-  | CKA_KEY_GEN_MECHANISM, m ->
-      Pkcs11_key_gen_mechanism.make m
-      |> ulong Pkcs11_CK_ATTRIBUTE_TYPE._CKA_KEY_GEN_MECHANISM
-  | CKA_MODIFIABLE, b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_MODIFIABLE b
-  (* | CKA_ECDSA_PARAMS, s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_ECDSA_PARAMS s *)
-  | CKA_EC_PARAMS, s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_EC_PARAMS s
-  | CKA_EC_POINT, s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_EC_POINT s
-  | CKA_ALWAYS_AUTHENTICATE, b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_ALWAYS_AUTHENTICATE b
-  | CKA_WRAP_WITH_TRUSTED,   b -> boolean Pkcs11_CK_ATTRIBUTE_TYPE._CKA_WRAP_WITH_TRUSTED   b
-  | CKA_WRAP_TEMPLATE, NOT_IMPLEMENTED s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_WRAP_TEMPLATE s
-  | CKA_UNWRAP_TEMPLATE, NOT_IMPLEMENTED s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_UNWRAP_TEMPLATE s
-  | CKA_ALLOWED_MECHANISMS, NOT_IMPLEMENTED s -> string Pkcs11_CK_ATTRIBUTE_TYPE._CKA_ALLOWED_MECHANISMS s
-  | CKA_CS_UNKNOWN ul, NOT_IMPLEMENTED s ->
-      string ul s
+let make (type s) ((at, param):s u) =
+  repr_make
+    (Pkcs11_CK_ATTRIBUTE_TYPE.make at)
+    param
+    (repr at)
 
 let make_pack (P11_attribute.Pack x) = make x
 
