@@ -2,6 +2,7 @@ type t =
   | CKM_SHA_1
   | CKM_SHA224
   | CKM_SHA256
+  | CKM_SHA384
   | CKM_SHA512
   | CKM_MD5
   | CKM_RSA_PKCS_KEY_PAIR_GEN
@@ -64,6 +65,12 @@ type t =
   | CKM_DSA_SHA512
   | CKM_AES_CTR of P11_aes_ctr_params.t
   | CKM_AES_GCM of P11_gcm_params.t
+  | CKM_SHA_1_HMAC
+  | CKM_SHA224_HMAC
+  | CKM_SHA256_HMAC
+  | CKM_SHA384_HMAC
+  | CKM_SHA512_HMAC
+  | CKM_GENERIC_SECRET_KEY_GEN
   | CKM_CS_UNKNOWN of P11_ulong.t
 [@@deriving eq,ord,show,yojson]
 
