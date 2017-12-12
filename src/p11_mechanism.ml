@@ -2,6 +2,7 @@ type t =
   | CKM_SHA_1
   | CKM_SHA224
   | CKM_SHA256
+  | CKM_SHA384
   | CKM_SHA512
   | CKM_MD5
   | CKM_RSA_PKCS_KEY_PAIR_GEN
@@ -64,6 +65,12 @@ type t =
   | CKM_DSA_SHA512
   | CKM_AES_CTR of P11_aes_ctr_params.t
   | CKM_AES_GCM of P11_gcm_params.t
+  | CKM_SHA_1_HMAC
+  | CKM_SHA224_HMAC
+  | CKM_SHA256_HMAC
+  | CKM_SHA384_HMAC
+  | CKM_SHA512_HMAC
+  | CKM_GENERIC_SECRET_KEY_GEN
   | CKM_CS_UNKNOWN of P11_ulong.t
 [@@deriving show]
 
@@ -78,6 +85,8 @@ let to_json =
         simple "CKM_SHA224"
     | CKM_SHA256 ->
         simple "CKM_SHA256"
+    | CKM_SHA384 ->
+        simple "CKM_SHA384"
     | CKM_SHA512 ->
         simple "CKM_SHA512"
     | CKM_MD5 ->
@@ -196,6 +205,12 @@ let to_json =
     | CKM_AES_CTR p -> param "CKM_AES_CTR" p P11_aes_ctr_params.to_yojson
     | CKM_AES_GCM p ->
         param "CKM_AES_GCM" p P11_gcm_params.to_yojson
+    | CKM_SHA_1_HMAC -> simple "CKM_SHA_1_HMAC"
+    | CKM_SHA224_HMAC -> simple "CKM_SHA224_HMAC"
+    | CKM_SHA256_HMAC -> simple "CKM_SHA256_HMAC"
+    | CKM_SHA384_HMAC -> simple "CKM_SHA384_HMAC"
+    | CKM_SHA512_HMAC -> simple "CKM_SHA512_HMAC"
+    | CKM_GENERIC_SECRET_KEY_GEN -> simple "CKM_GENERIC_SECRET_KEY_GEN"
     | CKM_CS_UNKNOWN p ->
         param "CKM_NOT_IMPLEMENTED" p P11_ulong.to_yojson
 
@@ -216,6 +231,7 @@ let of_yojson json =
       | "CKM_SHA_1" -> simple CKM_SHA_1
       | "CKM_SHA224" -> simple CKM_SHA224
       | "CKM_SHA256" -> simple CKM_SHA256
+      | "CKM_SHA384" -> simple CKM_SHA384
       | "CKM_SHA512" -> simple CKM_SHA512
       | "CKM_MD5" -> simple CKM_MD5
       | "CKM_RSA_PKCS_KEY_PAIR_GEN" -> simple CKM_RSA_PKCS_KEY_PAIR_GEN
@@ -293,6 +309,12 @@ let of_yojson json =
       | "CKM_DSA_SHA256" -> simple CKM_DSA_SHA256
       | "CKM_DSA_SHA384" -> simple CKM_DSA_SHA384
       | "CKM_DSA_SHA512" -> simple CKM_DSA_SHA512
+      | "CKM_SHA_1_HMAC" -> simple CKM_SHA_1_HMAC
+      | "CKM_SHA224_HMAC" -> simple CKM_SHA224_HMAC
+      | "CKM_SHA256_HMAC" -> simple CKM_SHA256_HMAC
+      | "CKM_SHA384_HMAC" -> simple CKM_SHA384_HMAC
+      | "CKM_SHA512_HMAC" -> simple CKM_SHA512_HMAC
+      | "CKM_GENERIC_SECRET_KEY_GEN" -> simple CKM_GENERIC_SECRET_KEY_GEN
       | _ ->
         P11_ulong.of_yojson param >>= fun params ->
         Ok (CKM_CS_UNKNOWN params)
@@ -313,6 +335,7 @@ let mechanism_type m =
     | CKM_SHA_1 -> T.CKM_SHA_1
     | CKM_SHA224 -> T.CKM_SHA224
     | CKM_SHA256 -> T.CKM_SHA256
+    | CKM_SHA384 -> T.CKM_SHA384
     | CKM_SHA512 -> T.CKM_SHA512
     | CKM_MD5 -> T.CKM_MD5
     | CKM_RSA_PKCS_KEY_PAIR_GEN -> T.CKM_RSA_PKCS_KEY_PAIR_GEN
@@ -375,6 +398,12 @@ let mechanism_type m =
     | CKM_DSA_SHA512 -> T.CKM_DSA_SHA512
     | CKM_AES_CTR _ -> T.CKM_AES_CTR
     | CKM_AES_GCM _ -> T.CKM_AES_GCM
+    | CKM_SHA_1_HMAC -> T.CKM_SHA_1_HMAC
+    | CKM_SHA224_HMAC -> T.CKM_SHA224_HMAC
+    | CKM_SHA256_HMAC -> T.CKM_SHA256_HMAC
+    | CKM_SHA384_HMAC -> T.CKM_SHA384_HMAC
+    | CKM_SHA512_HMAC -> T.CKM_SHA512_HMAC
+    | CKM_GENERIC_SECRET_KEY_GEN -> T.CKM_GENERIC_SECRET_KEY_GEN
     | CKM_CS_UNKNOWN mechanism_type ->
       T.CKM_CS_UNKNOWN mechanism_type
 
@@ -487,6 +516,7 @@ let compare a b =
       | CKM_SHA_1, _
       | CKM_SHA224, _
       | CKM_SHA256, _
+      | CKM_SHA384, _
       | CKM_SHA512, _
       | CKM_MD5, _
       | CKM_RSA_PKCS_KEY_PAIR_GEN, _
@@ -517,6 +547,12 @@ let compare a b =
       | CKM_DSA_SHA384, _
       | CKM_DSA_SHA512, _
       | CKM_AES_CTR _, _
+      | CKM_SHA_1_HMAC, _
+      | CKM_SHA224_HMAC, _
+      | CKM_SHA256_HMAC, _
+      | CKM_SHA384_HMAC, _
+      | CKM_SHA512_HMAC, _
+      | CKM_GENERIC_SECRET_KEY_GEN, _
         -> 0 (* Same mechanism types, no parameters. *)
 
 let equal a b =
@@ -919,9 +955,17 @@ let key_type = function
   | CKM_DSA_SHA384
   | CKM_DSA_SHA512
     -> Some P11_key_type.CKK_DSA
+  | CKM_SHA_1_HMAC
+  | CKM_SHA224_HMAC
+  | CKM_SHA256_HMAC
+  | CKM_SHA384_HMAC
+  | CKM_SHA512_HMAC
+  | CKM_GENERIC_SECRET_KEY_GEN
+    -> Some P11_key_type.CKK_GENERIC_SECRET
   | CKM_SHA_1
   | CKM_SHA224
   | CKM_SHA256
+  | CKM_SHA384
   | CKM_SHA512
   | CKM_MD5
   | CKM_CONCATENATE_BASE_AND_DATA _
