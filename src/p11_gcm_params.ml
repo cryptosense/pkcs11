@@ -1,6 +1,6 @@
 type t =
-  { iv: string
-  ; aad: string
+  { iv: P11_hex_data.t
+  ; aad: P11_hex_data.t
   ; tag_bits: P11_ulong.t
   }
 [@@deriving eq,ord,make,show,yojson]
