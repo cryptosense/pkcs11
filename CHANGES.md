@@ -1,3 +1,24 @@
+v0.12.0 2017-12-14
+==================
+
+Breaking changes:
+
+- Hex-encode AES-CTR and AES-GCM parameters. Fixes JSON representation. (#80)
+
+Bug fixes:
+
+- `P11_mechanism.compare` was ignoring AES-CTR parameters. (#81)
+
+New features:
+
+- Add HMAC mechanisms. (#78)
+
+Build system:
+
+- Add a 4.06 build. (#79)
+- Build on Alpine linux by default.
+- Drop compatibility with 4.02.3. (#82)
+
 v0.11.0 2017-11-30
 ==================
 
