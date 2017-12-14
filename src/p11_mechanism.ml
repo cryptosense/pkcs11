@@ -71,6 +71,7 @@ type t =
   | CKM_SHA384_HMAC
   | CKM_SHA512_HMAC
   | CKM_GENERIC_SECRET_KEY_GEN
+  | CKM_AES_KEY_WRAP of P11_aes_key_wrap_params.t
   | CKM_CS_UNKNOWN of P11_ulong.t
 [@@deriving eq,ord,show]
 
@@ -211,6 +212,8 @@ let to_json =
     | CKM_SHA384_HMAC -> simple "CKM_SHA384_HMAC"
     | CKM_SHA512_HMAC -> simple "CKM_SHA512_HMAC"
     | CKM_GENERIC_SECRET_KEY_GEN -> simple "CKM_GENERIC_SECRET_KEY_GEN"
+    | CKM_AES_KEY_WRAP p ->
+      param "CKM_AES_KEY_WRAP" p P11_aes_key_wrap_params.to_yojson
     | CKM_CS_UNKNOWN p ->
         param "CKM_NOT_IMPLEMENTED" p P11_ulong.to_yojson
 
@@ -315,6 +318,9 @@ let of_yojson json =
       | "CKM_SHA384_HMAC" -> simple CKM_SHA384_HMAC
       | "CKM_SHA512_HMAC" -> simple CKM_SHA512_HMAC
       | "CKM_GENERIC_SECRET_KEY_GEN" -> simple CKM_GENERIC_SECRET_KEY_GEN
+      | "CKM_AES_KEY_WRAP" ->
+        P11_aes_key_wrap_params.of_yojson param >>= fun r ->
+        Ok (CKM_AES_KEY_WRAP r)
       | _ ->
         P11_ulong.of_yojson param >>= fun params ->
         Ok (CKM_CS_UNKNOWN params)
@@ -404,6 +410,7 @@ let mechanism_type m =
     | CKM_SHA384_HMAC -> T.CKM_SHA384_HMAC
     | CKM_SHA512_HMAC -> T.CKM_SHA512_HMAC
     | CKM_GENERIC_SECRET_KEY_GEN -> T.CKM_GENERIC_SECRET_KEY_GEN
+    | CKM_AES_KEY_WRAP _ -> T.CKM_AES_KEY_WRAP
     | CKM_CS_UNKNOWN mechanism_type ->
       T.CKM_CS_UNKNOWN mechanism_type
 
@@ -753,6 +760,7 @@ let key_type = function
   | CKM_AES_CBC_ENCRYPT_DATA _
   | CKM_AES_CTR _
   | CKM_AES_GCM _
+  | CKM_AES_KEY_WRAP _
     -> Some P11_key_type.CKK_AES
   | CKM_DES_KEY_GEN
   | CKM_DES_ECB

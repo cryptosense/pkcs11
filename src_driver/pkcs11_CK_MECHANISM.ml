@@ -28,6 +28,13 @@ type argument =
   | AES_CTR of P11_aes_ctr_params.t
   | GCM of P11_gcm_params.t
 
+
+let aes_key_wrap_argument p =
+  match P11_aes_key_wrap_params.explicit_iv p with
+  | None -> No_argument
+  | Some iv -> String iv
+
+
 let argument =
   let open P11_mechanism in
   function
@@ -103,6 +110,7 @@ let argument =
   | CKM_SHA384_HMAC -> No_argument
   | CKM_SHA512_HMAC -> No_argument
   | CKM_GENERIC_SECRET_KEY_GEN -> No_argument
+  | CKM_AES_KEY_WRAP p -> aes_key_wrap_argument p
   | CKM_CS_UNKNOWN params -> No_argument
 
 let argument_params argument =
@@ -192,6 +200,12 @@ let unsafe_get_ulong t =
   let p =  Reachable_ptr.getf t parameter |> from_voidp ulong in
   !@ p
 
+let unsafe_get_aes_key_wrap_option t =
+  let open P11_aes_key_wrap_params in
+  match view_string_option t parameter_len parameter with
+  | None -> default
+  | Some s -> explicit s
+
 let view t =
   let module T = P11_mechanism_type in
   let open P11_mechanism in
@@ -272,6 +286,9 @@ let view t =
         Pkcs11_CK_GCM_PARAMS.view
     in
     CKM_AES_GCM params
+  | T.CKM_AES_KEY_WRAP ->
+    let params = unsafe_get_aes_key_wrap_option t in
+    CKM_AES_KEY_WRAP params
   | T.CKM_SHA_1_HMAC -> CKM_SHA_1_HMAC
   | T.CKM_SHA224_HMAC -> CKM_SHA224_HMAC
   | T.CKM_SHA256_HMAC -> CKM_SHA256_HMAC
@@ -464,7 +481,6 @@ let view t =
   | T.CKM_GOSTR3410_WITH_GOSTR3411
   | T.CKM_GOSTR3411
   | T.CKM_GOSTR3411_HMAC
-  | T.CKM_AES_KEY_WRAP
   | T.CKM_VENDOR_DEFINED
   | T.CKM_CS_UNKNOWN _
     ->
