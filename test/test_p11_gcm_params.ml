@@ -41,8 +41,8 @@ let test_of_yojson =
     let tag_bits = Unsigned.ULong.of_int 16 in
     let json =
       `Assoc
-        [ "iv", `String iv
-        ; "aad", `String aad
+        [ "iv", `String "0x6976"
+        ; "aad", `String "0x616164"
         ; "tag_bits", `String "16"
         ]
     in
@@ -62,8 +62,8 @@ let test_to_yojson =
     let tag_bits = Unsigned.ULong.of_int 16 in
     let expected =
       `Assoc
-        [ "iv", `String iv
-        ; "aad", `String aad
+        [ "iv", `String "0x6976"
+        ; "aad", `String "0x616164"
         ; "tag_bits", `String "16"
         ]
     in

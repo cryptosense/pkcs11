@@ -1,6 +1,6 @@
 type t =
   { bits: P11_ulong.t
-  ; block: string
+  ; block: P11_hex_data.t
   }
 [@@deriving eq,make,ord,show,yojson]
 

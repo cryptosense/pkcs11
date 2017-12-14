@@ -50,7 +50,7 @@ let test_to_yojson =
       )
       ( `Assoc
           [ ("bits", `String "64")
-          ; ("block", `String "AAAABBBBCCCCDDDD")
+          ; ("block", `String "0x41414141424242424343434344444444")
           ]
       )
   ]
@@ -69,7 +69,7 @@ let test_of_yojson =
   [ "normal" >:: test
       (`Assoc
          [ ("bits", `String "64")
-         ; ("block", `String "AAAABBBBCCCCDDDD")
+         ; ("block", `String "0x41414141424242424343434344444444")
          ]
       )
       ( Ok
