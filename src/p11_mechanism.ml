@@ -687,8 +687,13 @@ let kinds m =
   | CKM_BATON_WRAP -> [Wrap]
 
   | CKM_EC_KEY_PAIR_GEN -> [EC; Asymmetric; Generate]
-  | CKM_ECDSA -> [EC; Asymmetric; Sign]
-  | CKM_ECDSA_SHA1 -> [EC; Asymmetric; Sign]
+  | CKM_ECDSA
+  | CKM_ECDSA_SHA1
+  | CKM_ECDSA_SHA224
+  | CKM_ECDSA_SHA256
+  | CKM_ECDSA_SHA384
+  | CKM_ECDSA_SHA512
+    -> [EC; Asymmetric; Sign]
   | CKM_ECDH1_DERIVE -> [EC; Asymmetric; Derive; DH]
   | CKM_ECDH1_COFACTOR_DERIVE -> [EC; Asymmetric; Derive; DH]
   | CKM_ECMQV_DERIVE -> [EC; Asymmetric; Derive; DH]
