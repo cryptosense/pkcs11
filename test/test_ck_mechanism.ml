@@ -143,6 +143,17 @@ let test_make =
       )
       Pkcs11_CK_MECHANISM_TYPE._CKM_AES_GCM
       (sizeof_ul Pkcs11_CK_GCM_PARAMS.t)
+  ; "AES_KEY_WRAP (null)" >:: test_null
+      ( P11_mechanism.CKM_AES_KEY_WRAP
+          P11_aes_key_wrap_params.default
+      )
+      Pkcs11_CK_MECHANISM_TYPE._CKM_AES_KEY_WRAP
+  ; "AES_KEY_WRAP (with IV)" >:: test
+      ( P11_mechanism.CKM_AES_KEY_WRAP
+          (P11_aes_key_wrap_params.explicit "12345678")
+      )
+      Pkcs11_CK_MECHANISM_TYPE._CKM_AES_KEY_WRAP
+      (Unsigned.ULong.of_int 8)
   ]
 
 let test_view =
@@ -155,12 +166,27 @@ let test_view =
       expected
       got
   in
-  let build mechanism_type =
+  let build_fields ~mechanism_type ~parameter ~parameter_len =
     let m = Ctypes.make Pkcs11_CK_MECHANISM.ck_mechanism in
     Ctypes.setf m Pkcs11_CK_MECHANISM.mechanism mechanism_type;
-    Ctypes_helpers.Reachable_ptr.setf m Pkcs11_CK_MECHANISM.parameter Ctypes.null;
-    Ctypes.setf m Pkcs11_CK_MECHANISM.parameter_len Unsigned.ULong.zero;
+    Ctypes_helpers.Reachable_ptr.setf m Pkcs11_CK_MECHANISM.parameter parameter;
+    Ctypes.setf m Pkcs11_CK_MECHANISM.parameter_len parameter_len;
     m
+  in
+  let build mechanism_type =
+    build_fields
+      ~mechanism_type
+      ~parameter:Ctypes.null
+      ~parameter_len:Unsigned.ULong.zero
+  in
+  let build_string mechanism_type s =
+    let data = Pkcs11_data.of_string s in
+    let parameter = Ctypes.to_voidp (Pkcs11_data.get_content data) in
+    let parameter_len = Pkcs11_data.get_length data in
+    build_fields
+      ~mechanism_type
+      ~parameter
+      ~parameter_len
   in
   "view" >:::
   [ "known with binding" >:: test
@@ -169,6 +195,19 @@ let test_view =
   ; "known with no binding" >:: test
       (build Pkcs11_CK_MECHANISM_TYPE._CKM_GOSTR3411)
       (P11_mechanism.CKM_CS_UNKNOWN Pkcs11_CK_MECHANISM_TYPE._CKM_GOSTR3411)
+  ; "CKM_AES_KEY_WRAP with no IV" >:: test
+      (build Pkcs11_CK_MECHANISM_TYPE._CKM_AES_KEY_WRAP)
+      ( P11_mechanism.CKM_AES_KEY_WRAP
+          P11_aes_key_wrap_params.default
+      )
+  ; "CKM_AES_KEY_WRAP with an IV" >:: test
+      ( build_string
+          Pkcs11_CK_MECHANISM_TYPE._CKM_AES_KEY_WRAP
+          "12345678"
+      )
+      ( P11_mechanism.CKM_AES_KEY_WRAP
+          (P11_aes_key_wrap_params.explicit "12345678")
+      )
   ]
 
 let suite =

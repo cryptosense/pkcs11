@@ -71,6 +71,7 @@ type t =
   | CKM_SHA384_HMAC
   | CKM_SHA512_HMAC
   | CKM_GENERIC_SECRET_KEY_GEN
+  | CKM_AES_KEY_WRAP of P11_aes_key_wrap_params.t
   | CKM_CS_UNKNOWN of P11_ulong.t
 [@@deriving eq,ord,show,yojson]
 

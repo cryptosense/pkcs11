@@ -9,6 +9,7 @@ let suite =
   ; Test_p11_aes_ctr_params.suite
   ; Test_p11_gcm_params.suite
   ; Test_p11_mechanism.suite
+  ; Test_p11_aes_key_wrap.suite
   ]
 
 let () = run_test_tt_main suite
