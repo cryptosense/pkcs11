@@ -53,6 +53,10 @@ type t =
   | CKM_EC_KEY_PAIR_GEN
   | CKM_ECDSA
   | CKM_ECDSA_SHA1
+  | CKM_ECDSA_SHA224
+  | CKM_ECDSA_SHA256
+  | CKM_ECDSA_SHA384
+  | CKM_ECDSA_SHA512
   | CKM_ECDH1_DERIVE of P11_ecdh1_derive_params.t
   | CKM_ECDH1_COFACTOR_DERIVE of P11_ecdh1_derive_params.t
   | CKM_ECMQV_DERIVE of P11_ecmqv_derive_params.t
@@ -185,10 +189,12 @@ let to_json =
         param "CKM_CONCATENATE_BASE_AND_KEY" p P11_object_handle.to_yojson
     | CKM_EC_KEY_PAIR_GEN ->
         simple "CKM_EC_KEY_PAIR_GEN"
-    | CKM_ECDSA ->
-        simple "CKM_ECDSA"
-    | CKM_ECDSA_SHA1 ->
-        simple "CKM_ECDSA_SHA1"
+    | CKM_ECDSA -> simple "CKM_ECDSA"
+    | CKM_ECDSA_SHA1 -> simple "CKM_ECDSA_SHA1"
+    | CKM_ECDSA_SHA224 -> simple "CKM_ECDSA_SHA224"
+    | CKM_ECDSA_SHA256 -> simple "CKM_ECDSA_SHA256"
+    | CKM_ECDSA_SHA384 -> simple "CKM_ECDSA_SHA384"
+    | CKM_ECDSA_SHA512 -> simple "CKM_ECDSA_SHA512"
     | CKM_ECDH1_DERIVE p ->
         param "CKM_ECDH1_DERIVE" p P11_ecdh1_derive_params.to_yojson
     | CKM_ECDH1_COFACTOR_DERIVE p ->
@@ -300,6 +306,10 @@ let of_yojson json =
       | "CKM_EC_KEY_PAIR_GEN" -> simple CKM_EC_KEY_PAIR_GEN
       | "CKM_ECDSA" -> simple CKM_ECDSA
       | "CKM_ECDSA_SHA1" -> simple CKM_ECDSA_SHA1
+      | "CKM_ECDSA_SHA224" -> simple CKM_ECDSA_SHA224
+      | "CKM_ECDSA_SHA256" -> simple CKM_ECDSA_SHA256
+      | "CKM_ECDSA_SHA384" -> simple CKM_ECDSA_SHA384
+      | "CKM_ECDSA_SHA512" -> simple CKM_ECDSA_SHA512
       | "CKM_ECDH1_DERIVE" ->
         P11_ecdh1_derive_params.of_yojson param >>= fun r -> Ok (CKM_ECDH1_DERIVE r)
       | "CKM_AES_CTR" ->
@@ -392,6 +402,10 @@ let mechanism_type m =
     | CKM_EC_KEY_PAIR_GEN -> T.CKM_EC_KEY_PAIR_GEN
     | CKM_ECDSA -> T.CKM_ECDSA
     | CKM_ECDSA_SHA1 -> T.CKM_ECDSA_SHA1
+    | CKM_ECDSA_SHA224 -> T.CKM_ECDSA_SHA224
+    | CKM_ECDSA_SHA256 -> T.CKM_ECDSA_SHA256
+    | CKM_ECDSA_SHA384 -> T.CKM_ECDSA_SHA384
+    | CKM_ECDSA_SHA512 -> T.CKM_ECDSA_SHA512
     | CKM_ECDH1_DERIVE _ -> T.CKM_ECDH1_DERIVE
     | CKM_ECDH1_COFACTOR_DERIVE _ -> T.CKM_ECDH1_COFACTOR_DERIVE
     | CKM_ECMQV_DERIVE _ -> T.CKM_ECMQV_DERIVE
@@ -687,8 +701,13 @@ let kinds m =
   | CKM_BATON_WRAP -> [Wrap]
 
   | CKM_EC_KEY_PAIR_GEN -> [EC; Asymmetric; Generate]
-  | CKM_ECDSA -> [EC; Asymmetric; Sign]
-  | CKM_ECDSA_SHA1 -> [EC; Asymmetric; Sign]
+  | CKM_ECDSA
+  | CKM_ECDSA_SHA1
+  | CKM_ECDSA_SHA224
+  | CKM_ECDSA_SHA256
+  | CKM_ECDSA_SHA384
+  | CKM_ECDSA_SHA512
+    -> [EC; Asymmetric; Sign]
   | CKM_ECDH1_DERIVE -> [EC; Asymmetric; Derive; DH]
   | CKM_ECDH1_COFACTOR_DERIVE -> [EC; Asymmetric; Derive; DH]
   | CKM_ECMQV_DERIVE -> [EC; Asymmetric; Derive; DH]
@@ -801,6 +820,10 @@ let key_type = function
   | CKM_EC_KEY_PAIR_GEN
   | CKM_ECDSA
   | CKM_ECDSA_SHA1
+  | CKM_ECDSA_SHA224
+  | CKM_ECDSA_SHA256
+  | CKM_ECDSA_SHA384
+  | CKM_ECDSA_SHA512
   | CKM_ECDH1_DERIVE _
   | CKM_ECDH1_COFACTOR_DERIVE _
   | CKM_ECMQV_DERIVE _

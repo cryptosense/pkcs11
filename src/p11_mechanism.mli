@@ -53,6 +53,10 @@ type t =
   | CKM_EC_KEY_PAIR_GEN
   | CKM_ECDSA
   | CKM_ECDSA_SHA1
+  | CKM_ECDSA_SHA224
+  | CKM_ECDSA_SHA256
+  | CKM_ECDSA_SHA384
+  | CKM_ECDSA_SHA512
   | CKM_ECDH1_DERIVE of P11_ecdh1_derive_params.t
   | CKM_ECDH1_COFACTOR_DERIVE of P11_ecdh1_derive_params.t
   | CKM_ECMQV_DERIVE of P11_ecmqv_derive_params.t

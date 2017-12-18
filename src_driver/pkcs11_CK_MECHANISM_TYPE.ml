@@ -226,6 +226,10 @@ let _CKM_BATON_WRAP                     = with_value 0x00001036L
 let _CKM_EC_KEY_PAIR_GEN                = with_value 0x00001040L
 let _CKM_ECDSA                          = with_value 0x00001041L
 let _CKM_ECDSA_SHA1                     = with_value 0x00001042L
+let _CKM_ECDSA_SHA224                   = with_value 0x00001043L
+let _CKM_ECDSA_SHA256                   = with_value 0x00001044L
+let _CKM_ECDSA_SHA384                   = with_value 0x00001045L
+let _CKM_ECDSA_SHA512                   = with_value 0x00001046L
 let _CKM_ECDH1_DERIVE                   = with_value 0x00001050L
 let _CKM_ECDH1_COFACTOR_DERIVE          = with_value 0x00001051L
 let _CKM_ECMQV_DERIVE                   = with_value 0x00001052L
@@ -490,6 +494,10 @@ let make u =
     | CKM_EC_KEY_PAIR_GEN  -> _CKM_EC_KEY_PAIR_GEN
     | CKM_ECDSA  -> _CKM_ECDSA
     | CKM_ECDSA_SHA1  -> _CKM_ECDSA_SHA1
+    | CKM_ECDSA_SHA224  -> _CKM_ECDSA_SHA224
+    | CKM_ECDSA_SHA256  -> _CKM_ECDSA_SHA256
+    | CKM_ECDSA_SHA384  -> _CKM_ECDSA_SHA384
+    | CKM_ECDSA_SHA512  -> _CKM_ECDSA_SHA512
     | CKM_ECDH1_DERIVE  -> _CKM_ECDH1_DERIVE
     | CKM_ECDH1_COFACTOR_DERIVE  -> _CKM_ECDH1_COFACTOR_DERIVE
     | CKM_ECMQV_DERIVE  -> _CKM_ECMQV_DERIVE
@@ -755,6 +763,11 @@ let view t =
     | _ when is _CKM_EC_KEY_PAIR_GEN -> CKM_EC_KEY_PAIR_GEN
     | _ when is _CKM_ECDSA -> CKM_ECDSA
     | _ when is _CKM_ECDSA_SHA1 -> CKM_ECDSA_SHA1
+    | _ when is _CKM_ECDSA_SHA1 -> CKM_ECDSA_SHA1
+    | _ when is _CKM_ECDSA_SHA224 -> CKM_ECDSA_SHA224
+    | _ when is _CKM_ECDSA_SHA256 -> CKM_ECDSA_SHA256
+    | _ when is _CKM_ECDSA_SHA384 -> CKM_ECDSA_SHA384
+    | _ when is _CKM_ECDSA_SHA512 -> CKM_ECDSA_SHA512
     | _ when is _CKM_ECDH1_DERIVE -> CKM_ECDH1_DERIVE
     | _ when is _CKM_ECDH1_COFACTOR_DERIVE -> CKM_ECDH1_COFACTOR_DERIVE
     | _ when is _CKM_ECMQV_DERIVE -> CKM_ECMQV_DERIVE
