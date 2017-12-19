@@ -6,6 +6,7 @@ let api =
   [ "P11"
   ; "P11_aes_cbc_encrypt_data_params"
   ; "P11_aes_ctr_params"
+  ; "P11_aes_key_wrap_params"
   ; "P11_attribute"
   ; "P11_attribute_type"
   ; "P11_attribute_types"
