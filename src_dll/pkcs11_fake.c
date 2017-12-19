@@ -269,3 +269,42 @@ CK_RV C_CopyObject (CK_SESSION_HANDLE hSession, CK_OBJECT_HANDLE hObject, CK_ATT
 	*phNewObject = 1;
 	return CKR_OK;
 }
+
+CK_RV C_GetMechanismList (CK_SLOT_ID slotID, CK_MECHANISM_TYPE_PTR pMechanismList, CK_ULONG_PTR pulCount)
+{
+	*pulCount = 0;
+	return CKR_OK;
+}
+
+CK_RV C_GetSlotInfo(CK_SLOT_ID slotID, CK_SLOT_INFO_PTR pInfo)
+{
+	strcpy(pInfo->slotDescription, "Slot description");
+	strcpy(pInfo->manufacturerID, "Manufacturer ID");
+	pInfo->flags = 1;
+	return CKR_OK;
+}
+
+CK_RV C_GetTokenInfo(CK_SLOT_ID slotID, CK_TOKEN_INFO_PTR pInfo)
+{
+	strcpy(pInfo->label, "Label");
+	strcpy(pInfo->manufacturerID, "Manufacturer ID");
+	strcpy(pInfo->model, "Model");
+	strcpy(pInfo->serialNumber, "Serial number");
+	pInfo->flags = 1;
+	pInfo->ulRwSessionCount = 2;
+	pInfo->ulMaxRwSessionCount = 3;
+	pInfo->ulSessionCount = 4;
+	pInfo->ulMaxSessionCount = 5;
+	pInfo->ulMinPinLen = 6;
+	pInfo->ulMaxPinLen = 7;
+	pInfo->ulFreePublicMemory = 8;
+	pInfo->ulTotalPublicMemory = 9;
+	pInfo->ulFreePrivateMemory = 10;
+	pInfo->ulTotalPrivateMemory = 11;
+	pInfo->hardwareVersion.major = 12;
+	pInfo->hardwareVersion.minor = 13;
+	pInfo->firmwareVersion.major = 14;
+	pInfo->firmwareVersion.minor = 15;
+	strcpy(pInfo->utcTime, "UTC time");
+	return CKR_OK;
+}
