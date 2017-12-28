@@ -153,6 +153,10 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKM_EC_KEY_PAIR_GEN</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKM_ECDSA</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKM_ECDSA_SHA1</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKM_ECDSA_SHA224</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKM_ECDSA_SHA256</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKM_ECDSA_SHA384</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKM_ECDSA_SHA512</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKM_ECDH1_DERIVE</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">P11_ecdh1_derive_params</span>.t<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKM_ECDH1_COFACTOR_DERIVE</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">P11_ecdh1_derive_params</span>.t<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKM_ECMQV_DERIVE</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">P11_ecmqv_derive_params</span>.t<br>
@@ -171,6 +175,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKM_SHA384_HMAC</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKM_SHA512_HMAC</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKM_GENERIC_SECRET_KEY_GEN</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKM_AES_KEY_WRAP</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">P11_aes_key_wrap_params</span>.t<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">CKM_CS_UNKNOWN</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">P11_ulong</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;equal&nbsp;:&nbsp;<span class="constructor">P11_mechanism</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11_mechanism</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Ppx_deriving_runtime</span>.bool<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;compare&nbsp;:<br>
