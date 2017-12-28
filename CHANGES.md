@@ -1,3 +1,13 @@
+v0.13.0 2017-12-28
+==================
+
+New features:
+
+- Support `CKM_AES_KEY_WRAP` mechanism. (#83, #85)
+- Support ECDSA+SHA2 mechanisms. (#84)
+- `P11_driver`: add an API not based on modules. (#87)
+- Fake DLL: add more functions. (#86)
+
 v0.12.0 2017-12-14
 ==================
 
