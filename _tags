@@ -14,8 +14,8 @@ true: open(Result)
 <test/test_driver.*>: package(ctypes.foreign)
 <test/test_driver.*>: package(ctypes.stubs)
 <test/test_ck*>: package(ctypes)
-<test/example_sign.*>: package(ctypes.foreign)
-<test/example_sign.*>: package(ctypes.stubs)
+<test/example_*.*>: package(ctypes.foreign)
+<test/example_*.*>: package(ctypes.stubs)
 
 <src_cli/*>: package(cmdliner)
 <src>: include
@@ -38,6 +38,6 @@ true: open(Result)
 
 <test/*>: package(oUnit)
 <test/test_driver.*>: link_pkcs11
-<test/example_sign.*>: link_pkcs11
+<test/example_*.*>: link_pkcs11
 
 true: warn(@8)
