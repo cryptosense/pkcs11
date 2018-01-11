@@ -109,6 +109,8 @@ sig
   val derive_key :
     Session_handle.t -> Mechanism.t -> Object_handle.t -> Template.t ->
     Object_handle.t
+
+  val digest : Session_handle.t -> Mechanism.t -> Data.t -> Data.t
 end
 
 type t = (module S)
@@ -166,6 +168,7 @@ val generate_key_pair : t -> Session_handle.t -> Mechanism.t -> Template.t -> Te
 val wrap_key : t -> Session_handle.t -> Mechanism.t -> Object_handle.t -> Object_handle.t -> Data.t
 val unwrap_key : t -> Session_handle.t -> Mechanism.t -> Object_handle.t -> Data.t -> Template.t -> Object_handle.t
 val derive_key : t -> Session_handle.t -> Mechanism.t -> Object_handle.t -> Template.t -> Object_handle.t
+val digest : t -> Session_handle.t -> Mechanism.t -> Data.t -> Data.t
 
 module Make (X: Pkcs11.RAW): S
 

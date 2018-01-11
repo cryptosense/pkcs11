@@ -109,6 +109,8 @@ sig
   val derive_key :
     Session_handle.t -> Mechanism.t -> Object_handle.t -> Template.t ->
     Object_handle.t
+
+  val digest : Session_handle.t -> Mechanism.t -> Data.t -> Data.t
 end
 
 module Make (X: Pkcs11.RAW) =
@@ -635,6 +637,16 @@ struct
       let rv,obj' = c_DeriveKey hSession mech obj template in
       check_ckr rv obj'
 
+  let digest session mechanism input =
+    let low_mechanism = Pkcs11.CK_MECHANISM.make mechanism in
+    c_DigestInit session low_mechanism >>? fun () ->
+    let low_input = Pkcs11.Data.of_string input in
+    let low_output = Pkcs11.Data.create () in
+    c_Digest session low_input low_output >>? fun () ->
+    let () = Pkcs11.Data.allocate low_output in
+    c_Digest session low_input low_output >>? fun () ->
+    let output = Pkcs11.Data.to_string low_output in
+    return output
 end
 
 type t = (module S)
@@ -692,6 +704,7 @@ let generate_key_pair (module S : S) = S.generate_key_pair
 let wrap_key (module S : S) = S.wrap_key
 let unwrap_key (module S : S) = S.unwrap_key
 let derive_key (module S : S) = S.derive_key
+let digest (module S : S) = S.digest
 
 let load_driver ?log_calls ?on_unknown ~dll ~use_get_function_list =
   let module Implem =

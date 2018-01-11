@@ -308,3 +308,14 @@ CK_RV C_GetTokenInfo(CK_SLOT_ID slotID, CK_TOKEN_INFO_PTR pInfo)
 	strcpy(pInfo->utcTime, "UTC time");
 	return CKR_OK;
 }
+
+CK_RV C_DigestInit(CK_SESSION_HANDLE hSession, CK_MECHANISM_PTR pMechanism)
+{
+	return CKR_OK;
+}
+
+CK_RV C_Digest(CK_SESSION_HANDLE hSession, CK_BYTE_PTR pData, CK_ULONG ulDataLen,
+		CK_BYTE_PTR pDigest, CK_ULONG_PTR pulDigestLen)
+{
+	return copy_string("digest value", pDigest, pulDigestLen);
+}
