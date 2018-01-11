@@ -208,10 +208,8 @@ let test_p11_load =
   let dll = "./_build/src_dll/dllpkcs11_fake.so" in
   let driver =
     P11_driver.load_driver
-      ?log_calls:None
-      ?on_unknown:None
       ~use_get_function_list:`False
-      ~dll
+      dll
   in
   let (module R) = driver in
   R.initialize ();

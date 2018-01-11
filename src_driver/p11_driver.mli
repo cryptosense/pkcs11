@@ -177,6 +177,6 @@ module Make (X: Pkcs11.RAW): S
 val load_driver:
   ?log_calls:(string * Format.formatter) ->
   ?on_unknown:(string -> unit) ->
-  dll: string ->
   use_get_function_list: [ `Auto | `False | `True ] ->
+  string ->
   t

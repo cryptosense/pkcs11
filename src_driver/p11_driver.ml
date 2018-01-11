@@ -706,8 +706,8 @@ let unwrap_key (module S : S) = S.unwrap_key
 let derive_key (module S : S) = S.derive_key
 let digest (module S : S) = S.digest
 
-let load_driver ?log_calls ?on_unknown ~dll ~use_get_function_list =
+let load_driver ?log_calls ?on_unknown ~use_get_function_list dll =
   let module Implem =
-    (val (Pkcs11.load_driver ?log_calls ?on_unknown ~dll ~use_get_function_list) : Pkcs11.RAW)
+    (val (Pkcs11.load_driver ?log_calls ?on_unknown ~use_get_function_list dll) : Pkcs11.RAW)
   in
   (module (Make (Implem)): S)
