@@ -1,5 +1,5 @@
 (** How the interaction is done with the DLL. *)
-type t =
+type t = private
   | Auto
   | Stubs
   | FFI

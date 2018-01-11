@@ -1360,7 +1360,7 @@ struct
 
 end
 
-let load_driver ?log_calls ?on_unknown ~load_mode dll =
+let load_driver ?log_calls ?on_unknown ?(load_mode=P11.Load_mode.auto) dll =
   begin
     match on_unknown with
     | Some f -> Pkcs11_log.set_logging_function f

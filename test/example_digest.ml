@@ -17,11 +17,7 @@ let print_digest driver session plaintext mechanism =
 
 let run ~dll ~slot_id ~pin ~plaintext =
   Pkcs11_log.set_logging_function prerr_endline;
-  let driver =
-    P11_driver.load_driver
-      ~load_mode:P11.Load_mode.auto
-      dll
-  in
+  let driver = P11_driver.load_driver dll in
   P11_driver.initialize driver;
   let slot =
     match P11_driver.get_slot driver slot_id with

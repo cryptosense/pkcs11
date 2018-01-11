@@ -1065,6 +1065,6 @@ exception Cannot_load_module of string * P11_rv.t
 val load_driver:
   ?log_calls:(string * Format.formatter) ->
   ?on_unknown:(string -> unit) ->
-  load_mode: P11.Load_mode.t ->
+  ?load_mode: P11.Load_mode.t ->
   string ->
   (module RAW)
