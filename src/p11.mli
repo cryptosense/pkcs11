@@ -37,3 +37,4 @@ module EC_KDF = P11_ec_kdf
 module AES_CTR_params = P11_aes_ctr_params
 module GCM_params = P11_gcm_params
 module AES_key_wrap_params = P11_aes_key_wrap_params
+module Load_mode = P11_load_mode

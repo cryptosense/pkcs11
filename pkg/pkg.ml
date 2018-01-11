@@ -23,6 +23,7 @@ let api =
   ; "P11_key_attributes"
   ; "P11_key_gen_mechanism"
   ; "P11_key_type"
+  ; "P11_load_mode"
   ; "P11_mechanism"
   ; "P11_mechanism_info"
   ; "P11_mechanism_type"

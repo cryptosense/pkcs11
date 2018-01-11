@@ -208,7 +208,7 @@ let test_p11_load =
   let dll = "./_build/src_dll/dllpkcs11_fake.so" in
   let driver =
     P11_driver.load_driver
-      ~use_get_function_list:`False
+      ~load_mode:P11.Load_mode.auto
       dll
   in
   let (module R) = driver in

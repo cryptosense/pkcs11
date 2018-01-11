@@ -26,7 +26,7 @@ module Arg : sig
   (** How to access the PKCS11 DLL. [--direct]: call the function directly.
   [--indirect]: use [C_GetFunctionList]. [--indirect_or_direct] (the default): try
   to use [C_GetFunctionList], and if it fails, try directly. *)
-  val use_get_function_list : [`Auto | `True | `False] Cmdliner.Arg.t
+  val load_mode : P11.Load_mode.t Cmdliner.Arg.t
 
   (** [--user-type]: select user type:
   [CKU_USER] (["user"]) or [CKU_SO] (["so"]) *)
@@ -55,8 +55,8 @@ module Term : sig
   (** Shortcut for [Cmdliner.Arg.value Arg.pin]. *)
   val pin : string option Cmdliner.Term.t
 
-  (** Shortcut for [Cmdliner.Arg.value Arg.use_get_function_list]. *)
-  val use_get_function_list : [`Auto | `True | `False] Cmdliner.Term.t
+  (** Shortcut for [Cmdliner.Arg.value Arg.load_mode]. *)
+  val load_mode : P11.Load_mode.t Cmdliner.Term.t
 
   (** Shortcut for [Cmdliner.Arg.value Arg.user_type]. *)
   val user_type : P11.User_type.t option Cmdliner.Term.t

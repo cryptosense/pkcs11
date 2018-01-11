@@ -52,27 +52,27 @@ module Arg = struct
       ~doc: "$(docv)"
       [ "p"; "pin" ]
 
-  let use_get_function_list =
+  let load_mode =
     let open Cmdliner.Arg in
     let auto =
       info
         ~doc: "Try to use C_GetFunctionList, and if it fails, try again without using it."
         ["indirect_or_direct"]
     in
-    let true_ =
+    let stubs =
       info
         ~doc: "Use C_GetFunctionList."
         ["indirect"]
     in
-    let false_ =
+    let ffi =
       info
         ~doc: "Do not use C_GetFunctionList."
         ["direct"]
     in
-    vflag `Auto
-      [ `Auto, auto
-      ; `True, true_
-      ; `False, false_
+    vflag P11.Load_mode.auto
+      [ P11.Load_mode.auto, auto
+      ; P11.Load_mode.stubs, stubs
+      ; P11.Load_mode.ffi, ffi
       ]
 
   let user_type =
@@ -128,8 +128,8 @@ module Term = struct
   let pin =
     Cmdliner.Arg.value Arg.pin
 
-  let use_get_function_list =
-    Cmdliner.Arg.value Arg.use_get_function_list
+  let load_mode =
+    Cmdliner.Arg.value Arg.load_mode
 
   let user_type =
     Cmdliner.Arg.value Arg.user_type
