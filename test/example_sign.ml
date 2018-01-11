@@ -47,10 +47,8 @@ let run ~dll ~slot_id ~pin ~key_label ~plaintext =
   Pkcs11_log.set_logging_function prerr_endline;
   let (module S) =
     P11_driver.load_driver
-      ?log_calls:None
-      ?on_unknown:None
-      ~dll
       ~use_get_function_list:`Auto
+      dll
   in
   S.initialize ();
   let slot = match S.get_slot slot_id with

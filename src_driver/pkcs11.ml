@@ -1360,7 +1360,7 @@ struct
 
 end
 
-let load_driver ?log_calls ?on_unknown ~dll ~use_get_function_list =
+let load_driver ?log_calls ?on_unknown ~use_get_function_list dll =
   begin
     match on_unknown with
     | Some f -> Pkcs11_log.set_logging_function f
