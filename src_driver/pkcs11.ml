@@ -466,43 +466,6 @@ struct
 end
 
 (******************************************************************************)
-(*                           Indirect style bindings                          *)
-(******************************************************************************)
-
-module Indirect (X: CONFIG) : RAW =
-struct
-  let c_GetFunctionList =
-    Foreign.foreign
-      ~from:X.library
-      ~stub:true
-      "C_GetFunctionList"
-      CK.T.c_GetFunctionList
-
-  let function_list =
-    (* WARNING: This code is duplicated in the Make module below.  *)
-    let c_GetFunctionList: unit -> CK_RV.t * ck_function_list =
-      fun () ->
-        let p = allocate_n ~count:1 ((ptr ck_function_list)) in
-        let rv = c_GetFunctionList p in
-        rv, !@ (!@ p)
-    in
-    let rv,fl = c_GetFunctionList () in
-    if rv = CK_RV._CKR_OK
-    then fl
-    else raise (GetFunctionList_Failure (P11_rv.to_string @@ Pkcs11_CK_RV.view rv))
-
-  include Raw(struct
-      let declare name field typ =
-        let f = getf function_list field in
-        match X.log_calls with
-          | None -> f
-          | Some (prefix,fmt) ->
-              log fmt ~header:(prefix ^ ": " ^ name) ~footer:"\n" typ f
-      let c_GetFunctionList = c_GetFunctionList
-    end)
-end
-
-(******************************************************************************)
 (*                            Direct style bindings                           *)
 (******************************************************************************)
 
@@ -517,28 +480,6 @@ struct
       | None -> f
       | Some (prefix,fmt) ->
           log fmt ~header:(prefix ^ ": " ^ name) ~footer:"\n" typ f
-
-  let c_GetFunctionList = declare "C_GetFunctionList" CK.T.c_GetFunctionList
-
-  include Raw(struct
-      let declare
-          (name : string)
-          (_field : (('a -> 'b), (_ck_function_list, [ `Struct ]) Ctypes.structured) Ctypes.field)
-          (typ : ('a -> 'b) Ctypes.fn) = declare name typ
-      let c_GetFunctionList = c_GetFunctionList
-    end)
-end
-
-(******************************************************************************)
-(*                            Local style bindings                           *)
-(******************************************************************************)
-
-module Local (X : sig  end) : RAW =
-struct
-
-
-  let declare : 'a 'b . string -> ('a -> 'b) Ctypes.fn -> ('a -> 'b) = fun name typ ->
-    Foreign.foreign name typ
 
   let c_GetFunctionList = declare "C_GetFunctionList" CK.T.c_GetFunctionList
 

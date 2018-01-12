@@ -7,11 +7,6 @@ open Ctypes
     indirection through the list of function returned by
     GetFunctionList. *)
 
-(** The GetFunctionList function failed, i.e., returned a return-value
-    different from CKR_OK. This exception can only be triggered in the
-    Indirect mode of our bindings. *)
-exception GetFunctionList_Failure of string
-
 (** CONVENTIONS.
 
     _t is a type variable used to constrain the [Ctypes] representation.  It
