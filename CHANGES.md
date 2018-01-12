@@ -1,3 +1,14 @@
+v0.14.0 2018-01-12
+==================
+
+Breaking changes:
+- `load_driver`: "dll" is non-named so that it erases optional arguments. (#92)
+- rename `use_get_function_list` to `load_mode` and add `P11.Load_mode` to
+  describe what arguments it can have. Also delete unused modes. (#93)
+
+New features:
+- Bind the `C_Digest` function as `digest`. (#91)
+
 v0.13.0 2017-12-28
 ==================
 
