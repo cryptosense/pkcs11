@@ -1080,7 +1080,6 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;library&nbsp;:&nbsp;<span class="constructor">Dl</span>.library<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">end</span><br>
 &nbsp;&nbsp;<span class="keyword">module</span>&nbsp;<span class="constructor">Fake</span>&nbsp;:&nbsp;<span class="keyword">functor</span>&nbsp;(<span class="constructor">X</span>&nbsp;:&nbsp;<span class="keyword">sig</span>&nbsp;&nbsp;<span class="keyword">end</span>)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">RAW</span><br>
-&nbsp;&nbsp;<span class="keyword">module</span>&nbsp;<span class="constructor">Local</span>&nbsp;:&nbsp;<span class="keyword">functor</span>&nbsp;(<span class="constructor">X</span>&nbsp;:&nbsp;<span class="keyword">sig</span>&nbsp;&nbsp;<span class="keyword">end</span>)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">RAW</span><br>
 &nbsp;&nbsp;<span class="keyword">module</span>&nbsp;<span class="keyword">type</span>&nbsp;<span class="constructor">S</span>&nbsp;=<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">sig</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;c_Initialize&nbsp;:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">CK_RV</span>.t<br>
@@ -1206,6 +1205,5 @@
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;load_driver&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;?log_calls:string&nbsp;*&nbsp;<span class="constructor">Format</span>.formatter&nbsp;<span class="keywordsign">-&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;?on_unknown:(string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit)&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;dll:string&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;use_get_function_list:[&nbsp;<span class="keywordsign">`</span><span class="constructor">Auto</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="keywordsign">`</span><span class="constructor">False</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="keywordsign">`</span><span class="constructor">True</span>&nbsp;]&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keyword">module</span>&nbsp;<span class="constructor">Pkcs11</span>.<span class="constructor">RAW</span>)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;?load_mode:<span class="constructor">P11</span>.<span class="constructor">Load_mode</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;(<span class="keyword">module</span>&nbsp;<span class="constructor">Pkcs11</span>.<span class="constructor">RAW</span>)<br>
 <span class="keyword">end</span></code></body></html>

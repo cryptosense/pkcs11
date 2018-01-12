@@ -108,12 +108,7 @@
 </div>
 <h1>Module <a href="type_P11_attribute.html">P11_attribute</a></h1>
 
-<pre><span class="keyword">module</span> P11_attribute: <code class="code"><span class="keyword">sig</span></code> <a href="P11_attribute.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
-<code class="code">kinds</code> returns a list of list.
-   An attribute has kinds <code class="code">&nbsp;<span class="constructor">A</span>;&nbsp;<span class="constructor">B</span>;&nbsp;<span class="constructor">C</span>&nbsp;</code> if one of the lists returned by <code class="code">kinds</code>
-   has at least kinds <code class="code">&nbsp;<span class="constructor">A</span>;&nbsp;<span class="constructor">B</span>;&nbsp;<span class="constructor">C</span>&nbsp;</code>.<br>
-</div>
-<hr width="100%">
+<pre><span id="MODULEP11_attribute"><span class="keyword">module</span> P11_attribute</span>: <code class="code"><span class="keyword">sig</span></code> <a href="P11_attribute.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
 
 <pre><span id="TYPEt"><span class="keyword">type</span> <code class="type">'a</code> t</span> = <code class="type">'a <a href="P11_attribute_type.html#TYPEt">P11_attribute_type.t</a> * 'a</code> </pre>
 
@@ -185,13 +180,17 @@
 
 <pre><span id="VALequal_kind"><span class="keyword">val</span> equal_kind</span> : <code class="type"><a href="P11_attribute.html#TYPEkind">kind</a> -> <a href="P11_attribute.html#TYPEkind">kind</a> -> Ppx_deriving_runtime.bool</code></pre>
 <pre><span id="VALkinds"><span class="keyword">val</span> kinds</span> : <code class="type"><a href="P11_attribute.html#TYPEpack">pack</a> -> <a href="P11_attribute.html#TYPEkind">kind</a> list list</code></pre><div class="info ">
-<code class="code">kinds</code> returns a list of list.
+<div class="info-desc">
+<p><code class="code">kinds</code> returns a list of list.
    An attribute has kinds <code class="code">&nbsp;<span class="constructor">A</span>;&nbsp;<span class="constructor">B</span>;&nbsp;<span class="constructor">C</span>&nbsp;</code> if one of the lists returned by <code class="code">kinds</code>
-   has at least kinds <code class="code">&nbsp;<span class="constructor">A</span>;&nbsp;<span class="constructor">B</span>;&nbsp;<span class="constructor">C</span>&nbsp;</code>.<br>
+   has at least kinds <code class="code">&nbsp;<span class="constructor">A</span>;&nbsp;<span class="constructor">B</span>;&nbsp;<span class="constructor">C</span>&nbsp;</code>.</p>
+</div>
 </div>
 
 <pre><span id="VALis"><span class="keyword">val</span> is</span> : <code class="type"><a href="P11_attribute.html#TYPEkind">kind</a> list -> <a href="P11_attribute.html#TYPEpack">pack</a> -> bool</code></pre><div class="info ">
-Return whether <code class="code">a</code> has all kinds <code class="code">k</code>.<br>
+<div class="info-desc">
+<p>Return whether <code class="code">a</code> has all kinds <code class="code">k</code>.</p>
+</div>
 </div>
 
 <pre><span id="VALtype_"><span class="keyword">val</span> type_</span> : <code class="type"><a href="P11_attribute.html#TYPEpack">pack</a> -> <a href="P11_attribute_type.html#TYPEpack">P11_attribute_type.pack</a></code></pre></body></html>

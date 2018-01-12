@@ -104,7 +104,7 @@
 &nbsp;</div>
 <h1>Module type <a href="type_P11_driver.S.html">P11_driver.S</a></h1>
 
-<pre><span class="keyword">module type</span> S = <code class="code"><span class="keyword">sig</span></code> <a href="P11_driver.S.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
+<pre><span id="MODULETYPES"><span class="keyword">module type</span> S</span> = <code class="code"><span class="keyword">sig</span></code> <a href="P11_driver.S.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
 
 <pre><span id="VALinitialize"><span class="keyword">val</span> initialize</span> : <code class="type">unit -> unit</code></pre>
 <pre><span id="VALfinalize"><span class="keyword">val</span> finalize</span> : <code class="type">unit -> unit</code></pre>
@@ -128,15 +128,21 @@
 <pre><span id="VALcopy_object"><span class="keyword">val</span> copy_object</span> : <code class="type">P11.Session_handle.t -><br>       P11.Object_handle.t -> P11.Template.t -> P11.Object_handle.t</code></pre>
 <pre><span id="VALdestroy_object"><span class="keyword">val</span> destroy_object</span> : <code class="type">P11.Session_handle.t -> P11.Object_handle.t -> unit</code></pre>
 <pre><span id="VALget_attribute_value"><span class="keyword">val</span> get_attribute_value</span> : <code class="type">P11.Session_handle.t -><br>       P11.Object_handle.t -> P11.Attribute_types.t -> P11.Template.t</code></pre><div class="info ">
-May request several attributes at the same time.<br>
+<div class="info-desc">
+<p>May request several attributes at the same time.</p>
+</div>
 </div>
 
 <pre><span id="VALget_attribute_value'"><span class="keyword">val</span> get_attribute_value'</span> : <code class="type">P11.Session_handle.t -><br>       P11.Object_handle.t -> P11.Attribute_types.t -> P11.Template.t</code></pre><div class="info ">
-Will request attributes one by one.<br>
+<div class="info-desc">
+<p>Will request attributes one by one.</p>
+</div>
 </div>
 
 <pre><span id="VALget_attribute_value_optimized"><span class="keyword">val</span> get_attribute_value_optimized</span> : <code class="type">P11.Attribute_types.t -><br>       [ `Optimized of P11.Session_handle.t -> P11.Object_handle.t -> P11.Template.t ]</code></pre><div class="info ">
-Will request several attributes at the same time. (optimized version)<br>
+<div class="info-desc">
+<p>Will request several attributes at the same time. (optimized version)</p>
+</div>
 </div>
 
 <pre><span id="VALset_attribute_value"><span class="keyword">val</span> set_attribute_value</span> : <code class="type">P11.Session_handle.t -> P11.Object_handle.t -> P11.Template.t -> unit</code></pre>
@@ -167,4 +173,5 @@ Will request several attributes at the same time. (optimized version)<br>
 <pre><span id="VALgenerate_key_pair"><span class="keyword">val</span> generate_key_pair</span> : <code class="type">P11.Session_handle.t -><br>       P11.Mechanism.t -><br>       P11.Template.t -> P11.Template.t -> P11.Object_handle.t * P11.Object_handle.t</code></pre>
 <pre><span id="VALwrap_key"><span class="keyword">val</span> wrap_key</span> : <code class="type">P11.Session_handle.t -><br>       P11.Mechanism.t -> P11.Object_handle.t -> P11.Object_handle.t -> P11.Data.t</code></pre>
 <pre><span id="VALunwrap_key"><span class="keyword">val</span> unwrap_key</span> : <code class="type">P11.Session_handle.t -><br>       P11.Mechanism.t -><br>       P11.Object_handle.t -> P11.Data.t -> P11.Template.t -> P11.Object_handle.t</code></pre>
-<pre><span id="VALderive_key"><span class="keyword">val</span> derive_key</span> : <code class="type">P11.Session_handle.t -><br>       P11.Mechanism.t -><br>       P11.Object_handle.t -> P11.Template.t -> P11.Object_handle.t</code></pre></body></html>
+<pre><span id="VALderive_key"><span class="keyword">val</span> derive_key</span> : <code class="type">P11.Session_handle.t -><br>       P11.Mechanism.t -><br>       P11.Object_handle.t -> P11.Template.t -> P11.Object_handle.t</code></pre>
+<pre><span id="VALdigest"><span class="keyword">val</span> digest</span> : <code class="type">P11.Session_handle.t -> P11.Mechanism.t -> P11.Data.t -> P11.Data.t</code></pre></body></html>

@@ -108,7 +108,7 @@
 </div>
 <h1>Module <a href="type_P11.Attribute_types.html">P11.Attribute_types</a></h1>
 
-<pre><span class="keyword">module</span> Attribute_types: <code class="type"><a href="P11_attribute_types.html">P11_attribute_types</a></code></pre><hr width="100%">
+<pre><span id="MODULEAttribute_types"><span class="keyword">module</span> Attribute_types</span>: <code class="type"><a href="P11_attribute_types.html">P11_attribute_types</a></code></pre><hr width="100%">
 
 <pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = <code class="type"><a href="P11_attribute_type.html#TYPEpack">P11_attribute_type.pack</a> list</code> </pre>
 
@@ -117,10 +117,14 @@
 <pre><span id="VALto_yojson"><span class="keyword">val</span> to_yojson</span> : <code class="type"><a href="P11_attribute_types.html#TYPEt">t</a> -> Yojson.Safe.json</code></pre>
 <pre><span id="VALof_yojson"><span class="keyword">val</span> of_yojson</span> : <code class="type">Yojson.Safe.json -><br>       <a href="P11_attribute_types.html#TYPEt">t</a> Ppx_deriving_yojson_runtime.error_or</code></pre>
 <pre><span id="VALmem"><span class="keyword">val</span> mem</span> : <code class="type"><a href="P11_attribute_types.html#TYPEt">t</a> -> 'a <a href="P11_attribute_type.html#TYPEt">P11_attribute_type.t</a> -> bool</code></pre><div class="info ">
-Return true if an attribute_type is present in an attribute_type list.<br>
+<div class="info-desc">
+<p>Return true if an attribute_type is present in an attribute_type list.</p>
+</div>
 </div>
 
 <pre><span id="VALremove_duplicates"><span class="keyword">val</span> remove_duplicates</span> : <code class="type"><a href="P11_attribute_types.html#TYPEt">t</a> -> <a href="P11_attribute_types.html#TYPEt">t</a></code></pre><div class="info ">
-Remove the duplicates from a list of attribute types<br>
+<div class="info-desc">
+<p>Remove the duplicates from a list of attribute types</p>
+</div>
 </div>
 </body></html>

@@ -108,9 +108,11 @@
 </div>
 <h1>Module <a href="type_Pkcs11_CK_ATTRIBUTE_SET.html">Pkcs11_CK_ATTRIBUTE_SET</a></h1>
 
-<pre><span class="keyword">module</span> Pkcs11_CK_ATTRIBUTE_SET: <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_CK_ATTRIBUTE_SET.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
-Functions to populate a CK_ATTRIBUTE.t in the way of getAttributeValue.
-    Populate the given t with the given value.<ul>
+<pre><span id="MODULEPkcs11_CK_ATTRIBUTE_SET"><span class="keyword">module</span> Pkcs11_CK_ATTRIBUTE_SET</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_CK_ATTRIBUTE_SET.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+<div class="info-desc">
+<p>Functions to populate a CK_ATTRIBUTE.t in the way of getAttributeValue.
+    Populate the given t with the given value.</p>
+<ul>
 <li>if value is none, then ulValueLen will be -1.</li>
 <li>if value exist but buffer is too small, ulValueLen will be value size
       and result will be Buffer_too_small.</li>
@@ -118,7 +120,7 @@ Functions to populate a CK_ATTRIBUTE.t in the way of getAttributeValue.
 <li>if value exist and the buffer can be used, value will be set in pValue
       and ulValueLen will be value size.</li>
 </ul>
-<br>
+</div>
 </div>
 <hr width="100%">
 

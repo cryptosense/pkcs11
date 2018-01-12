@@ -108,7 +108,7 @@
 </div>
 <h1>Module <a href="type_P11.Mechanism.html">P11.Mechanism</a></h1>
 
-<pre><span class="keyword">module</span> Mechanism: <code class="type"><a href="P11_mechanism.html">P11_mechanism</a></code></pre><hr width="100%">
+<pre><span id="MODULEMechanism"><span class="keyword">module</span> Mechanism</span>: <code class="type"><a href="P11_mechanism.html">P11_mechanism</a></code></pre><hr width="100%">
 
 <pre><code><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = </code></pre><table class="typetable">
 <tr>
@@ -668,7 +668,9 @@
 <pre><span id="VALof_yojson"><span class="keyword">val</span> of_yojson</span> : <code class="type">Yojson.Safe.json -> <a href="P11_mechanism.html#TYPEt">t</a> Ppx_deriving_yojson_runtime.error_or</code></pre>
 <pre><span id="VALmechanism_type"><span class="keyword">val</span> mechanism_type</span> : <code class="type"><a href="P11_mechanism.html#TYPEt">t</a> -> <a href="P11_mechanism_type.html#TYPEt">P11_mechanism_type.t</a></code></pre>
 <pre><span id="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type"><a href="P11_mechanism.html#TYPEt">t</a> -> string</code></pre><div class="info ">
-<code class="code">to_string</code> is defined as <code class="code"><span class="keyword">fun</span>&nbsp;x&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Mechanism_type</span>.to_string&nbsp;(mechanism_type&nbsp;x)&nbsp;</code><br>
+<div class="info-desc">
+<p><code class="code">to_string</code> is defined as <code class="code"><span class="keyword">fun</span>&nbsp;x&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Mechanism_type</span>.to_string&nbsp;(mechanism_type&nbsp;x)&nbsp;</code></p>
+</div>
 </div>
 
 <pre><code><span id="TYPEkind"><span class="keyword">type</span> <code class="type"></code>kind</span> = </code></pre><table class="typetable">
@@ -779,22 +781,30 @@
 </tr></table>
 
 <div class="info ">
-Kinds are "tags" on mechanisms which describe how they can be
-    used.<br>
+<div class="info-desc">
+<p>Kinds are "tags" on mechanisms which describe how they can be
+    used.</p>
+</div>
 </div>
 
 
 <pre><span id="VALkinds"><span class="keyword">val</span> kinds</span> : <code class="type"><a href="P11_mechanism.html#TYPEt">t</a> -> <a href="P11_mechanism.html#TYPEkind">kind</a> list</code></pre><div class="info ">
-<code class="code">kinds&nbsp;mechanism</code> returns the tags for the mechanism
-    <code class="code">mechanism</code>.<br>
+<div class="info-desc">
+<p><code class="code">kinds&nbsp;mechanism</code> returns the tags for the mechanism
+    <code class="code">mechanism</code>.</p>
+</div>
 </div>
 
 <pre><span id="VALis"><span class="keyword">val</span> is</span> : <code class="type"><a href="P11_mechanism.html#TYPEkind">kind</a> list -> <a href="P11_mechanism.html#TYPEt">t</a> -> bool</code></pre><div class="info ">
-<code class="code">is&nbsp;kinds&nbsp;t</code> checks that the mechanism <code class="code">t</code> has all the tags in
-    the list <code class="code">kinds</code>.<br>
+<div class="info-desc">
+<p><code class="code">is&nbsp;kinds&nbsp;t</code> checks that the mechanism <code class="code">t</code> has all the tags in
+    the list <code class="code">kinds</code>.</p>
+</div>
 </div>
 
 <pre><span id="VALkey_type"><span class="keyword">val</span> key_type</span> : <code class="type"><a href="P11_mechanism.html#TYPEt">t</a> -> <a href="P11_key_type.html#TYPEt">P11_key_type.t</a> option</code></pre><div class="info ">
-<code class="code">key_type&nbsp;t</code> returns the type of keys associated to the mechanism <code class="code">t</code>.<br>
+<div class="info-desc">
+<p><code class="code">key_type&nbsp;t</code> returns the type of keys associated to the mechanism <code class="code">t</code>.</p>
+</div>
 </div>
 </body></html>

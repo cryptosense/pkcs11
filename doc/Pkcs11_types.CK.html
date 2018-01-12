@@ -108,14 +108,16 @@
 </div>
 <h1>Module <a href="type_Pkcs11_types.CK.html">Pkcs11_types.CK</a></h1>
 
-<pre><span class="keyword">module</span> CK: <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_types.CK.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
+<pre><span id="MODULECK"><span class="keyword">module</span> CK</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_types.CK.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
 
 <pre><span id="VALnotify"><span class="keyword">val</span> notify</span> : <code class="type"><a href="Pkcs11_types.CK_NOTIFY.html#TYPEu">Pkcs11_types.CK_NOTIFY.u</a> Ctypes.ptr Ctypes.typ</code></pre>
 <pre><span id="VALsession_info"><span class="keyword">val</span> session_info</span> : <code class="type">Unsigned.ulong Ctypes.typ</code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK.TF.html">TF</a>: <div class="sig_block"><code class="code"><span class="keyword">functor</span>&nbsp;(</code><code class="code"><span class="constructor">F</span></code><code class="code">&nbsp;:&nbsp;</code><code class="code"><span class="keyword">sig</span></code></pre><div class="sig_block">
+<pre><span id="MODULETF"><span class="keyword">module</span> <a href="Pkcs11_types.CK.TF.html">TF</a></span>: <div class="sig_block"><code class="code"><span class="keyword">functor</span>&nbsp;(</code><code class="code"><span class="constructor">F</span></code><code class="code">&nbsp;:&nbsp;</code><code class="code"><span class="keyword">sig</span></code></pre><div class="sig_block">
 <pre><span id="TYPEfn"><span class="keyword">type</span> <code class="type">'a</code> fn</span> </pre>
 <div class="info ">
-Subinterface of Ctypes.FOREIGN<br>
+<div class="info-desc">
+<p>Subinterface of Ctypes.FOREIGN</p>
+</div>
 </div>
 
 
@@ -124,10 +126,11 @@ Subinterface of Ctypes.FOREIGN<br>
 
 <pre><span id="VAL(@->)"><span class="keyword">val</span> (@-&gt;)</span> : <code class="type">'a Ctypes.typ -> 'b fn -> ('a -> 'b) fn</code></pre>
 <pre><span id="VALreturning"><span class="keyword">val</span> returning</span> : <code class="type">'a Ctypes.typ -> 'a return fn</code></pre></div><pre><code class="code"><span class="keyword">end</span></code><code class="code">)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;</code><code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_types.CK.TF.html">..</a> <code class="code"><span class="keyword">end</span></code></div></pre><div class="info">
-This module contains the type declarations for the API functions.
+<p>This module contains the type declarations for the API functions.</p>
+
 </div>
 
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK.T.html">T</a>: <code class="type"><a href="Pkcs11_types.CK.TF.html">TF</a></code><code class="code">(</code><code class="code"><span class="keyword">sig</span></code></pre><div class="sig_block">
+<pre><span id="MODULET"><span class="keyword">module</span> <a href="Pkcs11_types.CK.T.html">T</a></span>: <code class="type"><a href="Pkcs11_types.CK.TF.html">TF</a></code><code class="code">(</code><code class="code"><span class="keyword">sig</span></code></pre><div class="sig_block">
 <pre><span id="TYPEfn"><span class="keyword">type</span> <code class="type">'a</code> fn</span> = <code class="type">'a Ctypes.fn</code> </pre>
 
 
@@ -137,4 +140,4 @@ This module contains the type declarations for the API functions.
 <pre><span id="VAL(@->)"><span class="keyword">val</span> (@-&gt;)</span> : <code class="type">'a Ctypes.typ -> 'b Ctypes.fn -> ('a -> 'b) Ctypes.fn</code></pre>
 <pre><span id="VALreturning"><span class="keyword">val</span> returning</span> : <code class="type">'a Ctypes.typ -> 'a Ctypes.fn</code></pre></div>
 <pre><code class="code"><span class="keyword">end</span></code><code class="code">)</code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK.Function_list.html">Function_list</a>: <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_types.CK.Function_list.html">..</a> <code class="code"><span class="keyword">end</span></code></pre></body></html>
+<pre><span id="MODULEFunction_list"><span class="keyword">module</span> <a href="Pkcs11_types.CK.Function_list.html">Function_list</a></span>: <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_types.CK.Function_list.html">..</a> <code class="code"><span class="keyword">end</span></code></pre></body></html>

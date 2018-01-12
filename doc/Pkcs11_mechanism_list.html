@@ -108,16 +108,17 @@
 </div>
 <h1>Module <a href="type_Pkcs11_mechanism_list.html">Pkcs11_mechanism_list</a></h1>
 
-<pre><span class="keyword">module</span> Pkcs11_mechanism_list: <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_mechanism_list.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
-An element of type <code class="code">t</code> is a structure made of a pointer to a C
-    array, and its length.
-<p>
+<pre><span id="MODULEPkcs11_mechanism_list"><span class="keyword">module</span> Pkcs11_mechanism_list</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_mechanism_list.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+<div class="info-desc">
+<p>An element of type <code class="code">t</code> is a structure made of a pointer to a C
+    array, and its length.</p>
 
-    The reason we use this type is that some PKCS#11 functions
+<p>The reason we use this type is that some PKCS#11 functions
     require a two step interraction, in which one first gives a null
     pointer (with length 0) to a function, which modifies the length
     of the list. Then, the user allocates memory for this list, and
-    performs a second call to the function.<br>
+    performs a second call to the function.</p>
+</div>
 </div>
 <hr width="100%">
 
@@ -125,13 +126,17 @@ An element of type <code class="code">t</code> is a structure made of a pointer 
 
 
 <pre><span id="VALcreate"><span class="keyword">val</span> create</span> : <code class="type">unit -> <a href="Pkcs11_mechanism_list.html#TYPEt">t</a></code></pre><div class="info ">
-<code class="code">create&nbsp;()</code> allocates a new <code class="code">t</code> with length 0, and content the
-    null pointer.<br>
+<div class="info-desc">
+<p><code class="code">create&nbsp;()</code> allocates a new <code class="code">t</code> with length 0, and content the
+    null pointer.</p>
+</div>
 </div>
 
 <pre><span id="VALallocate"><span class="keyword">val</span> allocate</span> : <code class="type"><a href="Pkcs11_mechanism_list.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
-<code class="code">allocate&nbsp;t</code> updates the content of the <code class="code">t</code> structure to point
-    to freshly allocated memory.<br>
+<div class="info-desc">
+<p><code class="code">allocate&nbsp;t</code> updates the content of the <code class="code">t</code> structure to point
+    to freshly allocated memory.</p>
+</div>
 </div>
 
 <pre><span id="VALof_raw"><span class="keyword">val</span> of_raw</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">Pkcs11_CK_MECHANISM_TYPE.t</a> Ctypes.ptr -><br>       <a href="P11_ulong.html#TYPEt">P11_ulong.t</a> Ctypes.ptr -> <a href="Pkcs11_mechanism_list.html#TYPEt">t</a></code></pre>

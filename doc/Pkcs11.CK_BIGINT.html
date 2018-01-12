@@ -108,7 +108,7 @@
 </div>
 <h1>Module <a href="type_Pkcs11.CK_BIGINT.html">Pkcs11.CK_BIGINT</a></h1>
 
-<pre><span class="keyword">module</span> CK_BIGINT: <code class="type"><a href="P11_bigint.html">P11_bigint</a></code></pre><hr width="100%">
+<pre><span id="MODULECK_BIGINT"><span class="keyword">module</span> CK_BIGINT</span>: <code class="type"><a href="P11_bigint.html">P11_bigint</a></code></pre><hr width="100%">
 
 <pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> </pre>
 
@@ -120,7 +120,9 @@
 <pre><span id="VALto_yojson"><span class="keyword">val</span> to_yojson</span> : <code class="type"><a href="P11_bigint.html#TYPEt">t</a> -> Yojson.Safe.json</code></pre>
 <pre><span id="VALof_yojson"><span class="keyword">val</span> of_yojson</span> : <code class="type">Yojson.Safe.json -> <a href="P11_bigint.html#TYPEt">t</a> Ppx_deriving_yojson_runtime.error_or</code></pre>
 <pre><span id="VALencode"><span class="keyword">val</span> encode</span> : <code class="type"><a href="P11_bigint.html#TYPEt">t</a> -> string</code></pre><div class="info ">
-Convert to/from a big-endian byte array.<br>
+<div class="info-desc">
+<p>Convert to/from a big-endian byte array.</p>
+</div>
 </div>
 
 <pre><span id="VALdecode"><span class="keyword">val</span> decode</span> : <code class="type">string -> <a href="P11_bigint.html#TYPEt">t</a></code></pre>

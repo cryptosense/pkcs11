@@ -109,10 +109,7 @@
 </div>
 <h1>Module <a href="type_P11_template.html">P11_template</a></h1>
 
-<pre><span class="keyword">module</span> P11_template: <code class="code"><span class="keyword">sig</span></code> <a href="P11_template.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
-Return the value of the first occurrence of an attribute.<br>
-</div>
-<hr width="100%">
+<pre><span id="MODULEP11_template"><span class="keyword">module</span> P11_template</span>: <code class="code"><span class="keyword">sig</span></code> <a href="P11_template.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
 
 <pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = <code class="type"><a href="P11_attribute.html#TYPEpack">P11_attribute.pack</a> list</code> </pre>
 
@@ -123,7 +120,9 @@ Return the value of the first occurrence of an attribute.<br>
 <pre><span id="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type"><a href="P11_template.html#TYPEt">t</a> -> string</code></pre>
 <pre><span id="VALpp"><span class="keyword">val</span> pp</span> : <code class="type">Format.formatter -> <a href="P11_template.html#TYPEt">t</a> -> unit</code></pre>
 <pre><span id="VALget"><span class="keyword">val</span> get</span> : <code class="type"><a href="P11_template.html#TYPEt">t</a> -> 'a <a href="P11_attribute_type.html#TYPEt">P11_attribute_type.t</a> -> 'a option</code></pre><div class="info ">
-Return the value of the first occurrence of an attribute.<br>
+<div class="info-desc">
+<p>Return the value of the first occurrence of an attribute.</p>
+</div>
 </div>
 
 <pre><span id="VALget_pack"><span class="keyword">val</span> get_pack</span> : <code class="type"><a href="P11_template.html#TYPEt">t</a> -> <a href="P11_attribute_type.html#TYPEpack">P11_attribute_type.pack</a> -> <a href="P11_attribute.html#TYPEpack">P11_attribute.pack</a> option</code></pre>
@@ -131,77 +130,95 @@ Return the value of the first occurrence of an attribute.<br>
 <pre><span id="VALnormalize"><span class="keyword">val</span> normalize</span> : <code class="type"><a href="P11_template.html#TYPEt">t</a> -> <a href="P11_template.html#TYPEt">t</a></code></pre>
 <pre><span id="VALattribute_types"><span class="keyword">val</span> attribute_types</span> : <code class="type"><a href="P11_template.html#TYPEt">t</a> -> <a href="P11_attribute_type.html#TYPEpack">P11_attribute_type.pack</a> list</code></pre>
 <pre><span id="VALset_attribute"><span class="keyword">val</span> set_attribute</span> : <code class="type"><a href="P11_attribute.html#TYPEpack">P11_attribute.pack</a> -> <a href="P11_template.html#TYPEt">t</a> -> <a href="P11_template.html#TYPEt">t</a></code></pre><div class="info ">
-<code class="code">set_attribute&nbsp;attribute&nbsp;template</code> replaces the value of
+<div class="info-desc">
+<p><code class="code">set_attribute&nbsp;attribute&nbsp;template</code> replaces the value of
     <code class="code">attribute</code> in <code class="code">template</code> if it already exists and adds
-    <code class="code">attribute</code> otherwise.<br>
+    <code class="code">attribute</code> otherwise.</p>
+</div>
 </div>
 
 <pre><span id="VALremove_attribute"><span class="keyword">val</span> remove_attribute</span> : <code class="type"><a href="P11_attribute.html#TYPEpack">P11_attribute.pack</a> -> <a href="P11_template.html#TYPEt">t</a> -> <a href="P11_template.html#TYPEt">t</a></code></pre><div class="info ">
-<code class="code">remove_attribute&nbsp;attribute&nbsp;template</code> removes the value
+<div class="info-desc">
+<p><code class="code">remove_attribute&nbsp;attribute&nbsp;template</code> removes the value
     <code class="code">attribute</code> from <code class="code">template</code> if present. If the attribute_type of
-    <code class="code">attribute</code> is present with a different value, does nothing.<br>
+    <code class="code">attribute</code> is present with a different value, does nothing.</p>
+</div>
 </div>
 
 <pre><span id="VALremove_attribute_type"><span class="keyword">val</span> remove_attribute_type</span> : <code class="type"><a href="P11_attribute_type.html#TYPEpack">P11_attribute_type.pack</a> -> <a href="P11_template.html#TYPEt">t</a> -> <a href="P11_template.html#TYPEt">t</a></code></pre><div class="info ">
-<code class="code">remove_attribute&nbsp;attribute_type&nbsp;template</code> removes the attribute
+<div class="info-desc">
+<p><code class="code">remove_attribute&nbsp;attribute_type&nbsp;template</code> removes the attribute
     type <code class="code">attribute_type</code> from <code class="code">template</code> if present with any
-    value.<br>
+    value.</p>
+</div>
 </div>
 
 <pre><span id="VALfold"><span class="keyword">val</span> fold</span> : <code class="type">('a -> <a href="P11_template.html#TYPEt">t</a> -> <a href="P11_template.html#TYPEt">t</a>) -><br>       'a list -> <a href="P11_template.html#TYPEt">t</a> -> <a href="P11_template.html#TYPEt">t</a></code></pre><div class="info ">
-Iterate one of the above operation. Same as List.fold_right<br>
+<div class="info-desc">
+<p>Iterate one of the above operation. Same as List.fold_right</p>
+</div>
 </div>
 
 <pre><span id="VALunion"><span class="keyword">val</span> union</span> : <code class="type"><a href="P11_template.html#TYPEt">t</a> -> <a href="P11_template.html#TYPEt">t</a> -> <a href="P11_template.html#TYPEt">t</a></code></pre><div class="info ">
-<code class="code">union&nbsp;template1&nbsp;template2</code> concatenates the templates. If an
+<div class="info-desc">
+<p><code class="code">union&nbsp;template1&nbsp;template2</code> concatenates the templates. If an
     attribute is present in both <code class="code">template1</code> and <code class="code">template2</code>, the
-    value in <code class="code">template1</code> is kept.<br>
+    value in <code class="code">template1</code> is kept.</p>
+</div>
 </div>
 
 <pre><span id="VALonly_attribute_types"><span class="keyword">val</span> only_attribute_types</span> : <code class="type"><a href="P11_attribute_type.html#TYPEpack">P11_attribute_type.pack</a> list -> <a href="P11_template.html#TYPEt">t</a> -> <a href="P11_template.html#TYPEt">t</a></code></pre><div class="info ">
-<code class="code">only_attribute_types&nbsp;attr_types&nbsp;template</code> keeps only the
-    attributes in <code class="code">template</code> that are present in <code class="code">attr_types</code>.<br>
+<div class="info-desc">
+<p><code class="code">only_attribute_types&nbsp;attr_types&nbsp;template</code> keeps only the
+    attributes in <code class="code">template</code> that are present in <code class="code">attr_types</code>.</p>
+</div>
 </div>
 
 <pre><span id="VALexcept_attribute_types"><span class="keyword">val</span> except_attribute_types</span> : <code class="type"><a href="P11_attribute_type.html#TYPEpack">P11_attribute_type.pack</a> list -> <a href="P11_template.html#TYPEt">t</a> -> <a href="P11_template.html#TYPEt">t</a></code></pre><div class="info ">
-<code class="code">except_attribute_types&nbsp;attr_types&nbsp;template</code> removes all the
-    attributes in <code class="code">template</code> that are present in <code class="code">attr_types</code>.<br>
+<div class="info-desc">
+<p><code class="code">except_attribute_types&nbsp;attr_types&nbsp;template</code> removes all the
+    attributes in <code class="code">template</code> that are present in <code class="code">attr_types</code>.</p>
+</div>
 </div>
 
 <pre><span id="VALfind_attribute_types"><span class="keyword">val</span> find_attribute_types</span> : <code class="type"><a href="P11_attribute_type.html#TYPEpack">P11_attribute_type.pack</a> list -> <a href="P11_template.html#TYPEt">t</a> -> <a href="P11_template.html#TYPEt">t</a> option</code></pre><div class="info ">
-<code class="code">find_attribute_types&nbsp;l&nbsp;template</code> look up for the value of each
+<div class="info-desc">
+<p><code class="code">find_attribute_types&nbsp;l&nbsp;template</code> look up for the value of each
     attribute type in the list l in <code class="code">template</code>. Return <code class="code"><span class="constructor">None</span></code> if one
-    or several attribute types cannot be found in <code class="code">template</code>.<br>
+    or several attribute types cannot be found in <code class="code">template</code>.</p>
+</div>
 </div>
 
 <pre><span id="VALcorrespond"><span class="keyword">val</span> correspond</span> : <code class="type">source:<a href="P11_template.html#TYPEt">t</a> -> tested:<a href="P11_template.html#TYPEt">t</a> -> bool</code></pre><div class="info ">
-<code class="code">correspond&nbsp;source&nbsp;tested</code> check if <code class="code">tested</code> match
+<div class="info-desc">
+<p><code class="code">correspond&nbsp;source&nbsp;tested</code> check if <code class="code">tested</code> match
     <code class="code">source</code>.
     It means that it will return true if All the elements
-    in <code class="code">source</code> are present in <code class="code">tested</code>.<br>
+    in <code class="code">source</code> are present in <code class="code">tested</code>.</p>
+</div>
 </div>
 
 <pre><span id="VALdiff"><span class="keyword">val</span> diff</span> : <code class="type">source:<a href="P11_template.html#TYPEt">t</a> -><br>       tested:<a href="P11_template.html#TYPEt">t</a> -> <a href="P11_attribute.html#TYPEpack">P11_attribute.pack</a> list * <a href="P11_attribute.html#TYPEpack">P11_attribute.pack</a> list</code></pre><div class="info ">
-<code class="code">diff&nbsp;source&nbsp;tested</code> search for all the elements of <code class="code">source</code>
-    that are not equal to an element of <code class="code">tested</code>.
-<p>
+<div class="info-desc">
+<p><code class="code">diff&nbsp;source&nbsp;tested</code> search for all the elements of <code class="code">source</code>
+    that are not equal to an element of <code class="code">tested</code>.</p>
 
-    It returns a tuple with the list of elements from source
+<p>It returns a tuple with the list of elements from source
     which are expected but not found in tested and a list of elements
-    which are found but with a different value.<br>
+    which are found but with a different value.</p>
+</div>
 </div>
 
 <pre><span id="VALhash"><span class="keyword">val</span> hash</span> : <code class="type"><a href="P11_template.html#TYPEt">t</a> -> Digest.t</code></pre><div class="info ">
-<code class="code">hash&nbsp;template</code> creates a digest from a template.
-<p>
+<div class="info-desc">
+<p><code class="code">hash&nbsp;template</code> creates a digest from a template.</p>
 
-    It sorts the elements of the template to be sure to have the
+<p>It sorts the elements of the template to be sure to have the
     same digest for two templates that have attributes in different
-    orders.<br>
+    orders.</p>
 </div>
-<br>
-<h2 id="2_Accessors">Accessors </h2><br>
-
+</div>
+<h3 id="2_Accessors">Accessors </h3>
 <pre><span id="VALget_class"><span class="keyword">val</span> get_class</span> : <code class="type"><a href="P11_template.html#TYPEt">t</a> -> <a href="P11_object_class.html#TYPEt">P11_object_class.t</a> option</code></pre>
 <pre><span id="VALget_key_type"><span class="keyword">val</span> get_key_type</span> : <code class="type"><a href="P11_template.html#TYPEt">t</a> -> <a href="P11_key_type.html#TYPEt">P11_key_type.t</a> option</code></pre>
 <pre><span id="VALget_label"><span class="keyword">val</span> get_label</span> : <code class="type"><a href="P11_template.html#TYPEt">t</a> -> string option</code></pre></body></html>

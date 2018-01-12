@@ -108,21 +108,21 @@
 </div>
 <h1>Module <a href="type_Pkcs11_data.html">Pkcs11_data</a></h1>
 
-<pre><span class="keyword">module</span> Pkcs11_data: <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_data.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
-Data: input and output of encryption functions.<br>
+<pre><span id="MODULEPkcs11_data"><span class="keyword">module</span> Pkcs11_data</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_data.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+<div class="info-desc">
+<p>Data: input and output of encryption functions.</p>
+</div>
 </div>
 <hr width="100%">
-<br>
-An element of type <code class="code">t</code> is a structure made of a pointer to a C
+<p>An element of type <code class="code">t</code> is a structure made of a pointer to a C
     string, and its length. It is easy to convert this type to and
-    from OCaml strings.
-<p>
+    from OCaml strings.</p>
 
-    The reason we use this type is that some PKCS#11 functions
+<p>The reason we use this type is that some PKCS#11 functions
     require a two step interraction, in which one first gives a null
     pointer (with length 0) to a function, which modifies the length
     of the data. Then, the user allocates memory for this Data.t, and
-    performs a second call to the function.<br>
+    performs a second call to the function.</p>
 
 <pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> </pre>
 
@@ -131,13 +131,17 @@ An element of type <code class="code">t</code> is a structure made of a pointer 
 <pre><span id="VALof_string"><span class="keyword">val</span> of_string</span> : <code class="type">string -> <a href="Pkcs11_data.html#TYPEt">t</a></code></pre>
 <pre><span id="VALstring_of_raw"><span class="keyword">val</span> string_of_raw</span> : <code class="type">'a Ctypes.ptr -> Unsigned.ULong.t -> string</code></pre>
 <pre><span id="VALcreate"><span class="keyword">val</span> create</span> : <code class="type">unit -> <a href="Pkcs11_data.html#TYPEt">t</a></code></pre><div class="info ">
-<code class="code">create&nbsp;()</code> allocates a new <code class="code">t</code> with length 0, and content the
-    null pointer.<br>
+<div class="info-desc">
+<p><code class="code">create&nbsp;()</code> allocates a new <code class="code">t</code> with length 0, and content the
+    null pointer.</p>
+</div>
 </div>
 
 <pre><span id="VALallocate"><span class="keyword">val</span> allocate</span> : <code class="type"><a href="Pkcs11_data.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
-<code class="code">allocate&nbsp;t</code> updates the content of the <code class="code">t</code> structure to point
-    to freshly allocated memory.<br>
+<div class="info-desc">
+<p><code class="code">allocate&nbsp;t</code> updates the content of the <code class="code">t</code> structure to point
+    to freshly allocated memory.</p>
+</div>
 </div>
 
 <pre><span id="VALget_content"><span class="keyword">val</span> get_content</span> : <code class="type"><a href="Pkcs11_data.html#TYPEt">t</a> -> <a href="Pkcs11_CK_BYTE.html#TYPEt">Pkcs11_CK_BYTE.t</a> Ctypes.ptr</code></pre>

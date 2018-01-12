@@ -108,21 +108,27 @@
 </div>
 <h1>Module <a href="type_P11_key_attributes.html">P11_key_attributes</a></h1>
 
-<pre><span class="keyword">module</span> P11_key_attributes: <code class="code"><span class="keyword">sig</span></code> <a href="P11_key_attributes.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
-Information about key types<br>
+<pre><span id="MODULEP11_key_attributes"><span class="keyword">module</span> P11_key_attributes</span>: <code class="code"><span class="keyword">sig</span></code> <a href="P11_key_attributes.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+<div class="info-desc">
+<p>Information about key types</p>
+</div>
 </div>
 <hr width="100%">
 
 <pre><span id="TYPEkind"><span class="keyword">type</span> <code class="type"></code>kind</span> = <code class="type">[ `AES<br>       | `DES<br>       | `DES3<br>       | `DSA_private<br>       | `DSA_public<br>       | `EC_private<br>       | `EC_public<br>       | `RSA_private<br>       | `RSA_public<br>       | `Secret ]</code> </pre>
 <div class="info ">
-The type of kinds that applies to a given object.<br>
+<div class="info-desc">
+<p>The type of kinds that applies to a given object.</p>
+</div>
 </div>
 
 
 <pre><span id="VALpossible"><span class="keyword">val</span> possible</span> : <code class="type"><a href="P11_key_attributes.html#TYPEkind">kind</a> -> P11.Attribute_types.t</code></pre><div class="info ">
-Return all the possible attributes for a given kind, if the
+<div class="info-desc">
+<p>Return all the possible attributes for a given kind, if the
     kind is a high level kind (Secret for example), it is possible
     that some other attribute can be given but not necessarily to all
-    of the object of this kind.<br>
+    of the object of this kind.</p>
+</div>
 </div>
 </body></html>

@@ -108,11 +108,7 @@
 </div>
 <h1>Module <a href="type_P11_token_info.html">P11_token_info</a></h1>
 
-<pre><span class="keyword">module</span> P11_token_info: <code class="code"><span class="keyword">sig</span></code> <a href="P11_token_info.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
-Return correct string value if the unsigned long has a special value e.g.
-    <code class="code"><span class="constructor">CK_UNAVAILABLE_INFORMATION</span></code>.<br>
-</div>
-<hr width="100%">
+<pre><span id="MODULEP11_token_info"><span class="keyword">module</span> P11_token_info</span>: <code class="code"><span class="keyword">sig</span></code> <a href="P11_token_info.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
 
 <pre><code><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = {</code></pre><table class="typetable">
 <tr>
@@ -252,8 +248,10 @@ Return correct string value if the unsigned long has a special value e.g.
 <pre><span id="VALto_yojson"><span class="keyword">val</span> to_yojson</span> : <code class="type"><a href="P11_token_info.html#TYPEt">t</a> -> Yojson.Safe.json</code></pre>
 <pre><span id="VALof_yojson"><span class="keyword">val</span> of_yojson</span> : <code class="type">Yojson.Safe.json -> <a href="P11_token_info.html#TYPEt">t</a> Ppx_deriving_yojson_runtime.error_or</code></pre>
 <pre><span id="VALul_to_string"><span class="keyword">val</span> ul_to_string</span> : <code class="type">Unsigned.ULong.t -> string</code></pre><div class="info ">
-Return correct string value if the unsigned long has a special value e.g.
-    <code class="code"><span class="constructor">CK_UNAVAILABLE_INFORMATION</span></code>.<br>
+<div class="info-desc">
+<p>Return correct string value if the unsigned long has a special value e.g.
+    <code class="code"><span class="constructor">CK_UNAVAILABLE_INFORMATION</span></code>.</p>
+</div>
 </div>
 
 <pre><span id="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type">?newlines:bool -> ?indent:string -> <a href="P11_token_info.html#TYPEt">t</a> -> string</code></pre>

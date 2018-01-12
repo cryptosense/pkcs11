@@ -108,36 +108,27 @@
 </div>
 <h1>Module <a href="type_Pkcs11_types.html">Pkcs11_types</a></h1>
 
-<pre><span class="keyword">module</span> Pkcs11_types: <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_types.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
-Types used in the API<br>
+<pre><span id="MODULEPkcs11_types"><span class="keyword">module</span> Pkcs11_types</span>: <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_types.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+<div class="info-desc">
+<p>Types used in the API</p>
+</div>
 </div>
 <hr width="100%">
-<br>
-The bindings come in two flavours. The first one is the Direct
+<p>The bindings come in two flavours. The first one is the Direct
     mode, in which each function from the PKCS11.h header are binded
     directly. The second one is the Indirect mode, in which we use an
     indirection through the list of function returned by
-    GetFunctionList.<br>
+    GetFunctionList.</p>
+<p>CONVENTIONS.</p>
 
-<pre><span id="EXCEPTIONGetFunctionList_Failure"><span class="keyword">exception</span> GetFunctionList_Failure</span> <span class="keyword">of</span> <code class="type">string</code></pre>
-<div class="info ">
-The GetFunctionList function failed, i.e., returned a return-value
-    different from CKR_OK. This exception can only be triggered in the
-    Indirect mode of our bindings.<br>
-</div>
-<br>
-CONVENTIONS.
-<p>
-
-    _t is a type variable used to constrain the <code class="code"><span class="constructor">Ctypes</span></code> representation.  It
+<p>_t is a type variable used to constrain the <code class="code"><span class="constructor">Ctypes</span></code> representation.  It
     appears in <code class="code"><span class="constructor">Pkcs11</span>.<span class="constructor">CK_VERSION</span></code>, for instance. However, only <code class="code">t</code> is exported,
     which is defined as <code class="code">_t&nbsp;structure</code>. For some modules, it is quite easy to
     work with <code class="code">t</code> seen as an abstract type.  For other modules, the higher-level
-    type such as <code class="code"><span class="constructor">P11</span>.<span class="constructor">Version</span>.t</code> is more practical.
-<p>
+    type such as <code class="code"><span class="constructor">P11</span>.<span class="constructor">Version</span>.t</code> is more practical.</p>
 
-    Where appropriate, we provide the following functions:
-<p>
+<p>Where appropriate, we provide the following functions:</p>
+
 <ul>
 <li><code class="code">create:&nbsp;unit&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11</span>.<span class="constructor">CK_x</span>.t</code>: Allocate a new object of type t (possibly, not
       initialized).</li>
@@ -148,57 +139,56 @@ CONVENTIONS.
 <li><code class="code">make:&nbsp;<span class="constructor">P11</span>.<span class="constructor">X</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Pkcs11</span>.<span class="constructor">CK_x</span>.t</code>: Build the Ctypes version of the data
       represented by <code class="code"><span class="constructor">P11</span>.<span class="constructor">X</span>.t</code>.</li>
 </ul>
-
-    N.B. The last two functions raise the question of why we are not using
+<p>N.B. The last two functions raise the question of why we are not using
     Ctypes views. The problem is that for some functions of the PKCS#11
     interface, we have to make several calls to the API to build a proper
-    <code class="code"><span class="constructor">Pkcs11</span>.<span class="constructor">CK_x</span>.t</code>, that could then be used to build a <code class="code"><span class="constructor">P11</span>.<span class="constructor">X</span>.t</code>.<br>
+    <code class="code"><span class="constructor">Pkcs11</span>.<span class="constructor">CK_x</span>.t</code>, that could then be used to build a <code class="code"><span class="constructor">P11</span>.<span class="constructor">X</span>.t</code>.</p>
 
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_ULONG.html">CK_ULONG</a>: <code class="type"><a href="P11_ulong.html">P11_ulong</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_BYTE.html">CK_BYTE</a>: <code class="type"><a href="Pkcs11_CK_BYTE.html">Pkcs11_CK_BYTE</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_BBOOL.html">CK_BBOOL</a>: <code class="type"><a href="Pkcs11_CK_BBOOL.html">Pkcs11_CK_BBOOL</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_UTF8CHAR.html">CK_UTF8CHAR</a>: <code class="type"><a href="Pkcs11_CK_UTF8CHAR.html">Pkcs11_CK_UTF8CHAR</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_VOID.html">CK_VOID</a>: <code class="type"><a href="Pkcs11_CK_VOID.html">Pkcs11_CK_VOID</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_FLAGS.html">CK_FLAGS</a>: <code class="type"><a href="Pkcs11_CK_FLAGS.html">Pkcs11_CK_FLAGS</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.Data.html">Data</a>: <code class="type"><a href="Pkcs11_data.html">Pkcs11_data</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_OBJECT_CLASS.html">CK_OBJECT_CLASS</a>: <code class="type"><a href="Pkcs11_CK_OBJECT_CLASS.html">Pkcs11_CK_OBJECT_CLASS</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_KEY_TYPE.html">CK_KEY_TYPE</a>: <code class="type"><a href="Pkcs11_CK_KEY_TYPE.html">Pkcs11_CK_KEY_TYPE</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_VERSION.html">CK_VERSION</a>: <code class="type"><a href="Pkcs11_CK_VERSION.html">Pkcs11_CK_VERSION</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_SESSION_HANDLE.html">CK_SESSION_HANDLE</a>: <code class="type"><a href="Pkcs11_CK_SESSION_HANDLE.html">Pkcs11_CK_SESSION_HANDLE</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_OBJECT_HANDLE.html">CK_OBJECT_HANDLE</a>: <code class="type"><a href="Pkcs11_CK_OBJECT_HANDLE.html">Pkcs11_CK_OBJECT_HANDLE</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_HW_FEATURE_TYPE.html">CK_HW_FEATURE_TYPE</a>: <code class="type"><a href="Pkcs11_CK_HW_FEATURE_TYPE.html">Pkcs11_CK_HW_FEATURE_TYPE</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_SLOT_ID.html">CK_SLOT_ID</a>: <code class="type"><a href="Pkcs11_CK_SLOT_ID.html">Pkcs11_CK_SLOT_ID</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_SLOT_INFO.html">CK_SLOT_INFO</a>: <code class="type"><a href="Pkcs11_CK_SLOT_INFO.html">Pkcs11_CK_SLOT_INFO</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.Slot_list.html">Slot_list</a>: <code class="type"><a href="Pkcs11_slot_list.html">Pkcs11_slot_list</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_MECHANISM_INFO.html">CK_MECHANISM_INFO</a>: <code class="type"><a href="Pkcs11_CK_MECHANISM_INFO.html">Pkcs11_CK_MECHANISM_INFO</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_SESSION_INFO.html">CK_SESSION_INFO</a>: <code class="type"><a href="Pkcs11_CK_SESSION_INFO.html">Pkcs11_CK_SESSION_INFO</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_BIGINT.html">CK_BIGINT</a>: <code class="type"><a href="P11_bigint.html">P11_bigint</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_RV.html">CK_RV</a>: <code class="type"><a href="Pkcs11_CK_RV.html">Pkcs11_CK_RV</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_MECHANISM_TYPE.html">CK_MECHANISM_TYPE</a>: <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html">Pkcs11_CK_MECHANISM_TYPE</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.Key_gen_mechanism.html">Key_gen_mechanism</a>: <code class="type"><a href="Pkcs11_key_gen_mechanism.html">Pkcs11_key_gen_mechanism</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_RSA_PKCS_MGF_TYPE.html">CK_RSA_PKCS_MGF_TYPE</a>: <code class="type"><a href="Pkcs11_CK_RSA_PKCS_MGF_TYPE.html">Pkcs11_CK_RSA_PKCS_MGF_TYPE</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_RSA_PKCS_OAEP_PARAMS.html">CK_RSA_PKCS_OAEP_PARAMS</a>: <code class="type"><a href="Pkcs11_CK_RSA_PKCS_OAEP_PARAMS.html">Pkcs11_CK_RSA_PKCS_OAEP_PARAMS</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_RSA_PKCS_PSS_PARAMS.html">CK_RSA_PKCS_PSS_PARAMS</a>: <code class="type"><a href="Pkcs11_CK_RSA_PKCS_PSS_PARAMS.html">Pkcs11_CK_RSA_PKCS_PSS_PARAMS</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_KEY_DERIVATION_STRING_DATA.html">CK_KEY_DERIVATION_STRING_DATA</a>: <code class="type"><a href="Pkcs11_CK_KEY_DERIVATION_STRING_DATA.html">Pkcs11_CK_KEY_DERIVATION_STRING_DATA</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_DES_CBC_ENCRYPT_DATA_PARAMS.html">CK_DES_CBC_ENCRYPT_DATA_PARAMS</a>: <code class="type"><a href="Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_DES_CBC_ENCRYPT_DATA_PARAMS.html">Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_DES_CBC_ENCRYPT_DATA_PARAMS</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_AES_CBC_ENCRYPT_DATA_PARAMS.html">CK_AES_CBC_ENCRYPT_DATA_PARAMS</a>: <code class="type"><a href="Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_AES_CBC_ENCRYPT_DATA_PARAMS.html">Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_AES_CBC_ENCRYPT_DATA_PARAMS</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.html">CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE</a>: <code class="type"><a href="Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.html">Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE.html">CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE</a>: <code class="type"><a href="Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE.html">Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_PKCS5_PBKD2_PARAMS.html">CK_PKCS5_PBKD2_PARAMS</a>: <code class="type"><a href="Pkcs11_CK_PKCS5_PBKD2_PARAMS.html">Pkcs11_CK_PKCS5_PBKD2_PARAMS</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_EC_KDF_TYPE.html">CK_EC_KDF_TYPE</a>: <code class="type"><a href="Pkcs11_CK_EC_KDF_TYPE.html">Pkcs11_CK_EC_KDF_TYPE</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_ECDH1_DERIVE_PARAMS.html">CK_ECDH1_DERIVE_PARAMS</a>: <code class="type"><a href="Pkcs11_CK_ECDH1_DERIVE_PARAMS.html">Pkcs11_CK_ECDH1_DERIVE_PARAMS</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_ECMQV_DERIVE_PARAMS.html">CK_ECMQV_DERIVE_PARAMS</a>: <code class="type"><a href="Pkcs11_CK_ECMQV_DERIVE_PARAMS.html">Pkcs11_CK_ECMQV_DERIVE_PARAMS</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_MECHANISM.html">CK_MECHANISM</a>: <code class="type"><a href="Pkcs11_CK_MECHANISM.html">Pkcs11_CK_MECHANISM</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_USER_TYPE.html">CK_USER_TYPE</a>: <code class="type"><a href="Pkcs11_CK_USER_TYPE.html">Pkcs11_CK_USER_TYPE</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_INFO.html">CK_INFO</a>: <code class="type"><a href="Pkcs11_CK_INFO.html">Pkcs11_CK_INFO</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_TOKEN_INFO.html">CK_TOKEN_INFO</a>: <code class="type"><a href="Pkcs11_CK_TOKEN_INFO.html">Pkcs11_CK_TOKEN_INFO</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_ATTRIBUTE_TYPE.html">CK_ATTRIBUTE_TYPE</a>: <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html">Pkcs11_CK_ATTRIBUTE_TYPE</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_ATTRIBUTE.html">CK_ATTRIBUTE</a>: <code class="type"><a href="Pkcs11_CK_ATTRIBUTE.html">Pkcs11_CK_ATTRIBUTE</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.Template.html">Template</a>: <code class="type"><a href="Pkcs11_template.html">Pkcs11_template</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.Mechanism_list.html">Mechanism_list</a>: <code class="type"><a href="Pkcs11_mechanism_list.html">Pkcs11_mechanism_list</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_ATTRIBUTE_SET.html">CK_ATTRIBUTE_SET</a>: <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_SET.html">Pkcs11_CK_ATTRIBUTE_SET</a></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_AES_CTR_PARAMS.html">CK_AES_CTR_PARAMS</a>: <code class="type">Pkcs11_CK_AES_CTR_PARAMS</code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_GCM_PARAMS.html">CK_GCM_PARAMS</a>: <code class="type">Pkcs11_CK_GCM_PARAMS</code></pre>
+<pre><span id="MODULECK_ULONG"><span class="keyword">module</span> <a href="Pkcs11_types.CK_ULONG.html">CK_ULONG</a></span>: <code class="type"><a href="P11_ulong.html">P11_ulong</a></code></pre>
+<pre><span id="MODULECK_BYTE"><span class="keyword">module</span> <a href="Pkcs11_types.CK_BYTE.html">CK_BYTE</a></span>: <code class="type"><a href="Pkcs11_CK_BYTE.html">Pkcs11_CK_BYTE</a></code></pre>
+<pre><span id="MODULECK_BBOOL"><span class="keyword">module</span> <a href="Pkcs11_types.CK_BBOOL.html">CK_BBOOL</a></span>: <code class="type"><a href="Pkcs11_CK_BBOOL.html">Pkcs11_CK_BBOOL</a></code></pre>
+<pre><span id="MODULECK_UTF8CHAR"><span class="keyword">module</span> <a href="Pkcs11_types.CK_UTF8CHAR.html">CK_UTF8CHAR</a></span>: <code class="type"><a href="Pkcs11_CK_UTF8CHAR.html">Pkcs11_CK_UTF8CHAR</a></code></pre>
+<pre><span id="MODULECK_VOID"><span class="keyword">module</span> <a href="Pkcs11_types.CK_VOID.html">CK_VOID</a></span>: <code class="type"><a href="Pkcs11_CK_VOID.html">Pkcs11_CK_VOID</a></code></pre>
+<pre><span id="MODULECK_FLAGS"><span class="keyword">module</span> <a href="Pkcs11_types.CK_FLAGS.html">CK_FLAGS</a></span>: <code class="type"><a href="Pkcs11_CK_FLAGS.html">Pkcs11_CK_FLAGS</a></code></pre>
+<pre><span id="MODULEData"><span class="keyword">module</span> <a href="Pkcs11_types.Data.html">Data</a></span>: <code class="type"><a href="Pkcs11_data.html">Pkcs11_data</a></code></pre>
+<pre><span id="MODULECK_OBJECT_CLASS"><span class="keyword">module</span> <a href="Pkcs11_types.CK_OBJECT_CLASS.html">CK_OBJECT_CLASS</a></span>: <code class="type"><a href="Pkcs11_CK_OBJECT_CLASS.html">Pkcs11_CK_OBJECT_CLASS</a></code></pre>
+<pre><span id="MODULECK_KEY_TYPE"><span class="keyword">module</span> <a href="Pkcs11_types.CK_KEY_TYPE.html">CK_KEY_TYPE</a></span>: <code class="type"><a href="Pkcs11_CK_KEY_TYPE.html">Pkcs11_CK_KEY_TYPE</a></code></pre>
+<pre><span id="MODULECK_VERSION"><span class="keyword">module</span> <a href="Pkcs11_types.CK_VERSION.html">CK_VERSION</a></span>: <code class="type"><a href="Pkcs11_CK_VERSION.html">Pkcs11_CK_VERSION</a></code></pre>
+<pre><span id="MODULECK_SESSION_HANDLE"><span class="keyword">module</span> <a href="Pkcs11_types.CK_SESSION_HANDLE.html">CK_SESSION_HANDLE</a></span>: <code class="type"><a href="Pkcs11_CK_SESSION_HANDLE.html">Pkcs11_CK_SESSION_HANDLE</a></code></pre>
+<pre><span id="MODULECK_OBJECT_HANDLE"><span class="keyword">module</span> <a href="Pkcs11_types.CK_OBJECT_HANDLE.html">CK_OBJECT_HANDLE</a></span>: <code class="type"><a href="Pkcs11_CK_OBJECT_HANDLE.html">Pkcs11_CK_OBJECT_HANDLE</a></code></pre>
+<pre><span id="MODULECK_HW_FEATURE_TYPE"><span class="keyword">module</span> <a href="Pkcs11_types.CK_HW_FEATURE_TYPE.html">CK_HW_FEATURE_TYPE</a></span>: <code class="type"><a href="Pkcs11_CK_HW_FEATURE_TYPE.html">Pkcs11_CK_HW_FEATURE_TYPE</a></code></pre>
+<pre><span id="MODULECK_SLOT_ID"><span class="keyword">module</span> <a href="Pkcs11_types.CK_SLOT_ID.html">CK_SLOT_ID</a></span>: <code class="type"><a href="Pkcs11_CK_SLOT_ID.html">Pkcs11_CK_SLOT_ID</a></code></pre>
+<pre><span id="MODULECK_SLOT_INFO"><span class="keyword">module</span> <a href="Pkcs11_types.CK_SLOT_INFO.html">CK_SLOT_INFO</a></span>: <code class="type"><a href="Pkcs11_CK_SLOT_INFO.html">Pkcs11_CK_SLOT_INFO</a></code></pre>
+<pre><span id="MODULESlot_list"><span class="keyword">module</span> <a href="Pkcs11_types.Slot_list.html">Slot_list</a></span>: <code class="type"><a href="Pkcs11_slot_list.html">Pkcs11_slot_list</a></code></pre>
+<pre><span id="MODULECK_MECHANISM_INFO"><span class="keyword">module</span> <a href="Pkcs11_types.CK_MECHANISM_INFO.html">CK_MECHANISM_INFO</a></span>: <code class="type"><a href="Pkcs11_CK_MECHANISM_INFO.html">Pkcs11_CK_MECHANISM_INFO</a></code></pre>
+<pre><span id="MODULECK_SESSION_INFO"><span class="keyword">module</span> <a href="Pkcs11_types.CK_SESSION_INFO.html">CK_SESSION_INFO</a></span>: <code class="type"><a href="Pkcs11_CK_SESSION_INFO.html">Pkcs11_CK_SESSION_INFO</a></code></pre>
+<pre><span id="MODULECK_BIGINT"><span class="keyword">module</span> <a href="Pkcs11_types.CK_BIGINT.html">CK_BIGINT</a></span>: <code class="type"><a href="P11_bigint.html">P11_bigint</a></code></pre>
+<pre><span id="MODULECK_RV"><span class="keyword">module</span> <a href="Pkcs11_types.CK_RV.html">CK_RV</a></span>: <code class="type"><a href="Pkcs11_CK_RV.html">Pkcs11_CK_RV</a></code></pre>
+<pre><span id="MODULECK_MECHANISM_TYPE"><span class="keyword">module</span> <a href="Pkcs11_types.CK_MECHANISM_TYPE.html">CK_MECHANISM_TYPE</a></span>: <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html">Pkcs11_CK_MECHANISM_TYPE</a></code></pre>
+<pre><span id="MODULEKey_gen_mechanism"><span class="keyword">module</span> <a href="Pkcs11_types.Key_gen_mechanism.html">Key_gen_mechanism</a></span>: <code class="type"><a href="Pkcs11_key_gen_mechanism.html">Pkcs11_key_gen_mechanism</a></code></pre>
+<pre><span id="MODULECK_RSA_PKCS_MGF_TYPE"><span class="keyword">module</span> <a href="Pkcs11_types.CK_RSA_PKCS_MGF_TYPE.html">CK_RSA_PKCS_MGF_TYPE</a></span>: <code class="type"><a href="Pkcs11_CK_RSA_PKCS_MGF_TYPE.html">Pkcs11_CK_RSA_PKCS_MGF_TYPE</a></code></pre>
+<pre><span id="MODULECK_RSA_PKCS_OAEP_PARAMS"><span class="keyword">module</span> <a href="Pkcs11_types.CK_RSA_PKCS_OAEP_PARAMS.html">CK_RSA_PKCS_OAEP_PARAMS</a></span>: <code class="type"><a href="Pkcs11_CK_RSA_PKCS_OAEP_PARAMS.html">Pkcs11_CK_RSA_PKCS_OAEP_PARAMS</a></code></pre>
+<pre><span id="MODULECK_RSA_PKCS_PSS_PARAMS"><span class="keyword">module</span> <a href="Pkcs11_types.CK_RSA_PKCS_PSS_PARAMS.html">CK_RSA_PKCS_PSS_PARAMS</a></span>: <code class="type"><a href="Pkcs11_CK_RSA_PKCS_PSS_PARAMS.html">Pkcs11_CK_RSA_PKCS_PSS_PARAMS</a></code></pre>
+<pre><span id="MODULECK_KEY_DERIVATION_STRING_DATA"><span class="keyword">module</span> <a href="Pkcs11_types.CK_KEY_DERIVATION_STRING_DATA.html">CK_KEY_DERIVATION_STRING_DATA</a></span>: <code class="type"><a href="Pkcs11_CK_KEY_DERIVATION_STRING_DATA.html">Pkcs11_CK_KEY_DERIVATION_STRING_DATA</a></code></pre>
+<pre><span id="MODULECK_DES_CBC_ENCRYPT_DATA_PARAMS"><span class="keyword">module</span> <a href="Pkcs11_types.CK_DES_CBC_ENCRYPT_DATA_PARAMS.html">CK_DES_CBC_ENCRYPT_DATA_PARAMS</a></span>: <code class="type"><a href="Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_DES_CBC_ENCRYPT_DATA_PARAMS.html">Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_DES_CBC_ENCRYPT_DATA_PARAMS</a></code></pre>
+<pre><span id="MODULECK_AES_CBC_ENCRYPT_DATA_PARAMS"><span class="keyword">module</span> <a href="Pkcs11_types.CK_AES_CBC_ENCRYPT_DATA_PARAMS.html">CK_AES_CBC_ENCRYPT_DATA_PARAMS</a></span>: <code class="type"><a href="Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_AES_CBC_ENCRYPT_DATA_PARAMS.html">Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_AES_CBC_ENCRYPT_DATA_PARAMS</a></code></pre>
+<pre><span id="MODULECK_PKCS5_PBKDF2_SALT_SOURCE_TYPE"><span class="keyword">module</span> <a href="Pkcs11_types.CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.html">CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE</a></span>: <code class="type"><a href="Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.html">Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE</a></code></pre>
+<pre><span id="MODULECK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE"><span class="keyword">module</span> <a href="Pkcs11_types.CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE.html">CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE</a></span>: <code class="type"><a href="Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE.html">Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE</a></code></pre>
+<pre><span id="MODULECK_PKCS5_PBKD2_PARAMS"><span class="keyword">module</span> <a href="Pkcs11_types.CK_PKCS5_PBKD2_PARAMS.html">CK_PKCS5_PBKD2_PARAMS</a></span>: <code class="type"><a href="Pkcs11_CK_PKCS5_PBKD2_PARAMS.html">Pkcs11_CK_PKCS5_PBKD2_PARAMS</a></code></pre>
+<pre><span id="MODULECK_EC_KDF_TYPE"><span class="keyword">module</span> <a href="Pkcs11_types.CK_EC_KDF_TYPE.html">CK_EC_KDF_TYPE</a></span>: <code class="type"><a href="Pkcs11_CK_EC_KDF_TYPE.html">Pkcs11_CK_EC_KDF_TYPE</a></code></pre>
+<pre><span id="MODULECK_ECDH1_DERIVE_PARAMS"><span class="keyword">module</span> <a href="Pkcs11_types.CK_ECDH1_DERIVE_PARAMS.html">CK_ECDH1_DERIVE_PARAMS</a></span>: <code class="type"><a href="Pkcs11_CK_ECDH1_DERIVE_PARAMS.html">Pkcs11_CK_ECDH1_DERIVE_PARAMS</a></code></pre>
+<pre><span id="MODULECK_ECMQV_DERIVE_PARAMS"><span class="keyword">module</span> <a href="Pkcs11_types.CK_ECMQV_DERIVE_PARAMS.html">CK_ECMQV_DERIVE_PARAMS</a></span>: <code class="type"><a href="Pkcs11_CK_ECMQV_DERIVE_PARAMS.html">Pkcs11_CK_ECMQV_DERIVE_PARAMS</a></code></pre>
+<pre><span id="MODULECK_MECHANISM"><span class="keyword">module</span> <a href="Pkcs11_types.CK_MECHANISM.html">CK_MECHANISM</a></span>: <code class="type"><a href="Pkcs11_CK_MECHANISM.html">Pkcs11_CK_MECHANISM</a></code></pre>
+<pre><span id="MODULECK_USER_TYPE"><span class="keyword">module</span> <a href="Pkcs11_types.CK_USER_TYPE.html">CK_USER_TYPE</a></span>: <code class="type"><a href="Pkcs11_CK_USER_TYPE.html">Pkcs11_CK_USER_TYPE</a></code></pre>
+<pre><span id="MODULECK_INFO"><span class="keyword">module</span> <a href="Pkcs11_types.CK_INFO.html">CK_INFO</a></span>: <code class="type"><a href="Pkcs11_CK_INFO.html">Pkcs11_CK_INFO</a></code></pre>
+<pre><span id="MODULECK_TOKEN_INFO"><span class="keyword">module</span> <a href="Pkcs11_types.CK_TOKEN_INFO.html">CK_TOKEN_INFO</a></span>: <code class="type"><a href="Pkcs11_CK_TOKEN_INFO.html">Pkcs11_CK_TOKEN_INFO</a></code></pre>
+<pre><span id="MODULECK_ATTRIBUTE_TYPE"><span class="keyword">module</span> <a href="Pkcs11_types.CK_ATTRIBUTE_TYPE.html">CK_ATTRIBUTE_TYPE</a></span>: <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_TYPE.html">Pkcs11_CK_ATTRIBUTE_TYPE</a></code></pre>
+<pre><span id="MODULECK_ATTRIBUTE"><span class="keyword">module</span> <a href="Pkcs11_types.CK_ATTRIBUTE.html">CK_ATTRIBUTE</a></span>: <code class="type"><a href="Pkcs11_CK_ATTRIBUTE.html">Pkcs11_CK_ATTRIBUTE</a></code></pre>
+<pre><span id="MODULETemplate"><span class="keyword">module</span> <a href="Pkcs11_types.Template.html">Template</a></span>: <code class="type"><a href="Pkcs11_template.html">Pkcs11_template</a></code></pre>
+<pre><span id="MODULEMechanism_list"><span class="keyword">module</span> <a href="Pkcs11_types.Mechanism_list.html">Mechanism_list</a></span>: <code class="type"><a href="Pkcs11_mechanism_list.html">Pkcs11_mechanism_list</a></code></pre>
+<pre><span id="MODULECK_ATTRIBUTE_SET"><span class="keyword">module</span> <a href="Pkcs11_types.CK_ATTRIBUTE_SET.html">CK_ATTRIBUTE_SET</a></span>: <code class="type"><a href="Pkcs11_CK_ATTRIBUTE_SET.html">Pkcs11_CK_ATTRIBUTE_SET</a></code></pre>
+<pre><span id="MODULECK_AES_CTR_PARAMS"><span class="keyword">module</span> <a href="Pkcs11_types.CK_AES_CTR_PARAMS.html">CK_AES_CTR_PARAMS</a></span>: <code class="type">Pkcs11_CK_AES_CTR_PARAMS</code></pre>
+<pre><span id="MODULECK_GCM_PARAMS"><span class="keyword">module</span> <a href="Pkcs11_types.CK_GCM_PARAMS.html">CK_GCM_PARAMS</a></span>: <code class="type">Pkcs11_CK_GCM_PARAMS</code></pre>
 <pre><span id="VALck_byte"><span class="keyword">val</span> ck_byte</span> : <code class="type">CK_BYTE.t Ctypes.typ</code></pre>
 <pre><span id="VALutf8char"><span class="keyword">val</span> utf8char</span> : <code class="type">CK_BYTE.t Ctypes.typ</code></pre>
 <pre><span id="VALck_utf8char"><span class="keyword">val</span> ck_utf8char</span> : <code class="type">char Ctypes.typ</code></pre>
@@ -227,7 +217,7 @@ CONVENTIONS.
 <pre><span id="TYPEtemplate"><span class="keyword">type</span> <code class="type"></code>template</span> = <code class="type">Template.t</code> </pre>
 
 
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.Initialize_arg.html">Initialize_arg</a>: <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_types.Initialize_arg.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
+<pre><span id="MODULEInitialize_arg"><span class="keyword">module</span> <a href="Pkcs11_types.Initialize_arg.html">Initialize_arg</a></span>: <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_types.Initialize_arg.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
 <pre><span id="TYPE_ck_function_list"><span class="keyword">type</span> <code class="type"></code>_ck_function_list</span> </pre>
 
 
@@ -235,6 +225,6 @@ CONVENTIONS.
 
 
 <pre><span id="VALck_function_list"><span class="keyword">val</span> ck_function_list</span> : <code class="type"><a href="Pkcs11_types.html#TYPEck_function_list">ck_function_list</a> Ctypes.typ</code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_NOTIFY.html">CK_NOTIFY</a>: <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_types.CK_NOTIFY.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK.html">CK</a>: <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_types.CK.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
-<pre><span class="keyword">module</span> <a href="Pkcs11_types.CK_FUNCTION_LIST.html">CK_FUNCTION_LIST</a>: <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_types.CK_FUNCTION_LIST.html">..</a> <code class="code"><span class="keyword">end</span></code></pre></body></html>
+<pre><span id="MODULECK_NOTIFY"><span class="keyword">module</span> <a href="Pkcs11_types.CK_NOTIFY.html">CK_NOTIFY</a></span>: <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_types.CK_NOTIFY.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
+<pre><span id="MODULECK"><span class="keyword">module</span> <a href="Pkcs11_types.CK.html">CK</a></span>: <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_types.CK.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
+<pre><span id="MODULECK_FUNCTION_LIST"><span class="keyword">module</span> <a href="Pkcs11_types.CK_FUNCTION_LIST.html">CK_FUNCTION_LIST</a></span>: <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_types.CK_FUNCTION_LIST.html">..</a> <code class="code"><span class="keyword">end</span></code></pre></body></html>

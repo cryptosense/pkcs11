@@ -108,20 +108,20 @@
 </div>
 <h1>Module <a href="type_P11_helpers.html">P11_helpers</a></h1>
 
-<pre><span class="keyword">module</span> P11_helpers: <code class="code"><span class="keyword">sig</span></code> <a href="P11_helpers.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
-Build a of_json function out of a of_string function.  The typename is used for the
-    error message.<br>
-</div>
-<hr width="100%">
+<pre><span id="MODULEP11_helpers"><span class="keyword">module</span> P11_helpers</span>: <code class="code"><span class="keyword">sig</span></code> <a href="P11_helpers.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
 
 <pre><span id="VALstring_of_record"><span class="keyword">val</span> string_of_record</span> : <code class="type">?newlines:bool -> ?indent:string -> (string * string) list -> string</code></pre>
 <pre><span id="VALstrings_of_record"><span class="keyword">val</span> strings_of_record</span> : <code class="type">(string * string) list -> string list</code></pre>
 <pre><span id="VALof_json_string"><span class="keyword">val</span> of_json_string</span> : <code class="type">typename:string -><br>       (string -> 'a) -> Yojson.Safe.json -> ('a, string) Result.result</code></pre><div class="info ">
-Build a of_json function out of a of_string function.  The typename is used for the
-    error message.<br>
+<div class="info-desc">
+<p>Build a of_json function out of a of_string function.  The typename is used for the
+    error message.</p>
+</div>
 </div>
 
 <pre><span id="VALtrim_and_quote"><span class="keyword">val</span> trim_and_quote</span> : <code class="type">string -> string</code></pre><div class="info ">
-Remove trailing zeros and spaces, and quote the result.<br>
+<div class="info-desc">
+<p>Remove trailing zeros and spaces, and quote the result.</p>
+</div>
 </div>
 </body></html>

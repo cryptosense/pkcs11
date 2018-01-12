@@ -108,12 +108,13 @@
 </div>
 <h1>Module <a href="type_P11_bigint.html">P11_bigint</a></h1>
 
-<pre><span class="keyword">module</span> P11_bigint: <code class="code"><span class="keyword">sig</span></code> <a href="P11_bigint.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
-Big integers used in PKCS#11.
-<p>
+<pre><span id="MODULEP11_bigint"><span class="keyword">module</span> P11_bigint</span>: <code class="code"><span class="keyword">sig</span></code> <a href="P11_bigint.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+<div class="info-desc">
+<p>Big integers used in PKCS#11.</p>
 
-   PKCS#11 expects them to be encoded in big-endian,
-   so manipulating the underlying representation is error-prone.<br>
+<p>PKCS#11 expects them to be encoded in big-endian,
+   so manipulating the underlying representation is error-prone.</p>
+</div>
 </div>
 <hr width="100%">
 
@@ -127,7 +128,9 @@ Big integers used in PKCS#11.
 <pre><span id="VALto_yojson"><span class="keyword">val</span> to_yojson</span> : <code class="type"><a href="P11_bigint.html#TYPEt">t</a> -> Yojson.Safe.json</code></pre>
 <pre><span id="VALof_yojson"><span class="keyword">val</span> of_yojson</span> : <code class="type">Yojson.Safe.json -> <a href="P11_bigint.html#TYPEt">t</a> Ppx_deriving_yojson_runtime.error_or</code></pre>
 <pre><span id="VALencode"><span class="keyword">val</span> encode</span> : <code class="type"><a href="P11_bigint.html#TYPEt">t</a> -> string</code></pre><div class="info ">
-Convert to/from a big-endian byte array.<br>
+<div class="info-desc">
+<p>Convert to/from a big-endian byte array.</p>
+</div>
 </div>
 
 <pre><span id="VALdecode"><span class="keyword">val</span> decode</span> : <code class="type">string -> <a href="P11_bigint.html#TYPEt">t</a></code></pre>

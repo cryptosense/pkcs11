@@ -108,8 +108,10 @@
 </div>
 <h1>Module <a href="type_P11_ulong.html">P11_ulong</a></h1>
 
-<pre><span class="keyword">module</span> P11_ulong: <code class="code"><span class="keyword">sig</span></code> <a href="P11_ulong.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
-Unsigned values (at least 32 bits long) (<code class="code"><span class="constructor">CK_ULONG</span></code>)<br>
+<pre><span id="MODULEP11_ulong"><span class="keyword">module</span> P11_ulong</span>: <code class="code"><span class="keyword">sig</span></code> <a href="P11_ulong.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+<div class="info-desc">
+<p>Unsigned values (at least 32 bits long) (<code class="code"><span class="constructor">CK_ULONG</span></code>)</p>
+</div>
 </div>
 <hr width="100%">
 
@@ -123,11 +125,15 @@ Unsigned values (at least 32 bits long) (<code class="code"><span class="constru
 <pre><span id="VALto_yojson"><span class="keyword">val</span> to_yojson</span> : <code class="type"><a href="P11_ulong.html#TYPEt">t</a> -> Yojson.Safe.json</code></pre>
 <pre><span id="VALof_yojson"><span class="keyword">val</span> of_yojson</span> : <code class="type">Yojson.Safe.json -> <a href="P11_ulong.html#TYPEt">t</a> Ppx_deriving_yojson_runtime.error_or</code></pre>
 <pre><span id="VAL_CK_EFFECTIVELY_INFINITE"><span class="keyword">val</span> _CK_EFFECTIVELY_INFINITE</span> : <code class="type"><a href="P11_ulong.html#TYPEt">t</a></code></pre><div class="info ">
-EFFECTIVELY_INFINITE constant specified in PKCS11<br>
+<div class="info-desc">
+<p>EFFECTIVELY_INFINITE constant specified in PKCS11</p>
+</div>
 </div>
 
 <pre><span id="VAL_CK_UNAVAILABLE_INFORMATION"><span class="keyword">val</span> _CK_UNAVAILABLE_INFORMATION</span> : <code class="type"><a href="P11_ulong.html#TYPEt">t</a></code></pre><div class="info ">
-UNAVAILABLE INFORMATION constant specified in PKCS11<br>
+<div class="info-desc">
+<p>UNAVAILABLE INFORMATION constant specified in PKCS11</p>
+</div>
 </div>
 
 <pre><span id="VALis_effectively_infinite"><span class="keyword">val</span> is_effectively_infinite</span> : <code class="type"><a href="P11_ulong.html#TYPEt">t</a> -> bool</code></pre>

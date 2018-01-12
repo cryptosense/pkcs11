@@ -108,14 +108,16 @@
 </div>
 <h1>Module <a href="type_P11_driver.html">P11_driver</a></h1>
 
-<pre><span class="keyword">module</span> P11_driver: <code class="code"><span class="keyword">sig</span></code> <a href="P11_driver.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
-High-level PKCS#11 bindings.<br>
+<pre><span id="MODULEP11_driver"><span class="keyword">module</span> P11_driver</span>: <code class="code"><span class="keyword">sig</span></code> <a href="P11_driver.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><div class="info module top">
+<div class="info-desc">
+<p>High-level PKCS#11 bindings.</p>
+</div>
 </div>
 <hr width="100%">
 
 <pre><span id="EXCEPTIONCKR"><span class="keyword">exception</span> CKR</span> <span class="keyword">of</span> <code class="type">P11.RV.t</code></pre>
 
-<pre><span class="keyword">module type</span> <a href="P11_driver.S.html">S</a> = <code class="code"><span class="keyword">sig</span></code> <a href="P11_driver.S.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
+<pre><span id="MODULETYPES"><span class="keyword">module type</span> <a href="P11_driver.S.html">S</a></span> = <code class="code"><span class="keyword">sig</span></code> <a href="P11_driver.S.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
 <pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = <code class="type">(module P11_driver.S)</code> </pre>
 
 
@@ -172,9 +174,12 @@ High-level PKCS#11 bindings.<br>
 <pre><span id="VALwrap_key"><span class="keyword">val</span> wrap_key</span> : <code class="type"><a href="P11_driver.html#TYPEt">t</a> -><br>       P11.Session_handle.t -><br>       P11.Mechanism.t -> P11.Object_handle.t -> P11.Object_handle.t -> P11.Data.t</code></pre>
 <pre><span id="VALunwrap_key"><span class="keyword">val</span> unwrap_key</span> : <code class="type"><a href="P11_driver.html#TYPEt">t</a> -><br>       P11.Session_handle.t -><br>       P11.Mechanism.t -><br>       P11.Object_handle.t -> P11.Data.t -> P11.Template.t -> P11.Object_handle.t</code></pre>
 <pre><span id="VALderive_key"><span class="keyword">val</span> derive_key</span> : <code class="type"><a href="P11_driver.html#TYPEt">t</a> -><br>       P11.Session_handle.t -><br>       P11.Mechanism.t -><br>       P11.Object_handle.t -> P11.Template.t -> P11.Object_handle.t</code></pre>
-<pre><span class="keyword">module</span> <a href="P11_driver.Make.html">Make</a>: <div class="sig_block"><code class="code"><span class="keyword">functor</span>&nbsp;(</code><code class="code"><span class="constructor">X</span></code><code class="code">&nbsp;:&nbsp;</code><code class="type"><a href="Pkcs11.RAW.html">Pkcs11.RAW</a></code><code class="code">)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;</code><code class="type"><a href="P11_driver.S.html">S</a></code><code class="type"> </code></div></pre>
-<pre><span id="VALload_driver"><span class="keyword">val</span> load_driver</span> : <code class="type">?log_calls:string * Format.formatter -><br>       ?on_unknown:(string -> unit) -><br>       dll:string -><br>       use_get_function_list:[ `Auto | `False | `True ] -> <a href="P11_driver.html#TYPEt">t</a></code></pre><div class="info ">
-May raise <code class="code"><span class="constructor">Pkcs11</span>.<span class="constructor">Cannot_load_module</span></code>.  <code class="code">on_unknown</code> will be called with a warning
-    message when unsupported codes are encountered.<br>
+<pre><span id="VALdigest"><span class="keyword">val</span> digest</span> : <code class="type"><a href="P11_driver.html#TYPEt">t</a> -><br>       P11.Session_handle.t -> P11.Mechanism.t -> P11.Data.t -> P11.Data.t</code></pre>
+<pre><span id="MODULEMake"><span class="keyword">module</span> <a href="P11_driver.Make.html">Make</a></span>: <div class="sig_block"><code class="code"><span class="keyword">functor</span>&nbsp;(</code><code class="code"><span class="constructor">X</span></code><code class="code">&nbsp;:&nbsp;</code><code class="type"><a href="Pkcs11.RAW.html">Pkcs11.RAW</a></code><code class="code">)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;</code><code class="type"><a href="P11_driver.S.html">S</a></code><code class="type"> </code></div></pre>
+<pre><span id="VALload_driver"><span class="keyword">val</span> load_driver</span> : <code class="type">?log_calls:string * Format.formatter -><br>       ?on_unknown:(string -> unit) -><br>       ?load_mode:P11.Load_mode.t -> string -> <a href="P11_driver.html#TYPEt">t</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>May raise <code class="code"><span class="constructor">Pkcs11</span>.<span class="constructor">Cannot_load_module</span></code>.  <code class="code">on_unknown</code> will be called with a warning
+    message when unsupported codes are encountered.</p>
+</div>
 </div>
 </body></html>

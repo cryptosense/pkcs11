@@ -108,19 +108,23 @@
 </div>
 <h1>Module <a href="type_Pkcs11.Mechanism_list.html">Pkcs11.Mechanism_list</a></h1>
 
-<pre><span class="keyword">module</span> Mechanism_list: <code class="type"><a href="Pkcs11_mechanism_list.html">Pkcs11_mechanism_list</a></code></pre><hr width="100%">
+<pre><span id="MODULEMechanism_list"><span class="keyword">module</span> Mechanism_list</span>: <code class="type"><a href="Pkcs11_mechanism_list.html">Pkcs11_mechanism_list</a></code></pre><hr width="100%">
 
 <pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> </pre>
 
 
 <pre><span id="VALcreate"><span class="keyword">val</span> create</span> : <code class="type">unit -> <a href="Pkcs11_mechanism_list.html#TYPEt">t</a></code></pre><div class="info ">
-<code class="code">create&nbsp;()</code> allocates a new <code class="code">t</code> with length 0, and content the
-    null pointer.<br>
+<div class="info-desc">
+<p><code class="code">create&nbsp;()</code> allocates a new <code class="code">t</code> with length 0, and content the
+    null pointer.</p>
+</div>
 </div>
 
 <pre><span id="VALallocate"><span class="keyword">val</span> allocate</span> : <code class="type"><a href="Pkcs11_mechanism_list.html#TYPEt">t</a> -> unit</code></pre><div class="info ">
-<code class="code">allocate&nbsp;t</code> updates the content of the <code class="code">t</code> structure to point
-    to freshly allocated memory.<br>
+<div class="info-desc">
+<p><code class="code">allocate&nbsp;t</code> updates the content of the <code class="code">t</code> structure to point
+    to freshly allocated memory.</p>
+</div>
 </div>
 
 <pre><span id="VALof_raw"><span class="keyword">val</span> of_raw</span> : <code class="type"><a href="Pkcs11_CK_MECHANISM_TYPE.html#TYPEt">Pkcs11_CK_MECHANISM_TYPE.t</a> Ctypes.ptr -><br>       <a href="P11_ulong.html#TYPEt">P11_ulong.t</a> Ctypes.ptr -> <a href="Pkcs11_mechanism_list.html#TYPEt">t</a></code></pre>

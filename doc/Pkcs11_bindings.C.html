@@ -104,7 +104,7 @@
 &nbsp;</div>
 <h1>Functor <a href="type_Pkcs11_bindings.C.html">Pkcs11_bindings.C</a></h1>
 
-<pre><span class="keyword">module</span> C: <div class="sig_block"><code class="code"><span class="keyword">functor</span>&nbsp;(</code><code class="code"><span class="constructor">F</span></code><code class="code">&nbsp;:&nbsp;</code><code class="type">Cstubs.FOREIGN</code><code class="code">)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;</code><code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_bindings.C.html">..</a> <code class="code"><span class="keyword">end</span></code></div></pre><table border="0" cellpadding="3" width="100%">
+<pre><span id="MODULEC"><span class="keyword">module</span> C</span>: <div class="sig_block"><code class="code"><span class="keyword">functor</span>&nbsp;(</code><code class="code"><span class="constructor">F</span></code><code class="code">&nbsp;:&nbsp;</code><code class="type">Cstubs.FOREIGN</code><code class="code">)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;</code><code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11_bindings.C.html">..</a> <code class="code"><span class="keyword">end</span></code></div></pre><table border="0" cellpadding="3" width="100%">
 <tr>
 <td align="left" valign="top" width="1%%"><b>Parameters: </b></td>
 <td>
@@ -120,7 +120,7 @@
 </table>
 <hr width="100%">
 
-<pre><span class="keyword">module</span> <a href="Pkcs11_bindings.C.T.html">T</a>: <code class="type"><a href="Pkcs11_types.CK.TF.html">Pkcs11_types.CK.TF</a></code><code class="code">(</code><code class="type">F</code><code class="code">)</code></pre>
+<pre><span id="MODULET"><span class="keyword">module</span> <a href="Pkcs11_bindings.C.T.html">T</a></span>: <code class="type"><a href="Pkcs11_types.CK.TF.html">Pkcs11_types.CK.TF</a></code><code class="code">(</code><code class="type">F</code><code class="code">)</code></pre>
 <pre><span id="VALc_LoadModule"><span class="keyword">val</span> c_LoadModule</span> : <code class="type">(string -> Pkcs11_types.CK_RV.t F.return) F.result</code></pre>
 <pre><span id="VALc_UnloadModule"><span class="keyword">val</span> c_UnloadModule</span> : <code class="type">(unit -> Pkcs11_types.CK_RV.t F.return) F.result</code></pre>
 <pre><span id="VALc_GetFunctionList"><span class="keyword">val</span> c_GetFunctionList</span> : <code class="type">(<a href="Pkcs11_types.html#TYPEck_function_list">Pkcs11_types.ck_function_list</a> Ctypes_static.ptr Ctypes_static.ptr -><br>        Pkcs11_types.CK_RV.t F.return)<br>       F.result</code></pre>

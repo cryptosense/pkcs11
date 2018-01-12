@@ -106,7 +106,7 @@
 &nbsp;</div>
 <h1>Module type <a href="type_Pkcs11.S.html">Pkcs11.S</a></h1>
 
-<pre><span class="keyword">module type</span> S = <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11.S.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
+<pre><span id="MODULETYPES"><span class="keyword">module type</span> S</span> = <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11.S.html">..</a> <code class="code"><span class="keyword">end</span></code></pre><hr width="100%">
 
 <pre><span id="VALc_Initialize"><span class="keyword">val</span> c_Initialize</span> : <code class="type">unit -> CK_RV.t</code></pre>
 <pre><span id="VALc_Finalize"><span class="keyword">val</span> c_Finalize</span> : <code class="type">unit -> CK_RV.t</code></pre>
@@ -162,7 +162,8 @@
 <pre><span id="VALc_DecryptDigestUpdate"><span class="keyword">val</span> c_DecryptDigestUpdate</span> : <code class="type">CK_SESSION_HANDLE.t -> src:Data.t -> tgt:Data.t -> CK_RV.t</code></pre>
 <pre><span id="VALc_SignEncryptUpdate"><span class="keyword">val</span> c_SignEncryptUpdate</span> : <code class="type">CK_SESSION_HANDLE.t -> src:Data.t -> tgt:Data.t -> CK_RV.t</code></pre>
 <pre><span id="VALc_DecryptVerifyUpdate"><span class="keyword">val</span> c_DecryptVerifyUpdate</span> : <code class="type">CK_SESSION_HANDLE.t -> src:Data.t -> tgt:Data.t -> CK_RV.t</code></pre><div class="info ">
-<h2 id="2_KeyManagement">Key Management</h2><br>
+<div class="info-desc">
+<h3 id="2_KeyManagement">Key Management</h3></div>
 </div>
 
 <pre><span id="VALc_GenerateKey"><span class="keyword">val</span> c_GenerateKey</span> : <code class="type">CK_SESSION_HANDLE.t -><br>       CK_MECHANISM.t -> Template.t -> CK_RV.t * CK_OBJECT_HANDLE.t</code></pre>
