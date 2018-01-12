@@ -927,11 +927,8 @@ module type CONFIG = sig
   val library : Dl.library
 end
 
-
 (* Used in the reverse bindings generator. *)
 module Fake(X : sig end) : RAW
-
-module Local(X : sig end) : RAW
 
 module type S =
 sig
@@ -1065,6 +1062,6 @@ exception Cannot_load_module of string * P11_rv.t
 val load_driver:
   ?log_calls:(string * Format.formatter) ->
   ?on_unknown:(string -> unit) ->
-  use_get_function_list: [ `Auto | `False | `True ] ->
+  ?load_mode: P11.Load_mode.t ->
   string ->
   (module RAW)

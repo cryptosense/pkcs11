@@ -206,11 +206,7 @@ let test_object driver =
 
 let test_p11_load =
   let dll = "./_build/src_dll/dllpkcs11_fake.so" in
-  let driver =
-    P11_driver.load_driver
-      ~use_get_function_list:`False
-      dll
-  in
+  let driver = P11_driver.load_driver dll in
   let (module R) = driver in
   R.initialize ();
   [ "Driver" >::: test_driver driver
