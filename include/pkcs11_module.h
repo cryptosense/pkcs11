@@ -37,7 +37,7 @@
 #define NULL_PTR NULL
 #endif
 
-#define OK_OR_FAIL(rv) do {if (rv != CKR_OK) { printf("%s line %d: CKR %x\n", __FILE__, __LINE__,rv); return rv;}} while (0)
+#define OK_OR_FAIL(rv) do {if (rv != CKR_OK) { printf("%s line %d: CKR 0x%x\n", __FILE__, __LINE__,rv); return rv;}} while (0)
 
 
 /* Define the type of the functions that are exported by this
