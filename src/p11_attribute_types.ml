@@ -1,4 +1,6 @@
-type t = P11_attribute_type.pack list [@@deriving yojson]
+type t = P11_attribute_type.pack list
+[@@deriving eq,yojson]
+
 let rec mem: type a . t -> a P11_attribute_type.t -> bool = fun template x ->
   match template with
     | [] -> false
