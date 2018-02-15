@@ -1,5 +1,5 @@
 type t = P11_attribute_type.pack list
-[@@deriving eq,ord,yojson]
+[@@deriving eq,ord,show,yojson]
 
 let mem template x =
   let open P11_attribute_type in
