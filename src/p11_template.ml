@@ -1,5 +1,5 @@
 type t = P11_attribute.pack list
-[@@deriving eq]
+[@@deriving eq,ord]
 
 let to_yojson template :Yojson.Safe.json =
   let attributes = List.map (fun (P11_attribute.Pack x) -> P11_attribute.to_json x) template in
@@ -39,18 +39,6 @@ let get_pack template (P11_attribute_type.Pack ty) =
     is, a template that is sorted. *)
 let normalize (t:t) : t =
   List.sort P11_attribute.compare_pack t
-
-(** compares two normalized templates  *)
-let rec compare a b =
-  match a,b with
-    | [], [] -> 0
-    | [], _::_ -> -1
-    | _::_, [] -> 1
-    | a1::a2, b1::b2 ->
-        let cmp = P11_attribute.compare_pack a1 b1 in
-        if cmp = 0
-        then compare a2 b2
-        else cmp
 
 (** safe mem on templates. *)
 let mem elem = List.exists (P11_attribute.equal_pack elem)
