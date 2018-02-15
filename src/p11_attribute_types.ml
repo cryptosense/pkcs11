@@ -1,15 +1,10 @@
 type t = P11_attribute_type.pack list
 [@@deriving eq,ord,yojson]
 
-let rec mem: type a . t -> a P11_attribute_type.t -> bool = fun template x ->
-  match template with
-    | [] -> false
-    | head :: tail ->
-        match head with
-          | P11_attribute_type.Pack ty ->
-              match P11_attribute_type.compare' ty x with
-                | P11_attribute_type.Equal -> true
-                | P11_attribute_type.Not_equal _ -> mem tail x
+let mem template x =
+  let open P11_attribute_type in
+  let ok (Pack ty) = equal ty x in
+  List.exists ok template
 
 let rec remove_duplicates l acc =
   match l with
