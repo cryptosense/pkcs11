@@ -1,8 +1,7 @@
 type t = P11_attribute.pack list
-[@@deriving ord,yojson]
+[@@deriving eq,ord,show,yojson]
 
 val to_string : t -> string
-val pp : Format.formatter -> t -> unit
 
 (** Return the value of the first occurrence of an attribute. *)
 val get : t -> 'a P11_attribute_type.t -> 'a option

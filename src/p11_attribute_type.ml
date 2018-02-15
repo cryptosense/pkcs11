@@ -463,6 +463,12 @@ let equal a b =
 let equal_pack a b =
   compare_pack a b = 0
 
+let show_pack (Pack attribute) =
+  to_string attribute
+
+let pp_pack fmt pack =
+  Format.pp_print_string fmt (show_pack pack)
+
 let to_json attribute =
   try
     `String (to_string attribute)

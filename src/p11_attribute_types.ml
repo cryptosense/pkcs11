@@ -1,13 +1,10 @@
-type t = P11_attribute_type.pack list [@@deriving yojson]
-let rec mem: type a . t -> a P11_attribute_type.t -> bool = fun template x ->
-  match template with
-    | [] -> false
-    | head :: tail ->
-        match head with
-          | P11_attribute_type.Pack ty ->
-              match P11_attribute_type.compare' ty x with
-                | P11_attribute_type.Equal -> true
-                | P11_attribute_type.Not_equal _ -> mem tail x
+type t = P11_attribute_type.pack list
+[@@deriving eq,ord,show,yojson]
+
+let mem template x =
+  let open P11_attribute_type in
+  let ok (Pack ty) = equal ty x in
+  List.exists ok template
 
 let rec remove_duplicates l acc =
   match l with
@@ -16,17 +13,5 @@ let rec remove_duplicates l acc =
         if mem acc ty
         then remove_duplicates q acc
         else remove_duplicates q (p::acc)
-
-(** compares two normalized types list  *)
-let rec compare a b =
-  match a,b with
-    | [], [] -> 0
-    | [], _::_ -> -1
-    | _::_, [] -> 1
-    | a1::a2, b1::b2 ->
-        let cmp = P11_attribute_type.compare_pack a1 b1 in
-        if cmp = 0
-        then compare a2 b2
-        else cmp
 
 let remove_duplicates l = remove_duplicates l []
