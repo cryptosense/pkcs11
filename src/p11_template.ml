@@ -1,5 +1,5 @@
 type t = P11_attribute.pack list
-[@@deriving eq,ord]
+[@@deriving eq,ord,show]
 
 let to_yojson template :Yojson.Safe.json =
   let attributes = List.map (fun (P11_attribute.Pack x) -> P11_attribute.to_json x) template in
@@ -145,8 +145,6 @@ let diff ~source ~tested =
 
 let to_string t =
   to_yojson t |> Yojson.Safe.to_string
-
-let pp fmt t = Format.fprintf fmt "%s" @@ to_string t
 
 let hash t =
   normalize t |> to_string |> Digest.string
