@@ -157,7 +157,7 @@ module Encoding : sig
 end
 
 type pack = Pack : 'a t -> pack
-[@@deriving eq,ord,yojson]
+[@@deriving eq,ord,show,yojson]
 
 val compare: 'a t -> 'b t -> int
 
