@@ -1,5 +1,5 @@
 type t = P11_attribute.pack list
-[@@deriving ord,yojson]
+[@@deriving eq,ord,yojson]
 
 val to_string : t -> string
 val pp : Format.formatter -> t -> unit
