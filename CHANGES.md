@@ -1,3 +1,15 @@
+v0.15.0 2018-02-19
+==================
+
+Bug fix:
+
+- Fix `P11.RV.of_string "CKR_ACTION_PROHIBITED"`. (#97)
+
+Improvements:
+
+- Make it clear CKR are hex encoded in `OK_OR_FAIL`. (#95)
+- Derive more `eq`, `ord` and `show` instances. (#96)
+
 v0.14.0 2018-01-12
 ==================
 
