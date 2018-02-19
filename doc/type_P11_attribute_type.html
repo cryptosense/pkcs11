@@ -267,6 +267,9 @@
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;compare_pack&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">P11_attribute_type</span>.pack&nbsp;<span class="keywordsign">-&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">P11_attribute_type</span>.pack&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Ppx_deriving_runtime</span>.int<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;pp_pack&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Format</span>.formatter&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11_attribute_type</span>.pack&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Ppx_deriving_runtime</span>.unit<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;show_pack&nbsp;:&nbsp;<span class="constructor">P11_attribute_type</span>.pack&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Ppx_deriving_runtime</span>.string<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;pack_to_yojson&nbsp;:&nbsp;<span class="constructor">P11_attribute_type</span>.pack&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Yojson</span>.<span class="constructor">Safe</span>.json<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;pack_of_yojson&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Yojson</span>.<span class="constructor">Safe</span>.json&nbsp;<span class="keywordsign">-&gt;</span><br>
