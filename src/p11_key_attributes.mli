@@ -21,3 +21,4 @@ type kind =
     that some other attribute can be given but not necessarily to all
     of the object of this kind. *)
 val possible : kind -> P11.Attribute_types.t
+[@@deprecated]
