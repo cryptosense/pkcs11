@@ -27,8 +27,10 @@ type kind =
    An attribute has kinds [ A; B; C ] if one of the lists returned by [kinds]
    has at least kinds [ A; B; C ]. *)
 val kinds: pack -> kind list list
+[@@deprecated]
 
 (** Return whether [a] has all kinds [k]. *)
 val is : kind list -> pack -> bool
+[@@deprecated]
 
 val type_ : pack -> P11_attribute_type.pack
