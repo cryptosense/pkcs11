@@ -11,6 +11,7 @@ val ffi : t
 (** Use C stubs to load the DLL using dlopen, and call each symbol through
     C_GetFunctionList. *)
 val stubs : t
+[@@deprecated]
 
 (**
    Call C_GetFunctionList using libffi.
