@@ -24,8 +24,12 @@ let _CKM_DSA_KEY_PAIR_GEN               = with_value 0x00000010L
 let _CKM_DSA                            = with_value 0x00000011L
 let _CKM_DSA_SHA1                       = with_value 0x00000012L
 let _CKM_DSA_SHA224                     = with_value 0x00000013L
+let _CKM_DSA_SHA224                     = with_value 0x00000013L
+let _CKM_DSA_SHA256                     = with_value 0x00000014L
 let _CKM_DSA_SHA256                     = with_value 0x00000014L
 let _CKM_DSA_SHA384                     = with_value 0x00000015L
+let _CKM_DSA_SHA384                     = with_value 0x00000015L
+let _CKM_DSA_SHA512                     = with_value 0x00000016L
 let _CKM_DSA_SHA512                     = with_value 0x00000016L
 let _CKM_DH_PKCS_KEY_PAIR_GEN           = with_value 0x00000020L
 let _CKM_DH_PKCS_DERIVE                 = with_value 0x00000021L
@@ -41,6 +45,18 @@ let _CKM_SHA384_RSA_PKCS_PSS            = with_value 0x00000044L
 let _CKM_SHA512_RSA_PKCS_PSS            = with_value 0x00000045L
 let _CKM_SHA224_RSA_PKCS                = with_value 0x00000046L
 let _CKM_SHA224_RSA_PKCS_PSS            = with_value 0x00000047L
+let _CKM_SHA512_224                     = with_value 0x00000048L
+let _CKM_SHA512_224_HMAC                = with_value 0x00000049L
+let _CKM_SHA512_224_HMAC_GENERAL        = with_value 0x0000004AL
+let _CKM_SHA512_224_KEY_DERIVATION      = with_value 0x0000004BL
+let _CKM_SHA512_256                     = with_value 0x0000004CL
+let _CKM_SHA512_256_HMAC                = with_value 0x0000004DL
+let _CKM_SHA512_256_HMAC_GENERAL        = with_value 0x0000004EL
+let _CKM_SHA512_256_KEY_DERIVATION      = with_value 0x0000004FL
+let _CKM_SHA512_T                       = with_value 0x00000050L
+let _CKM_SHA512_T_HMAC                  = with_value 0x00000051L
+let _CKM_SHA512_T_HMAC_GENERAL          = with_value 0x00000052L
+let _CKM_SHA512_T_KEY_DERIVATION        = with_value 0x00000053L
 let _CKM_RC2_KEY_GEN                    = with_value 0x00000100L
 let _CKM_RC2_ECB                        = with_value 0x00000101L
 let _CKM_RC2_CBC                        = with_value 0x00000102L
@@ -62,6 +78,8 @@ let _CKM_DES3_CBC                       = with_value 0x00000133L
 let _CKM_DES3_MAC                       = with_value 0x00000134L
 let _CKM_DES3_MAC_GENERAL               = with_value 0x00000135L
 let _CKM_DES3_CBC_PAD                   = with_value 0x00000136L
+let _CKM_DES3_CMAC_GENERAL              = with_value 0x00000137L
+let _CKM_DES3_CMAC                      = with_value 0x00000138L
 let _CKM_CDMF_KEY_GEN                   = with_value 0x00000140L
 let _CKM_CDMF_ECB                       = with_value 0x00000141L
 let _CKM_CDMF_CBC                       = with_value 0x00000142L
@@ -179,6 +197,16 @@ let _CKM_WTLS_MASTER_KEY_DERIVE_DH_ECC  = with_value 0x000003D2L
 let _CKM_WTLS_PRF                       = with_value 0x000003D3L
 let _CKM_WTLS_SERVER_KEY_AND_MAC_DERIVE = with_value 0x000003D4L
 let _CKM_WTLS_CLIENT_KEY_AND_MAC_DERIVE = with_value 0x000003D5L
+let _CKM_TLS10_MAC_SERVER               = with_value 0x000003D6L
+let _CKM_TLS10_MAC_CLIENT               = with_value 0x000003D7L
+let _CKM_TLS12_MAC                      = with_value 0x000003D8L
+let _CKM_TLS12_KDF                      = with_value 0x000003D9L
+let _CKM_TLS12_MASTER_KEY_DERIVE        = with_value 0x000003E0L
+let _CKM_TLS12_KEY_AND_MAC_DERIVE       = with_value 0x000003E1L
+let _CKM_TLS12_MASTER_KEY_DERIVE_DH     = with_value 0x000003E2L
+let _CKM_TLS12_KEY_SAFE_DERIVE          = with_value 0x000003E3L
+let _CKM_TLS_MAC                        = with_value 0x000003E4L
+let _CKM_TLS_KDF                        = with_value 0x000003E5L
 let _CKM_KEY_WRAP_LYNKS                 = with_value 0x00000400L
 let _CKM_KEY_WRAP_SET_OAEP              = with_value 0x00000401L
 let _CKM_CMS_SIG                        = with_value 0x00000500L
@@ -202,6 +230,14 @@ let _CKM_ARIA_MAC_GENERAL               = with_value 0x00000564L
 let _CKM_ARIA_CBC_PAD                   = with_value 0x00000565L
 let _CKM_ARIA_ECB_ENCRYPT_DATA          = with_value 0x00000566L
 let _CKM_ARIA_CBC_ENCRYPT_DATA          = with_value 0x00000567L
+let _CKM_SEED_KEY_GEN                   = with_value 0x00000650L
+let _CKM_SEED_ECB                       = with_value 0x00000651L
+let _CKM_SEED_CBC                       = with_value 0x00000652L
+let _CKM_SEED_MAC                       = with_value 0x00000653L
+let _CKM_SEED_MAC_GENERAL               = with_value 0x00000654L
+let _CKM_SEED_CBC_PAD                   = with_value 0x00000655L
+let _CKM_SEED_ECB_ENCRYPT_DATA          = with_value 0x00000656L
+let _CKM_SEED_CBC_ENCRYPT_DATA          = with_value 0x00000657L
 let _CKM_SKIPJACK_KEY_GEN               = with_value 0x00001000L
 let _CKM_SKIPJACK_ECB64                 = with_value 0x00001001L
 let _CKM_SKIPJACK_CBC64                 = with_value 0x00001002L
@@ -215,6 +251,7 @@ let _CKM_SKIPJACK_PRIVATE_WRAP          = with_value 0x00001009L
 let _CKM_SKIPJACK_RELAYX                = with_value 0x0000100aL
 let _CKM_KEA_KEY_PAIR_GEN               = with_value 0x00001010L
 let _CKM_KEA_KEY_DERIVE                 = with_value 0x00001011L
+let _CKM_KEA_DERIVE                     = with_value 0x00001012L
 let _CKM_FORTEZZA_TIMESTAMP             = with_value 0x00001020L
 let _CKM_BATON_KEY_GEN                  = with_value 0x00001030L
 let _CKM_BATON_ECB128                   = with_value 0x00001031L
@@ -227,12 +264,18 @@ let _CKM_EC_KEY_PAIR_GEN                = with_value 0x00001040L
 let _CKM_ECDSA                          = with_value 0x00001041L
 let _CKM_ECDSA_SHA1                     = with_value 0x00001042L
 let _CKM_ECDSA_SHA224                   = with_value 0x00001043L
+let _CKM_ECDSA_SHA224                   = with_value 0x00001043L
+let _CKM_ECDSA_SHA256                   = with_value 0x00001044L
 let _CKM_ECDSA_SHA256                   = with_value 0x00001044L
 let _CKM_ECDSA_SHA384                   = with_value 0x00001045L
+let _CKM_ECDSA_SHA384                   = with_value 0x00001045L
+let _CKM_ECDSA_SHA512                   = with_value 0x00001046L
 let _CKM_ECDSA_SHA512                   = with_value 0x00001046L
 let _CKM_ECDH1_DERIVE                   = with_value 0x00001050L
 let _CKM_ECDH1_COFACTOR_DERIVE          = with_value 0x00001051L
 let _CKM_ECMQV_DERIVE                   = with_value 0x00001052L
+let _CKM_ECDH_AES_KEY_WRAP              = with_value 0x00001053L
+let _CKM_RSA_AES_KEY_WRAP               = with_value 0x00001054L
 let _CKM_JUNIPER_KEY_GEN                = with_value 0x00001060L
 let _CKM_JUNIPER_ECB128                 = with_value 0x00001061L
 let _CKM_JUNIPER_CBC128                 = with_value 0x00001062L
@@ -248,25 +291,58 @@ let _CKM_AES_MAC_GENERAL                = with_value 0x00001084L
 let _CKM_AES_CBC_PAD                    = with_value 0x00001085L
 let _CKM_AES_CTR                        = with_value 0x00001086L
 let _CKM_AES_GCM                        = with_value 0x00001087L
+let _CKM_AES_GCM                        = with_value 0x00001087L
+let _CKM_AES_CCM                        = with_value 0x00001088L
+let _CKM_AES_CTS                        = with_value 0x00001089L
+let _CKM_AES_CMAC                       = with_value 0x0000108AL
+let _CKM_AES_CMAC_GENERAL               = with_value 0x0000108BL
+let _CKM_AES_XCBC_MAC                   = with_value 0x0000108CL
+let _CKM_AES_XCBC_MAC_96                = with_value 0x0000108DL
+let _CKM_AES_GMAC                       = with_value 0x0000108EL
 let _CKM_BLOWFISH_KEY_GEN               = with_value 0x00001090L
 let _CKM_BLOWFISH_CBC                   = with_value 0x00001091L
 let _CKM_TWOFISH_KEY_GEN                = with_value 0x00001092L
 let _CKM_TWOFISH_CBC                    = with_value 0x00001093L
+let _CKM_BLOWFISH_CBC_PAD               = with_value 0x00001094L
+let _CKM_TWOFISH_CBC_PAD                = with_value 0x00001095L
 let _CKM_DES_ECB_ENCRYPT_DATA           = with_value 0x00001100L
 let _CKM_DES_CBC_ENCRYPT_DATA           = with_value 0x00001101L
 let _CKM_DES3_ECB_ENCRYPT_DATA          = with_value 0x00001102L
 let _CKM_DES3_CBC_ENCRYPT_DATA          = with_value 0x00001103L
 let _CKM_AES_ECB_ENCRYPT_DATA           = with_value 0x00001104L
 let _CKM_AES_CBC_ENCRYPT_DATA           = with_value 0x00001105L
+let _CKM_GOSTR3410_KEY_PAIR_GEN         = with_value 0x00001200L
+let _CKM_GOSTR3410_KEY_PAIR_GEN         = with_value 0x00001200L
+let _CKM_GOSTR3410                      = with_value 0x00001201L
+let _CKM_GOSTR3410                      = with_value 0x00001201L
+let _CKM_GOSTR3410_WITH_GOSTR3411       = with_value 0x00001202L
+let _CKM_GOSTR3410_WITH_GOSTR3411       = with_value 0x00001202L
+let _CKM_GOSTR3410_KEY_WRAP             = with_value 0x00001203L
+let _CKM_GOSTR3410_DERIVE               = with_value 0x00001204L
+let _CKM_GOSTR3411                      = with_value 0x00001210L
+let _CKM_GOSTR3411                      = with_value 0x00001210L
+let _CKM_GOSTR3411_HMAC                 = with_value 0x00001211L
+let _CKM_GOSTR3411_HMAC                 = with_value 0x00001211L
+let _CKM_GOST28147_KEY_GEN              = with_value 0x00001220L
+let _CKM_GOST28147_ECB                  = with_value 0x00001221L
+let _CKM_GOST28147                      = with_value 0x00001222L
+let _CKM_GOST28147_MAC                  = with_value 0x00001223L
+let _CKM_GOST28147_KEY_WRAP             = with_value 0x00001224L
 let _CKM_DSA_PARAMETER_GEN              = with_value 0x00002000L
 let _CKM_DH_PKCS_PARAMETER_GEN          = with_value 0x00002001L
 let _CKM_X9_42_DH_PARAMETER_GEN         = with_value 0x00002002L
-let _CKM_GOSTR3410_KEY_PAIR_GEN         = with_value 0x00001200L
-let _CKM_GOSTR3410                      = with_value 0x00001201L
-let _CKM_GOSTR3410_WITH_GOSTR3411       = with_value 0x00001202L
-let _CKM_GOSTR3411                      = with_value 0x00001210L
-let _CKM_GOSTR3411_HMAC                 = with_value 0x00001211L
+let _CKM_DSA_PROBABLISTIC_PARAMETER_GEN = with_value 0x00002003L
+let _CKM_DSA_SHAWE_TAYLOR_PARAMETER_GEN = with_value 0x00002004L
+let _CKM_AES_OFB                        = with_value 0x00002104L
+let _CKM_AES_CFB64                      = with_value 0x00002105L
+let _CKM_AES_CFB8                       = with_value 0x00002106L
+let _CKM_AES_CFB128                     = with_value 0x00002107L
+let _CKM_AES_CFB1                       = with_value 0x00002108L
 let _CKM_AES_KEY_WRAP                   = with_value 0x00002109L
+let _CKM_AES_KEY_WRAP                   = with_value 0x00002109L
+let _CKM_AES_KEY_WRAP_PAD               = with_value 0x0000210AL
+let _CKM_RSA_PKCS_TPM_1_1               = with_value 0x00004001L
+let _CKM_RSA_PKCS_OAEP_TPM_1_1          = with_value 0x00004002L
 let _CKM_VENDOR_DEFINED                 = with_value 0x80000000L
 
 
@@ -535,6 +611,67 @@ let make u =
     | CKM_GOSTR3411 -> _CKM_GOSTR3411
     | CKM_GOSTR3411_HMAC -> _CKM_GOSTR3411_HMAC
     | CKM_AES_KEY_WRAP -> _CKM_AES_KEY_WRAP
+    | CKM_AES_CCM -> _CKM_AES_CCM
+    | CKM_AES_CFB1 -> _CKM_AES_CFB1
+    | CKM_AES_CFB128 -> _CKM_AES_CFB128
+    | CKM_AES_CFB64 -> _CKM_AES_CFB64
+    | CKM_AES_CFB8 -> _CKM_AES_CFB8
+    | CKM_AES_CMAC -> _CKM_AES_CMAC
+    | CKM_AES_CMAC_GENERAL -> _CKM_AES_CMAC_GENERAL
+    | CKM_AES_CTS -> _CKM_AES_CTS
+    | CKM_AES_GMAC -> _CKM_AES_GMAC
+    | CKM_AES_KEY_WRAP_PAD -> _CKM_AES_KEY_WRAP_PAD
+    | CKM_AES_OFB -> _CKM_AES_OFB
+    | CKM_AES_XCBC_MAC -> _CKM_AES_XCBC_MAC
+    | CKM_AES_XCBC_MAC_96 -> _CKM_AES_XCBC_MAC_96
+    | CKM_BLOWFISH_CBC_PAD -> _CKM_BLOWFISH_CBC_PAD
+    | CKM_DES3_CMAC -> _CKM_DES3_CMAC
+    | CKM_DES3_CMAC_GENERAL -> _CKM_DES3_CMAC_GENERAL
+    | CKM_DSA_PROBABLISTIC_PARAMETER_GEN -> _CKM_DSA_PROBABLISTIC_PARAMETER_GEN
+    | CKM_DSA_SHAWE_TAYLOR_PARAMETER_GEN -> _CKM_DSA_SHAWE_TAYLOR_PARAMETER_GEN
+    | CKM_ECDH_AES_KEY_WRAP -> _CKM_ECDH_AES_KEY_WRAP
+    | CKM_GOST28147 -> _CKM_GOST28147
+    | CKM_GOST28147_ECB -> _CKM_GOST28147_ECB
+    | CKM_GOST28147_KEY_GEN -> _CKM_GOST28147_KEY_GEN
+    | CKM_GOST28147_KEY_WRAP -> _CKM_GOST28147_KEY_WRAP
+    | CKM_GOST28147_MAC -> _CKM_GOST28147_MAC
+    | CKM_GOSTR3410_DERIVE -> _CKM_GOSTR3410_DERIVE
+    | CKM_GOSTR3410_KEY_WRAP -> _CKM_GOSTR3410_KEY_WRAP
+    | CKM_KEA_DERIVE -> _CKM_KEA_DERIVE
+    | CKM_RSA_AES_KEY_WRAP -> _CKM_RSA_AES_KEY_WRAP
+    | CKM_RSA_PKCS_OAEP_TPM_1_1 -> _CKM_RSA_PKCS_OAEP_TPM_1_1
+    | CKM_RSA_PKCS_TPM_1_1 -> _CKM_RSA_PKCS_TPM_1_1
+    | CKM_SEED_CBC -> _CKM_SEED_CBC
+    | CKM_SEED_CBC_ENCRYPT_DATA -> _CKM_SEED_CBC_ENCRYPT_DATA
+    | CKM_SEED_CBC_PAD -> _CKM_SEED_CBC_PAD
+    | CKM_SEED_ECB -> _CKM_SEED_ECB
+    | CKM_SEED_ECB_ENCRYPT_DATA -> _CKM_SEED_ECB_ENCRYPT_DATA
+    | CKM_SEED_KEY_GEN -> _CKM_SEED_KEY_GEN
+    | CKM_SEED_MAC -> _CKM_SEED_MAC
+    | CKM_SEED_MAC_GENERAL -> _CKM_SEED_MAC_GENERAL
+    | CKM_SHA512_224 -> _CKM_SHA512_224
+    | CKM_SHA512_224_HMAC -> _CKM_SHA512_224_HMAC
+    | CKM_SHA512_224_HMAC_GENERAL -> _CKM_SHA512_224_HMAC_GENERAL
+    | CKM_SHA512_224_KEY_DERIVATION -> _CKM_SHA512_224_KEY_DERIVATION
+    | CKM_SHA512_256 -> _CKM_SHA512_256
+    | CKM_SHA512_256_HMAC -> _CKM_SHA512_256_HMAC
+    | CKM_SHA512_256_HMAC_GENERAL -> _CKM_SHA512_256_HMAC_GENERAL
+    | CKM_SHA512_256_KEY_DERIVATION -> _CKM_SHA512_256_KEY_DERIVATION
+    | CKM_SHA512_T -> _CKM_SHA512_T
+    | CKM_SHA512_T_HMAC -> _CKM_SHA512_T_HMAC
+    | CKM_SHA512_T_HMAC_GENERAL -> _CKM_SHA512_T_HMAC_GENERAL
+    | CKM_SHA512_T_KEY_DERIVATION -> _CKM_SHA512_T_KEY_DERIVATION
+    | CKM_TLS10_MAC_CLIENT -> _CKM_TLS10_MAC_CLIENT
+    | CKM_TLS10_MAC_SERVER -> _CKM_TLS10_MAC_SERVER
+    | CKM_TLS12_KDF -> _CKM_TLS12_KDF
+    | CKM_TLS12_KEY_AND_MAC_DERIVE -> _CKM_TLS12_KEY_AND_MAC_DERIVE
+    | CKM_TLS12_KEY_SAFE_DERIVE -> _CKM_TLS12_KEY_SAFE_DERIVE
+    | CKM_TLS12_MAC -> _CKM_TLS12_MAC
+    | CKM_TLS12_MASTER_KEY_DERIVE -> _CKM_TLS12_MASTER_KEY_DERIVE
+    | CKM_TLS12_MASTER_KEY_DERIVE_DH -> _CKM_TLS12_MASTER_KEY_DERIVE_DH
+    | CKM_TLS_KDF -> _CKM_TLS_KDF
+    | CKM_TLS_MAC -> _CKM_TLS_MAC
+    | CKM_TWOFISH_CBC_PAD -> _CKM_TWOFISH_CBC_PAD
     | CKM_VENDOR_DEFINED  -> _CKM_VENDOR_DEFINED
     | CKM_CS_UNKNOWN x -> x
 
@@ -806,4 +943,65 @@ let view t =
     | _ when is _CKM_GOSTR3411 -> CKM_GOSTR3411
     | _ when is _CKM_GOSTR3411_HMAC -> CKM_GOSTR3411_HMAC
     | _ when is _CKM_AES_KEY_WRAP -> CKM_AES_KEY_WRAP
+    | _ when is _CKM_AES_CCM -> CKM_AES_CCM
+    | _ when is _CKM_AES_CFB1 -> CKM_AES_CFB1
+    | _ when is _CKM_AES_CFB128 -> CKM_AES_CFB128
+    | _ when is _CKM_AES_CFB64 -> CKM_AES_CFB64
+    | _ when is _CKM_AES_CFB8 -> CKM_AES_CFB8
+    | _ when is _CKM_AES_CMAC -> CKM_AES_CMAC
+    | _ when is _CKM_AES_CMAC_GENERAL -> CKM_AES_CMAC_GENERAL
+    | _ when is _CKM_AES_CTS -> CKM_AES_CTS
+    | _ when is _CKM_AES_GMAC -> CKM_AES_GMAC
+    | _ when is _CKM_AES_KEY_WRAP_PAD -> CKM_AES_KEY_WRAP_PAD
+    | _ when is _CKM_AES_OFB -> CKM_AES_OFB
+    | _ when is _CKM_AES_XCBC_MAC -> CKM_AES_XCBC_MAC
+    | _ when is _CKM_AES_XCBC_MAC_96 -> CKM_AES_XCBC_MAC_96
+    | _ when is _CKM_BLOWFISH_CBC_PAD -> CKM_BLOWFISH_CBC_PAD
+    | _ when is _CKM_DES3_CMAC -> CKM_DES3_CMAC
+    | _ when is _CKM_DES3_CMAC_GENERAL -> CKM_DES3_CMAC_GENERAL
+    | _ when is _CKM_DSA_PROBABLISTIC_PARAMETER_GEN -> CKM_DSA_PROBABLISTIC_PARAMETER_GEN
+    | _ when is _CKM_DSA_SHAWE_TAYLOR_PARAMETER_GEN -> CKM_DSA_SHAWE_TAYLOR_PARAMETER_GEN
+    | _ when is _CKM_ECDH_AES_KEY_WRAP -> CKM_ECDH_AES_KEY_WRAP
+    | _ when is _CKM_GOST28147 -> CKM_GOST28147
+    | _ when is _CKM_GOST28147_ECB -> CKM_GOST28147_ECB
+    | _ when is _CKM_GOST28147_KEY_GEN -> CKM_GOST28147_KEY_GEN
+    | _ when is _CKM_GOST28147_KEY_WRAP -> CKM_GOST28147_KEY_WRAP
+    | _ when is _CKM_GOST28147_MAC -> CKM_GOST28147_MAC
+    | _ when is _CKM_GOSTR3410_DERIVE -> CKM_GOSTR3410_DERIVE
+    | _ when is _CKM_GOSTR3410_KEY_WRAP -> CKM_GOSTR3410_KEY_WRAP
+    | _ when is _CKM_KEA_DERIVE -> CKM_KEA_DERIVE
+    | _ when is _CKM_RSA_AES_KEY_WRAP -> CKM_RSA_AES_KEY_WRAP
+    | _ when is _CKM_RSA_PKCS_OAEP_TPM_1_1 -> CKM_RSA_PKCS_OAEP_TPM_1_1
+    | _ when is _CKM_RSA_PKCS_TPM_1_1 -> CKM_RSA_PKCS_TPM_1_1
+    | _ when is _CKM_SEED_CBC -> CKM_SEED_CBC
+    | _ when is _CKM_SEED_CBC_ENCRYPT_DATA -> CKM_SEED_CBC_ENCRYPT_DATA
+    | _ when is _CKM_SEED_CBC_PAD -> CKM_SEED_CBC_PAD
+    | _ when is _CKM_SEED_ECB -> CKM_SEED_ECB
+    | _ when is _CKM_SEED_ECB_ENCRYPT_DATA -> CKM_SEED_ECB_ENCRYPT_DATA
+    | _ when is _CKM_SEED_KEY_GEN -> CKM_SEED_KEY_GEN
+    | _ when is _CKM_SEED_MAC -> CKM_SEED_MAC
+    | _ when is _CKM_SEED_MAC_GENERAL -> CKM_SEED_MAC_GENERAL
+    | _ when is _CKM_SHA512_224 -> CKM_SHA512_224
+    | _ when is _CKM_SHA512_224_HMAC -> CKM_SHA512_224_HMAC
+    | _ when is _CKM_SHA512_224_HMAC_GENERAL -> CKM_SHA512_224_HMAC_GENERAL
+    | _ when is _CKM_SHA512_224_KEY_DERIVATION -> CKM_SHA512_224_KEY_DERIVATION
+    | _ when is _CKM_SHA512_256 -> CKM_SHA512_256
+    | _ when is _CKM_SHA512_256_HMAC -> CKM_SHA512_256_HMAC
+    | _ when is _CKM_SHA512_256_HMAC_GENERAL -> CKM_SHA512_256_HMAC_GENERAL
+    | _ when is _CKM_SHA512_256_KEY_DERIVATION -> CKM_SHA512_256_KEY_DERIVATION
+    | _ when is _CKM_SHA512_T -> CKM_SHA512_T
+    | _ when is _CKM_SHA512_T_HMAC -> CKM_SHA512_T_HMAC
+    | _ when is _CKM_SHA512_T_HMAC_GENERAL -> CKM_SHA512_T_HMAC_GENERAL
+    | _ when is _CKM_SHA512_T_KEY_DERIVATION -> CKM_SHA512_T_KEY_DERIVATION
+    | _ when is _CKM_TLS10_MAC_CLIENT -> CKM_TLS10_MAC_CLIENT
+    | _ when is _CKM_TLS10_MAC_SERVER -> CKM_TLS10_MAC_SERVER
+    | _ when is _CKM_TLS12_KDF -> CKM_TLS12_KDF
+    | _ when is _CKM_TLS12_KEY_AND_MAC_DERIVE -> CKM_TLS12_KEY_AND_MAC_DERIVE
+    | _ when is _CKM_TLS12_KEY_SAFE_DERIVE -> CKM_TLS12_KEY_SAFE_DERIVE
+    | _ when is _CKM_TLS12_MAC -> CKM_TLS12_MAC
+    | _ when is _CKM_TLS12_MASTER_KEY_DERIVE -> CKM_TLS12_MASTER_KEY_DERIVE
+    | _ when is _CKM_TLS12_MASTER_KEY_DERIVE_DH -> CKM_TLS12_MASTER_KEY_DERIVE_DH
+    | _ when is _CKM_TLS_KDF -> CKM_TLS_KDF
+    | _ when is _CKM_TLS_MAC -> CKM_TLS_MAC
+    | _ when is _CKM_TWOFISH_CBC_PAD -> CKM_TWOFISH_CBC_PAD
     | _ -> CKM_CS_UNKNOWN t
