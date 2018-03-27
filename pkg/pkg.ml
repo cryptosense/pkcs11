@@ -109,11 +109,9 @@ let () =
     Pkg.mllib ~api "src/pkcs11.mllib";
     Pkg.test "test/test_suite";
     Pkg.mllib ~cond:driver ~api:api_driver "src_driver/pkcs11_driver.mllib";
-    Pkg.clib ~cond:driver "src_driver/libpkcs11_stubs.clib";
     Pkg.lib ~cond:driver "include/pkcs11.h";
     Pkg.lib ~cond:driver "include/pkcs11t.h";
     Pkg.lib ~cond:driver "include/pkcs11f.h";
-    Pkg.lib ~cond:driver "include/pkcs11_module.h";
     Pkg.test ~cond:driver "test/test_driver";
     Pkg.mllib ~cond:rev ~api:["Pkcs11_rev"] "src_rev/pkcs11_rev.mllib";
     Pkg.clib ~cond:rev "src_rev/libpkcs11_rev_stubs.clib";

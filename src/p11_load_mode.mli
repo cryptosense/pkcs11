@@ -1,17 +1,11 @@
 (** How the interaction is done with the DLL. *)
 type t = private
   | Auto
-  | Stubs
   | FFI
 [@@deriving eq,ord,show,yojson]
 
 (** Call directly each symbol using libffi. *)
 val ffi : t
-
-(** Use C stubs to load the DLL using dlopen, and call each symbol through
-    C_GetFunctionList. *)
-val stubs : t
-[@@deprecated]
 
 (**
    Call C_GetFunctionList using libffi.

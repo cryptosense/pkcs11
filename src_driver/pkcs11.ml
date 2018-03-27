@@ -453,18 +453,6 @@ module type CONFIG = sig
   val library : Dl.library
 end
 
-exception Cannot_load_module of string * P11_rv.t
-
-module Stubs (X: sig val library: string end) : RAW =
-struct
-  include Pkcs11_bindings.C(Pkcs11_generated)
-  let _ =
-    let result = c_LoadModule X.library  in
-    if result <> CK_RV._CKR_OK
-    then
-      raise (Cannot_load_module (X.library, CK_RV.view result))
-end
-
 (******************************************************************************)
 (*                            Direct style bindings                           *)
 (******************************************************************************)
@@ -1312,10 +1300,6 @@ let load_driver ?log_calls ?on_unknown ?(load_mode=P11.Load_mode.auto) dll =
     (module (Fake ()) : RAW)
   else
     let open P11.Load_mode in
-    let module P11_library =
-    struct
-      let library = dll
-    end in
     let foreign_parameters () =
       let module M =
       struct
@@ -1326,6 +1310,6 @@ let load_driver ?log_calls ?on_unknown ?(load_mode=P11.Load_mode.auto) dll =
       (module M:CONFIG)
     in
     match load_mode with
-      | Stubs -> (module (Stubs(P11_library)))
+      (*| Stubs -> (module (Stubs(P11_library)))*)
       | Auto -> (module (Auto((val foreign_parameters ()))))
       | FFI -> (module (Direct((val foreign_parameters ()))))

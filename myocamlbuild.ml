@@ -35,7 +35,6 @@ let after_rules () =
   add_ocamlfind_header_directory "ctypes";
   pdep ["compile"] "depend" (fun s -> [s]);
   pflag ["compile";"c"] "depend" (fun s -> S [A "-I"; P (Filename.dirname s)]);
-  lib ~dir:"src_driver" "pkcs11";
   lib ~dir:"src_rev" "pkcs11_rev";
   flag ["here"] (S ([A "-cclib" ;A "-Lsrc_driver"]));
   ()
