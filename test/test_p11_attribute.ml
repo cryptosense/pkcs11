@@ -13,6 +13,9 @@ let pack_to_yojson_suite =
     test
       ~pack:(P11_attribute.Pack (P11_attribute_type.CKA_EC_PARAMS, "\x00"))
       ~expected:(`Assoc [("CKA_EC_PARAMS", `String "0x00")])
+  ; "CKA_ID" >:: test
+      ~pack:(Pack (CKA_ID, "\x00"))
+      ~expected:(`Assoc [("CKA_ID", `String "0x00")])
   ]
 
 let pack_of_yojson_suite =
@@ -29,6 +32,9 @@ let pack_of_yojson_suite =
     test
       ~json:(`Assoc [("CKA_EC_PARAMS", `String "0x00")])
       ~expected:(Ok (P11_attribute.Pack (P11_attribute_type.CKA_EC_PARAMS, "\x00")))
+  ; "CKA_ID" >:: test
+      ~json:(`Assoc [("CKA_ID", `String "0x00")])
+      ~expected:(Ok (Pack (CKA_ID, "\x00")))
   ]
 
 let suite =

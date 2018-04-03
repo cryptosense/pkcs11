@@ -104,7 +104,7 @@ let to_json : type a . a t -> Yojson.Safe.json = fun attribute ->
     | CKA_SUBJECT, param ->
         p_string "CKA_SUBJECT" param
     | CKA_ID, param ->
-        p_string "CKA_ID" param
+        p_data "CKA_ID" param
     | CKA_SENSITIVE, param ->
         p_bool "CKA_SENSITIVE" param
     | CKA_ENCRYPT, param ->
@@ -234,7 +234,7 @@ let pack_of_yojson json : (pack, string) result =
       | "CKA_SUBJECT" ->
           p_string CKA_SUBJECT
       | "CKA_ID" ->
-          p_string CKA_ID
+          p_data CKA_ID
       | "CKA_SENSITIVE" ->
           p_bool CKA_SENSITIVE
       | "CKA_ENCRYPT" ->
