@@ -148,6 +148,7 @@ let repr_view (type a) t : a P11_attribute.repr -> a =
   | Repr_object_class -> Pkcs11_CK_OBJECT_CLASS.view (unsafe_get_object_class t)
   | Repr_bool -> unsafe_get_bool t
   | Repr_string -> unsafe_get_string t
+  | Repr_data -> unsafe_get_string t
   | Repr_not_implemented -> NOT_IMPLEMENTED (unsafe_get_string t)
   | Repr_key_type -> Pkcs11_CK_KEY_TYPE.view(unsafe_get_key_type t)
   | Repr_bigint -> P11_bigint.decode (unsafe_get_string t)
@@ -160,6 +161,7 @@ let repr_make (type a) at (param:a) : a P11_attribute.repr -> _ =
   | Repr_object_class -> ulong at (Pkcs11_CK_OBJECT_CLASS.make param)
   | Repr_bool -> boolean at param
   | Repr_string -> string at param
+  | Repr_data -> string at param
   | Repr_not_implemented -> let P11_attribute_type.NOT_IMPLEMENTED s = param in string at s
   | Repr_key_type -> ulong at (Pkcs11_CK_KEY_TYPE.make param)
   | Repr_bigint -> bigint at param

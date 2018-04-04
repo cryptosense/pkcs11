@@ -11,6 +11,7 @@ type _ repr =
    | Repr_bigint : P11_bigint.t repr
    | Repr_ulong : Unsigned.ULong.t repr
    | Repr_key_gen_mechanism : P11_key_gen_mechanism.t repr
+   | Repr_data : string repr
 
 let repr (type a) : a P11_attribute_type.t -> a repr =
   let open P11_attribute_type in
@@ -19,12 +20,12 @@ let repr (type a) : a P11_attribute_type.t -> a repr =
   | CKA_TOKEN -> Repr_bool
   | CKA_PRIVATE -> Repr_bool
   | CKA_LABEL -> Repr_string
-  | CKA_VALUE -> Repr_string
+  | CKA_VALUE -> Repr_data
   | CKA_TRUSTED -> Repr_bool
   | CKA_CHECK_VALUE -> Repr_not_implemented
   | CKA_KEY_TYPE -> Repr_key_type
   | CKA_SUBJECT -> Repr_string
-  | CKA_ID -> Repr_string
+  | CKA_ID -> Repr_data
   | CKA_SENSITIVE -> Repr_bool
   | CKA_ENCRYPT -> Repr_bool
   | CKA_DECRYPT -> Repr_bool
@@ -58,8 +59,8 @@ let repr (type a) : a P11_attribute_type.t -> a repr =
   | CKA_ALWAYS_SENSITIVE -> Repr_bool
   | CKA_KEY_GEN_MECHANISM -> Repr_key_gen_mechanism
   | CKA_MODIFIABLE -> Repr_bool
-  | CKA_EC_PARAMS -> Repr_string
-  | CKA_EC_POINT -> Repr_string
+  | CKA_EC_PARAMS -> Repr_data
+  | CKA_EC_POINT -> Repr_data
   | CKA_ALWAYS_AUTHENTICATE -> Repr_bool
   | CKA_WRAP_WITH_TRUSTED -> Repr_bool
   | CKA_WRAP_TEMPLATE -> Repr_not_implemented
@@ -67,20 +68,24 @@ let repr (type a) : a P11_attribute_type.t -> a repr =
   | CKA_ALLOWED_MECHANISMS -> Repr_not_implemented
   | CKA_CS_UNKNOWN _ -> Repr_not_implemented
 
+let bool_to_string = function
+  | true -> "CK_TRUE"
+  | false -> "CK_FALSE"
+
 let to_string_value (type a) : a repr -> a -> string =
   let open P11_attribute_type in
-  let bool x = if x then "CK_TRUE" else "CK_FALSE" in
   let string x = Printf.sprintf "%S" x in
   let not_implemented (NOT_IMPLEMENTED x) = string x in
   function
   | Repr_object_class -> P11_object_class.to_string
-  | Repr_bool -> bool
+  | Repr_bool -> bool_to_string
   | Repr_string -> string
   | Repr_key_type -> P11_key_type.to_string
   | Repr_not_implemented -> not_implemented
   | Repr_bigint -> P11_bigint.to_string
   | Repr_ulong -> Unsigned.ULong.to_string
   | Repr_key_gen_mechanism -> P11_key_gen_mechanism.to_string
+  | Repr_data -> string
 
 let to_string_pair (type s) (x : s t) =
   let open P11_attribute_type in
@@ -95,123 +100,21 @@ let to_string x =
 (* Note: it is important for [Template.to_json] and [Template.of_json]
    that all attributes are represented using [`Assoc]. *)
 let to_json : type a . a t -> Yojson.Safe.json = fun attribute ->
-  let open P11_attribute_type in
-  let p json_of_param name param =
-    `Assoc [ name, json_of_param param ]
+  let key_json = P11_attribute_type.to_string (fst attribute) in
+  let data = P11_hex_data.to_yojson in
+  let value_json =
+    match repr (fst attribute), snd attribute with
+    | Repr_object_class, param -> P11_object_class.to_yojson param
+    | Repr_bool, param -> `String (bool_to_string param)
+    | Repr_string, param -> (fun s -> `String s) param
+    | Repr_key_type, param -> P11_key_type.to_yojson param
+    | Repr_not_implemented, NOT_IMPLEMENTED param -> data param
+    | Repr_bigint, param -> P11_bigint.to_yojson param
+    | Repr_ulong, param -> P11_ulong.to_yojson param
+    | Repr_key_gen_mechanism, param -> P11_key_gen_mechanism.to_yojson param
+    | Repr_data, param -> data param
   in
-  let p_object_class = p P11_object_class.to_yojson in
-  let p_bool : string -> bool -> Yojson.Safe.json =
-    p @@ fun b -> `String (if b then "CK_TRUE" else "CK_FALSE") in
-  let p_string : string -> string -> Yojson.Safe.json =
-    p @@ fun s -> `String s in
-  let p_data = p P11_hex_data.to_yojson in
-  let p_key_type = p P11_key_type.to_yojson in
-  let p_ulong = p P11_ulong.to_yojson in
-  let p_bigint = p P11_bigint.to_yojson in
-  let p_mechanism_type = p P11_key_gen_mechanism.to_yojson in
-  match attribute with
-    | CKA_CLASS, param ->
-        p_object_class "CKA_CLASS" param
-    | CKA_TOKEN, param ->
-        p_bool "CKA_TOKEN" param
-    | CKA_PRIVATE, param ->
-        p_bool "CKA_PRIVATE" param
-    | CKA_LABEL, param ->
-        p_string "CKA_LABEL" param
-    | CKA_VALUE, param ->
-        p_data "CKA_VALUE" param
-    | CKA_TRUSTED, param ->
-        p_bool "CKA_TRUSTED" param
-    | CKA_KEY_TYPE, param ->
-        p_key_type "CKA_KEY_TYPE" param
-    | CKA_SUBJECT, param ->
-        p_string "CKA_SUBJECT" param
-    | CKA_ID, param ->
-        p_data "CKA_ID" param
-    | CKA_SENSITIVE, param ->
-        p_bool "CKA_SENSITIVE" param
-    | CKA_ENCRYPT, param ->
-        p_bool "CKA_ENCRYPT" param
-    | CKA_DECRYPT, param ->
-        p_bool "CKA_DECRYPT" param
-    | CKA_WRAP, param ->
-        p_bool "CKA_WRAP" param
-    | CKA_UNWRAP, param ->
-        p_bool "CKA_UNWRAP" param
-    | CKA_SIGN, param ->
-        p_bool "CKA_SIGN" param
-    | CKA_SIGN_RECOVER, param ->
-        p_bool "CKA_SIGN_RECOVER" param
-    | CKA_VERIFY, param ->
-        p_bool "CKA_VERIFY" param
-    | CKA_VERIFY_RECOVER, param ->
-        p_bool "CKA_VERIFY_RECOVER" param
-    | CKA_DERIVE, param ->
-        p_bool "CKA_DERIVE" param
-    | CKA_MODULUS, param ->
-        p_bigint "CKA_MODULUS" param
-    | CKA_MODULUS_BITS, param ->
-        p_ulong "CKA_MODULUS_BITS" param
-    | CKA_PUBLIC_EXPONENT, param ->
-        p_bigint "CKA_PUBLIC_EXPONENT" param
-    | CKA_PRIVATE_EXPONENT, param ->
-        p_bigint "CKA_PRIVATE_EXPONENT" param
-    | CKA_PRIME_1, param ->
-        p_bigint "CKA_PRIME_1" param
-    | CKA_PRIME_2, param ->
-        p_bigint "CKA_PRIME_2" param
-    | CKA_EXPONENT_1, param ->
-        p_bigint "CKA_EXPONENT_1" param
-    | CKA_EXPONENT_2, param ->
-        p_bigint "CKA_EXPONENT_2" param
-    | CKA_COEFFICIENT, param ->
-        p_bigint "CKA_COEFFICIENT" param
-    | CKA_PRIME, param ->
-        p_bigint "CKA_PRIME" param
-    | CKA_SUBPRIME, param ->
-        p_bigint "CKA_SUBPRIME" param
-    | CKA_BASE, param ->
-        p_bigint "CKA_BASE" param
-    | CKA_VALUE_LEN, param ->
-        p_ulong "CKA_VALUE_LEN" param
-    | CKA_EXTRACTABLE, param ->
-        p_bool "CKA_EXTRACTABLE" param
-    | CKA_LOCAL, param ->
-        p_bool "CKA_LOCAL" param
-    | CKA_NEVER_EXTRACTABLE, param ->
-        p_bool "CKA_NEVER_EXTRACTABLE" param
-    | CKA_ALWAYS_SENSITIVE, param ->
-        p_bool "CKA_ALWAYS_SENSITIVE" param
-    | CKA_KEY_GEN_MECHANISM, param ->
-        p_mechanism_type "CKA_KEY_GEN_MECHANISM" param
-    | CKA_MODIFIABLE, param ->
-        p_bool "CKA_MODIFIABLE" param
-    | CKA_EC_PARAMS, param ->
-        p_data "CKA_EC_PARAMS" param
-    | CKA_EC_POINT, param ->
-        p_data "CKA_EC_POINT" param
-    | CKA_ALWAYS_AUTHENTICATE, param ->
-        p_bool "CKA_ALWAYS_AUTHENTICATE" param
-    | CKA_WRAP_WITH_TRUSTED, param ->
-        p_bool "CKA_WRAP_WITH_TRUSTED" param
-    | CKA_CHECK_VALUE, NOT_IMPLEMENTED param ->
-        p_data "CKA_CHECK_VALUE" param
-    | CKA_START_DATE, NOT_IMPLEMENTED param ->
-        p_data "CKA_START_DATE" param
-    | CKA_END_DATE, NOT_IMPLEMENTED param ->
-        p_data "CKA_END_DATE" param
-    | CKA_PRIME_BITS, param ->
-        p_ulong "CKA_PRIME_BITS" param
-    | CKA_SUBPRIME_BITS, param ->
-        p_ulong "CKA_SUBPRIME_BITS" param
-    | CKA_WRAP_TEMPLATE, NOT_IMPLEMENTED param ->
-        p_data "CKA_WRAP_TEMPLATE" param
-    | CKA_UNWRAP_TEMPLATE, NOT_IMPLEMENTED param ->
-        p_data "CKA_UNWRAP_TEMPLATE" param
-    | CKA_ALLOWED_MECHANISMS, NOT_IMPLEMENTED param ->
-        p_data "CKA_ALLOWED_MECHANISMS" param
-    | CKA_CS_UNKNOWN ul, NOT_IMPLEMENTED param ->
-        p_data (Unsigned.ULong.to_string ul) param
+  `Assoc [(key_json, value_json)]
 
 let pack_of_yojson json : (pack, string) result =
   let parse name param : (pack, string) result =

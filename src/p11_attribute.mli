@@ -44,6 +44,7 @@ type _ repr =
    | Repr_bigint : P11_bigint.t repr
    | Repr_ulong : Unsigned.ULong.t repr
    | Repr_key_gen_mechanism : P11_key_gen_mechanism.t repr
+   | Repr_data : string repr
 
 (** Return how this attribute type is represented.
     This is an implementation detail, do not rely on this outside of [pkcs11]. *)
