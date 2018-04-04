@@ -141,17 +141,8 @@ let unsafe_get_object_class : t -> Pkcs11_CK_OBJECT_CLASS.t =
 let unsafe_get_key_type : t -> Pkcs11_CK_KEY_TYPE.t =
   unsafe_get_ulong
 
-type _ repr =
-  | Repr_object_class : P11_object_class.t repr
-  | Repr_bool : bool repr
-  | Repr_string : string repr
-  | Repr_not_implemented : P11_attribute_type.not_implemented repr
-  | Repr_key_type : P11_key_type.t repr
-  | Repr_bigint : P11_bigint.t repr
-  | Repr_ulong : P11_ulong.t repr
-  | Repr_key_gen_mechanism : P11_key_gen_mechanism.t repr
-
-let repr_view (type a) t : a repr -> a =
+let repr_view (type a) t : a P11_attribute.repr -> a =
+  let open P11_attribute in
   let open P11_attribute_type in
   function
   | Repr_object_class -> Pkcs11_CK_OBJECT_CLASS.view (unsafe_get_object_class t)
@@ -163,7 +154,8 @@ let repr_view (type a) t : a repr -> a =
   | Repr_ulong -> unsafe_get_ulong t
   | Repr_key_gen_mechanism -> Pkcs11_key_gen_mechanism.view (unsafe_get_ulong t)
 
-let repr_make (type a) at (param:a) : a repr -> _ =
+let repr_make (type a) at (param:a) : a P11_attribute.repr -> _ =
+  let open P11_attribute in
   function
   | Repr_object_class -> ulong at (Pkcs11_CK_OBJECT_CLASS.make param)
   | Repr_bool -> boolean at param
@@ -174,73 +166,11 @@ let repr_make (type a) at (param:a) : a repr -> _ =
   | Repr_ulong -> ulong at param
   | Repr_key_gen_mechanism -> ulong at (Pkcs11_key_gen_mechanism.make param)
 
-let repr (type a) : a P11_attribute_type.t -> a repr =
-  let open P11_attribute_type in
-  function
-  | CKA_CLASS -> Repr_object_class
-  | CKA_TOKEN -> Repr_bool
-  | CKA_PRIVATE -> Repr_bool
-  | CKA_LABEL -> Repr_string
-  | CKA_VALUE -> Repr_string
-  | CKA_TRUSTED -> Repr_bool
-  | CKA_CHECK_VALUE -> Repr_not_implemented
-  | CKA_KEY_TYPE -> Repr_key_type
-  | CKA_SUBJECT -> Repr_string
-  | CKA_ID -> Repr_string
-  | CKA_SENSITIVE -> Repr_bool
-  | CKA_ENCRYPT -> Repr_bool
-  | CKA_DECRYPT -> Repr_bool
-  | CKA_WRAP -> Repr_bool
-  | CKA_UNWRAP -> Repr_bool
-  | CKA_SIGN -> Repr_bool
-  | CKA_SIGN_RECOVER -> Repr_bool
-  | CKA_VERIFY -> Repr_bool
-  | CKA_VERIFY_RECOVER -> Repr_bool
-  | CKA_DERIVE -> Repr_bool
-  | CKA_START_DATE -> Repr_not_implemented
-  | CKA_END_DATE -> Repr_not_implemented
-  | CKA_MODULUS -> Repr_bigint
-  | CKA_MODULUS_BITS -> Repr_ulong
-  | CKA_PUBLIC_EXPONENT -> Repr_bigint
-  | CKA_PRIVATE_EXPONENT -> Repr_bigint
-  | CKA_PRIME_1 -> Repr_bigint
-  | CKA_PRIME_2 -> Repr_bigint
-  | CKA_EXPONENT_1 -> Repr_bigint
-  | CKA_EXPONENT_2 -> Repr_bigint
-  | CKA_COEFFICIENT -> Repr_bigint
-  | CKA_PRIME -> Repr_bigint
-  | CKA_SUBPRIME -> Repr_bigint
-  | CKA_BASE -> Repr_bigint
-  | CKA_PRIME_BITS -> Repr_ulong
-  | CKA_SUBPRIME_BITS -> Repr_ulong
-  | CKA_VALUE_LEN -> Repr_ulong
-  | CKA_EXTRACTABLE -> Repr_bool
-  | CKA_LOCAL -> Repr_bool
-  | CKA_NEVER_EXTRACTABLE -> Repr_bool
-  | CKA_ALWAYS_SENSITIVE -> Repr_bool
-  | CKA_KEY_GEN_MECHANISM -> Repr_key_gen_mechanism
-  | CKA_MODIFIABLE -> Repr_bool
-  | CKA_EC_PARAMS -> Repr_string
-  | CKA_EC_POINT -> Repr_string
-  | CKA_ALWAYS_AUTHENTICATE -> Repr_bool
-  | CKA_WRAP_WITH_TRUSTED -> Repr_bool
-  | CKA_WRAP_TEMPLATE -> Repr_not_implemented
-  | CKA_UNWRAP_TEMPLATE -> Repr_not_implemented
-  | CKA_ALLOWED_MECHANISMS -> Repr_not_implemented
-  | CKA_CS_UNKNOWN ul ->
-    begin
-      Printf.ksprintf
-        Pkcs11_log.log
-        "Unknown CKA code: 0x%Lx"
-        (Int64.of_string @@ Unsigned.ULong.to_string ul);
-      Repr_not_implemented
-    end
-
 let view t =
   let open P11_attribute_type in
   let ul = getf t _type in
   let Pack attribute_type = Pkcs11_CK_ATTRIBUTE_TYPE.view ul in
-  let repr = repr attribute_type in
+  let repr = P11_attribute.repr attribute_type in
   let param = repr_view t repr in
   pack (attribute_type, param)
 
@@ -248,7 +178,7 @@ let make (type s) ((at, param):s u) =
   repr_make
     (Pkcs11_CK_ATTRIBUTE_TYPE.make at)
     param
-    (repr at)
+    (P11_attribute.repr at)
 
 let make_pack (P11_attribute.Pack x) = make x
 
