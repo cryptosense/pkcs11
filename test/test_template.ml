@@ -29,10 +29,14 @@ let test_hash_template ctx =
   let rev_template = List.rev template in
   let hash = P11.Template.hash template in
   let hex_hash = Digest.to_hex hash in
-  assert_equal "62dbff83a5b0934c5db0f299576c72de" hex_hash;
+  assert_equal ~cmp:[%eq: string] ~printer:[%show: string]
+    "55aa7ba6c64a5147b8c98e17a8289bb2"
+    hex_hash;
   let rev_hash = P11.Template.hash rev_template in
   let hex_rev_hash = Digest.to_hex rev_hash in
-  assert_equal "62dbff83a5b0934c5db0f299576c72de" hex_rev_hash
+  assert_equal ~cmp:[%eq: string] ~printer:[%show: string]
+    "55aa7ba6c64a5147b8c98e17a8289bb2"
+    hex_rev_hash
 
 let suite =
   "p11_template" >::: [

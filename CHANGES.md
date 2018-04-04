@@ -1,3 +1,9 @@
+unreleased
+==========
+
+Breaking changes:
+- Encode CKA_ID data as an hex encoded json string. (#101)
+
 v0.15.0 2018-02-19
 ==================
 
