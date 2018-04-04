@@ -116,144 +116,44 @@ let to_json : type a . a t -> Yojson.Safe.json = fun attribute ->
   in
   `Assoc [(key_json, value_json)]
 
+let of_yojson_repr (type a) (repr : a repr) : Yojson.Safe.json -> (a, string) result =
+  let (>>=) = Ppx_deriving_yojson_runtime.(>>=) in
+  let bool_of_yojson = function
+    | `Bool b -> Ok b
+    | `String "CK_TRUE" -> Ok true
+    | `String "CK_FALSE" -> Ok false
+    | _ -> Error "Not a CK_BBOOL"
+  in
+  let parse_not_implemented x =
+    P11_hex_data.of_yojson x >>= fun s ->
+    Ok (P11_attribute_type.NOT_IMPLEMENTED s)
+  in
+  match repr with
+  | Repr_object_class -> P11_object_class.of_yojson
+  | Repr_bool -> bool_of_yojson
+  | Repr_string -> [%of_yojson: string]
+  | Repr_key_type -> P11_key_type.of_yojson
+  | Repr_not_implemented -> parse_not_implemented
+  | Repr_bigint -> P11_bigint.of_yojson
+  | Repr_ulong -> P11_ulong.of_yojson
+  | Repr_key_gen_mechanism -> P11_key_gen_mechanism.of_yojson
+  | Repr_data -> P11_hex_data.of_yojson
+
 let pack_of_yojson json : (pack, string) result =
-  let parse name param : (pack, string) result =
-    let parse_using f typ' =
-      let open Ppx_deriving_yojson_runtime in
-      f param >>= fun r ->
-      Ok (Pack (typ', r))
-    in
-    let p_object_class = parse_using P11_object_class.of_yojson in
-    let p_bool = parse_using (function
-        | `Bool b -> Ok b
-        | `String "CK_TRUE" -> Ok true
-        | `String "CK_FALSE" -> Ok false
-        | _ -> Error "Not a CK_BBOOL"
-      ) in
-    let p_string = parse_using [%of_yojson: string] in
-    let p_data = parse_using P11_hex_data.of_yojson in
-    let p_key_type = parse_using P11_key_type.of_yojson in
-    let p_ulong = parse_using P11_ulong.of_yojson in
-    let p_bigint = parse_using P11_bigint.of_yojson in
-    let p_mechanism_type = parse_using P11_key_gen_mechanism.of_yojson in
-    let p_not_implemented typ' =
-      let open Ppx_deriving_yojson_runtime in
-      P11_hex_data.of_yojson param >>= fun p ->
-      Ok (Pack (typ', P11_attribute_type.NOT_IMPLEMENTED p))
-    in
-    let open P11_attribute_type in
-    match name with
-      | "CKA_CLASS" ->
-          p_object_class CKA_CLASS
-      | "CKA_TOKEN" ->
-          p_bool CKA_TOKEN
-      | "CKA_PRIVATE" ->
-          p_bool CKA_PRIVATE
-      | "CKA_LABEL" ->
-          p_string CKA_LABEL
-      | "CKA_VALUE" ->
-          p_data CKA_VALUE
-      | "CKA_TRUSTED" ->
-          p_bool CKA_TRUSTED
-      | "CKA_KEY_TYPE" ->
-          p_key_type CKA_KEY_TYPE
-      | "CKA_SUBJECT" ->
-          p_string CKA_SUBJECT
-      | "CKA_ID" ->
-          p_data CKA_ID
-      | "CKA_SENSITIVE" ->
-          p_bool CKA_SENSITIVE
-      | "CKA_ENCRYPT" ->
-          p_bool CKA_ENCRYPT
-      | "CKA_DECRYPT" ->
-          p_bool CKA_DECRYPT
-      | "CKA_WRAP" ->
-          p_bool CKA_WRAP
-      | "CKA_UNWRAP" ->
-          p_bool CKA_UNWRAP
-      | "CKA_SIGN" ->
-          p_bool CKA_SIGN
-      | "CKA_SIGN_RECOVER" ->
-          p_bool CKA_SIGN_RECOVER
-      | "CKA_VERIFY" ->
-          p_bool CKA_VERIFY
-      | "CKA_VERIFY_RECOVER" ->
-          p_bool CKA_VERIFY_RECOVER
-      | "CKA_DERIVE" ->
-          p_bool CKA_DERIVE
-      | "CKA_MODULUS" ->
-          p_bigint CKA_MODULUS
-      | "CKA_MODULUS_BITS" ->
-          p_ulong CKA_MODULUS_BITS
-      | "CKA_PUBLIC_EXPONENT" ->
-          p_bigint CKA_PUBLIC_EXPONENT
-      | "CKA_PRIVATE_EXPONENT" ->
-          p_bigint CKA_PRIVATE_EXPONENT
-      | "CKA_PRIME_1" ->
-          p_bigint CKA_PRIME_1
-      | "CKA_PRIME_2" ->
-          p_bigint CKA_PRIME_2
-      | "CKA_EXPONENT_1" ->
-          p_bigint CKA_EXPONENT_1
-      | "CKA_EXPONENT_2" ->
-          p_bigint CKA_EXPONENT_2
-      | "CKA_COEFFICIENT" ->
-          p_bigint CKA_COEFFICIENT
-      | "CKA_PRIME" ->
-          p_bigint CKA_PRIME
-      | "CKA_SUBPRIME" ->
-          p_bigint CKA_SUBPRIME
-      | "CKA_BASE" ->
-          p_bigint CKA_BASE
-      | "CKA_VALUE_LEN" ->
-          p_ulong CKA_VALUE_LEN
-      | "CKA_EXTRACTABLE" ->
-          p_bool CKA_EXTRACTABLE
-      | "CKA_LOCAL" ->
-          p_bool CKA_LOCAL
-      | "CKA_NEVER_EXTRACTABLE" ->
-          p_bool CKA_NEVER_EXTRACTABLE
-      | "CKA_ALWAYS_SENSITIVE" ->
-          p_bool CKA_ALWAYS_SENSITIVE
-      | "CKA_KEY_GEN_MECHANISM" ->
-          p_mechanism_type CKA_KEY_GEN_MECHANISM
-      | "CKA_MODIFIABLE" ->
-          p_bool CKA_MODIFIABLE
-      | "CKA_EC_PARAMS" ->
-          p_data CKA_EC_PARAMS
-      | "CKA_EC_POINT" ->
-          p_data CKA_EC_POINT
-      | "CKA_ALWAYS_AUTHENTICATE" ->
-          p_bool CKA_ALWAYS_AUTHENTICATE
-      | "CKA_WRAP_WITH_TRUSTED" ->
-          p_bool CKA_WRAP_WITH_TRUSTED
-      | "CKA_CHECK_VALUE" ->
-          p_not_implemented CKA_CHECK_VALUE
-      | "CKA_START_DATE" ->
-          p_not_implemented CKA_START_DATE
-      | "CKA_END_DATE" ->
-          p_not_implemented CKA_END_DATE
-      | "CKA_PRIME_BITS" ->
-          p_ulong CKA_PRIME_BITS
-      | "CKA_SUBPRIME_BITS" ->
-          p_ulong CKA_SUBPRIME_BITS
-      | "CKA_WRAP_TEMPLATE" ->
-          p_not_implemented CKA_WRAP_TEMPLATE
-      | "CKA_UNWRAP_TEMPLATE" ->
-          p_not_implemented CKA_UNWRAP_TEMPLATE
-      | "CKA_ALLOWED_MECHANISMS" ->
-          p_not_implemented CKA_ALLOWED_MECHANISMS
-      | _ as ul ->
-          try
-            p_not_implemented
-              (CKA_CS_UNKNOWN (Unsigned.ULong.of_string ul))
-          with Failure _ -> Error "Invalid attribute"
+  let (>>=) = Ppx_deriving_yojson_runtime.(>>=) in
+  let of_string s =
+    try
+      Ok (P11_attribute_type.of_string s)
+    with
+    | Invalid_argument _ -> Error "Invalid attribute"
   in
   match json with
-    | `Assoc [ name, param ] ->
-        parse name param
-    | _ ->
-        Error "Ill-formed attribute"
+  | `Assoc [ (name, param) ] ->
+    of_string name >>= fun (P11_attribute_type.Pack attr) ->
+    of_yojson_repr (repr attr) param >>= fun r ->
+    Ok (Pack (attr, r))
+  | _ ->
+    Error "Ill-formed attribute"
 
 let pack_to_yojson (Pack x) = to_json x
 
