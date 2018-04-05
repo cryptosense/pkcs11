@@ -1,8 +1,23 @@
-unreleased
-==========
+v0.16.0 2018-04-05
+==================
 
 Breaking changes:
-- Encode CKA_ID data as an hex encoded json string. (#101)
+
+- Encode `CKA_ID` data as an hex encoded JSON string. (#101)
+
+New features:
+
+- Add all 2.40 mechanism types. (#99)
+
+Deprecations:
+
+- Deprecate mechanism kinds, attribute kinds, and `P11_key_attributes`. (#98)
+- Deprecate the "stubs" load mode. This corresponds to the `--indirect` command
+  line argument. "auto" stays the recommended default. (#100)
+
+Refactoring:
+
+- Rework `P11_attribute` internals to use `repr` from `CK_ATTRIBUTE`. (#102)
 
 v0.15.0 2018-02-19
 ==================
