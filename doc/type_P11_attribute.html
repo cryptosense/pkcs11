@@ -126,4 +126,16 @@
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;kinds&nbsp;:&nbsp;<span class="constructor">P11_attribute</span>.pack&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11_attribute</span>.kind&nbsp;list&nbsp;list<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is&nbsp;:&nbsp;<span class="constructor">P11_attribute</span>.kind&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11_attribute</span>.pack&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;type_&nbsp;:&nbsp;<span class="constructor">P11_attribute</span>.pack&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11_attribute_type</span>.pack<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;_&nbsp;repr&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Repr_object_class</span>&nbsp;:&nbsp;<span class="constructor">P11_object_class</span>.t&nbsp;<span class="constructor">P11_attribute</span>.repr<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Repr_bool</span>&nbsp;:&nbsp;bool&nbsp;<span class="constructor">P11_attribute</span>.repr<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Repr_string</span>&nbsp;:&nbsp;string&nbsp;<span class="constructor">P11_attribute</span>.repr<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Repr_key_type</span>&nbsp;:&nbsp;<span class="constructor">P11_key_type</span>.t&nbsp;<span class="constructor">P11_attribute</span>.repr<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Repr_not_implemented</span>&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">P11_attribute_type</span>.not_implemented&nbsp;<span class="constructor">P11_attribute</span>.repr<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Repr_bigint</span>&nbsp;:&nbsp;<span class="constructor">P11_bigint</span>.t&nbsp;<span class="constructor">P11_attribute</span>.repr<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Repr_ulong</span>&nbsp;:&nbsp;<span class="constructor">Unsigned</span>.<span class="constructor">ULong</span>.t&nbsp;<span class="constructor">P11_attribute</span>.repr<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Repr_key_gen_mechanism</span>&nbsp;:&nbsp;<span class="constructor">P11_key_gen_mechanism</span>.t&nbsp;<span class="constructor">P11_attribute</span>.repr<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Repr_data</span>&nbsp;:&nbsp;string&nbsp;<span class="constructor">P11_attribute</span>.repr<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;repr&nbsp;:&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">P11_attribute_type</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">P11_attribute</span>.repr<br>
 <span class="keyword">end</span></code></body></html>

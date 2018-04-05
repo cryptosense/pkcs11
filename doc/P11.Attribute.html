@@ -193,4 +193,78 @@
 </div>
 </div>
 
-<pre><span id="VALtype_"><span class="keyword">val</span> type_</span> : <code class="type"><a href="P11_attribute.html#TYPEpack">pack</a> -> <a href="P11_attribute_type.html#TYPEpack">P11_attribute_type.pack</a></code></pre></body></html>
+<pre><span id="VALtype_"><span class="keyword">val</span> type_</span> : <code class="type"><a href="P11_attribute.html#TYPEpack">pack</a> -> <a href="P11_attribute_type.html#TYPEpack">P11_attribute_type.pack</a></code></pre>
+<pre><code><span id="TYPErepr"><span class="keyword">type</span> <code class="type">'_</code> repr</span> = </code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrepr.Repr_object_class"><span class="constructor">Repr_object_class</span></span> <span class="keyword">:</span> <code class="type"><a href="P11_object_class.html#TYPEt">P11_object_class.t</a> <a href="P11_attribute.html#TYPErepr">repr</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrepr.Repr_bool"><span class="constructor">Repr_bool</span></span> <span class="keyword">:</span> <code class="type">bool <a href="P11_attribute.html#TYPErepr">repr</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrepr.Repr_string"><span class="constructor">Repr_string</span></span> <span class="keyword">:</span> <code class="type">string <a href="P11_attribute.html#TYPErepr">repr</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrepr.Repr_key_type"><span class="constructor">Repr_key_type</span></span> <span class="keyword">:</span> <code class="type"><a href="P11_key_type.html#TYPEt">P11_key_type.t</a> <a href="P11_attribute.html#TYPErepr">repr</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrepr.Repr_not_implemented"><span class="constructor">Repr_not_implemented</span></span> <span class="keyword">:</span> <code class="type"><a href="P11_attribute_type.html#TYPEnot_implemented">P11_attribute_type.not_implemented</a> <a href="P11_attribute.html#TYPErepr">repr</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrepr.Repr_bigint"><span class="constructor">Repr_bigint</span></span> <span class="keyword">:</span> <code class="type"><a href="P11_bigint.html#TYPEt">P11_bigint.t</a> <a href="P11_attribute.html#TYPErepr">repr</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrepr.Repr_ulong"><span class="constructor">Repr_ulong</span></span> <span class="keyword">:</span> <code class="type">Unsigned.ULong.t <a href="P11_attribute.html#TYPErepr">repr</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrepr.Repr_key_gen_mechanism"><span class="constructor">Repr_key_gen_mechanism</span></span> <span class="keyword">:</span> <code class="type"><a href="P11_key_gen_mechanism.html#TYPEt">P11_key_gen_mechanism.t</a> <a href="P11_attribute.html#TYPErepr">repr</a></code></code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code><span class="keyword">|</span></code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTrepr.Repr_data"><span class="constructor">Repr_data</span></span> <span class="keyword">:</span> <code class="type">string <a href="P11_attribute.html#TYPErepr">repr</a></code></code></td>
+
+</tr></table>
+
+
+
+<pre><span id="VALrepr"><span class="keyword">val</span> repr</span> : <code class="type">'a <a href="P11_attribute_type.html#TYPEt">P11_attribute_type.t</a> -> 'a <a href="P11_attribute.html#TYPErepr">repr</a></code></pre><div class="info ">
+<div class="info-desc">
+<p>Return how this attribute type is represented.
+    This is an implementation detail, do not rely on this outside of <code class="code">pkcs11</code>.</p>
+</div>
+</div>
+</body></html>
