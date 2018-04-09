@@ -84,39 +84,5 @@ val mechanism_type: t -> P11_mechanism_type.t
 (** [to_string] is defined as [fun x -> Mechanism_type.to_string (mechanism_type x) ]  *)
 val to_string : t -> string
 
-(** Kinds are "tags" on mechanisms which describe how they can be
-    used. *)
-type kind =
-  | Encrypt                     (* Encrypt & Decrypt *)
-  | Sign                        (* Sign & Verify *)
-  | SignRecover                 (* Sign Recover & Verify recover *)
-  | Wrap                        (* Wrap & Unwrap *)
-  | Derive
-  | Digest
-  | Generate                    (* GenerateKey or GenerateKeypair *)
-
-
-  | Symmetric
-  | Asymmetric
-
-  | DES
-  | DES3
-  | AES
-  | RSA
-  | DH
-  | EC
-
-
-
-  (** [kinds mechanism] returns the tags for the mechanism
-    [mechanism].  *)
-val kinds : t -> kind list
-[@@deprecated]
-
-(** [is kinds t] checks that the mechanism [t] has all the tags in
-    the list [kinds].  *)
-val is: kind list -> t -> bool
-[@@deprecated]
-
 (** [key_type t] returns the type of keys associated to the mechanism [t]. *)
 val key_type: t -> P11_key_type.t option
