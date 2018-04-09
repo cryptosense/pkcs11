@@ -1289,27 +1289,21 @@ struct
 
 end
 
-let load_driver ?log_calls ?on_unknown ?(load_mode=P11.Load_mode.auto) dll =
+let load_driver ?log_calls ?on_unknown ?(load_mode=P11.Load_mode.auto) filename =
   begin
     match on_unknown with
     | Some f -> Pkcs11_log.set_logging_function f
     | None -> ()
   end;
-  if dll = ""
-  then
+  if filename = "" then
     (module (Fake ()) : RAW)
   else
-    let open P11.Load_mode in
-    let foreign_parameters () =
-      let module M =
-      struct
-        let log_calls = log_calls
-        let library = Dl.dlopen ~filename: dll ~flags:[Dl.RTLD_LAZY]
-      end
-      in
-      (module M:CONFIG)
+    let module M : CONFIG =
+    struct
+      let log_calls = log_calls
+      let library = Dl.dlopen ~filename ~flags:[Dl.RTLD_LAZY]
+    end
     in
     match load_mode with
-      (*| Stubs -> (module (Stubs(P11_library)))*)
-      | Auto -> (module (Auto((val foreign_parameters ()))))
-      | FFI -> (module (Direct((val foreign_parameters ()))))
+    | Auto -> (module (Auto(M)))
+    | FFI -> (module (Direct(M)))
