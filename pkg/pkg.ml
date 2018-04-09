@@ -20,7 +20,6 @@ let api =
   ; "P11_hex_data"
   ; "P11_hw_feature_type"
   ; "P11_info"
-  ; "P11_key_attributes"
   ; "P11_key_gen_mechanism"
   ; "P11_key_type"
   ; "P11_load_mode"
