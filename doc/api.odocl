@@ -71,9 +71,7 @@ Pkcs11_CK_USER_TYPE
 Pkcs11_CK_UTF8CHAR
 Pkcs11_CK_VERSION
 Pkcs11_CK_VOID
-Pkcs11_bindings
 Pkcs11_data
-Pkcs11_generator
 P11_helpers
 P11_driver
 Pkcs11_key_gen_mechanism

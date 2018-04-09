@@ -26,18 +26,11 @@ true: open(Result)
 <**/*.c>: depend(include/pkcs11.h)
 <**/*.c>: depend(include/pkcs11t.h)
 <**/*.c>: depend(include/pkcs11f.h)
-<**/*.c>: depend(include/pkcs11_module.h)
 <src_rev/*>: depend(include/prelude.h)
-
-<src_driver/pkcs11_driver.{cma,cmxa}>: use_pkcs11
-<src_driver/pkcs11_driver.cmxs>: link_pkcs11, here
 
 <src_rev/pkcs11_rev.{cma,cmxa}>: use_pkcs11_rev
 <src_rev/pkcs11_rev.cmxs>: link_pkcs11_rev, here
-<src_rev/pkcs11_rev_generator.*>: link_pkcs11
 
 <test/*>: package(oUnit)
-<test/test_driver.*>: link_pkcs11
-<test/example_*.*>: link_pkcs11
 
 true: warn(@8)

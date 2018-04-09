@@ -59,11 +59,6 @@ module Arg = struct
         ~doc: "Try to use C_GetFunctionList, and if it fails, try again without using it."
         ["indirect_or_direct"]
     in
-    let stubs =
-      info
-        ~doc: "Use C_GetFunctionList."
-        ["indirect"]
-    in
     let ffi =
       info
         ~doc: "Do not use C_GetFunctionList."
@@ -71,7 +66,6 @@ module Arg = struct
     in
     vflag P11.Load_mode.auto
       [ P11.Load_mode.auto, auto
-      ; P11.Load_mode.stubs, stubs
       ; P11.Load_mode.ffi, ffi
       ]
 

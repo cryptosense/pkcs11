@@ -1054,10 +1054,7 @@ end
 
 module Make (X: RAW): S
 
-exception Cannot_load_module of string * P11_rv.t
-
-(** May raise [Pkcs11.Cannot_load_module]
-   [on_unknown] will be called with a warning message
+(** [on_unknown] will be called with a warning message
    when unsupported codes are encountered. *)
 val load_driver:
   ?log_calls:(string * Format.formatter) ->
