@@ -15,24 +15,6 @@ val equal: 'a t -> 'b t -> bool
 val equal_types_pack: pack -> pack -> bool
 val equal_values: 'a P11_attribute_type.t -> 'a -> 'a -> bool
 
-type kind =
-  | Secret (* Can be used by secret keys. *)
-  | Public (* Can be used by public keys. *)
-  | Private (* Can be used by private keys. *)
-  | RSA (* Can ONLY be used by RSA keys. *)
-  | EC (* Can ONLY be used by elliptic curves keys. *)
-[@@deriving eq]
-
-(** [kinds] returns a list of list.
-   An attribute has kinds [ A; B; C ] if one of the lists returned by [kinds]
-   has at least kinds [ A; B; C ]. *)
-val kinds: pack -> kind list list
-[@@deprecated]
-
-(** Return whether [a] has all kinds [k]. *)
-val is : kind list -> pack -> bool
-[@@deprecated]
-
 val type_ : pack -> P11_attribute_type.pack
 
 type _ repr =
