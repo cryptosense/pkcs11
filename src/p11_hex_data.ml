@@ -30,17 +30,21 @@ let of_yojson =
     Error ("P11_hex_data: " ^ msg)
   in
   function
-    | `String s when s.[0] = '0' && s.[1] = 'x' ->
-        let data = Str.string_after s 2 in
-        begin
-          try
-            String.iter (function
-                | '0'..'9' | 'a'..'f' | 'A'..'F' -> ()
-                | _ -> raise Invalid_hex
-              ) data;
-            Ok (Hex.to_string @@ `Hex data)
-          with Invalid_hex ->
-            err "not valid hex-encoded data"
-        end
-    | `String _ -> err "string does not start with \"0x\""
-    | _ -> err "not a string"
+  | `String s when String.length s < 2 ->
+    err "string does not start with \"0x\""
+  | `String s when s.[0] = '0' && s.[1] = 'x' ->
+    let data = Str.string_after s 2 in
+    begin
+      try
+        String.iter (function
+            | '0'..'9' | 'a'..'f' | 'A'..'F' -> ()
+            | _ -> raise Invalid_hex
+          ) data;
+        Ok (Hex.to_string @@ `Hex data)
+      with
+      | Invalid_hex
+      | Invalid_argument _ ->
+        err "not valid hex-encoded data"
+    end
+  | `String _ -> err "string does not start with \"0x\""
+  | _ -> err "not a string"
