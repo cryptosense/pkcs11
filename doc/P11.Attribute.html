@@ -14,7 +14,6 @@
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Index of module types" rel=Appendix href="index_module_types.html">
 <link title="P11" rel="Chapter" href="P11.html">
-<link title="P11_key_attributes" rel="Chapter" href="P11_key_attributes.html">
 <link title="P11_template" rel="Chapter" href="P11_template.html">
 <link title="P11_attribute" rel="Chapter" href="P11_attribute.html">
 <link title="P11_attribute_types" rel="Chapter" href="P11_attribute_types.html">
@@ -86,9 +85,7 @@
 <link title="Pkcs11_CK_UTF8CHAR" rel="Chapter" href="Pkcs11_CK_UTF8CHAR.html">
 <link title="Pkcs11_CK_VERSION" rel="Chapter" href="Pkcs11_CK_VERSION.html">
 <link title="Pkcs11_CK_VOID" rel="Chapter" href="Pkcs11_CK_VOID.html">
-<link title="Pkcs11_bindings" rel="Chapter" href="Pkcs11_bindings.html">
 <link title="Pkcs11_data" rel="Chapter" href="Pkcs11_data.html">
-<link title="Pkcs11_generator" rel="Chapter" href="Pkcs11_generator.html">
 <link title="P11_helpers" rel="Chapter" href="P11_helpers.html">
 <link title="P11_driver" rel="Chapter" href="P11_driver.html">
 <link title="Pkcs11_key_gen_mechanism" rel="Chapter" href="Pkcs11_key_gen_mechanism.html">
@@ -139,60 +136,6 @@
 <pre><span id="VALequal"><span class="keyword">val</span> equal</span> : <code class="type">'a <a href="P11_attribute.html#TYPEt">t</a> -> 'b <a href="P11_attribute.html#TYPEt">t</a> -> bool</code></pre>
 <pre><span id="VALequal_types_pack"><span class="keyword">val</span> equal_types_pack</span> : <code class="type"><a href="P11_attribute.html#TYPEpack">pack</a> -> <a href="P11_attribute.html#TYPEpack">pack</a> -> bool</code></pre>
 <pre><span id="VALequal_values"><span class="keyword">val</span> equal_values</span> : <code class="type">'a <a href="P11_attribute_type.html#TYPEt">P11_attribute_type.t</a> -> 'a -> 'a -> bool</code></pre>
-<pre><code><span id="TYPEkind"><span class="keyword">type</span> <code class="type"></code>kind</span> = </code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTkind.Secret"><span class="constructor">Secret</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTkind.Public"><span class="constructor">Public</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTkind.Private"><span class="constructor">Private</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTkind.RSA"><span class="constructor">RSA</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTkind.EC"><span class="constructor">EC</span></span></code></td>
-
-</tr></table>
-
-
-
-<pre><span id="VALequal_kind"><span class="keyword">val</span> equal_kind</span> : <code class="type"><a href="P11_attribute.html#TYPEkind">kind</a> -> <a href="P11_attribute.html#TYPEkind">kind</a> -> Ppx_deriving_runtime.bool</code></pre>
-<pre><span id="VALkinds"><span class="keyword">val</span> kinds</span> : <code class="type"><a href="P11_attribute.html#TYPEpack">pack</a> -> <a href="P11_attribute.html#TYPEkind">kind</a> list list</code></pre><div class="info ">
-<div class="info-desc">
-<p><code class="code">kinds</code> returns a list of list.
-   An attribute has kinds <code class="code">&nbsp;<span class="constructor">A</span>;&nbsp;<span class="constructor">B</span>;&nbsp;<span class="constructor">C</span>&nbsp;</code> if one of the lists returned by <code class="code">kinds</code>
-   has at least kinds <code class="code">&nbsp;<span class="constructor">A</span>;&nbsp;<span class="constructor">B</span>;&nbsp;<span class="constructor">C</span>&nbsp;</code>.</p>
-</div>
-</div>
-
-<pre><span id="VALis"><span class="keyword">val</span> is</span> : <code class="type"><a href="P11_attribute.html#TYPEkind">kind</a> list -> <a href="P11_attribute.html#TYPEpack">pack</a> -> bool</code></pre><div class="info ">
-<div class="info-desc">
-<p>Return whether <code class="code">a</code> has all kinds <code class="code">k</code>.</p>
-</div>
-</div>
-
 <pre><span id="VALtype_"><span class="keyword">val</span> type_</span> : <code class="type"><a href="P11_attribute.html#TYPEpack">pack</a> -> <a href="P11_attribute_type.html#TYPEpack">P11_attribute_type.pack</a></code></pre>
 <pre><code><span id="TYPErepr"><span class="keyword">type</span> <code class="type">'_</code> repr</span> = </code></pre><table class="typetable">
 <tr>

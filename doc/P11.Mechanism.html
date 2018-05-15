@@ -14,7 +14,6 @@
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Index of module types" rel=Appendix href="index_module_types.html">
 <link title="P11" rel="Chapter" href="P11.html">
-<link title="P11_key_attributes" rel="Chapter" href="P11_key_attributes.html">
 <link title="P11_template" rel="Chapter" href="P11_template.html">
 <link title="P11_attribute" rel="Chapter" href="P11_attribute.html">
 <link title="P11_attribute_types" rel="Chapter" href="P11_attribute_types.html">
@@ -86,9 +85,7 @@
 <link title="Pkcs11_CK_UTF8CHAR" rel="Chapter" href="Pkcs11_CK_UTF8CHAR.html">
 <link title="Pkcs11_CK_VERSION" rel="Chapter" href="Pkcs11_CK_VERSION.html">
 <link title="Pkcs11_CK_VOID" rel="Chapter" href="Pkcs11_CK_VOID.html">
-<link title="Pkcs11_bindings" rel="Chapter" href="Pkcs11_bindings.html">
 <link title="Pkcs11_data" rel="Chapter" href="Pkcs11_data.html">
-<link title="Pkcs11_generator" rel="Chapter" href="Pkcs11_generator.html">
 <link title="P11_helpers" rel="Chapter" href="P11_helpers.html">
 <link title="P11_driver" rel="Chapter" href="P11_driver.html">
 <link title="Pkcs11_key_gen_mechanism" rel="Chapter" href="Pkcs11_key_gen_mechanism.html">
@@ -670,135 +667,6 @@
 <pre><span id="VALto_string"><span class="keyword">val</span> to_string</span> : <code class="type"><a href="P11_mechanism.html#TYPEt">t</a> -> string</code></pre><div class="info ">
 <div class="info-desc">
 <p><code class="code">to_string</code> is defined as <code class="code"><span class="keyword">fun</span>&nbsp;x&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Mechanism_type</span>.to_string&nbsp;(mechanism_type&nbsp;x)&nbsp;</code></p>
-</div>
-</div>
-
-<pre><code><span id="TYPEkind"><span class="keyword">type</span> <code class="type"></code>kind</span> = </code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTkind.Encrypt"><span class="constructor">Encrypt</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTkind.Sign"><span class="constructor">Sign</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTkind.SignRecover"><span class="constructor">SignRecover</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTkind.Wrap"><span class="constructor">Wrap</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTkind.Derive"><span class="constructor">Derive</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTkind.Digest"><span class="constructor">Digest</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTkind.Generate"><span class="constructor">Generate</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTkind.Symmetric"><span class="constructor">Symmetric</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTkind.Asymmetric"><span class="constructor">Asymmetric</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTkind.DES"><span class="constructor">DES</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTkind.DES3"><span class="constructor">DES3</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTkind.AES"><span class="constructor">AES</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTkind.RSA"><span class="constructor">RSA</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTkind.DH"><span class="constructor">DH</span></span></code></td>
-
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTkind.EC"><span class="constructor">EC</span></span></code></td>
-
-</tr></table>
-
-<div class="info ">
-<div class="info-desc">
-<p>Kinds are "tags" on mechanisms which describe how they can be
-    used.</p>
-</div>
-</div>
-
-
-<pre><span id="VALkinds"><span class="keyword">val</span> kinds</span> : <code class="type"><a href="P11_mechanism.html#TYPEt">t</a> -> <a href="P11_mechanism.html#TYPEkind">kind</a> list</code></pre><div class="info ">
-<div class="info-desc">
-<p><code class="code">kinds&nbsp;mechanism</code> returns the tags for the mechanism
-    <code class="code">mechanism</code>.</p>
-</div>
-</div>
-
-<pre><span id="VALis"><span class="keyword">val</span> is</span> : <code class="type"><a href="P11_mechanism.html#TYPEkind">kind</a> list -> <a href="P11_mechanism.html#TYPEt">t</a> -> bool</code></pre><div class="info ">
-<div class="info-desc">
-<p><code class="code">is&nbsp;kinds&nbsp;t</code> checks that the mechanism <code class="code">t</code> has all the tags in
-    the list <code class="code">kinds</code>.</p>
 </div>
 </div>
 

@@ -9,7 +9,6 @@
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Index of module types" rel=Appendix href="index_module_types.html">
 <link title="P11" rel="Chapter" href="P11.html">
-<link title="P11_key_attributes" rel="Chapter" href="P11_key_attributes.html">
 <link title="P11_template" rel="Chapter" href="P11_template.html">
 <link title="P11_attribute" rel="Chapter" href="P11_attribute.html">
 <link title="P11_attribute_types" rel="Chapter" href="P11_attribute_types.html">
@@ -81,9 +80,7 @@
 <link title="Pkcs11_CK_UTF8CHAR" rel="Chapter" href="Pkcs11_CK_UTF8CHAR.html">
 <link title="Pkcs11_CK_VERSION" rel="Chapter" href="Pkcs11_CK_VERSION.html">
 <link title="Pkcs11_CK_VOID" rel="Chapter" href="Pkcs11_CK_VOID.html">
-<link title="Pkcs11_bindings" rel="Chapter" href="Pkcs11_bindings.html">
 <link title="Pkcs11_data" rel="Chapter" href="Pkcs11_data.html">
-<link title="Pkcs11_generator" rel="Chapter" href="Pkcs11_generator.html">
 <link title="P11_helpers" rel="Chapter" href="P11_helpers.html">
 <link title="P11_driver" rel="Chapter" href="P11_driver.html">
 <link title="Pkcs11_key_gen_mechanism" rel="Chapter" href="Pkcs11_key_gen_mechanism.html">
@@ -120,11 +117,6 @@
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;equal&nbsp;:&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">P11_attribute</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>b&nbsp;<span class="constructor">P11_attribute</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;equal_types_pack&nbsp;:&nbsp;<span class="constructor">P11_attribute</span>.pack&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11_attribute</span>.pack&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;equal_values&nbsp;:&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">P11_attribute_type</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;kind&nbsp;=&nbsp;<span class="constructor">Secret</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Public</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Private</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">RSA</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">EC</span><br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;equal_kind&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">P11_attribute</span>.kind&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11_attribute</span>.kind&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Ppx_deriving_runtime</span>.bool<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;kinds&nbsp;:&nbsp;<span class="constructor">P11_attribute</span>.pack&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11_attribute</span>.kind&nbsp;list&nbsp;list<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;is&nbsp;:&nbsp;<span class="constructor">P11_attribute</span>.kind&nbsp;list&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11_attribute</span>.pack&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;bool<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;type_&nbsp;:&nbsp;<span class="constructor">P11_attribute</span>.pack&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">P11_attribute_type</span>.pack<br>
 &nbsp;&nbsp;<span class="keyword">type</span>&nbsp;_&nbsp;repr&nbsp;=<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Repr_object_class</span>&nbsp;:&nbsp;<span class="constructor">P11_object_class</span>.t&nbsp;<span class="constructor">P11_attribute</span>.repr<br>

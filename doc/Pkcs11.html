@@ -14,7 +14,6 @@
 <link title="Index of modules" rel=Appendix href="index_modules.html">
 <link title="Index of module types" rel=Appendix href="index_module_types.html">
 <link title="P11" rel="Chapter" href="P11.html">
-<link title="P11_key_attributes" rel="Chapter" href="P11_key_attributes.html">
 <link title="P11_template" rel="Chapter" href="P11_template.html">
 <link title="P11_attribute" rel="Chapter" href="P11_attribute.html">
 <link title="P11_attribute_types" rel="Chapter" href="P11_attribute_types.html">
@@ -86,9 +85,7 @@
 <link title="Pkcs11_CK_UTF8CHAR" rel="Chapter" href="Pkcs11_CK_UTF8CHAR.html">
 <link title="Pkcs11_CK_VERSION" rel="Chapter" href="Pkcs11_CK_VERSION.html">
 <link title="Pkcs11_CK_VOID" rel="Chapter" href="Pkcs11_CK_VOID.html">
-<link title="Pkcs11_bindings" rel="Chapter" href="Pkcs11_bindings.html">
 <link title="Pkcs11_data" rel="Chapter" href="Pkcs11_data.html">
-<link title="Pkcs11_generator" rel="Chapter" href="Pkcs11_generator.html">
 <link title="P11_helpers" rel="Chapter" href="P11_helpers.html">
 <link title="P11_driver" rel="Chapter" href="P11_driver.html">
 <link title="Pkcs11_key_gen_mechanism" rel="Chapter" href="Pkcs11_key_gen_mechanism.html">
@@ -180,12 +177,9 @@
 <pre><span id="MODULEFake"><span class="keyword">module</span> <a href="Pkcs11.Fake.html">Fake</a></span>: <div class="sig_block"><code class="code"><span class="keyword">functor</span>&nbsp;(</code><code class="code"><span class="constructor">X</span></code><code class="code">&nbsp;:&nbsp;</code><code class="code"><span class="keyword">sig</span></code></pre><div class="sig_block"></div><pre><code class="code"><span class="keyword">end</span></code><code class="code">)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;</code><code class="type"><a href="Pkcs11.RAW.html">RAW</a></code><code class="type"> </code></div></pre>
 <pre><span id="MODULETYPES"><span class="keyword">module type</span> <a href="Pkcs11.S.html">S</a></span> = <code class="code"><span class="keyword">sig</span></code> <a href="Pkcs11.S.html">..</a> <code class="code"><span class="keyword">end</span></code></pre>
 <pre><span id="MODULEMake"><span class="keyword">module</span> <a href="Pkcs11.Make.html">Make</a></span>: <div class="sig_block"><code class="code"><span class="keyword">functor</span>&nbsp;(</code><code class="code"><span class="constructor">X</span></code><code class="code">&nbsp;:&nbsp;</code><code class="type"><a href="Pkcs11.RAW.html">RAW</a></code><code class="code">)&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;</code><code class="type"><a href="Pkcs11.S.html">S</a></code><code class="type"> </code></div></pre>
-<pre><span id="EXCEPTIONCannot_load_module"><span class="keyword">exception</span> Cannot_load_module</span> <span class="keyword">of</span> <code class="type">string * <a href="P11_rv.html#TYPEt">P11_rv.t</a></code></pre>
-
 <pre><span id="VALload_driver"><span class="keyword">val</span> load_driver</span> : <code class="type">?log_calls:string * Format.formatter -><br>       ?on_unknown:(string -> unit) -><br>       ?load_mode:P11.Load_mode.t -> string -> (module Pkcs11.RAW)</code></pre><div class="info ">
 <div class="info-desc">
-<p>May raise <code class="code"><span class="constructor">Pkcs11</span>.<span class="constructor">Cannot_load_module</span></code>
-   <code class="code">on_unknown</code> will be called with a warning message
+<p><code class="code">on_unknown</code> will be called with a warning message
    when unsupported codes are encountered.</p>
 </div>
 </div>
