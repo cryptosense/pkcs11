@@ -1,3 +1,14 @@
+v0.17.0 2018-05-15
+==================
+
+Breaking changes:
+
+- Remove deprecated code around stubs and kinds. (#103, #104)
+
+Fixes:
+
+- Fix hex data parsing on invalid JSON strings. (#105)
+
 v0.16.0 2018-04-05
 ==================
 
