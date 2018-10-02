@@ -7,7 +7,7 @@ script: bash ./.travis-docker.sh
 env:
   global:
     - PACKAGE=pkcs11
-    - DISTRO=alpine-3.6
+    - DISTRO=alpine
     - DEPOPTS="ctypes ctypes-foreign"
     - FORK_BRANCH=v1.1.0
   matrix:
