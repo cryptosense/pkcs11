@@ -324,7 +324,7 @@ type t =
   | CKM_TWOFISH_CBC_PAD
   | CKM_VENDOR_DEFINED
   | CKM_CS_UNKNOWN of P11_ulong.t
-[@@deriving eq,ord,show]
+[@@deriving eq,ord,show,variants]
 
 let to_string =
   function
@@ -927,6 +927,67 @@ let of_string =
     | "CKM_GOSTR3411" -> CKM_GOSTR3411
     | "CKM_GOSTR3411_HMAC" -> CKM_GOSTR3411_HMAC
     | "CKM_AES_KEY_WRAP" -> CKM_AES_KEY_WRAP
+    | "CKM_AES_CCM" -> CKM_AES_CCM
+    | "CKM_AES_CFB1" -> CKM_AES_CFB1
+    | "CKM_AES_CFB128" -> CKM_AES_CFB128
+    | "CKM_AES_CFB64" -> CKM_AES_CFB64
+    | "CKM_AES_CFB8" -> CKM_AES_CFB8
+    | "CKM_AES_CMAC" -> CKM_AES_CMAC
+    | "CKM_AES_CMAC_GENERAL" -> CKM_AES_CMAC_GENERAL
+    | "CKM_AES_CTS" -> CKM_AES_CTS
+    | "CKM_AES_GMAC" -> CKM_AES_GMAC
+    | "CKM_AES_KEY_WRAP_PAD" -> CKM_AES_KEY_WRAP_PAD
+    | "CKM_AES_OFB" -> CKM_AES_OFB
+    | "CKM_AES_XCBC_MAC" -> CKM_AES_XCBC_MAC
+    | "CKM_AES_XCBC_MAC_96" -> CKM_AES_XCBC_MAC_96
+    | "CKM_BLOWFISH_CBC_PAD" -> CKM_BLOWFISH_CBC_PAD
+    | "CKM_DES3_CMAC" -> CKM_DES3_CMAC
+    | "CKM_DES3_CMAC_GENERAL" -> CKM_DES3_CMAC_GENERAL
+    | "CKM_DSA_PROBABLISTIC_PARAMETER_GEN" -> CKM_DSA_PROBABLISTIC_PARAMETER_GEN
+    | "CKM_DSA_SHAWE_TAYLOR_PARAMETER_GEN" -> CKM_DSA_SHAWE_TAYLOR_PARAMETER_GEN
+    | "CKM_ECDH_AES_KEY_WRAP" -> CKM_ECDH_AES_KEY_WRAP
+    | "CKM_GOST28147" -> CKM_GOST28147
+    | "CKM_GOST28147_ECB" -> CKM_GOST28147_ECB
+    | "CKM_GOST28147_KEY_GEN" -> CKM_GOST28147_KEY_GEN
+    | "CKM_GOST28147_KEY_WRAP" -> CKM_GOST28147_KEY_WRAP
+    | "CKM_GOST28147_MAC" -> CKM_GOST28147_MAC
+    | "CKM_GOSTR3410_DERIVE" -> CKM_GOSTR3410_DERIVE
+    | "CKM_GOSTR3410_KEY_WRAP" -> CKM_GOSTR3410_KEY_WRAP
+    | "CKM_KEA_DERIVE" -> CKM_KEA_DERIVE
+    | "CKM_RSA_AES_KEY_WRAP" -> CKM_RSA_AES_KEY_WRAP
+    | "CKM_RSA_PKCS_OAEP_TPM_1_1" -> CKM_RSA_PKCS_OAEP_TPM_1_1
+    | "CKM_RSA_PKCS_TPM_1_1" -> CKM_RSA_PKCS_TPM_1_1
+    | "CKM_SEED_CBC" -> CKM_SEED_CBC
+    | "CKM_SEED_CBC_ENCRYPT_DATA" -> CKM_SEED_CBC_ENCRYPT_DATA
+    | "CKM_SEED_CBC_PAD" -> CKM_SEED_CBC_PAD
+    | "CKM_SEED_ECB" -> CKM_SEED_ECB
+    | "CKM_SEED_ECB_ENCRYPT_DATA" -> CKM_SEED_ECB_ENCRYPT_DATA
+    | "CKM_SEED_KEY_GEN" -> CKM_SEED_KEY_GEN
+    | "CKM_SEED_MAC" -> CKM_SEED_MAC
+    | "CKM_SEED_MAC_GENERAL" -> CKM_SEED_MAC_GENERAL
+    | "CKM_SHA512_224" -> CKM_SHA512_224
+    | "CKM_SHA512_224_HMAC" -> CKM_SHA512_224_HMAC
+    | "CKM_SHA512_224_HMAC_GENERAL" -> CKM_SHA512_224_HMAC_GENERAL
+    | "CKM_SHA512_224_KEY_DERIVATION" -> CKM_SHA512_224_KEY_DERIVATION
+    | "CKM_SHA512_256" -> CKM_SHA512_256
+    | "CKM_SHA512_256_HMAC" -> CKM_SHA512_256_HMAC
+    | "CKM_SHA512_256_HMAC_GENERAL" -> CKM_SHA512_256_HMAC_GENERAL
+    | "CKM_SHA512_256_KEY_DERIVATION" -> CKM_SHA512_256_KEY_DERIVATION
+    | "CKM_SHA512_T" -> CKM_SHA512_T
+    | "CKM_SHA512_T_HMAC" -> CKM_SHA512_T_HMAC
+    | "CKM_SHA512_T_HMAC_GENERAL" -> CKM_SHA512_T_HMAC_GENERAL
+    | "CKM_SHA512_T_KEY_DERIVATION" -> CKM_SHA512_T_KEY_DERIVATION
+    | "CKM_TLS10_MAC_CLIENT" -> CKM_TLS10_MAC_CLIENT
+    | "CKM_TLS10_MAC_SERVER" -> CKM_TLS10_MAC_SERVER
+    | "CKM_TLS12_KDF" -> CKM_TLS12_KDF
+    | "CKM_TLS12_KEY_AND_MAC_DERIVE" -> CKM_TLS12_KEY_AND_MAC_DERIVE
+    | "CKM_TLS12_KEY_SAFE_DERIVE" -> CKM_TLS12_KEY_SAFE_DERIVE
+    | "CKM_TLS12_MAC" -> CKM_TLS12_MAC
+    | "CKM_TLS12_MASTER_KEY_DERIVE" -> CKM_TLS12_MASTER_KEY_DERIVE
+    | "CKM_TLS12_MASTER_KEY_DERIVE_DH" -> CKM_TLS12_MASTER_KEY_DERIVE_DH
+    | "CKM_TLS_KDF" -> CKM_TLS_KDF
+    | "CKM_TLS_MAC" -> CKM_TLS_MAC
+    | "CKM_TWOFISH_CBC_PAD" -> CKM_TWOFISH_CBC_PAD
     | "CKM_VENDOR_DEFINED" -> CKM_VENDOR_DEFINED
     | x ->
         (try CKM_CS_UNKNOWN (Unsigned.ULong.of_string x)
@@ -936,269 +997,335 @@ let of_string =
                     ("Pkcs11_CK_MECHANISM_TYPE.of_string" ^ (": cannot find " ^ x)))
 
 let elements =
-  [CKM_RSA_PKCS_KEY_PAIR_GEN;
-   CKM_RSA_PKCS;
-   CKM_RSA_9796;
-   CKM_RSA_X_509;
-   CKM_MD2_RSA_PKCS;
-   CKM_MD5_RSA_PKCS;
-   CKM_SHA1_RSA_PKCS;
-   CKM_RIPEMD128_RSA_PKCS;
-   CKM_RIPEMD160_RSA_PKCS;
-   CKM_RSA_PKCS_OAEP;
-   CKM_RSA_X9_31_KEY_PAIR_GEN;
-   CKM_RSA_X9_31;
-   CKM_SHA1_RSA_X9_31;
-   CKM_RSA_PKCS_PSS;
-   CKM_SHA1_RSA_PKCS_PSS;
-   CKM_DSA_KEY_PAIR_GEN;
-   CKM_DSA;
-   CKM_DSA_SHA1;
-   CKM_DSA_SHA224;
-   CKM_DSA_SHA256;
-   CKM_DSA_SHA384;
-   CKM_DSA_SHA512;
-   CKM_DH_PKCS_KEY_PAIR_GEN;
-   CKM_DH_PKCS_DERIVE;
-   CKM_X9_42_DH_KEY_PAIR_GEN;
-   CKM_X9_42_DH_DERIVE;
-   CKM_X9_42_DH_HYBRID_DERIVE;
-   CKM_X9_42_MQV_DERIVE;
-   CKM_SHA256_RSA_PKCS;
-   CKM_SHA384_RSA_PKCS;
-   CKM_SHA512_RSA_PKCS;
-   CKM_SHA256_RSA_PKCS_PSS;
-   CKM_SHA384_RSA_PKCS_PSS;
-   CKM_SHA512_RSA_PKCS_PSS;
-   CKM_SHA224_RSA_PKCS;
-   CKM_SHA224_RSA_PKCS_PSS;
-   CKM_RC2_KEY_GEN;
-   CKM_RC2_ECB;
-   CKM_RC2_CBC;
-   CKM_RC2_MAC;
-   CKM_RC2_MAC_GENERAL;
-   CKM_RC2_CBC_PAD;
-   CKM_RC4_KEY_GEN;
-   CKM_RC4;
-   CKM_DES_KEY_GEN;
-   CKM_DES_ECB;
-   CKM_DES_CBC;
-   CKM_DES_MAC;
-   CKM_DES_MAC_GENERAL;
-   CKM_DES_CBC_PAD;
-   CKM_DES2_KEY_GEN;
-   CKM_DES3_KEY_GEN;
-   CKM_DES3_ECB;
-   CKM_DES3_CBC;
-   CKM_DES3_MAC;
-   CKM_DES3_MAC_GENERAL;
-   CKM_DES3_CBC_PAD;
-   CKM_CDMF_KEY_GEN;
-   CKM_CDMF_ECB;
-   CKM_CDMF_CBC;
-   CKM_CDMF_MAC;
-   CKM_CDMF_MAC_GENERAL;
-   CKM_CDMF_CBC_PAD;
-   CKM_DES_OFB64;
-   CKM_DES_OFB8;
-   CKM_DES_CFB64;
-   CKM_DES_CFB8;
-   CKM_MD2;
-   CKM_MD2_HMAC;
-   CKM_MD2_HMAC_GENERAL;
-   CKM_MD5;
-   CKM_MD5_HMAC;
-   CKM_MD5_HMAC_GENERAL;
-   CKM_SHA_1;
-   CKM_SHA_1_HMAC;
-   CKM_SHA_1_HMAC_GENERAL;
-   CKM_RIPEMD128;
-   CKM_RIPEMD128_HMAC;
-   CKM_RIPEMD128_HMAC_GENERAL;
-   CKM_RIPEMD160;
-   CKM_RIPEMD160_HMAC;
-   CKM_RIPEMD160_HMAC_GENERAL;
-   CKM_SHA256;
-   CKM_SHA256_HMAC;
-   CKM_SHA256_HMAC_GENERAL;
-   CKM_SHA224;
-   CKM_SHA224_HMAC;
-   CKM_SHA224_HMAC_GENERAL;
-   CKM_SHA384;
-   CKM_SHA384_HMAC;
-   CKM_SHA384_HMAC_GENERAL;
-   CKM_SHA512;
-   CKM_SHA512_HMAC;
-   CKM_SHA512_HMAC_GENERAL;
-   CKM_SECURID_KEY_GEN;
-   CKM_SECURID;
-   CKM_HOTP_KEY_GEN;
-   CKM_HOTP;
-   CKM_ACTI;
-   CKM_ACTI_KEY_GEN;
-   CKM_CAST_KEY_GEN;
-   CKM_CAST_ECB;
-   CKM_CAST_CBC;
-   CKM_CAST_MAC;
-   CKM_CAST_MAC_GENERAL;
-   CKM_CAST_CBC_PAD;
-   CKM_CAST3_KEY_GEN;
-   CKM_CAST3_ECB;
-   CKM_CAST3_CBC;
-   CKM_CAST3_MAC;
-   CKM_CAST3_MAC_GENERAL;
-   CKM_CAST3_CBC_PAD;
-   CKM_CAST128_KEY_GEN;
-   CKM_CAST128_ECB;
-   CKM_CAST128_CBC;
-   CKM_CAST128_MAC;
-   CKM_CAST128_MAC_GENERAL;
-   CKM_CAST128_CBC_PAD;
-   CKM_RC5_KEY_GEN;
-   CKM_RC5_ECB;
-   CKM_RC5_CBC;
-   CKM_RC5_MAC;
-   CKM_RC5_MAC_GENERAL;
-   CKM_RC5_CBC_PAD;
-   CKM_IDEA_KEY_GEN;
-   CKM_IDEA_ECB;
-   CKM_IDEA_CBC;
-   CKM_IDEA_MAC;
-   CKM_IDEA_MAC_GENERAL;
-   CKM_IDEA_CBC_PAD;
-   CKM_GENERIC_SECRET_KEY_GEN;
-   CKM_CONCATENATE_BASE_AND_KEY;
-   CKM_CONCATENATE_BASE_AND_DATA;
-   CKM_CONCATENATE_DATA_AND_BASE;
-   CKM_XOR_BASE_AND_DATA;
-   CKM_EXTRACT_KEY_FROM_KEY;
-   CKM_SSL3_PRE_MASTER_KEY_GEN;
-   CKM_SSL3_MASTER_KEY_DERIVE;
-   CKM_SSL3_KEY_AND_MAC_DERIVE;
-   CKM_SSL3_MASTER_KEY_DERIVE_DH;
-   CKM_TLS_PRE_MASTER_KEY_GEN;
-   CKM_TLS_MASTER_KEY_DERIVE;
-   CKM_TLS_KEY_AND_MAC_DERIVE;
-   CKM_TLS_MASTER_KEY_DERIVE_DH;
-   CKM_TLS_PRF;
-   CKM_SSL3_MD5_MAC;
-   CKM_SSL3_SHA1_MAC;
-   CKM_MD5_KEY_DERIVATION;
-   CKM_MD2_KEY_DERIVATION;
-   CKM_SHA1_KEY_DERIVATION;
-   CKM_SHA256_KEY_DERIVATION;
-   CKM_SHA384_KEY_DERIVATION;
-   CKM_SHA512_KEY_DERIVATION;
-   CKM_SHA224_KEY_DERIVATION;
-   CKM_PBE_MD2_DES_CBC;
-   CKM_PBE_MD5_DES_CBC;
-   CKM_PBE_MD5_CAST_CBC;
-   CKM_PBE_MD5_CAST3_CBC;
-   CKM_PBE_MD5_CAST128_CBC;
-   CKM_PBE_SHA1_CAST128_CBC;
-   CKM_PBE_SHA1_RC4_128;
-   CKM_PBE_SHA1_RC4_40;
-   CKM_PBE_SHA1_DES3_EDE_CBC;
-   CKM_PBE_SHA1_DES2_EDE_CBC;
-   CKM_PBE_SHA1_RC2_128_CBC;
-   CKM_PBE_SHA1_RC2_40_CBC;
-   CKM_PKCS5_PBKD2;
-   CKM_PBA_SHA1_WITH_SHA1_HMAC;
-   CKM_WTLS_PRE_MASTER_KEY_GEN;
-   CKM_WTLS_MASTER_KEY_DERIVE;
-   CKM_WTLS_MASTER_KEY_DERIVE_DH_ECC;
-   CKM_WTLS_PRF;
-   CKM_WTLS_SERVER_KEY_AND_MAC_DERIVE;
-   CKM_WTLS_CLIENT_KEY_AND_MAC_DERIVE;
-   CKM_KEY_WRAP_LYNKS;
-   CKM_KEY_WRAP_SET_OAEP;
-   CKM_CMS_SIG;
-   CKM_KIP_DERIVE;
-   CKM_KIP_WRAP;
-   CKM_KIP_MAC;
-   CKM_CAMELLIA_KEY_GEN;
-   CKM_CAMELLIA_ECB;
-   CKM_CAMELLIA_CBC;
-   CKM_CAMELLIA_MAC;
-   CKM_CAMELLIA_MAC_GENERAL;
-   CKM_CAMELLIA_CBC_PAD;
-   CKM_CAMELLIA_ECB_ENCRYPT_DATA;
-   CKM_CAMELLIA_CBC_ENCRYPT_DATA;
-   CKM_CAMELLIA_CTR;
-   CKM_ARIA_KEY_GEN;
-   CKM_ARIA_ECB;
-   CKM_ARIA_CBC;
-   CKM_ARIA_MAC;
-   CKM_ARIA_MAC_GENERAL;
-   CKM_ARIA_CBC_PAD;
-   CKM_ARIA_ECB_ENCRYPT_DATA;
-   CKM_ARIA_CBC_ENCRYPT_DATA;
-   CKM_SKIPJACK_KEY_GEN;
-   CKM_SKIPJACK_ECB64;
-   CKM_SKIPJACK_CBC64;
-   CKM_SKIPJACK_OFB64;
-   CKM_SKIPJACK_CFB64;
-   CKM_SKIPJACK_CFB32;
-   CKM_SKIPJACK_CFB16;
-   CKM_SKIPJACK_CFB8;
-   CKM_SKIPJACK_WRAP;
-   CKM_SKIPJACK_PRIVATE_WRAP;
-   CKM_SKIPJACK_RELAYX;
-   CKM_KEA_KEY_PAIR_GEN;
-   CKM_KEA_KEY_DERIVE;
-   CKM_FORTEZZA_TIMESTAMP;
-   CKM_BATON_KEY_GEN;
-   CKM_BATON_ECB128;
-   CKM_BATON_ECB96;
-   CKM_BATON_CBC128;
-   CKM_BATON_COUNTER;
-   CKM_BATON_SHUFFLE;
-   CKM_BATON_WRAP;
-   CKM_EC_KEY_PAIR_GEN;
-   CKM_ECDSA;
-   CKM_ECDSA_SHA1;
-   CKM_ECDSA_SHA224;
-   CKM_ECDSA_SHA256;
-   CKM_ECDSA_SHA384;
-   CKM_ECDSA_SHA512;
-   CKM_ECDH1_DERIVE;
-   CKM_ECDH1_COFACTOR_DERIVE;
-   CKM_ECMQV_DERIVE;
-   CKM_JUNIPER_KEY_GEN;
-   CKM_JUNIPER_ECB128;
-   CKM_JUNIPER_CBC128;
-   CKM_JUNIPER_COUNTER;
-   CKM_JUNIPER_SHUFFLE;
-   CKM_JUNIPER_WRAP;
-   CKM_FASTHASH;
-   CKM_AES_KEY_GEN;
-   CKM_AES_ECB;
-   CKM_AES_CBC;
-   CKM_AES_MAC;
-   CKM_AES_MAC_GENERAL;
-   CKM_AES_CBC_PAD;
-   CKM_AES_CTR;
-   CKM_AES_GCM;
-   CKM_BLOWFISH_KEY_GEN;
-   CKM_BLOWFISH_CBC;
-   CKM_TWOFISH_KEY_GEN;
-   CKM_TWOFISH_CBC;
-   CKM_DES_ECB_ENCRYPT_DATA;
-   CKM_DES_CBC_ENCRYPT_DATA;
-   CKM_DES3_ECB_ENCRYPT_DATA;
-   CKM_DES3_CBC_ENCRYPT_DATA;
-   CKM_AES_ECB_ENCRYPT_DATA;
-   CKM_AES_CBC_ENCRYPT_DATA;
-   CKM_DSA_PARAMETER_GEN;
-   CKM_DH_PKCS_PARAMETER_GEN;
-   CKM_X9_42_DH_PARAMETER_GEN;
-   CKM_GOSTR3410_KEY_PAIR_GEN;
-   CKM_GOSTR3410;
-   CKM_GOSTR3410_WITH_GOSTR3411;
-   CKM_GOSTR3411;
-   CKM_GOSTR3411_HMAC;
-   CKM_AES_KEY_WRAP;
-   CKM_VENDOR_DEFINED]
+  let add acc var = var.Variantslib.Variant.constructor :: acc in
+  let ignore acc var = acc in
+  Variants.fold
+    ~init:[]
+    ~ckm_rsa_pkcs_key_pair_gen:add
+    ~ckm_rsa_pkcs:add
+    ~ckm_rsa_9796:add
+    ~ckm_rsa_x_509:add
+    ~ckm_md2_rsa_pkcs:add
+    ~ckm_md5_rsa_pkcs:add
+    ~ckm_sha1_rsa_pkcs:add
+    ~ckm_ripemd128_rsa_pkcs:add
+    ~ckm_ripemd160_rsa_pkcs:add
+    ~ckm_rsa_pkcs_oaep:add
+    ~ckm_rsa_x9_31_key_pair_gen:add
+    ~ckm_rsa_x9_31:add
+    ~ckm_sha1_rsa_x9_31:add
+    ~ckm_rsa_pkcs_pss:add
+    ~ckm_sha1_rsa_pkcs_pss:add
+    ~ckm_dsa_key_pair_gen:add
+    ~ckm_dsa:add
+    ~ckm_dsa_sha1:add
+    ~ckm_dsa_sha224:add
+    ~ckm_dsa_sha256:add
+    ~ckm_dsa_sha384:add
+    ~ckm_dsa_sha512:add
+    ~ckm_dh_pkcs_key_pair_gen:add
+    ~ckm_dh_pkcs_derive:add
+    ~ckm_x9_42_dh_key_pair_gen:add
+    ~ckm_x9_42_dh_derive:add
+    ~ckm_x9_42_dh_hybrid_derive:add
+    ~ckm_x9_42_mqv_derive:add
+    ~ckm_sha256_rsa_pkcs:add
+    ~ckm_sha384_rsa_pkcs:add
+    ~ckm_sha512_rsa_pkcs:add
+    ~ckm_sha256_rsa_pkcs_pss:add
+    ~ckm_sha384_rsa_pkcs_pss:add
+    ~ckm_sha512_rsa_pkcs_pss:add
+    ~ckm_sha224_rsa_pkcs:add
+    ~ckm_sha224_rsa_pkcs_pss:add
+    ~ckm_rc2_key_gen:add
+    ~ckm_rc2_ecb:add
+    ~ckm_rc2_cbc:add
+    ~ckm_rc2_mac:add
+    ~ckm_rc2_mac_general:add
+    ~ckm_rc2_cbc_pad:add
+    ~ckm_rc4_key_gen:add
+    ~ckm_rc4:add
+    ~ckm_des_key_gen:add
+    ~ckm_des_ecb:add
+    ~ckm_des_cbc:add
+    ~ckm_des_mac:add
+    ~ckm_des_mac_general:add
+    ~ckm_des_cbc_pad:add
+    ~ckm_des2_key_gen:add
+    ~ckm_des3_key_gen:add
+    ~ckm_des3_ecb:add
+    ~ckm_des3_cbc:add
+    ~ckm_des3_mac:add
+    ~ckm_des3_mac_general:add
+    ~ckm_des3_cbc_pad:add
+    ~ckm_cdmf_key_gen:add
+    ~ckm_cdmf_ecb:add
+    ~ckm_cdmf_cbc:add
+    ~ckm_cdmf_mac:add
+    ~ckm_cdmf_mac_general:add
+    ~ckm_cdmf_cbc_pad:add
+    ~ckm_des_ofb64:add
+    ~ckm_des_ofb8:add
+    ~ckm_des_cfb64:add
+    ~ckm_des_cfb8:add
+    ~ckm_md2:add
+    ~ckm_md2_hmac:add
+    ~ckm_md2_hmac_general:add
+    ~ckm_md5:add
+    ~ckm_md5_hmac:add
+    ~ckm_md5_hmac_general:add
+    ~ckm_sha_1:add
+    ~ckm_sha_1_hmac:add
+    ~ckm_sha_1_hmac_general:add
+    ~ckm_ripemd128:add
+    ~ckm_ripemd128_hmac:add
+    ~ckm_ripemd128_hmac_general:add
+    ~ckm_ripemd160:add
+    ~ckm_ripemd160_hmac:add
+    ~ckm_ripemd160_hmac_general:add
+    ~ckm_sha256:add
+    ~ckm_sha256_hmac:add
+    ~ckm_sha256_hmac_general:add
+    ~ckm_sha224:add
+    ~ckm_sha224_hmac:add
+    ~ckm_sha224_hmac_general:add
+    ~ckm_sha384:add
+    ~ckm_sha384_hmac:add
+    ~ckm_sha384_hmac_general:add
+    ~ckm_sha512:add
+    ~ckm_sha512_hmac:add
+    ~ckm_sha512_hmac_general:add
+    ~ckm_securid_key_gen:add
+    ~ckm_securid:add
+    ~ckm_hotp_key_gen:add
+    ~ckm_hotp:add
+    ~ckm_acti:add
+    ~ckm_acti_key_gen:add
+    ~ckm_cast_key_gen:add
+    ~ckm_cast_ecb:add
+    ~ckm_cast_cbc:add
+    ~ckm_cast_mac:add
+    ~ckm_cast_mac_general:add
+    ~ckm_cast_cbc_pad:add
+    ~ckm_cast3_key_gen:add
+    ~ckm_cast3_ecb:add
+    ~ckm_cast3_cbc:add
+    ~ckm_cast3_mac:add
+    ~ckm_cast3_mac_general:add
+    ~ckm_cast3_cbc_pad:add
+    ~ckm_cast128_key_gen:add
+    ~ckm_cast128_ecb:add
+    ~ckm_cast128_cbc:add
+    ~ckm_cast128_mac:add
+    ~ckm_cast128_mac_general:add
+    ~ckm_cast128_cbc_pad:add
+    ~ckm_rc5_key_gen:add
+    ~ckm_rc5_ecb:add
+    ~ckm_rc5_cbc:add
+    ~ckm_rc5_mac:add
+    ~ckm_rc5_mac_general:add
+    ~ckm_rc5_cbc_pad:add
+    ~ckm_idea_key_gen:add
+    ~ckm_idea_ecb:add
+    ~ckm_idea_cbc:add
+    ~ckm_idea_mac:add
+    ~ckm_idea_mac_general:add
+    ~ckm_idea_cbc_pad:add
+    ~ckm_generic_secret_key_gen:add
+    ~ckm_concatenate_base_and_key:add
+    ~ckm_concatenate_base_and_data:add
+    ~ckm_concatenate_data_and_base:add
+    ~ckm_xor_base_and_data:add
+    ~ckm_extract_key_from_key:add
+    ~ckm_ssl3_pre_master_key_gen:add
+    ~ckm_ssl3_master_key_derive:add
+    ~ckm_ssl3_key_and_mac_derive:add
+    ~ckm_ssl3_master_key_derive_dh:add
+    ~ckm_tls_pre_master_key_gen:add
+    ~ckm_tls_master_key_derive:add
+    ~ckm_tls_key_and_mac_derive:add
+    ~ckm_tls_master_key_derive_dh:add
+    ~ckm_tls_prf:add
+    ~ckm_ssl3_md5_mac:add
+    ~ckm_ssl3_sha1_mac:add
+    ~ckm_md5_key_derivation:add
+    ~ckm_md2_key_derivation:add
+    ~ckm_sha1_key_derivation:add
+    ~ckm_sha256_key_derivation:add
+    ~ckm_sha384_key_derivation:add
+    ~ckm_sha512_key_derivation:add
+    ~ckm_sha224_key_derivation:add
+    ~ckm_pbe_md2_des_cbc:add
+    ~ckm_pbe_md5_des_cbc:add
+    ~ckm_pbe_md5_cast_cbc:add
+    ~ckm_pbe_md5_cast3_cbc:add
+    ~ckm_pbe_md5_cast128_cbc:add
+    ~ckm_pbe_sha1_cast128_cbc:add
+    ~ckm_pbe_sha1_rc4_128:add
+    ~ckm_pbe_sha1_rc4_40:add
+    ~ckm_pbe_sha1_des3_ede_cbc:add
+    ~ckm_pbe_sha1_des2_ede_cbc:add
+    ~ckm_pbe_sha1_rc2_128_cbc:add
+    ~ckm_pbe_sha1_rc2_40_cbc:add
+    ~ckm_pkcs5_pbkd2:add
+    ~ckm_pba_sha1_with_sha1_hmac:add
+    ~ckm_wtls_pre_master_key_gen:add
+    ~ckm_wtls_master_key_derive:add
+    ~ckm_wtls_master_key_derive_dh_ecc:add
+    ~ckm_wtls_prf:add
+    ~ckm_wtls_server_key_and_mac_derive:add
+    ~ckm_wtls_client_key_and_mac_derive:add
+    ~ckm_key_wrap_lynks:add
+    ~ckm_key_wrap_set_oaep:add
+    ~ckm_cms_sig:add
+    ~ckm_kip_derive:add
+    ~ckm_kip_wrap:add
+    ~ckm_kip_mac:add
+    ~ckm_camellia_key_gen:add
+    ~ckm_camellia_ecb:add
+    ~ckm_camellia_cbc:add
+    ~ckm_camellia_mac:add
+    ~ckm_camellia_mac_general:add
+    ~ckm_camellia_cbc_pad:add
+    ~ckm_camellia_ecb_encrypt_data:add
+    ~ckm_camellia_cbc_encrypt_data:add
+    ~ckm_camellia_ctr:add
+    ~ckm_aria_key_gen:add
+    ~ckm_aria_ecb:add
+    ~ckm_aria_cbc:add
+    ~ckm_aria_mac:add
+    ~ckm_aria_mac_general:add
+    ~ckm_aria_cbc_pad:add
+    ~ckm_aria_ecb_encrypt_data:add
+    ~ckm_aria_cbc_encrypt_data:add
+    ~ckm_skipjack_key_gen:add
+    ~ckm_skipjack_ecb64:add
+    ~ckm_skipjack_cbc64:add
+    ~ckm_skipjack_ofb64:add
+    ~ckm_skipjack_cfb64:add
+    ~ckm_skipjack_cfb32:add
+    ~ckm_skipjack_cfb16:add
+    ~ckm_skipjack_cfb8:add
+    ~ckm_skipjack_wrap:add
+    ~ckm_skipjack_private_wrap:add
+    ~ckm_skipjack_relayx:add
+    ~ckm_kea_key_pair_gen:add
+    ~ckm_kea_key_derive:add
+    ~ckm_fortezza_timestamp:add
+    ~ckm_baton_key_gen:add
+    ~ckm_baton_ecb128:add
+    ~ckm_baton_ecb96:add
+    ~ckm_baton_cbc128:add
+    ~ckm_baton_counter:add
+    ~ckm_baton_shuffle:add
+    ~ckm_baton_wrap:add
+    ~ckm_ec_key_pair_gen:add
+    ~ckm_ecdsa:add
+    ~ckm_ecdsa_sha1:add
+    ~ckm_ecdsa_sha224:add
+    ~ckm_ecdsa_sha256:add
+    ~ckm_ecdsa_sha384:add
+    ~ckm_ecdsa_sha512:add
+    ~ckm_ecdh1_derive:add
+    ~ckm_ecdh1_cofactor_derive:add
+    ~ckm_ecmqv_derive:add
+    ~ckm_juniper_key_gen:add
+    ~ckm_juniper_ecb128:add
+    ~ckm_juniper_cbc128:add
+    ~ckm_juniper_counter:add
+    ~ckm_juniper_shuffle:add
+    ~ckm_juniper_wrap:add
+    ~ckm_fasthash:add
+    ~ckm_aes_key_gen:add
+    ~ckm_aes_ecb:add
+    ~ckm_aes_cbc:add
+    ~ckm_aes_mac:add
+    ~ckm_aes_mac_general:add
+    ~ckm_aes_cbc_pad:add
+    ~ckm_aes_ctr:add
+    ~ckm_aes_gcm:add
+    ~ckm_blowfish_key_gen:add
+    ~ckm_blowfish_cbc:add
+    ~ckm_twofish_key_gen:add
+    ~ckm_twofish_cbc:add
+    ~ckm_des_ecb_encrypt_data:add
+    ~ckm_des_cbc_encrypt_data:add
+    ~ckm_des3_ecb_encrypt_data:add
+    ~ckm_des3_cbc_encrypt_data:add
+    ~ckm_aes_ecb_encrypt_data:add
+    ~ckm_aes_cbc_encrypt_data:add
+    ~ckm_dsa_parameter_gen:add
+    ~ckm_dh_pkcs_parameter_gen:add
+    ~ckm_x9_42_dh_parameter_gen:add
+    ~ckm_gostr3410_key_pair_gen:add
+    ~ckm_gostr3410:add
+    ~ckm_gostr3410_with_gostr3411:add
+    ~ckm_gostr3411:add
+    ~ckm_gostr3411_hmac:add
+    ~ckm_aes_key_wrap:add
+    ~ckm_aes_ccm:add
+    ~ckm_aes_cfb1:add
+    ~ckm_aes_cfb128:add
+    ~ckm_aes_cfb64:add
+    ~ckm_aes_cfb8:add
+    ~ckm_aes_cmac:add
+    ~ckm_aes_cmac_general:add
+    ~ckm_aes_cts:add
+    ~ckm_aes_gmac:add
+    ~ckm_aes_key_wrap_pad:add
+    ~ckm_aes_ofb:add
+    ~ckm_aes_xcbc_mac:add
+    ~ckm_aes_xcbc_mac_96:add
+    ~ckm_blowfish_cbc_pad:add
+    ~ckm_des3_cmac:add
+    ~ckm_des3_cmac_general:add
+    ~ckm_dsa_probablistic_parameter_gen:add
+    ~ckm_dsa_shawe_taylor_parameter_gen:add
+    ~ckm_ecdh_aes_key_wrap:add
+    ~ckm_gost28147:add
+    ~ckm_gost28147_ecb:add
+    ~ckm_gost28147_key_gen:add
+    ~ckm_gost28147_key_wrap:add
+    ~ckm_gost28147_mac:add
+    ~ckm_gostr3410_derive:add
+    ~ckm_gostr3410_key_wrap:add
+    ~ckm_kea_derive:add
+    ~ckm_rsa_aes_key_wrap:add
+    ~ckm_rsa_pkcs_oaep_tpm_1_1:add
+    ~ckm_rsa_pkcs_tpm_1_1:add
+    ~ckm_seed_cbc:add
+    ~ckm_seed_cbc_encrypt_data:add
+    ~ckm_seed_cbc_pad:add
+    ~ckm_seed_ecb:add
+    ~ckm_seed_ecb_encrypt_data:add
+    ~ckm_seed_key_gen:add
+    ~ckm_seed_mac:add
+    ~ckm_seed_mac_general:add
+    ~ckm_sha512_224:add
+    ~ckm_sha512_224_hmac:add
+    ~ckm_sha512_224_hmac_general:add
+    ~ckm_sha512_224_key_derivation:add
+    ~ckm_sha512_256:add
+    ~ckm_sha512_256_hmac:add
+    ~ckm_sha512_256_hmac_general:add
+    ~ckm_sha512_256_key_derivation:add
+    ~ckm_sha512_t:add
+    ~ckm_sha512_t_hmac:add
+    ~ckm_sha512_t_hmac_general:add
+    ~ckm_sha512_t_key_derivation:add
+    ~ckm_tls10_mac_client:add
+    ~ckm_tls10_mac_server:add
+    ~ckm_tls12_kdf:add
+    ~ckm_tls12_key_and_mac_derive:add
+    ~ckm_tls12_key_safe_derive:add
+    ~ckm_tls12_mac:add
+    ~ckm_tls12_master_key_derive:add
+    ~ckm_tls12_master_key_derive_dh:add
+    ~ckm_tls_kdf:add
+    ~ckm_tls_mac:add
+    ~ckm_twofish_cbc_pad:add
+    ~ckm_vendor_defined:add
+    ~ckm_cs_unknown:ignore
 
 let to_yojson mechanism_type =
   try

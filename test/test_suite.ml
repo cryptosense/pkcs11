@@ -10,6 +10,7 @@ let suite =
   ; Test_p11_gcm_params.suite
   ; Test_p11_hex_data.suite
   ; Test_p11_mechanism.suite
+  ; Test_p11_mechanism_type.suite
   ; Test_template.suite
   ; Test_bigint.suite
   ]
