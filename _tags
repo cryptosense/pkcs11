@@ -4,6 +4,7 @@ true: package(hex)
 true: package(integers)
 true: package(ppx_deriving.std)
 true: package(ppx_deriving_yojson)
+true: package(ppx_variants_conv)
 true: package(zarith)
 true: open(Result)
 

@@ -27,6 +27,7 @@ depends: [
   "integers"
   "ppx_deriving" { >= "4.0" }
   "ppx_deriving_yojson" { >= "3.0" }
+  "ppx_variants_conv"
   "zarith"
   "ocamlbuild" {build}
   "ocamlfind" {build}
