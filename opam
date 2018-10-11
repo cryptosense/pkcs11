@@ -1,10 +1,10 @@
-opam-version: "1.2"
+opam-version: "2.0"
 maintainer: "Etienne Millon <etienne@cryptosense.com>"
 authors: "Etienne Millon <etienne@cryptosense.com>"
 homepage: "https://github.com/cryptosense/pkcs11"
 bug-reports: "https://github.com/cryptosense/pkcs11/issues"
 license: "BSD-2"
-dev-repo: "https://github.com/cryptosense/pkcs11.git"
+dev-repo: "git+https://github.com/cryptosense/pkcs11.git"
 doc: "https://cryptosense.github.io/pkcs11/doc"
 build: [
   [ "ocaml" "pkg/pkg.ml" "build"
@@ -13,7 +13,7 @@ build: [
     "--with-driver" "%{ctypes:installed}%"
   ]
 ]
-build-test: [
+run-test: [
   [ "ocaml" "pkg/pkg.ml" "build"
     "--pinned" "%{pinned}%"
     "--tests" "true"
@@ -29,10 +29,11 @@ depends: [
   "ppx_deriving_yojson" { >= "3.0" }
   "ppx_variants_conv"
   "zarith"
+  "ocaml" {>= "4.03.0"}
   "ocamlbuild" {build}
   "ocamlfind" {build}
   "topkg" {build}
-  "ounit" {test}
+  "ounit" {with-test}
 ]
 depopts: [
   "cmdliner"
@@ -43,4 +44,4 @@ conflicts: [
   "ctypes" { < "0.12.0" }
 ]
 tags: ["org:cryptosense"]
-available: [ocaml-version >= "4.03.0" & os != "darwin"]
+available: [os != "macos"]
