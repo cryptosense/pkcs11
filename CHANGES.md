@@ -1,10 +1,10 @@
-unreleased
-==========
+v0.17.1 2018-10-11
+==================
 
 ## Fixes
 
-- Add missing cases to `P11.Mechanism_type.of_string`. All valid mechanism type can now be parsed.
-  That also fixes `P11.Mechanism_type.of_yojson`.
+- Fix `P11.Mechanism_type.of_string` and `P11.Mechanism_type.of_yojson` by correctly parsing
+  all supported mechanism types.
 
 v0.17.0 2018-05-15
 ==================
