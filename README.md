@@ -11,4 +11,4 @@ To install the driver part, install `ctypes` and `ctypes-foreign` - it will
 build a `pkcs11.driver` package.
 
 The entry point of this library is [P11.load_driver]. An example is available in
-`test/example_sign.ml`.
+`test/examples/example_sign.ml`.
