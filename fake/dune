@@ -1,0 +1,16 @@
+(install
+  (section stublibs)
+  (files dllpkcs11_fake.so)
+)
+
+(rule
+  (targets dllpkcs11_fake.so)
+  (deps
+    pkcs11.h
+    pkcs11f.h
+    pkcs11t.h
+  )
+  (action (run %{cc} -shared -o %{targets} %{dep:pkcs11_fake.c}))
+)
+
+(copy_files ../include/pkcs11*.h)

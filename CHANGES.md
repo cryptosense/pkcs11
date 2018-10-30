@@ -1,3 +1,10 @@
+unreleased
+==========
+
+## Changes
+
+- Make all dependencies mandatory and always build and install cli, driver, rev and fake
+
 v0.17.1 2018-10-11
 ==================
 

@@ -1,0 +1,23 @@
+(library
+  (name pkcs11_driver)
+  (public_name pkcs11.driver)
+  (wrapped false)
+  (install_c_headers
+    pkcs11
+    pkcs11f
+    pkcs11t
+  )
+  (libraries
+    ctypes.foreign 
+    ctypes.stubs
+    pkcs11
+  )
+  (preprocess
+    (pps
+      ppx_deriving.std
+      ppx_deriving_yojson
+    )
+  )
+)
+
+(copy_files ../include/pkcs11*.h)

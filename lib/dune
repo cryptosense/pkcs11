@@ -1,0 +1,18 @@
+(library
+  (public_name pkcs11)
+  (wrapped false)
+  (libraries
+    hex
+    integers
+    ppx_deriving_yojson.runtime
+    str
+    zarith
+  )
+  (preprocess
+    (pps
+      ppx_deriving.std
+      ppx_deriving_yojson
+      ppx_variants_conv
+    )
+  )
+)

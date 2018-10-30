@@ -1,0 +1,12 @@
+(test
+  (name test_lib)
+  (libraries
+    oUnit
+    pkcs11
+  )
+  (preprocess
+    (pps
+      ppx_deriving.std
+    )
+  )
+)
