@@ -1,7 +1,6 @@
 (library
   (name pkcs11_rev)
   (public_name pkcs11.rev)
-  (optional)
   (modules pkcs11_rev pkcs11_rev_generated)
   (c_names pkcs11_rev_stubs)
   (flags (:standard -w -27))

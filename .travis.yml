@@ -8,7 +8,6 @@ env:
   global:
     - PACKAGE=pkcs11
     - DISTRO=alpine
-    - DEPOPTS="ctypes ctypes-foreign"
   matrix:
     - OCAML_VERSION=4.04
     - OCAML_VERSION=4.05

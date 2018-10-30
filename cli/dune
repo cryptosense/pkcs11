@@ -1,7 +1,6 @@
 (library
   (name pkcs11_cli)
   (public_name pkcs11.cli)
-  (optional)
   (libraries
     cmdliner
     pkcs11

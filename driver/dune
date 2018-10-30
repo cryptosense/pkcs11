@@ -2,7 +2,6 @@
   (name pkcs11_driver)
   (public_name pkcs11.driver)
   (wrapped false)
-  (optional)
   (install_c_headers
     pkcs11
     pkcs11f
