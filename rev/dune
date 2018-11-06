@@ -12,11 +12,13 @@
 
 (install
   (section lib)
+  (package pkcs11)
   (files libpkcs11_rev_dllmain.a)
 )
 
 (install
   (section stublibs)
+  (package pkcs11)
   (files dllpkcs11_rev_dllmain.so)
 )
 
