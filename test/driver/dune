@@ -1,11 +1,11 @@
 (test
   (name test_driver)
-  (package pkcs11)
+  (package pkcs11-driver)
   (deps dllpkcs11_fake%{ext_dll})
   (libraries
     oUnit
     pkcs11
-    pkcs11.driver
+    pkcs11-driver
   )
   (preprocess
     (pps

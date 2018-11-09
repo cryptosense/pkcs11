@@ -7,7 +7,7 @@
   (libraries
     ctypes
     ctypes.foreign
-    pkcs11.driver
+    pkcs11-driver
     pkcs11-rev._decl
   )
 )
@@ -59,7 +59,7 @@
   (name pkcs11_rev_generator)
   (modules pkcs11_rev_generator)
   (libraries
-    pkcs11.driver
+    pkcs11-driver
     pkcs11-rev._decl
   )
 )

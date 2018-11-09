@@ -8,14 +8,16 @@ env:
   global:
     - PACKAGE=pkcs11
     - DISTRO=alpine
-    - PINS="pkcs11:. pkcs11-cli:. pkcs11-rev:."
+    - PINS="pkcs11:. pkcs11-cli:. pkcs11-rev:. pkcs11-driver:."
   matrix:
     - OCAML_VERSION=4.04
     - OCAML_VERSION=4.04 PACKAGE=pkcs11-cli
     - OCAML_VERSION=4.04 PACKAGE=pkcs11-rev
+    - OCAML_VERSION=4.04 PACKAGE=pkcs11-driver
     - OCAML_VERSION=4.05
     - OCAML_VERSION=4.06
     - OCAML_VERSION=4.07
     - OCAML_VERSION=4.07 PACKAGE=pkcs11-cli
     - OCAML_VERSION=4.07 PACKAGE=pkcs11-rev
+    - OCAML_VERSION=4.07 PACKAGE=pkcs11-driver
     - OCAML_VERSION=4.07 DISTRO=debian-stable
