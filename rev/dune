@@ -1,24 +1,26 @@
 (library
   (name pkcs11_rev)
-  (public_name pkcs11.rev)
+  (public_name pkcs11-rev)
   (modules pkcs11_rev pkcs11_rev_generated)
   (c_names pkcs11_rev_stubs)
   (flags (:standard -w -27))
   (libraries
+    ctypes
+    ctypes.foreign
     pkcs11.driver
-    pkcs11._rev_decl
+    pkcs11-rev._decl
   )
 )
 
 (install
   (section lib)
-  (package pkcs11)
+  (package pkcs11-rev)
   (files libpkcs11_rev_dllmain.a)
 )
 
 (install
   (section stublibs)
-  (package pkcs11)
+  (package pkcs11-rev)
   (files dllpkcs11_rev_dllmain.so)
 )
 
@@ -58,7 +60,7 @@
   (modules pkcs11_rev_generator)
   (libraries
     pkcs11.driver
-    pkcs11._rev_decl
+    pkcs11-rev._decl
   )
 )
 
