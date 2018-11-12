@@ -9,26 +9,19 @@ doc: "https://cryptosense.github.io/pkcs11/doc"
 build: [
   ["dune" "build" "-p" name "-j" jobs]
 ]
-run-test: [
-  ["dune" "runtest" "-p" name "-j" jobs]
-]
 depends: [
+  "ctypes"
+  "ctypes-foreign"
   "dune" {>= "1.3.0"}
-  "hex" { >= "1.0.0" }
-  "integers"
-  "ppx_deriving" { >= "4.0" }
-  "ppx_deriving_yojson" { >= "3.0" }
-  "ppx_variants_conv"
-  "zarith"
-  "ocaml" {>= "4.03.0"}
-  "ounit" {with-test}
+  "pkcs11"
+  "pkcs11-driver"
+]
+conflicts: [
+  "ctypes" { < "0.12.0" }
 ]
 tags: ["org:cryptosense"]
 available: [os != "macos"]
-synopsis: "PKCS#11 ocaml types"
+synopsis: "Reverse bindings to pkcs11"
 description: """
-This library contains type definitions for the PKCS#11 API.
-
-This API is used by smartcards and Hardware Security Modules to perform
-cryptographic operations such as signature or encryption.
+This library contains helpers to write reverse PKCS#11 bindings.
 """

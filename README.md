@@ -4,12 +4,12 @@
 PKCS11 is an API used by smartcards and Hardware Security Modules to perform
 cryptographic operations such as signature or encryption.
 
-This library contains several parts:
+This library is made of several packages:
 - `pkcs11`: type definitions corresponding to the PKCS#11 API
-- `pkcs11.cli`: a library exposing cmdliner arguments used to initiate a PKCS#11 session
-- `pkcs11.driver`: bindings to emit calls to a PKCS#11 dll
-- `pkcs11.fake`: a fake pkcs11 dll that returned hardcoded values, used for testing
-- `pkcs11.rev`: reverse bindings
+- `pkcs11-cli`: a library exposing cmdliner arguments used to initiate a PKCS#11 session
+- `pkcs11-driver`: bindings to emit calls to a PKCS#11 dll
+- `pkcs11-driver.fake`: a fake pkcs11 dll that returned hardcoded values, used for testing
+- `pkcs11-rev`: reverse bindings to write OCaml PKCS#11 implementations
 
 The entry point of this library is [P11.load_driver]. Examples are available in
 `test/examples/`.

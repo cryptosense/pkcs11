@@ -1,5 +1,6 @@
 (test
   (name test_lib)
+  (package pkcs11)
   (libraries
     oUnit
     pkcs11

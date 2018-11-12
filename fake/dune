@@ -1,5 +1,6 @@
 (install
   (section stublibs)
+  (package pkcs11-driver)
   (files dllpkcs11_fake.so)
 )
 

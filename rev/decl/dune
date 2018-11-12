@@ -1,7 +1,7 @@
 (library
   (name pkcs11_rev_decl)
-  (public_name pkcs11._rev_decl)
+  (public_name pkcs11-rev._decl)
   (libraries
-    pkcs11.driver
+    pkcs11-driver
   )
 )

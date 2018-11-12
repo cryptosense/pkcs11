@@ -1,6 +1,6 @@
 (library
   (name pkcs11_driver)
-  (public_name pkcs11.driver)
+  (public_name pkcs11-driver)
   (wrapped false)
   (install_c_headers
     pkcs11
