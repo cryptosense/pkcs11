@@ -3,7 +3,8 @@ unreleased
 
 ## Changes
 
-- Make all dependencies mandatory and always build and install cli, driver, rev and fake
+- Remove optional dependencies and split into `pkcs11`, `pkcs11-cli`, `pkcs11-driver` and
+  `pkcs11-rev` packages.
 
 v0.17.1 2018-10-11
 ==================
