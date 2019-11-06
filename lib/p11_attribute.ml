@@ -99,7 +99,7 @@ let to_string x =
 
 (* Note: it is important for [Template.to_json] and [Template.of_json]
    that all attributes are represented using [`Assoc]. *)
-let to_json : type a . a t -> Yojson.Safe.json = fun attribute ->
+let to_json : type a . a t -> Yojson.Safe.t = fun attribute ->
   let key_json = P11_attribute_type.to_string (fst attribute) in
   let data = P11_hex_data.to_yojson in
   let value_json =
@@ -116,7 +116,7 @@ let to_json : type a . a t -> Yojson.Safe.json = fun attribute ->
   in
   `Assoc [(key_json, value_json)]
 
-let of_yojson_repr (type a) (repr : a repr) : Yojson.Safe.json -> (a, string) result =
+let of_yojson_repr (type a) (repr : a repr) : Yojson.Safe.t -> (a, string) result =
   let (>>=) = Ppx_deriving_yojson_runtime.(>>=) in
   let bool_of_yojson = function
     | `Bool b -> Ok b

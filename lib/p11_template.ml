@@ -1,7 +1,7 @@
 type t = P11_attribute.pack list
 [@@deriving eq,ord,show]
 
-let to_yojson template :Yojson.Safe.json =
+let to_yojson template :Yojson.Safe.t =
   let attributes = List.map (fun (P11_attribute.Pack x) -> P11_attribute.to_json x) template in
   let flatten_attribute = function
     | `Assoc l -> l
