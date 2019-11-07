@@ -82,7 +82,7 @@ val to_pretty_string : domain -> t -> string
 
 val to_pretty_strings : domain -> t -> string list
 
-val to_json : ?pretty:(t -> string) -> t -> Yojson.Safe.json
+val to_json : ?pretty:(t -> string) -> t -> Yojson.Safe.t
 
 val split : domain -> t -> t list * t
 

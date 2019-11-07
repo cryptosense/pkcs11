@@ -173,7 +173,7 @@ val of_string : string -> pack
 
 val to_string : 'a t -> string
 
-val pack_to_json : pack -> Yojson.Safe.json
+val pack_to_json : pack -> Yojson.Safe.t
 
 val elements: pack list
 

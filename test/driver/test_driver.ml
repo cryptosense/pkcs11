@@ -12,6 +12,7 @@ let suite =
       ; Test_ck_attribute.suite
       ; Test_ck_aes_ctr_params.suite
       ; Test_ck_gcm_params.suite
+      ; Test_p11_driver.suite
       ]
     ]
 

@@ -6,7 +6,7 @@ val to_string : 'a t -> string
 
 val to_string_pair : 'a t -> string * string
 
-val to_json : 'a t -> Yojson.Safe.json
+val to_json : 'a t -> Yojson.Safe.t
 
 val compare_types: 'a t -> 'b t -> int
 val compare_types_pack: pack -> pack -> int

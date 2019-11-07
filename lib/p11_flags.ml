@@ -258,7 +258,7 @@ let to_pretty_string domain flags =
     | f -> String.concat " | " f
 
 type has_value =
-  { value : Yojson.Safe.json
+  { value : Yojson.Safe.t
   ; string : string
   }
 [@@deriving of_yojson]

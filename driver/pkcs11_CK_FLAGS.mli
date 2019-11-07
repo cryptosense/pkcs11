@@ -65,7 +65,7 @@ val _CKF_EXCLUDE_CHALLENGE : t
 val _CKF_EXCLUDE_PIN : t
 val _CKF_USER_FRIENDLY_OTP : t
 
-val to_json : ?pretty:(t -> string) -> t -> Yojson.Safe.json
+val to_json : ?pretty:(t -> string) -> t -> Yojson.Safe.t
 
 val to_string : t -> string
 

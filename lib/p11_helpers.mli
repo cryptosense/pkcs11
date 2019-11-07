@@ -13,7 +13,7 @@ val strings_of_record:
 val of_json_string :
   typename:string ->
   (string -> 'a) ->
-  Yojson.Safe.json ->
+  Yojson.Safe.t ->
   ('a, string) Result.result
 
 (** Remove trailing zeros and spaces, and quote the result.*)
