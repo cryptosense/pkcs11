@@ -122,6 +122,35 @@ module Initialize_arg = struct
   let () = seal t
 end
 
+module Nss_initialize_arg = struct
+  let mutex = void
+  type _ck_nss_c_initialize_args
+  type t = _ck_nss_c_initialize_args structure
+  let t : t typ = structure "CK_NSS_C_INITIALIZE_ARGS"
+  let (-:) ty label = Ctypes_helpers.smart_field t label ty
+  let f typ = Foreign.funptr_opt (typ @-> returning ck_rv)
+  let createMutex = f (ptr (ptr mutex)) -: "CreateMutex"
+  let destroyMutex = f (ptr mutex) -: "DestroyMutex"
+  let lockMutex = f (ptr mutex) -: "LockMutex"
+  let unlockMutex = f (ptr mutex) -: "UnlockMutex"
+  let flags = ck_flags -: "flags"
+  let libraryParameters = Ctypes.string_opt -: "LibraryParameters"
+  let pReserved = ptr void -: "pReserved"
+  let () = seal t
+
+  type u = string
+  let make (params : u) =
+    let t = Ctypes.make t in
+    Ctypes.setf t createMutex None;
+    Ctypes.setf t destroyMutex None;
+    Ctypes.setf t lockMutex None;
+    Ctypes.setf t unlockMutex None;
+    Ctypes.setf t flags Pkcs11_CK_FLAGS._CKF_OS_LOCKING_OK;
+    Ctypes.setf t libraryParameters (Some params);
+    Ctypes.setf t pReserved Ctypes.null;
+    t
+end
+
 (******************************************************************************)
 (*                                  Functions                                 *)
 (******************************************************************************)

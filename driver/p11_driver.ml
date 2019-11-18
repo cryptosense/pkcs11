@@ -11,6 +11,7 @@ let () =
 
 module type S = sig
   val initialize : unit -> unit
+  val initialize_nss : params: Pkcs11.Nss_initialize_arg.u -> unit
   val finalize : unit -> unit
   val get_info : unit -> Info.t
   val get_slot : Slot.t -> (Slot_id.t, string) result
@@ -138,7 +139,12 @@ module Wrap_low_level_bindings (X: Pkcs11.LOW_LEVEL_BINDINGS) = struct
     else raise (CKR rv)
 
   let initialize : unit -> unit t = fun () ->
-    let rv = c_Initialize () in
+    let rv = c_Initialize None in
+    check_ckr_unit rv
+
+  let initialize_nss : params : string -> unit t = fun ~params ->
+    let args = Pkcs11.Nss_initialize_arg.make params in
+    let rv = c_Initialize (Some args) in
     check_ckr_unit rv
 
   let finalize : unit -> unit t = fun () ->
@@ -649,6 +655,7 @@ end
 type t = (module S)
 
 let initialize (module S : S) = S.initialize ()
+let initialize_nss (module S : S) = S.initialize_nss
 let finalize (module S : S) = S.finalize ()
 let get_info (module S : S) = S.get_info ()
 let get_slot (module S : S) = S.get_slot

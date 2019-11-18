@@ -584,7 +584,7 @@ end
 (******************************************************************************)
 
 module type LOW_LEVEL_WRAPPER = sig
-  val c_Initialize : unit -> CK_RV.t
+  val c_Initialize : Nss_initialize_arg.t option -> CK_RV.t
   val c_Finalize : unit -> CK_RV.t
   val c_GetInfo : unit -> CK_RV.t * P11_info.t
   (* 03/24/2015: At the moment, we do not need to use GetFunctionList
@@ -714,9 +714,15 @@ module Wrap_low_level_bindings (F : LOW_LEVEL_BINDINGS) : LOW_LEVEL_WRAPPER = st
     let ulong = n |> Unsigned.ULong.of_int in
     ptr_from_string s, ulong
 
-  let c_Initialize : unit -> CK_RV.t =
+  let c_Initialize : Nss_initialize_arg.t option -> CK_RV.t =
     let f = F.c_Initialize in
-    fun () -> f (Ctypes.null)
+    fun args ->
+      let args_ptr =
+        match args with
+        | Some a -> Ctypes.to_voidp (Ctypes.addr a)
+        | None -> Ctypes.null
+      in
+      f args_ptr
 
   let c_Finalize : unit -> CK_RV.t =
     let f = F.c_Finalize in
