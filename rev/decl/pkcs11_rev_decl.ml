@@ -5,7 +5,7 @@
 (* toplevel ref to store value that should not be garbage collected *)
 let roots = ref []
 
-module Rev_bindings(Callback : Pkcs11.RAW)(I: Cstubs_inverted.INTERNAL) = struct
+module Rev_bindings(Callback : Pkcs11.LOW_LEVEL_BINDINGS)(I: Cstubs_inverted.INTERNAL) = struct
 
   open Pkcs11
 

@@ -693,8 +693,10 @@ module CK_FUNCTION_LIST : sig
 end
 
 
-module type RAW =
-sig
+(** Low-level bindings directly wrap the Ctypes function calls. The only functions available
+    are the ones in the PKCS#11 interface specification. Functions expect to be passed and
+    return CK_* types, and argument types exactly reflect those in the PKCS#11 specification. *)
+module type LOW_LEVEL_BINDINGS = sig
   open Ctypes
   val c_GetFunctionList : CK_FUNCTION_LIST.t ptr ptr -> CK_RV.t
   val c_Initialize :  CK_VOID.t ptr -> CK_RV.t
@@ -928,10 +930,17 @@ module type CONFIG = sig
 end
 
 (* Used in the reverse bindings generator. *)
-module Fake(X : sig end) : RAW
+module Fake(X : sig end) : LOW_LEVEL_BINDINGS
 
-module type S =
-sig
+(** A low-level wrapper wraps low-level bindings. Only functions in the PKCS#11 interface are
+    available. Functions expect to mostly take and return CK_* types, but some arguments are
+    named, use ocaml builtin types or are removed for convenience (for example the void ptr
+    used by c_Initialize is replaced by unit).
+
+    For low-level bindings that expect to be passed empty structures to populate, the wrapper
+    functions will allocate and initialize the structures as appropriate so the caller does not
+    have to. *)
+module type LOW_LEVEL_WRAPPER = sig
   val c_Initialize : unit -> CK_RV.t
   val c_Finalize : unit -> CK_RV.t
   val c_GetInfo : unit -> CK_RV.t * P11_info.t
@@ -1052,7 +1061,7 @@ sig
     CK_RV.t * CK_OBJECT_HANDLE.t
 end
 
-module Make (X: RAW): S
+module Wrap_low_level_bindings (X: LOW_LEVEL_BINDINGS): LOW_LEVEL_WRAPPER
 
 (** [on_unknown] will be called with a warning message
    when unsupported codes are encountered. *)
@@ -1061,4 +1070,4 @@ val load_driver:
   ?on_unknown:(string -> unit) ->
   ?load_mode: P11.Load_mode.t ->
   string ->
-  (module RAW)
+  (module LOW_LEVEL_BINDINGS)

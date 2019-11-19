@@ -16,13 +16,13 @@ module type Mock_driver_params = sig
     Pkcs11.CK_RV.t
 end
 
-module type Mock_driver_raw = sig
-  include Pkcs11.RAW
+module type Mock_low_level_bindings = sig
+  include Pkcs11.LOW_LEVEL_BINDINGS
 
   val get_attribute_value_calls : get_attribute_value_params list ref
 end
 
-module Mock_driver_raw (M: Mock_driver_params) : Mock_driver_raw = struct
+module Mock_low_level_bindings (M: Mock_driver_params) : Mock_low_level_bindings = struct
   include Pkcs11.Fake()
 
   let get_attribute_value_calls = ref []
@@ -45,8 +45,8 @@ module type Mock_driver = sig
 end
 
 module Mock_driver (M: Mock_driver_params) = struct
-  module MDR : Mock_driver_raw = Mock_driver_raw(M)
-  include P11_driver.Make(MDR)
+  module MDR : Mock_low_level_bindings = Mock_low_level_bindings(M)
+  include P11_driver.Wrap_low_level_bindings(MDR)
 
   let get_attribute_value_calls = MDR.get_attribute_value_calls
 end
