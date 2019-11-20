@@ -21,3 +21,13 @@ env:
     - OCAML_VERSION=4.07 PACKAGE=pkcs11-rev
     - OCAML_VERSION=4.07 PACKAGE=pkcs11-driver
     - OCAML_VERSION=4.07 DISTRO=debian-stable
+    - OCAML_VERSION=4.08
+    - OCAML_VERSION=4.08 PACKAGE=pkcs11-cli
+    - OCAML_VERSION=4.08 PACKAGE=pkcs11-rev
+    - OCAML_VERSION=4.08 PACKAGE=pkcs11-driver
+    - OCAML_VERSION=4.08 DISTRO=debian-stable
+    - OCAML_VERSION=4.09
+    - OCAML_VERSION=4.09 PACKAGE=pkcs11-cli
+    - OCAML_VERSION=4.09 PACKAGE=pkcs11-rev
+    - OCAML_VERSION=4.09 PACKAGE=pkcs11-driver
+    - OCAML_VERSION=4.09 DISTRO=debian-stable
