@@ -4,8 +4,11 @@ open P11
 
 exception CKR of RV.t
 
-module type S =
-sig
+(** High-level interface for PKCS#11 bindings. Contains all functions in the PKCS#11
+    specification as well as helper functions to make working with PKCS#11 easier. All functions
+    take core P11* types (rather than CK_* types), and structure allocation and populate is
+    handled automatically. *)
+module type S = sig
   val initialize : unit -> unit
   val finalize : unit -> unit
   val get_info : unit -> Info.t
@@ -170,7 +173,7 @@ val unwrap_key : t -> Session_handle.t -> Mechanism.t -> Object_handle.t -> Data
 val derive_key : t -> Session_handle.t -> Mechanism.t -> Object_handle.t -> Template.t -> Object_handle.t
 val digest : t -> Session_handle.t -> Mechanism.t -> Data.t -> Data.t
 
-module Make (X: Pkcs11.RAW): S
+module Wrap_low_level_bindings (X: Pkcs11.LOW_LEVEL_BINDINGS): S
 
 (** May raise [Pkcs11.Cannot_load_module].  [on_unknown] will be called with a warning
     message when unsupported codes are encountered. *)

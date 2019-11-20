@@ -59,8 +59,7 @@ include Pkcs11_types
 
 (** This module signature is used to ensure that both the direct style
     bindings and the indirect style bindings have the same interface. *)
-module type RAW =
-sig
+module type LOW_LEVEL_BINDINGS = sig
   val c_GetFunctionList : CK_FUNCTION_LIST.t ptr ptr -> CK_RV.t
   val c_Initialize : CK_VOID.t ptr -> CK_RV.t
   val c_Finalize : CK_VOID.t ptr -> CK_RV.t
@@ -292,10 +291,12 @@ end
 (*                           Bindings maker                                   *)
 (******************************************************************************)
 
-module Raw(D : sig
+(** Given a method to get the function list from the HSM and a function to extract function
+    pointers from a retrieved function list, generate a full set of low-level bindings. *)
+module Make_bindings(D : sig
             val declare : string -> ('a -> 'b,(_ck_function_list, [ `Struct ]) Ctypes.structured) Ctypes.field -> ('a -> 'b) Ctypes.fn -> 'a -> 'b
             val c_GetFunctionList : CK_FUNCTION_LIST.t ptr ptr -> CK_RV.t
-           end) : RAW = struct
+           end) : LOW_LEVEL_BINDINGS = struct
   open D
   module S = CK.Function_list
   let c_GetFunctionList = D.c_GetFunctionList
@@ -457,9 +458,7 @@ end
 (*                            Direct style bindings                           *)
 (******************************************************************************)
 
-module Direct (X: CONFIG) : RAW =
-struct
-
+module Direct (X: CONFIG) : LOW_LEVEL_BINDINGS = struct
 
   let declare : 'a 'b . string -> ('a -> 'b) Ctypes.fn -> ('a -> 'b) = fun name typ ->
     let f = Foreign.foreign ~from:X.library ~stub:true name typ in
@@ -471,7 +470,7 @@ struct
 
   let c_GetFunctionList = declare "C_GetFunctionList" CK.T.c_GetFunctionList
 
-  include Raw(struct
+  include Make_bindings(struct
       let declare
           (name : string)
           (_field : (('a -> 'b), (_ck_function_list, [ `Struct ]) Ctypes.structured) Ctypes.field)
@@ -486,9 +485,7 @@ end
 
 
 
-module Auto (X: CONFIG) : RAW =
-struct
-
+module Auto (X: CONFIG) : LOW_LEVEL_BINDINGS = struct
 
   let c_GetFunctionList =
     Foreign.foreign
@@ -552,7 +549,7 @@ struct
     let c_GetFunctionList = c_GetFunctionList
   end
 
-  include Raw (Raw_argument)
+  include Make_bindings(Raw_argument)
 end
 
 
@@ -561,7 +558,7 @@ end
 (*                           Fake bindings                                    *)
 (******************************************************************************)
 
-module Fake (X : sig end): RAW = struct
+module Fake (X : sig end): LOW_LEVEL_BINDINGS = struct
 
   let return v  =
     let rec return : type a. a fn -> a = function
@@ -573,7 +570,7 @@ module Fake (X : sig end): RAW = struct
 
   let declare _field typ = return nimplem typ
   let c_GetFunctionList = declare CK.Function_list.c_GetFunction_list CK.T.c_GetFunctionList
-  include Raw(struct
+  include Make_bindings(struct
       let declare
           (name : string)
           (_field : (('a -> 'b), (_ck_function_list, [ `Struct ]) Ctypes.structured) Ctypes.field)
@@ -586,8 +583,7 @@ end
 (*                                   Wrapper                                  *)
 (******************************************************************************)
 
-module type S =
-sig
+module type LOW_LEVEL_WRAPPER = sig
   val c_Initialize : unit -> CK_RV.t
   val c_Finalize : unit -> CK_RV.t
   val c_GetInfo : unit -> CK_RV.t * P11_info.t
@@ -711,8 +707,7 @@ sig
     CK_RV.t * CK_OBJECT_HANDLE.t
 end
 
-module Make (F : RAW) =
-struct
+module Wrap_low_level_bindings (F : LOW_LEVEL_BINDINGS) : LOW_LEVEL_WRAPPER = struct
 
   let gen_raw_string s =
     let n = String.length s in
@@ -1296,7 +1291,7 @@ let load_driver ?log_calls ?on_unknown ?(load_mode=P11.Load_mode.auto) filename 
     | None -> ()
   end;
   if filename = "" then
-    (module (Fake ()) : RAW)
+    (module (Fake ()) : LOW_LEVEL_BINDINGS)
   else
     let module M : CONFIG =
     struct

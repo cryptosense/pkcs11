@@ -12,31 +12,31 @@ module Data = Pkcs11_data
 module CK_ULONG = P11_ulong
 module CK_BYTE = Pkcs11_CK_BYTE
 module CK_BBOOL = Pkcs11_CK_BBOOL
-module CK_UTF8CHAR = Pkcs11_CK_UTF8CHAR 
+module CK_UTF8CHAR = Pkcs11_CK_UTF8CHAR
 module CK_VOID = Pkcs11_CK_VOID
-module CK_SESSION_HANDLE = Pkcs11_CK_SESSION_HANDLE 
-module CK_OBJECT_HANDLE = Pkcs11_CK_OBJECT_HANDLE 
-module CK_HW_FEATURE_TYPE = Pkcs11_CK_HW_FEATURE_TYPE 
-module CK_SLOT_ID = Pkcs11_CK_SLOT_ID 
-module CK_FLAGS = Pkcs11_CK_FLAGS 
+module CK_SESSION_HANDLE = Pkcs11_CK_SESSION_HANDLE
+module CK_OBJECT_HANDLE = Pkcs11_CK_OBJECT_HANDLE
+module CK_HW_FEATURE_TYPE = Pkcs11_CK_HW_FEATURE_TYPE
+module CK_SLOT_ID = Pkcs11_CK_SLOT_ID
+module CK_FLAGS = Pkcs11_CK_FLAGS
 module CK_OBJECT_CLASS = Pkcs11_CK_OBJECT_CLASS
 module CK_KEY_TYPE = Pkcs11_CK_KEY_TYPE
-module CK_VERSION = Pkcs11_CK_VERSION 
+module CK_VERSION = Pkcs11_CK_VERSION
 module CK_BIGINT = P11_bigint
 module CK_RV = Pkcs11_CK_RV
 module CK_MECHANISM_TYPE = Pkcs11_CK_MECHANISM_TYPE
-module CK_RSA_PKCS_MGF_TYPE = Pkcs11_CK_RSA_PKCS_MGF_TYPE 
-module CK_RSA_PKCS_OAEP_PARAMS = Pkcs11_CK_RSA_PKCS_OAEP_PARAMS 
-module CK_RSA_PKCS_PSS_PARAMS = Pkcs11_CK_RSA_PKCS_PSS_PARAMS 
+module CK_RSA_PKCS_MGF_TYPE = Pkcs11_CK_RSA_PKCS_MGF_TYPE
+module CK_RSA_PKCS_OAEP_PARAMS = Pkcs11_CK_RSA_PKCS_OAEP_PARAMS
+module CK_RSA_PKCS_PSS_PARAMS = Pkcs11_CK_RSA_PKCS_PSS_PARAMS
 module CK_KEY_DERIVATION_STRING_DATA = Pkcs11_CK_KEY_DERIVATION_STRING_DATA
 module CK_AES_CBC_ENCRYPT_DATA_PARAMS = Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_AES_CBC_ENCRYPT_DATA_PARAMS
 module CK_DES_CBC_ENCRYPT_DATA_PARAMS = Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_DES_CBC_ENCRYPT_DATA_PARAMS
-module CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE = Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE 
+module CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE = Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE
 module CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE = Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE
 module CK_PKCS5_PBKD2_PARAMS = Pkcs11_CK_PKCS5_PBKD2_PARAMS
-module CK_EC_KDF_TYPE = Pkcs11_CK_EC_KDF_TYPE 
+module CK_EC_KDF_TYPE = Pkcs11_CK_EC_KDF_TYPE
 module CK_ECDH1_DERIVE_PARAMS = Pkcs11_CK_ECDH1_DERIVE_PARAMS
-module CK_ECMQV_DERIVE_PARAMS = Pkcs11_CK_ECMQV_DERIVE_PARAMS 
+module CK_ECMQV_DERIVE_PARAMS = Pkcs11_CK_ECMQV_DERIVE_PARAMS
 module CK_MECHANISM = Pkcs11_CK_MECHANISM
 module Key_gen_mechanism = Pkcs11_key_gen_mechanism
 module CK_USER_TYPE = Pkcs11_CK_USER_TYPE
@@ -45,7 +45,7 @@ module CK_TOKEN_INFO = Pkcs11_CK_TOKEN_INFO
 module CK_SLOT_INFO = Pkcs11_CK_SLOT_INFO
 module Slot_list = Pkcs11_slot_list
 module CK_MECHANISM_INFO = Pkcs11_CK_MECHANISM_INFO
-module CK_SESSION_INFO = Pkcs11_CK_SESSION_INFO 
+module CK_SESSION_INFO = Pkcs11_CK_SESSION_INFO
 module CK_ATTRIBUTE_TYPE = Pkcs11_CK_ATTRIBUTE_TYPE
 module CK_ATTRIBUTE = Pkcs11_CK_ATTRIBUTE
 module CK_ATTRIBUTE_SET = Pkcs11_CK_ATTRIBUTE_SET
@@ -693,8 +693,10 @@ module CK_FUNCTION_LIST : sig
 end
 
 
-module type RAW =
-sig
+(** Low-level bindings directly wrap the Ctypes function calls. The only functions available
+    are the ones in the PKCS#11 interface specification. Functions expect to be passed and
+    return CK_* types, and argument types exactly reflect those in the PKCS#11 specification. *)
+module type LOW_LEVEL_BINDINGS = sig
   open Ctypes
   val c_GetFunctionList : CK_FUNCTION_LIST.t ptr ptr -> CK_RV.t
   val c_Initialize :  CK_VOID.t ptr -> CK_RV.t
@@ -928,10 +930,17 @@ module type CONFIG = sig
 end
 
 (* Used in the reverse bindings generator. *)
-module Fake(X : sig end) : RAW
+module Fake(X : sig end) : LOW_LEVEL_BINDINGS
 
-module type S =
-sig
+(** A low-level wrapper wraps low-level bindings. Only functions in the PKCS#11 interface are
+    available. Functions expect to mostly take and return CK_* types, but some arguments are
+    named, use ocaml builtin types or are removed for convenience (for example the void ptr
+    used by c_Initialize is replaced by unit).
+
+    For low-level bindings that expect to be passed empty structures to populate, the wrapper
+    functions will allocate and initialize the structures as appropriate so the caller does not
+    have to. *)
+module type LOW_LEVEL_WRAPPER = sig
   val c_Initialize : unit -> CK_RV.t
   val c_Finalize : unit -> CK_RV.t
   val c_GetInfo : unit -> CK_RV.t * P11_info.t
@@ -1052,7 +1061,7 @@ sig
     CK_RV.t * CK_OBJECT_HANDLE.t
 end
 
-module Make (X: RAW): S
+module Wrap_low_level_bindings (X: LOW_LEVEL_BINDINGS): LOW_LEVEL_WRAPPER
 
 (** [on_unknown] will be called with a warning message
    when unsupported codes are encountered. *)
@@ -1061,4 +1070,4 @@ val load_driver:
   ?on_unknown:(string -> unit) ->
   ?load_mode: P11.Load_mode.t ->
   string ->
-  (module RAW)
+  (module LOW_LEVEL_BINDINGS)

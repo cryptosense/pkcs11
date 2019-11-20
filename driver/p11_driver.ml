@@ -9,8 +9,7 @@ let () =
       | _ -> None
     end
 
-module type S =
-sig
+module type S = sig
   val initialize : unit -> unit
   val finalize : unit -> unit
   val get_info : unit -> Info.t
@@ -113,9 +112,8 @@ sig
   val digest : Session_handle.t -> Mechanism.t -> Data.t -> Data.t
 end
 
-module Make (X: Pkcs11.RAW) =
-struct
-  module Intermediate_level = Pkcs11.Make(X)
+module Wrap_low_level_bindings (X: Pkcs11.LOW_LEVEL_BINDINGS) = struct
+  module Intermediate_level = Pkcs11.Wrap_low_level_bindings(X)
   open Intermediate_level
 
   type 'a t = 'a
@@ -707,6 +705,6 @@ let digest (module S : S) = S.digest
 
 let load_driver ?log_calls ?on_unknown ?load_mode dll =
   let module Implem =
-    (val (Pkcs11.load_driver ?log_calls ?on_unknown ?load_mode dll) : Pkcs11.RAW)
+    (val (Pkcs11.load_driver ?log_calls ?on_unknown ?load_mode dll) : Pkcs11.LOW_LEVEL_BINDINGS)
   in
-  (module (Make (Implem)): S)
+  (module (Wrap_low_level_bindings (Implem)): S)
