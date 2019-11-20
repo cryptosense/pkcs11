@@ -1,3 +1,17 @@
+Unreleased
+==========
+
+## Additions
+
+- Add a new `initialize_nss` function to `pkcs11-driver` to perform a C_Initialize call with the extra parameters that NSS requires (see https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/PKCS11/Module_Specs for more information)
+
+## Changes
+
+- (Breaking) Rename `P11_driver.Make` to `P11_driver.Wrap_low_level_bindings`
+- (Breaking) Rename `Pkcs11.RAW` to `Pkcs11.LOW_LEVEL_BINDINGS`
+- (Breaking) Rename `Pkcs11.S` to `Pkcs11.LOW_LEVEL_WRAPPER`
+- (Breaking) Rename `Pkcs11.Make` to `Pkcs11.Wrap_low_level_bindings`
+
 v0.18.0
 =======
 
