@@ -10,6 +10,7 @@ exception CKR of RV.t
     handled automatically. *)
 module type S = sig
   val initialize : unit -> unit
+  val initialize_nss : params: Pkcs11.Nss_initialize_arg.u -> unit
   val finalize : unit -> unit
   val get_info : unit -> Info.t
   val get_slot: Slot.t -> (Slot_id.t, string) result
@@ -119,6 +120,11 @@ end
 type t = (module S)
 
 val initialize : t -> unit
+
+(** Perform a c_Initialize call with NSS-style initialization parameters as described
+    at https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/PKCS11/Module_Specs *)
+val initialize_nss : t -> params: Pkcs11.Nss_initialize_arg.u -> unit
+
 val finalize : t -> unit
 val get_info : t -> Info.t
 val get_slot: t -> Slot.t -> (Slot_id.t, string) result

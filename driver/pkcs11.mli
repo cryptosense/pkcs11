@@ -61,6 +61,19 @@ module Initialize_arg : sig
   val t :  t Ctypes.typ
 end
 
+module Nss_initialize_arg : sig
+  type _ck_nss_c_initialize_args
+  type t = _ck_nss_c_initialize_args Ctypes.structure
+  val flags : (CK_FLAGS.t, t) Ctypes.field
+  val t :  t Ctypes.typ
+
+  (** Only support setting LibraryParameters from the uninitialized type. The format for
+      these strings is defined in the Softtoken Specific Parameters section of
+      https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/PKCS11/Module_Specs *)
+  type u = string
+  val make : u -> t
+end
+
 type _ck_function_list
 type ck_function_list = _ck_function_list Ctypes.structure
 val ck_function_list : ck_function_list Ctypes.typ
@@ -76,7 +89,7 @@ module CK :
   sig
     module T :
       sig
-        val c_Initialize : (unit Ctypes.ptr-> CK_RV.t) Ctypes.fn
+        val c_Initialize : (unit Ctypes.ptr -> CK_RV.t) Ctypes.fn
         val c_Finalize : (unit Ctypes.ptr -> CK_RV.t) Ctypes.fn
         val c_GetInfo : (CK_INFO.t Ctypes.ptr -> CK_RV.t) Ctypes.fn
         val c_GetFunctionList :
@@ -941,7 +954,7 @@ module Fake(X : sig end) : LOW_LEVEL_BINDINGS
     functions will allocate and initialize the structures as appropriate so the caller does not
     have to. *)
 module type LOW_LEVEL_WRAPPER = sig
-  val c_Initialize : unit -> CK_RV.t
+  val c_Initialize : Nss_initialize_arg.t option -> CK_RV.t
   val c_Finalize : unit -> CK_RV.t
   val c_GetInfo : unit -> CK_RV.t * P11_info.t
   (* val c_GetFunctionList : unit -> CK_RV.t * CK_FUNCTION_LIST.t *)

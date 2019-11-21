@@ -6,6 +6,7 @@
     pkcs11
     pkcs11f
     pkcs11t
+    pkcs11nss
   )
   (libraries
     ctypes.foreign 
