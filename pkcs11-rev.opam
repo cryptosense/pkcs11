@@ -12,9 +12,9 @@ build: [
 depends: [
   "ctypes"
   "ctypes-foreign"
-  "dune" {build & >= "1.3.0"}
+  "dune" {>= "1.3.0"}
   "pkcs11" {>= "0.18.0"}
-  "pkcs11-driver"
+  "pkcs11-driver" {>= "1.0.0"}
 ]
 conflicts: [
   "ctypes" { < "0.12.0" }
