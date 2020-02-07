@@ -1,6 +1,6 @@
 opam-version: "2.0"
-maintainer: "Nathan Rebours <nathan@cryptosense.com>"
-authors: "Etienne Millon <etienne@cryptosense.com>"
+maintainer: ["Cryptosense <opensource@cryptosense.com>"]
+authors: ["Cryptosense <opensource@cryptosense.com>"]
 homepage: "https://github.com/cryptosense/pkcs11"
 bug-reports: "https://github.com/cryptosense/pkcs11/issues"
 license: "BSD-2"
@@ -25,7 +25,7 @@ depends: [
 ]
 tags: ["org:cryptosense"]
 available: [os != "macos"]
-synopsis: "PKCS#11 ocaml types"
+synopsis: "PKCS#11 OCaml types"
 description: """
 This library contains type definitions for the PKCS#11 API.
 
