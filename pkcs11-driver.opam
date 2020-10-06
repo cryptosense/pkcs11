@@ -1,6 +1,6 @@
 opam-version: "2.0"
-maintainer: "Nathan Rebours <nathan@cryptosense.com>"
-authors: "Etienne Millon <etienne@cryptosense.com>"
+maintainer: ["Cryptosense <opensource@cryptosense.com>"]
+authors: ["Cryptosense <opensource@cryptosense.com>"]
 homepage: "https://github.com/cryptosense/pkcs11"
 bug-reports: "https://github.com/cryptosense/pkcs11/issues"
 license: "BSD-2"
