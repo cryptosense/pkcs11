@@ -16,8 +16,7 @@ let of_yojson = function
 let to_yojson ulong =
   `String (Unsigned.ULong.to_string ulong)
 
-let (!) x  = Unsigned.ULong.of_string (Int64.to_string x)
-let _CK_UNAVAILABLE_INFORMATION = ! (Int64.lognot 0x0L)
+let _CK_UNAVAILABLE_INFORMATION = Unsigned.ULong.max_int
 let _CK_EFFECTIVELY_INFINITE = Unsigned.ULong.zero
 
 let is_unavailable_information t = (compare t _CK_UNAVAILABLE_INFORMATION) = 0
