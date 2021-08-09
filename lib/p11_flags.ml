@@ -1,7 +1,7 @@
 type t = Unsigned.ULong.t
 [@@deriving ord]
 
-let equal = Pervasives.(=)
+let equal = Stdlib.(=)
 
 let show = Unsigned.ULong.to_string
 
