@@ -269,7 +269,7 @@ static void initialize_ocaml_runtime(){
 
 /* Finalize the OCaml runtime and run at_exit. */
 static void finalize_ocaml_runtime(){
-  value * at_exit = caml_named_value("Pervasives.do_at_exit");
+  value * at_exit = caml_named_value("Stdlib.do_at_exit");
   if (at_exit != NULL) caml_callback_exn(*at_exit, Val_unit);
 }
 

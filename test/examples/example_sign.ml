@@ -33,9 +33,9 @@ let sign_mechanism =
   P11.Mechanism.CKM_SHA512_RSA_PKCS_PSS params
 
 let read_file ~path =
-  let ic = Pervasives.open_in path in
-  let size = Pervasives.in_channel_length ic in
-  let contents = Pervasives.really_input_string ic size in
+  let ic = Stdlib.open_in path in
+  let size = Stdlib.in_channel_length ic in
+  let contents = Stdlib.really_input_string ic size in
   close_in ic;
   contents
 

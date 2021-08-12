@@ -27,7 +27,7 @@ let compare'_suite =
         let open P11_attribute_type in
         match compare' CKA_MODIFIABLE (CKA_CS_UNKNOWN Encoding._CKA_MODIFIABLE) with
         | _ -> assert_failure "Comparing with unknown attribute type should raise"
-        | exception Assert_failure ("lib/p11_attribute_type.ml", _, _) -> ()
+        | exception Assert_failure _ -> ()
     )
   ; "not equal" >::
     test
