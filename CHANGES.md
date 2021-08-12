@@ -1,3 +1,12 @@
+v1.0.1
+======
+
+*2021-08-12*
+
+- Require Dune >= 2.0
+- Require OCaml >= 4.07
+- Add compatibility with integers 0.5.0
+
 v1.0.0
 ======
 
