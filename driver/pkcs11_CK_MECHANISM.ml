@@ -7,10 +7,14 @@ type t = _t structure
 
 let ck_mechanism : t typ = structure "CK_MECHANISM"
 
-let (-:) ty label = smart_field ck_mechanism label ty
+let ( -: ) ty label = smart_field ck_mechanism label ty
+
 let mechanism = Pkcs11_CK_MECHANISM_TYPE.typ -: "mechanism"
+
 let parameter = Reachable_ptr.typ void -: "pParameter"
+
 let parameter_len = ulong -: "pParameterLen"
+
 let () = seal ck_mechanism
 
 type argument =
@@ -28,12 +32,10 @@ type argument =
   | AES_CTR of P11_aes_ctr_params.t
   | GCM of P11_gcm_params.t
 
-
 let aes_key_wrap_argument p =
   match P11_aes_key_wrap_params.explicit_iv p with
   | None -> No_argument
   | Some iv -> String iv
-
 
 let argument =
   let open P11_mechanism in
@@ -125,10 +127,10 @@ let argument_params argument =
     (param, param_len)
   in
   match argument with
-  | No_argument ->
-    (null, Unsigned.ULong.zero)
+  | No_argument -> (null, Unsigned.ULong.zero)
   | OAEP p ->
-    struct_ p Pkcs11_CK_RSA_PKCS_OAEP_PARAMS.t Pkcs11_CK_RSA_PKCS_OAEP_PARAMS.make
+    struct_ p Pkcs11_CK_RSA_PKCS_OAEP_PARAMS.t
+      Pkcs11_CK_RSA_PKCS_OAEP_PARAMS.make
   | PSS p ->
     struct_ p Pkcs11_CK_RSA_PKCS_PSS_PARAMS.t Pkcs11_CK_RSA_PKCS_PSS_PARAMS.make
   | String p ->
@@ -140,7 +142,8 @@ let argument_params argument =
     let ptr = allocate ulong p in
     (to_voidp ptr, Unsigned.ULong.of_int (sizeof ulong))
   | Derivation_string p ->
-    struct_ p Pkcs11_CK_KEY_DERIVATION_STRING_DATA.t Pkcs11_CK_KEY_DERIVATION_STRING_DATA.make
+    struct_ p Pkcs11_CK_KEY_DERIVATION_STRING_DATA.t
+      Pkcs11_CK_KEY_DERIVATION_STRING_DATA.make
   | AES_CBC_encrypt p ->
     struct_ p Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_AES_CBC_ENCRYPT_DATA_PARAMS.t
       Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_AES_CBC_ENCRYPT_DATA_PARAMS.make
@@ -155,8 +158,7 @@ let argument_params argument =
     struct_ p Pkcs11_CK_PKCS5_PBKD2_PARAMS.t Pkcs11_CK_PKCS5_PBKD2_PARAMS.make
   | AES_CTR p ->
     struct_ p Pkcs11_CK_AES_CTR_PARAMS.t Pkcs11_CK_AES_CTR_PARAMS.make
-  | GCM p ->
-    struct_ p Pkcs11_CK_GCM_PARAMS.t Pkcs11_CK_GCM_PARAMS.make
+  | GCM p -> struct_ p Pkcs11_CK_GCM_PARAMS.t Pkcs11_CK_GCM_PARAMS.make
 
 let make x =
   let ckm = Pkcs11_CK_MECHANISM_TYPE.make @@ P11_mechanism.mechanism_type x in
@@ -167,29 +169,32 @@ let make x =
   setf m parameter_len param_len;
   m
 
-let unsafe_get_string t =
-  view_string t parameter_len parameter
+let unsafe_get_string t = view_string t parameter_len parameter
 
 let unsafe_get_struct t typ view =
   let p = from_voidp typ (Reachable_ptr.getf t parameter) in
-  view (!@ p)
+  view !@p
 
 let unsafe_get_oaep t =
-  unsafe_get_struct t Pkcs11_CK_RSA_PKCS_OAEP_PARAMS.t Pkcs11_CK_RSA_PKCS_OAEP_PARAMS.view
+  unsafe_get_struct t Pkcs11_CK_RSA_PKCS_OAEP_PARAMS.t
+    Pkcs11_CK_RSA_PKCS_OAEP_PARAMS.view
 
 let unsafe_get_pss t =
-  unsafe_get_struct t Pkcs11_CK_RSA_PKCS_PSS_PARAMS.t Pkcs11_CK_RSA_PKCS_PSS_PARAMS.view
+  unsafe_get_struct t Pkcs11_CK_RSA_PKCS_PSS_PARAMS.t
+    Pkcs11_CK_RSA_PKCS_PSS_PARAMS.view
 
 let unsafe_get_derivation_string t =
   unsafe_get_struct t Pkcs11_CK_KEY_DERIVATION_STRING_DATA.t
     Pkcs11_CK_KEY_DERIVATION_STRING_DATA.view
 
 let unsafe_get_aes_cbc_param t =
-  unsafe_get_struct t Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_AES_CBC_ENCRYPT_DATA_PARAMS.t
+  unsafe_get_struct t
+    Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_AES_CBC_ENCRYPT_DATA_PARAMS.t
     Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_AES_CBC_ENCRYPT_DATA_PARAMS.view
 
 let unsafe_get_des_cbc_param t =
-  unsafe_get_struct t Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_DES_CBC_ENCRYPT_DATA_PARAMS.t
+  unsafe_get_struct t
+    Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_DES_CBC_ENCRYPT_DATA_PARAMS.t
     Pkcs11_CBC_ENCRYPT_DATA_PARAMS.CK_DES_CBC_ENCRYPT_DATA_PARAMS.view
 
 let unsafe_get_ecdh1_derive_param t =
@@ -201,8 +206,8 @@ let unsafe_get_ecmqv_derive_param t =
     Pkcs11_CK_ECMQV_DERIVE_PARAMS.view
 
 let unsafe_get_ulong t =
-  let p =  Reachable_ptr.getf t parameter |> from_voidp ulong in
-  !@ p
+  let p = Reachable_ptr.getf t parameter |> from_voidp ulong in
+  !@p
 
 let unsafe_get_aes_key_wrap_option t =
   let open P11_aes_key_wrap_params in
@@ -243,34 +248,45 @@ let view t =
   | T.CKM_AES_CBC_PAD -> CKM_AES_CBC_PAD (unsafe_get_string t)
   | T.CKM_AES_MAC -> CKM_AES_MAC
   | T.CKM_AES_MAC_GENERAL -> CKM_AES_MAC_GENERAL (unsafe_get_ulong t)
-  | T.CKM_AES_ECB_ENCRYPT_DATA -> CKM_AES_ECB_ENCRYPT_DATA (unsafe_get_derivation_string t)
-  | T.CKM_AES_CBC_ENCRYPT_DATA -> CKM_AES_CBC_ENCRYPT_DATA (unsafe_get_aes_cbc_param t)
+  | T.CKM_AES_ECB_ENCRYPT_DATA ->
+    CKM_AES_ECB_ENCRYPT_DATA (unsafe_get_derivation_string t)
+  | T.CKM_AES_CBC_ENCRYPT_DATA ->
+    CKM_AES_CBC_ENCRYPT_DATA (unsafe_get_aes_cbc_param t)
   | T.CKM_DES_KEY_GEN -> CKM_DES_KEY_GEN
   | T.CKM_DES_ECB -> CKM_DES_ECB
   | T.CKM_DES_CBC -> CKM_DES_CBC (unsafe_get_string t)
   | T.CKM_DES_CBC_PAD -> CKM_DES_CBC_PAD (unsafe_get_string t)
   | T.CKM_DES_MAC -> CKM_DES_MAC
   | T.CKM_DES_MAC_GENERAL -> CKM_DES_MAC_GENERAL (unsafe_get_ulong t)
-  | T.CKM_DES_ECB_ENCRYPT_DATA -> CKM_DES_ECB_ENCRYPT_DATA (unsafe_get_derivation_string t)
-  | T.CKM_DES_CBC_ENCRYPT_DATA -> CKM_DES_CBC_ENCRYPT_DATA (unsafe_get_des_cbc_param t)
+  | T.CKM_DES_ECB_ENCRYPT_DATA ->
+    CKM_DES_ECB_ENCRYPT_DATA (unsafe_get_derivation_string t)
+  | T.CKM_DES_CBC_ENCRYPT_DATA ->
+    CKM_DES_CBC_ENCRYPT_DATA (unsafe_get_des_cbc_param t)
   | T.CKM_DES3_KEY_GEN -> CKM_DES3_KEY_GEN
   | T.CKM_DES3_ECB -> CKM_DES3_ECB
   | T.CKM_DES3_CBC -> CKM_DES3_CBC (unsafe_get_string t)
   | T.CKM_DES3_CBC_PAD -> CKM_DES3_CBC_PAD (unsafe_get_string t)
   | T.CKM_DES3_MAC -> CKM_DES3_MAC
   | T.CKM_DES3_MAC_GENERAL -> CKM_DES3_MAC_GENERAL (unsafe_get_ulong t)
-  | T.CKM_DES3_ECB_ENCRYPT_DATA -> CKM_DES3_ECB_ENCRYPT_DATA (unsafe_get_derivation_string t)
-  | T.CKM_DES3_CBC_ENCRYPT_DATA -> CKM_DES3_CBC_ENCRYPT_DATA (unsafe_get_des_cbc_param t)
-  | T.CKM_CONCATENATE_BASE_AND_DATA -> CKM_CONCATENATE_BASE_AND_DATA (unsafe_get_derivation_string t)
-  | T.CKM_CONCATENATE_DATA_AND_BASE -> CKM_CONCATENATE_DATA_AND_BASE (unsafe_get_derivation_string t)
-  | T.CKM_XOR_BASE_AND_DATA -> CKM_XOR_BASE_AND_DATA (unsafe_get_derivation_string t)
+  | T.CKM_DES3_ECB_ENCRYPT_DATA ->
+    CKM_DES3_ECB_ENCRYPT_DATA (unsafe_get_derivation_string t)
+  | T.CKM_DES3_CBC_ENCRYPT_DATA ->
+    CKM_DES3_CBC_ENCRYPT_DATA (unsafe_get_des_cbc_param t)
+  | T.CKM_CONCATENATE_BASE_AND_DATA ->
+    CKM_CONCATENATE_BASE_AND_DATA (unsafe_get_derivation_string t)
+  | T.CKM_CONCATENATE_DATA_AND_BASE ->
+    CKM_CONCATENATE_DATA_AND_BASE (unsafe_get_derivation_string t)
+  | T.CKM_XOR_BASE_AND_DATA ->
+    CKM_XOR_BASE_AND_DATA (unsafe_get_derivation_string t)
   | T.CKM_EXTRACT_KEY_FROM_KEY -> CKM_EXTRACT_KEY_FROM_KEY (unsafe_get_ulong t)
-  | T.CKM_CONCATENATE_BASE_AND_KEY -> CKM_CONCATENATE_BASE_AND_KEY (unsafe_get_ulong t)
+  | T.CKM_CONCATENATE_BASE_AND_KEY ->
+    CKM_CONCATENATE_BASE_AND_KEY (unsafe_get_ulong t)
   | T.CKM_EC_KEY_PAIR_GEN -> CKM_EC_KEY_PAIR_GEN
   | T.CKM_ECDSA -> CKM_ECDSA
   | T.CKM_ECDSA_SHA1 -> CKM_ECDSA_SHA1
   | T.CKM_ECDH1_DERIVE -> CKM_ECDH1_DERIVE (unsafe_get_ecdh1_derive_param t)
-  | T.CKM_ECDH1_COFACTOR_DERIVE -> CKM_ECDH1_COFACTOR_DERIVE (unsafe_get_ecdh1_derive_param t)
+  | T.CKM_ECDH1_COFACTOR_DERIVE ->
+    CKM_ECDH1_COFACTOR_DERIVE (unsafe_get_ecdh1_derive_param t)
   | T.CKM_ECMQV_DERIVE -> CKM_ECMQV_DERIVE (unsafe_get_ecmqv_derive_param t)
   | T.CKM_DSA_KEY_PAIR_GEN -> CKM_DSA_KEY_PAIR_GEN
   | T.CKM_DSA_SHA1 -> CKM_DSA_SHA1
@@ -286,8 +302,7 @@ let view t =
     CKM_AES_CTR param
   | T.CKM_AES_GCM ->
     let params =
-      unsafe_get_struct t Pkcs11_CK_GCM_PARAMS.t
-        Pkcs11_CK_GCM_PARAMS.view
+      unsafe_get_struct t Pkcs11_CK_GCM_PARAMS.t Pkcs11_CK_GCM_PARAMS.view
     in
     CKM_AES_GCM params
   | T.CKM_AES_KEY_WRAP ->
@@ -551,6 +566,5 @@ let view t =
   | T.CKM_TLS_MAC
   | T.CKM_TWOFISH_CBC_PAD
   | T.CKM_VENDOR_DEFINED
-  | T.CKM_CS_UNKNOWN _
-    ->
+  | T.CKM_CS_UNKNOWN _ ->
     CKM_CS_UNKNOWN ul

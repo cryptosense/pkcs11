@@ -18,17 +18,16 @@
 *)
 
 let key_template ~key_label =
-  [
-    P11.Attribute.Pack (P11.Attribute_type.CKA_LABEL, key_label);
-    P11.Attribute.Pack (P11.Attribute_type.CKA_CLASS, P11.Object_class.CKO_PRIVATE_KEY);
-  ]
+  [ P11.Attribute.Pack (P11.Attribute_type.CKA_LABEL, key_label)
+  ; P11.Attribute.Pack
+      (P11.Attribute_type.CKA_CLASS, P11.Object_class.CKO_PRIVATE_KEY) ]
 
 let sign_mechanism =
-  let params = P11.RSA_PKCS_PSS_params.{
-      hashAlg = P11.Mechanism_type.CKM_SHA512;
-      mgf = P11.RSA_PKCS_MGF_type._CKG_MGF1_SHA512;
-      sLen = Unsigned.ULong.of_int 64;
-    }
+  let params =
+    P11.RSA_PKCS_PSS_params.
+      { hashAlg = P11.Mechanism_type.CKM_SHA512
+      ; mgf = P11.RSA_PKCS_MGF_type._CKG_MGF1_SHA512
+      ; sLen = Unsigned.ULong.of_int 64 }
   in
   P11.Mechanism.CKM_SHA512_RSA_PKCS_PSS params
 
@@ -47,7 +46,8 @@ let run ~dll ~slot_id ~pin ~key_label ~plaintext =
   Pkcs11_log.set_logging_function prerr_endline;
   let (module S) = P11_driver.load_driver dll in
   S.initialize ();
-  let slot = match S.get_slot slot_id with
+  let slot =
+    match S.get_slot slot_id with
     | Ok s -> s
     | Error e -> failwith e
   in
@@ -59,14 +59,14 @@ let run ~dll ~slot_id ~pin ~key_label ~plaintext =
     | Error n -> failwith (Printf.sprintf "Expecting exactly one key, got %d" n)
   in
   let signature = S.sign session sign_mechanism key plaintext in
-  let `Hex h = Hex.of_string signature in
+  let (`Hex h) = Hex.of_string signature in
   print_endline h
 
 let () =
   match Sys.argv with
-  | [| _ ; dll ; slot_string ; pin ; key_label ; plaintext_path |] ->
+  | [|_; dll; slot_string; pin; key_label; plaintext_path|] ->
     let plaintext = read_file ~path:plaintext_path in
     let slot_id = P11.Slot.Index (int_of_string slot_string) in
     run ~dll ~slot_id ~pin ~key_label ~plaintext
   | _ ->
-      invalid_arg "Usage: sign <dll> <slot> <pin> <key_label> <plaintext_path>"
+    invalid_arg "Usage: sign <dll> <slot> <pin> <key_label> <plaintext_path>"

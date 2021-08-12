@@ -324,10 +324,11 @@ type t =
   | CKM_TWOFISH_CBC_PAD
   | CKM_VENDOR_DEFINED
   | CKM_CS_UNKNOWN of P11_ulong.t
-  [@@deriving eq,ord,show,yojson]
+[@@deriving eq, ord, show, yojson]
 
 val to_string : t -> string
+
 val of_string : string -> t
 
-(** The list of all the CKM codes defined above, minus the vendor defined one. *)
 val elements : t list
+(** The list of all the CKM codes defined above, minus the vendor defined one. *)

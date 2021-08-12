@@ -6,17 +6,18 @@ type t = _t structure
 
 let ck_version : t typ = structure "CK_VERSION"
 
+let ( -: ) ty label = Ctypes_helpers.smart_field ck_version label ty
 
-let (-:) ty label = Ctypes_helpers.smart_field ck_version label ty
 let major = Pkcs11_CK_BYTE.typ -: "major"
+
 let minor = Pkcs11_CK_BYTE.typ -: "minor"
+
 let () = seal ck_version
 
 let view c =
   let open P11_version in
   { major = Pkcs11_CK_BYTE.to_int (getf c major)
-  ; minor = Pkcs11_CK_BYTE.to_int (getf c minor)
-  }
+  ; minor = Pkcs11_CK_BYTE.to_int (getf c minor) }
 
 let make u =
   let open P11_version in

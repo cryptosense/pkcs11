@@ -1,5 +1,6 @@
 (** Token information. *)
 type _t
+
 type t = _t Ctypes.structure
 
 val make : P11_token_info.t -> t

@@ -9,17 +9,20 @@
 
 type t
 
+val create : unit -> t
 (** [create ()] allocates a new [t] with length 0, and content the
     null pointer.*)
-val create : unit -> t
 
+val allocate : t -> unit
 (** [allocate t] updates the content of the [t] structure to point
     to freshly allocated memory. *)
-val allocate: t -> unit
 
 type u = Pkcs11_CK_SLOT_ID.t list
+
 val make : u -> t
+
 val view : t -> u
 
 val get_content : t -> Pkcs11_CK_SLOT_ID.t Ctypes.ptr
+
 val get_length_addr : t -> P11_ulong.t Ctypes.ptr

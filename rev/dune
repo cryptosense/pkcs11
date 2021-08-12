@@ -1,67 +1,49 @@
 (library
-  (name pkcs11_rev)
-  (public_name pkcs11-rev)
-  (modules pkcs11_rev pkcs11_rev_generated)
-  (foreign_stubs (language c) (names pkcs11_rev_stubs))
-  (flags (:standard -w -27))
-  (libraries
-    ctypes
-    ctypes.foreign
-    pkcs11-driver
-    pkcs11-rev._decl
-  )
-)
+ (name pkcs11_rev)
+ (public_name pkcs11-rev)
+ (modules pkcs11_rev pkcs11_rev_generated)
+ (foreign_stubs
+  (language c)
+  (names pkcs11_rev_stubs))
+ (flags
+  (:standard -w -27))
+ (libraries ctypes ctypes.foreign pkcs11-driver pkcs11-rev._decl))
 
 (install
-  (section lib)
-  (package pkcs11-rev)
-  (files libpkcs11_rev_dllmain.a)
-)
+ (section lib)
+ (package pkcs11-rev)
+ (files libpkcs11_rev_dllmain.a))
 
 (install
-  (section stublibs)
-  (package pkcs11-rev)
-  (files dllpkcs11_rev_dllmain.so)
-)
+ (section stublibs)
+ (package pkcs11-rev)
+ (files dllpkcs11_rev_dllmain.so))
 
 (rule
-  (targets pkcs11_rev_dll_main.o)
-  (deps
-    pkcs11.h
-    pkcs11f.h
-    pkcs11t.h
-    prelude.h
-  )
-  (action (run %{ocamlc} -g -c %{dep:pkcs11_rev_dll_main.c}))
-)
+ (targets pkcs11_rev_dll_main.o)
+ (deps pkcs11.h pkcs11f.h pkcs11t.h prelude.h)
+ (action
+  (run %{ocamlc} -g -c %{dep:pkcs11_rev_dll_main.c})))
 
 (rule
-  (targets
-    dllpkcs11_rev_dllmain.so
-    libpkcs11_rev_dllmain.a
-  )
-  (action (run ocamlmklib -o pkcs11_rev_dllmain %{dep:pkcs11_rev_dll_main.o}))
-)
+ (targets dllpkcs11_rev_dllmain.so libpkcs11_rev_dllmain.a)
+ (action
+  (run ocamlmklib -o pkcs11_rev_dllmain %{dep:pkcs11_rev_dll_main.o})))
 
 (rule
-  (targets pkcs11_rev_generated.ml pkcs11_rev_stubs.c)
-  (deps
-    pkcs11.h
-    pkcs11f.h
-    pkcs11t.h
-    prelude.h
-    (:gen pkcs11_rev_generator.exe)
-  )
-  (action (run %{gen} pkcs11_rev))
-)
+ (targets pkcs11_rev_generated.ml pkcs11_rev_stubs.c)
+ (deps
+  pkcs11.h
+  pkcs11f.h
+  pkcs11t.h
+  prelude.h
+  (:gen pkcs11_rev_generator.exe))
+ (action
+  (run %{gen} pkcs11_rev)))
 
 (executable
-  (name pkcs11_rev_generator)
-  (modules pkcs11_rev_generator)
-  (libraries
-    pkcs11-driver
-    pkcs11-rev._decl
-  )
-)
+ (name pkcs11_rev_generator)
+ (modules pkcs11_rev_generator)
+ (libraries pkcs11-driver pkcs11-rev._decl))
 
 (copy_files ../include/*.h)

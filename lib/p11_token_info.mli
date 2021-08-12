@@ -16,15 +16,14 @@ type t =
   ; ulFreePrivateMemory : P11_ulong.t
   ; hardwareVersion : P11_version.t
   ; firmwareVersion : P11_version.t
-  ; utcTime : string
-  }
-[@@deriving eq,ord,show,yojson]
+  ; utcTime : string }
+[@@deriving eq, ord, show, yojson]
 
+val ul_to_string : Unsigned.ULong.t -> string
 (** Return correct string value if the unsigned long has a special value e.g.
     [CK_UNAVAILABLE_INFORMATION]. *)
-val ul_to_string : Unsigned.ULong.t -> string
 
-val to_string : ?newlines: bool -> ?indent: string -> t -> string
+val to_string : ?newlines:bool -> ?indent:string -> t -> string
 
 val to_strings : t -> string list
 

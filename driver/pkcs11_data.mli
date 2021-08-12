@@ -13,18 +13,21 @@
 type t
 
 val to_string : t -> string
+
 val of_string : string -> t
 
 val string_of_raw : 'a Ctypes.ptr -> Unsigned.ULong.t -> string
 
+val create : unit -> t
 (** [create ()] allocates a new [t] with length 0, and content the
     null pointer.*)
-val create : unit -> t
 
+val allocate : t -> unit
 (** [allocate t] updates the content of the [t] structure to point
     to freshly allocated memory. *)
-val allocate: t -> unit
 
 val get_content : t -> Pkcs11_CK_BYTE.t Ctypes.ptr
+
 val get_length : t -> P11_ulong.t
+
 val get_length_addr : t -> P11_ulong.t Ctypes.ptr

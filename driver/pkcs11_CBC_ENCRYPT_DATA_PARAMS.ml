@@ -5,30 +5,34 @@ open Ctypes_helpers
 
 module type HIGHER = sig
   type t =
-    { iv: string
-    ; data: string
-    }
-  [@@deriving ord,yojson]
+    { iv : string
+    ; data : string }
+  [@@deriving ord, yojson]
 end
 
 module type PARAM = sig
-  val name: string
+  val name : string
 
-  val size: int
+  val size : int
 end
 
-module Make(Param : PARAM)(Higher : HIGHER) =
-struct
+module Make (Param : PARAM) (Higher : HIGHER) = struct
   type _t
+
   type t = _t structure
-  let t: t typ = structure Param.name
+
+  let t : t typ = structure Param.name
 
   let iv_size = Param.size
 
-  let (-:) typ label = smart_field t label typ
+  let ( -: ) typ label = smart_field t label typ
+
   let iv = array iv_size Pkcs11_CK_BYTE.typ -: "iv"
+
   let pData = Reachable_ptr.typ Pkcs11_CK_BYTE.typ -: "pData"
+
   let length = ulong -: "length"
+
   let () = seal t
 
   let make u =
@@ -38,8 +42,8 @@ struct
     make_string u.data t length pData;
 
     (* Copy the fixed length string *)
-    if String.length u.iv <> iv_size
-    then invalid_arg "CBC_ENCRYPT_DATA_PARAMS: invalid IV size.";
+    if String.length u.iv <> iv_size then
+      invalid_arg "CBC_ENCRYPT_DATA_PARAMS: invalid IV size.";
     string_copy u.iv iv_size (CArray.start (getf t iv));
     t
 
@@ -49,8 +53,7 @@ struct
     ; data =
         string_from_ptr
           ~length:(getf t length |> Unsigned.ULong.to_int)
-          (Reachable_ptr.getf t pData)
-    }
+          (Reachable_ptr.getf t pData) }
 end
 
 module CK_DES_CBC_ENCRYPT_DATA_PARAMS =

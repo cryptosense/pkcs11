@@ -1,9 +1,8 @@
-type t = P11_ulong.t
-[@@deriving eq]
+type t = P11_ulong.t [@@deriving eq]
 
-let (!) x  = Unsigned.ULong.of_string (Int64.to_string x)
+let ( ! ) x = Unsigned.ULong.of_string (Int64.to_string x)
 
-let _CKP_PKCS5_PBKD2_HMAC_SHA1 : t = ! 0x00000001L
+let _CKP_PKCS5_PBKD2_HMAC_SHA1 : t = !0x00000001L
 
 let view ul =
   if equal ul _CKP_PKCS5_PBKD2_HMAC_SHA1 then

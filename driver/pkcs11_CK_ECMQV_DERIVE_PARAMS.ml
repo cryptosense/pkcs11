@@ -2,20 +2,33 @@ open Ctypes
 open Ctypes_helpers
 
 type _t
+
 type t = _t structure
+
 let t : t typ = structure "CK_ECMQV_DERIVE_PARAMS"
 
-let (-:) typ label = smart_field t label typ
-let kdf              = Pkcs11_CK_EC_KDF_TYPE.t -: "kdf"
-let ulSharedDataLen  = ulong            -: "ulSharedDataLen"
-let pSharedData      = Reachable_ptr.typ char -: "pSharedData"
-let ulPublicDataLen  = ulong            -: "ulPublicDataLen"
-let pPublicData      = Reachable_ptr.typ char         -: "pPublicData"
-let ulPrivateDataLen = ulong            -: "ulPrivateDataLen"
-let hPrivateData     = Pkcs11_CK_OBJECT_HANDLE.typ -: "hPrivateData"
-let ulPublicDataLen2 = ulong            -: "ulPublicDataLen2"
-let pPublicData2     = Reachable_ptr.typ char -: "pPublicData2"
-let publicKey        = Pkcs11_CK_OBJECT_HANDLE.typ -: "publicKey"
+let ( -: ) typ label = smart_field t label typ
+
+let kdf = Pkcs11_CK_EC_KDF_TYPE.t -: "kdf"
+
+let ulSharedDataLen = ulong -: "ulSharedDataLen"
+
+let pSharedData = Reachable_ptr.typ char -: "pSharedData"
+
+let ulPublicDataLen = ulong -: "ulPublicDataLen"
+
+let pPublicData = Reachable_ptr.typ char -: "pPublicData"
+
+let ulPrivateDataLen = ulong -: "ulPrivateDataLen"
+
+let hPrivateData = Pkcs11_CK_OBJECT_HANDLE.typ -: "hPrivateData"
+
+let ulPublicDataLen2 = ulong -: "ulPublicDataLen2"
+
+let pPublicData2 = Reachable_ptr.typ char -: "pPublicData2"
+
+let publicKey = Pkcs11_CK_OBJECT_HANDLE.typ -: "publicKey"
+
 let () = seal t
 
 let make u =
@@ -38,5 +51,4 @@ let view p =
   ; private_data_len = getf p ulPrivateDataLen
   ; private_data = getf p hPrivateData
   ; public_data2 = view_string p ulPublicDataLen2 pPublicData2
-  ; public_key = getf p publicKey
-  }
+  ; public_key = getf p publicKey }
