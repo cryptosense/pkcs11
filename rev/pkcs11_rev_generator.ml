@@ -9,10 +9,11 @@ let input fmt path =
     while true do
       Format.fprintf fmt "%s@." (input_line fd)
     done
-  with End_of_file -> ()
+  with
+  | End_of_file -> ()
 
 let () =
-  let module Bindings = Pkcs11_rev_decl.Rev_bindings(Pkcs11.Fake()) in
+  let module Bindings = Pkcs11_rev_decl.Rev_bindings (Pkcs11.Fake ()) in
   let filename_prefix = Sys.argv.(1) in
   let file ext = filename_prefix ^ ext in
   let prefix = "cs_pkcs11_rev" in
@@ -20,14 +21,9 @@ let () =
   let stubs_c = file "_stubs.c" in
   let stubs_ml = file "_generated.ml" in
 
-  begin
-    Ctypes_helpers.with_out_fmt stubs_c (fun fmt ->
-        input fmt "prelude.h";
-        Cstubs_inverted.write_c fmt ~prefix (module Bindings);
-      );
+  Ctypes_helpers.with_out_fmt stubs_c (fun fmt ->
+      input fmt "prelude.h";
+      Cstubs_inverted.write_c fmt ~prefix (module Bindings));
 
-    Ctypes_helpers.with_out_fmt stubs_ml
-      (fun fmt ->
-         Cstubs_inverted.write_ml fmt ~prefix (module Bindings)
-      );
-  end
+  Ctypes_helpers.with_out_fmt stubs_ml (fun fmt ->
+      Cstubs_inverted.write_ml fmt ~prefix (module Bindings))

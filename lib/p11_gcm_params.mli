@@ -8,17 +8,12 @@
    DLLs may return.
 *)
 
-type t
-[@@deriving eq,ord,show,yojson]
+type t [@@deriving eq, ord, show, yojson]
 
-val make:
-  iv:string ->
-  aad:string ->
-  tag_bits:P11_ulong.t ->
-  t
+val make : iv:string -> aad:string -> tag_bits:P11_ulong.t -> t
 
-val iv: t -> string
+val iv : t -> string
 
-val aad: t -> string
+val aad : t -> string
 
-val tag_bits: t -> P11_ulong.t
+val tag_bits : t -> P11_ulong.t

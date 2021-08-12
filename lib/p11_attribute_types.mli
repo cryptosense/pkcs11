@@ -1,8 +1,7 @@
-type t = P11_attribute_type.pack list
-[@@deriving eq,ord,show,yojson]
+type t = P11_attribute_type.pack list [@@deriving eq, ord, show, yojson]
 
-(** Return true if an attribute_type is present in an attribute_type list. *)
 val mem : t -> 'a P11_attribute_type.t -> bool
+(** Return true if an attribute_type is present in an attribute_type list. *)
 
-(** Remove the duplicates from a list of attribute types *)
 val remove_duplicates : t -> t
+(** Remove the duplicates from a list of attribute types *)

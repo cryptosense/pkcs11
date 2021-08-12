@@ -1,7 +1,3 @@
 (executables
-  (names example_digest example_sign)
-  (libraries
-    pkcs11
-    pkcs11-driver
-  )
-)
+ (names example_digest example_sign)
+ (libraries pkcs11 pkcs11-driver))

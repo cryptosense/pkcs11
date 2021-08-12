@@ -1,17 +1,9 @@
 (test
-  (name test_driver)
-  (package pkcs11-driver)
-  (deps dllpkcs11_fake%{ext_dll})
-  (libraries
-    oUnit
-    pkcs11
-    pkcs11-driver
-  )
-  (preprocess
-    (pps
-      ppx_deriving.std
-    )
-  )
-)
+ (name test_driver)
+ (package pkcs11-driver)
+ (deps dllpkcs11_fake%{ext_dll})
+ (libraries oUnit pkcs11 pkcs11-driver)
+ (preprocess
+  (pps ppx_deriving.std)))
 
 (copy_files ../../fake/dllpkcs11_fake.{so,dll})

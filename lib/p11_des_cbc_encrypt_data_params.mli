@@ -1,5 +1,4 @@
 type t =
-  { iv: string
-  ; data: string
-  }
-[@@deriving eq,ord,show,yojson]
+  { iv : string
+  ; data : string }
+[@@deriving eq, ord, show, yojson]

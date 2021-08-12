@@ -18,7 +18,8 @@ module RSA_PKCS_PSS_params = P11_rsa_pkcs_pss_params
 module AES_CBC_ENCRYPT_DATA_params = P11_aes_cbc_encrypt_data_params
 module DES_CBC_ENCRYPT_DATA_params = P11_des_cbc_encrypt_data_params
 module PKCS5_PBKDF2_SALT_SOURCE_type = P11_pkcs5_pbkdf2_salt_source_type
-module PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_type = P11_pkcs5_pbkd2_pseudo_random_function_type
+module PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_type =
+  P11_pkcs5_pbkd2_pseudo_random_function_type
 module PKCS5_PBKD2_DATA_params = P11_pkcs5_pbkd2_data_params
 module Ecdh1_derive_params = P11_ecdh1_derive_params
 module Mechanism = P11_mechanism

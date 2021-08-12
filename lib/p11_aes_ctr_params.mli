@@ -10,14 +10,10 @@
    DLLs may return.
 *)
 
-type t
-[@@deriving eq,ord,show,yojson]
+type t [@@deriving eq, ord, show, yojson]
 
-val make :
-  bits:P11_ulong.t ->
-  block:string ->
-  t
+val make : bits:P11_ulong.t -> block:string -> t
 
-val bits: t -> P11_ulong.t
+val bits : t -> P11_ulong.t
 
-val block: t -> string
+val block : t -> string

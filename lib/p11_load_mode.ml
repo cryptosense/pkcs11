@@ -1,7 +1,7 @@
 type t =
   | Auto
   | FFI
-[@@deriving eq,ord,show,yojson]
+[@@deriving eq, ord, show, yojson]
 
 let auto = Auto
 

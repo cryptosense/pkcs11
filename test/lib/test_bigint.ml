@@ -20,7 +20,7 @@ let test_encode _ctxt =
     let u = P11.Bigint.of_int n in
     let got = P11.Bigint.encode u in
     let printer x =
-      let `Hex h = Hex.of_string x in
+      let (`Hex h) = Hex.of_string x in
       h
     in
     assert_equal ~printer expected got
@@ -28,7 +28,4 @@ let test_encode _ctxt =
   testcase 0x12_34_56_78 "\x12\x34\x56\x78"
 
 let suite =
-  "Bigint" >:::
-  [ "Decoding" >:: test_decode
-  ; "Encoding" >:: test_encode
-  ]
+  "Bigint" >::: ["Decoding" >:: test_decode; "Encoding" >:: test_encode]

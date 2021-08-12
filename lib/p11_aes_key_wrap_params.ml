@@ -1,5 +1,4 @@
-type t = P11_hex_data.t option
-[@@deriving eq,ord,show,yojson]
+type t = P11_hex_data.t option [@@deriving eq, ord, show, yojson]
 
 let default = None
 

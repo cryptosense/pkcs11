@@ -77,12 +77,12 @@ type t =
   | CKM_GENERIC_SECRET_KEY_GEN
   | CKM_AES_KEY_WRAP of P11_aes_key_wrap_params.t
   | CKM_CS_UNKNOWN of P11_ulong.t
-[@@deriving eq,ord,show,yojson]
+[@@deriving eq, ord, show, yojson]
 
-val mechanism_type: t -> P11_mechanism_type.t
+val mechanism_type : t -> P11_mechanism_type.t
 
-(** [to_string] is defined as [fun x -> Mechanism_type.to_string (mechanism_type x) ]  *)
 val to_string : t -> string
+(** [to_string] is defined as [fun x -> Mechanism_type.to_string (mechanism_type x) ]  *)
 
+val key_type : t -> P11_key_type.t option
 (** [key_type t] returns the type of keys associated to the mechanism [t]. *)
-val key_type: t -> P11_key_type.t option

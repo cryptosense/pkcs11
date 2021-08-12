@@ -1,6 +1,7 @@
 type t = char
 
 let of_int = Char.chr
+
 let to_int = Char.code
 
 let typ : t Ctypes.typ =
@@ -9,4 +10,5 @@ let typ : t Ctypes.typ =
   Ctypes.view ~read ~write Ctypes.uchar
 
 let zero = Char.chr 0
+
 let one = Char.chr 1
