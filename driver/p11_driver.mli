@@ -10,44 +10,27 @@ exception CKR of RV.t
     handled automatically. *)
 module type S = sig
   val initialize : unit -> unit
-
   val initialize_nss : params:Pkcs11.Nss_initialize_arg.u -> unit
-
   val finalize : unit -> unit
-
   val get_info : unit -> Info.t
-
   val get_slot : Slot.t -> (Slot_id.t, string) result
-
   val get_slot_list : bool -> Slot_id.t list
-
   val get_slot_info : slot:Slot_id.t -> Slot_info.t
-
   val get_token_info : slot:Slot_id.t -> Token_info.t
-
   val get_mechanism_list : slot:Slot_id.t -> Mechanism_type.t list
 
   val get_mechanism_info :
     slot:Slot_id.t -> Mechanism_type.t -> Mechanism_info.t
 
   val init_token : slot:Slot_id.t -> pin:string -> label:string -> unit
-
   val init_PIN : Session_handle.t -> pin:string -> unit
-
   val set_PIN : Session_handle.t -> oldpin:string -> newpin:string -> unit
-
   val open_session : slot:Slot_id.t -> flags:Flags.t -> Session_handle.t
-
   val close_session : Session_handle.t -> unit
-
   val close_all_sessions : slot:Slot_id.t -> unit
-
   val get_session_info : Session_handle.t -> Session_info.t
-
   val login : Session_handle.t -> User_type.t -> string -> unit
-
   val logout : Session_handle.t -> unit
-
   val create_object : Session_handle.t -> Template.t -> Object_handle.t
 
   val copy_object :
@@ -82,7 +65,6 @@ module type S = sig
     Session_handle.t -> Mechanism.t -> Object_handle.t -> unit
 
   val multipart_encrypt_chunck : Session_handle.t -> Data.t -> Data.t
-
   val multipart_encrypt_final : Session_handle.t -> Data.t
 
   val multipart_encrypt :
@@ -95,7 +77,6 @@ module type S = sig
     Session_handle.t -> Mechanism.t -> Object_handle.t -> unit
 
   val multipart_decrypt_chunck : Session_handle.t -> Data.t -> Data.t
-
   val multipart_decrypt_final : Session_handle.t -> Data.t
 
   val multipart_decrypt :
@@ -111,7 +92,6 @@ module type S = sig
     Session_handle.t -> Mechanism.t -> Object_handle.t -> unit
 
   val multipart_sign_chunck : Session_handle.t -> Data.t -> unit
-
   val multipart_sign_final : Session_handle.t -> Data.t
 
   val multipart_sign :
@@ -136,7 +116,6 @@ module type S = sig
     Session_handle.t -> Mechanism.t -> Object_handle.t -> unit
 
   val multipart_verify_chunck : Session_handle.t -> Data.t -> unit
-
   val multipart_verify_final : Session_handle.t -> Data.t -> unit
 
   val multipart_verify :
@@ -191,40 +170,25 @@ val initialize_nss : t -> params:Pkcs11.Nss_initialize_arg.u -> unit
     at https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/PKCS11/Module_Specs *)
 
 val finalize : t -> unit
-
 val get_info : t -> Info.t
-
 val get_slot : t -> Slot.t -> (Slot_id.t, string) result
-
 val get_slot_list : t -> bool -> Slot_id.t list
-
 val get_slot_info : t -> slot:Slot_id.t -> Slot_info.t
-
 val get_token_info : t -> slot:Slot_id.t -> Token_info.t
-
 val get_mechanism_list : t -> slot:Slot_id.t -> Mechanism_type.t list
 
 val get_mechanism_info :
   t -> slot:Slot_id.t -> Mechanism_type.t -> Mechanism_info.t
 
 val init_token : t -> slot:Slot_id.t -> pin:string -> label:string -> unit
-
 val init_PIN : t -> Session_handle.t -> pin:string -> unit
-
 val set_PIN : t -> Session_handle.t -> oldpin:string -> newpin:string -> unit
-
 val open_session : t -> slot:Slot_id.t -> flags:Flags.t -> Session_handle.t
-
 val close_session : t -> Session_handle.t -> unit
-
 val close_all_sessions : t -> slot:Slot_id.t -> unit
-
 val get_session_info : t -> Session_handle.t -> Session_info.t
-
 val login : t -> Session_handle.t -> User_type.t -> string -> unit
-
 val logout : t -> Session_handle.t -> unit
-
 val create_object : t -> Session_handle.t -> Template.t -> Object_handle.t
 
 val copy_object :
@@ -256,7 +220,6 @@ val multipart_encrypt_init :
   t -> Session_handle.t -> Mechanism.t -> Object_handle.t -> unit
 
 val multipart_encrypt_chunck : t -> Session_handle.t -> Data.t -> Data.t
-
 val multipart_encrypt_final : t -> Session_handle.t -> Data.t
 
 val multipart_encrypt :
@@ -274,7 +237,6 @@ val multipart_decrypt_init :
   t -> Session_handle.t -> Mechanism.t -> Object_handle.t -> unit
 
 val multipart_decrypt_chunck : t -> Session_handle.t -> Data.t -> Data.t
-
 val multipart_decrypt_final : t -> Session_handle.t -> Data.t
 
 val multipart_decrypt :
@@ -295,7 +257,6 @@ val multipart_sign_init :
   t -> Session_handle.t -> Mechanism.t -> Object_handle.t -> unit
 
 val multipart_sign_chunck : t -> Session_handle.t -> Data.t -> unit
-
 val multipart_sign_final : t -> Session_handle.t -> Data.t
 
 val multipart_sign :
@@ -327,7 +288,6 @@ val multipart_verify_init :
   t -> Session_handle.t -> Mechanism.t -> Object_handle.t -> unit
 
 val multipart_verify_chunck : t -> Session_handle.t -> Data.t -> unit
-
 val multipart_verify_final : t -> Session_handle.t -> Data.t -> unit
 
 val multipart_verify :

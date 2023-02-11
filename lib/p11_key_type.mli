@@ -35,5 +35,4 @@ type t =
 [@@deriving eq, ord, show, yojson]
 
 val of_string : string -> t
-
 val to_string : t -> string

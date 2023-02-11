@@ -45,7 +45,6 @@ end
 
 module Mock_driver (M : Mock_driver_params) = struct
   module MDR : Mock_low_level_bindings = Mock_low_level_bindings (M)
-
   include P11_driver.Wrap_low_level_bindings (MDR)
 
   let get_attribute_value_calls = MDR.get_attribute_value_calls
@@ -56,7 +55,6 @@ let mock_driver (module M : Mock_driver_params) () =
 
 module Fixtures = struct
   let session_handle = Unsigned.ULong.zero
-
   let object_handle = Unsigned.ULong.zero
 end
 

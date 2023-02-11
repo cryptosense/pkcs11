@@ -482,5 +482,4 @@ let key_type = function
     None
 
 let to_string x = mechanism_type x |> P11_mechanism_type.to_string
-
 let pp fmt m = Format.fprintf fmt "%s" @@ to_string m

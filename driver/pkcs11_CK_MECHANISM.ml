@@ -2,19 +2,13 @@ open Ctypes
 open Ctypes_helpers
 
 type _t
-
 type t = _t structure
 
 let ck_mechanism : t typ = structure "CK_MECHANISM"
-
 let ( -: ) ty label = smart_field ck_mechanism label ty
-
 let mechanism = Pkcs11_CK_MECHANISM_TYPE.typ -: "mechanism"
-
 let parameter = Reachable_ptr.typ void -: "pParameter"
-
 let parameter_len = ulong -: "pParameterLen"
-
 let () = seal ck_mechanism
 
 type argument =

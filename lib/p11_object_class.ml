@@ -45,5 +45,4 @@ let of_string = function
       invalid_arg ("Pkcs11_CK_OBJECT_CLASS.of_string" ^ ": cannot find " ^ x))
 
 let to_yojson object_class = `String (to_string object_class)
-
 let of_yojson = P11_helpers.of_json_string ~typename:"object class" of_string

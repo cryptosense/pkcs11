@@ -24,7 +24,5 @@ val ul_to_string : Unsigned.ULong.t -> string
     [CK_UNAVAILABLE_INFORMATION]. *)
 
 val to_string : ?newlines:bool -> ?indent:string -> t -> string
-
 val to_strings : t -> string list
-
 val flags_to_string : P11_flags.t -> string

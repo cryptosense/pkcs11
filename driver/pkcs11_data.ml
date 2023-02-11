@@ -10,7 +10,6 @@ let get_length t =
   !@(t.length)
 
 let get_content t = t.content
-
 let get_length_addr (t : t) : P11_ulong.t ptr = t.length
 
 let string_from_ptr ~length x =

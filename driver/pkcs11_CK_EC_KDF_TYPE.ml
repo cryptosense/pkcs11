@@ -3,11 +3,8 @@ open Ctypes
 type t = P11_ulong.t
 
 let t : t typ = ulong
-
 let ( ! ) x = Unsigned.ULong.of_string (Int64.to_string x)
-
 let _CKD_NULL = !0x00000001L
-
 let _CKD_SHA1_KDF = !0x00000002L
 
 let make =

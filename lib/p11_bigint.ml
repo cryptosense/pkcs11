@@ -24,13 +24,9 @@ let string_remove_trailing c s =
     Also, Zarith adds trailing zeroes in Z.to_bits.
  *)
 let encode z = string_reverse @@ string_remove_trailing '\x00' @@ Z.to_bits z
-
 let decode s = Z.of_bits @@ string_reverse s
-
 let to_int = Z.to_int
-
 let of_int = Z.of_int
-
 let to_yojson z = P11_hex_data.to_yojson @@ encode z
 
 let of_yojson j =
@@ -38,17 +34,10 @@ let of_yojson j =
   P11_hex_data.of_yojson j >|= decode
 
 let equal = Z.equal
-
 let compare = Z.compare
-
 let to_string = Z.to_string
-
 let zero = Z.zero
-
 let of_z z = z
-
 let to_z z = z
-
 let show = to_string
-
 let pp fmt x = Format.fprintf fmt "%s" (show x)

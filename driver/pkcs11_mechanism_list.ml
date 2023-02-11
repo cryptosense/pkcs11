@@ -9,9 +9,7 @@ type t =
 type u = P11_mechanism_type.t list
 
 let get_length (t : t) : P11_ulong.t = !@(t.length)
-
 let get_content (t : t) : Pkcs11_CK_MECHANISM_TYPE.t ptr = t.content
-
 let get_length_addr (t : t) : P11_ulong.t ptr = t.length
 
 let create () : t =

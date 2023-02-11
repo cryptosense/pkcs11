@@ -1,19 +1,13 @@
 open Ctypes
 
 type _t
-
 type t = _t structure
 
 let t : t typ = structure "CK_RSA_PKCS_PSS_PARAMS"
-
 let ( -: ) ty label = Ctypes_helpers.smart_field t label ty
-
 let hashAlg = Pkcs11_CK_MECHANISM_TYPE.typ -: "hashAlg"
-
 let mgf = Pkcs11_CK_RSA_PKCS_MGF_TYPE.typ -: "mgf"
-
 let sLen = ulong -: "sLen"
-
 let () = seal t
 
 let make params =

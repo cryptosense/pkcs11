@@ -1,7 +1,6 @@
 type t = P11_ulong.t [@@deriving eq, ord]
 
 let ( ! ) x = Unsigned.ULong.of_string (Int64.to_string x)
-
 let _CKZ_SALT_SPECIFIED : t = !0x00000001L
 
 let view ul =

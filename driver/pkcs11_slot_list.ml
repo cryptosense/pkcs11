@@ -9,9 +9,7 @@ type t =
 type u = Pkcs11_CK_SLOT_ID.t list
 
 let get_length (t : t) : P11_ulong.t = !@(t.length)
-
 let get_content (t : t) : Pkcs11_CK_SLOT_ID.t ptr = t.content
-
 let get_length_addr (t : t) : P11_ulong.t ptr = t.length
 
 let create () : t =

@@ -38,8 +38,10 @@ module CK_DES_CBC_ENCRYPT_DATA_PARAMS =
 
 module CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE =
   Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE
+
 module CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE =
   Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE
+
 module CK_PKCS5_PBKD2_PARAMS = Pkcs11_CK_PKCS5_PBKD2_PARAMS
 module CK_EC_KDF_TYPE = Pkcs11_CK_EC_KDF_TYPE
 module CK_ECDH1_DERIVE_PARAMS = Pkcs11_CK_ECDH1_DERIVE_PARAMS
@@ -63,21 +65,17 @@ module CK_GCM_PARAMS = Pkcs11_CK_GCM_PARAMS
 
 module Initialize_arg : sig
   type _ck_c_initialize_args
-
   type t = _ck_c_initialize_args Ctypes.structure
 
   val flags : (CK_FLAGS.t, t) Ctypes.field
-
   val t : t Ctypes.typ
 end
 
 module Nss_initialize_arg : sig
   type _ck_nss_c_initialize_args
-
   type t = _ck_nss_c_initialize_args Ctypes.structure
 
   val flags : (CK_FLAGS.t, t) Ctypes.field
-
   val t : t Ctypes.typ
 
   (** Only support setting LibraryParameters from the uninitialized type. The format for
@@ -89,7 +87,6 @@ module Nss_initialize_arg : sig
 end
 
 type _ck_function_list
-
 type ck_function_list = _ck_function_list Ctypes.structure
 
 val ck_function_list : ck_function_list Ctypes.typ
@@ -98,20 +95,16 @@ module CK_NOTIFY : sig
   open Ctypes
 
   type u
-
   type t = u ptr
 
   val u : u typ
-
   val t : t typ
 end
 
 module CK : sig
   module T : sig
     val c_Initialize : (unit Ctypes.ptr -> CK_RV.t) Ctypes.fn
-
     val c_Finalize : (unit Ctypes.ptr -> CK_RV.t) Ctypes.fn
-
     val c_GetInfo : (CK_INFO.t Ctypes.ptr -> CK_RV.t) Ctypes.fn
 
     val c_GetFunctionList :
@@ -178,7 +171,6 @@ module CK : sig
       Ctypes.fn
 
     val c_CloseSession : (CK_SESSION_HANDLE.t -> CK_RV.t) Ctypes.fn
-
     val c_CloseAllSessions : (CK_SLOT_ID.t -> CK_RV.t) Ctypes.fn
 
     val c_GetSessionInfo :
@@ -541,7 +533,6 @@ module CK : sig
       Ctypes.fn
 
     val c_GetFunctionStatus : (CK_SESSION_HANDLE.t -> CK_RV.t) Ctypes.fn
-
     val c_CancelFunction : (CK_SESSION_HANDLE.t -> CK_RV.t) Ctypes.fn
 
     val c_WaitForSlotEvent :
@@ -553,11 +544,8 @@ module CK : sig
     type t = (_ck_function_list, [`Struct]) Ctypes.structured
 
     val version : (CK_VERSION.t, t) Ctypes.field
-
     val c_Initialize : (unit Ctypes.ptr -> CK_RV.t, t) Ctypes.field
-
     val c_Finalize : (unit Ctypes.ptr -> CK_RV.t, t) Ctypes.field
-
     val c_GetInfo : (CK_INFO.t Ctypes.ptr -> CK_RV.t, t) Ctypes.field
 
     val c_GetFunction_list :
@@ -631,7 +619,6 @@ module CK : sig
       Ctypes.field
 
     val c_CloseSession : (CK_SESSION_HANDLE.t -> CK_RV.t, t) Ctypes.field
-
     val c_CloseAllSessions : (CK_SLOT_ID.t -> CK_RV.t, t) Ctypes.field
 
     val c_GetSessionInfo :
@@ -1042,7 +1029,6 @@ module CK : sig
       Ctypes.field
 
     val c_GetFunctionStatus : (CK_SESSION_HANDLE.t -> CK_RV.t, t) Ctypes.field
-
     val c_CancelFunction : (CK_SESSION_HANDLE.t -> CK_RV.t, t) Ctypes.field
 
     val c_WaitForSlotEvent :
@@ -1064,13 +1050,9 @@ module type LOW_LEVEL_BINDINGS = sig
   open Ctypes
 
   val c_GetFunctionList : CK_FUNCTION_LIST.t ptr ptr -> CK_RV.t
-
   val c_Initialize : CK_VOID.t ptr -> CK_RV.t
-
   val c_Finalize : CK_VOID.t ptr -> CK_RV.t
-
   val c_GetInfo : CK_INFO.t ptr -> CK_RV.t
-
   val c_GetTokenInfo : CK_SLOT_ID.t -> CK_TOKEN_INFO.t ptr -> CK_RV.t
 
   val c_GetSlotList :
@@ -1111,9 +1093,7 @@ module type LOW_LEVEL_BINDINGS = sig
     -> CK_RV.t
 
   val c_CloseSession : CK_SESSION_HANDLE.t -> CK_RV.t
-
   val c_CloseAllSessions : CK_SLOT_ID.t -> CK_RV.t
-
   val c_GetSessionInfo : CK_SESSION_HANDLE.t -> CK_SESSION_INFO.t ptr -> CK_RV.t
 
   val c_GetOperationState :
@@ -1387,7 +1367,6 @@ module type LOW_LEVEL_BINDINGS = sig
     CK_SESSION_HANDLE.t -> CK_BYTE.t ptr -> CK_ULONG.t -> CK_RV.t
 
   val c_GetFunctionStatus : CK_SESSION_HANDLE.t -> CK_RV.t
-
   val c_CancelFunction : CK_SESSION_HANDLE.t -> CK_RV.t
 
   val c_WaitForSlotEvent :
@@ -1396,7 +1375,6 @@ end
 
 module type CONFIG = sig
   val log_calls : (string * Format.formatter) option
-
   val library : Dl.library
 end
 
@@ -1413,25 +1391,19 @@ module Fake (X : sig end) : LOW_LEVEL_BINDINGS
     have to. *)
 module type LOW_LEVEL_WRAPPER = sig
   val c_Initialize : Nss_initialize_arg.t option -> CK_RV.t
-
   val c_Finalize : unit -> CK_RV.t
-
   val c_GetInfo : unit -> CK_RV.t * P11_info.t
 
   (* val c_GetFunctionList : unit -> CK_RV.t * CK_FUNCTION_LIST.t *)
   val c_GetSlotList : bool -> Slot_list.t -> CK_RV.t
-
   val c_GetSlotInfo : slot:CK_SLOT_ID.t -> CK_RV.t * P11_slot_info.t
-
   val c_GetTokenInfo : slot:CK_SLOT_ID.t -> CK_RV.t * P11_token_info.t
-
   val c_GetMechanismList : slot:CK_SLOT_ID.t -> Mechanism_list.t -> CK_RV.t
 
   val c_GetMechanismInfo :
     slot:CK_SLOT_ID.t -> CK_MECHANISM_TYPE.t -> CK_RV.t * P11_mechanism_info.t
 
   val c_InitToken : slot:CK_SLOT_ID.t -> pin:string -> label:string -> CK_RV.t
-
   val c_InitPIN : CK_SESSION_HANDLE.t -> string -> CK_RV.t
 
   val c_SetPIN :
@@ -1441,15 +1413,12 @@ module type LOW_LEVEL_WRAPPER = sig
     slot:CK_SLOT_ID.t -> flags:CK_FLAGS.t -> CK_RV.t * CK_SESSION_HANDLE.t
 
   val c_CloseSession : CK_SESSION_HANDLE.t -> CK_RV.t
-
   val c_CloseAllSessions : slot:CK_SLOT_ID.t -> CK_RV.t
-
   val c_GetSessionInfo : CK_SESSION_HANDLE.t -> CK_RV.t * P11_session_info.t
 
   (* val c_GetOperation_state *)
   (* val c_SetOperation_state *)
   val c_Login : CK_SESSION_HANDLE.t -> CK_USER_TYPE.t -> string -> CK_RV.t
-
   val c_Logout : CK_SESSION_HANDLE.t -> CK_RV.t
 
   val c_CreateObject :
@@ -1481,37 +1450,26 @@ module type LOW_LEVEL_WRAPPER = sig
     CK_SESSION_HANDLE.t -> CK_MECHANISM.t -> CK_OBJECT_HANDLE.t -> CK_RV.t
 
   val c_Encrypt : CK_SESSION_HANDLE.t -> src:Data.t -> tgt:Data.t -> CK_RV.t
-
   val c_EncryptUpdate : CK_SESSION_HANDLE.t -> Data.t -> Data.t -> CK_RV.t
-
   val c_EncryptFinal : CK_SESSION_HANDLE.t -> Data.t -> CK_RV.t
 
   val c_DecryptInit :
     CK_SESSION_HANDLE.t -> CK_MECHANISM.t -> CK_OBJECT_HANDLE.t -> CK_RV.t
 
   val c_Decrypt : CK_SESSION_HANDLE.t -> src:Data.t -> tgt:Data.t -> CK_RV.t
-
   val c_DecryptUpdate : CK_SESSION_HANDLE.t -> Data.t -> Data.t -> CK_RV.t
-
   val c_DecryptFinal : CK_SESSION_HANDLE.t -> Data.t -> CK_RV.t
-
   val c_DigestInit : CK_SESSION_HANDLE.t -> CK_MECHANISM.t -> CK_RV.t
-
   val c_Digest : CK_SESSION_HANDLE.t -> Data.t -> Data.t -> CK_RV.t
-
   val c_DigestUpdate : CK_SESSION_HANDLE.t -> Data.t -> CK_RV.t
-
   val c_DigestKey : CK_SESSION_HANDLE.t -> CK_OBJECT_HANDLE.t -> CK_RV.t
-
   val c_DigestFinal : CK_SESSION_HANDLE.t -> Data.t -> CK_RV.t
 
   val c_SignInit :
     CK_SESSION_HANDLE.t -> CK_MECHANISM.t -> CK_OBJECT_HANDLE.t -> CK_RV.t
 
   val c_Sign : CK_SESSION_HANDLE.t -> src:Data.t -> tgt:Data.t -> CK_RV.t
-
   val c_SignUpdate : CK_SESSION_HANDLE.t -> Data.t -> CK_RV.t
-
   val c_SignFinal : CK_SESSION_HANDLE.t -> Data.t -> CK_RV.t
 
   val c_SignRecoverInit :
@@ -1526,7 +1484,6 @@ module type LOW_LEVEL_WRAPPER = sig
     CK_SESSION_HANDLE.t -> signed:Data.t -> signature:Data.t -> CK_RV.t
 
   val c_VerifyUpdate : CK_SESSION_HANDLE.t -> Data.t -> CK_RV.t
-
   val c_VerifyFinal : CK_SESSION_HANDLE.t -> Data.t -> CK_RV.t
 
   val c_VerifyRecoverInit :

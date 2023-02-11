@@ -67,8 +67,10 @@ module CK_AES_CBC_ENCRYPT_DATA_PARAMS =
 
 module CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE =
   Pkcs11_CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE
+
 module CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE =
   Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE
+
 module CK_PKCS5_PBKD2_PARAMS = Pkcs11_CK_PKCS5_PBKD2_PARAMS
 module CK_EC_KDF_TYPE = Pkcs11_CK_EC_KDF_TYPE
 module CK_ECDH1_DERIVE_PARAMS = Pkcs11_CK_ECDH1_DERIVE_PARAMS
@@ -86,54 +88,32 @@ module CK_AES_CTR_PARAMS = Pkcs11_CK_AES_CTR_PARAMS
 module CK_GCM_PARAMS = Pkcs11_CK_GCM_PARAMS
 
 let ck_byte = CK_BYTE.typ
-
 let utf8char = ck_byte
-
 let ck_utf8char = char
-
 let ck_bbool = ck_byte
-
 let ck_flags = CK_FLAGS.typ
-
 let ck_object_class = CK_OBJECT_CLASS.typ
-
 let ck_version = CK_VERSION.ck_version
-
 let ck_session_handle = CK_SESSION_HANDLE.typ
-
 let ck_object_handle = CK_OBJECT_HANDLE.typ
-
 let ck_hw_feature_type = CK_HW_FEATURE_TYPE.typ
-
 let ck_slot_id = CK_SLOT_ID.typ
-
 let ck_slot_info = CK_SLOT_INFO.ck_slot_info
-
 let ck_mechanism_info = CK_MECHANISM_INFO.ck_mechanism_info
-
 let ck_session_info = CK_SESSION_INFO.ck_session_info
-
 let ck_rv = CK_RV.typ
-
 let ck_mechanism_type = CK_MECHANISM_TYPE.typ
-
 let ck_rsa_pkcs_mgf_type = CK_RSA_PKCS_MGF_TYPE.typ
-
 let ck_pkcs5_pbkdf2_salt_source_type = CK_PKCS5_PBKDF2_SALT_SOURCE_TYPE.typ
 
 let ck_pkcs5_pbkd2_pseudo_random_function_type =
   CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE.typ
 
 let ck_mechanism : CK_MECHANISM.t typ = CK_MECHANISM.ck_mechanism
-
 let ck_user_type = CK_USER_TYPE.typ
-
 let ck_info = CK_INFO.ck_info
-
 let ck_token_info = CK_TOKEN_INFO.ck_token_info
-
 let ck_attribute_type = CK_ATTRIBUTE_TYPE.typ
-
 let ck_attribute = CK_ATTRIBUTE.ck_attribute
 
 type template = Template.t
@@ -142,27 +122,17 @@ module Initialize_arg = struct
   let mutex = void
 
   type _ck_c_initialize_args
-
   type t = _ck_c_initialize_args structure
 
   let t : t typ = structure "CK_C_INITIALIZE_ARGS"
-
   let ( -: ) ty label = Ctypes_helpers.smart_field t label ty
-
   let f typ = Foreign.funptr (typ @-> returning ck_rv)
-
   let createMutex = f (ptr (ptr mutex)) -: "CreateMutex"
-
   let destroyMutex = f (ptr mutex) -: "DestroyMutex"
-
   let lockMutex = f (ptr mutex) -: "LockMutex"
-
   let unlockMutex = f (ptr mutex) -: "UnlockMutex"
-
   let flags = ck_flags -: "flags"
-
   let pReserved = ptr void -: "pReserved"
-
   let () = seal t
 end
 
@@ -170,29 +140,18 @@ module Nss_initialize_arg = struct
   let mutex = void
 
   type _ck_nss_c_initialize_args
-
   type t = _ck_nss_c_initialize_args structure
 
   let t : t typ = structure "CK_NSS_C_INITIALIZE_ARGS"
-
   let ( -: ) ty label = Ctypes_helpers.smart_field t label ty
-
   let f typ = Foreign.funptr_opt (typ @-> returning ck_rv)
-
   let createMutex = f (ptr (ptr mutex)) -: "CreateMutex"
-
   let destroyMutex = f (ptr mutex) -: "DestroyMutex"
-
   let lockMutex = f (ptr mutex) -: "LockMutex"
-
   let unlockMutex = f (ptr mutex) -: "UnlockMutex"
-
   let flags = ck_flags -: "flags"
-
   let libraryParameters = Ctypes.string_opt -: "LibraryParameters"
-
   let pReserved = ptr void -: "pReserved"
-
   let () = seal t
 
   type u = string
@@ -214,32 +173,26 @@ end
 (******************************************************************************)
 
 type _ck_function_list
-
 type ck_function_list = _ck_function_list structure
 
 let ck_function_list : ck_function_list typ = structure "CK_FUNCTION_LIST"
 
 module CK_NOTIFY : sig
   type u
-
   type t = u ptr
 
   val u : u typ
-
   val t : u ptr typ
 end = struct
   type u = unit
-
   type t = u Ctypes.ptr
 
   let u = void
-
   let t = Ctypes.typedef (ptr void) "CK_NOTIFY"
 end
 
 module CK = struct
   let notify = CK_NOTIFY.t
-
   let session_info = ulong
 
   (** This module contains the type declarations for the API functions.  *)
@@ -250,7 +203,6 @@ module CK = struct
     type 'a return
 
     val ( @-> ) : 'a Ctypes.typ -> 'b fn -> ('a -> 'b) fn
-
     val returning : 'a Ctypes.typ -> 'a return fn
   end) =
   struct
@@ -261,16 +213,13 @@ module CK = struct
       ptr void @-> returning ck_rv
 
     let c_Finalize = ptr void @-> returning ck_rv
-
     let c_GetInfo = ptr ck_info @-> returning ck_rv
-
     let c_GetFunctionList = ptr (ptr ck_function_list) @-> returning ck_rv
 
     let c_GetSlotList =
       ck_bbool @-> ptr ck_slot_id @-> ptr ulong @-> returning ck_rv
 
     let c_GetSlotInfo = ck_slot_id @-> ptr ck_slot_info @-> returning ck_rv
-
     let c_GetTokenInfo = ck_slot_id @-> ptr ck_token_info @-> returning ck_rv
 
     let c_GetMechanismList =
@@ -305,7 +254,6 @@ module CK = struct
       @-> returning ck_rv
 
     let c_CloseSession = ck_session_handle @-> returning ck_rv
-
     let c_CloseAllSessions = ck_slot_id @-> returning ck_rv
 
     let c_GetSessionInfo =
@@ -612,7 +560,6 @@ module CK = struct
       ck_session_handle @-> ptr ck_byte @-> ulong @-> returning ck_rv
 
     let c_GetFunctionStatus = ck_session_handle @-> returning ck_rv
-
     let c_CancelFunction = ck_session_handle @-> returning ck_rv
 
     let c_WaitForSlotEvent =
@@ -621,11 +568,9 @@ module CK = struct
 
   module T = TF (struct
     type 'a fn = 'a Ctypes.fn
-
     type 'a return = 'a
 
     let ( @-> ) = Ctypes.( @-> )
-
     let returning = Ctypes.returning
   end)
 
@@ -639,111 +584,58 @@ module CK = struct
       Ctypes_helpers.smart_field ck_function_list "version" ck_version
 
     let c_Initialize = T.c_Initialize -: "C_Initialize"
-
     let c_Finalize = T.c_Finalize -: "C_Finalize"
-
     let c_GetInfo = T.c_GetInfo -: "C_GetInfo"
-
     let c_GetFunction_list = T.c_GetFunctionList -: "C_GetFunctionList"
-
     let c_GetSlotList = T.c_GetSlotList -: "C_GetSlotList"
-
     let c_GetSlotInfo = T.c_GetSlotInfo -: "C_GetSlotInfo"
-
     let c_GetTokenInfo = T.c_GetTokenInfo -: "C_GetTokenInfo"
-
     let c_GetMechanismList = T.c_GetMechanismList -: "C_GetMechanismList"
-
     let c_GetMechanismInfo = T.c_GetMechanismInfo -: "C_GetMechanismInfo"
-
     let c_InitToken = T.c_InitToken -: "C_InitToken"
-
     let c_InitPIN = T.c_InitPIN -: "C_InitPIN"
-
     let c_SetPIN = T.c_SetPIN -: "C_SetPIN"
-
     let c_OpenSession = T.c_OpenSession -: "C_OpenSession"
-
     let c_CloseSession = T.c_CloseSession -: "C_CloseSession"
-
     let c_CloseAllSessions = T.c_CloseAllSessions -: "C_CloseAllSessions"
-
     let c_GetSessionInfo = T.c_GetSessionInfo -: "C_GetSessionInfo"
-
     let c_GetOperationState = T.c_GetOperationState -: "C_GetOperationState"
-
     let c_SetOperationState = T.c_SetOperationState -: "C_SetOperationState"
-
     let c_Login = T.c_Login -: "C_Login"
-
     let c_Logout = T.c_Logout -: "C_Logout"
-
     let c_CreateObject = T.c_CreateObject -: "C_CreateObject"
-
     let c_CopyObject = T.c_CopyObject -: "C_CopyObject"
-
     let c_DestroyObject = T.c_DestroyObject -: "C_DestroyObject"
-
     let c_GetObjectSize = T.c_GetObjectSize -: "C_GetObjectSize"
-
     let c_GetAttributeValue = T.c_GetAttributeValue -: "C_GetAttributeValue"
-
     let c_SetAttributeValue = T.c_SetAttributeValue -: "C_SetAttributeValue"
-
     let c_FindObjectsInit = T.c_FindObjectsInit -: "C_FindObjectsInit"
-
     let c_FindObjects = T.c_FindObjects -: "C_FindObjects"
-
     let c_FindObjectsFinal = T.c_FindObjectsFinal -: "C_FindObjectsFinal"
-
     let c_EncryptInit = T.c_EncryptInit -: "C_EncryptInit"
-
     let c_Encrypt = T.c_Encrypt -: "C_Encrypt"
-
     let c_EncryptUpdate = T.c_EncryptUpdate -: "C_EncryptUpdate"
-
     let c_EncryptFinal = T.c_EncryptFinal -: "C_EncryptFinal"
-
     let c_DecryptInit = T.c_DecryptInit -: "C_DecryptInit"
-
     let c_Decrypt = T.c_Decrypt -: "C_Decrypt"
-
     let c_DecryptUpdate = T.c_DecryptUpdate -: "C_DecryptUpdate"
-
     let c_DecryptFinal = T.c_DecryptFinal -: "C_DecryptFinal"
-
     let c_DigestInit = T.c_DigestInit -: "C_DigestInit"
-
     let c_Digest = T.c_Digest -: "C_Digest"
-
     let c_DigestUpdate = T.c_DigestUpdate -: "C_DigestUpdate"
-
     let c_DigestKey = T.c_DigestKey -: "C_DigestKey"
-
     let c_DigestFinal = T.c_DigestFinal -: "C_DigestFinal"
-
     let c_SignInit = T.c_SignInit -: "C_SignInit"
-
     let c_Sign = T.c_Sign -: "C_Sign"
-
     let c_SignUpdate = T.c_SignUpdate -: "C_SignUpdate"
-
     let c_SignFinal = T.c_SignFinal -: "C_SignFinal"
-
     let c_SignRecoverInit = T.c_SignRecoverInit -: "C_SignRecoverInit"
-
     let c_SignRecover = T.c_SignRecover -: "C_SignRecover"
-
     let c_VerifyInit = T.c_VerifyInit -: "C_VerifyInit"
-
     let c_Verify = T.c_Verify -: "C_Verify"
-
     let c_VerifyUpdate = T.c_VerifyUpdate -: "C_VerifyUpdate"
-
     let c_VerifyFinal = T.c_VerifyFinal -: "C_VerifyFinal"
-
     let c_VerifyRecoverInit = T.c_VerifyRecoverInit -: "C_VerifyRecoverInit"
-
     let c_VerifyRecover = T.c_VerifyRecover -: "C_VerifyRecover"
 
     let c_DigestEncryptUpdate =
@@ -758,25 +650,15 @@ module CK = struct
       T.c_DecryptVerifyUpdate -: "C_DecryptVerifyUpdate"
 
     let c_GenerateKey = T.c_GenerateKey -: "C_GenerateKey"
-
     let c_GenerateKeyPair = T.c_GenerateKeyPair -: "C_GenerateKeyPair"
-
     let c_WrapKey = T.c_WrapKey -: "C_WrapKey"
-
     let c_UnwrapKey = T.c_UnwrapKey -: "C_UnwrapKey"
-
     let c_DeriveKey = T.c_DeriveKey -: "C_DeriveKey"
-
     let c_SeedRandom = T.c_SeedRandom -: "C_SeedRandom"
-
     let c_GenerateRandom = T.c_GenerateRandom -: "C_GenerateRandom"
-
     let c_GetFunctionStatus = T.c_GetFunctionStatus -: "C_GetFunctionStatus"
-
     let c_CancelFunction = T.c_CancelFunction -: "C_CancelFunction"
-
     let c_WaitForSlotEvent = T.c_WaitForSlotEvent -: "C_WaitForSlotEvent"
-
     let () = seal ck_function_list
   end
 end

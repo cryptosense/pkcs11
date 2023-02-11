@@ -21,5 +21,4 @@ let of_string = function
     | _ -> invalid_arg ("Pkcs11_CK_USER_TYPE.of_string: cannot find " ^ x))
 
 let to_yojson user_type = `String (to_string user_type)
-
 let of_yojson = P11_helpers.of_json_string ~typename:"user type" of_string

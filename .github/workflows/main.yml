@@ -11,14 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Use OCaml
         uses: ocaml/setup-ocaml@v2
         with:
-          ocaml-compiler: 4.12.0
+          ocaml-compiler: 5.0.x
       - run: opam install . --with-doc --with-test --deps-only
       - run: opam exec -- dune build @all @runtest
-      - run: opam install ocamlformat.0.19.0
+      - run: opam install ocamlformat.0.24.1
       - run: opam exec -- dune build @fmt
   check-package:
     strategy:
@@ -27,8 +27,8 @@ jobs:
         os:
           - ubuntu-latest
         ocaml-compiler:
-          - 4.07.0
-          - 4.12.0
+          - 4.07.x
+          - 5.0.x
         package:
           - pkcs11
           - pkcs11-cli
@@ -37,8 +37,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Use OCaml ${{ matrix.ocaml-version }}
+        uses: actions/checkout@v3
+      - name: Use OCaml ${{ matrix.ocaml-compiler }}
         uses: ocaml/setup-ocaml@v2
         with:
           ocaml-compiler: ${{ matrix.ocaml-compiler }}

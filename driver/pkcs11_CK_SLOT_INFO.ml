@@ -2,23 +2,15 @@ open Ctypes
 open Ctypes_helpers
 
 type _t
-
 type t = _t structure
 
 let ck_slot_info : t typ = structure "CK_SLOT_INFO"
-
 let ( -: ) ty label = smart_field ck_slot_info label ty
-
 let slotDescription = array 64 Pkcs11_CK_UTF8CHAR.typ -: "slotDescription"
-
 let manufacturerID = array 32 Pkcs11_CK_UTF8CHAR.typ -: "manufacturerID"
-
 let flags = Pkcs11_CK_FLAGS.typ -: "flags"
-
 let hardwareVersion = Pkcs11_CK_VERSION.ck_version -: "hardwareVersion"
-
 let firmwareVersion = Pkcs11_CK_VERSION.ck_version -: "firmwareVersion"
-
 let () = seal ck_slot_info
 
 let view c =

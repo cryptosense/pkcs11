@@ -48,17 +48,11 @@ include Pkcs11_types
     bindings and the indirect style bindings have the same interface. *)
 module type LOW_LEVEL_BINDINGS = sig
   val c_GetFunctionList : CK_FUNCTION_LIST.t ptr ptr -> CK_RV.t
-
   val c_Initialize : CK_VOID.t ptr -> CK_RV.t
-
   val c_Finalize : CK_VOID.t ptr -> CK_RV.t
-
   val c_GetInfo : CK_INFO.t ptr -> CK_RV.t
-
   val c_GetTokenInfo : CK_SLOT_ID.t -> CK_TOKEN_INFO.t ptr -> CK_RV.t
-
   val c_GetSlotList : CK_BYTE.t -> CK_SLOT_ID.t ptr -> CK_ULONG.t ptr -> CK_RV.t
-
   val c_GetSlotInfo : CK_SLOT_ID.t -> CK_SLOT_INFO.t ptr -> CK_RV.t
 
   val c_GetMechanismList :
@@ -94,9 +88,7 @@ module type LOW_LEVEL_BINDINGS = sig
     -> CK_RV.t
 
   val c_CloseSession : CK_SESSION_HANDLE.t -> CK_RV.t
-
   val c_CloseAllSessions : CK_SLOT_ID.t -> CK_RV.t
-
   val c_GetSessionInfo : CK_SESSION_HANDLE.t -> CK_SESSION_INFO.t ptr -> CK_RV.t
 
   val c_GetOperationState :
@@ -370,7 +362,6 @@ module type LOW_LEVEL_BINDINGS = sig
     CK_SESSION_HANDLE.t -> CK_BYTE.t ptr -> CK_ULONG.t -> CK_RV.t
 
   val c_GetFunctionStatus : CK_SESSION_HANDLE.t -> CK_RV.t
-
   val c_CancelFunction : CK_SESSION_HANDLE.t -> CK_RV.t
 
   val c_WaitForSlotEvent :
@@ -397,18 +388,14 @@ end) : LOW_LEVEL_BINDINGS = struct
   module S = CK.Function_list
 
   let c_GetFunctionList = D.c_GetFunctionList
-
   let c_Initialize = declare "C_Initialize" S.c_Initialize CK.T.c_Initialize
-
   let c_Finalize = declare "C_Finalize" S.c_Finalize CK.T.c_Finalize
-
   let c_GetInfo = declare "C_GetInfo" S.c_GetInfo CK.T.c_GetInfo
 
   let c_GetTokenInfo =
     declare "C_GetTokenInfo" S.c_GetTokenInfo CK.T.c_GetTokenInfo
 
   let c_GetSlotList = declare "C_GetSlotList" S.c_GetSlotList CK.T.c_GetSlotList
-
   let c_GetSlotInfo = declare "C_GetSlotInfo" S.c_GetSlotInfo CK.T.c_GetSlotInfo
 
   let c_GetMechanismList =
@@ -418,9 +405,7 @@ end) : LOW_LEVEL_BINDINGS = struct
     declare "C_GetMechanismInfo" S.c_GetMechanismInfo CK.T.c_GetMechanismInfo
 
   let c_InitToken = declare "C_InitToken" S.c_InitToken CK.T.c_InitToken
-
   let c_InitPIN = declare "C_InitPIN" S.c_InitPIN CK.T.c_InitPIN
-
   let c_SetPIN = declare "C_SetPIN" S.c_SetPIN CK.T.c_SetPIN
 
   (******************************************************************************)
@@ -445,7 +430,6 @@ end) : LOW_LEVEL_BINDINGS = struct
     declare "C_SetOperationState" S.c_SetOperationState CK.T.c_SetOperationState
 
   let c_Login = declare "C_Login" S.c_Login CK.T.c_Login
-
   let c_Logout = declare "C_Logout" S.c_Logout CK.T.c_Logout
 
   (******************************************************************************)
@@ -482,7 +466,6 @@ end) : LOW_LEVEL_BINDINGS = struct
   (******************************************************************************)
 
   let c_EncryptInit = declare "C_EncryptInit" S.c_EncryptInit CK.T.c_EncryptInit
-
   let c_Encrypt = declare "C_Encrypt" S.c_Encrypt CK.T.c_Encrypt
 
   let c_EncryptUpdate =
@@ -492,7 +475,6 @@ end) : LOW_LEVEL_BINDINGS = struct
     declare "C_EncryptFinal" S.c_EncryptFinal CK.T.c_EncryptFinal
 
   let c_DecryptInit = declare "C_DecryptInit" S.c_DecryptInit CK.T.c_DecryptInit
-
   let c_Decrypt = declare "C_Decrypt" S.c_Decrypt CK.T.c_Decrypt
 
   let c_DecryptUpdate =
@@ -506,14 +488,12 @@ end) : LOW_LEVEL_BINDINGS = struct
   (******************************************************************************)
 
   let c_DigestInit = declare "C_DigestInit" S.c_DigestInit CK.T.c_DigestInit
-
   let c_Digest = declare "C_Digest" S.c_Digest CK.T.c_Digest
 
   let c_DigestUpdate =
     declare "C_DigestUpdate" S.c_DigestUpdate CK.T.c_DigestUpdate
 
   let c_DigestKey = declare "C_DigestKey" S.c_DigestKey CK.T.c_DigestKey
-
   let c_DigestFinal = declare "C_DigestFinal" S.c_DigestFinal CK.T.c_DigestFinal
 
   (******************************************************************************)
@@ -521,20 +501,15 @@ end) : LOW_LEVEL_BINDINGS = struct
   (******************************************************************************)
 
   let c_SignInit = declare "C_SignInit" S.c_SignInit CK.T.c_SignInit
-
   let c_Sign = declare "C_Sign" S.c_Sign CK.T.c_Sign
-
   let c_SignUpdate = declare "C_SignUpdate" S.c_SignUpdate CK.T.c_SignUpdate
-
   let c_SignFinal = declare "C_SignFinal" S.c_SignFinal CK.T.c_SignFinal
 
   let c_SignRecoverInit =
     declare "C_SignRecoverInit" S.c_SignRecoverInit CK.T.c_SignRecoverInit
 
   let c_SignRecover = declare "C_SignRecover" S.c_SignRecover CK.T.c_SignRecover
-
   let c_VerifyInit = declare "C_VerifyInit" S.c_VerifyInit CK.T.c_VerifyInit
-
   let c_Verify = declare "C_Verify" S.c_Verify CK.T.c_Verify
 
   let c_VerifyUpdate =
@@ -573,11 +548,8 @@ end) : LOW_LEVEL_BINDINGS = struct
     declare "C_GenerateKeyPair" S.c_GenerateKeyPair CK.T.c_GenerateKeyPair
 
   let c_WrapKey = declare "C_WrapKey" S.c_WrapKey CK.T.c_WrapKey
-
   let c_UnwrapKey = declare "C_UnwrapKey" S.c_UnwrapKey CK.T.c_UnwrapKey
-
   let c_DeriveKey = declare "C_DeriveKey" S.c_DeriveKey CK.T.c_DeriveKey
-
   let c_SeedRandom = declare "C_SeedRandom" S.c_SeedRandom CK.T.c_SeedRandom
 
   let c_GenerateRandom =
@@ -595,7 +567,6 @@ end
 
 module type CONFIG = sig
   val log_calls : (string * Format.formatter) option
-
   val library : Dl.library
 end
 
@@ -709,7 +680,6 @@ module Fake (X : sig end) : LOW_LEVEL_BINDINGS = struct
     return
 
   let nimplem = CK_RV._CKR_FUNCTION_NOT_SUPPORTED
-
   let declare _field typ = return nimplem typ
 
   let c_GetFunctionList =
@@ -735,9 +705,7 @@ end
 
 module type LOW_LEVEL_WRAPPER = sig
   val c_Initialize : Nss_initialize_arg.t option -> CK_RV.t
-
   val c_Finalize : unit -> CK_RV.t
-
   val c_GetInfo : unit -> CK_RV.t * P11_info.t
 
   (* 03/24/2015: At the moment, we do not need to use GetFunctionList
@@ -746,18 +714,14 @@ module type LOW_LEVEL_WRAPPER = sig
      it. *)
   (* val c_GetFunctionList : unit -> CK_RV.t * CK_FUNCTION_LIST.t *)
   val c_GetSlotList : bool -> Slot_list.t -> CK_RV.t
-
   val c_GetSlotInfo : slot:CK_SLOT_ID.t -> CK_RV.t * P11_slot_info.t
-
   val c_GetTokenInfo : slot:CK_SLOT_ID.t -> CK_RV.t * P11_token_info.t
-
   val c_GetMechanismList : slot:CK_SLOT_ID.t -> Mechanism_list.t -> CK_RV.t
 
   val c_GetMechanismInfo :
     slot:CK_SLOT_ID.t -> CK_MECHANISM_TYPE.t -> CK_RV.t * P11_mechanism_info.t
 
   val c_InitToken : slot:CK_SLOT_ID.t -> pin:string -> label:string -> CK_RV.t
-
   val c_InitPIN : CK_SESSION_HANDLE.t -> string -> CK_RV.t
 
   val c_SetPIN :
@@ -767,15 +731,12 @@ module type LOW_LEVEL_WRAPPER = sig
     slot:CK_SLOT_ID.t -> flags:CK_FLAGS.t -> CK_RV.t * CK_SESSION_HANDLE.t
 
   val c_CloseSession : CK_SESSION_HANDLE.t -> CK_RV.t
-
   val c_CloseAllSessions : slot:CK_SLOT_ID.t -> CK_RV.t
-
   val c_GetSessionInfo : CK_SESSION_HANDLE.t -> CK_RV.t * P11_session_info.t
 
   (* val c_GetOperation_state *)
   (* val c_SetOperation_state *)
   val c_Login : CK_SESSION_HANDLE.t -> CK_USER_TYPE.t -> string -> CK_RV.t
-
   val c_Logout : CK_SESSION_HANDLE.t -> CK_RV.t
 
   val c_CreateObject :
@@ -807,37 +768,26 @@ module type LOW_LEVEL_WRAPPER = sig
     CK_SESSION_HANDLE.t -> CK_MECHANISM.t -> CK_OBJECT_HANDLE.t -> CK_RV.t
 
   val c_Encrypt : CK_SESSION_HANDLE.t -> src:Data.t -> tgt:Data.t -> CK_RV.t
-
   val c_EncryptUpdate : CK_SESSION_HANDLE.t -> Data.t -> Data.t -> CK_RV.t
-
   val c_EncryptFinal : CK_SESSION_HANDLE.t -> Data.t -> CK_RV.t
 
   val c_DecryptInit :
     CK_SESSION_HANDLE.t -> CK_MECHANISM.t -> CK_OBJECT_HANDLE.t -> CK_RV.t
 
   val c_Decrypt : CK_SESSION_HANDLE.t -> src:Data.t -> tgt:Data.t -> CK_RV.t
-
   val c_DecryptUpdate : CK_SESSION_HANDLE.t -> Data.t -> Data.t -> CK_RV.t
-
   val c_DecryptFinal : CK_SESSION_HANDLE.t -> Data.t -> CK_RV.t
-
   val c_DigestInit : CK_SESSION_HANDLE.t -> CK_MECHANISM.t -> CK_RV.t
-
   val c_Digest : CK_SESSION_HANDLE.t -> Data.t -> Data.t -> CK_RV.t
-
   val c_DigestUpdate : CK_SESSION_HANDLE.t -> Data.t -> CK_RV.t
-
   val c_DigestKey : CK_SESSION_HANDLE.t -> CK_OBJECT_HANDLE.t -> CK_RV.t
-
   val c_DigestFinal : CK_SESSION_HANDLE.t -> Data.t -> CK_RV.t
 
   val c_SignInit :
     CK_SESSION_HANDLE.t -> CK_MECHANISM.t -> CK_OBJECT_HANDLE.t -> CK_RV.t
 
   val c_Sign : CK_SESSION_HANDLE.t -> src:Data.t -> tgt:Data.t -> CK_RV.t
-
   val c_SignUpdate : CK_SESSION_HANDLE.t -> Data.t -> CK_RV.t
-
   val c_SignFinal : CK_SESSION_HANDLE.t -> Data.t -> CK_RV.t
 
   val c_SignRecoverInit :
@@ -852,7 +802,6 @@ module type LOW_LEVEL_WRAPPER = sig
     CK_SESSION_HANDLE.t -> signed:Data.t -> signature:Data.t -> CK_RV.t
 
   val c_VerifyUpdate : CK_SESSION_HANDLE.t -> Data.t -> CK_RV.t
-
   val c_VerifyFinal : CK_SESSION_HANDLE.t -> Data.t -> CK_RV.t
 
   val c_VerifyRecoverInit :
@@ -1422,7 +1371,6 @@ let load_driver
   else
     let module M : CONFIG = struct
       let log_calls = log_calls
-
       let library = Dl.dlopen ~filename ~flags:[Dl.RTLD_LAZY]
     end in
     match load_mode with

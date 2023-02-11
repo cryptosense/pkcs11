@@ -6,11 +6,8 @@ val get : t -> 'a P11_attribute_type.t -> 'a option
 (** Return the value of the first occurrence of an attribute. *)
 
 val get_pack : t -> P11_attribute_type.pack -> P11_attribute.pack option
-
 val mem : P11_attribute.pack -> t -> bool
-
 val normalize : t -> t
-
 val attribute_types : t -> P11_attribute_type.pack list
 
 val set_attribute : P11_attribute.pack -> t -> t
@@ -76,7 +73,5 @@ val hash : t -> Digest.t
 (** {2 Accessors }  *)
 
 val get_class : t -> P11_object_class.t option
-
 val get_key_type : t -> P11_key_type.t option
-
 val get_label : t -> string option

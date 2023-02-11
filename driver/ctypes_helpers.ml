@@ -40,9 +40,7 @@ end = struct
     Ctypes.setf s f v
 
   let setf_direct = setf
-
   let getf = Ctypes.getf
-
   let is_null = Ctypes.is_null
 end
 

@@ -1,25 +1,15 @@
 type 'a t = 'a P11_attribute_type.t * 'a
-
 type pack = Pack : 'a t -> pack [@@deriving eq, ord, show, yojson]
 
 val to_string : 'a t -> string
-
 val to_string_pair : 'a t -> string * string
-
 val to_json : 'a t -> Yojson.Safe.t
-
 val compare_types : 'a t -> 'b t -> int
-
 val compare_types_pack : pack -> pack -> int
-
 val compare : 'a t -> 'b t -> int
-
 val equal : 'a t -> 'b t -> bool
-
 val equal_types_pack : pack -> pack -> bool
-
 val equal_values : 'a P11_attribute_type.t -> 'a -> 'a -> bool
-
 val type_ : pack -> P11_attribute_type.pack
 
 type _ repr =

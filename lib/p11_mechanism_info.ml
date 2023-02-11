@@ -10,7 +10,6 @@ let allowed_flags =
   List.fold_left P11_flags.logical_or P11_flags.empty flags
 
 let flags_to_string = P11_flags.(to_pretty_string Mechanism_info_domain)
-
 let flags_to_strings = P11_flags.(to_pretty_strings Mechanism_info_domain)
 
 let to_strings info =

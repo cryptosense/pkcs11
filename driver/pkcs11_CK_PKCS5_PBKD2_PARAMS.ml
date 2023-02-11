@@ -2,32 +2,22 @@ open Ctypes
 open Ctypes_helpers
 
 type _t
-
 type t = _t structure
 
 let t : t typ = structure "CK_PKCS5_PBKD2_DATA_PARAMS"
-
 let ( -: ) typ label = smart_field t label typ
 
 let saltSource =
   Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE.typ -: "saltSource"
 
 let pSaltSourceData = Reachable_ptr.typ void -: "pSaltSourceData"
-
 let ulSaltSourceDataLen = ulong -: "ulSaltSourceDataLen"
-
 let iterations = ulong -: "iterations"
-
 let prf = Pkcs11_CK_PKCS5_PBKD2_PSEUDO_RANDOM_FUNCTION_TYPE.typ -: "prf"
-
 let pPrfData = Reachable_ptr.typ void -: "pPrfData"
-
 let ulPrfDataLen = ulong -: "ulPrfDataLen"
-
 let pPassword = Reachable_ptr.typ char -: "pPassword"
-
 let pPasswordLen = Reachable_ptr.typ ulong -: "pPasswordLen"
-
 let () = seal t
 
 let make u =
