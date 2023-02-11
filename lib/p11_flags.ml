@@ -1,19 +1,12 @@
 type t = Unsigned.ULong.t [@@deriving ord]
 
 let equal = Stdlib.( = )
-
 let show = Unsigned.ULong.to_string
-
 let pp fmt n = Format.pp_print_string fmt (show n)
-
 let ( ! ) x = Unsigned.ULong.of_string (Int64.to_string x)
-
 let empty = Unsigned.ULong.zero
-
 let logical_or = Unsigned.ULong.logor
-
 let ( || ) = logical_or
-
 let logical_and = Unsigned.ULong.logand
 
 let get ~(flags : t) ~(flag : t) : bool =
@@ -32,51 +25,31 @@ type domain =
 
 (* CK_SLOT_INFO *)
 let _CKF_TOKEN_PRESENT = !0x00000001L
-
 let _CKF_REMOVABLE_DEVICE = !0x00000002L
-
 let _CKF_HW_SLOT = !0x00000004L
 
 (* CK_TOKEN_INFO *)
 let _CKF_RNG = !0x00000001L
-
 let _CKF_WRITE_PROTECTED = !0x00000002L
-
 let _CKF_LOGIN_REQUIRED = !0x00000004L
-
 let _CKF_USER_PIN_INITIALIZED = !0x00000008L
-
 let _CKF_RESTORE_KEY_NOT_NEEDED = !0x00000020L
-
 let _CKF_CLOCK_ON_TOKEN = !0x00000040L
-
 let _CKF_PROTECTED_AUTHENTICATION_PATH = !0x00000100L
-
 let _CKF_DUAL_CRYPTO_OPERATIONS = !0x00000200L
-
 let _CKF_TOKEN_INITIALIZED = !0x00000400L
-
 let _CKF_SECONDARY_AUTHENTICATION = !0x00000800L
-
 let _CKF_USER_PIN_COUNT_LOW = !0x00010000L
-
 let _CKF_USER_PIN_FINAL_TRY = !0x00020000L
-
 let _CKF_USER_PIN_LOCKED = !0x00040000L
-
 let _CKF_USER_PIN_TO_BE_CHANGED = !0x00080000L
-
 let _CKF_SO_PIN_COUNT_LOW = !0x00100000L
-
 let _CKF_SO_PIN_FINAL_TRY = !0x00200000L
-
 let _CKF_SO_PIN_LOCKED = !0x00400000L
-
 let _CKF_SO_PIN_TO_BE_CHANGED = !0x00800000L
 
 (* CK_SESSION_INFO *)
 let _CKF_RW_SESSION = !0x00000002L
-
 let _CKF_SERIAL_SESSION = !0x00000004L
 
 (* The following flag is actually a bit which is present in CKA values
@@ -85,48 +58,28 @@ let _CKF_ARRAY_ATTRIBUTE = !0x40000000L
 
 (* CK_MECHANISM_INFO *)
 let _CKF_HW = !0x00000001L
-
 let _CKF_ENCRYPT = !0x00000100L
-
 let _CKF_DECRYPT = !0x00000200L
-
 let _CKF_DIGEST = !0x00000400L
-
 let _CKF_SIGN = !0x00000800L
-
 let _CKF_SIGN_RECOVER = !0x00001000L
-
 let _CKF_VERIFY = !0x00002000L
-
 let _CKF_VERIFY_RECOVER = !0x00004000L
-
 let _CKF_GENERATE = !0x00008000L
-
 let _CKF_GENERATE_KEY_PAIR = !0x00010000L
-
 let _CKF_WRAP = !0x00020000L
-
 let _CKF_UNWRAP = !0x00040000L
-
 let _CKF_DERIVE = !0x00080000L
-
 let _CKF_EC_F_P = !0x00100000L
-
 let _CKF_EC_F_2M = !0x00200000L
-
 let _CKF_EC_ECPARAMETERS = !0x00400000L
-
 let _CKF_EC_NAMEDCURVE = !0x00800000L
-
 let _CKF_EC_UNCOMPRESS = !0x01000000L
-
 let _CKF_EC_COMPRESS = !0x02000000L
-
 let _CKF_EXTENSION = !0x80000000L
 
 (* C_Initialize *)
 let _CKF_LIBRARY_CANT_CREATE_OS_THREADS = !0x00000001L
-
 let _CKF_OS_LOCKING_OK = !0x00000002L
 
 (* C_WaitForSlotEvent *)
@@ -134,19 +87,12 @@ let _CKF_DONT_BLOCK = !0x00000001L
 
 (* CK_OTP_SIGNATURE_INFO *)
 let _CKF_NEXT_OTP = !0x00000001L
-
 let _CKF_EXCLUDE_TIME = !0x00000002L
-
 let _CKF_EXCLUDE_COUNTER = !0x00000004L
-
 let _CKF_EXCLUDE_CHALLENGE = !0x00000008L
-
 let _CKF_EXCLUDE_PIN = !0x00000010L
-
 let _CKF_USER_FRIENDLY_OTP = !0x00000020L
-
 let to_string = Unsigned.ULong.to_string
-
 let of_string = Unsigned.ULong.of_string
 
 let to_json ?pretty (flags : t) =

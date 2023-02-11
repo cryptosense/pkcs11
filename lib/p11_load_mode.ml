@@ -4,5 +4,4 @@ type t =
 [@@deriving eq, ord, show, yojson]
 
 let auto = Auto
-
 let ffi = FFI

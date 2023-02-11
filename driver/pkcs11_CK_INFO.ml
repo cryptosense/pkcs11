@@ -2,23 +2,15 @@ open Ctypes
 open Ctypes_helpers
 
 type _t
-
 type t = _t structure
 
 let ck_info : t typ = structure "CK_INFO"
-
 let ( -: ) ty label = smart_field ck_info label ty
-
 let cryptoki_version = Pkcs11_CK_VERSION.ck_version -: "cryptokiVersion"
-
 let manufacturer_id = array 32 char -: "manufacturerID"
-
 let flags = ulong -: "flags"
-
 let library_description = array 32 char -: "libraryDescription"
-
 let library_version = Pkcs11_CK_VERSION.ck_version -: "libraryVersion"
-
 let () = seal ck_info
 
 let view c =

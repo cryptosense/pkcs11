@@ -1,13 +1,9 @@
 type t = P11_ulong.t
 
 let view_error n = Pkcs11_log.log @@ Printf.sprintf "Unknown CKU code: 0x%Lx" n
-
 let typ = Ctypes.ulong
-
 let _CKU_SO = Unsigned.ULong.of_string (Int64.to_string 0L)
-
 let _CKU_USER = Unsigned.ULong.of_string (Int64.to_string 1L)
-
 let _CKU_CONTEXT_SPECIFIC = Unsigned.ULong.of_string (Int64.to_string 2L)
 
 let make u =

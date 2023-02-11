@@ -9,44 +9,27 @@ let () =
 
 module type S = sig
   val initialize : unit -> unit
-
   val initialize_nss : params:Pkcs11.Nss_initialize_arg.u -> unit
-
   val finalize : unit -> unit
-
   val get_info : unit -> Info.t
-
   val get_slot : Slot.t -> (Slot_id.t, string) result
-
   val get_slot_list : bool -> Slot_id.t list
-
   val get_slot_info : slot:Slot_id.t -> Slot_info.t
-
   val get_token_info : slot:Slot_id.t -> Token_info.t
-
   val get_mechanism_list : slot:Slot_id.t -> Mechanism_type.t list
 
   val get_mechanism_info :
     slot:Slot_id.t -> Mechanism_type.t -> Mechanism_info.t
 
   val init_token : slot:Slot_id.t -> pin:string -> label:string -> unit
-
   val init_PIN : Session_handle.t -> pin:string -> unit
-
   val set_PIN : Session_handle.t -> oldpin:string -> newpin:string -> unit
-
   val open_session : slot:Slot_id.t -> flags:Flags.t -> Session_handle.t
-
   val close_session : Session_handle.t -> unit
-
   val close_all_sessions : slot:Slot_id.t -> unit
-
   val get_session_info : Session_handle.t -> Session_info.t
-
   val login : Session_handle.t -> User_type.t -> string -> unit
-
   val logout : Session_handle.t -> unit
-
   val create_object : Session_handle.t -> Template.t -> Object_handle.t
 
   val copy_object :
@@ -79,7 +62,6 @@ module type S = sig
     Session_handle.t -> Mechanism.t -> Object_handle.t -> unit
 
   val multipart_encrypt_chunck : Session_handle.t -> Data.t -> Data.t
-
   val multipart_encrypt_final : Session_handle.t -> Data.t
 
   val multipart_encrypt :
@@ -92,7 +74,6 @@ module type S = sig
     Session_handle.t -> Mechanism.t -> Object_handle.t -> unit
 
   val multipart_decrypt_chunck : Session_handle.t -> Data.t -> Data.t
-
   val multipart_decrypt_final : Session_handle.t -> Data.t
 
   val multipart_decrypt :
@@ -108,7 +89,6 @@ module type S = sig
     Session_handle.t -> Mechanism.t -> Object_handle.t -> unit
 
   val multipart_sign_chunck : Session_handle.t -> Data.t -> unit
-
   val multipart_sign_final : Session_handle.t -> Data.t
 
   val multipart_sign :
@@ -133,7 +113,6 @@ module type S = sig
     Session_handle.t -> Mechanism.t -> Object_handle.t -> unit
 
   val multipart_verify_chunck : Session_handle.t -> Data.t -> unit
-
   val multipart_verify_final : Session_handle.t -> Data.t -> unit
 
   val multipart_verify :
@@ -186,7 +165,6 @@ module Wrap_low_level_bindings (X : Pkcs11.LOW_LEVEL_BINDINGS) = struct
   type 'a t = 'a
 
   let return x = x
-
   let ( >>= ) x f = f x
 
   let check_ckr rv x =
@@ -741,114 +719,62 @@ end
 type t = (module S)
 
 let initialize (module S : S) = S.initialize ()
-
 let initialize_nss (module S : S) = S.initialize_nss
-
 let finalize (module S : S) = S.finalize ()
-
 let get_info (module S : S) = S.get_info ()
-
 let get_slot (module S : S) = S.get_slot
-
 let get_slot_list (module S : S) = S.get_slot_list
-
 let get_slot_info (module S : S) = S.get_slot_info
-
 let get_token_info (module S : S) = S.get_token_info
-
 let get_mechanism_list (module S : S) = S.get_mechanism_list
-
 let get_mechanism_info (module S : S) = S.get_mechanism_info
-
 let init_token (module S : S) = S.init_token
-
 let init_PIN (module S : S) = S.init_PIN
-
 let set_PIN (module S : S) = S.set_PIN
-
 let open_session (module S : S) = S.open_session
-
 let close_session (module S : S) = S.close_session
-
 let close_all_sessions (module S : S) = S.close_all_sessions
-
 let get_session_info (module S : S) = S.get_session_info
-
 let login (module S : S) = S.login
-
 let logout (module S : S) = S.logout
-
 let create_object (module S : S) = S.create_object
-
 let copy_object (module S : S) = S.copy_object
-
 let destroy_object (module S : S) = S.destroy_object
-
 let get_attribute_value (module S : S) = S.get_attribute_value
-
 let get_attribute_value' (module S : S) = S.get_attribute_value'
 
 let get_attribute_value_optimized (module S : S) =
   S.get_attribute_value_optimized
 
 let set_attribute_value (module S : S) = S.set_attribute_value
-
 let find_objects (module S : S) = S.find_objects
-
 let encrypt (module S : S) = S.encrypt
-
 let multipart_encrypt_init (module S : S) = S.multipart_encrypt_init
-
 let multipart_encrypt_chunck (module S : S) = S.multipart_encrypt_chunck
-
 let multipart_encrypt_final (module S : S) = S.multipart_encrypt_final
-
 let multipart_encrypt (module S : S) = S.multipart_encrypt
-
 let decrypt (module S : S) = S.decrypt
-
 let multipart_decrypt_init (module S : S) = S.multipart_decrypt_init
-
 let multipart_decrypt_chunck (module S : S) = S.multipart_decrypt_chunck
-
 let multipart_decrypt_final (module S : S) = S.multipart_decrypt_final
-
 let multipart_decrypt (module S : S) = S.multipart_decrypt
-
 let sign (module S : S) = S.sign
-
 let sign_recover (module S : S) = S.sign_recover
-
 let multipart_sign_init (module S : S) = S.multipart_sign_init
-
 let multipart_sign_chunck (module S : S) = S.multipart_sign_chunck
-
 let multipart_sign_final (module S : S) = S.multipart_sign_final
-
 let multipart_sign (module S : S) = S.multipart_sign
-
 let verify (module S : S) = S.verify
-
 let verify_recover (module S : S) = S.verify_recover
-
 let multipart_verify_init (module S : S) = S.multipart_verify_init
-
 let multipart_verify_chunck (module S : S) = S.multipart_verify_chunck
-
 let multipart_verify_final (module S : S) = S.multipart_verify_final
-
 let multipart_verify (module S : S) = S.multipart_verify
-
 let generate_key (module S : S) = S.generate_key
-
 let generate_key_pair (module S : S) = S.generate_key_pair
-
 let wrap_key (module S : S) = S.wrap_key
-
 let unwrap_key (module S : S) = S.unwrap_key
-
 let derive_key (module S : S) = S.derive_key
-
 let digest (module S : S) = S.digest
 
 let load_driver ?log_calls ?on_unknown ?load_mode dll =

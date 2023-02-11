@@ -2,44 +2,27 @@ open Ctypes
 open Ctypes_helpers
 
 type _t
-
 type t = _t structure
 
 let ck_token_info : t typ = structure "CK_TOKEN_INFO"
-
 let ( -: ) ty label = smart_field ck_token_info label ty
-
 let label = array 32 Pkcs11_CK_UTF8CHAR.typ -: "label" (* blank padded *)
-
 let manufacturerID = array 32 Pkcs11_CK_UTF8CHAR.typ -: "manufacturerID"
 (* blank padded *)
 
 let model = array 16 Pkcs11_CK_UTF8CHAR.typ -: "model" (* blank padded *)
-
 let serialNumber = array 16 char -: "serialNumber" (* blank padded *)
-
 let flags = Pkcs11_CK_FLAGS.typ -: "flags"
-
 let ulMaxSessionCount = ulong -: "ulMaxSessionCount" (* max open sessions *)
-
 let ulSessionCount = ulong -: "ulSessionCount" (* sess. now open *)
-
 let ulMaxRwSessionCount = ulong -: "ulMaxRwSessionCount" (* max R/W sessions *)
-
 let ulRwSessionCount = ulong -: "ulRwSessionCount" (* R/W sess. now open *)
-
 let ulMaxPinLen = ulong -: "ulMaxPinLen" (* in bytes *)
-
 let ulMinPinLen = ulong -: "ulMinPinLen" (* in bytes *)
-
 let ulTotalPublicMemory = ulong -: "ulTotalPublicMemory" (* in bytes *)
-
 let ulFreePublicMemory = ulong -: "ulFreePublicMemory" (* in bytes *)
-
 let ulTotalPrivateMemory = ulong -: "ulTotalPrivateMemory" (* in bytes *)
-
 let ulFreePrivateMemory = ulong -: "ulFreePrivateMemory" (* in bytes *)
-
 let hardwareVersion = Pkcs11_CK_VERSION.ck_version -: "hardwareVersion"
 (* version of hardware *)
 
@@ -47,7 +30,6 @@ let firmwareVersion = Pkcs11_CK_VERSION.ck_version -: "firmwareVersion"
 (* version of firmware *)
 
 let utcTime = array 16 char -: "utcTime" (* time *)
-
 let () = seal ck_token_info
 
 let view c =

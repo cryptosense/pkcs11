@@ -20,9 +20,6 @@ val allocate : t -> unit
 type u = Pkcs11_CK_SLOT_ID.t list
 
 val make : u -> t
-
 val view : t -> u
-
 val get_content : t -> Pkcs11_CK_SLOT_ID.t Ctypes.ptr
-
 val get_length_addr : t -> P11_ulong.t Ctypes.ptr

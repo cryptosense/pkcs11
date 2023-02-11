@@ -4,27 +4,18 @@ open Ctypes_helpers
 type source_type = P11_ulong.t
 
 let source_type : source_type typ = ulong
-
 let _CKZ_DATA_SPECIFIED : source_type = Unsigned.ULong.of_int 0x00000001
 
 type _t
-
 type t = _t structure
 
 let t : t typ = structure "CK_RSA_PKCS_OAEP_PARAMS"
-
 let ( -: ) ty label = smart_field t label ty
-
 let hashAlg = Pkcs11_CK_MECHANISM_TYPE.typ -: "hashAlg"
-
 let mgf = Pkcs11_CK_RSA_PKCS_MGF_TYPE.typ -: "mgf"
-
 let source = source_type -: "source"
-
 let pSourceData = Reachable_ptr.typ void -: "pSourceData"
-
 let pSourceDataLen = ulong -: "pSourceDataLen"
-
 let () = seal t
 
 let make params =

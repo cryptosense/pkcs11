@@ -70,11 +70,8 @@ end
 
 module Term = struct
   let slot_index = Cmdliner.Arg.value Arg.slot_index
-
   let slot_id = Cmdliner.Arg.value Arg.slot_id
-
   let slot_description = Cmdliner.Arg.value Arg.slot_description
-
   let token_label = Cmdliner.Arg.value Arg.token_label
 
   let slot index id descr label =
@@ -100,8 +97,6 @@ module Term = struct
     ret (const slot $ slot_index $ slot_id $ slot_description $ token_label)
 
   let pin = Cmdliner.Arg.value Arg.pin
-
   let load_mode = Cmdliner.Arg.value Arg.load_mode
-
   let user_type = Cmdliner.Arg.value Arg.user_type
 end

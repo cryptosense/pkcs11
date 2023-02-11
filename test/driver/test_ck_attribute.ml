@@ -2,19 +2,12 @@ open OUnit2
 
 module F = struct
   let object_class = P11_object_class.CKO_SECRET_KEY
-
   let key_type = P11_key_type.CKK_AES
-
   let bool = true
-
   let string = "string"
-
   let bigint = P11_bigint.of_int 65537
-
   let ulong = Unsigned.ULong.zero
-
   let key_gen_mechanism = P11_key_gen_mechanism.CK_UNAVAILABLE_INFORMATION
-
   let unknown_ckm = Unsigned.ULong.of_int 0x5555
 end
 

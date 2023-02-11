@@ -168,203 +168,104 @@ let of_string = function
 
 module Encoding = struct
   let ( ! ) x = Unsigned.ULong.of_string (Int64.to_string x)
-
   let ckf_ARRAY_ATTRIBUTE = 0x40000000L
-
   let _CKA_CLASS = !0x00000000L
-
   let _CKA_TOKEN = !0x00000001L
-
   let _CKA_PRIVATE = !0x00000002L
-
   let _CKA_LABEL = !0x00000003L
-
   let _CKA_APPLICATION = !0x00000010L
-
   let _CKA_VALUE = !0x00000011L
-
   let _CKA_OBJECT_ID = !0x00000012L
-
   let _CKA_CERTIFICATE_TYPE = !0x00000080L
-
   let _CKA_ISSUER = !0x00000081L
-
   let _CKA_SERIAL_NUMBER = !0x00000082L
-
   let _CKA_AC_ISSUER = !0x00000083L
-
   let _CKA_OWNER = !0x00000084L
-
   let _CKA_ATTR_TYPES = !0x00000085L
-
   let _CKA_TRUSTED = !0x00000086L
-
   let _CKA_CERTIFICATE_CATEGORY = !0x00000087L
-
   let _CKA_JAVA_MIDP_SECURITY_DOMAIN = !0x00000088L
-
   let _CKA_URL = !0x00000089L
-
   let _CKA_HASH_OF_SUBJECT_PUBLIC_KEY = !0x0000008AL
-
   let _CKA_HASH_OF_ISSUER_PUBLIC_KEY = !0x0000008BL
-
   let _CKA_CHECK_VALUE = !0x00000090L
-
   let _CKA_KEY_TYPE = !0x00000100L
-
   let _CKA_SUBJECT = !0x00000101L
-
   let _CKA_ID = !0x00000102L
-
   let _CKA_SENSITIVE = !0x00000103L
-
   let _CKA_ENCRYPT = !0x00000104L
-
   let _CKA_DECRYPT = !0x00000105L
-
   let _CKA_WRAP = !0x00000106L
-
   let _CKA_UNWRAP = !0x00000107L
-
   let _CKA_SIGN = !0x00000108L
-
   let _CKA_SIGN_RECOVER = !0x00000109L
-
   let _CKA_VERIFY = !0x0000010AL
-
   let _CKA_VERIFY_RECOVER = !0x0000010BL
-
   let _CKA_DERIVE = !0x0000010CL
-
   let _CKA_START_DATE = !0x00000110L
-
   let _CKA_END_DATE = !0x00000111L
-
   let _CKA_MODULUS = !0x00000120L
-
   let _CKA_MODULUS_BITS = !0x00000121L
-
   let _CKA_PUBLIC_EXPONENT = !0x00000122L
-
   let _CKA_PRIVATE_EXPONENT = !0x00000123L
-
   let _CKA_PRIME_1 = !0x00000124L
-
   let _CKA_PRIME_2 = !0x00000125L
-
   let _CKA_EXPONENT_1 = !0x00000126L
-
   let _CKA_EXPONENT_2 = !0x00000127L
-
   let _CKA_COEFFICIENT = !0x00000128L
-
   let _CKA_PRIME = !0x00000130L
-
   let _CKA_SUBPRIME = !0x00000131L
-
   let _CKA_BASE = !0x00000132L
-
   let _CKA_PRIME_BITS = !0x00000133L
-
   let _CKA_SUBPRIME_BITS = !0x00000134L
-
   let _CKA_VALUE_BITS = !0x00000160L
-
   let _CKA_VALUE_LEN = !0x00000161L
-
   let _CKA_EXTRACTABLE = !0x00000162L
-
   let _CKA_LOCAL = !0x00000163L
-
   let _CKA_NEVER_EXTRACTABLE = !0x00000164L
-
   let _CKA_ALWAYS_SENSITIVE = !0x00000165L
-
   let _CKA_KEY_GEN_MECHANISM = !0x00000166L
-
   let _CKA_MODIFIABLE = !0x00000170L
-
   let _CKA_EC_PARAMS = !0x00000180L
-
   let _CKA_EC_POINT = !0x00000181L
-
   let _CKA_SECONDARY_AUTH = !0x00000200L
-
   let _CKA_AUTH_PIN_FLAGS = !0x00000201L
-
   let _CKA_ALWAYS_AUTHENTICATE = !0x00000202L
-
   let _CKA_WRAP_WITH_TRUSTED = !0x00000210L
-
   let _CKA_WRAP_TEMPLATE = !(Int64.logor ckf_ARRAY_ATTRIBUTE 0x00000211L)
-
   let _CKA_UNWRAP_TEMPLATE = !(Int64.logor ckf_ARRAY_ATTRIBUTE 0x00000212L)
-
   let _CKA_OTP_FORMAT = !0x00000220L
-
   let _CKA_OTP_LENGTH = !0x00000221L
-
   let _CKA_OTP_TIME_INTERVAL = !0x00000222L
-
   let _CKA_OTP_USER_FRIENDLY_MODE = !0x00000223L
-
   let _CKA_OTP_CHALLENGE_REQUIREMENT = !0x00000224L
-
   let _CKA_OTP_TIME_REQUIREMENT = !0x00000225L
-
   let _CKA_OTP_COUNTER_REQUIREMENT = !0x00000226L
-
   let _CKA_OTP_PIN_REQUIREMENT = !0x00000227L
-
   let _CKA_OTP_COUNTER = !0x0000022EL
-
   let _CKA_OTP_TIME = !0x0000022FL
-
   let _CKA_OTP_USER_IDENTIFIER = !0x0000022AL
-
   let _CKA_OTP_SERVICE_IDENTIFIER = !0x0000022BL
-
   let _CKA_OTP_SERVICE_LOGO = !0x0000022CL
-
   let _CKA_OTP_SERVICE_LOGO_TYPE = !0x0000022DL
-
   let _CKA_HW_FEATURE_TYPE = !0x00000300L
-
   let _CKA_RESET_ON_INIT = !0x00000301L
-
   let _CKA_HAS_RESET = !0x00000302L
-
   let _CKA_PIXEL_X = !0x00000400L
-
   let _CKA_PIXEL_Y = !0x00000401L
-
   let _CKA_RESOLUTION = !0x00000402L
-
   let _CKA_CHAR_ROWS = !0x00000403L
-
   let _CKA_CHAR_COLUMNS = !0x00000404L
-
   let _CKA_COLOR = !0x00000405L
-
   let _CKA_BITS_PER_PIXEL = !0x00000406L
-
   let _CKA_CHAR_SETS = !0x00000480L
-
   let _CKA_ENCODING_METHODS = !0x00000481L
-
   let _CKA_MIME_TYPES = !0x00000482L
-
   let _CKA_MECHANISM_TYPE = !0x00000500L
-
   let _CKA_REQUIRED_CMS_ATTRIBUTES = !0x00000501L
-
   let _CKA_DEFAULT_CMS_ATTRIBUTES = !0x00000502L
-
   let _CKA_SUPPORTED_CMS_ATTRIBUTES = !0x00000503L
-
   let _CKA_ALLOWED_MECHANISMS = !(Int64.logor ckf_ARRAY_ATTRIBUTE 0x00000600L)
-
   let _CKA_VENDOR_DEFINED = !0x80000000L
 
   let make (type s) (x : s t) : Unsigned.ULong.t =
@@ -549,13 +450,9 @@ let compare' : type a b. a t -> b t -> (a, b) comparison =
     | (CKA_CS_UNKNOWN _, _) -> assert false
 
 let compare_pack (Pack a) (Pack b) = compare a b
-
 let equal a b = compare a b = 0
-
 let equal_pack a b = compare_pack a b = 0
-
 let show_pack (Pack attribute) = to_string attribute
-
 let pp_pack fmt pack = Format.pp_print_string fmt (show_pack pack)
 
 let to_json attribute =
@@ -563,7 +460,6 @@ let to_json attribute =
   | Invalid_argument _ -> `Null
 
 let pack_to_json (Pack attribute) = to_json attribute
-
 let pack_to_yojson = pack_to_json
 
 let pack_of_yojson =

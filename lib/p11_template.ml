@@ -142,11 +142,7 @@ let diff ~source ~tested =
     empty source
 
 let to_string t = to_yojson t |> Yojson.Safe.to_string
-
 let hash t = normalize t |> to_string |> Digest.string
-
 let get_class t = get t P11_attribute_type.CKA_CLASS
-
 let get_key_type t = get t P11_attribute_type.CKA_KEY_TYPE
-
 let get_label t = get t P11_attribute_type.CKA_LABEL

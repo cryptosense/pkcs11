@@ -6,5 +6,4 @@ type t =
 [@@deriving eq, ord, show, yojson]
 
 val to_string : t -> string
-
 val of_string : string -> t

@@ -32,19 +32,13 @@ open Ctypes
 open Ctypes_helpers
 
 type _t
-
 type t = _t structure
 
 let ck_attribute : _t structure typ = structure "CK_ATTRIBUTE"
-
 let ( -: ) ty label = smart_field ck_attribute label ty
-
 let _type = Pkcs11_CK_ATTRIBUTE_TYPE.typ -: "type"
-
 let pValue = Reachable_ptr.typ void -: "pValue"
-
 let ulValueLen = ulong -: "ulValueLen"
-
 let () = seal ck_attribute
 
 type 'a u = 'a P11_attribute_type.t * 'a
@@ -69,11 +63,8 @@ let allocate (t : t) : unit =
   ()
 
 let get_type t = getf t _type
-
 let get_length t = Unsigned.ULong.to_int (getf t ulValueLen)
-
 let pvalue_is_null_ptr t = is_null (Reachable_ptr.getf t pValue)
-
 let unsafe_get_value typ t = from_voidp typ (Reachable_ptr.getf t pValue)
 
 let ck_true : Pkcs11_CK_BBOOL.t ptr =
@@ -147,7 +138,6 @@ let unsafe_get_ulong t =
   !@p
 
 let unsafe_get_object_class : t -> Pkcs11_CK_OBJECT_CLASS.t = unsafe_get_ulong
-
 let unsafe_get_key_type : t -> Pkcs11_CK_KEY_TYPE.t = unsafe_get_ulong
 
 let repr_view (type a) t : a P11_attribute.repr -> a =
@@ -191,15 +181,9 @@ let make (type s) ((at, param) : s u) =
   repr_make (Pkcs11_CK_ATTRIBUTE_TYPE.make at) param (P11_attribute.repr at)
 
 let make_pack (P11_attribute.Pack x) = make x
-
 let compare_types = P11_attribute.compare_types
-
 let compare_types_pack = P11_attribute.compare_types_pack
-
 let compare = P11_attribute.compare
-
 let compare_pack = P11_attribute.compare_pack
-
 let equal = P11_attribute.equal
-
 let equal_pack = P11_attribute.equal_pack

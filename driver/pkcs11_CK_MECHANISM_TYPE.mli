@@ -2,525 +2,264 @@
 type t = P11_ulong.t [@@deriving eq, ord, show]
 
 val _CKM_RSA_PKCS_KEY_PAIR_GEN : t
-
 val _CKM_RSA_PKCS : t
-
 val _CKM_RSA_9796 : t
-
 val _CKM_RSA_X_509 : t
-
 val _CKM_MD2_RSA_PKCS : t
-
 val _CKM_MD5_RSA_PKCS : t
-
 val _CKM_SHA1_RSA_PKCS : t
-
 val _CKM_RIPEMD128_RSA_PKCS : t
-
 val _CKM_RIPEMD160_RSA_PKCS : t
-
 val _CKM_RSA_PKCS_OAEP : t
-
 val _CKM_RSA_X9_31_KEY_PAIR_GEN : t
-
 val _CKM_RSA_X9_31 : t
-
 val _CKM_SHA1_RSA_X9_31 : t
-
 val _CKM_RSA_PKCS_PSS : t
-
 val _CKM_SHA1_RSA_PKCS_PSS : t
-
 val _CKM_DSA_KEY_PAIR_GEN : t
-
 val _CKM_DSA : t
-
 val _CKM_DSA_SHA1 : t
-
 val _CKM_DSA_SHA224 : t
-
 val _CKM_DSA_SHA256 : t
-
 val _CKM_DSA_SHA384 : t
-
 val _CKM_DSA_SHA512 : t
-
 val _CKM_DH_PKCS_KEY_PAIR_GEN : t
-
 val _CKM_DH_PKCS_DERIVE : t
-
 val _CKM_X9_42_DH_KEY_PAIR_GEN : t
-
 val _CKM_X9_42_DH_DERIVE : t
-
 val _CKM_X9_42_DH_HYBRID_DERIVE : t
-
 val _CKM_X9_42_MQV_DERIVE : t
-
 val _CKM_SHA256_RSA_PKCS : t
-
 val _CKM_SHA384_RSA_PKCS : t
-
 val _CKM_SHA512_RSA_PKCS : t
-
 val _CKM_SHA256_RSA_PKCS_PSS : t
-
 val _CKM_SHA384_RSA_PKCS_PSS : t
-
 val _CKM_SHA512_RSA_PKCS_PSS : t
-
 val _CKM_SHA224_RSA_PKCS : t
-
 val _CKM_SHA224_RSA_PKCS_PSS : t
-
 val _CKM_RC2_KEY_GEN : t
-
 val _CKM_RC2_ECB : t
-
 val _CKM_RC2_CBC : t
-
 val _CKM_RC2_MAC : t
-
 val _CKM_RC2_MAC_GENERAL : t
-
 val _CKM_RC2_CBC_PAD : t
-
 val _CKM_RC4_KEY_GEN : t
-
 val _CKM_RC4 : t
-
 val _CKM_DES_KEY_GEN : t
-
 val _CKM_DES_ECB : t
-
 val _CKM_DES_CBC : t
-
 val _CKM_DES_MAC : t
-
 val _CKM_DES_MAC_GENERAL : t
-
 val _CKM_DES_CBC_PAD : t
-
 val _CKM_DES2_KEY_GEN : t
-
 val _CKM_DES3_KEY_GEN : t
-
 val _CKM_DES3_ECB : t
-
 val _CKM_DES3_CBC : t
-
 val _CKM_DES3_MAC : t
-
 val _CKM_DES3_MAC_GENERAL : t
-
 val _CKM_DES3_CBC_PAD : t
-
 val _CKM_CDMF_KEY_GEN : t
-
 val _CKM_CDMF_ECB : t
-
 val _CKM_CDMF_CBC : t
-
 val _CKM_CDMF_MAC : t
-
 val _CKM_CDMF_MAC_GENERAL : t
-
 val _CKM_CDMF_CBC_PAD : t
-
 val _CKM_DES_OFB64 : t
-
 val _CKM_DES_OFB8 : t
-
 val _CKM_DES_CFB64 : t
-
 val _CKM_DES_CFB8 : t
-
 val _CKM_MD2 : t
-
 val _CKM_MD2_HMAC : t
-
 val _CKM_MD2_HMAC_GENERAL : t
-
 val _CKM_MD5 : t
-
 val _CKM_MD5_HMAC : t
-
 val _CKM_MD5_HMAC_GENERAL : t
-
 val _CKM_SHA_1 : t
-
 val _CKM_SHA_1_HMAC : t
-
 val _CKM_SHA_1_HMAC_GENERAL : t
-
 val _CKM_RIPEMD128 : t
-
 val _CKM_RIPEMD128_HMAC : t
-
 val _CKM_RIPEMD128_HMAC_GENERAL : t
-
 val _CKM_RIPEMD160 : t
-
 val _CKM_RIPEMD160_HMAC : t
-
 val _CKM_RIPEMD160_HMAC_GENERAL : t
-
 val _CKM_SHA256 : t
-
 val _CKM_SHA256_HMAC : t
-
 val _CKM_SHA256_HMAC_GENERAL : t
-
 val _CKM_SHA224 : t
-
 val _CKM_SHA224_HMAC : t
-
 val _CKM_SHA224_HMAC_GENERAL : t
-
 val _CKM_SHA384 : t
-
 val _CKM_SHA384_HMAC : t
-
 val _CKM_SHA384_HMAC_GENERAL : t
-
 val _CKM_SHA512 : t
-
 val _CKM_SHA512_HMAC : t
-
 val _CKM_SHA512_HMAC_GENERAL : t
-
 val _CKM_SECURID_KEY_GEN : t
-
 val _CKM_SECURID : t
-
 val _CKM_HOTP_KEY_GEN : t
-
 val _CKM_HOTP : t
-
 val _CKM_ACTI : t
-
 val _CKM_ACTI_KEY_GEN : t
-
 val _CKM_CAST_KEY_GEN : t
-
 val _CKM_CAST_ECB : t
-
 val _CKM_CAST_CBC : t
-
 val _CKM_CAST_MAC : t
-
 val _CKM_CAST_MAC_GENERAL : t
-
 val _CKM_CAST_CBC_PAD : t
-
 val _CKM_CAST3_KEY_GEN : t
-
 val _CKM_CAST3_ECB : t
-
 val _CKM_CAST3_CBC : t
-
 val _CKM_CAST3_MAC : t
-
 val _CKM_CAST3_MAC_GENERAL : t
-
 val _CKM_CAST3_CBC_PAD : t
-
 val _CKM_CAST128_KEY_GEN : t
-
 val _CKM_CAST128_ECB : t
-
 val _CKM_CAST128_CBC : t
-
 val _CKM_CAST128_MAC : t
-
 val _CKM_CAST128_MAC_GENERAL : t
-
 val _CKM_CAST128_CBC_PAD : t
-
 val _CKM_RC5_KEY_GEN : t
-
 val _CKM_RC5_ECB : t
-
 val _CKM_RC5_CBC : t
-
 val _CKM_RC5_MAC : t
-
 val _CKM_RC5_MAC_GENERAL : t
-
 val _CKM_RC5_CBC_PAD : t
-
 val _CKM_IDEA_KEY_GEN : t
-
 val _CKM_IDEA_ECB : t
-
 val _CKM_IDEA_CBC : t
-
 val _CKM_IDEA_MAC : t
-
 val _CKM_IDEA_MAC_GENERAL : t
-
 val _CKM_IDEA_CBC_PAD : t
-
 val _CKM_GENERIC_SECRET_KEY_GEN : t
-
 val _CKM_CONCATENATE_BASE_AND_KEY : t
-
 val _CKM_CONCATENATE_BASE_AND_DATA : t
-
 val _CKM_CONCATENATE_DATA_AND_BASE : t
-
 val _CKM_XOR_BASE_AND_DATA : t
-
 val _CKM_EXTRACT_KEY_FROM_KEY : t
-
 val _CKM_SSL3_PRE_MASTER_KEY_GEN : t
-
 val _CKM_SSL3_MASTER_KEY_DERIVE : t
-
 val _CKM_SSL3_KEY_AND_MAC_DERIVE : t
-
 val _CKM_SSL3_MASTER_KEY_DERIVE_DH : t
-
 val _CKM_TLS_PRE_MASTER_KEY_GEN : t
-
 val _CKM_TLS_MASTER_KEY_DERIVE : t
-
 val _CKM_TLS_KEY_AND_MAC_DERIVE : t
-
 val _CKM_TLS_MASTER_KEY_DERIVE_DH : t
-
 val _CKM_TLS_PRF : t
-
 val _CKM_SSL3_MD5_MAC : t
-
 val _CKM_SSL3_SHA1_MAC : t
-
 val _CKM_MD5_KEY_DERIVATION : t
-
 val _CKM_MD2_KEY_DERIVATION : t
-
 val _CKM_SHA1_KEY_DERIVATION : t
-
 val _CKM_SHA256_KEY_DERIVATION : t
-
 val _CKM_SHA384_KEY_DERIVATION : t
-
 val _CKM_SHA512_KEY_DERIVATION : t
-
 val _CKM_SHA224_KEY_DERIVATION : t
-
 val _CKM_PBE_MD2_DES_CBC : t
-
 val _CKM_PBE_MD5_DES_CBC : t
-
 val _CKM_PBE_MD5_CAST_CBC : t
-
 val _CKM_PBE_MD5_CAST3_CBC : t
-
 val _CKM_PBE_MD5_CAST128_CBC : t
-
 val _CKM_PBE_SHA1_CAST128_CBC : t
-
 val _CKM_PBE_SHA1_RC4_128 : t
-
 val _CKM_PBE_SHA1_RC4_40 : t
-
 val _CKM_PBE_SHA1_DES3_EDE_CBC : t
-
 val _CKM_PBE_SHA1_DES2_EDE_CBC : t
-
 val _CKM_PBE_SHA1_RC2_128_CBC : t
-
 val _CKM_PBE_SHA1_RC2_40_CBC : t
-
 val _CKM_PKCS5_PBKD2 : t
-
 val _CKM_PBA_SHA1_WITH_SHA1_HMAC : t
-
 val _CKM_WTLS_PRE_MASTER_KEY_GEN : t
-
 val _CKM_WTLS_MASTER_KEY_DERIVE : t
-
 val _CKM_WTLS_MASTER_KEY_DERIVE_DH_ECC : t
-
 val _CKM_WTLS_PRF : t
-
 val _CKM_WTLS_SERVER_KEY_AND_MAC_DERIVE : t
-
 val _CKM_WTLS_CLIENT_KEY_AND_MAC_DERIVE : t
-
 val _CKM_KEY_WRAP_LYNKS : t
-
 val _CKM_KEY_WRAP_SET_OAEP : t
-
 val _CKM_CMS_SIG : t
-
 val _CKM_KIP_DERIVE : t
-
 val _CKM_KIP_WRAP : t
-
 val _CKM_KIP_MAC : t
-
 val _CKM_CAMELLIA_KEY_GEN : t
-
 val _CKM_CAMELLIA_ECB : t
-
 val _CKM_CAMELLIA_CBC : t
-
 val _CKM_CAMELLIA_MAC : t
-
 val _CKM_CAMELLIA_MAC_GENERAL : t
-
 val _CKM_CAMELLIA_CBC_PAD : t
-
 val _CKM_CAMELLIA_ECB_ENCRYPT_DATA : t
-
 val _CKM_CAMELLIA_CBC_ENCRYPT_DATA : t
-
 val _CKM_CAMELLIA_CTR : t
-
 val _CKM_ARIA_KEY_GEN : t
-
 val _CKM_ARIA_ECB : t
-
 val _CKM_ARIA_CBC : t
-
 val _CKM_ARIA_MAC : t
-
 val _CKM_ARIA_MAC_GENERAL : t
-
 val _CKM_ARIA_CBC_PAD : t
-
 val _CKM_ARIA_ECB_ENCRYPT_DATA : t
-
 val _CKM_ARIA_CBC_ENCRYPT_DATA : t
-
 val _CKM_SKIPJACK_KEY_GEN : t
-
 val _CKM_SKIPJACK_ECB64 : t
-
 val _CKM_SKIPJACK_CBC64 : t
-
 val _CKM_SKIPJACK_OFB64 : t
-
 val _CKM_SKIPJACK_CFB64 : t
-
 val _CKM_SKIPJACK_CFB32 : t
-
 val _CKM_SKIPJACK_CFB16 : t
-
 val _CKM_SKIPJACK_CFB8 : t
-
 val _CKM_SKIPJACK_WRAP : t
-
 val _CKM_SKIPJACK_PRIVATE_WRAP : t
-
 val _CKM_SKIPJACK_RELAYX : t
-
 val _CKM_KEA_KEY_PAIR_GEN : t
-
 val _CKM_KEA_KEY_DERIVE : t
-
 val _CKM_FORTEZZA_TIMESTAMP : t
-
 val _CKM_BATON_KEY_GEN : t
-
 val _CKM_BATON_ECB128 : t
-
 val _CKM_BATON_ECB96 : t
-
 val _CKM_BATON_CBC128 : t
-
 val _CKM_BATON_COUNTER : t
-
 val _CKM_BATON_SHUFFLE : t
-
 val _CKM_BATON_WRAP : t
-
 val _CKM_EC_KEY_PAIR_GEN : t
-
 val _CKM_ECDSA : t
-
 val _CKM_ECDSA_SHA1 : t
-
 val _CKM_ECDH1_DERIVE : t
-
 val _CKM_ECDH1_COFACTOR_DERIVE : t
-
 val _CKM_ECMQV_DERIVE : t
-
 val _CKM_JUNIPER_KEY_GEN : t
-
 val _CKM_JUNIPER_ECB128 : t
-
 val _CKM_JUNIPER_CBC128 : t
-
 val _CKM_JUNIPER_COUNTER : t
-
 val _CKM_JUNIPER_SHUFFLE : t
-
 val _CKM_JUNIPER_WRAP : t
-
 val _CKM_FASTHASH : t
-
 val _CKM_AES_KEY_GEN : t
-
 val _CKM_AES_ECB : t
-
 val _CKM_AES_CBC : t
-
 val _CKM_AES_MAC : t
-
 val _CKM_AES_MAC_GENERAL : t
-
 val _CKM_AES_CBC_PAD : t
-
 val _CKM_AES_CTR : t
-
 val _CKM_AES_GCM : t
-
 val _CKM_BLOWFISH_KEY_GEN : t
-
 val _CKM_BLOWFISH_CBC : t
-
 val _CKM_TWOFISH_KEY_GEN : t
-
 val _CKM_TWOFISH_CBC : t
-
 val _CKM_DES_ECB_ENCRYPT_DATA : t
-
 val _CKM_DES_CBC_ENCRYPT_DATA : t
-
 val _CKM_DES3_ECB_ENCRYPT_DATA : t
-
 val _CKM_DES3_CBC_ENCRYPT_DATA : t
-
 val _CKM_AES_ECB_ENCRYPT_DATA : t
-
 val _CKM_AES_CBC_ENCRYPT_DATA : t
-
 val _CKM_DSA_PARAMETER_GEN : t
-
 val _CKM_DH_PKCS_PARAMETER_GEN : t
-
 val _CKM_X9_42_DH_PARAMETER_GEN : t
-
 val _CKM_GOSTR3410_KEY_PAIR_GEN : t
-
 val _CKM_GOSTR3410 : t
-
 val _CKM_GOSTR3410_WITH_GOSTR3411 : t
-
 val _CKM_GOSTR3411 : t
-
 val _CKM_GOSTR3411_HMAC : t
-
 val _CKM_AES_KEY_WRAP : t
-
 val _CKM_VENDOR_DEFINED : t
-
 val typ : t Ctypes.typ
-
 val view : t -> P11_mechanism_type.t
-
 val make : P11_mechanism_type.t -> t

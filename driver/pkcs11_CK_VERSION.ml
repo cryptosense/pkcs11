@@ -1,17 +1,12 @@
 open Ctypes
 
 type _t
-
 type t = _t structure
 
 let ck_version : t typ = structure "CK_VERSION"
-
 let ( -: ) ty label = Ctypes_helpers.smart_field ck_version label ty
-
 let major = Pkcs11_CK_BYTE.typ -: "major"
-
 let minor = Pkcs11_CK_BYTE.typ -: "minor"
-
 let () = seal ck_version
 
 let view c =

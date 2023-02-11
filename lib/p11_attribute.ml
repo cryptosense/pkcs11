@@ -1,5 +1,4 @@
 type 'a t = 'a P11_attribute_type.t * 'a
-
 type pack = Pack : 'a t -> pack
 
 type _ repr =
@@ -154,7 +153,6 @@ let pack_of_yojson json : (pack, string) result =
   | _ -> Error "Ill-formed attribute"
 
 let pack_to_yojson (Pack x) = to_json x
-
 let compare_types (a, _) (b, _) = P11_attribute_type.compare a b
 
 let compare_types_pack (Pack (a, _)) (Pack (b, _)) =
@@ -186,17 +184,10 @@ let compare (type a b) ((ta, va) : a t) ((tb, vb) : b t) =
   | Equal -> compare_using_repr (repr ta) va vb
 
 let compare_pack (Pack a) (Pack b) = compare a b
-
 let equal a b = compare a b = 0
-
 let equal_pack (Pack a) (Pack b) = equal a b
-
 let equal_types_pack a b = compare_types_pack a b = 0
-
 let equal_values a v1 v2 = equal (a, v1) (a, v2)
-
 let show_pack (Pack attr) = to_string attr
-
 let pp_pack fmt pack = Format.pp_print_string fmt (show_pack pack)
-
 let type_ (Pack (ty, _)) = P11_attribute_type.Pack ty

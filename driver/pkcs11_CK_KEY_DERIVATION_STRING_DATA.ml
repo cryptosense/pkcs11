@@ -2,17 +2,12 @@ open Ctypes
 open Ctypes_helpers
 
 type _t
-
 type t = _t structure
 
 let t : t typ = structure "CK_KEY_DERIVATION_STRING_DATA"
-
 let ( -: ) typ label = smart_field t label typ
-
 let pData = Reachable_ptr.typ Pkcs11_CK_BYTE.typ -: "pData"
-
 let ulLen = ulong -: "ulLen"
-
 let () = seal t
 
 type u = string

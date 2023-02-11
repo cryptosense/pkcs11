@@ -6,5 +6,4 @@ type t =
 [@@deriving eq, ord, show, yojson]
 
 val to_string : ?newlines:bool -> ?indent:string -> t -> string
-
 val to_strings : t -> string list

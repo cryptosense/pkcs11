@@ -104,5 +104,4 @@ let of_string = function
     | _ -> invalid_arg ("Pkcs11_CK_KEY_TYPE.of_string" ^ ": cannot find " ^ x))
 
 let to_yojson key_type = `String (to_string key_type)
-
 let of_yojson = P11_helpers.of_json_string ~typename:"key type" of_string

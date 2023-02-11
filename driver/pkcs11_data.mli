@@ -13,9 +13,7 @@
 type t
 
 val to_string : t -> string
-
 val of_string : string -> t
-
 val string_of_raw : 'a Ctypes.ptr -> Unsigned.ULong.t -> string
 
 val create : unit -> t
@@ -27,7 +25,5 @@ val allocate : t -> unit
     to freshly allocated memory. *)
 
 val get_content : t -> Pkcs11_CK_BYTE.t Ctypes.ptr
-
 val get_length : t -> P11_ulong.t
-
 val get_length_addr : t -> P11_ulong.t Ctypes.ptr
